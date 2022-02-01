@@ -1,0 +1,9 @@
+{
+  "short_name": "FCC",
+  "name": "Freedom in Christ Church Website",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
