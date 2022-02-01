@@ -1,14 +1,16 @@
+:root {
+  --main-blue: #2A8DBE;
+  --main-green: #7AAA6E;
+  --main-black: #000000;
+  --main-white: #FFFFFF;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 .App-header {
-  background-color: #282c34;
+  background-color: var(--main-black);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
