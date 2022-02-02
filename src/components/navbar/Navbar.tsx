@@ -15,6 +15,7 @@ function Navbar() {
 					<Link className="navbar-link" to="/about"><li className="navbar-option">about</li></Link>
 					<Link className="navbar-link" to="/sermons"><li className="navbar-option">sermons</li></Link>
 					<Link className="navbar-link" to="/ministries"><li className="navbar-option">ministries</li></Link>
+					<Link className="navbar-link" to="/smallgroups"><li className="navbar-option">small groups</li></Link>
 					<Link className="navbar-link" to="/give"><li className="navbar-option">give</li></Link>
 				</div>
 			</ol>
