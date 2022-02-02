@@ -22,6 +22,15 @@
 	flex-direction: row;
 }
 
+.navbar-link {
+	text-decoration: none;
+	color: var(--main-white);
+}
+
+.navbar-link:hover {
+	color: var(--main-green);
+}
+
 .navbar-option {
 	margin: 20px;
 }
