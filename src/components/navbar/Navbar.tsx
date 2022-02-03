@@ -2,10 +2,12 @@ import React from 'react';
 import '../../App.css';
 import './Navbar.css'
 import { Link } from 'react-router-dom';
+import Zoom from '../zoom/Zoom'
 
 function Navbar() {
 	return (
 		<nav className="navbar">
+			<Zoom />
 			<ol className="container">
 				<div className="navbar-left">
 					<Link className="navbar-link" to='/'><li className="navbar-option">logo</li></Link>
