@@ -16,8 +16,9 @@ import Preteens from './pages/ministries/Preteens';
 import Youth from './pages/ministries/Youth';
 import YA from './pages/ministries/YA';
 import Praise from './pages/ministries/Praise';
-import SmallGroups from './pages/small-groups/SmallGroups'
+import SmallGroups from './pages/small-groups/SmallGroups';
 import Give from './pages/give/Give';
+import Footer from './components/footer/Footer';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
 
             <Route path='give' element={<Give />} />
           </Routes>
+          <Footer />
       </div>
     </BrowserRouter>
   );

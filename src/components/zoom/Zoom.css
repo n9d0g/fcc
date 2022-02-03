@@ -1,6 +1,7 @@
 .zoom {
 	margin: 0;
 	background-color: var(--main-green);
+	text-align: center;
 }
 
 .banner {

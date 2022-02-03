@@ -9,6 +9,10 @@
   color: var(--main-white);
 }
 
+.home {
+  text-align: center;
+}
+
 .intro {
 }
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Ministries() {
 	return(
-		<div className="ministies">
+		<div className="ministries">
 			<h1 className="header">ministries page</h1>
 			<Link to='/ministries/men'><h2>men</h2></Link>
 			<Link to='/ministries/women'><h2>women</h2></Link>
