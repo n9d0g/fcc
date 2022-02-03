@@ -16,11 +16,11 @@
 .zoom-link {
 	text-decoration: none;
 	color: var(--main-black);
-	box-shadow: 0 1px 0 0 var(--main-blue);
+	box-shadow: 0 1px 0 0 var(--main-white);
 	transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .zoom-link:hover {
-	box-shadow: 0 4px 0 0 var(--main-blue);
-	color: var(--main-blue);
+	box-shadow: 0 4px 0 0 var(--main-white);
+	color: var(--main-white);
 }

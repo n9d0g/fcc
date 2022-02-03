@@ -1,12 +1,17 @@
 import React from 'react';
 import '../../App.css'
 import './Home.css'
+import HomeIntro from './HomeIntro'
+import HomeMission from './HomeMission'
+import HomeSermons from './HomeSermons'
 
 function Home() {
 	return (
-		<header className="home">
-			<h1 className="header">Freedom in Christ Church</h1>
-		</header>
+		<main className="home">
+			<HomeIntro />
+			<HomeMission />
+			<HomeSermons />
+		</main>	
 	)
 }
 

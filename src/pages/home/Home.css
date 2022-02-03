@@ -8,3 +8,18 @@
   font-size: calc(10px + 2vmin);
   color: var(--main-white);
 }
+
+.intro {
+}
+
+.mission {
+  padding: 7rem 15rem;
+  background-color: var(--main-green);
+  font-size: 1.4rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.sermons {
+
+}
