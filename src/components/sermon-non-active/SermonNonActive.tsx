@@ -2,7 +2,7 @@ import React from 'react';
 
 function SermonNonActive() {
 	return (
-		<a href="">
+		<a href="www.google.ca">
 			<h4 className="sermons-non-active-date">
 					<span>Jan</span>
 					<em>30</em>

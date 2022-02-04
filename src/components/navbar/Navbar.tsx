@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
 import '../../App.css';
 import './Navbar.css'
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Zoom from '../zoom/Zoom'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 

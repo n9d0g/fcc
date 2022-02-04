@@ -1,0 +1,20 @@
+.button {
+	margin: 16px 16px;
+	padding: 16px;
+	border: 1px solid var(--main-blue);
+	border-radius: 0;
+	box-shadow: inset 0 56px 0 0 var(--main-blue);
+	text-decoration: none;
+	background-color: transparent;
+	color: var(--main-white);
+	transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.button:hover {
+	box-shadow: inset 0 0 0 0 var(--main-blue);
+	outline: 0;
+}
+
+.button-text {
+	font-weight: 500;
+}

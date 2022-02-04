@@ -1,10 +1,15 @@
 import React from 'react';
 import './Home.css';
+import Button from '../../components/button/Button';
 
 function HomeIntro() {
 	return (
-		<section className="intro">
-			<h1 className="header">Freedom in Christ Church</h1>
+		<section className="home-intro">
+			<h1 className="home-intro-header">Welcome to Freedom in Christ Church.</h1>
+			<div className="home-intro-button-container">
+				<Button location='/about' text="I'm new" documentTitle="About"/>
+				<Button location='/sermons' text="Sermons" documentTitle="Sermons" />
+			</div>
 		</section>
 	)
 }
