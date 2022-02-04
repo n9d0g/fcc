@@ -4,7 +4,8 @@ import './Button.css';
 interface ButtonProps {
 	location: any,
 	text: any,
-	documentTitle: any
+	documentTitle?: any,
+	margin?: boolean
 }
 
 const Button = (props: ButtonProps) => {

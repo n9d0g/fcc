@@ -25,6 +25,10 @@
   justify-content: center;
 }
 
+.home-intro-button-container > a {
+  margin: 16px;
+}
+
 .home-intro-header {
   color: var(--main-white);
   font-size: 3rem;

@@ -1,10 +1,41 @@
 .about {
 	text-align: center;
+	background-color: var(--main-green);
 }
 
 .about-banner {
 	background-image: url('../../assets/pictures/about_bg.jpg');
+  background-size: cover;
+  background-position: 50%;
+  padding: 7rem 0 7rem 0;
 }
 
 .about-banner-title {
+	font-size: 4rem;
+	color: var(--main-white);
+}
+
+.about-beliefs {
+	display: flex;
+	padding: 5rem 20rem;
+}
+
+.about-beliefs-picture {
+	flex: 1;
+	background-image: url('../../assets/pictures/about_bg.jpg');
+	background-position: 50% 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 500px;
+	width: 500px;
+	margin: 0 2rem;
+}
+
+.about-beliefs-container {
+	flex: 1;
+	text-align: left;
+}
+
+.about-beliefs-description {
+	padding: 2rem 0;
 }
