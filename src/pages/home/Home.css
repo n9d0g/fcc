@@ -25,5 +25,59 @@
 }
 
 .sermons {
+  padding: 120px 80px;
+}
 
+.sermons-hr {
+  width: 60px;
+  height: 2px;
+  border: 0;
+  background: var(--main-blue);
+  display: block;
+  margin: 25px auto;
+}
+
+.sermons-container {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  margin-top: 40px;
+}
+
+.sermons-non-active-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sermons-non-active-container > a {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  background: var(--main-blue);
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  text-decoration: none;
+  text-align: left;
+  border: 2px solid transparent;
+}
+
+.sermons-non-active-date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  background: var(--main-white);
+  text-align: center;
+  height: 60px;
+  width: 60px;
+  margin: 0;
+}
+
+.sermons-non-active-title {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }
