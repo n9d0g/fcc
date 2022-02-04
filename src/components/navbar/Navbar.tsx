@@ -12,7 +12,7 @@ function Navbar() {
 			<Zoom />
 			<ol className="container">
 				<div className="navbar-left">
-					<Link className="navbar-link" to='/' onClick={() => setDocumentTitle("Home")}><li className="navbar-option">logo</li></Link>
+					<Link className="navbar-link" to='/' onClick={() => setDocumentTitle("Home")}><li className="navbar-option">freedom in christ church</li></Link>
 				</div>
 				<div className="navbar-right">
 					<Link className="navbar-link" to="/" onClick={() => setDocumentTitle("Home")}><li className="navbar-option">home</li></Link>

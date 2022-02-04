@@ -4,10 +4,10 @@ import './Sermons.css';
 
 function Sermons() {
 	return (
-		<div className="sermons">
+		<section className="sermons">
 			<h1 className="title">sermons page</h1>
 			<Link to='/'><h2>back</h2></Link>
-		</div>
+		</section>
 	)
 }
 

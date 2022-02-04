@@ -1,3 +1,10 @@
 .about {
 	text-align: center;
 }
+
+.about-banner {
+	background-image: url('../../assets/pictures/about_bg.jpg');
+}
+
+.about-banner-title {
+}

@@ -26,7 +26,6 @@
 }
 
 .home-intro-header {
-  margin: 0;
   color: var(--main-white);
   font-size: 3rem;
 }
@@ -40,11 +39,11 @@
   font-size: 1.4rem;
 }
 
-.sermons {
+.home-sermons {
   padding: 120px 80px;
 }
 
-.sermons-hr {
+.home-sermons-hr {
   width: 60px;
   height: 2px;
   border: 0;
@@ -53,20 +52,20 @@
   margin: 25px auto;
 }
 
-.sermons-container {
+.home-sermons-container {
   display: flex;
   justify-content: center;
   gap: 5rem;
   margin-top: 40px;
 }
 
-.sermons-non-active-container {
+.home-sermons-non-active-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.sermons-non-active-container > a {
+.home-sermons-non-active-container > a {
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -79,7 +78,7 @@
   border: 2px solid transparent;
 }
 
-.sermons-non-active-date {
+.home-sermons-non-active-date {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,12 +88,10 @@
   text-align: center;
   height: 60px;
   width: 60px;
-  margin: 0;
 }
 
-.sermons-non-active-title {
+.home-sermons-non-active-title {
   display: flex;
   flex-direction: column;
-  margin: 0;
   color: var(--main-white);
 }

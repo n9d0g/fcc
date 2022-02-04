@@ -6,11 +6,11 @@ import SermonActive from '../../components/sermon-active/SermonActive';
 function HomeSermons() {
 	return (
 		<section className="sermons">
-			<h2 className="sermons-header">recent sermons</h2>
-			<hr className="sermons-hr"/>
-			<article className="sermons-container">
+			<h2 className="home-sermons-header">recent sermons</h2>
+			<hr className="home-sermons-hr"/>
+			<article className="home-sermons-container">
 				<SermonActive />
-				<div className="sermons-non-active-container">
+				<div className="home-sermons-non-active-container">
 					<SermonNonActive />
 					<SermonNonActive />
 					<SermonNonActive />

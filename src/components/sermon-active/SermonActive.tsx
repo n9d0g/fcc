@@ -2,8 +2,8 @@ import React from 'react';
 
 function SermonActive() {
 	return (
-		<div className="sermons-active">
-			<div className="sermons-active-container">
+		<div className="home-sermons-active">
+			<div className="home-sermons-active-container">
 				<iframe width="640" 
 								height="360" 
 								src="https://www.youtube.com/embed/WxpvgA9jv1g" 
