@@ -13,7 +13,7 @@ function Footer() {
 				<div className="footer-column">
 					<Link className="footer-link footer-header" to="/about">about</Link>
 					<Link className="footer-link" to="/about/beliefs"><span className="text-link">beliefs</span></Link>
-					<Link className="footer-link" to="/about/values"><span className="text-link">values</span></Link>
+					<Link className="footer-link" to="/about/mission-vision"><span className="text-link">mission & vision</span></Link>
 					<Link className="footer-link" to="/about/leadership"><span className="text-link">leadership</span></Link>
 				</div>
 				<div className="footer-column">

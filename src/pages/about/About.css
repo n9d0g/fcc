@@ -76,3 +76,32 @@
 	text-align: center;
 
 }
+
+/* leadership */
+.leadership-banner {
+	text-align: center;
+	background-image: url('../../assets/pictures/leadership_bg.jpg');
+  background-size: cover;
+  background-position: 50%;
+  padding: 7rem 0 7rem 0;
+}
+
+.leadership-title {
+	font-size: 4rem;
+	color: var(--main-white);
+}
+
+.leadership-intro {
+	display: flex;
+	justify-content: center;
+	padding: 2rem;
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 1400px;
+}
+
+.leadership-intro-text {
+	text-align: center;
+	font-size: 1.3rem;
+	max-width: 800px;
+}

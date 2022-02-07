@@ -1,11 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Elder } from '../../components/elder/Elder';
+import { Elders } from '../../data/Elders';
 
 function Leadership() {
 	return (
 		<div className="leadership">
-			<h1 className="header">leadership page</h1>
-			<Link to='/about'><h2>back</h2></Link>
+			<section className="leadership-banner">
+				<h1 className="leadership-title">our team</h1>
+			</section>
+			<section className="leadership-intro">
+				<p className="leadership-intro-text">We believe God’s plan is that each local church be led by a team of qualified, spiritually mature men and women whose proven leadership in their home and community demonstrates their ability to lead God’s church.</p>
+			</section>
+			<Elder data={Elders} />
 		</div>
 	)
 }
