@@ -18,10 +18,12 @@ import Praise from './pages/ministries/Praise';
 import SmallGroups from './pages/small-groups/SmallGroups';
 import Give from './pages/give/Give';
 import Footer from './components/footer/Footer';
+import ScrollToTop from './components/scroll-to-top/ScrollToTop';
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="fcc">
         <Navbar />
           <Routes>
