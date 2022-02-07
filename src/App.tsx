@@ -1,11 +1,10 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/navbar/Navbar'
 import Home from './pages/home/Home';
 import About from './pages/about/About';
 import Beliefs from './pages/about/Beliefs';
-import Values from './pages/about/Values';
+import { MissionVision } from './pages/about/MissionVision';
 import Leadership from './pages/about/Leadership';
 import Sermons from './pages/sermons/Sermons';
 import Ministries from './pages/ministries/Ministries';
@@ -32,7 +31,7 @@ function App() {
             {/* about */}
             <Route path='about' element={<About />} />
             <Route path='about/beliefs' element={<Beliefs />} />
-            <Route path='about/values' element={<Values />} />
+            <Route path='about/mission-vision' element={<MissionVision />} />
             <Route path='about/leadership' element={<Leadership />} />
 
             <Route path='sermons' element={<Sermons />} />

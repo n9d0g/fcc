@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Accordion.css';
-import { CoreValues } from '../../data/CoreValues';
 import { FiPlus, FiMinus } from 'react-icons/fi';
 
 

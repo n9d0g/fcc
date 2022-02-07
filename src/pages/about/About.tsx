@@ -8,7 +8,7 @@ function About() {
 				<h1 className="about-banner-title">about FCC</h1>
 			</section>
 			<LandingPageSection title="what we believe" btnText="doctrinal statement" btnLocation="/about/beliefs" />
-			<LandingPageSection title="mission & values" btnText="mission & values" btnLocation="/about/values" flip={true}/>
+			<LandingPageSection title="mission & vision" btnText="mission & vision" btnLocation="/about/mission-vision" flip={true}/>
 			<LandingPageSection title="our team" btnText="leadership" btnLocation="/about/leadership" />
 		</div>
 	)
