@@ -14,3 +14,38 @@
 	font-size: 4rem;
 	color: var(--main-white);
 }
+
+/* beliefs */
+.beliefs-banner {
+	background-image: url('../../assets/pictures/beliefs_bg.jpg');
+  background-size: cover;
+  background-position: 50%;
+  padding: 7rem 0 7rem 0;
+	text-align: center;
+}
+
+.beliefs-banner-title {
+	font-size: 4rem;
+	color: var(--main-white);
+}
+
+.beliefs-intro {
+	display: flex;
+	justify-content: center;
+	padding: 5rem;
+	background-color: var(--main-green);
+}
+
+.beliefs-intro > p {
+	text-align: center;
+	margin: 0;
+}
+
+.beliefs-content {
+	text-align: center;
+	padding: 5rem 0;
+}
+
+.beliefs-content-core-values, .beliefs-content-statement-of-faith {
+	margin: 2rem 0;
+}
