@@ -49,3 +49,30 @@
 .beliefs-content-core-values, .beliefs-content-statement-of-faith {
 	margin: 2rem 0;
 }
+
+/* mission & vision */
+.mission-vision-banner {
+	text-align: center;
+	background-image: url('../../assets/pictures/about_bg.jpg');
+  background-size: cover;
+  background-position: 50%;
+  padding: 7rem 0 7rem 0;
+}
+
+.mission-vision-title {
+	font-size: 4rem;
+	color: var(--main-white);
+}
+
+.mission {
+  padding: 12rem 35rem;
+  background-color: var(--main-green);
+	text-align: center;
+}
+
+.vision {
+  padding: 12rem 35rem;
+  background-color: var(--main-blue);
+	text-align: center;
+
+}
