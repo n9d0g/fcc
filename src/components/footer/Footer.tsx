@@ -8,7 +8,7 @@ function Footer() {
 		<footer className="footer">
 			<div className="container">
 				<div className="footer-column">
-					<img className="footer-logo" src={require('../../assets/logo/logo_dark.png')} alt="Freedom in Christ Church Logo" />
+					<img className="footer-logo" src={require('../../assets/logo/logo_white_black_bg.png')} alt="Freedom in Christ Church Logo" />
 				</div>
 				<div className="footer-column">
 					<Link className="footer-link footer-header" to="/about">about</Link>
