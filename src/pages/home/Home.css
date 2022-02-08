@@ -34,17 +34,57 @@
   font-size: 3rem;
 }
 
+/* home-join */
+.home-join {
+  display: flex;
+  justify-content: center;
+  padding: 12rem 0;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-join-picture {
+  background-image: url('../../assets/pictures/men_bg.jpg');
+  background-position: 50% 50%;
+  height: 300px;
+  width: 300px;
+  flex: 1;
+}
+
+.home-join-content {
+  flex: 1;
+}
+
+.home-join-content-header {
+  font-size: 3rem;
+  text-align: left;
+}
+
+.home-join-content-description {
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+/* home-mission */
 .home-mission {
-  padding: 12rem 35rem;
+  padding: 10rem 0;
   background-color: var(--main-green);
 }
 
-.mission-header {
-  font-size: 1.4rem;
+.home-mission-header {
+  max-width: 1100px;
+  margin: 0 auto;
+  font-size: 2rem;
 }
 
+/* home sermons */
 .home-sermons {
   padding: 120px 80px;
+}
+
+.home-sermons-header {
+  font-size: 3rem;
 }
 
 .home-sermons-hr {
