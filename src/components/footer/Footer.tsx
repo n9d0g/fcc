@@ -29,7 +29,6 @@ function Footer() {
 					<Link className="footer-link" to="/ministries/youth"><span className="text-link">youth</span></Link>
 					<Link className="footer-link" to="/ministries/ya"><span className="text-link">young adults</span></Link>
 					<Link className="footer-link" to="/ministries/praise"><span className="text-link">praise</span></Link>
-					<Link className="footer-link" to="/ministries/praise"><span className="text-link">prayer</span></Link>
 				</div>
 				<div className="footer-column">
 					<Link className="footer-link footer-header" to="/smallgroups">small groups</Link>

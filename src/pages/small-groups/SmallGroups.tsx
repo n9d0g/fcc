@@ -10,34 +10,34 @@ function SmallGroups() {
       <LandingPageSection
         title="youth (13-18)"
         btnText="youth"
-        btnLocation="/smallgroups/men"
+        btnLocation="/ministries/youth"
       />
       <LandingPageSection
         title="young adults"
         btnText="young adults"
-        btnLocation="/smallgroups/women"
+        btnLocation="/ministries/ya"
         flip={true}
       />
       <LandingPageSection
-        title="50+"
+        title="55+"
         btnText="lolo at lola"
-        btnLocation="/smallgroups/preteens"
+        btnLocation="/smallgroups/55plus"
       />
       <LandingPageSection
         title="mississauga"
         btnText="mississauga"
-        btnLocation="/smallgroups/youth"
+        btnLocation="/smallgroups/mississauga"
         flip={true}
       />
       <LandingPageSection
         title="brampton"
         btnText="velcome"
-        btnLocation="/smallgroups/YA"
+        btnLocation="/smallgroups/brampton"
       />
       <LandingPageSection
         title="philippines"
         btnText="mabuhay"
-        btnLocation="/smallgroups/praise"
+        btnLocation="/smallgroups/philippines"
         flip={true}
       />
     </section>

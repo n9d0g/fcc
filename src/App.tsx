@@ -16,8 +16,12 @@ import YA from './pages/ministries/YA';
 import Praise from './pages/ministries/Praise';
 import SmallGroups from './pages/small-groups/SmallGroups';
 import Give from './pages/give/Give';
+import FiftyFivePlus from './pages/small-groups/FiftyFivePlus';
 import Footer from './components/footer/Footer';
 import ScrollToTop from './components/scroll-to-top/ScrollToTop';
+import Mississauga from './pages/small-groups/Mississauga';
+import Brampton from './pages/small-groups/Brampton';
+import Philippines from './pages/small-groups/Philippines';
 
 function App() {
   return (
@@ -47,7 +51,12 @@ function App() {
 
             {/* small groups */}
             <Route path='smallgroups' element={<SmallGroups />} />
+            <Route path='smallgroups/55plus' element={<FiftyFivePlus />} />
+            <Route path='smallgroups/mississauga' element={<Mississauga />} />
+            <Route path='smallgroups/brampton' element={<Brampton />} />
+            <Route path='smallgroups/philippines' element={<Philippines />} />
 
+            {/* give */}
             <Route path='give' element={<Give />} />
           </Routes>
           <Footer />
