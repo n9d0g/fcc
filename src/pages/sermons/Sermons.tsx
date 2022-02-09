@@ -3,19 +3,18 @@ import { SermonLinks } from '../../data/SermonLinks'
 import { SermonPageActive } from '../../components/sermon-page-active/SermonPageActive'
 import { SermonPageNonActive } from '../../components/sermon-page-non-active/SermonPageNonActive'
 import SermonContext from './SermonContext'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 
 function Sermons() {
-  const sermonContext = useContext(SermonContext)
-  const [activeSermon, setActiveSermon] = useState(sermonContext)
+  const [sermonContext, setSermonContext] = useState(SermonLinks[0])
 
   return (
     <section className="sermons">
       <div className="sermons-banner">
         <h1 className="sermons-banner-title">sermons</h1>
       </div>
-      <div className="sermons-content-container">
-        <SermonContext.Provider value={{ activeSermon, setActiveSermon }}>
+      <div id="active-sermon" className="sermons-content-container">
+        <SermonContext.Provider value={{ sermonContext, setSermonContext }}>
           <SermonPageActive
             title={SermonLinks[0].title}
             speaker={SermonLinks[0].speaker}

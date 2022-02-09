@@ -13,6 +13,24 @@
   justify-content: space-between;
 }
 
+.sermon-page-active-speaker {
+  display: flex;
+  flex: 1;
+  justify-content: left;
+}
+
+.sermon-page-active-date {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.sermon-page-active-scripture {
+  display: flex;
+  flex: 1;
+  justify-content: right;
+}
+
 .sermon-page-active-info-hr {
   color: var(--main-blue);
   margin: 1rem 0;

@@ -1,11 +1,6 @@
 import { createContext } from 'react'
+import { SermonLinks } from '../../data/SermonLinks'
 
-const SermonContext = createContext<any>({
-  title: 'Unconditional Love',
-  speaker: 'Pastor Ed Bolante',
-  scripture: 'Mark 12:28-34',
-  date: 'February 6, 2022',
-  youtube: 'LFw-gNIdLaY',
-})
+const SermonContext = createContext<any>(SermonLinks[0])
 
 export default SermonContext

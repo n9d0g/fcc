@@ -22,7 +22,9 @@
 }
 
 .active {
-  opacity: 0.5;
+  opacity: 0.4;
+  border: 3px solid var(--main-green);
+  cursor: not-allowed;
 }
 
 .sermon-page-non-active-item-title {

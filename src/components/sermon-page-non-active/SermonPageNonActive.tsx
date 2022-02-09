@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import SermonContext from '../../pages/sermons/SermonContext'
 import './SermonPageNonActive.css'
 
 export const SermonPageNonActive = (props: any) => {
   const [activeSermon, setActiveSermon] = useState<any>(false)
+  const {setSermonContext} = useContext(SermonContext)
 
-  const toggle = (index: any) => {
+  const toggle = (item: any, index: any) => {
     if (activeSermon === index) return null
+    setSermonContext(item)
     setActiveSermon(index)
+    document.getElementById("active-sermon")?.scrollIntoView({behavior: 'smooth'})
   }
 
   return (
@@ -18,7 +22,7 @@ export const SermonPageNonActive = (props: any) => {
               activeSermon === index ? 'active' : ''
             }`}
             onClick={() => {
-              toggle(index)
+              toggle(item, index)
             }}
             key={index}>
             <h3 className="sermon-page-non-active-item-title">{item.title}</h3>
