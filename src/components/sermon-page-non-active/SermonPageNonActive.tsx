@@ -4,35 +4,42 @@ import './SermonPageNonActive.css'
 
 export const SermonPageNonActive = (props: any) => {
   const [activeSermon, setActiveSermon] = useState<any>(false)
-  const {setSermonContext} = useContext(SermonContext)
+  const { setSermonContext } = useContext(SermonContext)
 
   const toggle = (item: any, index: any) => {
     if (activeSermon === index) return null
     setSermonContext(item)
     setActiveSermon(index)
-    document.getElementById("active-sermon")?.scrollIntoView({behavior: 'smooth'})
+    document
+      .getElementById('active-sermon')
+      ?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
-    <section className="sermon-page-non-active">
-      {props.data.map((item: any, index: any) => {
-        return (
-          <div
-            className={`sermon-page-non-active-item ${
-              activeSermon === index ? 'active' : ''
-            }`}
-            onClick={() => {
-              toggle(item, index)
-            }}
-            key={index}>
-            <h3 className="sermon-page-non-active-item-title">{item.title}</h3>
-            <h4 className="sermon-page-non-active-item-speaker">
-              {item.speaker}
-            </h4>
-            <h5 className="sermon-page-non-active-item-date">{item.date}</h5>
-          </div>
-        )
-      })}
+    <section className="sermon-page-non-active-container">
+      <h2 className="sermon-page-non-active-title">sermon archive</h2>
+      <section className="sermon-page-non-active">
+        {props.data.map((item: any, index: any) => {
+          return (
+            <div
+              className={`sermon-page-non-active-item ${
+                activeSermon === index ? 'active' : ''
+              }`}
+              onClick={() => {
+                toggle(item, index)
+              }}
+              key={index}>
+              <h3 className="sermon-page-non-active-item-title">
+                {item.title}
+              </h3>
+              <h4 className="sermon-page-non-active-item-speaker">
+                {item.speaker}
+              </h4>
+              <h5 className="sermon-page-non-active-item-date">{item.date}</h5>
+            </div>
+          )
+        })}
+      </section>
     </section>
   )
 }
