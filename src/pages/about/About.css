@@ -1,107 +1,107 @@
 .about {
-	text-align: center;
-	background-color: var(--main-green);
+  text-align: center;
+  background-color: var(--main-green);
 }
 
 .about-banner {
-	background-image: url('../../assets/pictures/about_bg.jpg');
+  background-image: url('../../assets/pictures/about_bg.avif');
   background-size: cover;
   background-position: 50%;
   padding: 7rem 0 7rem 0;
 }
 
 .about-banner-title {
-	font-size: 4rem;
-	color: var(--main-white);
+  font-size: 4rem;
+  color: var(--main-white);
 }
 
 /* beliefs */
 .beliefs-banner {
-	background-image: url('../../assets/pictures/beliefs_bg.jpg');
+  background-image: url('../../assets/pictures/beliefs_bg.avif');
   background-size: cover;
   background-position: 50%;
   padding: 7rem 0 7rem 0;
-	text-align: center;
+  text-align: center;
 }
 
 .beliefs-banner-title {
-	font-size: 4rem;
-	color: var(--main-white);
+  font-size: 4rem;
+  color: var(--main-white);
 }
 
 .beliefs-intro {
-	display: flex;
-	justify-content: center;
-	padding: 5rem;
-	background-color: var(--main-green);
+  display: flex;
+  justify-content: center;
+  padding: 5rem;
+  background-color: var(--main-green);
 }
 
 .beliefs-intro > p {
-	text-align: center;
-	margin: 0;
+  text-align: center;
+  margin: 0;
 }
 
 .beliefs-content {
-	text-align: center;
-	padding: 5rem 0;
+  text-align: center;
+  padding: 5rem 0;
 }
 
-.beliefs-content-core-values, .beliefs-content-statement-of-faith {
-	margin: 2rem 0;
+.beliefs-content-core-values,
+.beliefs-content-statement-of-faith {
+  margin: 2rem 0;
 }
 
 /* mission & vision */
 .mission-vision-banner {
-	text-align: center;
-	background-image: url('../../assets/pictures/about_bg.jpg');
+  text-align: center;
+  background-image: url('../../assets/pictures/about_bg.avif');
   background-size: cover;
   background-position: 50%;
   padding: 7rem 0 7rem 0;
 }
 
 .mission-vision-title {
-	font-size: 4rem;
-	color: var(--main-white);
+  font-size: 4rem;
+  color: var(--main-white);
 }
 
 .mission {
   padding: 12rem 35rem;
   background-color: var(--main-green);
-	text-align: center;
+  text-align: center;
 }
 
 .vision {
   padding: 12rem 35rem;
   background-color: var(--main-blue);
-	text-align: center;
-
+  text-align: center;
 }
 
 /* leadership */
 .leadership-banner {
-	text-align: center;
-	background-image: url('../../assets/pictures/leadership_bg.jpg');
+  text-align: center;
+  background-image: url('../../assets/pictures/leadership_bg.avif');
   background-size: cover;
   background-position: 50%;
   padding: 7rem 0 7rem 0;
 }
 
 .leadership-title {
-	font-size: 4rem;
-	color: var(--main-white);
+  font-size: 4rem;
+  color: var(--main-white);
 }
 
 .leadership-intro {
-	display: flex;
-	justify-content: center;
-	padding: 2rem;
-	margin-right: auto;
-	margin-left: auto;
-	max-width: 1400px;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1400px;
 }
 
 .leadership-intro-text {
-	text-align: center;
-	font-size: 1.3rem;
-	max-width: 800px;
+  text-align: center;
+  font-size: 1.3rem;
+  max-width: 800px;
 }

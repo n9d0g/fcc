@@ -14,7 +14,7 @@
 }
 
 .home-intro {
-  background-image: url('../../assets/pictures/home-bg.jpg');
+  background-image: url('../../assets/pictures/home-bg.avif');
   background-size: cover;
   background-position: 50%;
   padding: 18rem 0 26rem 0;
@@ -45,7 +45,7 @@
 }
 
 .home-join-picture {
-  background-image: url('../../assets/pictures/men_bg.jpg');
+  background-image: url('../../assets/pictures/men_bg.avif');
   background-position: 50% 50%;
   height: 300px;
   width: 300px;

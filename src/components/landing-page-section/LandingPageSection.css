@@ -1,28 +1,28 @@
 .landing-page-section {
-	display: flex;
-	padding: 5rem 20rem;
+  display: flex;
+  padding: 5rem 20rem;
 }
 
 .flipped {
-	flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 .landing-page-section-picture {
-	flex: 1;
-	background-image: url('../../assets/pictures/about_bg.jpg');
-	background-position: 50% 50%;
-	background-size: cover;
-	background-repeat: no-repeat;
-	height: 500px;
-	width: 500px;
-	margin: 0 2rem;
+  flex: 1;
+  background-image: url('../../assets/pictures/about_bg.avif');
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 500px;
+  margin: 0 2rem;
 }
 
 .landing-page-section-container {
-	flex: 1;
-	text-align: left;
+  flex: 1;
+  text-align: left;
 }
 
 .landing-page-section-description {
-	padding: 2rem 0;
+  padding: 2rem 0;
 }
