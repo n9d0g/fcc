@@ -8,7 +8,7 @@ function SmallGroups() {
         <h1 className="smallgroups-banner-title">our small groups</h1>
       </section>
       <LandingPageSection
-        title="youth (13-18)"
+        title="youth (13-17)"
         btnText="youth"
         btnLocation="/ministries/youth"
       />

@@ -30,7 +30,7 @@ function Ministries() {
         btnLocation="/ministries/youth"
       />
       <LandingPageSection
-        title="college and career"
+        title="young adults"
         btnText="young adults"
         btnLocation="/ministries/YA"
         flip={true}
