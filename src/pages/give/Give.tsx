@@ -1,14 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Give.css';
+import React from 'react'
+import './Give.css'
 
 function Give() {
-	return (
-		<div className="give">
-			<h1 className="header">give page</h1>
-			<Link to='/'><h2>back</h2></Link>
-		</div>
-	)
+  return (
+    <div className="give">
+      <section className="give-banner">
+        <h1 className="give-banner-title">give</h1>
+      </section>
+    </div>
+  )
 }
 
-export default Give;
+export default Give
