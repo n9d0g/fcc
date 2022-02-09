@@ -76,16 +76,16 @@ function Footer() {
           <Link className="footer-link" to="/ministries/ya">
             <span className="text-link">young adults</span>
           </Link>
-          <Link className="footer-link" to="/ministries/youth">
+          <Link className="footer-link" to="/smallgroups/55plus">
             <span className="text-link">55+</span>
           </Link>
-          <Link className="footer-link" to="/ministries/youth">
+          <Link className="footer-link" to="/smallgroups/mississauga">
             <span className="text-link">mississauga</span>
           </Link>
-          <Link className="footer-link" to="/ministries/youth">
+          <Link className="footer-link" to="/smallgroups/brampton">
             <span className="text-link">brampton</span>
           </Link>
-          <Link className="footer-link" to="/ministries/youth">
+          <Link className="footer-link" to="/smallgroups/philippines">
             <span className="text-link">philippines</span>
           </Link>
         </div>
@@ -93,11 +93,8 @@ function Footer() {
           <Link className="footer-link footer-header" to="/give">
             give
           </Link>
-          <Link className="footer-link" to="/ministries/youth">
+          <Link className="footer-link" to="/give">
             <span className="text-link">e-transfer</span>
-          </Link>
-          <Link className="footer-link" to="/ministries/youth">
-            <span className="text-link">mailed cheques</span>
           </Link>
         </div>
         <div className="footer-column socials">

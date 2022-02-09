@@ -1,7 +1,9 @@
 import './SmallGroups.css'
 import LandingPageSection from '../../components/landing-page-section/LandingPageSection'
+import useDocumentTitle from '../../hooks/useDocumentTitle'
 
 function SmallGroups() {
+  useDocumentTitle('Small Groups')
   return (
     <section className="smallgroups">
       <section className="smallgroups-banner">

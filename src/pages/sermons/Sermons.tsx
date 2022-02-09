@@ -4,8 +4,10 @@ import { SermonPageActive } from '../../components/sermon-page-active/SermonPage
 import { SermonPageNonActive } from '../../components/sermon-page-non-active/SermonPageNonActive'
 import SermonContext from './SermonContext'
 import { useState } from 'react'
+import useDocumentTitle from '../../hooks/useDocumentTitle'
 
 function Sermons() {
+  useDocumentTitle('Sermons')
   const [sermonContext, setSermonContext] = useState(SermonLinks[0])
 
   return (

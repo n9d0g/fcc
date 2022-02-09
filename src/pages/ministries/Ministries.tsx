@@ -1,7 +1,9 @@
 import './Ministries.css'
 import LandingPageSection from '../../components/landing-page-section/LandingPageSection'
+import useDocumentTitle from '../../hooks/useDocumentTitle'
 
 function Ministries() {
+  useDocumentTitle('Ministries')
   return (
     <section className="ministries">
       <section className="ministries-banner">

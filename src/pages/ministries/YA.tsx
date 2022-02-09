@@ -1,4 +1,7 @@
+import useDocumentTitle from '../../hooks/useDocumentTitle'
+
 function YA() {
+  useDocumentTitle('YA')
   return (
     <div className="ya">
       <section className="ya-banner">
