@@ -1,7 +1,13 @@
 import '../../App.css'
 import './Navbar.css'
-import { Link } from 'react-router-dom'
 import Zoom from '../zoom/Zoom'
+import { NavItem } from '../nav-item/NavItem'
+import { NavItemDropdown } from '../nav-item-dropdown/NavItemDropdown'
+import { aboutDropdownItems } from '../../data/aboutDropdownItems'
+import { ministriesDropdownItems } from '../../data/ministriesDropdownItems'
+import { smallGroupsDropdownItems } from '../../data/smallGroupsDropdownItems'
+import { giveDropdownItems } from '../../data/giveDropdownItems'
+
 
 function Navbar() {
   return (
@@ -9,29 +15,23 @@ function Navbar() {
       <Zoom />
       <ol className="container">
         <div className="navbar-left">
-          <Link className="navbar-link" to="/">
-            <li className="navbar-option">freedom in christ church</li>
-          </Link>
+          <NavItem location="/" text="freedom in christ church" />
         </div>
         <div className="navbar-right">
-          <Link className="navbar-link" to="/">
-            <li className="navbar-option">home</li>
-          </Link>
-          <Link className="navbar-link" to="/about">
-            <li className="navbar-option">about</li>
-          </Link>
-          <Link className="navbar-link" to="/sermons">
-            <li className="navbar-option">sermons</li>
-          </Link>
-          <Link className="navbar-link" to="/ministries">
-            <li className="navbar-option">ministries</li>
-          </Link>
-          <Link className="navbar-link" to="/smallgroups">
-            <li className="navbar-option">small groups</li>
-          </Link>
-          <Link className="navbar-link" to="/give">
-            <li className="navbar-option">give</li>
-          </Link>
+          <NavItem location="/" text="home" />
+          <NavItem location="/about" text="about" dropdown={true}>
+            <NavItemDropdown items={aboutDropdownItems} />
+          </NavItem>
+          <NavItem location="/sermons" text="sermons" />
+          <NavItem location="/ministries" text="ministries" dropdown={true}>
+            <NavItemDropdown items={ministriesDropdownItems} right />
+          </NavItem>
+          <NavItem location="/smallgroups" text="small groups" dropdown={true}>
+            <NavItemDropdown items={smallGroupsDropdownItems} />
+          </NavItem>
+          <NavItem location="/give" text="give">
+            <NavItemDropdown items={giveDropdownItems} right />
+          </NavItem>
         </div>
       </ol>
     </nav>

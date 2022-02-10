@@ -1,0 +1,14 @@
+.nav-item-dropdown-item {
+	display: flex;
+	flex-direction: column;
+	height: 50px;
+	justify-content: center; 
+	padding: 0.7rem;
+	text-decoration: none;
+	color: var(--main-white);
+	transition: 0.3s;
+}
+
+.nav-item-dropdown-item:hover {
+	background-color: var(--main-blue);
+}

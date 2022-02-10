@@ -1,0 +1,11 @@
+.nav-item-dropdown {
+	position: absolute;
+	transform: translateX(10%);
+	width: 175px;
+	overflow: hidden;
+	background-color: var(--main-green);
+}
+
+.nav-item-dropdown-right {
+	transform: translateX(-70px);
+}

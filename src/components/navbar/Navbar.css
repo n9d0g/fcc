@@ -22,17 +22,3 @@
 	display: flex;
 	flex-direction: row;
 }
-
-.navbar-link {
-	text-decoration: none;
-	color: var(--main-white);
-	transition: 0.3s;
-}
-
-.navbar-link:hover {
-	color: var(--main-green);
-}
-
-.navbar-option {
-	margin: 20px;
-}
