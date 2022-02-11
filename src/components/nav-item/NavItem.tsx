@@ -5,7 +5,6 @@ import './NavItem.css'
 interface NavItemProps {
 	location: any,
 	text: any,
-	dropdown?: boolean
 	children?: JSX.Element | JSX.Element[]
 }
 

@@ -73,9 +73,11 @@
 }
 
 .home-mission-header {
-  max-width: 1100px;
   margin: 0 auto;
-  font-size: 2rem;
+  text-align: center;
+  font-size: 1.7rem;
+  max-width: 800px;
+
 }
 
 /* home sermons */

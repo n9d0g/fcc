@@ -7,6 +7,10 @@ import {
   AiOutlineYoutube,
 } from 'react-icons/ai'
 import { smallGroupsDropdownItems } from '../../data/smallGroupsDropdownItems'
+import { ministriesDropdownItems } from '../../data/ministriesDropdownItems'
+import { sermonsDropdownItems } from '../../data/sermonsDropdownItems'
+import { aboutDropdownItems } from '../../data/aboutDropdownItems'
+import { giveDropdownItems } from '../../data/giveDropdownItems'
 
 export const Footer = () => {
   return (
@@ -23,49 +27,37 @@ export const Footer = () => {
           <Link className="footer-link footer-header" to="/about">
             about
           </Link>
-          <Link className="footer-link" to="/about/beliefs">
-            <span className="text-link">beliefs</span>
-          </Link>
-          <Link className="footer-link" to="/about/mission-vision">
-            <span className="text-link">mission & vision</span>
-          </Link>
-          <Link className="footer-link" to="/about/leadership">
-            <span className="text-link">leadership</span>
-          </Link>
+          {aboutDropdownItems.map((item: any, index: any) => {
+            return (
+              <Link className="footer-link" to={item.location} key={index}>
+                <span className="text-link">{item.title}</span>
+              </Link>
+            )
+          })}
         </div>
         <div className="footer-column">
           <Link className="footer-link footer-header" to="/sermons">
             sermons
           </Link>
-          <Link className="footer-link" to="/sermons">
-            <span className="text-link">latest sermon</span>
-          </Link>
-          <Link className="footer-link" to="/sermons">
-            <span className="text-link">sermon archive</span>
-          </Link>
+          {sermonsDropdownItems.map((item: any, index: any) => {
+            return (
+              <Link className="footer-link" to={item.location} key={index}>
+                <span className="text-link">{item.title}</span>
+              </Link>
+            )
+          })}
         </div>
         <div className="footer-column">
           <Link className="footer-link footer-header" to="/ministries">
             ministries
           </Link>
-          <Link className="footer-link" to="/ministries/men">
-            <span className="text-link">men</span>
-          </Link>
-          <Link className="footer-link" to="/ministries/women">
-            <span className="text-link">women</span>
-          </Link>
-          <Link className="footer-link" to="/ministries/preteens">
-            <span className="text-link">pre-teens</span>
-          </Link>
-          <Link className="footer-link" to="/ministries/youth">
-            <span className="text-link">youth</span>
-          </Link>
-          <Link className="footer-link" to="/ministries/ya">
-            <span className="text-link">young adults</span>
-          </Link>
-          <Link className="footer-link" to="/ministries/praise">
-            <span className="text-link">praise</span>
-          </Link>
+          {ministriesDropdownItems.map((item: any, index: any) => {
+            return (
+              <Link className="footer-link" to={item.location} key={index}>
+                <span className="text-link">{item.title}</span>
+              </Link>
+            )
+          })}
         </div>
         <div className="footer-column">
           <Link className="footer-link footer-header" to="/smallgroups">
@@ -74,7 +66,7 @@ export const Footer = () => {
           {smallGroupsDropdownItems.map((item: any, index: any) => {
             return (
             <Link className="footer-link" to={item.location}>
-              <span className="text-link">{item.title}</span>
+              <span className="text-link" key={index}>{item.title}</span>
             </Link>
             )
           })}
@@ -83,13 +75,18 @@ export const Footer = () => {
           <Link className="footer-link footer-header" to="/give">
             give
           </Link>
-          <Link className="footer-link" to="/give">
-            <span className="text-link">e-transfer</span>
-          </Link>
+          {giveDropdownItems.map((item: any, index: any) => {
+            return (
+              <Link className="footer-link" to={item.location}>
+                <span className="text-link" key={index}>{item.title}</span>
+              </Link>
+            )
+          })}
         </div>
         <div className="footer-column socials">
           <a
             className="social-link"
+            aria-describedby='fcc instagram'
             href="https://www.instagram.com/fcc.canada/"
             target="_blank"
             rel="noreferrer">
@@ -97,6 +94,7 @@ export const Footer = () => {
           </a>
           <a
             className="social-link"
+            aria-describedby='fcc facebook'
             href="https://www.facebook.com/groups/1667915316820460"
             target="_blank"
             rel="noreferrer">
@@ -104,6 +102,7 @@ export const Footer = () => {
           </a>
           <a
             className="social-link"
+            aria-describedby='fcc youtube'
             href="https://www.youtube.com/channel/UCaB7HWdt8W-ErHqgvhR__rw"
             target="_blank"
             rel="noreferrer">

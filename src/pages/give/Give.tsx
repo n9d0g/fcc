@@ -12,10 +12,8 @@ export const Give = () => {
       </section>
       <section className="give-intro">
         <p className="give-intro-text">
-          You can give financially in multiple ways. During the weekend services
-          you can simply drop a check or cash in one of the offering boxes
-          located near the sanctuary entrances. You can also give online by
-          sending an e-transfer to{' '}
+          You can give financially in multiple ways, but as our services are temporarily online, 
+          you can give online by sending an e-transfer to{' '}
           <span className="give-intro-text-email">fcc.fcac@gmail.com</span>.
         </p>
       </section>

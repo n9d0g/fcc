@@ -6,6 +6,7 @@ import { NavItemDropdown } from '../nav-item-dropdown/NavItemDropdown'
 import { aboutDropdownItems } from '../../data/aboutDropdownItems'
 import { ministriesDropdownItems } from '../../data/ministriesDropdownItems'
 import { smallGroupsDropdownItems } from '../../data/smallGroupsDropdownItems'
+import { sermonsDropdownItems } from '../../data/sermonsDropdownItems'
 import { giveDropdownItems } from '../../data/giveDropdownItems'
 
 
@@ -19,14 +20,16 @@ export const Navbar = () => {
         </div>
         <div className="navbar-right">
           <NavItem location="/" text="home" />
-          <NavItem location="/about" text="about" dropdown={true}>
+          <NavItem location="/about" text="about">
             <NavItemDropdown items={aboutDropdownItems} />
           </NavItem>
-          <NavItem location="/sermons" text="sermons" />
-          <NavItem location="/ministries" text="ministries" dropdown={true}>
+          <NavItem location="/sermons" text="sermons">
+            <NavItemDropdown items={sermonsDropdownItems} />
+          </NavItem>
+          <NavItem location="/ministries" text="ministries">
             <NavItemDropdown items={ministriesDropdownItems} right />
           </NavItem>
-          <NavItem location="/smallgroups" text="small groups" dropdown={true}>
+          <NavItem location="/smallgroups" text="small groups">
             <NavItemDropdown items={smallGroupsDropdownItems} />
           </NavItem>
           <NavItem location="/give" text="give">
