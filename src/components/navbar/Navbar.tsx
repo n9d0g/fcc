@@ -20,19 +20,19 @@ export const Navbar = () => {
         </div>
         <div className="navbar-right">
           <NavItem location="/" text="home" />
-          <NavItem location="/about" text="about">
+          <NavItem location="/about" text="about" dropdown>
             <NavItemDropdown items={aboutDropdownItems} />
           </NavItem>
-          <NavItem location="/sermons" text="sermons">
+          <NavItem location="/sermons" text="sermons" dropdown>
             <NavItemDropdown items={sermonsDropdownItems} />
           </NavItem>
-          <NavItem location="/ministries" text="ministries">
+          <NavItem location="/ministries" text="ministries" dropdown>
             <NavItemDropdown items={ministriesDropdownItems} right />
           </NavItem>
-          <NavItem location="/smallgroups" text="small groups">
+          <NavItem location="/smallgroups" text="small groups" dropdown>
             <NavItemDropdown items={smallGroupsDropdownItems} />
           </NavItem>
-          <NavItem location="/give" text="give">
+          <NavItem location="/give" text="give" dropdown>
             <NavItemDropdown items={giveDropdownItems} right />
           </NavItem>
         </div>

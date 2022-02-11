@@ -77,15 +77,28 @@
 }
 
 .mission {
-  padding: 12rem 35rem;
   background-color: var(--main-green);
   text-align: center;
+  padding: 3rem 0;
+}
+
+.mission-text-header {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 2rem;
+}
+
+.mission-text-description {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.5rem;
+
 }
 
 .vision {
-  padding: 12rem 35rem;
   background-color: var(--main-blue);
   text-align: center;
+  padding: 3rem 0;
 }
 
 /* leadership */

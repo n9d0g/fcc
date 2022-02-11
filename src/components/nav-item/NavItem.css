@@ -16,6 +16,11 @@
 	color: var(--main-green);
 }
 
+.nav-item:hover > .nav-item-text > .nav-item-text-icon > svg {
+	transform: translateY(21%) scale(1.5, 1.5) rotate(180deg);
+	color: var(--main-white);
+}
+
 .nav-item-text {
 	margin: 20px;
 	background: none;
@@ -32,4 +37,10 @@
 
 .nav-item-text:hover {
 	color: var(--main-green)
+}
+
+.nav-item-text-icon > svg {
+	transform: translateY(21%) scale(1.5, 1.5);
+	transition: 0.1s ease-in;
+	color: var(--main-white);
 }
