@@ -4,7 +4,6 @@
 }
 
 .smallgroups-banner,
-.yumul-banner,
 .mississauga-banner,
 .women-chasing-god-banner,
 .allan-banner {
@@ -15,7 +14,6 @@
 }
 
 .smallgroups-banner-title,
-.yumul-banner-title,
 .mississauga-banner-title,
 .women-chasing-god-banner-title,
 .allan-banner-title {
@@ -24,7 +22,6 @@
   color: var(--main-blue);
 }
 
-.yumul-intro-picture,
 .mississauga-intro-picture,
 .women-chasing-god-intro-picture,
 .allan-intro-picture {
@@ -38,14 +35,12 @@
   margin: 0 2rem;
 }
 
-.yumul-intro-description,
 .mississauga-intro-description,
 .women-chasing-god-intro-description,
 .allan-intro-description {
   flex: 1;
 }
 
-.yumul-intro,
 .mississauga-intro,
 .women-chasing-god-intro,
 .allan-intro {
@@ -54,11 +49,6 @@
   margin-right: auto;
   margin-left: auto;
   padding: 5rem 0;
-}
-
-/* 55+ small group */
-.yumul-intro-picture {
-  background-image: url('../../assets/pictures/about_bg.avif');
 }
 
 /* mississauga */
