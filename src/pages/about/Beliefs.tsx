@@ -27,8 +27,10 @@ function Beliefs() {
         </article>
         <article className="beliefs-content-statement-of-faith">
           <h2>Statement of Faith</h2>
-          Our Statement of Faith identifies the core beliefs of The Christian
-          and Missionary Alliance.
+          Our Statement of Faith identifies the core beliefs of{' '}
+          <a className="beliefs-content-statement-of-faith-cma" href="https://www.cmacan.org/about/" target="_blank" rel="noopener noreferrer">
+            The Christian and Missionary Alliance.
+          </a>
           <Accordion data={StatementOfFaith} />
         </article>
       </section>

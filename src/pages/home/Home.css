@@ -109,33 +109,31 @@
   align-items: flex-start;
 }
 
-.home-sermons-non-active-container > a {
+.home-sermons-non-active-item {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  gap: 20px;
   background: var(--main-blue);
-  padding: 20px;
+  padding: 0.9rem;
   border-radius: 5px;
   margin-bottom: 25px;
+  width: 100%;
   text-decoration: none;
   text-align: left;
   border: 2px solid transparent;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.home-sermons-non-active-date {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 3px;
-  background: var(--main-white);
-  text-align: center;
-  height: 60px;
-  width: 60px;
+.home-sermons-non-active-item:hover {
+  opacity: 0.5;
 }
 
-.home-sermons-non-active-title {
-  display: flex;
-  flex-direction: column;
+.home-sermons-non-active-header {
+  text-decoration: none;
   color: var(--main-white);
+}
+
+.home-sermons-button {
+  margin: 1rem 0;
 }

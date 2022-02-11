@@ -4,6 +4,7 @@
 	width: 175px;
 	overflow: hidden;
 	background-color: var(--main-green);
+	border: 1px solid var(--secondary-grey);
 }
 
 .nav-item-dropdown-right {

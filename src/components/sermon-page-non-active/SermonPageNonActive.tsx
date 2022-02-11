@@ -4,7 +4,7 @@ import './SermonPageNonActive.css'
 
 export const SermonPageNonActive = (props: any) => {
   const [activeSermon, setActiveSermon] = useState<any>(false)
-  const { setSermonContext } = useContext(SermonContext)
+  const { sermonContext, setSermonContext } = useContext(SermonContext)
 
   const toggle = (item: any, index: any) => {
     if (activeSermon === index) return null
@@ -23,7 +23,7 @@ export const SermonPageNonActive = (props: any) => {
           return (
             <div
               className={`sermon-page-non-active-item ${
-                activeSermon === index ? 'active' : ''
+                sermonContext === item ? 'active' : ''
               }`}
               onClick={() => {
                 toggle(item, index)

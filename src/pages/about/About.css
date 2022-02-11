@@ -51,6 +51,17 @@
   margin: 2rem 0;
 }
 
+.beliefs-content-statement-of-faith-cma {
+  text-decoration: underline;
+  color: var(--main-blue);
+  transition: 0.1s ease-in;
+}
+
+.beliefs-content-statement-of-faith-cma:hover {
+  color: var(--main-green);
+  font-size: 1rem;
+}
+
 /* mission & vision */
 .mission-vision-banner {
   text-align: center;

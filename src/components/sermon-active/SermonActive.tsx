@@ -1,18 +1,16 @@
 import React from 'react'
 
-function SermonActive() {
+export const SermonActive = (props: any) => {
   return (
     <div className="home-sermons-active">
       <div className="home-sermons-active-container">
         <iframe
           width="640"
           height="360"
-          src="https://www.youtube.com/embed/WxpvgA9jv1g"
+          src={`https://www.youtube.com/embed/${props.youtube}`}
           title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
     </div>
   )
 }
-
-export default SermonActive

@@ -10,7 +10,7 @@ export const HomeJoin = () => {
           through ZOOM until further notice. Come visit us this Sunday at
           10:30am EST!
         </p>
-        <Button location="/about" text="join now!" />
+        <Button external location="https://us04web.zoom.us/j/3926981154?pwd=d1BHRTB3eStxZFZIS3lyWHBieENvZz09&fbclid=IwAR1N4y1LI5zX5bPnAABrXd_8ICuFko9Hw_5HV2P4wWj7U6JmALskzjO3H_U" text="join now!" />
       </div>
       <div className="home-join-picture"></div>
     </section>
