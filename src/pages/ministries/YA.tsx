@@ -1,6 +1,6 @@
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function YA() {
+export const YA = () => {
   useDocumentTitle('YA')
   return (
     <div className="ya">
@@ -20,7 +20,7 @@ function YA() {
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
           <p className="ya-intro-description-contact">
-            Contact: Bro Nathan Lardizabal{' '}
+            Contact: Bro Ian Irong{' '}
             <a href="tel:647-523-9361">(647) 523-9361</a>
           </p>
         </div>
@@ -28,5 +28,3 @@ function YA() {
     </div>
   )
 }
-
-export default YA

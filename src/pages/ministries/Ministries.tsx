@@ -1,8 +1,8 @@
 import './Ministries.css'
-import LandingPageSection from '../../components/landing-page-section/LandingPageSection'
+import { LandingPageSection } from '../../components/landing-page-section/LandingPageSection'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function Ministries() {
+export const Ministries = () => {
   useDocumentTitle('Ministries')
   return (
     <section className="ministries">
@@ -45,5 +45,3 @@ function Ministries() {
     </section>
   )
 }
-
-export default Ministries

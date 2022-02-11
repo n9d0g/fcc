@@ -1,4 +1,4 @@
-import Button from '../../components/button/Button'
+import { Button } from '../../components/button/Button'
 
 export const HomeJoin = () => {
   return (

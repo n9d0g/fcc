@@ -4,10 +4,10 @@
 }
 
 .smallgroups-banner,
-.fiftyfiveplus-banner,
+.yumul-banner,
 .mississauga-banner,
-.brampton-banner,
-.philippines-banner {
+.women-chasing-god-banner,
+.allan-banner {
   background-image: url('../../assets/pictures/smallgroups_bg.avif');
   background-size: cover;
   background-position: 50%;
@@ -15,19 +15,19 @@
 }
 
 .smallgroups-banner-title,
-.fiftyfiveplus-banner-title,
+.yumul-banner-title,
 .mississauga-banner-title,
-.brampton-banner-title,
-.philippines-banner-title {
+.women-chasing-god-banner-title,
+.allan-banner-title {
   text-align: center;
   font-size: 4rem;
   color: var(--main-blue);
 }
 
-.fiftyfiveplus-intro-picture,
+.yumul-intro-picture,
 .mississauga-intro-picture,
-.brampton-intro-picture,
-.philippines-intro-picture {
+.women-chasing-god-intro-picture,
+.allan-intro-picture {
   flex: 1;
   background-image: url('../../assets/pictures/about_bg.avif');
   background-position: 50% 50%;
@@ -38,17 +38,17 @@
   margin: 0 2rem;
 }
 
-.fiftyfiveplus-intro-description,
+.yumul-intro-description,
 .mississauga-intro-description,
-.brampton-intro-description,
-.philippines-intro-description {
+.women-chasing-god-intro-description,
+.allan-intro-description {
   flex: 1;
 }
 
-.fiftyfiveplus-intro,
+.yumul-intro,
 .mississauga-intro,
-.brampton-intro,
-.philippines-intro {
+.women-chasing-god-intro,
+.allan-intro {
   display: flex;
   max-width: 1100px;
   margin-right: auto;
@@ -57,7 +57,7 @@
 }
 
 /* 55+ small group */
-.fiftyfiveplus-intro-picture {
+.yumul-intro-picture {
   background-image: url('../../assets/pictures/about_bg.avif');
 }
 
@@ -66,12 +66,12 @@
   background-image: url('../../assets/pictures/about_bg.avif');
 }
 
-/* brampton */
-.brampton-intro-picture {
+/* women-chasing-god */
+.women-chasing-god-intro-picture {
   background-image: url('../../assets/pictures/about_bg.avif');
 }
 
-/* philippines */
-.philippines-intro-picture {
+/* allan */
+.allan-intro-picture {
   background-image: url('../../assets/pictures/about_bg.avif');
 }

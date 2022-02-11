@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../button/Button';
+import { Button } from '../button/Button';
 import './LandingPageSection.css';
 
 interface LandingPageSectionProps {
@@ -11,7 +11,7 @@ interface LandingPageSectionProps {
 	flip?: boolean 
 }
 
-const LandingPageSection = (props: LandingPageSectionProps) => {
+export const LandingPageSection = (props: LandingPageSectionProps) => {
 	let className = 'landing-page-section';
 	if (props.flip) className += " flipped";
 
@@ -26,5 +26,3 @@ const LandingPageSection = (props: LandingPageSectionProps) => {
 		</section>
 	)
 }
-
-export default LandingPageSection;

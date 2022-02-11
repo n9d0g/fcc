@@ -1,15 +1,15 @@
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function Brampton() {
-  useDocumentTitle('Brampton')
+export const Yumul = () => {
+  useDocumentTitle('Yumul')
   return (
-    <div className="brampton">
-      <section className="brampton-banner">
-        <h1 className="brampton-banner-title">brampton</h1>
+    <div className="yumul">
+      <section className="yumul-banner">
+        <h1 className="yumul-banner-title">yumul bible study</h1>
       </section>
-      <section className="brampton-intro">
-        <div className="brampton-intro-picture"></div>
-        <div className="brampton-intro-description">
+      <section className="yumul-intro">
+        <div className="yumul-intro-picture"></div>
+        <div className="yumul-intro-description">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -19,8 +19,8 @@ function Brampton() {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
-          <p className="brampton-intro-description-contact">
-            Contact: Bro Nathan Lardizabal{' '}
+          <p className="yumul-intro-description-contact">
+            Contact: Bro Roland Yumul{' '}
             <a href="tel:647-523-9361">(647) 523-9361</a>
           </p>
         </div>
@@ -28,5 +28,3 @@ function Brampton() {
     </div>
   )
 }
-
-export default Brampton

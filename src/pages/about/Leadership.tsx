@@ -3,7 +3,7 @@ import { Elder } from '../../components/elder/Elder'
 import { Elders } from '../../data/Elders'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function Leadership() {
+export const Leadership = () => {
   useDocumentTitle('Leadership')
   return (
     <div className="leadership">
@@ -22,5 +22,3 @@ function Leadership() {
     </div>
   )
 }
-
-export default Leadership

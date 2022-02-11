@@ -1,7 +1,7 @@
 import React from 'react';
 import './Zoom.css'
 
-function Zoom() {
+export const Zoom = () => {
 	return (
 		<div className="zoom">
 			<p className="banner">join us sundays at 10:30am&nbsp; 
@@ -10,5 +10,3 @@ function Zoom() {
 		</div>
 	)
 }
-
-export default Zoom;

@@ -1,7 +1,7 @@
 import React from 'react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function Youth() {
+export const Youth = () => {
   useDocumentTitle('Youth')
   return (
     <div className="youth">
@@ -21,7 +21,7 @@ function Youth() {
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
           <p className="youth-intro-description-contact">
-            Contact: Bro Nathan Lardizabal{' '}
+            Contact: Sis Joi Irong{' '}
             <a href="tel:647-523-9361">(647) 523-9361</a>
           </p>
         </div>
@@ -29,5 +29,3 @@ function Youth() {
     </div>
   )
 }
-
-export default Youth

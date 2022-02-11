@@ -1,6 +1,6 @@
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function Praise() {
+export const Praise = () => {
   useDocumentTitle('Praise')
   return (
     <div className="praise">
@@ -28,5 +28,3 @@ function Praise() {
     </div>
   )
 }
-
-export default Praise

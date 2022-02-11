@@ -3,7 +3,7 @@ import { CoreValues } from '../../data/CoreValues'
 import { StatementOfFaith } from '../../data/StatementOfFaith'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function Beliefs() {
+export const Beliefs = () => {
   useDocumentTitle('Beliefs')
   return (
     <div className="beliefs">
@@ -37,5 +37,3 @@ function Beliefs() {
     </div>
   )
 }
-
-export default Beliefs

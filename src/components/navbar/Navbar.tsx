@@ -1,6 +1,6 @@
 import '../../App.css'
 import './Navbar.css'
-import Zoom from '../zoom/Zoom'
+import { Zoom } from '../zoom/Zoom'
 import { NavItem } from '../nav-item/NavItem'
 import { NavItemDropdown } from '../nav-item-dropdown/NavItemDropdown'
 import { aboutDropdownItems } from '../../data/aboutDropdownItems'
@@ -9,7 +9,7 @@ import { smallGroupsDropdownItems } from '../../data/smallGroupsDropdownItems'
 import { giveDropdownItems } from '../../data/giveDropdownItems'
 
 
-function Navbar() {
+export const Navbar = () => {
   return (
     <nav className="navbar">
       <Zoom />
@@ -37,5 +37,3 @@ function Navbar() {
     </nav>
   )
 }
-
-export default Navbar

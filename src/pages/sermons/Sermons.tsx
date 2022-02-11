@@ -6,7 +6,7 @@ import SermonContext from './SermonContext'
 import { useState } from 'react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function Sermons() {
+export const Sermons = () => {
   useDocumentTitle('Sermons')
   const [sermonContext, setSermonContext] = useState(SermonLinks[0])
 
@@ -30,5 +30,3 @@ function Sermons() {
     </section>
   )
 }
-
-export default Sermons

@@ -1,7 +1,7 @@
 import React from 'react'
 import './Home.css'
 
-function HomeMission() {
+export const HomeMission = () => {
   return (
     <section className="home-mission">
       <h2 className="home-mission-header">
@@ -12,5 +12,3 @@ function HomeMission() {
     </section>
   )
 }
-
-export default HomeMission

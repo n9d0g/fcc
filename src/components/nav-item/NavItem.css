@@ -12,6 +12,7 @@
 }
 
 .nav-item:hover {
+	transform: translateY(-2.5%);
 	color: var(--main-green);
 }
 

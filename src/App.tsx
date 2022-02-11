@@ -1,27 +1,27 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Navbar from './components/navbar/Navbar'
-import Home from './pages/home/Home';
-import About from './pages/about/About';
-import Beliefs from './pages/about/Beliefs';
+import { Navbar } from './components/navbar/Navbar'
+import { Home } from './pages/home/Home';
+import { About } from './pages/about/About';
+import { Beliefs } from './pages/about/Beliefs';
 import { MissionVision } from './pages/about/MissionVision';
-import Leadership from './pages/about/Leadership';
-import Sermons from './pages/sermons/Sermons';
-import Ministries from './pages/ministries/Ministries';
-import Men from './pages/ministries/Men';
-import Women from './pages/ministries/Women';
-import Preteens from './pages/ministries/Preteens';
-import Youth from './pages/ministries/Youth';
-import YA from './pages/ministries/YA';
-import Praise from './pages/ministries/Praise';
-import SmallGroups from './pages/small-groups/SmallGroups';
-import Give from './pages/give/Give';
-import FiftyFivePlus from './pages/small-groups/FiftyFivePlus';
-import Footer from './components/footer/Footer';
-import ScrollToTop from './components/scroll-to-top/ScrollToTop';
-import Mississauga from './pages/small-groups/Mississauga';
-import Brampton from './pages/small-groups/Brampton';
-import Philippines from './pages/small-groups/Philippines';
+import { Leadership } from './pages/about/Leadership';
+import { Sermons } from './pages/sermons/Sermons';
+import { Ministries } from './pages/ministries/Ministries';
+import { Men } from './pages/ministries/Men';
+import { Women } from './pages/ministries/Women';
+import { Preteens } from './pages/ministries/Preteens';
+import { Youth } from './pages/ministries/Youth';
+import { YA } from './pages/ministries/YA';
+import { Praise } from './pages/ministries/Praise';
+import { SmallGroups } from './pages/small-groups/SmallGroups';
+import { Give } from './pages/give/Give';
+import { Footer } from './components/footer/Footer';
+import { ScrollToTop } from './components/scroll-to-top/ScrollToTop';
+import { Mississauga } from './pages/small-groups/Mississauga';
+import { WomenChasingGod } from './pages/small-groups/WomenChasingGod';
+import { Allan } from './pages/small-groups/Allan';
+import { Yumul } from './pages/small-groups/Yumul';
 
 function App() {
   return (
@@ -51,10 +51,10 @@ function App() {
 
             {/* small groups */}
             <Route path='smallgroups' element={<SmallGroups />} />
-            <Route path='smallgroups/55plus' element={<FiftyFivePlus />} />
+            <Route path='smallgroups/yumul' element={<Yumul />} />
             <Route path='smallgroups/mississauga' element={<Mississauga />} />
-            <Route path='smallgroups/brampton' element={<Brampton />} />
-            <Route path='smallgroups/philippines' element={<Philippines />} />
+            <Route path='smallgroups/women-chasing-god' element={<WomenChasingGod />} />
+            <Route path='smallgroups/allan' element={<Allan />} />
 
             {/* give */}
             <Route path='give' element={<Give />} />

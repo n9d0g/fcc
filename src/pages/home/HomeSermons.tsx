@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './Home.css'
 import { SermonNonActive } from '../../components/sermon-non-active/SermonNonActive'
 import { SermonActive }from '../../components/sermon-active/SermonActive'
 import { SermonLinks } from '../../data/SermonLinks'
-import Button from '../../components/button/Button'
+import { Button } from '../../components/button/Button'
 import HomeSermonContext from './HomeSermonContext'
 
-function HomeSermons() {
+export const HomeSermons = () => {
   const [activeSermon, setActiveSermon] = useState<any>(SermonLinks[0])
 
   return (
@@ -29,5 +29,3 @@ function HomeSermons() {
     </section>
   )
 }
-
-export default HomeSermons

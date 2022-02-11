@@ -3,24 +3,24 @@ export const Elders = [
     name: 'Lolita Irong',
     picture: 'lolita',
     title: 'Elder',
-    description: '75 years old',
+    description: 'description',
   },
   {
     name: 'Roland Yumul',
     picture: 'roland',
     title: 'Elder',
-    description: 'ebribuddy',
+    description: 'description',
   },
   {
     name: 'Errol Rasco',
     picture: 'errol',
     title: 'Elder',
-    description: 'treasurer',
+    description: 'description',
   },
   {
     name: 'Chrys Orcasitas',
     picture: 'chrys',
     title: 'Elder',
-    description: 'tita',
+    description: 'description',
   },
 ]

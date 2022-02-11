@@ -1,6 +1,6 @@
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function Women() {
+export const Women = () => {
   useDocumentTitle('Women')
   return (
     <div className="women">
@@ -28,5 +28,3 @@ function Women() {
     </div>
   )
 }
-
-export default Women

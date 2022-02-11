@@ -6,8 +6,9 @@ import {
   AiOutlineFacebook,
   AiOutlineYoutube,
 } from 'react-icons/ai'
+import { smallGroupsDropdownItems } from '../../data/smallGroupsDropdownItems'
 
-function Footer() {
+export const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
@@ -70,24 +71,13 @@ function Footer() {
           <Link className="footer-link footer-header" to="/smallgroups">
             small groups
           </Link>
-          <Link className="footer-link" to="/ministries/youth">
-            <span className="text-link">youth</span>
-          </Link>
-          <Link className="footer-link" to="/ministries/ya">
-            <span className="text-link">young adults</span>
-          </Link>
-          <Link className="footer-link" to="/smallgroups/55plus">
-            <span className="text-link">55+</span>
-          </Link>
-          <Link className="footer-link" to="/smallgroups/mississauga">
-            <span className="text-link">mississauga</span>
-          </Link>
-          <Link className="footer-link" to="/smallgroups/brampton">
-            <span className="text-link">brampton</span>
-          </Link>
-          <Link className="footer-link" to="/smallgroups/philippines">
-            <span className="text-link">philippines</span>
-          </Link>
+          {smallGroupsDropdownItems.map((item: any, index: any) => {
+            return (
+            <Link className="footer-link" to={item.location}>
+              <span className="text-link">{item.title}</span>
+            </Link>
+            )
+          })}
         </div>
         <div className="footer-column">
           <Link className="footer-link footer-header" to="/give">
@@ -129,5 +119,3 @@ function Footer() {
     </footer>
   )
 }
-
-export default Footer

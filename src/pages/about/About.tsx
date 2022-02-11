@@ -1,8 +1,8 @@
 import './About.css'
-import LandingPageSection from '../../components/landing-page-section/LandingPageSection'
+import { LandingPageSection } from '../../components/landing-page-section/LandingPageSection'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function About() {
+export const About = () => {
   useDocumentTitle('About')
   return (
     <div className="about">
@@ -28,5 +28,3 @@ function About() {
     </div>
   )
 }
-
-export default About

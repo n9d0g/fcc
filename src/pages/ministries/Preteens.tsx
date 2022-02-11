@@ -1,6 +1,6 @@
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function Preteens() {
+export const Preteens = () => {
   useDocumentTitle('Pre-teens')
   return (
     <div className="preteen">
@@ -28,5 +28,3 @@ function Preteens() {
     </div>
   )
 }
-
-export default Preteens

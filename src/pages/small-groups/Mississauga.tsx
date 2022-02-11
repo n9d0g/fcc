@@ -1,11 +1,11 @@
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function Mississauga() {
-  useDocumentTitle('Mississauga')
+export const Mississauga = () => {
+  useDocumentTitle('South Mississauga')
   return (
     <div className="mississauga">
       <section className="mississauga-banner">
-        <h1 className="mississauga-banner-title">mississauga</h1>
+        <h1 className="mississauga-banner-title">south mississauga</h1>
       </section>
       <section className="mississauga-intro">
         <div className="mississauga-intro-picture"></div>
@@ -20,7 +20,7 @@ function Mississauga() {
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
           <p className="mississauga-intro-description-contact">
-            Contact: Bro Nathan Lardizabal{' '}
+            Contact: Bro Bernard Bersamin{' '}
             <a href="tel:647-523-9361">(647) 523-9361</a>
           </p>
         </div>
@@ -28,5 +28,3 @@ function Mississauga() {
     </div>
   )
 }
-
-export default Mississauga

@@ -1,8 +1,7 @@
-import React from 'react';
 import './Home.css';
-import Button from '../../components/button/Button';
+import { Button } from '../../components/button/Button';
 
-function HomeIntro() {
+export const HomeIntro = () => {
 	return (
 		<section className="home-intro">
 			<h1 className="home-intro-header">Welcome to Freedom in Christ Church.</h1>
@@ -13,5 +12,3 @@ function HomeIntro() {
 		</section>
 	)
 }
-
-export default HomeIntro;

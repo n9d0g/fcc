@@ -2,7 +2,7 @@ import React from 'react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import './Give.css'
 
-function Give() {
+export const Give = () => {
   useDocumentTitle('Give')
 
   return (
@@ -22,5 +22,3 @@ function Give() {
     </div>
   )
 }
-
-export default Give

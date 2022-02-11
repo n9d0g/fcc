@@ -1,8 +1,8 @@
 import './SmallGroups.css'
-import LandingPageSection from '../../components/landing-page-section/LandingPageSection'
+import { LandingPageSection } from '../../components/landing-page-section/LandingPageSection'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function SmallGroups() {
+export const SmallGroups = () => {
   useDocumentTitle('Small Groups')
   return (
     <section className="smallgroups">
@@ -10,40 +10,38 @@ function SmallGroups() {
         <h1 className="smallgroups-banner-title">our small groups</h1>
       </section>
       <LandingPageSection
-        title="youth (13-17)"
+        title="women chasing God"
+        btnText="velcome"
+        btnLocation="/smallgroups/women-chasing-god"
+      />
+      <LandingPageSection
+        title="university students bible study (16-19)"
         btnText="youth"
         btnLocation="/ministries/youth"
+        flip
+      />
+      <LandingPageSection
+        title="south mississauga"
+        btnText="mississauga"
+        btnLocation="/smallgroups/mississauga"
+      />
+      <LandingPageSection
+        title="yumul bible study"
+        btnText="explore"
+        btnLocation="/smallgroups/yumul"
+        flip
+      />
+      <LandingPageSection
+        title="bro. allan's bible study"
+        btnText="explore"
+        btnLocation="/smallgroups/allan"
       />
       <LandingPageSection
         title="young adults"
         btnText="young adults"
         btnLocation="/ministries/ya"
-        flip={true}
-      />
-      <LandingPageSection
-        title="55+"
-        btnText="lolo at lola"
-        btnLocation="/smallgroups/55plus"
-      />
-      <LandingPageSection
-        title="mississauga"
-        btnText="mississauga"
-        btnLocation="/smallgroups/mississauga"
-        flip={true}
-      />
-      <LandingPageSection
-        title="brampton"
-        btnText="velcome"
-        btnLocation="/smallgroups/brampton"
-      />
-      <LandingPageSection
-        title="philippines"
-        btnText="mabuhay"
-        btnLocation="/smallgroups/philippines"
-        flip={true}
+        flip
       />
     </section>
   )
 }
-
-export default SmallGroups

@@ -9,7 +9,7 @@ interface ButtonProps {
 	external?: boolean
 }
 
-const Button = (props: ButtonProps) => {
+export const Button = (props: ButtonProps) => {
 	return (
 		<>
 			{props.external ? (
@@ -24,5 +24,3 @@ const Button = (props: ButtonProps) => {
 		</>
 	)
 }
-
-export default Button;

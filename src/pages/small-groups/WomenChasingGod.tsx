@@ -1,15 +1,15 @@
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function Philippines() {
-  useDocumentTitle('Philippines')
+export const WomenChasingGod = () => {
+  useDocumentTitle('Women Chasing God')
   return (
-    <div className="philippines">
-      <section className="philippines-banner">
-        <h1 className="philippines-banner-title">philippines</h1>
+    <div className="women-chasing-">
+      <section className="women-chasing-god-banner">
+        <h1 className="women-chasing-god-banner-title">women chasing God</h1>
       </section>
-      <section className="philippines-intro">
-        <div className="philippines-intro-picture"></div>
-        <div className="philippines-intro-description">
+      <section className="women-chasing-god-intro">
+        <div className="women-chasing-god-intro-picture"></div>
+        <div className="women-chasing-god-intro-description">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -19,14 +19,12 @@ function Philippines() {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
-          <p className="philippines-intro-description-contact">
-            Contact: Bro Nathan Lardizabal{' '}
-            <a href="tel:647-523-9361">(647) 523-9361</a>
+          <p className="women-chasing-god-intro-description-contact">
+            Contact: Sis Joi Irong{' '}
+            <a href="tel:647-523-9361">(???) ???-????</a>
           </p>
         </div>
       </section>
     </div>
   )
 }
-
-export default Philippines

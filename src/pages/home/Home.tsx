@@ -1,13 +1,13 @@
 import React from 'react'
 import '../../App.css'
 import './Home.css'
-import HomeIntro from './HomeIntro'
-import HomeMission from './HomeMission'
-import HomeSermons from './HomeSermons'
+import { HomeIntro } from './HomeIntro'
+import { HomeMission } from './HomeMission'
+import { HomeSermons } from './HomeSermons'
 import { HomeJoin } from './HomeJoin'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function Home() {
+export const Home = () => {
   useDocumentTitle('Home')
   return (
     <main className="home">
@@ -18,5 +18,3 @@ function Home() {
     </main>
   )
 }
-
-export default Home

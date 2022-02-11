@@ -1,15 +1,15 @@
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 
-function FiftyFivePlus() {
-  useDocumentTitle('55+')
+export const Allan = () => {
+  useDocumentTitle('Allan BS')
   return (
-    <div className="fiftyfiveplus">
-      <section className="fiftyfiveplus-banner">
-        <h1 className="fiftyfiveplus-banner-title">55+</h1>
+    <div className="allan">
+      <section className="allan-banner">
+        <h1 className="allan-banner-title">bro. allan's bible study</h1>
       </section>
-      <section className="fiftyfiveplus-intro">
-        <div className="fiftyfiveplus-intro-picture"></div>
-        <div className="fiftyfiveplus-intro-description">
+      <section className="allan-intro">
+        <div className="allan-intro-picture"></div>
+        <div className="allan-intro-description">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -19,8 +19,8 @@ function FiftyFivePlus() {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
-          <p className="fiftyfiveplus-intro-description-contact">
-            Contact: Bro Nathan Lardizabal{' '}
+          <p className="allan-intro-description-contact">
+            Contact: Bro Allan Macasaquit{' '}
             <a href="tel:647-523-9361">(647) 523-9361</a>
           </p>
         </div>
@@ -28,5 +28,3 @@ function FiftyFivePlus() {
     </div>
   )
 }
-
-export default FiftyFivePlus
