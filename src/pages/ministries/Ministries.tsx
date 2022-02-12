@@ -1,14 +1,15 @@
-import './Ministries.css'
 import { LandingPageSection } from '../../components/landing-page-section/LandingPageSection'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
+import styled from 'styled-components'
+import bg from '../../assets/pictures/ministry_bg.avif'
 
 export const Ministries = () => {
   useDocumentTitle('Ministries')
   return (
-    <section className="ministries">
-      <section className="ministries-banner">
-        <h1 className="ministries-banner-title">our ministries</h1>
-      </section>
+    <MinistriesSection>
+      <Banner>
+        <BannerTitle>our ministries</BannerTitle>
+      </Banner>
       <LandingPageSection
         title="MEN-istry"
         btnText="men's ministry"
@@ -42,6 +43,23 @@ export const Ministries = () => {
         btnText="praise"
         btnLocation="/ministries/praise"
       />
-    </section>
+    </MinistriesSection>
   )
 }
+
+const MinistriesSection = styled.section`
+  text-align: center;
+`
+
+const Banner = styled.section`
+  background-image: url(${bg});
+  background-size: cover;
+  background-position: 50%;
+  padding: 7rem 0 7rem 0;
+`
+
+const BannerTitle = styled.h1`
+  text-align: center;
+  font-size: 4rem;
+  color: var(--main-white);
+`

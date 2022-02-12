@@ -1,30 +1,73 @@
 import useDocumentTitle from '../../hooks/useDocumentTitle'
+import styled from 'styled-components'
+import bg from '../../assets/pictures/smallgroups_bg.avif'
+import about_bg from '../../assets/pictures/about_bg.avif'
 
 export const Allan = () => {
   useDocumentTitle('Allan BS')
   return (
-    <div className="allan">
-      <section className="allan-banner">
-        <h1 className="allan-banner-title">bro. allan's bible study</h1>
-      </section>
-      <section className="allan-intro">
-        <div className="allan-intro-picture"></div>
-        <div className="allan-intro-description">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <p className="allan-intro-description-contact">
+    <>
+      <Banner>
+        <BannerTitle>bro allan's bible study</BannerTitle>
+      </Banner>
+      <Intro>
+        <IntroPicture />
+        <IntroDescription>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+          <DescriptionContact>
             Contact: Bro Allan Macasaquit{' '}
-            <a href="tel:647-523-9361">(647) 523-9361</a>
-          </p>
-        </div>
-      </section>
-    </div>
+            <ContactNumber href="tel:647-523-9361">
+              (647) 523-9361
+            </ContactNumber>
+          </DescriptionContact>
+        </IntroDescription>
+      </Intro>
+    </>
   )
 }
+
+const Banner = styled.section`
+  background-image: url(${bg});
+  background-size: cover;
+  background-position: 50%;
+  padding: 7rem 0 7rem 0;
+`
+
+const BannerTitle = styled.h1`
+  text-align: center;
+  font-size: 4rem;
+  color: var(--main-blue);
+`
+
+const Intro = styled.section`
+  display: flex;
+  max-width: 1100px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 5rem 0;
+`
+
+const IntroPicture = styled.div`
+  flex: 1;
+  background-image: url(${about_bg});
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 500px;
+  margin: 0 2rem;
+`
+
+const IntroDescription = styled.div`
+  flex: 1;
+`
+
+const ContactNumber = styled.a``
+
+const DescriptionContact = styled.p``

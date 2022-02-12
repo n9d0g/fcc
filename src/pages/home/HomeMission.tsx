@@ -1,14 +1,26 @@
 import React from 'react'
-import './Home.css'
+import styled from 'styled-components'
 
 export const HomeMission = () => {
   return (
-    <section className="home-mission">
-      <p className="home-mission-header">
+    <Mission>
+      <Header>
         Our mission here at Freedom in Christ Church is to introduce and
         represent Christ through our nurturing, small group-driven ministries in
         the community.
-      </p>
-    </section>
+      </Header>
+    </Mission>
   )
 }
+
+const Mission = styled.section`
+  padding: 10rem 0;
+  background-color: var(--main-green);
+`
+
+const Header = styled.p`
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.7rem;
+  max-width: 800px;
+`
