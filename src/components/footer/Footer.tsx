@@ -74,6 +74,7 @@ export const Footer = () => {
         <SocialColumn>
           <SocialIcon
             aria-describedby="fcc instagram"
+            aria-label="fcc instagram"
             href="https://www.instagram.com/fcc.canada/"
             target="_blank"
             rel="noreferrer">
@@ -81,6 +82,7 @@ export const Footer = () => {
           </SocialIcon>
           <SocialIcon
             aria-describedby="fcc facebook"
+            aria-label="fcc facebook"
             href="https://www.facebook.com/groups/1667915316820460"
             target="_blank"
             rel="noreferrer noopener">
@@ -88,6 +90,7 @@ export const Footer = () => {
           </SocialIcon>
           <SocialIcon
             aria-describedby="fcc youtube"
+            aria-label="fcc youtube"
             href="https://www.youtube.com/channel/UCaB7HWdt8W-ErHqgvhR__rw"
             target="_blank"
             rel="noreferrer noopener">
