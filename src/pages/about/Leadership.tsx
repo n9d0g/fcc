@@ -1,4 +1,4 @@
-import { Elder } from '../../components/elder/Elder'
+import { Elder } from '../../components/Elder'
 import { Elders } from '../../data/Elders'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'

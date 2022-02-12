@@ -1,4 +1,4 @@
-import { Accordion } from '../../components/accordion/Accordion'
+import { Accordion } from '../../components/Accordion'
 import { CoreValues } from '../../data/CoreValues'
 import { StatementOfFaith } from '../../data/StatementOfFaith'
 import useDocumentTitle from '../../hooks/useDocumentTitle'

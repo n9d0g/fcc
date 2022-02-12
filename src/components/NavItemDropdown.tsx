@@ -1,4 +1,4 @@
-import { NavItemDropdownItem } from '../nav-item-dropdown-item/NavItemDropdownItem'
+import { NavItemDropdownItem } from './NavItemDropdownItem'
 import styled from 'styled-components'
 
 export const NavItemDropdown = (props: any) => {

@@ -1,4 +1,4 @@
-import { LandingPageSection } from '../../components/landing-page-section/LandingPageSection'
+import { LandingPageSection } from '../../components/LandingPageSection'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import banner from '../../assets/pictures/about_bg.avif'
 import styled from 'styled-components'

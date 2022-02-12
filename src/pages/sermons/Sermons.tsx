@@ -1,6 +1,6 @@
 import { SermonLinks } from '../../data/SermonLinks'
-import { SermonPageActive } from '../../components/sermon-page-active/SermonPageActive'
-import { SermonPageNonActive } from '../../components/sermon-page-non-active/SermonPageNonActive'
+import { SermonPageActive } from '../../components/SermonPageActive'
+import { SermonPageNonActive } from '../../components/SermonPageNonActive'
 import SermonContext from './SermonContext'
 import { useState } from 'react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'

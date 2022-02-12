@@ -1,4 +1,4 @@
-import { LandingPageSection } from '../../components/landing-page-section/LandingPageSection'
+import { LandingPageSection } from '../../components/LandingPageSection'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
 import bg from '../../assets/pictures/ministry_bg.avif'
