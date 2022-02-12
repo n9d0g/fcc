@@ -1,23 +1,76 @@
 import { useState } from 'react'
 import { RiArrowDropUpLine } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
-import './NavItem.css'
+import styled from 'styled-components'
 
 interface NavItemProps {
-	location: any,
-	text: any,
-	children?: JSX.Element | JSX.Element[],
-	dropdown?: boolean
+  location: any
+  text: any
+  children?: JSX.Element | JSX.Element[]
+  dropdown?: boolean
 }
 
 export const NavItem = (props: NavItemProps) => {
-	const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false)
 
-	return (
-		<Link to={props.location} className="nav-item" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-			<li className="nav-item-text">{props.text}
-				{props.dropdown && (<span className="nav-item-text-icon"><RiArrowDropUpLine /></span>)}</li>
-			{open && props.children}
-		</Link>
-	)
+  return (
+    <NavItemLink
+      to={props.location}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}>
+      <Text>
+        {props.text}
+        {props.dropdown && (
+          <TextIcon>
+            <RiArrowDropUpLine />
+          </TextIcon>
+        )}
+      </Text>
+      {open && props.children}
+    </NavItemLink>
+  )
 }
+
+const NavItemLink = styled(Link)`
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: inherit;
+  text-align: left;
+  text-decoration: none;
+  color: var(--main-white);
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2.5%);
+  }
+
+  &:hover > Text > TextIcon > svg {
+    transform: translateY(21%) scale(1.5, 1.5) rotate(180deg);
+    color: var(--main-white);
+  }
+`
+
+const Text = styled.li`
+  margin: 20px;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: inherit;
+  text-align: left;
+  text-decoration: none;
+  color: var(--main-white);
+  transition: 0.3s;
+  cursor: pointer;
+`
+
+const TextIcon = styled.span`
+  > svg {
+    transform: translateY(21%) scale(1.5, 1.5);
+    transition: 0.1s ease-in;
+    color: var(--main-white);
+  }
+`

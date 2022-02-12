@@ -1,6 +1,6 @@
-import React from 'react'
 import { Button } from '../button/Button'
-import './LandingPageSection.css'
+import styled from 'styled-components'
+import picture from '../../assets/pictures/about_bg.avif'
 
 interface LandingPageSectionProps {
   picture?: any
@@ -12,15 +12,12 @@ interface LandingPageSectionProps {
 }
 
 export const LandingPageSection = (props: LandingPageSectionProps) => {
-  let className = 'landing-page-section'
-  if (props.flip) className += ' flipped'
-
   return (
-    <section className={className}>
-      <div className="landing-page-section-picture"></div>
-      <div className="landing-page-section-container">
-        <h2 className="landing-page-section-title">{props.title}</h2>
-        <p className="landing-page-section-description">
+    <LandingPageContainer flipped={props.flip}>
+      <Picture />
+      <Container>
+        <Title>{props.title}</Title>
+        <Description>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -28,9 +25,41 @@ export const LandingPageSection = (props: LandingPageSectionProps) => {
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        </Description>
         <Button location={props.btnLocation} text={props.btnText} />
-      </div>
-    </section>
+      </Container>
+    </LandingPageContainer>
   )
 }
+
+interface LandingPageContainerProps {
+  flipped: any
+}
+
+const LandingPageContainer = styled.section<LandingPageContainerProps>`
+  display: flex;
+  padding: 5rem 20rem;
+  flex-direction: ${props => (props.flipped ? `row-reverse` : `row`)};
+`
+
+const Container = styled.div`
+  flex: 1;
+  text-align: left;
+`
+
+const Description = styled.p`
+  padding: 2rem 0;
+`
+
+const Title = styled.h2``
+
+const Picture = styled.div`
+  flex: 1;
+  background-image: url(${picture});
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 500px;
+  margin: 0 2rem;
+`

@@ -1,5 +1,3 @@
-import React from 'react'
-import './Footer.css'
 import { Link } from 'react-router-dom'
 import {
   AiOutlineInstagram,
@@ -11,110 +9,172 @@ import { ministriesDropdownItems } from '../../data/ministriesDropdownItems'
 import { sermonsDropdownItems } from '../../data/sermonsDropdownItems'
 import { aboutDropdownItems } from '../../data/aboutDropdownItems'
 import { giveDropdownItems } from '../../data/giveDropdownItems'
+import styled from 'styled-components'
 
 export const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer-column">
-          <img
-            className="footer-logo"
+    <FooterSection>
+      <Container>
+        <FooterColumn>
+          <Logo
             src={require('../../assets/logo/logo_white_black_bg.png')}
             alt="Freedom in Christ Church Logo"
           />
-        </div>
-        <div className="footer-column">
-          <Link className="footer-link footer-header" to="/about">
-            about
-          </Link>
+        </FooterColumn>
+        <FooterColumn>
+          <FooterLinkHeader to="/about">about</FooterLinkHeader>
           {aboutDropdownItems.map((item: any, index: any) => {
             return (
-              <Link className="footer-link" to={item.location} key={index}>
-                <span className="text-link">{item.title}</span>
-              </Link>
+              <FooterLink to={item.location} key={index}>
+                <FooterLinkText key={index}>{item.title}</FooterLinkText>
+              </FooterLink>
             )
           })}
-        </div>
-        <div className="footer-column">
-          <Link className="footer-link footer-header" to="/sermons">
-            sermons
-          </Link>
+        </FooterColumn>
+        <FooterColumn>
+          <FooterLinkHeader to="/sermons">sermons</FooterLinkHeader>
           {sermonsDropdownItems.map((item: any, index: any) => {
             return (
-              <Link className="footer-link" to={item.location} key={index}>
-                <span className="text-link">{item.title}</span>
-              </Link>
+              <FooterLink to={item.location} key={index}>
+                <FooterLinkText key={index}>{item.title}</FooterLinkText>
+              </FooterLink>
             )
           })}
-        </div>
-        <div className="footer-column">
-          <Link className="footer-link footer-header" to="/ministries">
-            ministries
-          </Link>
+        </FooterColumn>
+        <FooterColumn>
+          <FooterLinkHeader to="/ministries">ministries</FooterLinkHeader>
           {ministriesDropdownItems.map((item: any, index: any) => {
             return (
-              <Link className="footer-link" to={item.location} key={index}>
-                <span className="text-link">{item.title}</span>
-              </Link>
+              <FooterLink to={item.location} key={index}>
+                <FooterLinkText key={index}>{item.title}</FooterLinkText>
+              </FooterLink>
             )
           })}
-        </div>
-        <div className="footer-column">
-          <Link className="footer-link footer-header" to="/smallgroups">
-            small groups
-          </Link>
+        </FooterColumn>
+        <FooterColumn>
+          <FooterLinkHeader to="/smallgroups">small groups</FooterLinkHeader>
           {smallGroupsDropdownItems.map((item: any, index: any) => {
             return (
-            <Link className="footer-link" to={item.location}>
-              <span className="text-link" key={index}>{item.title}</span>
-            </Link>
+              <FooterLink to={item.location}>
+                <FooterLinkText key={index}>{item.title}</FooterLinkText>
+              </FooterLink>
             )
           })}
-        </div>
-        <div className="footer-column">
-          <Link className="footer-link footer-header" to="/give">
-            give
-          </Link>
+        </FooterColumn>
+        <FooterColumn>
+          <FooterLinkHeader to="/give">give</FooterLinkHeader>
           {giveDropdownItems.map((item: any, index: any) => {
             return (
-              <Link className="footer-link" to={item.location}>
-                <span className="text-link" key={index}>{item.title}</span>
-              </Link>
+              <FooterLink to={item.location}>
+                <FooterLinkText key={index}>{item.title}</FooterLinkText>
+              </FooterLink>
             )
           })}
-        </div>
-        <div className="footer-column socials">
-          <a
-            className="social-link"
-            aria-describedby='fcc instagram'
+        </FooterColumn>
+        <SocialColumn>
+          <SocialIcon
+            aria-describedby="fcc instagram"
             href="https://www.instagram.com/fcc.canada/"
             target="_blank"
             rel="noreferrer">
             <AiOutlineInstagram />
-          </a>
-          <a
-            className="social-link"
-            aria-describedby='fcc facebook'
+          </SocialIcon>
+          <SocialIcon
+            aria-describedby="fcc facebook"
             href="https://www.facebook.com/groups/1667915316820460"
             target="_blank"
-            rel="noreferrer">
+            rel="noreferrer noopener">
             <AiOutlineFacebook />
-          </a>
-          <a
-            className="social-link"
-            aria-describedby='fcc youtube'
+          </SocialIcon>
+          <SocialIcon
+            aria-describedby="fcc youtube"
             href="https://www.youtube.com/channel/UCaB7HWdt8W-ErHqgvhR__rw"
             target="_blank"
-            rel="noreferrer">
+            rel="noreferrer noopener">
             <AiOutlineYoutube />
-          </a>
-        </div>
-      </div>
-      <hr className="footer-hr" />
-      <h3 className="copyright">
+          </SocialIcon>
+        </SocialColumn>
+      </Container>
+      <LineBreak />
+      <Copyright>
         &copy; Copyright by Freedom in Christ Church Canada. All Rights
         Reserved.
-      </h3>
-    </footer>
+      </Copyright>
+    </FooterSection>
   )
 }
+
+const FooterSection = styled.footer`
+  color: var(--main-white);
+  background-color: var(--main-black);
+  padding: 4rem 5rem 10rem 5rem;
+`
+
+const Container = styled.div`
+  display: flex;
+`
+
+const Logo = styled.img`
+  display: block;
+  max-width: 75%;
+  height: auto;
+`
+
+const FooterColumn = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+`
+
+const FooterLink = styled(Link)`
+  color: var(--secondary-grey);
+  text-decoration: none;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+`
+
+const FooterLinkHeader = styled(FooterLink)`
+  font-size: 1.2rem;
+  text-decoration: underline;
+  transition: 0.3s;
+
+  &:hover {
+    font-size: 1.3rem;
+  }
+`
+
+const FooterLinkText = styled.span`
+  transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+    box-shadow 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &:hover {
+    box-shadow: 0 4px 0 0 var(--secondary-grey);
+    color: var(--secondary-grey);
+  }
+`
+
+const SocialColumn = styled(FooterColumn)`
+  flex: 0.2;
+`
+
+const SocialIcon = styled.a`
+  color: var(--secondary-grey);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 0.5;
+  }
+`
+
+const LineBreak = styled.hr`
+  color: var(--secondary-grey);
+`
+
+const Copyright = styled.h3`
+  color: var(--secondary-grey);
+  font-size: 1rem;
+  font-weight: 300;
+  text-align: center;
+`

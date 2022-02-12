@@ -22,12 +22,13 @@ import { Mississauga } from './pages/small-groups/Mississauga'
 import { WomenChasingGod } from './pages/small-groups/WomenChasingGod'
 import { Allan } from './pages/small-groups/Allan'
 import { Yumul } from './pages/small-groups/Yumul'
+import styled from 'styled-components'
 
 export const App = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="fcc">
+      <FCC>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -63,7 +64,9 @@ export const App = () => {
           <Route path="give" element={<Give />} />
         </Routes>
         <Footer />
-      </div>
+      </FCC>
     </BrowserRouter>
   )
 }
+
+const FCC = styled.div``

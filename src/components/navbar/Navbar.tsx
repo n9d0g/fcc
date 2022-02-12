@@ -1,5 +1,4 @@
 import '../../App.css'
-import './Navbar.css'
 import { Zoom } from '../zoom/Zoom'
 import { NavItem } from '../nav-item/NavItem'
 import { NavItemDropdown } from '../nav-item-dropdown/NavItemDropdown'
@@ -8,17 +7,17 @@ import { ministriesDropdownItems } from '../../data/ministriesDropdownItems'
 import { smallGroupsDropdownItems } from '../../data/smallGroupsDropdownItems'
 import { sermonsDropdownItems } from '../../data/sermonsDropdownItems'
 import { giveDropdownItems } from '../../data/giveDropdownItems'
-
+import styled from 'styled-components'
 
 export const Navbar = () => {
   return (
-    <nav className="navbar">
+    <Nav>
       <Zoom />
-      <ol className="container">
-        <div className="navbar-left">
+      <Container>
+        <NavLeft>
           <NavItem location="/" text="freedom in christ church" />
-        </div>
-        <div className="navbar-right">
+        </NavLeft>
+        <NavRight>
           <NavItem location="/" text="home" />
           <NavItem location="/about" text="about" dropdown>
             <NavItemDropdown items={aboutDropdownItems} />
@@ -35,8 +34,34 @@ export const Navbar = () => {
           <NavItem location="/give" text="give" dropdown>
             <NavItemDropdown items={giveDropdownItems} right />
           </NavItem>
-        </div>
-      </ol>
-    </nav>
+        </NavRight>
+      </Container>
+    </Nav>
   )
 }
+
+const Nav = styled.nav`
+  position: sticky;
+  top: 0;
+  background: var(--main-blue);
+  z-index: 9999;
+`
+
+const Container = styled.ol`
+  margin: 0;
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  justify-content: space-between;
+`
+
+const NavLeft = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`
+
+const NavRight = styled.div`
+  display: flex;
+  flex-direction: row;
+`
