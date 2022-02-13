@@ -4,35 +4,41 @@ import banner from '../../assets/pictures/about_bg.avif'
 import styled from 'styled-components'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
+import { motion } from 'framer-motion'
 
 export const About = () => {
   useDocumentTitle('About')
   return (
-    <AboutContainer>
-      <Banner>
-        <BannerTitle>about FCC</BannerTitle>
-      </Banner>
-      <Breadcrumb>
-        <BreadcrumbItem location="/" title="home" />
-        <BreadcrumbItem location="/about" title="about" last />
-      </Breadcrumb>
-      <LandingPageSection
-        title="what we believe"
-        btnText="doctrinal statement"
-        btnLocation="/about/beliefs"
-      />
-      <LandingPageSection
-        title="mission & vision"
-        btnText="mission & vision"
-        btnLocation="/about/mission-vision"
-        flip={true}
-      />
-      <LandingPageSection
-        title="our team"
-        btnText="leadership"
-        btnLocation="/about/leadership"
-      />
-    </AboutContainer>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}>
+      <AboutContainer>
+        <Banner>
+          <BannerTitle>about FCC</BannerTitle>
+        </Banner>
+        <Breadcrumb>
+          <BreadcrumbItem location="/" title="home" />
+          <BreadcrumbItem location="/about" title="about" last />
+        </Breadcrumb>
+        <LandingPageSection
+          title="what we believe"
+          btnText="doctrinal statement"
+          btnLocation="/about/beliefs"
+        />
+        <LandingPageSection
+          title="mission & vision"
+          btnText="mission & vision"
+          btnLocation="/about/mission-vision"
+          flip={true}
+        />
+        <LandingPageSection
+          title="our team"
+          btnText="leadership"
+          btnLocation="/about/leadership"
+        />
+      </AboutContainer>
+    </motion.div>
   )
 }
 

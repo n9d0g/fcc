@@ -23,10 +23,10 @@ interface DropdownProps {
 
 const Dropdown = styled.div<DropdownProps>`
   position: absolute;
-  transform: translateX(10%);
+  transform: ${props => (props.right ? `translateX(-93px)` : `translateX(3%)`)};
   width: 175px;
   overflow: hidden;
   background-color: var(--main-green);
   border: 1px solid var(--secondary-grey);
-  transform: ${props => (props.right ? `translateX(-70px)` : ``)};
+  border-radius: 0.7rem;
 `

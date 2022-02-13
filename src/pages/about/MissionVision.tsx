@@ -4,11 +4,15 @@ import styled from 'styled-components'
 import banner from '../../assets/pictures/about_bg.avif'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
+import { motion } from 'framer-motion'
 
 export const MissionVision = () => {
   useDocumentTitle('Mission & Vision')
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}>
       <Banner>
         <BannerTitle>mission & vision</BannerTitle>
       </Banner>
@@ -35,7 +39,7 @@ export const MissionVision = () => {
           of strong relationships and planting of healthy reproducing churches.
         </VisionDescription>
       </Vision>
-    </>
+    </motion.div>
   )
 }
 
@@ -55,7 +59,7 @@ const BannerTitle = styled.h1`
 const Mission = styled.section`
   background-color: var(--main-green);
   text-align: center;
-  padding: 3rem 0;
+  padding-bottom: 3rem;
 `
 
 const MissionHeader = styled.h2`

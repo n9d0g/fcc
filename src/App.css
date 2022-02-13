@@ -1,7 +1,13 @@
 :root {
-  --main-blue: #2A8DBE;
-  --main-green: #7AAA6E;
+  --main-blue: #2a8dbe;
+  --main-green: #7aaa6e;
   --main-black: #000000;
-  --main-white: #FFFFFF;
-  --secondary-grey: #B1AEAB;
+  --main-white: #ffffff;
+  --secondary-grey: #b1aeab;
+  --secondary-blue: #207eac;
+}
+
+html {
+  scrollbar-width: 2em;
+  scrollbar-color: var(--main-blue) var(--main-white);
 }

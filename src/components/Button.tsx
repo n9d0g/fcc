@@ -31,7 +31,7 @@ export const Button = (props: ButtonProps) => {
 const ExternalButton = styled.a`
   padding: 16px;
   border: 1px solid var(--main-blue);
-  border-radius: 0;
+  border-radius: 0.5rem;
   box-shadow: inset 0 56px 0 0 var(--main-blue);
   text-decoration: none;
   background-color: transparent;
@@ -49,7 +49,7 @@ const ExternalButton = styled.a`
 const InternalButton = styled(Link)`
   padding: 16px;
   border: 1px solid var(--main-blue);
-  border-radius: 0;
+  border-radius: 0.5rem;
   box-shadow: inset 0 56px 0 0 var(--main-blue);
   text-decoration: none;
   background-color: transparent;
