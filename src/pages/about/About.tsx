@@ -1,7 +1,9 @@
-import { LandingPageSection } from '../../components/landing-page-section/LandingPageSection'
+import { LandingPageSection } from '../../components/LandingPageSection'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import banner from '../../assets/pictures/about_bg.avif'
 import styled from 'styled-components'
+import { Breadcrumb } from '../../components/Breadcrumb'
+import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 
 export const About = () => {
   useDocumentTitle('About')
@@ -10,6 +12,10 @@ export const About = () => {
       <Banner>
         <BannerTitle>about FCC</BannerTitle>
       </Banner>
+      <Breadcrumb>
+        <BreadcrumbItem location="/" title="home" />
+        <BreadcrumbItem location="/about" title="about" last />
+      </Breadcrumb>
       <LandingPageSection
         title="what we believe"
         btnText="doctrinal statement"

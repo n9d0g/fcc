@@ -1,4 +1,4 @@
-import { Button } from '../../components/button/Button'
+import { Button } from '../../components/Button'
 import styled from 'styled-components'
 import bg_intro from '../../assets/pictures/home-bg.avif'
 

@@ -1,4 +1,4 @@
-import { Button } from '../../components/button/Button'
+import { Button } from '../../components/Button'
 import styled from 'styled-components'
 import joinPic from '../../assets/pictures/men_bg.avif'
 

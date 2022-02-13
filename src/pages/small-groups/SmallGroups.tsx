@@ -1,7 +1,9 @@
-import { LandingPageSection } from '../../components/landing-page-section/LandingPageSection'
+import { LandingPageSection } from '../../components/LandingPageSection'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
 import bg from '../../assets/pictures/smallgroups_bg.avif'
+import { Breadcrumb } from '../../components/Breadcrumb'
+import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 
 export const SmallGroups = () => {
   useDocumentTitle('Small Groups')
@@ -10,6 +12,10 @@ export const SmallGroups = () => {
       <Banner>
         <BannerTitle>our small groups</BannerTitle>
       </Banner>
+      <Breadcrumb>
+        <BreadcrumbItem location="/" title="home" />
+        <BreadcrumbItem location="/smallgroups" title="small groups" last />
+      </Breadcrumb>
       <LandingPageSection
         title="women chasing God"
         btnText="velcome"

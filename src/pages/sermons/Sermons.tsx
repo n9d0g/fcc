@@ -1,11 +1,13 @@
 import { SermonLinks } from '../../data/SermonLinks'
-import { SermonPageActive } from '../../components/sermon-page-active/SermonPageActive'
-import { SermonPageNonActive } from '../../components/sermon-page-non-active/SermonPageNonActive'
+import { SermonPageActive } from '../../components/SermonPageActive'
+import { SermonPageNonActive } from '../../components/SermonPageNonActive'
 import SermonContext from './SermonContext'
 import { useState } from 'react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
 import banner from '../../assets/pictures/sermons_bg.avif'
+import { Breadcrumb } from '../../components/Breadcrumb'
+import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 
 export const Sermons = () => {
   useDocumentTitle('Sermons')
@@ -16,6 +18,10 @@ export const Sermons = () => {
       <Banner>
         <BannerTitle>sermons</BannerTitle>
       </Banner>
+      <Breadcrumb>
+        <BreadcrumbItem location="/" title="home" />
+        <BreadcrumbItem location="/sermons" title="sermons" last />
+      </Breadcrumb>
       <ActiveSermonContainer>
         <SermonContext.Provider value={{ sermonContext, setSermonContext }}>
           <SermonPageActive

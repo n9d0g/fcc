@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { SermonNonActive } from '../../components/sermon-non-active/SermonNonActive'
-import { SermonActive } from '../../components/sermon-active/SermonActive'
+import { SermonNonActive } from '../../components/SermonNonActive'
+import { SermonActive } from '../../components/SermonActive'
 import { SermonLinks } from '../../data/SermonLinks'
-import { Button } from '../../components/button/Button'
+import { Button } from '../../components/Button'
 import HomeSermonContext from './HomeSermonContext'
 import styled from 'styled-components'
 

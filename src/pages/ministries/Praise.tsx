@@ -2,6 +2,8 @@ import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
 import bg from '../../assets/pictures/men_bg.avif'
 import introPic from '../../assets/pictures/about_bg.avif'
+import { Breadcrumb } from '../../components/Breadcrumb'
+import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 
 export const Praise = () => {
   useDocumentTitle('Praise')
@@ -10,6 +12,15 @@ export const Praise = () => {
       <Banner>
         <BannerTitle>praise & worship</BannerTitle>
       </Banner>
+      <Breadcrumb>
+        <BreadcrumbItem location="/" title="home" />
+        <BreadcrumbItem location="/ministries" title="ministries" />
+        <BreadcrumbItem
+          location="/ministries/praise"
+          title="praise & worship"
+          last
+        />
+      </Breadcrumb>
       <Intro>
         <IntroPicture />
         <IntroDescription>

@@ -1,5 +1,4 @@
 import React from 'react'
-import '../../App.css'
 import { HomeIntro } from './HomeIntro'
 import { HomeMission } from './HomeMission'
 import { HomeSermons } from './HomeSermons'

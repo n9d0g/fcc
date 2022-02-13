@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import lolita from '../../assets/pictures/elders/lolita.avif'
-import roland from '../../assets/pictures/elders/roland.avif'
-import errol from '../../assets/pictures/elders/errol.avif'
-import chrys from '../../assets/pictures/elders/chrys.avif'
+import lolita from '../assets/pictures/elders/lolita.avif'
+import roland from '../assets/pictures/elders/roland.avif'
+import errol from '../assets/pictures/elders/errol.avif'
+import chrys from '../assets/pictures/elders/chrys.avif'
 
 export const Elder = (props: any) => {
   return (

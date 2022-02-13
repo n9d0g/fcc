@@ -1,9 +1,11 @@
-import { Accordion } from '../../components/accordion/Accordion'
+import { Accordion } from '../../components/Accordion'
 import { CoreValues } from '../../data/CoreValues'
 import { StatementOfFaith } from '../../data/StatementOfFaith'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import banner from '../../assets/pictures/beliefs_bg.avif'
 import styled from 'styled-components'
+import { Breadcrumb } from '../../components/Breadcrumb'
+import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 
 export const Beliefs = () => {
   useDocumentTitle('Beliefs')
@@ -18,6 +20,11 @@ export const Beliefs = () => {
         churches; we make disciples and multiply transformational churches in
         Canada and the world to the glory of the Triune God.
       </Intro>
+      <Breadcrumb>
+        <BreadcrumbItem location="/" title="home" />
+        <BreadcrumbItem location="/about" title="about" />
+        <BreadcrumbItem location="/about/beliefs" title="beliefs" last />
+      </Breadcrumb>
       <Content>
         <CoreValuesSection>
           <CoreValuesTitle>Core Values</CoreValuesTitle>

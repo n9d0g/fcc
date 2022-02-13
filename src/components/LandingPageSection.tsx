@@ -1,6 +1,6 @@
-import { Button } from '../button/Button'
+import { Button } from './Button'
 import styled from 'styled-components'
-import picture from '../../assets/pictures/about_bg.avif'
+import picture from '../assets/pictures/about_bg.avif'
 
 interface LandingPageSectionProps {
   picture?: any

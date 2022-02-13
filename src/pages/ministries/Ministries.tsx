@@ -1,7 +1,9 @@
-import { LandingPageSection } from '../../components/landing-page-section/LandingPageSection'
+import { LandingPageSection } from '../../components/LandingPageSection'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
 import bg from '../../assets/pictures/ministry_bg.avif'
+import { Breadcrumb } from '../../components/Breadcrumb'
+import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 
 export const Ministries = () => {
   useDocumentTitle('Ministries')
@@ -10,6 +12,10 @@ export const Ministries = () => {
       <Banner>
         <BannerTitle>our ministries</BannerTitle>
       </Banner>
+      <Breadcrumb>
+        <BreadcrumbItem location="/" title="home" />
+        <BreadcrumbItem location="/ministries" title="ministries" last />
+      </Breadcrumb>
       <LandingPageSection
         title="MEN-istry"
         btnText="men's ministry"

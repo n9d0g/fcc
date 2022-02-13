@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import HomeSermonContext from '../../pages/home/HomeSermonContext'
+import HomeSermonContext from '../pages/home/HomeSermonContext'
 import styled from 'styled-components'
 
 export const SermonNonActive = (props: any) => {

@@ -4,11 +4,11 @@ import {
   AiOutlineFacebook,
   AiOutlineYoutube,
 } from 'react-icons/ai'
-import { smallGroupsDropdownItems } from '../../data/smallGroupsDropdownItems'
-import { ministriesDropdownItems } from '../../data/ministriesDropdownItems'
-import { sermonsDropdownItems } from '../../data/sermonsDropdownItems'
-import { aboutDropdownItems } from '../../data/aboutDropdownItems'
-import { giveDropdownItems } from '../../data/giveDropdownItems'
+import { smallGroupsDropdownItems } from '../data/smallGroupsDropdownItems'
+import { ministriesDropdownItems } from '../data/ministriesDropdownItems'
+import { sermonsDropdownItems } from '../data/sermonsDropdownItems'
+import { aboutDropdownItems } from '../data/aboutDropdownItems'
+import { giveDropdownItems } from '../data/giveDropdownItems'
 import styled from 'styled-components'
 
 export const Footer = () => {
@@ -17,7 +17,7 @@ export const Footer = () => {
       <Container>
         <FooterColumn>
           <Logo
-            src={require('../../assets/logo/logo_white_black_bg.png')}
+            src={require('../assets/logo/logo_white_black_bg.png')}
             alt="Freedom in Christ Church Logo"
           />
         </FooterColumn>

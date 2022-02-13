@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import SermonContext from '../../pages/sermons/SermonContext'
+import SermonContext from '../pages/sermons/SermonContext'
 import styled from 'styled-components'
 
 export const SermonPageNonActive = (props: any) => {
@@ -11,7 +11,7 @@ export const SermonPageNonActive = (props: any) => {
     setSermonContext(item)
     setActiveSermon(index)
     document
-      .getElementById('active-sermon')
+      .getElementById('breadcrumb')
       ?.scrollIntoView({ behavior: 'smooth' })
   }
 

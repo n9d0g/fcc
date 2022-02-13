@@ -47,7 +47,7 @@ const NavItemLink = styled(Link)`
     transform: translateY(-2.5%);
   }
 
-  &:hover > Text > TextIcon > svg {
+  &:hover svg {
     transform: translateY(21%) scale(1.5, 1.5) rotate(180deg);
     color: var(--main-white);
   }
