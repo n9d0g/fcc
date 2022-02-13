@@ -25,8 +25,10 @@ export const SermonPageNonActive = (props: any) => {
               active={sermonContext === item}
               onClick={() => toggle(item, index)}
               key={index}>
-              <NonActiveTitle>{item.title}</NonActiveTitle>
-              <NonActiveSpeaker>{item.speaker}</NonActiveSpeaker>
+              <TitleSpeaker>
+                <NonActiveTitle>{item.title}</NonActiveTitle>
+                <NonActiveSpeaker>{item.speaker}</NonActiveSpeaker>
+              </TitleSpeaker>
               <NonActiveDate>{item.date}</NonActiveDate>
             </Item>
           )
@@ -51,7 +53,7 @@ const Title = styled.h2`
 const SermonsContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 15px;
+  grid-gap: 1.2rem;
   max-width: 1100px;
   justify-content: center;
   margin: 0 auto;
@@ -64,18 +66,31 @@ interface ItemProps {
 }
 
 const Item = styled.div<ItemProps>`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   flex: 1;
-  background: var(--main-blue);
+  background: var(--main-white);
+  color: var(--main-blue);
   padding: 1rem;
-  transition: 0.3s;
+  transition: 0.3s ease;
   cursor: ${props => (props.active ? `not-allowed` : `pointer`)};
   opacity: ${props => props.active && `0.4`};
-  border: ${props => props.active && `3px solid var(--main-green)`};
+  border: ${props =>
+    props.active
+      ? `3px solid var(--main-green)`
+      : `1px solid var(--secondary-grey)`};
+  border-radius: 0.3rem;
 
   &:hover {
-    opacity: 0.8;
+    box-shadow: ${props =>
+      !props.active && `rgba(100, 100, 111, 0.2) 0px 13px 29px 0px`};
+    border: ${props => !props.active && `1px solid transparent`};
+    border-radius: ${props => !props.active && `0.3rem`};
   }
 `
+
+const TitleSpeaker = styled.div``
 
 const NonActiveTitle = styled.h3`
   font-size: 1.1rem;

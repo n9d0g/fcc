@@ -1,13 +1,13 @@
 export const Elders = [
   {
-    name: 'Lolita Irong',
-    picture: 'lolita',
-    title: 'Elder',
+    name: 'Roland Yumul',
+    picture: 'roland',
+    title: 'Chairman of the Board of Elders',
     description: 'description',
   },
   {
-    name: 'Roland Yumul',
-    picture: 'roland',
+    name: 'Lolita Irong',
+    picture: 'lolita',
     title: 'Elder',
     description: 'description',
   },
