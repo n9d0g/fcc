@@ -2,6 +2,8 @@ import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
 import bg from '../../assets/pictures/smallgroups_bg.avif'
 import about_bg from '../../assets/pictures/about_bg.avif'
+import { Breadcrumb } from '../../components/Breadcrumb'
+import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 
 export const Allan = () => {
   useDocumentTitle('Allan BS')
@@ -10,6 +12,15 @@ export const Allan = () => {
       <Banner>
         <BannerTitle>bro allan's bible study</BannerTitle>
       </Banner>
+      <Breadcrumb>
+        <BreadcrumbItem location="/" title="home" />
+        <BreadcrumbItem location="/smallgroups" title="small groups" />
+        <BreadcrumbItem
+          location="/smallgroups/allan"
+          title="bro allan's bible study"
+          last
+        />
+      </Breadcrumb>
       <Intro>
         <IntroPicture />
         <IntroDescription>

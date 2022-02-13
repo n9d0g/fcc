@@ -2,6 +2,8 @@ import React from 'react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
 import leadership_bg from '../../assets/pictures/leadership_bg.avif'
+import { Breadcrumb } from '../../components/Breadcrumb'
+import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 
 export const Give = () => {
   useDocumentTitle('Give')
@@ -11,6 +13,10 @@ export const Give = () => {
       <GiveBanner>
         <GiveBannerTitle>give</GiveBannerTitle>
       </GiveBanner>
+      <Breadcrumb>
+        <BreadcrumbItem location="/" title="home" />
+        <BreadcrumbItem location="/give" title="give" last />
+      </Breadcrumb>
       <GiveIntro>
         <GiveIntroText>
           You can give financially in multiple ways, but as our services are
@@ -39,6 +45,7 @@ const GiveBannerTitle = styled.h1`
 
 const GiveIntro = styled.section`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
   max-width: 1100px;

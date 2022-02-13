@@ -2,6 +2,8 @@ import React from 'react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
 import banner from '../../assets/pictures/about_bg.avif'
+import { Breadcrumb } from '../../components/Breadcrumb'
+import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 
 export const MissionVision = () => {
   useDocumentTitle('Mission & Vision')
@@ -11,6 +13,15 @@ export const MissionVision = () => {
         <BannerTitle>mission & vision</BannerTitle>
       </Banner>
       <Mission>
+        <Breadcrumb>
+          <BreadcrumbItem location="/" title="home" />
+          <BreadcrumbItem location="/about" title="about" />
+          <BreadcrumbItem
+            location="/about/mission-vision"
+            title="mission & vision"
+            last
+          />
+        </Breadcrumb>
         <MissionHeader>our mission:</MissionHeader>
         <MissionDescription>
           To introduce and represent Christ through our nurturing, small

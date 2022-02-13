@@ -11,7 +11,7 @@ export const SermonPageNonActive = (props: any) => {
     setSermonContext(item)
     setActiveSermon(index)
     document
-      .getElementById('active-sermon')
+      .getElementById('breadcrumb')
       ?.scrollIntoView({ behavior: 'smooth' })
   }
 

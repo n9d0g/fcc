@@ -3,6 +3,8 @@ import { Elders } from '../../data/Elders'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
 import banner from '../../assets/pictures/leadership_bg.avif'
+import { Breadcrumb } from '../../components/Breadcrumb'
+import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 
 export const Leadership = () => {
   useDocumentTitle('Leadership')
@@ -11,6 +13,11 @@ export const Leadership = () => {
       <Banner>
         <BannerTitle>our team</BannerTitle>
       </Banner>
+      <Breadcrumb>
+        <BreadcrumbItem location="/" title="home" />
+        <BreadcrumbItem location="/about" title="about" />
+        <BreadcrumbItem location="/about/leadership" title="leadership" last />
+      </Breadcrumb>
       <Intro>
         <Text>
           We believe God’s plan is that each local church be led by a team of
