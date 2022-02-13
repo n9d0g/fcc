@@ -4,11 +4,15 @@ import bg from '../../assets/pictures/smallgroups_bg.avif'
 import about_bg from '../../assets/pictures/about_bg.avif'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
+import { motion } from 'framer-motion'
 
 export const Allan = () => {
   useDocumentTitle('Allan BS')
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}>
       <Banner>
         <BannerTitle>bro allan's bible study</BannerTitle>
       </Banner>
@@ -39,7 +43,7 @@ export const Allan = () => {
           </DescriptionContact>
         </IntroDescription>
       </Intro>
-    </>
+    </motion.div>
   )
 }
 

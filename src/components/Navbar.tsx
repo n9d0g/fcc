@@ -25,7 +25,7 @@ export const Navbar = () => {
             <NavItemDropdown items={sermonsDropdownItems} />
           </NavItem>
           <NavItem location="/ministries" text="ministries" dropdown>
-            <NavItemDropdown items={ministriesDropdownItems} right />
+            <NavItemDropdown items={ministriesDropdownItems} />
           </NavItem>
           <NavItem location="/smallgroups" text="small groups" dropdown>
             <NavItemDropdown items={smallGroupsDropdownItems} />

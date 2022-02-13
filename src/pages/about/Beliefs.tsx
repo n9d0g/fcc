@@ -6,12 +6,16 @@ import banner from '../../assets/pictures/beliefs_bg.avif'
 import styled from 'styled-components'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
+import { motion } from 'framer-motion'
 
 export const Beliefs = () => {
   useDocumentTitle('Beliefs')
   const link = 'https://www.cmacan.org/about/'
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}>
       <Banner>
         <BannerTitle>our beliefs</BannerTitle>
       </Banner>
@@ -42,7 +46,7 @@ export const Beliefs = () => {
           <Accordion data={StatementOfFaith} />
         </SoF>
       </Content>
-    </>
+    </motion.div>
   )
 }
 

@@ -5,11 +5,15 @@ import styled from 'styled-components'
 import banner from '../../assets/pictures/leadership_bg.avif'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
+import { motion } from 'framer-motion'
 
 export const Leadership = () => {
   useDocumentTitle('Leadership')
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}>
       <Banner>
         <BannerTitle>our team</BannerTitle>
       </Banner>
@@ -27,7 +31,7 @@ export const Leadership = () => {
         </Text>
       </Intro>
       <Elder data={Elders} />
-    </>
+    </motion.div>
   )
 }
 

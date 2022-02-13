@@ -8,13 +8,17 @@ import styled from 'styled-components'
 import banner from '../../assets/pictures/sermons_bg.avif'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
+import { motion } from 'framer-motion'
 
 export const Sermons = () => {
   useDocumentTitle('Sermons')
   const [sermonContext, setSermonContext] = useState(SermonLinks[0])
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}>
       <Banner>
         <BannerTitle>sermons</BannerTitle>
       </Banner>
@@ -34,7 +38,7 @@ export const Sermons = () => {
           <SermonPageNonActive data={SermonLinks} />
         </SermonContext.Provider>
       </ActiveSermonContainer>
-    </>
+    </motion.div>
   )
 }
 

@@ -45,6 +45,8 @@ const NavItemLink = styled(Link)`
 
   &:hover {
     transform: translateY(-2.5%);
+    background-color: var(--secondary-blue);
+    border-radius: 1.2rem;
   }
 
   &:hover svg {

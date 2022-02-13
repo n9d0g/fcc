@@ -4,11 +4,15 @@ import bg from '../../assets/pictures/men_bg.avif'
 import introPic from '../../assets/pictures/about_bg.avif'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
+import { motion } from 'framer-motion'
 
 export const Women = () => {
   useDocumentTitle('Women')
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}>
       <Banner>
         <BannerTitle>WOMEN-istry</BannerTitle>
       </Banner>
@@ -31,7 +35,7 @@ export const Women = () => {
           <IntroDescriptionContact>(647) 523-9361</IntroDescriptionContact>
         </IntroDescription>
       </Intro>
-    </>
+    </motion.div>
   )
 }
 
