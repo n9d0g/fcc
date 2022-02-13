@@ -18,6 +18,7 @@ export const SermonPageNonActive = (props: any) => {
   return (
     <Container>
       <Title>sermon archive</Title>
+      <LineBreak />
       <SermonsContainer>
         {props.data.map((item: any, index: any) => {
           return (
@@ -48,6 +49,15 @@ const Title = styled.h2`
   justify-content: center;
   font-size: 2.3rem;
   padding-top: 3rem;
+`
+
+const LineBreak = styled.hr`
+  width: 60px;
+  height: 2px;
+  border: 0;
+  background: var(--main-blue);
+  display: block;
+  margin: 15px auto 0;
 `
 
 const SermonsContainer = styled.section`

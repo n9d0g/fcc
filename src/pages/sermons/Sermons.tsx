@@ -55,5 +55,5 @@ const BannerTitle = styled.h1`
 `
 
 const ActiveSermonContainer = styled.div`
-  padding: 5rem 0;
+  padding-bottom: 5rem;
 `
