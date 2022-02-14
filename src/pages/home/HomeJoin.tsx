@@ -51,7 +51,6 @@ const Content = styled.div`
 `
 
 const Header = styled.h2`
-  font-size: 3rem;
   text-align: left;
 `
 

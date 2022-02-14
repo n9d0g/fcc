@@ -37,30 +37,39 @@ export const Give = () => {
 const GiveSection = styled.div``
 
 const GiveBanner = styled.section`
+  display: flex;
+  justify-content: center;
   background-image: url(${leadership_bg});
   background-size: cover;
   background-position: 50%;
   padding: 7rem 0;
+  margin: 0 auto;
+
+  @media (max-width: 60em) {
+    padding: 4rem 0;
+  }
 `
 
 const GiveBannerTitle = styled.h1`
-  text-align: center;
-  font-size: 4rem;
   color: var(--main-white);
 `
 
 const GiveIntro = styled.section`
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  text-align: center;
   max-width: 1100px;
   margin: 0 auto;
   padding: 3rem 0;
+
+  @media (max-width: 60em) {
+    padding: 1rem 0;
+  }
 `
 
 const GiveIntroText = styled.p`
-  font-size: 2rem;
+  text-align: center;
+  font-size: 1.3rem;
+  max-width: 800px;
 `
 
 const GiveIntroTextEmail = styled.span`

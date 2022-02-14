@@ -9,10 +9,9 @@ import styled from 'styled-components'
 export const HomeSermons = () => {
   const [activeSermon, setActiveSermon] = useState<any>(SermonLinks[0])
 
-
   return (
     <Sermons>
-      <Header id="home-sermon">recent sermons</Header>
+      <h2 id="home-sermon">recent sermons</h2>
       <LineBreak />
       <SermonContainer>
         <HomeSermonContext.Provider value={{ activeSermon, setActiveSermon }}>
@@ -39,10 +38,6 @@ const Sermons = styled.section`
   @media (max-width: 60em) {
     padding: 4rem 1rem;
   }
-`
-
-const Header = styled.h2`
-  font-size: 3rem;
 `
 
 const LineBreak = styled.hr`

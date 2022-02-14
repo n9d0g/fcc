@@ -27,7 +27,7 @@ export const SermonPageNonActive = (props: any) => {
               onClick={() => toggle(item, index)}
               key={index}>
               <TitleSpeaker>
-                <NonActiveTitle>{item.title}</NonActiveTitle>
+                <h4>{item.title}</h4>
                 <NonActiveSpeaker>{item.speaker}</NonActiveSpeaker>
               </TitleSpeaker>
               <NonActiveDate>{item.date}</NonActiveDate>
@@ -47,7 +47,6 @@ const Container = styled.section`
 const Title = styled.h2`
   display: flex;
   justify-content: center;
-  font-size: 2.3rem;
   padding-top: 3rem;
 `
 
@@ -102,11 +101,7 @@ const Item = styled.div<ItemProps>`
 
 const TitleSpeaker = styled.div``
 
-const NonActiveTitle = styled.h3`
-  font-size: 1.1rem;
-`
-
-const NonActiveSpeaker = styled.h4`
+const NonActiveSpeaker = styled.h5`
   font-weight: 400;
 `
 

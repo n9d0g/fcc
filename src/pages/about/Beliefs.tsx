@@ -31,7 +31,7 @@ export const Beliefs = () => {
       </Breadcrumb>
       <Content>
         <CoreValuesSection>
-          <CoreValuesTitle>Core Values</CoreValuesTitle>
+          <h2>Core Values</h2>
           What we believe determines what we value, and what we value defines
           how we live. We are committed to 11 core values that can be read
           below:
@@ -59,7 +59,6 @@ const Banner = styled.section`
 `
 
 const BannerTitle = styled.h1`
-  font-size: 4rem;
   color: var(--main-white);
 `
 
@@ -78,8 +77,6 @@ const Content = styled.section`
 const CoreValuesSection = styled.article`
   margin: 2rem 0;
 `
-
-const CoreValuesTitle = styled.h2``
 
 const SoF = styled.article`
   margin: 2rem 0;

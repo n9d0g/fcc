@@ -14,7 +14,7 @@ export const SermonPageActive = (props: any) => {
           <Scripture>{sermonContext.scripture}</Scripture>
         </InfoTop>
         <LineBreak />
-        <Title>{sermonContext.title}</Title>
+        <h2>{sermonContext.title}</h2>
       </ActiveInfo>
       <VideoContainer>
         <iframe
@@ -65,10 +65,6 @@ const Scripture = styled.h3`
 const LineBreak = styled.hr`
   color: var(--main-blue);
   margin: 1rem 0;
-`
-
-const Title = styled.h2`
-  font-size: 2.5rem;
 `
 
 const VideoContainer = styled.div`

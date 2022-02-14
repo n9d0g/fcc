@@ -52,7 +52,6 @@ const Banner = styled.section`
 `
 
 const BannerTitle = styled.h1`
-  font-size: 4rem;
   color: var(--main-white);
 `
 
@@ -65,7 +64,6 @@ const Mission = styled.section`
 const MissionHeader = styled.h2`
   max-width: 800px;
   margin: 0 auto;
-  font-size: 2rem;
 `
 
 const VisionHeader = styled(MissionHeader)``
@@ -73,7 +71,6 @@ const VisionHeader = styled(MissionHeader)``
 const MissionDescription = styled.h3`
   max-width: 800px;
   margin: 0 auto;
-  font-size: 1.5rem;
 `
 
 const VisionDescription = styled(MissionDescription)``

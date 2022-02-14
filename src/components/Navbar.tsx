@@ -58,12 +58,16 @@ const Nav = styled.nav`
 
 const Container = styled.ol`
   margin: 0;
-  padding: 15px 30px;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: row;
   list-style-type: none;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 60em) {
+    padding: 0.8rem 0.5rem;
+  }
 `
 
 const NavLeft = styled.div`

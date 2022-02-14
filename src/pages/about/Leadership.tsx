@@ -36,7 +36,6 @@ export const Leadership = () => {
 }
 
 const BannerTitle = styled.h1`
-  font-size: 4rem;
   color: var(--main-white);
 `
 

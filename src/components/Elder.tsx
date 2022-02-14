@@ -11,9 +11,9 @@ export const Elder = (props: any) => {
         return (
           <Item key={index}>
             <ElderPicture picture={elder.picture}></ElderPicture>
-            <Name>{elder.name}</Name>
-            <Title>{elder.title}</Title>
-            <Description>{elder.description}</Description>
+            <h3>{elder.name}</h3>
+            <h4>{elder.title}</h4>
+            <p>{elder.description}</p>
           </Item>
         )
       })}
@@ -53,7 +53,3 @@ const ElderPicture = styled.div<ElderPictureProps>`
       ? `url(${roland})`
       : ''};
 `
-
-const Description = styled.h3``
-const Title = styled.h3``
-const Name = styled.h2``

@@ -65,6 +65,9 @@ const SmallGroupsSection = styled.section`
 `
 
 const Banner = styled.section`
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
   background-image: url(${bg});
   background-size: cover;
   background-position: 50%;
@@ -72,7 +75,5 @@ const Banner = styled.section`
 `
 
 const BannerTitle = styled.h1`
-  text-align: center;
-  font-size: 4rem;
   color: var(--main-blue);
 `

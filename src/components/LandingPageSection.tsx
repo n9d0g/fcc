@@ -16,7 +16,7 @@ export const LandingPageSection = (props: LandingPageSectionProps) => {
     <LandingPageContainer flipped={props.flip}>
       <Picture />
       <Container>
-        <Title>{props.title}</Title>
+        <h2>{props.title}</h2>
         <Description>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -50,8 +50,6 @@ const Container = styled.div`
 const Description = styled.p`
   padding: 2rem 0;
 `
-
-const Title = styled.h2``
 
 const Picture = styled.div`
   flex: 1;

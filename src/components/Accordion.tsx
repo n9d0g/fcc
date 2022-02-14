@@ -16,7 +16,7 @@ export const Accordion = (props: any) => {
         return (
           <Item>
             <ClosedContainer onClick={() => toggle(index)} key={index}>
-              <Title>{item.title}</Title>
+              <h4>{item.title}</h4>
               <Icon>{clicked === index ? <FiMinus /> : <FiPlus />}</Icon>
             </ClosedContainer>
             {clicked === index ? (
@@ -42,8 +42,6 @@ const Item = styled.div`
 `
 
 const Icon = styled.span``
-
-const Title = styled.h4``
 
 const ClosedContainer = styled.div`
   padding: 1rem;

@@ -187,7 +187,7 @@ const LineBreak = styled.hr`
   color: var(--secondary-grey);
 `
 
-const Copyright = styled.h3`
+const Copyright = styled.p`
   color: var(--secondary-grey);
   font-size: 1rem;
   font-weight: 300;

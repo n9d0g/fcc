@@ -43,14 +43,15 @@ export const Sermons = () => {
 }
 
 const Banner = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
   background-image: url(${banner});
   background-position: 50% 50%;
   padding: 7rem 0;
 `
 
 const BannerTitle = styled.h1`
-  font-size: 4rem;
-  text-align: center;
   color: var(--main-black);
 `
 
