@@ -28,7 +28,12 @@ export const HomeIntro = () => {
         }}>
         <ButtonContainer>
           <Button location="/about" text="I'm new" documentTitle="About" />
-          <Button location="/sermons" text="Sermons" documentTitle="Sermons" />
+          <Button
+            location="/sermons"
+            text="Sermons"
+            documentTitle="Sermons"
+            more
+          />
         </ButtonContainer>
       </motion.div>
     </Intro>
@@ -40,17 +45,19 @@ const Intro = styled.section`
   background-size: cover;
   background-position: 50%;
   padding: 18rem 0 26rem 0;
+
+  @media (max-width: 60em) {
+    padding: 5rem 0 10rem;
+  }
 `
 
 const IntroHeader = styled.h1`
   color: var(--main-white);
   font-size: 3rem;
+  padding: 0 1rem;
 `
 
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  > a {
-    margin: 16px;
-  }
 `

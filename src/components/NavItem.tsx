@@ -56,7 +56,7 @@ const NavItemLink = styled(Link)`
 `
 
 const Text = styled.li`
-  margin: 20px;
+  margin: 0.9rem;
   background: none;
   border: none;
   padding: 0;

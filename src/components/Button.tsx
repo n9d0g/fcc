@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { BsArrowRightShort } from 'react-icons/bs'
 
 interface ButtonProps {
   location: any
@@ -7,11 +8,12 @@ interface ButtonProps {
   documentTitle?: any
   margin?: boolean
   external?: boolean
+  more?: boolean
 }
 
 export const Button = (props: ButtonProps) => {
   return (
-    <>
+    <ButtonContainer>
       {props.external ? (
         <ExternalButton
           href={props.location}
@@ -21,12 +23,32 @@ export const Button = (props: ButtonProps) => {
         </ExternalButton>
       ) : (
         <InternalButton to={props.location}>
-          <ButtonText>{props.text}</ButtonText>
+          <ButtonText>
+            <>{props.text}</>
+            {props.more && (
+              <MoreContainer>
+                {' '}
+                <MoreIcon />
+              </MoreContainer>
+            )}
+          </ButtonText>
         </InternalButton>
       )}
-    </>
+    </ButtonContainer>
   )
 }
+
+const ButtonContainer = styled.div`
+  margin: 3rem 1rem 0;
+`
+
+const MoreContainer = styled.span`
+  align-items: center;
+`
+
+const MoreIcon = styled(BsArrowRightShort)`
+  transform: translateX(2px) translateY(2px) scale(1.8);
+`
 
 const ExternalButton = styled.a`
   padding: 16px;
@@ -47,7 +69,7 @@ const ExternalButton = styled.a`
 `
 
 const InternalButton = styled(Link)`
-  padding: 16px;
+  padding: 1rem;
   border: 1px solid var(--main-blue);
   border-radius: 0.5rem;
   box-shadow: inset 0 56px 0 0 var(--main-blue);

@@ -24,14 +24,20 @@ export const HomeSermons = () => {
         </HomeSermonContext.Provider>
       </SermonContainer>
       <SermonButtonContainer>
-        <Button location="/sermons" text="view all sermons" />
+        <Button location="/sermons" text="view all sermons" more />
       </SermonButtonContainer>
     </Sermons>
   )
 }
 
 const Sermons = styled.section`
-  padding: 120px 80px;
+  padding: 9rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  @media (max-width: 60em) {
+    padding: 4rem 1rem;
+  }
 `
 
 const Header = styled.h2`
@@ -49,15 +55,26 @@ const LineBreak = styled.hr`
 
 const SermonContainer = styled.article`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   gap: 5rem;
   margin-top: 40px;
+
+  @media (max-width: 60em) {
+    flex-direction: column;
+  }
 `
 
 const NonActiveSermonContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+
+  @media (max-width: 60em) {
+    flex-direction: column;
+    gap: 1rem;
+  }
 `
 
 const SermonButtonContainer = styled.div`
