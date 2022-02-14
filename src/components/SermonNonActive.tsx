@@ -5,6 +5,10 @@ import styled from 'styled-components'
 export const SermonNonActive = (props: any) => {
   const { activeSermon, setActiveSermon } = useContext(HomeSermonContext)
 
+  const scroll = () => {
+    document.getElementById("home-sermon")?.scrollIntoView({ behavior: 'smooth' });
+  }
+
   return (
     <>
       {activeSermon === props.data ? (
@@ -14,7 +18,10 @@ export const SermonNonActive = (props: any) => {
           <Date>{props.data.date}</Date>
         </SermonClicked>
       ) : (
-        <Sermon onClick={() => setActiveSermon(props.data)}>
+        <Sermon onClick={() => {
+          setActiveSermon(props.data);
+          scroll(); 
+          }}>
           <Title>{props.data.title}</Title>
           <Speaker>{props.data.speaker}</Speaker>
           <Date>{props.data.date}</Date>

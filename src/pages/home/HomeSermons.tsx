@@ -9,9 +9,10 @@ import styled from 'styled-components'
 export const HomeSermons = () => {
   const [activeSermon, setActiveSermon] = useState<any>(SermonLinks[0])
 
+
   return (
     <Sermons>
-      <Header>recent sermons</Header>
+      <Header id="home-sermon">recent sermons</Header>
       <LineBreak />
       <SermonContainer>
         <HomeSermonContext.Provider value={{ activeSermon, setActiveSermon }}>

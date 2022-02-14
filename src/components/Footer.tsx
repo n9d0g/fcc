@@ -10,16 +10,14 @@ import { sermonsDropdownItems } from '../data/sermonsDropdownItems'
 import { aboutDropdownItems } from '../data/aboutDropdownItems'
 import { giveDropdownItems } from '../data/giveDropdownItems'
 import styled from 'styled-components'
+import { Logo } from './Logo'
 
 export const Footer = () => {
   return (
     <FooterSection>
       <Container>
         <FooterColumn>
-          <Logo
-            src={require('../assets/logo/logo_white_black_bg.png')}
-            alt="Freedom in Christ Church Logo"
-          />
+          <Logo colour="white" />
         </FooterColumn>
         <FooterColumn>
           <FooterLinkHeader to="/about">about</FooterLinkHeader>
@@ -122,16 +120,6 @@ const Container = styled.div`
 
   @media (max-width: 60em) {
     flex-direction: column;
-  }
-`
-
-const Logo = styled.img`
-  display: block;
-  max-width: 75%;
-  height: auto;
-
-  @media (max-width: 60em) {
-    display: none;
   }
 `
 
