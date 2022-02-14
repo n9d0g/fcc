@@ -42,12 +42,17 @@ export const SermonPageNonActive = (props: any) => {
 const Container = styled.section`
   max-width: 1100px;
   margin: 0 auto;
+  padding: 0 2rem;
 `
 
 const Title = styled.h2`
   display: flex;
   justify-content: center;
   padding-top: 3rem;
+
+  @media (max-width: 60em) {
+    padding: 2rem 1rem;
+  }
 `
 
 const LineBreak = styled.hr`
@@ -57,6 +62,10 @@ const LineBreak = styled.hr`
   background: var(--main-blue);
   display: block;
   margin: 15px auto 0;
+
+  @media (max-width: 60em) {
+    display: none;
+  }
 `
 
 const SermonsContainer = styled.section`
@@ -66,8 +75,11 @@ const SermonsContainer = styled.section`
   max-width: 1100px;
   justify-content: center;
   margin: 0 auto;
-  padding: 3rem 0;
   color: var(--main-white);
+
+  @media (max-width: 60em) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `
 
 interface ItemProps {
