@@ -10,16 +10,14 @@ import { sermonsDropdownItems } from '../data/sermonsDropdownItems'
 import { aboutDropdownItems } from '../data/aboutDropdownItems'
 import { giveDropdownItems } from '../data/giveDropdownItems'
 import styled from 'styled-components'
+import { Logo } from './Logo'
 
 export const Footer = () => {
   return (
     <FooterSection>
       <Container>
         <FooterColumn>
-          <Logo
-            src={require('../assets/logo/logo_white_black_bg.png')}
-            alt="Freedom in Christ Church Logo"
-          />
+          <Logo colour="white" />
         </FooterColumn>
         <FooterColumn>
           <FooterLinkHeader to="/about">about</FooterLinkHeader>
@@ -111,22 +109,30 @@ const FooterSection = styled.footer`
   color: var(--main-white);
   background-color: var(--main-black);
   padding: 4rem 5rem 10rem 5rem;
+
+  @media (max-width: 60em) {
+    padding: 3rem 1rem;
+  }
 `
 
 const Container = styled.div`
   display: flex;
-`
 
-const Logo = styled.img`
-  display: block;
-  max-width: 75%;
-  height: auto;
+  @media (max-width: 60em) {
+    flex-direction: column;
+  }
 `
 
 const FooterColumn = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
+
+  @media (max-width: 60em) {
+    justify-content: center;
+    text-align: center;
+    padding: 0.5rem 0;
+  }
 `
 
 const FooterLink = styled(Link)`
@@ -157,7 +163,13 @@ const FooterLinkText = styled.span`
 `
 
 const SocialColumn = styled(FooterColumn)`
+  display: flex;
   flex: 0.2;
+
+  @media (max-width: 60em) {
+    flex-direction: row;
+    gap: 3rem;
+  }
 `
 
 const SocialIcon = styled.a`

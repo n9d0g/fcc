@@ -10,4 +10,8 @@
 html {
   scrollbar-width: 2em;
   scrollbar-color: var(--main-blue) var(--main-white);
+
+  @media (max-width: 60em) {
+    overflow-x: hidden;
+  }
 }

@@ -8,7 +8,7 @@ export const Breadcrumb = (props: any) => {
 }
 
 const BreadcrumbContainer = styled.article`
-  padding-top: 1.5rem;
+  padding: 1.5rem 2.5rem 0;
   max-width: 1100px;
   margin: 0 auto;
   justify-content: right;

@@ -25,8 +25,12 @@ export const HomeMission = () => {
 }
 
 const Mission = styled.section`
-  padding: 10rem 0;
+  padding: 10rem 1rem;
   background-color: var(--main-green);
+
+  @media (max-width: 60em) {
+    padding: 5rem 1rem;
+  }
 `
 
 const Header = styled.p`

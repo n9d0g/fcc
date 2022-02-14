@@ -6,9 +6,14 @@ import { ministriesDropdownItems } from '../data/ministriesDropdownItems'
 import { smallGroupsDropdownItems } from '../data/smallGroupsDropdownItems'
 import { sermonsDropdownItems } from '../data/sermonsDropdownItems'
 import { giveDropdownItems } from '../data/giveDropdownItems'
+import { GoThreeBars } from 'react-icons/go'
+import { IoMdClose } from 'react-icons/io'
 import styled from 'styled-components'
+import { useState } from 'react'
 
 export const Navbar = () => {
+  const [mobileClicked, setMobileClicked] = useState(false)
+
   return (
     <Nav>
       <Zoom />
@@ -34,6 +39,11 @@ export const Navbar = () => {
             <NavItemDropdown items={giveDropdownItems} right />
           </NavItem>
         </NavRight>
+
+        {/* mobile */}
+        <IconWrapper onClick={() => setMobileClicked(!mobileClicked)}>
+          {mobileClicked ? <Cancel /> : <Bars />}
+        </IconWrapper>
       </Container>
     </Nav>
   )
@@ -53,6 +63,7 @@ const Container = styled.ol`
   flex-direction: row;
   list-style-type: none;
   justify-content: space-between;
+  align-items: center;
 `
 
 const NavLeft = styled.div`
@@ -63,4 +74,41 @@ const NavLeft = styled.div`
 const NavRight = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media (max-width: 60em) {
+    display: none;
+  }
+`
+
+const IconWrapper = styled.button`
+  display: none;
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0.3rem;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  transition: 0.3s;
+
+  @media (max-width: 60em) {
+    display: flex;
+  }
+
+  &:hover {
+    background: var(--secondary-blue);
+    border-radius: 0.2rem;
+  }
+`
+
+const Bars = styled(GoThreeBars)`
+  display: flex;
+  color: var(--main-white);
+  font-size: 2.5rem;
+`
+
+const Cancel = styled(IoMdClose)`
+  display: flex;
+  color: var(--main-white);
+  font-size: 2.5rem;
 `
