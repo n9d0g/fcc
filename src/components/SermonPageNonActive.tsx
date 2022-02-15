@@ -61,7 +61,7 @@ const LineBreak = styled.hr`
   border: 0;
   background: var(--main-blue);
   display: block;
-  margin: 15px auto 0;
+  margin: 1rem auto 2rem;
 
   @media (max-width: 60em) {
     display: none;

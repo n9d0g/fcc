@@ -10,10 +10,24 @@ export const Elder = (props: any) => {
       {props.data.map((elder: any, index: any) => {
         return (
           <Item key={index}>
-            <ElderPicture picture={elder.picture}></ElderPicture>
-            <h3>{elder.name}</h3>
-            <h4>{elder.title}</h4>
-            <p>{elder.description}</p>
+            <div>
+              <ElderPicture picture={elder.picture}></ElderPicture>
+              <ElderInfo>
+                <Name>{elder.name}</Name>
+                <Title>{elder.title}</Title>
+                <Ministry>{elder.description}</Ministry>
+              </ElderInfo>
+            </div>
+            <SubMinistriesContainer>
+              <SubMinsitryTitle>Sub-Ministries:</SubMinsitryTitle>
+              {elder.subministries.map((item: any, index: any) => {
+                return (
+                  <SubMinistry key={index}>
+                    <u>{item.ministry}</u>: <i>{item.leader}</i>
+                  </SubMinistry>
+                )
+              })}
+            </SubMinistriesContainer>
           </Item>
         )
       })}
@@ -22,12 +36,32 @@ export const Elder = (props: any) => {
 }
 
 const Container = styled.section`
-  display: flex;
-  justify-content: space-between;
-  padding: 5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+  justify-content: center;
+  max-width: 60em;
+  margin: 1rem auto;
+  padding: 2rem 3rem;
+
+  @media (max-width: 60em) {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 2rem;
+  }
 `
 
 const Item = styled.article`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background-color: var(--secondary-grey);
+  border-radius: 1rem;
+  box-shadow: rgba(100, 100, 111, 0.5) 0px 13px 29px 0px;
+`
+
+const ElderInfo = styled.div`
   display: flex;
   flex-direction: column;
 `
@@ -37,9 +71,10 @@ interface ElderPictureProps {
 }
 
 const ElderPicture = styled.div<ElderPictureProps>`
-  height: 300px;
-  width: 300px;
+  height: 30rem;
+  width: 30rem;
   background-position: 50% 50%;
+  background-repeat: no-repeat;
 
   // TODO: find more efficient solution for this
   background-image: ${props =>
@@ -52,4 +87,45 @@ const ElderPicture = styled.div<ElderPictureProps>`
       : '' || props.picture === 'roland'
       ? `url(${roland})`
       : ''};
+
+  @media (max-width: 60em) {
+    height: 20rem;
+    width: 20rem;
+  }
+`
+
+const Name = styled.h3`
+  padding: 0.5rem 0;
+`
+
+const Title = styled.h4`
+  font-style: italic;
+  padding: 0;
+  font-weight: 400;
+`
+
+const Ministry = styled.h5`
+  padding: 0;
+  font-weight: 400;
+`
+
+const SubMinsitryTitle = styled.h6`
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0;
+`
+
+const SubMinistry = styled.p`
+  padding: 0;
+  margin: 0;
+
+  @media (max-width: 60em) {
+    padding: 0;
+  }
+`
+
+const SubMinistriesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
 `
