@@ -16,7 +16,7 @@ export const Accordion = (props: any) => {
         return (
           <Item>
             <ClosedContainer onClick={() => toggle(index)} key={index}>
-              <h4>{item.title}</h4>
+              <Title>{item.title}</Title>
               <Icon>{clicked === index ? <FiMinus /> : <FiPlus />}</Icon>
             </ClosedContainer>
             {clicked === index ? (
@@ -30,24 +30,25 @@ export const Accordion = (props: any) => {
 }
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 1100px;
-  margin-right: auto;
-  margin-left: auto;
+  max-width: 70rem;
+  padding: 1rem 0;
 `
 
 const Item = styled.div`
   border-bottom: 1px solid var(--main-green);
 `
 
-const Icon = styled.span``
+const Icon = styled.span`
+  transform: translateY(0.3rem);
+  font-size: 1.8rem;
+`
 
 const ClosedContainer = styled.div`
+  display: flex;
   padding: 1rem;
   cursor: pointer;
-  display: flex;
   justify-content: space-between;
+  align-items: center;
   transition: 0.5s;
 
   &:hover {
@@ -58,4 +59,10 @@ const ClosedContainer = styled.div`
 const Description = styled.p`
   padding: 0 12px;
   text-align: left;
+`
+
+const Title = styled.h3`
+  @media (max-width: 60em) {
+    padding: 0;
+  }
 `
