@@ -16,16 +16,16 @@ export const MissionVision = () => {
       <Banner>
         <BannerTitle>mission & vision</BannerTitle>
       </Banner>
+      <Breadcrumb>
+        <BreadcrumbItem location="/" title="home" />
+        <BreadcrumbItem location="/about" title="about" />
+        <BreadcrumbItem
+          location="/about/mission-vision"
+          title="mission & vision"
+          last
+        />
+      </Breadcrumb>
       <Mission>
-        <Breadcrumb>
-          <BreadcrumbItem location="/" title="home" />
-          <BreadcrumbItem location="/about" title="about" />
-          <BreadcrumbItem
-            location="/about/mission-vision"
-            title="mission & vision"
-            last
-          />
-        </Breadcrumb>
         <MissionHeader>our mission:</MissionHeader>
         <MissionDescription>
           To introduce and represent Christ through our nurturing, small
@@ -44,11 +44,17 @@ export const MissionVision = () => {
 }
 
 const Banner = styled.section`
-  text-align: center;
-  background-image: url(${banner});
+  display: flex;
+  justify-content: center;
   background-size: cover;
   background-position: 50%;
-  padding: 7rem 0 7rem 0;
+  background-image: url(${banner});
+  margin: 0 auto;
+  padding: 7rem 0;
+
+  @media (max-width: 60em) {
+    padding: 4rem 0;
+  }
 `
 
 const BannerTitle = styled.h1`
@@ -56,9 +62,9 @@ const BannerTitle = styled.h1`
 `
 
 const Mission = styled.section`
-  background-color: var(--main-green);
+  background-color: var(--main-white);
   text-align: center;
-  padding-bottom: 3rem;
+  padding: 2rem 1rem;
 `
 
 const MissionHeader = styled.h2`
@@ -71,6 +77,7 @@ const VisionHeader = styled(MissionHeader)``
 const MissionDescription = styled.h3`
   max-width: 800px;
   margin: 0 auto;
+  font-weight: 400;
 `
 
 const VisionDescription = styled(MissionDescription)``
