@@ -144,6 +144,11 @@ const IconWrapper = styled.button`
 const IconWrapperMobile = styled(IconWrapper)`
   justify-content: right;
   padding: 1rem;
+
+  &:hover {
+    background: none;
+    border-radius: none;
+  }
 `
 
 const Bars = styled(GoThreeBars)`
