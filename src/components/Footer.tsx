@@ -130,8 +130,8 @@ const FooterColumn = styled.div`
 
   @media (max-width: 60em) {
     justify-content: center;
-    text-align: center;
-    padding: 0.5rem 0;
+    /* text-align: center; */
+    padding: 0.5rem 1rem;
   }
 `
 
@@ -187,7 +187,7 @@ const LineBreak = styled.hr`
   color: var(--secondary-grey);
 `
 
-const Copyright = styled.h3`
+const Copyright = styled.p`
   color: var(--secondary-grey);
   font-size: 1rem;
   font-weight: 300;

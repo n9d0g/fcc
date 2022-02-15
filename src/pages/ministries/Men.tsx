@@ -32,9 +32,10 @@ export const Men = () => {
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
+            <br />
+            Contact: Bro Nathan Lardizabal:{' '}
+            <IntroDescriptionContact>(647) 523-9361</IntroDescriptionContact>
           </p>
-          <p>Contact: Bro Nathan Lardizabal </p>
-          <IntroDescriptionContact>(647) 523-9361</IntroDescriptionContact>
         </IntroDescription>
       </Intro>
     </motion.div>
@@ -42,34 +43,44 @@ export const Men = () => {
 }
 
 const Banner = styled.section`
+  display: flex;
+  justify-content: center;
   background-size: cover;
   background-position: 50%;
-  padding: 7rem 0;
   background-image: url(${bg});
+  margin: 0 auto;
+  padding: 7rem 0;
+
+  @media (max-width: 60em) {
+    padding: 4rem 0;
+  }
 `
 
 const BannerTitle = styled.h1`
-  text-align: center;
-  font-size: 4rem;
   color: var(--main-white);
 `
 
 const Intro = styled.section`
   display: flex;
   max-width: 1100px;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
   padding: 5rem 0;
+
+  @media (max-width: 60em) {
+    flex-direction: column;
+    padding: 2rem 0;
+  }
 `
 
 const IntroPicture = styled.div`
   flex: 1;
+  flex-grow: 1;
   background-image: url(${introPic});
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 500px;
-  width: 500px;
+  height: auto;
+  max-width: 500px;
   margin: 0 2rem;
 `
 

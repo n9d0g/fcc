@@ -55,8 +55,6 @@ const Intro = styled.section`
 
 const IntroHeader = styled.h1`
   color: var(--main-white);
-  font-size: 3rem;
-  padding: 0 1rem;
 `
 
 const ButtonContainer = styled.div`

@@ -9,10 +9,19 @@ import { giveDropdownItems } from '../data/giveDropdownItems'
 import { GoThreeBars } from 'react-icons/go'
 import { IoMdClose } from 'react-icons/io'
 import styled from 'styled-components'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { NavItemMobile } from './NavItemMobile'
+import { NavItemDropdownMobile } from './NavItemDropdownMobile'
+import { useNavigate } from 'react-router-dom'
 
 export const Navbar = () => {
   const [mobileClicked, setMobileClicked] = useState(false)
+  const navigation = useNavigate()
+
+  useEffect(() => {
+    if (mobileClicked) setMobileClicked(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigation])
 
   return (
     <Nav>
@@ -44,6 +53,29 @@ export const Navbar = () => {
         <IconWrapper onClick={() => setMobileClicked(!mobileClicked)}>
           {mobileClicked ? <Cancel /> : <Bars />}
         </IconWrapper>
+        {mobileClicked && (
+          <Drawer>
+            <IconWrapperMobile onClick={() => setMobileClicked(!mobileClicked)}>
+              <Cancel />
+            </IconWrapperMobile>
+            <NavItemMobile location="/" text="home" home />
+            <NavItemMobile location="/about" text="about" dropdown>
+              <NavItemDropdownMobile items={aboutDropdownItems} />
+            </NavItemMobile>
+            <NavItemMobile location="/sermons" text="sermons" dropdown>
+              <NavItemDropdownMobile items={sermonsDropdownItems} />
+            </NavItemMobile>
+            <NavItemMobile location="/ministries" text="ministries" dropdown>
+              <NavItemDropdownMobile items={ministriesDropdownItems} />
+            </NavItemMobile>
+            <NavItemMobile location="/smallgroups" text="small groups" dropdown>
+              <NavItemDropdownMobile items={smallGroupsDropdownItems} />
+            </NavItemMobile>
+            <NavItemMobile location="/give" text="give" dropdown>
+              <NavItemDropdownMobile items={giveDropdownItems} right />
+            </NavItemMobile>
+          </Drawer>
+        )}
       </Container>
     </Nav>
   )
@@ -58,12 +90,16 @@ const Nav = styled.nav`
 
 const Container = styled.ol`
   margin: 0;
-  padding: 15px 30px;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: row;
   list-style-type: none;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 60em) {
+    padding: 0.8rem 0.5rem;
+  }
 `
 
 const NavLeft = styled.div`
@@ -101,6 +137,11 @@ const IconWrapper = styled.button`
   }
 `
 
+const IconWrapperMobile = styled(IconWrapper)`
+  justify-content: right;
+  padding: 1rem;
+`
+
 const Bars = styled(GoThreeBars)`
   display: flex;
   color: var(--main-white);
@@ -111,4 +152,20 @@ const Cancel = styled(IoMdClose)`
   display: flex;
   color: var(--main-white);
   font-size: 2.5rem;
+`
+
+const Drawer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: left;
+  position: fixed;
+  inset: 0 0 0 40%;
+  border: 1px solid var(--secondary-grey);
+  background-color: var(--main-green);
+  overflow-y: scroll;
+
+  @media (min-width: 60em) {
+    display: none;
+  }
 `

@@ -35,26 +35,35 @@ export const Leadership = () => {
   )
 }
 
-const BannerTitle = styled.h1`
-  font-size: 4rem;
-  color: var(--main-white);
-`
-
 const Banner = styled.section`
-  text-align: center;
-  background-image: url(${banner});
+  display: flex;
+  justify-content: center;
   background-size: cover;
   background-position: 50%;
-  padding: 7rem 0 7rem 0;
+  background-image: url(${banner});
+  margin: 0 auto;
+  padding: 7rem 0;
+
+  @media (max-width: 60em) {
+    padding: 4rem 0;
+  }
+`
+
+const BannerTitle = styled.h1`
+  color: var(--main-white);
 `
 
 const Intro = styled.section`
   display: flex;
   justify-content: center;
-  padding: 2rem;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 1400px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 0;
+
+  @media (max-width: 60em) {
+    flex-direction: column;
+    padding: 2rem 0;
+  }
 `
 
 const Text = styled.p`

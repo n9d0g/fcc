@@ -19,16 +19,18 @@ export const Beliefs = () => {
       <Banner>
         <BannerTitle>our beliefs</BannerTitle>
       </Banner>
-      <Intro>
-        The Christian and Missionary Alliance (C&MA) in Canada is a family of
-        churches; we make disciples and multiply transformational churches in
-        Canada and the world to the glory of the Triune God.
-      </Intro>
       <Breadcrumb>
         <BreadcrumbItem location="/" title="home" />
         <BreadcrumbItem location="/about" title="about" />
         <BreadcrumbItem location="/about/beliefs" title="beliefs" last />
       </Breadcrumb>
+      <Intro>
+        <IntroText>
+          The Christian and Missionary Alliance (C&MA) in Canada is a family of
+          churches; we make disciples and multiply transformational churches in
+          Canada and the world to the glory of the Triune God.
+        </IntroText>
+      </Intro>
       <Content>
         <CoreValuesSection>
           <CoreValuesTitle>Core Values</CoreValuesTitle>
@@ -39,10 +41,14 @@ export const Beliefs = () => {
         </CoreValuesSection>
         <SoF>
           <SoFTitle>Statement of Faith</SoFTitle>
-          Our Statement of Faith identifies the core beliefs of{' '}
-          <CMA href={link} target="_blank" rel="noopener noreferrer">
-            The Christian and Missionary Alliance.
-          </CMA>
+          <SoFDescription>
+            Our Statement of Faith identifies the core beliefs of{' '}
+            <span>
+              <CMA href={link} target="_blank" rel="noopener noreferrer">
+                The Christian and Missionary Alliance.
+              </CMA>
+            </span>
+          </SoFDescription>
           <Accordion data={StatementOfFaith} />
         </SoF>
       </Content>
@@ -51,41 +57,74 @@ export const Beliefs = () => {
 }
 
 const Banner = styled.section`
-  background-image: url(${banner});
+  display: flex;
+  justify-content: center;
   background-size: cover;
   background-position: 50%;
-  padding: 7rem 0 7rem 0;
-  text-align: center;
+  background-image: url(${banner});
+  margin: 0 auto;
+  padding: 7rem 0;
+
+  @media (max-width: 60em) {
+    padding: 4rem 0;
+  }
 `
 
 const BannerTitle = styled.h1`
-  font-size: 4rem;
   color: var(--main-white);
 `
 
 const Intro = styled.section`
   display: flex;
   justify-content: center;
-  padding: 5rem;
-  background-color: var(--main-green);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 0;
+
+  @media (max-width: 60em) {
+    padding: 1rem 0;
+  }
+`
+
+const IntroText = styled.p`
+  text-align: center;
+  font-size: 1.3rem;
+  max-width: 800px;
 `
 
 const Content = styled.section`
-  text-align: center;
-  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
 `
 
 const CoreValuesSection = styled.article`
-  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 1100px;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0 1rem;
 `
 
-const CoreValuesTitle = styled.h2``
-
-const SoF = styled.article`
-  margin: 2rem 0;
+const CoreValuesTitle = styled.h2`
+  text-align: center;
 `
 
-const SoFTitle = styled.h2``
+const SoF = styled(CoreValuesSection)``
+
+const SoFTitle = styled(CoreValuesTitle)``
+
+const SoFDescription = styled.div`
+  padding: 0 12rem;
+
+  @media (max-width: 60em) {
+    padding: 0 1rem;
+  }
+`
 
 const CMA = styled.a`
   text-decoration: underline;

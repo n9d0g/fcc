@@ -16,7 +16,7 @@ export const LandingPageSection = (props: LandingPageSectionProps) => {
     <LandingPageContainer flipped={props.flip}>
       <Picture />
       <Container>
-        <Title>{props.title}</Title>
+        <h2>{props.title}</h2>
         <Description>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -40,6 +40,11 @@ const LandingPageContainer = styled.section<LandingPageContainerProps>`
   display: flex;
   padding: 5rem 20rem;
   flex-direction: ${props => (props.flipped ? `row-reverse` : `row`)};
+
+  @media (max-width: 60em) {
+    flex-direction: column;
+    padding: 1rem 1rem 3rem;
+  }
 `
 
 const Container = styled.div`
@@ -48,10 +53,9 @@ const Container = styled.div`
 `
 
 const Description = styled.p`
-  padding: 2rem 0;
+  padding: 1rem;
+  margin: 0 auto;
 `
-
-const Title = styled.h2``
 
 const Picture = styled.div`
   flex: 1;

@@ -6,7 +6,9 @@ export const SermonNonActive = (props: any) => {
   const { activeSermon, setActiveSermon } = useContext(HomeSermonContext)
 
   const scroll = () => {
-    document.getElementById("home-sermon")?.scrollIntoView({ behavior: 'smooth' });
+    document
+      .getElementById('home-sermon')
+      ?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -18,9 +20,10 @@ export const SermonNonActive = (props: any) => {
           <Date>{props.data.date}</Date>
         </SermonClicked>
       ) : (
-        <Sermon onClick={() => {
-          setActiveSermon(props.data);
-          scroll(); 
+        <Sermon
+          onClick={() => {
+            setActiveSermon(props.data)
+            scroll()
           }}>
           <Title>{props.data.title}</Title>
           <Speaker>{props.data.speaker}</Speaker>
@@ -31,18 +34,17 @@ export const SermonNonActive = (props: any) => {
   )
 }
 
-const Title = styled.h3`
-  text-decoration: none;
+const Title = styled.h4`
   color: var(--main-white);
 `
 
-const Speaker = styled.h4`
-  text-decoration: none;
+const Speaker = styled.h5`
+  font-weight: 400;
   color: var(--main-white);
 `
 
-const Date = styled.h5`
-  text-decoration: none;
+const Date = styled.h6`
+  font-weight: 400;
   color: var(--main-white);
   font-style: italic;
 `

@@ -42,16 +42,22 @@ export const Sermons = () => {
   )
 }
 
-const Banner = styled.div`
+const Banner = styled.section`
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  background-position: 50%;
   background-image: url(${banner});
-  background-position: 50% 50%;
+  margin: 0 auto;
   padding: 7rem 0;
+
+  @media (max-width: 60em) {
+    padding: 4rem 0;
+  }
 `
 
 const BannerTitle = styled.h1`
-  font-size: 4rem;
-  text-align: center;
-  color: var(--main-black);
+  color: var(--main-blue);
 `
 
 const ActiveSermonContainer = styled.div`

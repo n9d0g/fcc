@@ -64,14 +64,19 @@ const MinistriesSection = styled.section`
 `
 
 const Banner = styled.section`
-  background-image: url(${bg});
+  display: flex;
+  justify-content: center;
   background-size: cover;
   background-position: 50%;
-  padding: 7rem 0 7rem 0;
+  background-image: url(${bg});
+  margin: 0 auto;
+  padding: 7rem 0;
+
+  @media (max-width: 60em) {
+    padding: 4rem 0;
+  }
 `
 
 const BannerTitle = styled.h1`
-  text-align: center;
-  font-size: 4rem;
   color: var(--main-white);
 `
