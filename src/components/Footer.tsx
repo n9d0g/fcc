@@ -130,8 +130,8 @@ const FooterColumn = styled.div`
 
   @media (max-width: 60em) {
     justify-content: center;
-    text-align: center;
-    padding: 0.5rem 0;
+    /* text-align: center; */
+    padding: 0.5rem 1rem;
   }
 `
 

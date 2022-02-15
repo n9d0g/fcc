@@ -40,6 +40,11 @@ const LandingPageContainer = styled.section<LandingPageContainerProps>`
   display: flex;
   padding: 5rem 20rem;
   flex-direction: ${props => (props.flipped ? `row-reverse` : `row`)};
+
+  @media (max-width: 60em) {
+    flex-direction: column;
+    padding: 1rem 1rem 3rem;
+  }
 `
 
 const Container = styled.div`
@@ -48,7 +53,8 @@ const Container = styled.div`
 `
 
 const Description = styled.p`
-  padding: 2rem 0;
+  padding: 1rem;
+  margin: 0 auto;
 `
 
 const Picture = styled.div`

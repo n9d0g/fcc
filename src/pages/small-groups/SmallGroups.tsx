@@ -67,13 +67,17 @@ const SmallGroupsSection = styled.section`
 const Banner = styled.section`
   display: flex;
   justify-content: center;
-  margin: 0 auto;
-  background-image: url(${bg});
   background-size: cover;
   background-position: 50%;
-  padding: 7rem 0 7rem 0;
+  background-image: url(${bg});
+  margin: 0 auto;
+  padding: 7rem 0;
+
+  @media (max-width: 60em) {
+    padding: 4rem 0;
+  }
 `
 
 const BannerTitle = styled.h1`
-  color: var(--main-blue);
+  color: var(--main-green);
 `
