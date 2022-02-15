@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { RiArrowDropUpLine } from 'react-icons/ri'
+import { RiArrowDropDownLine, RiArrowDropUpLine } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -18,15 +18,7 @@ export const NavItemMobile = (props: NavItemProps) => {
     <>
       {props.home ? (
         <HomeItemLink to="/">
-          <Text>
-            {props.text}
-            {props.dropdown && (
-              <TextIcon>
-                <RiArrowDropUpLine />
-              </TextIcon>
-            )}
-          </Text>
-          {open && props.children}
+          <Text>{props.text}</Text>
         </HomeItemLink>
       ) : (
         <NavItemLink onClick={() => setOpen(!open)}>
@@ -34,7 +26,7 @@ export const NavItemMobile = (props: NavItemProps) => {
             {props.text}
             {props.dropdown && (
               <TextIcon>
-                <RiArrowDropUpLine />
+                <RiArrowDropDownLine />
               </TextIcon>
             )}
           </Text>
@@ -56,17 +48,6 @@ const HomeItemLink = styled(Link)`
   color: var(--main-white);
   transition: 0.3s;
   cursor: pointer;
-
-  &:hover {
-    transform: translateY(-2.5%);
-    background-color: var(--secondary-blue);
-    border-radius: 1.2rem;
-  }
-
-  &:hover svg {
-    transform: translateY(21%) scale(1.5, 1.5) rotate(180deg);
-    color: var(--main-white);
-  }
 `
 
 const NavItemLink = styled.div`
@@ -78,19 +59,6 @@ const NavItemLink = styled.div`
   text-align: left;
   text-decoration: none;
   color: var(--main-white);
-  transition: 0.3s;
-  cursor: pointer;
-
-  &:hover {
-    transform: translateY(-2.5%);
-    background-color: var(--secondary-blue);
-    border-radius: 1.2rem;
-  }
-
-  &:hover svg {
-    transform: translateY(21%) scale(1.5, 1.5) rotate(180deg);
-    color: var(--main-white);
-  }
 `
 
 const Text = styled.li`
@@ -103,8 +71,6 @@ const Text = styled.li`
   text-align: left;
   text-decoration: none;
   color: var(--main-white);
-  transition: 0.3s;
-  cursor: pointer;
 `
 
 const TextIcon = styled.span`

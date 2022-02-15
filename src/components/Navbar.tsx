@@ -9,14 +9,18 @@ import { giveDropdownItems } from '../data/giveDropdownItems'
 import { GoThreeBars } from 'react-icons/go'
 import { IoMdClose } from 'react-icons/io'
 import styled from 'styled-components'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { NavItemMobile } from './NavItemMobile'
 import { NavItemDropdownMobile } from './NavItemDropdownMobile'
 import { useNavigate } from 'react-router-dom'
+import { useOnClickOutside } from '../hooks/useOnClickOutside'
 
 export const Navbar = () => {
   const [mobileClicked, setMobileClicked] = useState(false)
   const navigation = useNavigate()
+  const ref: any = useRef()
+
+  useOnClickOutside(ref, () => setMobileClicked(false))
 
   useEffect(() => {
     if (mobileClicked) setMobileClicked(false)
@@ -51,10 +55,10 @@ export const Navbar = () => {
 
         {/* mobile */}
         <IconWrapper onClick={() => setMobileClicked(!mobileClicked)}>
-          {mobileClicked ? <Cancel /> : <Bars />}
+          {!mobileClicked && <Bars aria-label="navigation" />}
         </IconWrapper>
         {mobileClicked && (
-          <Drawer>
+          <Drawer ref={ref}>
             <IconWrapperMobile onClick={() => setMobileClicked(!mobileClicked)}>
               <Cancel />
             </IconWrapperMobile>

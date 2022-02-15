@@ -24,9 +24,5 @@ const Item = styled(Link)`
   padding: 0 0.7rem;
   text-decoration: none;
   color: var(--main-white);
-  transform: translateX(2rem);
-
-  &:hover {
-    background-color: var(--main-blue);
-  }
+  transform: translateX(1rem);
 `
