@@ -1,7 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const SermonActive = (props: any) => {
+interface SermonActiveProps {
+  youtube: string
+}
+
+export const SermonActive = (props: SermonActiveProps) => {
   return (
     <SermonContainer>
       <Sermon
@@ -25,8 +29,6 @@ const SermonContainer = styled.div`
 `
 
 const Sermon = styled.iframe`
-  /* max-width: 100%;
-  max-height: 70%; */
   position: absolute;
   top: 0;
   left: 0;

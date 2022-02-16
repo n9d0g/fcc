@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 interface NavItemProps {
-  location: any
-  text: any
+  location: string
+  text: string
   children?: JSX.Element | JSX.Element[]
   dropdown?: boolean
   home?: boolean

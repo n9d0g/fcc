@@ -2,7 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-export const BreadcrumbItem = (props: any) => {
+interface BreadcrumbItemProps {
+  location: string
+  title: string
+  last?: boolean
+}
+
+export const BreadcrumbItem = (props: BreadcrumbItemProps) => {
   return (
     <BreadcrumbLink to={props.location}>
       {' '}
@@ -17,7 +23,7 @@ const BreadcrumbLink = styled(Link)`
 `
 
 interface TextProps {
-  last: any
+  last: boolean | undefined
 }
 
 const Text = styled.span<TextProps>`

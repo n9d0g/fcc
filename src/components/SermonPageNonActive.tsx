@@ -2,11 +2,22 @@ import { useContext, useState } from 'react'
 import SermonContext from '../pages/sermons/SermonContext'
 import styled from 'styled-components'
 
-export const SermonPageNonActive = (props: any) => {
-  const [activeSermon, setActiveSermon] = useState<any>(false)
+interface SermonItemProps {
+  title: string
+  speaker: string
+  date: string
+}
+
+interface SermonPageNonActiveProps {
+  data: Array<SermonItemProps>
+}
+
+export const SermonPageNonActive = (props: SermonPageNonActiveProps) => {
+  const [activeSermon, setActiveSermon] = useState<boolean>(false)
   const { sermonContext, setSermonContext } = useContext(SermonContext)
 
-  const toggle = (item: any, index: any) => {
+  // TODO: TS any fix
+  const toggle = (item: SermonItemProps, index: any) => {
     if (activeSermon === index) return null
     setSermonContext(item)
     setActiveSermon(index)
@@ -20,7 +31,7 @@ export const SermonPageNonActive = (props: any) => {
       <Title>sermon archive</Title>
       <LineBreak />
       <SermonsContainer>
-        {props.data.map((item: any, index: any) => {
+        {props.data.map((item: SermonItemProps, index: number) => {
           return (
             <Item
               active={sermonContext === item}
@@ -83,7 +94,7 @@ const SermonsContainer = styled.section`
 `
 
 interface ItemProps {
-  active: any
+  active: boolean
 }
 
 const Item = styled.div<ItemProps>`

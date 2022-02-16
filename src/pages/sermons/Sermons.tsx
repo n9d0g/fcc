@@ -28,13 +28,7 @@ export const Sermons = () => {
       </Breadcrumb>
       <ActiveSermonContainer>
         <SermonContext.Provider value={{ sermonContext, setSermonContext }}>
-          <SermonPageActive
-            title={SermonLinks[0].title}
-            speaker={SermonLinks[0].speaker}
-            scripture={SermonLinks[0].scripture}
-            date={SermonLinks[0].date}
-            youtube={SermonLinks[0].youtube}
-          />
+          <SermonPageActive />
           <SermonPageNonActive data={SermonLinks} />
         </SermonContext.Provider>
       </ActiveSermonContainer>

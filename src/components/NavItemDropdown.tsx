@@ -1,10 +1,20 @@
 import { NavItemDropdownItem } from './NavItemDropdownItem'
 import styled from 'styled-components'
 
-export const NavItemDropdown = (props: any) => {
+interface NavItemDropdownItemProps {
+  title: string
+  location: string
+}
+
+interface NavItemDropdownProps {
+  items: Array<NavItemDropdownItemProps>
+  right?: boolean
+}
+
+export const NavItemDropdown = (props: NavItemDropdownProps) => {
   return (
     <Dropdown right={props.right}>
-      {props.items.map((item: any, index: any) => {
+      {props.items.map((item: NavItemDropdownItemProps, index: number) => {
         return (
           <NavItemDropdownItem
             key={index}
@@ -18,7 +28,7 @@ export const NavItemDropdown = (props: any) => {
 }
 
 interface DropdownProps {
-  right: any
+  right: boolean | undefined
 }
 
 const Dropdown = styled.div<DropdownProps>`

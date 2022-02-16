@@ -18,7 +18,7 @@ import { useOnClickOutside } from '../hooks/useOnClickOutside'
 export const Navbar = () => {
   const [mobileClicked, setMobileClicked] = useState(false)
   const navigation = useNavigate()
-  const ref: any = useRef()
+  const ref = useRef<HTMLDivElement>(null!)
 
   useOnClickOutside(ref, () => setMobileClicked(false))
 

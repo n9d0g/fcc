@@ -12,6 +12,11 @@ import { giveDropdownItems } from '../data/giveDropdownItems'
 import styled from 'styled-components'
 import { Logo } from './Logo'
 
+interface DropdownItemProps {
+  title: string
+  location: string
+}
+
 export const Footer = () => {
   return (
     <FooterSection>
@@ -21,7 +26,7 @@ export const Footer = () => {
         </FooterColumn>
         <FooterColumn>
           <FooterLinkHeader to="/about">about</FooterLinkHeader>
-          {aboutDropdownItems.map((item: any, index: any) => {
+          {aboutDropdownItems.map((item: DropdownItemProps, index: number) => {
             return (
               <FooterLink to={item.location} key={index}>
                 <FooterLinkText key={index}>{item.title}</FooterLinkText>
@@ -31,37 +36,43 @@ export const Footer = () => {
         </FooterColumn>
         <FooterColumn>
           <FooterLinkHeader to="/sermons">sermons</FooterLinkHeader>
-          {sermonsDropdownItems.map((item: any, index: any) => {
-            return (
-              <FooterLink to={item.location} key={index}>
-                <FooterLinkText key={index}>{item.title}</FooterLinkText>
-              </FooterLink>
-            )
-          })}
+          {sermonsDropdownItems.map(
+            (item: DropdownItemProps, index: number) => {
+              return (
+                <FooterLink to={item.location} key={index}>
+                  <FooterLinkText key={index}>{item.title}</FooterLinkText>
+                </FooterLink>
+              )
+            }
+          )}
         </FooterColumn>
         <FooterColumn>
           <FooterLinkHeader to="/ministries">ministries</FooterLinkHeader>
-          {ministriesDropdownItems.map((item: any, index: any) => {
-            return (
-              <FooterLink to={item.location} key={index}>
-                <FooterLinkText key={index}>{item.title}</FooterLinkText>
-              </FooterLink>
-            )
-          })}
+          {ministriesDropdownItems.map(
+            (item: DropdownItemProps, index: number) => {
+              return (
+                <FooterLink to={item.location} key={index}>
+                  <FooterLinkText key={index}>{item.title}</FooterLinkText>
+                </FooterLink>
+              )
+            }
+          )}
         </FooterColumn>
         <FooterColumn>
           <FooterLinkHeader to="/smallgroups">small groups</FooterLinkHeader>
-          {smallGroupsDropdownItems.map((item: any, index: any) => {
-            return (
-              <FooterLink to={item.location}>
-                <FooterLinkText key={index}>{item.title}</FooterLinkText>
-              </FooterLink>
-            )
-          })}
+          {smallGroupsDropdownItems.map(
+            (item: DropdownItemProps, index: number) => {
+              return (
+                <FooterLink to={item.location}>
+                  <FooterLinkText key={index}>{item.title}</FooterLinkText>
+                </FooterLink>
+              )
+            }
+          )}
         </FooterColumn>
         <FooterColumn>
           <FooterLinkHeader to="/give">give</FooterLinkHeader>
-          {giveDropdownItems.map((item: any, index: any) => {
+          {giveDropdownItems.map((item: DropdownItemProps, index: number) => {
             return (
               <FooterLink to={item.location}>
                 <FooterLinkText key={index}>{item.title}</FooterLinkText>
