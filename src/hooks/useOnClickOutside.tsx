@@ -1,6 +1,9 @@
-import { useEffect } from 'react'
+import React, { MutableRefObject, useEffect } from 'react'
 
-export const useOnClickOutside = (ref: any, handler: any) => {
+export const useOnClickOutside = (
+  ref: MutableRefObject<HTMLDivElement>,
+  handler: (value: React.Dispatch<React.SetStateAction<boolean>>) => void
+) => {
   useEffect(() => {
     const listener = (event: any) => {
       if (!ref.current || ref.current.contains(event.target)) return

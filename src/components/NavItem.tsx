@@ -43,15 +43,17 @@ const NavItemLink = styled(Link)`
   transition: 0.3s;
   cursor: pointer;
 
-  &:hover {
-    transform: translateY(-2.5%);
-    background-color: var(--secondary-blue);
-    border-radius: 1.2rem;
-  }
+  @media (min-width: 60em) {
+    &:hover {
+      transform: translateY(-2.5%);
+      background-color: var(--secondary-blue);
+      border-radius: 1.2rem;
+    }
 
-  &:hover svg {
-    transform: translateY(21%) scale(1.5, 1.5) rotate(180deg);
-    color: var(--main-white);
+    &:hover svg {
+      transform: translateY(21%) scale(1.5, 1.5) rotate(180deg);
+      color: var(--main-white);
+    }
   }
 `
 
