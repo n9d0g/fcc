@@ -1,7 +1,7 @@
 import { LandingPageSection } from '../../components/LandingPageSection'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
-import bg from '../../assets/pictures/ministry_bg.avif'
+import bg from '../../assets/pictures/ministry_bg.jpg'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'

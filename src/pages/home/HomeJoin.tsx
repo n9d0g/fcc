@@ -1,6 +1,6 @@
 import { Button } from '../../components/Button'
 import styled from 'styled-components'
-import joinPic from '../../assets/pictures/men_bg.avif'
+import joinPic from '../../assets/pictures/men_bg.jpg'
 import { motion } from 'framer-motion'
 
 export const HomeJoin = () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
-import leadership_bg from '../../assets/pictures/leadership_bg.avif'
+import leadership_bg from '../../assets/pictures/leadership_bg.jpg'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'

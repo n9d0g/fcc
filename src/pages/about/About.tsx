@@ -1,6 +1,6 @@
 import { LandingPageSection } from '../../components/LandingPageSection'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
-import banner from '../../assets/pictures/about_bg.avif'
+import banner from '../../assets/pictures/about_bg.jpg'
 import styled from 'styled-components'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'

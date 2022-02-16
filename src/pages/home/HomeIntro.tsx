@@ -1,6 +1,6 @@
 import { Button } from '../../components/Button'
 import styled from 'styled-components'
-import bg_intro from '../../assets/pictures/home-bg.avif'
+import bg_intro from '../../assets/pictures/home-bg.jpg'
 import { motion } from 'framer-motion'
 import { Logo } from '../../components/Logo'
 
