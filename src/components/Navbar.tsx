@@ -92,9 +92,9 @@ const Nav = styled.nav`
   z-index: 9999;
 `
 
-const Container = styled.ol`
+const Container = styled.article`
   margin: 0;
-  padding: 1rem 2rem;
+  padding: 0 1.5rem;
   display: flex;
   flex-direction: row;
   list-style-type: none;
@@ -112,6 +112,9 @@ const NavLeft = styled.div`
 `
 
 const NavRight = styled.div`
+  margin: 1rem 0;
+  padding: 0;
+  list-style-type: none;
   display: flex;
   flex-direction: row;
 
@@ -135,7 +138,8 @@ const IconWrapper = styled.button`
     display: flex;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     background: var(--secondary-blue);
     border-radius: 0.2rem;
   }
@@ -145,7 +149,8 @@ const IconWrapperMobile = styled(IconWrapper)`
   justify-content: right;
   padding: 1rem;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background: none;
     border-radius: none;
   }

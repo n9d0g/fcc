@@ -21,7 +21,7 @@ export const AccordionItem = (props: AccordionItemProps) => {
   )
 }
 
-const Item = styled.div`
+const Item = styled.article`
   border-bottom: 1px solid var(--main-green);
 `
 
@@ -38,13 +38,14 @@ const ClosedContainer = styled.div`
   align-items: center;
   transition: 0.5s;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: var(--main-green);
   }
 `
 
 const Description = styled.p`
-  padding: 0 12px;
+  padding: 0 1rem;
   text-align: left;
 `
 

@@ -26,7 +26,7 @@ export const Accordion = (props: AccordionProps) => {
   )
 }
 
-const Container = styled.div`
-  max-width: 70rem;
+const Container = styled.section`
+  max-width: var(--width-max);
   padding: 1rem 0;
 `

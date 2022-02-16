@@ -32,7 +32,7 @@ export const HomeSermons = () => {
 
 const Sermons = styled.section`
   padding: 9rem 1rem;
-  max-width: 1100px;
+  max-width: var(--width-max);
   margin: 0 auto;
 
   @media (max-width: 60em) {

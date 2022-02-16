@@ -27,14 +27,14 @@ export const Elder = (props: ElderProps) => {
       {props.data.map((elder: ElderItemProps, index: number) => {
         return (
           <Item key={index}>
-            <div>
+            <>
               <ElderPicture picture={elder.picture}></ElderPicture>
               <ElderInfo>
                 <Name>{elder.name}</Name>
                 <Title>{elder.title}</Title>
                 <Ministry>{elder.description}</Ministry>
               </ElderInfo>
-            </div>
+            </>
             <SubMinistriesContainer>
               <SubMinsitryTitle>Sub-Ministries:</SubMinsitryTitle>
               {elder.subministries.map(

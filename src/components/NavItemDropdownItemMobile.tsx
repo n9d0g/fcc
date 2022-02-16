@@ -25,7 +25,7 @@ const Text = styled.p`
 const Item = styled(Link)`
   display: flex;
   flex-direction: row;
-  height: 40px;
+  height: 2.5rem;
   justify-content: space-between;
   align-items: center;
   padding: 0 0.7rem;

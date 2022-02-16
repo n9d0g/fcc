@@ -12,7 +12,7 @@ export const Beliefs = () => {
   useDocumentTitle('Beliefs')
   const link = 'https://www.cmacan.org/about/'
   return (
-    <motion.div
+    <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}>
@@ -52,11 +52,11 @@ export const Beliefs = () => {
           <Accordion data={StatementOfFaith} />
         </SoF>
       </Content>
-    </motion.div>
+    </motion.main>
   )
 }
 
-const Banner = styled.section`
+const Banner = styled.header`
   display: flex;
   justify-content: center;
   background-size: cover;
@@ -77,7 +77,7 @@ const BannerTitle = styled.h1`
 const Intro = styled.section`
   display: flex;
   justify-content: center;
-  max-width: 1100px;
+  max-width: var(--width-max);
   margin: 0 auto;
   padding: 3rem 0;
 
@@ -89,14 +89,14 @@ const Intro = styled.section`
 const IntroText = styled.p`
   text-align: center;
   font-size: 1.3rem;
-  max-width: 800px;
+  max-width: 50rem;
 `
 
 const Content = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 1100px;
+  max-width: var(--width-max);
   margin: 0 auto;
   padding: 0 1rem;
 `
@@ -104,7 +104,7 @@ const Content = styled.section`
 const CoreValuesSection = styled.article`
   display: flex;
   flex-direction: column;
-  max-width: 1100px;
+  max-width: var(--width-max);
   justify-content: center;
   margin: 0 auto;
   padding: 0 1rem;
@@ -131,7 +131,8 @@ const CMA = styled.a`
   color: var(--main-blue);
   transition: 0.1s ease-in;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--main-green);
     font-size: 1rem;
   }

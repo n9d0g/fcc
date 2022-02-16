@@ -37,5 +37,5 @@ const Header = styled.p`
   margin: 0 auto;
   text-align: center;
   font-size: 1.7rem;
-  max-width: 800px;
+  max-width: 50rem;
 `

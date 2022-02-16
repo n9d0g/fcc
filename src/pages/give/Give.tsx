@@ -10,7 +10,7 @@ export const Give = () => {
   useDocumentTitle('Give')
 
   return (
-    <motion.div
+    <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}>
@@ -30,13 +30,13 @@ export const Give = () => {
           </GiveIntroText>
         </GiveIntro>
       </GiveSection>
-    </motion.div>
+    </motion.main>
   )
 }
 
 const GiveSection = styled.div``
 
-const GiveBanner = styled.section`
+const GiveBanner = styled.header`
   display: flex;
   justify-content: center;
   background-image: url(${leadership_bg});
@@ -57,7 +57,7 @@ const GiveBannerTitle = styled.h1`
 const GiveIntro = styled.section`
   display: flex;
   justify-content: center;
-  max-width: 1100px;
+  max-width: var(--width-max);
   margin: 0 auto;
   padding: 3rem 0;
 
@@ -69,7 +69,7 @@ const GiveIntro = styled.section`
 const GiveIntroText = styled.p`
   text-align: center;
   font-size: 1.3rem;
-  max-width: 800px;
+  max-width: 50rem;
 `
 
 const GiveIntroTextEmail = styled.span`

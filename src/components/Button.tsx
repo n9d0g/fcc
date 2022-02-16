@@ -51,7 +51,7 @@ const MoreIcon = styled(BsArrowRightShort)`
 `
 
 const ExternalButton = styled.a`
-  padding: 16px;
+  padding: 1rem;
   border: 1px solid var(--main-blue);
   border-radius: 0.5rem;
   box-shadow: inset 0 56px 0 0 var(--main-blue);
@@ -61,7 +61,8 @@ const ExternalButton = styled.a`
   transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
     box-shadow 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 
-  &:hover {
+  &:hover,
+  &:focus {
     box-shadow: inset 0 0 0 0 var(--main-blue);
     outline: 0;
     color: var(--main-blue);
@@ -79,7 +80,8 @@ const InternalButton = styled(Link)`
   transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
     box-shadow 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 
-  &:hover {
+  &:hover,
+  &:focus {
     box-shadow: inset 0 0 0 0 var(--main-blue);
     outline: 0;
     color: var(--main-blue);

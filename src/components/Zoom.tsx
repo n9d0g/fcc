@@ -16,7 +16,7 @@ export const Zoom = () => {
   )
 }
 
-const ZoomContainer = styled.div`
+const ZoomContainer = styled.article`
   margin: 0;
   background-color: var(--main-green);
   text-align: center;
@@ -24,7 +24,7 @@ const ZoomContainer = styled.div`
 
 const Banner = styled.p`
   margin: 0;
-  padding: 6px 0;
+  padding: 0.5rem 0;
   background-color: var(--main-green);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -39,7 +39,8 @@ const ZoomLink = styled.a`
   transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
     box-shadow 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 
-  &:hover {
+  &:hover,
+  &:focus {
     box-shadow: 0 4px 0 0 var(--main-white);
     color: var(--main-white);
   }

@@ -65,8 +65,8 @@ const Sermon = styled.div`
   justify-content: space-between;
   background: var(--main-blue);
   padding: 0.9rem;
-  border-radius: 5px;
-  margin-bottom: 25px;
+  border-radius: 0.25rem;
+  margin-bottom: 1.5rem;
   min-width: 18rem;
   text-decoration: none;
   text-align: left;
@@ -78,7 +78,8 @@ const Sermon = styled.div`
     margin: 0 2rem;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     opacity: 0.5;
   }
 `

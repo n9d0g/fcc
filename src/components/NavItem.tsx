@@ -16,6 +16,8 @@ export const NavItem = (props: NavItemProps) => {
   return (
     <NavItemLink
       to={props.location}
+      onFocus={() => setOpen(true)}
+      onBlur={() => setOpen(false)}
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}>
       <Text>
@@ -44,7 +46,8 @@ const NavItemLink = styled(Link)`
   cursor: pointer;
 
   @media (min-width: 60em) {
-    &:hover {
+    &:hover,
+    &:focus {
       transform: translateY(-2.5%);
       background-color: var(--secondary-blue);
       border-radius: 1.2rem;
@@ -54,10 +57,15 @@ const NavItemLink = styled(Link)`
       transform: translateY(21%) scale(1.5, 1.5) rotate(180deg);
       color: var(--main-white);
     }
+
+    &:focus svg {
+      transform: translateY(21%) scale(1.5, 1.5) rotate(180deg);
+      color: var(--main-white);
+    }
   }
 `
 
-const Text = styled.li`
+const Text = styled.button`
   margin: 0.9rem;
   background: none;
   border: none;

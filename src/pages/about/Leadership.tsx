@@ -10,7 +10,7 @@ import { motion } from 'framer-motion'
 export const Leadership = () => {
   useDocumentTitle('Leadership')
   return (
-    <motion.div
+    <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}>
@@ -31,11 +31,11 @@ export const Leadership = () => {
         </Text>
       </Intro>
       <Elder data={Elders} />
-    </motion.div>
+    </motion.main>
   )
 }
 
-const Banner = styled.section`
+const Banner = styled.header`
   display: flex;
   justify-content: center;
   background-size: cover;
@@ -56,7 +56,7 @@ const BannerTitle = styled.h1`
 const Intro = styled.section`
   display: flex;
   justify-content: center;
-  max-width: 1100px;
+  max-width: var(--width-max);
   margin: 0 auto;
   padding: 5rem 0;
 
@@ -69,5 +69,5 @@ const Intro = styled.section`
 const Text = styled.p`
   text-align: center;
   font-size: 1.3rem;
-  max-width: 800px;
+  max-width: 50rem;
 `

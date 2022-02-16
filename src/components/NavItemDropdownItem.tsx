@@ -14,7 +14,7 @@ export const NavItemDropdownItem = (props: NavItemDropdownItemProps) => {
 const Item = styled(Link)`
   display: flex;
   flex-direction: row;
-  height: 50px;
+  height: 3rem;
   justify-content: space-between;
   align-items: center;
   padding: 0.7rem;
@@ -23,7 +23,8 @@ const Item = styled(Link)`
   transition: 0.3s;
   box-shadow: 0px 24px 3px -24px var(--secondary-grey);
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: var(--main-blue);
   }
 `

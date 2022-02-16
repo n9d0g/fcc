@@ -37,7 +37,7 @@ export const HomeJoin = () => {
 const Join = styled.section`
   display: flex;
   justify-content: center;
-  max-width: 1100px;
+  max-width: var(--width-max);
   margin: 0 auto;
   padding: 5rem 1rem;
 
@@ -59,10 +59,10 @@ const Description = styled.p`
   text-align: left;
 `
 
-const Picture = styled.div`
+const Picture = styled.picture`
   background-image: url(${joinPic});
   background-position: 50% 50%;
-  max-height: 300px;
-  max-width: 300px;
+  max-height: 18.75rem;
+  max-width: 18.75rem;
   flex: 1;
 `
