@@ -9,7 +9,7 @@ import { motion } from 'framer-motion'
 export const Preteens = () => {
   useDocumentTitle('Pre-teens')
   return (
-    <motion.div
+    <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}>
@@ -28,24 +28,24 @@ export const Preteens = () => {
       <Intro>
         <IntroPicture />
         <IntroDescription>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum. <br />
-            Contact: Bro Nathan Lardizabal{' '}
-            <IntroDescriptionContact>(647) 523-9361</IntroDescriptionContact>
+            Contact: Sis Rhoda Bersamin{' '}
+            <a href="tel:647-523-9361">(647) 523-9361</a>
           </p>
         </IntroDescription>
       </Intro>
-    </motion.div>
+    </motion.main>
   )
 }
 
-const Banner = styled.section`
+const Banner = styled.header`
   display: flex;
   justify-content: center;
   background-size: cover;
@@ -65,7 +65,7 @@ const BannerTitle = styled.h1`
 
 const Intro = styled.section`
   display: flex;
-  max-width: 1100px;
+  max-width: var(--width-max);
   margin: 0 auto;
   padding: 5rem 0;
 
@@ -81,15 +81,11 @@ const IntroPicture = styled.div`
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 500px;
-  width: 500px;
+  height: 30rem;
+  width: 30rem;
   margin: 0 2rem;
 `
 
-const IntroDescription = styled.div`
+const IntroDescription = styled.p`
   flex: 1;
-`
-
-const IntroDescriptionContact = styled.a`
-  font-style: italic;
 `

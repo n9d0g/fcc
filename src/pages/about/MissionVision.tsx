@@ -9,7 +9,7 @@ import { motion } from 'framer-motion'
 export const MissionVision = () => {
   useDocumentTitle('Mission & Vision')
   return (
-    <motion.div
+    <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}>
@@ -39,11 +39,11 @@ export const MissionVision = () => {
           of strong relationships and planting of healthy reproducing churches.
         </VisionDescription>
       </Vision>
-    </motion.div>
+    </motion.main>
   )
 }
 
-const Banner = styled.section`
+const Banner = styled.header`
   display: flex;
   justify-content: center;
   background-size: cover;
@@ -68,14 +68,14 @@ const Mission = styled.section`
 `
 
 const MissionHeader = styled.h2`
-  max-width: 800px;
+  max-width: 50rem;
   margin: 0 auto;
 `
 
 const VisionHeader = styled(MissionHeader)``
 
 const MissionDescription = styled.h3`
-  max-width: 800px;
+  max-width: 50rem;
   margin: 0 auto;
   font-weight: 400;
 `

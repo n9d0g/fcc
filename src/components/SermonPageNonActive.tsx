@@ -51,7 +51,7 @@ export const SermonPageNonActive = (props: SermonPageNonActiveProps) => {
 }
 
 const Container = styled.section`
-  max-width: 1100px;
+  max-width: var(--width-max);
   margin: 0 auto;
   padding: 0 2rem;
 `
@@ -83,7 +83,7 @@ const SermonsContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1.2rem;
-  max-width: 1100px;
+  max-width: var(--width-max);
   justify-content: center;
   margin: 0 auto;
   color: var(--main-white);
@@ -97,7 +97,7 @@ interface ItemProps {
   active: boolean
 }
 
-const Item = styled.div<ItemProps>`
+const Item = styled.article<ItemProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -114,7 +114,8 @@ const Item = styled.div<ItemProps>`
       : `1px solid var(--secondary-grey)`};
   border-radius: 0.3rem;
 
-  &:hover {
+  &:hover,
+  &:focus {
     box-shadow: ${props =>
       !props.active && `rgba(100, 100, 111, 0.2) 0px 13px 29px 0px`};
     border: ${props => !props.active && `1px solid transparent`};

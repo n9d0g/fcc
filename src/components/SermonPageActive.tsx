@@ -29,7 +29,7 @@ export const SermonPageActive = () => {
 }
 
 const Active = styled.section`
-  max-width: 1100px;
+  max-width: var(--width-max);
   margin: 0 auto;
   padding: 0 2rem;
 
@@ -42,7 +42,7 @@ const ActiveInfo = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: var(--width-max);
   justify-content: center;
   padding: 3rem 0;
 

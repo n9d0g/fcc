@@ -38,7 +38,9 @@ interface LandingPageContainerProps {
 
 const LandingPageContainer = styled.section<LandingPageContainerProps>`
   display: flex;
-  padding: 5rem 20rem;
+  max-width: var(--width-max);
+  margin: 0 auto;
+  padding: 3rem 0;
   flex-direction: ${props => (props.flipped ? `row-reverse` : `row`)};
 
   @media (max-width: 60em) {
@@ -57,13 +59,13 @@ const Description = styled.p`
   margin: 0 auto;
 `
 
-const Picture = styled.div`
+const Picture = styled.picture`
   flex: 1;
   background-image: url(${picture});
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 500px;
-  width: 500px;
+  height: 30rem;
+  width: 30rem;
   margin: 0 2rem;
 `

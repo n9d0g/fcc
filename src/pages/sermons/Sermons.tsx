@@ -15,7 +15,7 @@ export const Sermons = () => {
   const [sermonContext, setSermonContext] = useState(SermonLinks[0])
 
   return (
-    <motion.div
+    <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}>
@@ -32,11 +32,11 @@ export const Sermons = () => {
           <SermonPageNonActive data={SermonLinks} />
         </SermonContext.Provider>
       </ActiveSermonContainer>
-    </motion.div>
+    </motion.main>
   )
 }
 
-const Banner = styled.section`
+const Banner = styled.header`
   display: flex;
   justify-content: center;
   background-size: cover;

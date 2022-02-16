@@ -34,7 +34,7 @@ interface DropdownProps {
 }
 
 const Dropdown = styled.div<DropdownProps>`
-  width: 175px;
+  width: 10rem;
   overflow: hidden;
   background-color: var(--main-green);
 `

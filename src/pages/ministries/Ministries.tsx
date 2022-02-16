@@ -9,7 +9,7 @@ import { motion } from 'framer-motion'
 export const Ministries = () => {
   useDocumentTitle('Ministries')
   return (
-    <motion.div
+    <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}>
@@ -55,15 +55,13 @@ export const Ministries = () => {
           btnLocation="/ministries/praise"
         />
       </MinistriesSection>
-    </motion.div>
+    </motion.main>
   )
 }
 
-const MinistriesSection = styled.section`
-  text-align: center;
-`
+const MinistriesSection = styled.section``
 
-const Banner = styled.section`
+const Banner = styled.header`
   display: flex;
   justify-content: center;
   background-size: cover;

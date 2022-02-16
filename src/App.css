@@ -1,3 +1,7 @@
+:focus {
+  outline: 1px dashed var(--main-green);
+}
+
 :root {
   --main-blue: #2a8dbe;
   --main-green: #7aaa6e;
@@ -5,6 +9,7 @@
   --main-white: #ffffff;
   --secondary-grey: #b1aeab;
   --secondary-blue: #207eac;
+  --width-max: 70rem;
 }
 
 html {

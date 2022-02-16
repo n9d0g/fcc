@@ -158,7 +158,8 @@ const FooterLinkHeader = styled(FooterLink)`
   text-decoration: underline;
   transition: 0.3s;
 
-  &:hover {
+  &:hover,
+  &:focus {
     font-size: 1.3rem;
   }
 `
@@ -167,7 +168,8 @@ const FooterLinkText = styled.span`
   transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
     box-shadow 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 
-  &:hover {
+  &:hover,
+  &:focus {
     box-shadow: 0 4px 0 0 var(--secondary-grey);
     color: var(--secondary-grey);
   }
@@ -189,7 +191,8 @@ const SocialIcon = styled.a`
   margin-bottom: 1rem;
   transition: 0.3s;
 
-  &:hover {
+  &:hover,
+  &:focus {
     opacity: 0.5;
   }
 `
