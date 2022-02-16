@@ -2,7 +2,17 @@ import React, { useContext } from 'react'
 import HomeSermonContext from '../pages/home/HomeSermonContext'
 import styled from 'styled-components'
 
-export const SermonNonActive = (props: any) => {
+interface SermonNonActiveProps {
+  data: {
+    title: string
+    speaker: string
+    date: string
+    scripture: string
+    youtube: string
+  }
+}
+
+export const SermonNonActive = (props: SermonNonActiveProps) => {
   const { activeSermon, setActiveSermon } = useContext(HomeSermonContext)
 
   const scroll = () => {

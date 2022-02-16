@@ -2,7 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const NavItemDropdownItem = (props: any) => {
+interface NavItemDropdownItemProps {
+  title: string
+  location: string
+}
+
+export const NavItemDropdownItem = (props: NavItemDropdownItemProps) => {
   return <Item to={props.location}>{props.title}</Item>
 }
 

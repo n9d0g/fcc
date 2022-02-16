@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const Logo = (props: any) => {
+interface LogoProps {
+  colour: string
+}
+
+export const Logo = (props: LogoProps) => {
   return (
     <LogoContainer>
       <SVG

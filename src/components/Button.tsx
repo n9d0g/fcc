@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { BsArrowRightShort } from 'react-icons/bs'
 
 interface ButtonProps {
-  location: any
-  text: any
-  documentTitle?: any
+  location: string
+  text: string
+  documentTitle?: string
   margin?: boolean
   external?: boolean
   more?: boolean

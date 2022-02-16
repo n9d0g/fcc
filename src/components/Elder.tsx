@@ -4,10 +4,27 @@ import roland from '../assets/pictures/elders/roland.avif'
 import errol from '../assets/pictures/elders/errol.avif'
 import chrys from '../assets/pictures/elders/chrys.avif'
 
-export const Elder = (props: any) => {
+interface SubMinistriesItemProps {
+  ministry: string
+  leader: string
+}
+
+interface ElderItemProps {
+  name: string
+  picture: string
+  title: string
+  description: string
+  subministries: Array<SubMinistriesItemProps>
+}
+
+interface ElderProps {
+  data: Array<ElderItemProps>
+}
+
+export const Elder = (props: ElderProps) => {
   return (
     <Container>
-      {props.data.map((elder: any, index: any) => {
+      {props.data.map((elder: ElderItemProps, index: number) => {
         return (
           <Item key={index}>
             <div>
@@ -20,13 +37,15 @@ export const Elder = (props: any) => {
             </div>
             <SubMinistriesContainer>
               <SubMinsitryTitle>Sub-Ministries:</SubMinsitryTitle>
-              {elder.subministries.map((item: any, index: any) => {
-                return (
-                  <SubMinistry key={index}>
-                    <u>{item.ministry}</u>: <i>{item.leader}</i>
-                  </SubMinistry>
-                )
-              })}
+              {elder.subministries.map(
+                (item: SubMinistriesItemProps, index: number) => {
+                  return (
+                    <SubMinistry key={index}>
+                      <u>{item.ministry}</u>: <i>{item.leader}</i>
+                    </SubMinistry>
+                  )
+                }
+              )}
             </SubMinistriesContainer>
           </Item>
         )
@@ -67,7 +86,7 @@ const ElderInfo = styled.div`
 `
 
 interface ElderPictureProps {
-  picture: any
+  picture: string
 }
 
 const ElderPicture = styled.div<ElderPictureProps>`

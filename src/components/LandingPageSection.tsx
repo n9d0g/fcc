@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import picture from '../assets/pictures/about_bg.avif'
 
 interface LandingPageSectionProps {
-  picture?: any
-  title: any
-  description?: any
-  btnText: any
-  btnLocation: any
+  title: string
+  description?: string
+  btnText: string
+  btnLocation: string
+  picture?: string
   flip?: boolean
 }
 
@@ -33,7 +33,7 @@ export const LandingPageSection = (props: LandingPageSectionProps) => {
 }
 
 interface LandingPageContainerProps {
-  flipped: any
+  flipped: boolean | undefined
 }
 
 const LandingPageContainer = styled.section<LandingPageContainerProps>`

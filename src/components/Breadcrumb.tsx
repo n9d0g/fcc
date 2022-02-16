@@ -1,7 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const Breadcrumb = (props: any) => {
+interface BreadcrumbProps {
+  children: React.ReactNode
+}
+
+export const Breadcrumb = (props: BreadcrumbProps) => {
   return (
     <BreadcrumbContainer id="breadcrumb">{props.children}</BreadcrumbContainer>
   )

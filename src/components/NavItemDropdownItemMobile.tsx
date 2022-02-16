@@ -2,7 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const NavItemDropdownItemMobile = (props: any) => {
+interface NavItemDropdownItemMobileProps {
+  title: string
+  location: string
+}
+
+export const NavItemDropdownItemMobile = (
+  props: NavItemDropdownItemMobileProps
+) => {
   return (
     <Item to={props.location}>
       <Text>{props.title}</Text>

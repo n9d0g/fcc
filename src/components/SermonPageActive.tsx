@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import SermonContext from '../pages/sermons/SermonContext'
 import styled from 'styled-components'
 
-export const SermonPageActive = (props: any) => {
+export const SermonPageActive = () => {
   const { sermonContext } = useContext(SermonContext)
 
   return (

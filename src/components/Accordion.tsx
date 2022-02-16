@@ -1,18 +1,27 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { FiPlus, FiMinus } from 'react-icons/fi'
 import styled from 'styled-components'
 
-export const Accordion = (props: any) => {
-  const [clicked, setClicked] = useState<any>(false)
+interface AccordionItemProps {
+  title: string
+  description: string
+}
+
+interface AccordionProps {
+  data: Array<AccordionItemProps>
+}
+
+export const Accordion = (props: AccordionProps) => {
+  const [clicked, setClicked] = useState<boolean>(false)
 
   const toggle = (index: any) => {
-    if (clicked === index) return setClicked(null)
+    if (clicked === index) return setClicked(false)
     setClicked(index)
   }
 
   return (
     <Container>
-      {props.data.map((item: any, index: any) => {
+      {props.data.map((item: AccordionItemProps, index: any) => {
         return (
           <Item>
             <ClosedContainer onClick={() => toggle(index)} key={index}>
