@@ -212,10 +212,12 @@ const SunMoon = styled.button`
   font-size: 1.5rem;
   transition: 0.5s;
 
-  &:hover {
-    transform: scale(1.2);
-    background-color: var(--secondary-blue);
-    border-radius: 1.2rem;
+  @media (min-width: 60em) {
+    &:hover {
+      transform: scale(1.2);
+      background-color: var(--secondary-blue);
+      border-radius: 1.2rem;
+    }
   }
 `
 
@@ -226,9 +228,9 @@ const SunMoonMobile = styled(SunMoon)`
 `
 
 const Sun = styled(BsSunFill)`
-  color: yellow;
+  color: var(--sun-yellow);
 `
 
 const Moon = styled(BsFillMoonStarsFill)`
-  color: darkblue;
+  color: var(--moon-blue);
 `

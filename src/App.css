@@ -1,7 +1,3 @@
-:root {
-  --white: #fff;
-}
-
 body {
   /* constant colours */
   --white: #fff;
@@ -19,6 +15,8 @@ body {
   --transition-delay: 1s;
   --font-colour: #000;
   --bg-colour: #fff;
+  --sun-yellow: #e6e923;
+  --moon-blue: #04046b;
 }
 
 body.dark {
@@ -36,6 +34,8 @@ body.dark {
   --secondary-blue: #207eac;
   --font-colour: #fff;
   --bg-colour: #0e141b;
+  --sun-yellow: #e6e923;
+  --moon-blue: #04046b;
 }
 
 html {
