@@ -64,12 +64,14 @@ export const Navbar = () => {
         </NavRight>
 
         {/* mobile */}
-        <SunMoonMobile onClick={() => themeToggle()}>
-          {theme ? <Sun theme={theme} /> : <Moon theme={theme} />}
-        </SunMoonMobile>
-        <IconWrapper onClick={() => setMobileClicked(!mobileClicked)}>
-          {!mobileClicked && <Bars aria-label="navigation" />}
-        </IconWrapper>
+        <MobileWrapper>
+          <SunMoonMobile onClick={() => themeToggle()}>
+            {theme ? <Sun theme={theme} /> : <Moon theme={theme} />}
+          </SunMoonMobile>
+          <IconWrapper onClick={() => setMobileClicked(!mobileClicked)}>
+            {!mobileClicked && <Bars aria-label="navigation" />}
+          </IconWrapper>
+        </MobileWrapper>
         {mobileClicked && (
           <Drawer ref={ref}>
             <IconWrapperMobile onClick={() => setMobileClicked(!mobileClicked)}>
@@ -222,6 +224,7 @@ const SunMoon = styled.button`
 `
 
 const SunMoonMobile = styled(SunMoon)`
+  justify-self: right;
   @media (min-width: 60em) {
     display: none;
   }
@@ -233,4 +236,12 @@ const Sun = styled(BsSunFill)`
 
 const Moon = styled(BsFillMoonStarsFill)`
   color: var(--moon-blue);
+`
+
+const MobileWrapper = styled.div`
+  display: flex;
+
+  @media (min-width: 60em) {
+    display: none;
+  }
 `

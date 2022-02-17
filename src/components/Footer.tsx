@@ -63,7 +63,7 @@ export const Footer = () => {
           {smallGroupsDropdownItems.map(
             (item: DropdownItemProps, index: number) => {
               return (
-                <FooterLink to={item.location}>
+                <FooterLink key={index} to={item.location}>
                   <FooterLinkText key={index}>{item.title}</FooterLinkText>
                 </FooterLink>
               )
@@ -74,7 +74,7 @@ export const Footer = () => {
           <FooterLinkHeader to="/give">give</FooterLinkHeader>
           {giveDropdownItems.map((item: DropdownItemProps, index: number) => {
             return (
-              <FooterLink to={item.location}>
+              <FooterLink key={index} to={item.location}>
                 <FooterLinkText key={index}>{item.title}</FooterLinkText>
               </FooterLink>
             )
