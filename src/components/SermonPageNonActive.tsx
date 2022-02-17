@@ -103,7 +103,7 @@ const Item = styled.article<ItemProps>`
   justify-content: space-between;
   flex: 1;
   background: var(--main-white);
-  color: var(--main-blue);
+  color: var(--main-blue-sermons);
   padding: 1rem;
   transition: 0.3s ease;
   cursor: ${props => (props.active ? `not-allowed` : `pointer`)};

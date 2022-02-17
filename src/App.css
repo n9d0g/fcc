@@ -9,6 +9,7 @@ body {
 
   /* theme colours */
   --main-blue: #2a8dbe;
+  --main-blue-sermons: #2a8dbe;
   --main-green: #7aaa6e;
   --main-black: #000;
   --main-white: #fff;
@@ -27,6 +28,7 @@ body.dark {
 
   /* theme colours */
   --main-blue: #095a82;
+  --main-blue-sermons: #e7e8e8;
   --main-green: #0d3f00;
   --main-black: #e7e8e8;
   --main-white: #0e141b;
