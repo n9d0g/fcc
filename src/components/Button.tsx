@@ -57,7 +57,7 @@ const ExternalButton = styled.a`
   box-shadow: inset 0 56px 0 0 var(--main-blue);
   text-decoration: none;
   background-color: transparent;
-  color: var(--main-white);
+  color: var(--white);
   transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
     box-shadow 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 
@@ -76,7 +76,7 @@ const InternalButton = styled(Link)`
   box-shadow: inset 0 56px 0 0 var(--main-blue);
   text-decoration: none;
   background-color: transparent;
-  color: var(--main-white);
+  color: var(--white);
   transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
     box-shadow 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 

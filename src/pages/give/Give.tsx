@@ -10,10 +10,7 @@ export const Give = () => {
   useDocumentTitle('Give')
 
   return (
-    <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}>
+    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <GiveSection>
         <GiveBanner>
           <GiveBannerTitle>give</GiveBannerTitle>
@@ -30,11 +27,21 @@ export const Give = () => {
           </GiveIntroText>
         </GiveIntro>
       </GiveSection>
-    </motion.main>
+    </Container>
   )
 }
 
-const GiveSection = styled.div``
+const Container = styled(motion.main)`
+  background-color: var(--main-white);
+  color: var(--main-black);
+  transition: var(--transition-delay);
+`
+
+const GiveSection = styled.div`
+  background-color: var(--main-white);
+  color: var(--main-black);
+  transition: var(--transition-delay);
+`
 
 const GiveBanner = styled.header`
   display: flex;

@@ -10,10 +10,7 @@ import { motion } from 'framer-motion'
 export const Leadership = () => {
   useDocumentTitle('Leadership')
   return (
-    <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}>
+    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Banner>
         <BannerTitle>our team</BannerTitle>
       </Banner>
@@ -31,9 +28,15 @@ export const Leadership = () => {
         </Text>
       </Intro>
       <Elder data={Elders} />
-    </motion.main>
+    </Container>
   )
 }
+
+const Container = styled(motion.main)`
+  background-color: var(--main-white);
+  color: var(--main-black);
+  transition: var(--transition-delay);
+`
 
 const Banner = styled.header`
   display: flex;
@@ -50,7 +53,8 @@ const Banner = styled.header`
 `
 
 const BannerTitle = styled.h1`
-  color: var(--main-white);
+  color: var(--white);
+  transition: var(--transition-delay);
 `
 
 const Intro = styled.section`

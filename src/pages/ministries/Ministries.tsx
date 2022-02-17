@@ -9,10 +9,7 @@ import { motion } from 'framer-motion'
 export const Ministries = () => {
   useDocumentTitle('Ministries')
   return (
-    <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}>
+    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <MinistriesSection>
         <Banner>
           <BannerTitle>our ministries</BannerTitle>
@@ -55,11 +52,20 @@ export const Ministries = () => {
           btnLocation="/ministries/praise"
         />
       </MinistriesSection>
-    </motion.main>
+    </Container>
   )
 }
 
-const MinistriesSection = styled.section``
+const Container = styled(motion.main)`
+  background-color: var(--main-white);
+  color: var(--main-black);
+  transition: var(--transition-delay);
+`
+
+const MinistriesSection = styled.section`
+  background-color: var(--main-white);
+  color: var(--main-black);
+`
 
 const Banner = styled.header`
   display: flex;
@@ -76,5 +82,5 @@ const Banner = styled.header`
 `
 
 const BannerTitle = styled.h1`
-  color: var(--main-white);
+  color: var(--white);
 `

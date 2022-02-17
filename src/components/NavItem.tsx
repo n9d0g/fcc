@@ -55,12 +55,12 @@ const NavItemLink = styled(Link)`
 
     &:hover svg {
       transform: translateY(21%) scale(1.5, 1.5) rotate(180deg);
-      color: var(--main-white);
+      color: var(--white);
     }
 
     &:focus svg {
       transform: translateY(21%) scale(1.5, 1.5) rotate(180deg);
-      color: var(--main-white);
+      color: var(--white);
     }
   }
 `
@@ -74,7 +74,7 @@ const Text = styled.button`
   outline: inherit;
   text-align: left;
   text-decoration: none;
-  color: var(--main-white);
+  color: var(--white);
   transition: 0.3s;
   cursor: pointer;
 `
@@ -83,6 +83,6 @@ const TextIcon = styled.span`
   > svg {
     transform: translateY(21%) scale(1.5, 1.5);
     transition: 0.1s ease-in;
-    color: var(--main-white);
+    color: var(--white);
   }
 `

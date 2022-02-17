@@ -34,6 +34,7 @@ const Sermons = styled.section`
   padding: 9rem 1rem;
   max-width: var(--width-max);
   margin: 0 auto;
+  color: var(--main-black);
 
   @media (max-width: 60em) {
     padding: 4rem 1rem;

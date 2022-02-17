@@ -15,10 +15,7 @@ export const Sermons = () => {
   const [sermonContext, setSermonContext] = useState(SermonLinks[0])
 
   return (
-    <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}>
+    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Banner>
         <BannerTitle>sermons</BannerTitle>
       </Banner>
@@ -32,9 +29,15 @@ export const Sermons = () => {
           <SermonPageNonActive data={SermonLinks} />
         </SermonContext.Provider>
       </ActiveSermonContainer>
-    </motion.main>
+    </Container>
   )
 }
+
+const Container = styled(motion.main)`
+  background-color: var(--main-white);
+  color: var(--main-black);
+  transition: var(--transition-delay);
+`
 
 const Banner = styled.header`
   display: flex;
