@@ -1,6 +1,7 @@
 # 📰 Freedom in Christ Church Website
 
 [![Demo](https://img.shields.io/badge/demo-netlify-blue?style=flat-square)](https://620dae25cda7fa0008402f67--fcc-test-v1.netlify.app/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ec4b3ca5-b231-41e5-a9c5-99567360564c/deploy-status)](https://app.netlify.com/sites/fcccanada/deploys)
 ![GitHub](https://img.shields.io/github/license/n9d0g/fcc?style=flat-square)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/n9d0g/fcc?style=flat-square)
 ![GitHub last commit](https://img.shields.io/github/last-commit/n9d0g/fcc?style=flat-square)
