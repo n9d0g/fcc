@@ -22,7 +22,7 @@ export const Footer = () => {
     <FooterSection>
       <Container>
         <FooterColumn>
-          <Logo colour="white" />
+          <Logo />
         </FooterColumn>
         <FooterColumn>
           <FooterLinkHeader to="/about">about</FooterLinkHeader>
@@ -117,9 +117,11 @@ export const Footer = () => {
 }
 
 const FooterSection = styled.footer`
-  color: var(--main-white);
-  background-color: var(--main-black);
+  color: var(--white);
+  background-color: var(--black);
   padding: 4rem 5rem 10rem 5rem;
+  transition: var(--transition-delay);
+  box-shadow: 0px 24px 3px -24px var(--white);
 
   @media (max-width: 60em) {
     padding: 3rem 1rem;

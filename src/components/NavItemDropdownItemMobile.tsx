@@ -30,6 +30,6 @@ const Item = styled(Link)`
   align-items: center;
   padding: 0 0.7rem;
   text-decoration: none;
-  color: var(--main-white);
+  color: var(--white);
   transform: translateX(1rem);
 `

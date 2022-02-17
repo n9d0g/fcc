@@ -9,10 +9,7 @@ import { motion } from 'framer-motion'
 export const MissionVision = () => {
   useDocumentTitle('Mission & Vision')
   return (
-    <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}>
+    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Banner>
         <BannerTitle>mission & vision</BannerTitle>
       </Banner>
@@ -39,9 +36,15 @@ export const MissionVision = () => {
           of strong relationships and planting of healthy reproducing churches.
         </VisionDescription>
       </Vision>
-    </motion.main>
+    </Container>
   )
 }
+
+const Container = styled(motion.main)`
+  background-color: var(--bg-colour);
+  color: var(--font-colour);
+  transition: var(--transition-delay);
+`
 
 const Banner = styled.header`
   display: flex;
@@ -62,9 +65,11 @@ const BannerTitle = styled.h1`
 `
 
 const Mission = styled.section`
-  background-color: var(--main-white);
+  background-color: var(--bg-colour);
+  color: var(--font-colour);
   text-align: center;
   padding: 2rem 1rem;
+  transition: var(--transition-delay);
 `
 
 const MissionHeader = styled.h2`
@@ -86,4 +91,5 @@ const Vision = styled.section`
   background-color: var(--main-blue);
   text-align: center;
   padding: 3rem 0;
+  transition: var(--transition-delay);
 `

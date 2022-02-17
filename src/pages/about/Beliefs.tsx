@@ -12,10 +12,7 @@ export const Beliefs = () => {
   useDocumentTitle('Beliefs')
   const link = 'https://www.cmacan.org/about/'
   return (
-    <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}>
+    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Banner>
         <BannerTitle>our beliefs</BannerTitle>
       </Banner>
@@ -52,9 +49,15 @@ export const Beliefs = () => {
           <Accordion data={StatementOfFaith} />
         </SoF>
       </Content>
-    </motion.main>
+    </Container>
   )
 }
+
+const Container = styled(motion.main)`
+  background-color: var(--main-white);
+  color: var(--main-black);
+  transition: var(--transition-delay);
+`
 
 const Banner = styled.header`
   display: flex;
@@ -71,7 +74,7 @@ const Banner = styled.header`
 `
 
 const BannerTitle = styled.h1`
-  color: var(--main-white);
+  color: var(--white);
 `
 
 const Intro = styled.section`

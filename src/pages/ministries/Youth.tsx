@@ -9,10 +9,7 @@ import { motion } from 'framer-motion'
 export const Youth = () => {
   useDocumentTitle('Youth')
   return (
-    <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}>
+    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Banner>
         <BannerTitle>youth</BannerTitle>
       </Banner>
@@ -37,9 +34,15 @@ export const Youth = () => {
           </p>
         </IntroDescription>
       </Intro>
-    </motion.main>
+    </Container>
   )
 }
+
+const Container = styled(motion.main)`
+  background-color: var(--main-white);
+  color: var(--main-black);
+  transition: var(--transition-delay);
+`
 
 const Banner = styled.header`
   display: flex;
@@ -56,7 +59,8 @@ const Banner = styled.header`
 `
 
 const BannerTitle = styled.h1`
-  color: var(--main-white);
+  color: var(--white);
+  transition: var(--transition-delay);
 `
 
 const Intro = styled.section`

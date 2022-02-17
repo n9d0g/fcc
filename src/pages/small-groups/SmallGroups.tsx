@@ -9,10 +9,7 @@ import { motion } from 'framer-motion'
 export const SmallGroups = () => {
   useDocumentTitle('Small Groups')
   return (
-    <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}>
+    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <SmallGroupsSection>
         <Banner>
           <BannerTitle>our small groups</BannerTitle>
@@ -55,13 +52,20 @@ export const SmallGroups = () => {
           flip
         />
       </SmallGroupsSection>
-    </motion.main>
+    </Container>
   )
 }
 
+const Container = styled(motion.main)`
+  background-color: var(--main-white);
+  color: var(--main-black);
+  transition: var(--transition-delay);
+`
+
 const SmallGroupsSection = styled.section`
   text-align: center;
-  background-color: var(--main-green);
+  background-color: var(--main-white);
+  color: var(--main-black);
 `
 
 const Banner = styled.header`

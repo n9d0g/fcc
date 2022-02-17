@@ -60,8 +60,8 @@ const Container = styled.section`
   grid-gap: 2rem;
   justify-content: center;
   max-width: 60em;
-  margin: 1rem auto;
-  padding: 2rem 3rem;
+  margin: 0 auto;
+  padding: 3rem;
 
   @media (max-width: 60em) {
     grid-template-columns: repeat(1, 1fr);
@@ -76,6 +76,7 @@ const Item = styled.article`
   margin: 0 auto;
   padding: 2rem 1rem;
   background-color: var(--secondary-grey);
+  color: var(--black);
   border-radius: 1rem;
   box-shadow: rgba(100, 100, 111, 0.5) 0px 13px 29px 0px;
 `

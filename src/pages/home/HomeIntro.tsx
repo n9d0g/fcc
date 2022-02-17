@@ -7,7 +7,7 @@ import { Logo } from '../../components/Logo'
 export const HomeIntro = () => {
   return (
     <Intro>
-      <Logo colour="white" />
+      <Logo />
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -54,7 +54,8 @@ const Intro = styled.section`
 `
 
 const IntroHeader = styled.h1`
-  color: var(--main-white);
+  color: var(--white);
+  transition: var(--transition-delay);
 `
 
 const ButtonContainer = styled.div`

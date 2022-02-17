@@ -1,10 +1,6 @@
 import styled from 'styled-components'
 
-interface LogoProps {
-  colour: string
-}
-
-export const Logo = (props: LogoProps) => {
+export const Logo = () => {
   return (
     <LogoContainer>
       <SVG
@@ -17,7 +13,6 @@ export const Logo = (props: LogoProps) => {
         <SVGContainer
           id="svg-container"
           transform="translate(0.000000,2048.000000) scale(0.100000,-0.100000)"
-          fill={props.colour === 'black' ? '#000;' : '#FFF'}
           stroke="none">
           <path
             id="cross"
@@ -520,7 +515,7 @@ const SVGContainer = styled.g`
       fill: transparent;
     }
     100% {
-      fill: var(--main-white);
+      fill: var(--white);
     }
   }
 

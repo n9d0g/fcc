@@ -1,15 +1,39 @@
-:focus {
-  outline: 1px dashed var(--main-green);
+:root {
+  --white: #fff;
 }
 
-:root {
+body {
+  /* constant colours */
+  --white: #fff;
+  --black: #000;
+
+  /* theme colours */
   --main-blue: #2a8dbe;
   --main-green: #7aaa6e;
-  --main-black: #000000;
-  --main-white: #ffffff;
+  --main-black: #000;
+  --main-white: #fff;
   --secondary-grey: #b1aeab;
   --secondary-blue: #207eac;
   --width-max: 70rem;
+  --transition-delay: 1s;
+  --font-colour: #000;
+  --bg-colour: #fff;
+}
+
+body.dark {
+  /* constant colours */
+  --white: #e7e8e8;
+  --black: #0e141b;
+
+  /* theme colours */
+  --main-blue: #095a82;
+  --main-green: #0d3f00;
+  --main-black: #e7e8e8;
+  --main-white: #0e141b;
+  --secondary-grey: #b1aeab;
+  --secondary-blue: #207eac;
+  --font-colour: #fff;
+  --bg-colour: #0e141b;
 }
 
 html {

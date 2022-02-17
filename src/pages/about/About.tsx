@@ -9,10 +9,7 @@ import { motion } from 'framer-motion'
 export const About = () => {
   useDocumentTitle('About')
   return (
-    <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}>
+    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Banner>
         <BannerTitle>about FCC</BannerTitle>
       </Banner>
@@ -36,9 +33,15 @@ export const About = () => {
         btnText="leadership"
         btnLocation="/about/leadership"
       />
-    </motion.main>
+    </Container>
   )
 }
+
+const Container = styled(motion.main)`
+  background: var(--main-white);
+  color: var(--main-black);
+  transition: var(--transition-delay);
+`
 
 const Banner = styled.header`
   display: flex;
@@ -55,5 +58,6 @@ const Banner = styled.header`
 `
 
 const BannerTitle = styled.h1`
-  color: var(--main-white);
+  color: var(--white);
+  transition: var(--transition-delay);
 `

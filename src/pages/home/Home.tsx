@@ -10,10 +10,7 @@ import { motion } from 'framer-motion'
 export const Home = () => {
   useDocumentTitle('Home')
   return (
-    <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}>
+    <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <HomeContainer>
         <HomeIntro />
         <HomeJoin />
@@ -25,5 +22,8 @@ export const Home = () => {
 }
 
 const HomeContainer = styled.main`
+  background-color: var(--bg-colour);
+  color: var(--font-colour);
   text-align: center;
+  transition: var(--transition-delay);
 `

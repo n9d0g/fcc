@@ -9,16 +9,23 @@ import { giveDropdownItems } from '../data/giveDropdownItems'
 import { GoThreeBars } from 'react-icons/go'
 import { IoMdClose } from 'react-icons/io'
 import styled from 'styled-components'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useContext } from 'react'
 import { NavItemMobile } from './NavItemMobile'
 import { NavItemDropdownMobile } from './NavItemDropdownMobile'
 import { useNavigate } from 'react-router-dom'
 import { useOnClickOutside } from '../hooks/useOnClickOutside'
+import { BsFillMoonStarsFill, BsSunFill } from 'react-icons/bs'
+import ThemeContext from '../ThemeContext'
 
 export const Navbar = () => {
   const [mobileClicked, setMobileClicked] = useState(false)
+  const { theme, setTheme } = useContext(ThemeContext)
   const navigation = useNavigate()
   const ref = useRef<HTMLDivElement>(null!)
+  const themeToggle = () => {
+    setTheme(!theme)
+    document.body.classList.toggle('dark')
+  }
 
   useOnClickOutside(ref, () => setMobileClicked(false))
 
@@ -51,9 +58,15 @@ export const Navbar = () => {
           <NavItem location="/give" text="give" dropdown>
             <NavItemDropdown items={giveDropdownItems} right />
           </NavItem>
+          <SunMoon onClick={() => themeToggle()}>
+            {theme ? <Sun theme={theme} /> : <Moon theme={theme} />}
+          </SunMoon>
         </NavRight>
 
         {/* mobile */}
+        <SunMoonMobile onClick={() => themeToggle()}>
+          {theme ? <Sun theme={theme} /> : <Moon theme={theme} />}
+        </SunMoonMobile>
         <IconWrapper onClick={() => setMobileClicked(!mobileClicked)}>
           {!mobileClicked && <Bars aria-label="navigation" />}
         </IconWrapper>
@@ -90,6 +103,7 @@ const Nav = styled.nav`
   top: 0;
   background: var(--main-blue);
   z-index: 9999;
+  transition: var(--transition-delay);
 `
 
 const Container = styled.article`
@@ -158,13 +172,14 @@ const IconWrapperMobile = styled(IconWrapper)`
 
 const Bars = styled(GoThreeBars)`
   display: flex;
-  color: var(--main-white);
+  color: var(--white);
   font-size: 2.5rem;
+  transition: var(--transition-delay);
 `
 
 const Cancel = styled(IoMdClose)`
   display: flex;
-  color: var(--main-white);
+  color: var(--white);
   font-size: 2.5rem;
 `
 
@@ -182,4 +197,38 @@ const Drawer = styled.div`
   @media (min-width: 60em) {
     display: none;
   }
+`
+
+const SunMoon = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0 1rem;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  font-size: 1.5rem;
+  transition: 0.5s;
+
+  &:hover {
+    transform: scale(1.2);
+    background-color: var(--secondary-blue);
+    border-radius: 1.2rem;
+  }
+`
+
+const SunMoonMobile = styled(SunMoon)`
+  @media (min-width: 60em) {
+    display: none;
+  }
+`
+
+const Sun = styled(BsSunFill)`
+  color: yellow;
+`
+
+const Moon = styled(BsFillMoonStarsFill)`
+  color: darkblue;
 `

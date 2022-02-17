@@ -44,18 +44,14 @@ export const SermonNonActive = (props: SermonNonActiveProps) => {
   )
 }
 
-const Title = styled.h4`
-  color: var(--main-white);
-`
+const Title = styled.h4``
 
 const Speaker = styled.h5`
   font-weight: 400;
-  color: var(--main-white);
 `
 
 const Date = styled.h6`
   font-weight: 400;
-  color: var(--main-white);
   font-style: italic;
 `
 
@@ -64,6 +60,7 @@ const Sermon = styled.div`
   flex-direction: column;
   justify-content: space-between;
   background: var(--main-blue);
+  color: var(--white);
   padding: 0.9rem;
   border-radius: 0.25rem;
   margin-bottom: 1.5rem;

@@ -40,7 +40,6 @@ const Join = styled.section`
   max-width: var(--width-max);
   margin: 0 auto;
   padding: 5rem 1rem;
-
   @media (max-width: 60em) {
     flex-direction: column;
   }

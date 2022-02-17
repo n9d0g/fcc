@@ -30,18 +30,19 @@ const Banner = styled.p`
   letter-spacing: 1px;
   font-size: 0.8rem;
   color: var(--main-black);
+  transition: var(--transition-delay);
 `
 
 const ZoomLink = styled.a`
   text-decoration: none;
   color: var(--main-black);
-  box-shadow: 0 1px 0 0 var(--main-white);
+  box-shadow: 0 1px 0 0 var(--white);
   transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
     box-shadow 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 
   &:hover,
   &:focus {
-    box-shadow: 0 4px 0 0 var(--main-white);
-    color: var(--main-white);
+    box-shadow: 0 4px 0 0 var(--white);
+    color: var(--white);
   }
 `
