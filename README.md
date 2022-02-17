@@ -32,9 +32,7 @@ Some features are still under development, but here is a list of features that a
 - ✅ &nbsp;CSS Grid and Flexbox integration for CSS layout
 - ✅ &nbsp;Mobile friendly
 - ✅ &nbsp;Light/Dark mode
-- ✅ &nbsp;Built and deployed with Netlify
-- 🚧 &nbsp;Hosted on Netlify or other hosting platform
-- 🚧 &nbsp;Acquire domain name from board of elders
+- ✅ &nbsp;Built, hosted and deployed with Netlify
 - 🚧 &nbsp;Testing with Jest and react-testing-library
 - 🚧 &nbsp;GraphQL Integration for data object storage for objects in `./src/data` folder
 - 🚧 &nbsp;CI/CD workflow
