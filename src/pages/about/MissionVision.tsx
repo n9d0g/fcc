@@ -1,7 +1,5 @@
-import React from 'react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
-import banner from '../../assets/pictures/about_bg.jpg'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
