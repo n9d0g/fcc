@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import { SermonNonActive } from '../../components/SermonNonActive'
 import { SermonActive } from '../../components/SermonActive'
-import { SermonLinks } from '../../data/SermonLinks'
 import { Button } from '../../components/Button'
 import HomeSermonContext from './HomeSermonContext'
 import styled from 'styled-components'
 
-export const HomeSermons = () => {
-  const [activeSermon, setActiveSermon] = useState<any>(SermonLinks[0])
+export const HomeSermons = (props: any) => {
+  const [activeSermon, setActiveSermon] = useState<any>(props.data[0])
 
   return (
     <Sermons>
@@ -17,9 +16,9 @@ export const HomeSermons = () => {
         <HomeSermonContext.Provider value={{ activeSermon, setActiveSermon }}>
           <SermonActive youtube={activeSermon.youtube} />
           <NonActiveSermonContainer>
-            <SermonNonActive data={SermonLinks[0]} />
-            <SermonNonActive data={SermonLinks[1]} />
-            <SermonNonActive data={SermonLinks[2]} />
+            {props.data.map((item: any, index: string) => {
+              return <SermonNonActive key={index} data={item} />
+            })}
           </NonActiveSermonContainer>
         </HomeSermonContext.Provider>
       </SermonContainer>
