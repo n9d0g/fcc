@@ -66,7 +66,7 @@ const NavItemLink = styled(Link)`
 `
 
 const Text = styled.button`
-  margin: 0.9rem;
+  margin: 0.8rem;
   background: none;
   border: none;
   padding: 0;
