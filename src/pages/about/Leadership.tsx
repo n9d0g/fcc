@@ -1,37 +1,14 @@
 import { Elder } from '../../components/Elder'
+import { Elders } from '../../data/Elders'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
 import banner from '../../assets/pictures/leadership_bg.jpg'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
-import sanityClient from '../../client'
 
 export const Leadership = () => {
   useDocumentTitle('Leadership')
-
-  const [elderData, setElderData] = useState()
-
-  useEffect(() => {
-    sanityClient
-      .fetch(
-        `*[_type == 'elder'] | order(_createdAt asc) {
-          name,
-          title,
-          description,
-          subministries,
-          picture {
-            asset -> {
-              url
-            }
-          },
-        }`
-      )
-      .then(data => setElderData(data))
-      .catch(console.error)
-  }, [])
-
   return (
     <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Banner>
@@ -50,7 +27,7 @@ export const Leadership = () => {
           church.
         </Text>
       </Intro>
-      {elderData && <Elder data={elderData} />}
+      <Elder data={Elders} />
     </Container>
   )
 }
@@ -69,7 +46,6 @@ const Banner = styled.header`
   background-image: url(${banner});
   margin: 0 auto;
   padding: 7rem 0;
-
   @media (max-width: 60em) {
     padding: 4rem 0;
   }
@@ -86,7 +62,6 @@ const Intro = styled.section`
   max-width: var(--width-max);
   margin: 0 auto;
   padding: 5rem 0;
-
   @media (max-width: 60em) {
     flex-direction: column;
     padding: 2rem 0;

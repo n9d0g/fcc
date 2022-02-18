@@ -1,13 +1,17 @@
 import styled from 'styled-components'
+import lolita from '../assets/pictures/elders/lolita.jpg'
+import roland from '../assets/pictures/elders/roland.jpg'
+import errol from '../assets/pictures/elders/errol.jpg'
+import chrys from '../assets/pictures/elders/chrys.jpg'
 
 interface SubMinistriesItemProps {
   ministry: string
-  leaders: string
+  leader: string
 }
 
 interface ElderItemProps {
   name: string
-  picture: any
+  picture: string
   title: string
   description: string
   subministries: Array<SubMinistriesItemProps>
@@ -24,7 +28,7 @@ export const Elder = (props: ElderProps) => {
         return (
           <Item key={index}>
             <>
-              <ElderPicture url={elder.picture.asset.url}></ElderPicture>
+              <ElderPicture picture={elder.picture}></ElderPicture>
               <ElderInfo>
                 <Name>{elder.name}</Name>
                 <Title>{elder.title}</Title>
@@ -37,7 +41,7 @@ export const Elder = (props: ElderProps) => {
                 (item: SubMinistriesItemProps, index: number) => {
                   return (
                     <SubMinistry key={index}>
-                      <u>{item.ministry}</u>: <i>{item.leaders}</i>
+                      <u>{item.ministry}</u>: <i>{item.leader}</i>
                     </SubMinistry>
                   )
                 }
@@ -58,7 +62,6 @@ const Container = styled.section`
   max-width: 60em;
   margin: 0 auto;
   padding: 3rem;
-
   @media (max-width: 60em) {
     grid-template-columns: repeat(1, 1fr);
     padding: 0 2rem;
@@ -83,7 +86,7 @@ const ElderInfo = styled.div`
 `
 
 interface ElderPictureProps {
-  url: string
+  picture: string
 }
 
 const ElderPicture = styled.div<ElderPictureProps>`
@@ -91,8 +94,17 @@ const ElderPicture = styled.div<ElderPictureProps>`
   width: 30rem;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  background-image: ${props => `url(${props.url})`};
-
+  // TODO: find more efficient solution for this
+  background-image: ${props =>
+    props.picture === 'lolita'
+      ? `url(${lolita})`
+      : '' || props.picture === 'errol'
+      ? `url(${errol})`
+      : '' || props.picture === 'chrys'
+      ? `url(${chrys})`
+      : '' || props.picture === 'roland'
+      ? `url(${roland})`
+      : ''};
   @media (max-width: 60em) {
     height: 20rem;
     width: 20rem;
@@ -123,7 +135,6 @@ const SubMinsitryTitle = styled.h6`
 const SubMinistry = styled.p`
   padding: 0;
   margin: 0;
-
   @media (max-width: 60em) {
     padding: 0;
   }
