@@ -2,16 +2,17 @@ import React, { useContext } from 'react'
 import HomeSermonContext from '../pages/home/HomeSermonContext'
 import styled from 'styled-components'
 
-// TODO: get interface working once more familliar with sanity.io
-// interface SermonNonActiveProps {
-//   title: string
-//   speaker: string
-//   date: string
-//   scripture: string
-//   youtube: string
-// }
+interface SermonNonActiveProps {
+  data: {
+    title: string
+    speaker: string
+    date: string
+    scripture: string
+    youtube: string
+  }
+}
 
-export const SermonNonActive = (props: any) => {
+export const SermonNonActive = (props: SermonNonActiveProps) => {
   const { activeSermon, setActiveSermon } = useContext(HomeSermonContext)
 
   const scroll = () => {
