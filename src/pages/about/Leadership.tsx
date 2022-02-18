@@ -16,19 +16,17 @@ export const Leadership = () => {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == 'elder'] {
-      name,
-      slug,
-      picture {
-        asset -> {
-          _id,
-          url
-        }
-      },
-      title,
-      description,
-      subministries
-    }`
+        `*[_type == 'elder'] | order(_createdAt asc) {
+          name,
+          title,
+          description,
+          subministries,
+          picture {
+            asset -> {
+              url
+            }
+          },
+        }`
       )
       .then(data => setElderData(data))
       .catch(console.error)

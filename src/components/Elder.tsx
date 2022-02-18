@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 interface SubMinistriesItemProps {
-  subministryname: string
+  ministry: string
   leaders: string
 }
 
@@ -37,7 +37,7 @@ export const Elder = (props: ElderProps) => {
                 (item: SubMinistriesItemProps, index: number) => {
                   return (
                     <SubMinistry key={index}>
-                      <u>{item.subministryname}</u>: <i>{item.leaders}</i>
+                      <u>{item.ministry}</u>: <i>{item.leaders}</i>
                     </SubMinistry>
                   )
                 }
