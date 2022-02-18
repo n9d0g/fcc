@@ -1,5 +1,4 @@
 import { Elder } from '../../components/Elder'
-import { Elders } from '../../data/Elders'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
 import banner from '../../assets/pictures/leadership_bg.jpg'
@@ -27,7 +26,7 @@ export const Leadership = () => {
           church.
         </Text>
       </Intro>
-      <Elder data={Elders} />
+      <Elder />
     </Container>
   )
 }
