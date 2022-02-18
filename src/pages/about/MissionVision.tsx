@@ -5,38 +5,45 @@ import banner from '../../assets/pictures/about_bg.jpg'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
+import { useSinglePrismicDocument } from '@prismicio/react'
 
 export const MissionVision = () => {
   useDocumentTitle('Mission & Vision')
+  const [document]: any = useSinglePrismicDocument('mission-vision-page')
+
   return (
-    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <Banner>
-        <BannerTitle>mission & vision</BannerTitle>
-      </Banner>
-      <Breadcrumb>
-        <BreadcrumbItem location="/" title="home" />
-        <BreadcrumbItem location="/about" title="about" />
-        <BreadcrumbItem
-          location="/about/mission-vision"
-          title="mission & vision"
-          last
-        />
-      </Breadcrumb>
-      <Mission>
-        <MissionHeader>our mission:</MissionHeader>
-        <MissionDescription>
-          To introduce and represent Christ through our nurturing, small
-          group-driven ministries in the community.
-        </MissionDescription>
-      </Mission>
-      <Vision>
-        <VisionHeader>our vision:</VisionHeader>
-        <VisionDescription>
-          A Christ-centred, Holy Spirit-led community committed to the building
-          of strong relationships and planting of healthy reproducing churches.
-        </VisionDescription>
-      </Vision>
-    </Container>
+    <>
+      {document ? (
+        <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <Banner banner={document.data.banner.url}>
+            <BannerTitle>{document.data.title}</BannerTitle>
+          </Banner>
+          <Breadcrumb>
+            <BreadcrumbItem location="/" title="home" />
+            <BreadcrumbItem location="/about" title="about" />
+            <BreadcrumbItem
+              location="/about/mission-vision"
+              title="mission & vision"
+              last
+            />
+          </Breadcrumb>
+          <Mission>
+            <MissionHeader>{document.data.mission_header}</MissionHeader>
+            <MissionDescription>
+              {document.data.mission_description}
+            </MissionDescription>
+          </Mission>
+          <Vision>
+            <VisionHeader>{document.data.vision_header}</VisionHeader>
+            <VisionDescription>
+              {document.data.vision_description}
+            </VisionDescription>
+          </Vision>
+        </Container>
+      ) : (
+        <h1>loading</h1>
+      )}
+    </>
   )
 }
 
@@ -46,12 +53,16 @@ const Container = styled(motion.main)`
   transition: var(--transition-delay);
 `
 
-const Banner = styled.header`
+interface BannerProps {
+  banner: string
+}
+
+const Banner = styled.header<BannerProps>`
   display: flex;
   justify-content: center;
   background-size: cover;
   background-position: 50%;
-  background-image: url(${banner});
+  background-image: ${props => `url(${props.banner})`};
   margin: 0 auto;
   padding: 7rem 0;
 

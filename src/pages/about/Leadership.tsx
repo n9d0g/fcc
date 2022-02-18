@@ -12,7 +12,7 @@ export const Leadership = () => {
 
   return (
     <>
-      {document && (
+      {document ? (
         <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <Banner banner={document.data.banner.url}>
             <BannerTitle>{document.data.title}</BannerTitle>
@@ -31,6 +31,8 @@ export const Leadership = () => {
           </Intro>
           <Elder />
         </Container>
+      ) : (
+        <h1>loading</h1>
       )}
     </>
   )

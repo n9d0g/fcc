@@ -1,33 +1,35 @@
-import React from 'react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
-import leadership_bg from '../../assets/pictures/leadership_bg.jpg'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
+import { useSinglePrismicDocument } from '@prismicio/react'
 
 export const Give = () => {
   useDocumentTitle('Give')
+  const [document]: any = useSinglePrismicDocument('give_page')
 
   return (
-    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <GiveSection>
-        <GiveBanner>
-          <GiveBannerTitle>give</GiveBannerTitle>
-        </GiveBanner>
-        <Breadcrumb>
-          <BreadcrumbItem location="/" title="home" />
-          <BreadcrumbItem location="/give" title="give" last />
-        </Breadcrumb>
-        <GiveIntro>
-          <GiveIntroText>
-            You can give financially in multiple ways, but as our services are
-            temporarily online, you can give online by sending an e-transfer to{' '}
-            <GiveIntroTextEmail>fcc.fcac@gmail.com</GiveIntroTextEmail>.
-          </GiveIntroText>
-        </GiveIntro>
-      </GiveSection>
-    </Container>
+    <>
+      {document ? (
+        <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <GiveSection>
+            <GiveBanner banner={document.data.banner.url}>
+              <GiveBannerTitle>{document.data.title}</GiveBannerTitle>
+            </GiveBanner>
+            <Breadcrumb>
+              <BreadcrumbItem location="/" title="home" />
+              <BreadcrumbItem location="/give" title="give" last />
+            </Breadcrumb>
+            <GiveIntro>
+              <GiveIntroText>{document.data.description}</GiveIntroText>
+            </GiveIntro>
+          </GiveSection>
+        </Container>
+      ) : (
+        <h1>loading</h1>
+      )}
+    </>
   )
 }
 
@@ -43,10 +45,14 @@ const GiveSection = styled.div`
   transition: var(--transition-delay);
 `
 
-const GiveBanner = styled.header`
+interface GiveBannerProps {
+  banner: string
+}
+
+const GiveBanner = styled.header<GiveBannerProps>`
   display: flex;
   justify-content: center;
-  background-image: url(${leadership_bg});
+  background-image: ${props => `url(${props.banner})`};
   background-size: cover;
   background-position: 50%;
   padding: 7rem 0;
@@ -77,8 +83,4 @@ const GiveIntroText = styled.p`
   text-align: center;
   font-size: 1.3rem;
   max-width: 50rem;
-`
-
-const GiveIntroTextEmail = styled.span`
-  font-style: italic;
 `
