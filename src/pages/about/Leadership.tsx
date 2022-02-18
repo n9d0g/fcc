@@ -1,33 +1,38 @@
 import { Elder } from '../../components/Elder'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
-import banner from '../../assets/pictures/leadership_bg.jpg'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
+import { useSinglePrismicDocument } from '@prismicio/react'
 
 export const Leadership = () => {
   useDocumentTitle('Leadership')
+  const [document]: any = useSinglePrismicDocument('leadership')
+
   return (
-    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <Banner>
-        <BannerTitle>our team</BannerTitle>
-      </Banner>
-      <Breadcrumb>
-        <BreadcrumbItem location="/" title="home" />
-        <BreadcrumbItem location="/about" title="about" />
-        <BreadcrumbItem location="/about/leadership" title="leadership" last />
-      </Breadcrumb>
-      <Intro>
-        <Text>
-          We believe God’s plan is that each local church be led by a team of
-          qualified, spiritually mature men and women whose proven leadership in
-          their home and community demonstrates their ability to lead God’s
-          church.
-        </Text>
-      </Intro>
-      <Elder />
-    </Container>
+    <>
+      {document && (
+        <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <Banner banner={document.data.banner.url}>
+            <BannerTitle>{document.data.title}</BannerTitle>
+          </Banner>
+          <Breadcrumb>
+            <BreadcrumbItem location="/" title="home" />
+            <BreadcrumbItem location="/about" title="about" />
+            <BreadcrumbItem
+              location="/about/leadership"
+              title="leadership"
+              last
+            />
+          </Breadcrumb>
+          <Intro>
+            <Text>{document.data.description}</Text>
+          </Intro>
+          <Elder />
+        </Container>
+      )}
+    </>
   )
 }
 
@@ -37,12 +42,16 @@ const Container = styled(motion.main)`
   transition: var(--transition-delay);
 `
 
-const Banner = styled.header`
+interface BannerProps {
+  banner: string
+}
+
+const Banner = styled.header<BannerProps>`
   display: flex;
   justify-content: center;
   background-size: cover;
   background-position: 50%;
-  background-image: url(${banner});
+  background-image: ${props => `url(${props.banner})`};
   margin: 0 auto;
   padding: 7rem 0;
   @media (max-width: 60em) {
