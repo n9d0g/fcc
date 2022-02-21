@@ -53,7 +53,7 @@ const Banner = styled.header<BannerProps>`
   justify-content: center;
   background-size: cover;
   background-position: 50%;
-  background-image: ${props => `url(${props.banner})`};
+  background-image: url(${props => props.banner});
   margin: 0 auto;
   padding: 7rem 0;
   @media (max-width: 60em) {
