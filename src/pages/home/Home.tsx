@@ -6,18 +6,34 @@ import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { HomeMission } from './HomeMission'
+import { useSinglePrismicDocument } from '@prismicio/react'
 
 export const Home = () => {
   useDocumentTitle('Home')
+  const [document]: any = useSinglePrismicDocument('home')
+
   return (
-    <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <HomeContainer>
-        <HomeIntro />
-        <HomeJoin />
-        <HomeMission />
-        <HomeSermons />
-      </HomeContainer>
-    </motion.main>
+    <>
+      {document ? (
+        <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <HomeContainer>
+            <HomeIntro
+              title={document.data.title}
+              banner={document.data.banner.url}
+            />
+            <HomeJoin
+              title={document.data.home_join_title}
+              description={document.data.join_prompt_description}
+              picture={document.data.join_picture.url}
+            />
+            <HomeMission description={document.data.home_mission} />
+            <HomeSermons title={document.data.home_sermons_title} />
+          </HomeContainer>
+        </motion.main>
+      ) : (
+        <h1>loading</h1>
+      )}
+    </>
   )
 }
 

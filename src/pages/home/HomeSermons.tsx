@@ -6,12 +6,12 @@ import { Button } from '../../components/Button'
 import HomeSermonContext from './HomeSermonContext'
 import styled from 'styled-components'
 
-export const HomeSermons = () => {
+export const HomeSermons = (props: any) => {
   const [activeSermon, setActiveSermon] = useState<any>(SermonLinks[0])
 
   return (
     <Sermons>
-      <h2 id="home-sermon">recent sermons</h2>
+      <h2 id="home-sermon">{props.title}</h2>
       <LineBreak />
       <SermonContainer>
         <HomeSermonContext.Provider value={{ activeSermon, setActiveSermon }}>

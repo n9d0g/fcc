@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion'
-import React from 'react'
 import styled from 'styled-components'
 
-export const HomeMission = () => {
+export const HomeMission = (props: any) => {
   return (
     <Mission>
       <motion.div
@@ -13,11 +12,7 @@ export const HomeMission = () => {
           visible: { opacity: 1, y: 0 },
           hidden: { opacity: 0, y: 150 },
         }}>
-        <Header>
-          Our mission here at Freedom in Christ Church is to introduce and
-          represent Christ through our nurturing, small group-driven ministries
-          in the community.
-        </Header>
+        <Header>{props.description}</Header>
       </motion.div>
     </Mission>
   )
