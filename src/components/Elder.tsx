@@ -1,8 +1,5 @@
 import styled from 'styled-components'
-import lolita from '../assets/pictures/elders/lolita.jpg'
-import roland from '../assets/pictures/elders/roland.jpg'
-import errol from '../assets/pictures/elders/errol.jpg'
-import chrys from '../assets/pictures/elders/chrys.jpg'
+import { useAllPrismicDocumentsByType } from '@prismicio/react'
 
 interface SubMinistriesItemProps {
   ministry: string
@@ -10,46 +7,47 @@ interface SubMinistriesItemProps {
 }
 
 interface ElderItemProps {
-  name: string
-  picture: string
-  title: string
-  description: string
-  subministries: Array<SubMinistriesItemProps>
+  data: {
+    name: string
+    picture: any
+    title: string
+    description: string
+    subministries: Array<SubMinistriesItemProps>
+  }
 }
 
-interface ElderProps {
-  data: Array<ElderItemProps>
-}
+export const Elder = () => {
+  const [document]: any = useAllPrismicDocumentsByType('elder')
 
-export const Elder = (props: ElderProps) => {
   return (
     <Container>
-      {props.data.map((elder: ElderItemProps, index: number) => {
-        return (
-          <Item key={index}>
-            <>
-              <ElderPicture picture={elder.picture}></ElderPicture>
-              <ElderInfo>
-                <Name>{elder.name}</Name>
-                <Title>{elder.title}</Title>
-                <Ministry>{elder.description}</Ministry>
-              </ElderInfo>
-            </>
-            <SubMinistriesContainer>
-              <SubMinsitryTitle>Sub-Ministries:</SubMinsitryTitle>
-              {elder.subministries.map(
-                (item: SubMinistriesItemProps, index: number) => {
-                  return (
-                    <SubMinistry key={index}>
-                      <u>{item.ministry}</u>: <i>{item.leader}</i>
-                    </SubMinistry>
-                  )
-                }
-              )}
-            </SubMinistriesContainer>
-          </Item>
-        )
-      })}
+      {document &&
+        document.map((elder: ElderItemProps, index: number) => {
+          return (
+            <Item key={index}>
+              <ElderTopInfo>
+                <ElderPicture picture={elder.data.picture.url}></ElderPicture>
+                <ElderInfo>
+                  <Name>{elder.data.name}</Name>
+                  <Title>{elder.data.title}</Title>
+                  <Ministry>{elder.data.description}</Ministry>
+                </ElderInfo>
+              </ElderTopInfo>
+              <SubMinistriesContainer>
+                <SubMinsitryTitle>Sub-Ministries:</SubMinsitryTitle>
+                {elder.data.subministries.map(
+                  (item: SubMinistriesItemProps, index: number) => {
+                    return (
+                      <SubMinistry key={index}>
+                        <u>{item.ministry}</u>: <i>{item.leader}</i>
+                      </SubMinistry>
+                    )
+                  }
+                )}
+              </SubMinistriesContainer>
+            </Item>
+          )
+        })}
     </Container>
   )
 }
@@ -80,6 +78,11 @@ const Item = styled.article`
   box-shadow: rgba(100, 100, 111, 0.5) 0px 13px 29px 0px;
 `
 
+const ElderTopInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
 const ElderInfo = styled.div`
   display: flex;
   flex-direction: column;
@@ -94,17 +97,8 @@ const ElderPicture = styled.div<ElderPictureProps>`
   width: 30rem;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  // TODO: find more efficient solution for this
-  background-image: ${props =>
-    props.picture === 'lolita'
-      ? `url(${lolita})`
-      : '' || props.picture === 'errol'
-      ? `url(${errol})`
-      : '' || props.picture === 'chrys'
-      ? `url(${chrys})`
-      : '' || props.picture === 'roland'
-      ? `url(${roland})`
-      : ''};
+  background-image: ${props => `url(${props.picture})`};
+
   @media (max-width: 60em) {
     height: 20rem;
     width: 20rem;

@@ -1,46 +1,40 @@
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
-import bg from '../../assets/pictures/smallgroups_bg.jpg'
-import about_bg from '../../assets/pictures/about_bg.jpg'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
+import { useSinglePrismicDocument } from '@prismicio/react'
+import { Spinner } from '../../components/Spinner'
 
 export const Yumul = () => {
   useDocumentTitle('Yumul')
+  const [document]: any = useSinglePrismicDocument('yumul')
+
   return (
-    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <Banner>
-        <BannerTitle>yumul bible study</BannerTitle>
-      </Banner>
-      <Breadcrumb>
-        <BreadcrumbItem location="/" title="home" />
-        <BreadcrumbItem location="/smallgroups" title="SGs" />
-        <BreadcrumbItem
-          location="/smallgroups/yumul"
-          title="yumul bible study"
-          last
-        />
-      </Breadcrumb>
-      <Intro>
-        <IntroPicture />
-        <IntroDescription>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-          <DescriptionContact>
-            Contact: Bro Roland Yumul{' '}
-            <ContactNumber href="tel:647-523-9361">
-              (647) 523-9361
-            </ContactNumber>
-          </DescriptionContact>
-        </IntroDescription>
-      </Intro>
-    </Container>
+    <>
+      {document ? (
+        <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <Banner banner={document.data.banner.url}>
+            <BannerTitle>{document.data.title}</BannerTitle>
+          </Banner>
+          <Breadcrumb>
+            <BreadcrumbItem location="/" title="home" />
+            <BreadcrumbItem location="/smallgroups" title="SGs" />
+            <BreadcrumbItem
+              location="/smallgroups/yumul"
+              title="yumul bible study"
+              last
+            />
+          </Breadcrumb>
+          <Intro>
+            <IntroPicture picture={document.data.picture.url} />
+            <IntroDescription>{document.data.description}</IntroDescription>
+          </Intro>
+        </Container>
+      ) : (
+        <Spinner />
+      )}
+    </>
   )
 }
 
@@ -50,12 +44,16 @@ const Container = styled(motion.main)`
   transition: var(--transition-delay);
 `
 
-const Banner = styled.header`
+interface BannerProps {
+  banner: string
+}
+
+const Banner = styled.header<BannerProps>`
   display: flex;
   justify-content: center;
   background-size: cover;
   background-position: 50%;
-  background-image: url(${bg});
+  background-image: url(${props => props.banner});
   margin: 0 auto;
   padding: 7rem 0;
 
@@ -81,9 +79,13 @@ const Intro = styled.section`
   }
 `
 
-const IntroPicture = styled.div`
+interface IntroPictureProps {
+  picture: string
+}
+
+const IntroPicture = styled.div<IntroPictureProps>`
   flex: 1;
-  background-image: url(${about_bg});
+  background-image: url(${props => props.picture});
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -95,7 +97,3 @@ const IntroPicture = styled.div`
 const IntroDescription = styled.p`
   flex: 1;
 `
-
-const ContactNumber = styled.a``
-
-const DescriptionContact = styled.p``

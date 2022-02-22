@@ -1,27 +1,27 @@
 # 📰 Freedom in Christ Church Website
 
-[![Demo](https://img.shields.io/badge/demo-netlify-blue?style=flat-square)](https://620dae25cda7fa0008402f67--fcc-test-v1.netlify.app/)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ec4b3ca5-b231-41e5-a9c5-99567360564c/deploy-status)](https://app.netlify.com/sites/fcccanada/deploys)
 ![GitHub](https://img.shields.io/github/license/n9d0g/fcc?style=flat-square)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/n9d0g/fcc?style=flat-square)
 ![GitHub last commit](https://img.shields.io/github/last-commit/n9d0g/fcc?style=flat-square)
 
-Official website for the Freedom in Christ Church based in Mississauga, ON. This website was developed with the growing need as the church continues to expand.
+Official website for the [Freedom in Christ Church](https://www.fcccanada.ca) based in Mississauga, ON. This website was developed with the growing need as the church continues to expand.
 
 ## 🏁 Getting Started
 
 1. Clone repository `git clone https://github.com/n9d0g/fcc`
-2. Install dependencies `yarn add`
-3. Start application locally `yarn start`
+2. Install dependencies `yarn add` or `npm i`
+3. Start application locally `yarn start` or `npm start`
 
 ## 😤 Tech Stack
 
-- TypeScript
-- React
-- Node
-- Styled Components
-- Framer Motion
-- Netlify
+- [TypeScript v4.4.2](https://www.typescriptlang.org/)
+- [React v17.0.2](https://reactjs.org/)
+- [Node v4.17.0](https://nodejs.org/en/)
+- [Styled Components v5.3.3](https://styled-components.com/)
+- [Framer Motion v6.2.6](https://www.framer.com/motion/)
+- [Netlify](https://www.netlify.com/)
+- [Prismic CMS](https://prismic.io/)
 
 ## 😮 Features
 
@@ -34,10 +34,8 @@ Some features are still under development, but here is a list of features that a
 - ✅ &nbsp;Mobile friendly
 - ✅ &nbsp;Light/Dark mode
 - ✅ &nbsp;Built, hosted and deployed with Netlify
+- ✅ &nbsp;Prismic headless CMS integration for non-technical church members who would like to contribute
 - 🚧 &nbsp;Testing with Jest and react-testing-library
-- 🚧 &nbsp;GraphQL Integration for data object storage for objects in `./src/data` folder
 - 🚧 &nbsp;CI/CD workflow
-- 🚧 &nbsp;Content Management System for non-technical church members who would like to contribute
-- 🚧 &nbsp;Personalize pages through Ministry and Small Group leaders
 - 🚧 &nbsp;Convert site to Next.js application for SSR
 - 🚧 &nbsp;Payment options through Stripe to aid with tithes and offerings

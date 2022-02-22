@@ -1,6 +1,5 @@
 import { createContext } from 'react'
-import { SermonLinks } from '../../data/SermonLinks'
 
-const HomeSermonContext = createContext<any>(SermonLinks[0])
+const HomeSermonContext = createContext<any>(null)
 
 export default HomeSermonContext
