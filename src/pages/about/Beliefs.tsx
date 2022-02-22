@@ -1,55 +1,70 @@
-import { Accordion } from '../../components/Accordion'
-import { CoreValues } from '../../data/CoreValues'
-import { StatementOfFaith } from '../../data/StatementOfFaith'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import banner from '../../assets/pictures/beliefs_bg.jpg'
 import styled from 'styled-components'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
+import { useSinglePrismicDocument } from '@prismicio/react'
+import { AccordionItem } from '../../components/AccordionItem'
 
 export const Beliefs = () => {
   useDocumentTitle('Beliefs')
-  const link = 'https://www.cmacan.org/about/'
+  const [document]: any = useSinglePrismicDocument('belief')
+
   return (
-    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <Banner>
-        <BannerTitle>our beliefs</BannerTitle>
-      </Banner>
-      <Breadcrumb>
-        <BreadcrumbItem location="/" title="home" />
-        <BreadcrumbItem location="/about" title="about" />
-        <BreadcrumbItem location="/about/beliefs" title="beliefs" last />
-      </Breadcrumb>
-      <Intro>
-        <IntroText>
-          The Christian and Missionary Alliance (C&MA) in Canada is a family of
-          churches; we make disciples and multiply transformational churches in
-          Canada and the world to the glory of the Triune God.
-        </IntroText>
-      </Intro>
-      <Content>
-        <CoreValuesSection>
-          <CoreValuesTitle>Core Values</CoreValuesTitle>
-          What we believe determines what we value, and what we value defines
-          how we live. We are committed to 11 core values that can be read
-          below:
-          <Accordion data={CoreValues} />
-        </CoreValuesSection>
-        <SoF>
-          <SoFTitle>Statement of Faith</SoFTitle>
-          <SoFDescription>
-            Our Statement of Faith identifies the core beliefs of{' '}
-            <span>
-              <CMA href={link} target="_blank" rel="noopener noreferrer">
-                The Christian and Missionary Alliance.
-              </CMA>
-            </span>
-          </SoFDescription>
-          <Accordion data={StatementOfFaith} />
-        </SoF>
-      </Content>
-    </Container>
+    <>
+      {document ? (
+        <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <Banner>
+            <BannerTitle>{document.data.title}</BannerTitle>
+          </Banner>
+          <Breadcrumb>
+            <BreadcrumbItem location="/" title="home" />
+            <BreadcrumbItem location="/about" title="about" />
+            <BreadcrumbItem location="/about/beliefs" title="beliefs" last />
+          </Breadcrumb>
+          <Intro>
+            <IntroText>{document.data.cma_description}</IntroText>
+          </Intro>
+          <Content>
+            <CoreValuesSection>
+              <CoreValuesTitle>
+                {document.data.core_values_title}
+              </CoreValuesTitle>
+              {document.data.core_values_description}
+              <AccordionContainer>
+                {document.data.core_values.map((item: any, index: any) => (
+                  <AccordionItem
+                    key={index}
+                    title={item.cv_title}
+                    description={item.cv_description}
+                  />
+                ))}
+              </AccordionContainer>
+            </CoreValuesSection>
+            <SoF>
+              <SoFTitle>{document.data.statement_of_faith_title}</SoFTitle>
+              <SoFDescription>
+                {document.data.statement_of_faith_description}
+              </SoFDescription>
+              <AccordionContainer>
+                {document.data.statement_of_faith_object.map(
+                  (item: any, index: number) => (
+                    <AccordionItem
+                      key={index}
+                      title={item.sof_title}
+                      description={item.sof_description}
+                    />
+                  )
+                )}
+              </AccordionContainer>
+            </SoF>
+          </Content>
+        </Container>
+      ) : (
+        <h1>loading</h1>
+      )}
+    </>
   )
 }
 
@@ -57,6 +72,7 @@ const Container = styled(motion.main)`
   background-color: var(--main-white);
   color: var(--main-black);
   transition: var(--transition-delay);
+  padding-bottom: 2rem;
 `
 
 const Banner = styled.header`
@@ -117,6 +133,11 @@ const CoreValuesTitle = styled.h2`
   text-align: center;
 `
 
+const AccordionContainer = styled.section`
+  max-width: var(--width-max);
+  padding: 1rem 0;
+`
+
 const SoF = styled(CoreValuesSection)``
 
 const SoFTitle = styled(CoreValuesTitle)``
@@ -126,17 +147,5 @@ const SoFDescription = styled.div`
 
   @media (max-width: 60em) {
     padding: 0 1rem;
-  }
-`
-
-const CMA = styled.a`
-  text-decoration: underline;
-  color: var(--main-blue);
-  transition: 0.1s ease-in;
-
-  &:hover,
-  &:focus {
-    color: var(--main-green);
-    font-size: 1rem;
   }
 `

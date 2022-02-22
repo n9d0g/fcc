@@ -5,7 +5,9 @@ import styled from 'styled-components'
 interface SermonItemProps {
   title: string
   speaker: string
+  scripture: string
   date: string
+  youtube: string
 }
 
 interface SermonPageNonActiveProps {

@@ -1,12 +1,11 @@
 import { Button } from '../../components/Button'
 import styled from 'styled-components'
-import bg_intro from '../../assets/pictures/home-bg.jpg'
 import { motion } from 'framer-motion'
 import { Logo } from '../../components/Logo'
 
-export const HomeIntro = () => {
+export const HomeIntro = (props: any) => {
   return (
-    <Intro>
+    <Intro banner={props.banner}>
       <Logo />
       <motion.div
         initial="hidden"
@@ -17,7 +16,7 @@ export const HomeIntro = () => {
           visible: { opacity: 1, y: 0 },
           hidden: { opacity: 0, y: 50 },
         }}>
-        <IntroHeader>Welcome to Freedom in Christ Church.</IntroHeader>
+        <IntroHeader>{props.title}</IntroHeader>
       </motion.div>
       <motion.div
         initial="hidden"
@@ -42,8 +41,12 @@ export const HomeIntro = () => {
   )
 }
 
-const Intro = styled.section`
-  background-image: url(${bg_intro});
+interface IntroBanner {
+  banner: string
+}
+
+const Intro = styled.section<IntroBanner>`
+  background-image: url(${props => props.banner});
   background-size: cover;
   background-position: 50%;
   padding: 0 0 16rem 0;

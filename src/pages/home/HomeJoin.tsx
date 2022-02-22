@@ -1,9 +1,8 @@
 import { Button } from '../../components/Button'
 import styled from 'styled-components'
-import joinPic from '../../assets/pictures/men_bg.jpg'
 import { motion } from 'framer-motion'
 
-export const HomeJoin = () => {
+export const HomeJoin = (props: any) => {
   return (
     <Join>
       <Content>
@@ -16,12 +15,8 @@ export const HomeJoin = () => {
             visible: { opacity: 1, y: 0 },
             hidden: { opacity: 0, y: 50 },
           }}>
-          <Header>come join us!</Header>
-          <Description>
-            Due to current COVID-19 restrictions, our services will be online
-            through ZOOM until further notice. Come visit us this Sunday at
-            10:30am EST!
-          </Description>
+          <Header>{props.title}</Header>
+          <Description>{props.description}</Description>
           <Button
             external
             location="https://us04web.zoom.us/j/3926981154?pwd=d1BHRTB3eStxZFZIS3lyWHBieENvZz09&fbclid=IwAR1N4y1LI5zX5bPnAABrXd_8ICuFko9Hw_5HV2P4wWj7U6JmALskzjO3H_U"
@@ -29,7 +24,7 @@ export const HomeJoin = () => {
           />
         </motion.div>
       </Content>
-      <Picture />
+      <Picture picture={props.picture} />
     </Join>
   )
 }
@@ -58,8 +53,12 @@ const Description = styled.p`
   text-align: left;
 `
 
-const Picture = styled.picture`
-  background-image: url(${joinPic});
+interface PictureProps {
+  picture: string
+}
+
+const Picture = styled.picture<PictureProps>`
+  background-image: url(${props => props.picture});
   background-position: 50% 50%;
   max-height: 18.75rem;
   max-width: 18.75rem;
