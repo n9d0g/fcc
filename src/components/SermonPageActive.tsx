@@ -2,29 +2,35 @@ import React, { useContext } from 'react'
 import SermonContext from '../pages/sermons/SermonContext'
 import styled from 'styled-components'
 
-export const SermonPageActive = () => {
+export const SermonPageActive = (props: any) => {
   const { sermonContext } = useContext(SermonContext)
 
   return (
-    <Active>
-      <ActiveInfo>
-        <InfoTop>
-          <Speaker>{sermonContext.speaker}</Speaker>
-          <Date>{sermonContext.date}</Date>
-          <Scripture>{sermonContext.scripture}</Scripture>
-        </InfoTop>
-        <LineBreak />
-        <h2>{sermonContext.title}</h2>
-      </ActiveInfo>
-      <VideoContainer>
-        <Video
-          src={`https://www.youtube.com/embed/${sermonContext.youtube}`}
-          width="1100"
-          height="640"
-          title="YouTube video player"
-          allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></Video>
-      </VideoContainer>
-    </Active>
+    <>
+      {sermonContext ? (
+        <Active>
+          <ActiveInfo>
+            <InfoTop>
+              <Speaker>{sermonContext.speaker}</Speaker>
+              <Date>{sermonContext.date}</Date>
+              <Scripture>{sermonContext.scripture}</Scripture>
+            </InfoTop>
+            <LineBreak />
+            <h2>{sermonContext.title}</h2>
+          </ActiveInfo>
+          <VideoContainer>
+            <Video
+              src={`https://www.youtube.com/embed/${sermonContext.youtube}`}
+              width="1100"
+              height="640"
+              title="YouTube video player"
+              allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></Video>
+          </VideoContainer>
+        </Active>
+      ) : (
+        <h1>loading</h1>
+      )}
+    </>
   )
 }
 

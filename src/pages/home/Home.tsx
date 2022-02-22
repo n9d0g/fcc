@@ -1,4 +1,3 @@
-import React from 'react'
 import { HomeIntro } from './HomeIntro'
 import { HomeSermons } from './HomeSermons'
 import { HomeJoin } from './HomeJoin'
@@ -11,10 +10,11 @@ import { useSinglePrismicDocument } from '@prismicio/react'
 export const Home = () => {
   useDocumentTitle('Home')
   const [document]: any = useSinglePrismicDocument('home')
+  const [sermons]: any = useSinglePrismicDocument('sermons')
 
   return (
     <>
-      {document ? (
+      {document && sermons ? (
         <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <HomeContainer>
             <HomeIntro
@@ -27,7 +27,10 @@ export const Home = () => {
               picture={document.data.join_picture.url}
             />
             <HomeMission description={document.data.home_mission} />
-            <HomeSermons title={document.data.home_sermons_title} />
+            <HomeSermons
+              title={document.data.home_sermons_title}
+              sermons={sermons.data.sermons}
+            />
           </HomeContainer>
         </motion.main>
       ) : (
