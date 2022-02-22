@@ -1,5 +1,4 @@
 import useDocumentTitle from '../../hooks/useDocumentTitle'
-import banner from '../../assets/pictures/beliefs_bg.jpg'
 import styled from 'styled-components'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
@@ -16,7 +15,7 @@ export const Beliefs = () => {
     <>
       {document ? (
         <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-          <Banner>
+          <Banner banner={document.data.banner.url}>
             <BannerTitle>{document.data.title}</BannerTitle>
           </Banner>
           <Breadcrumb>
@@ -76,12 +75,16 @@ const Container = styled(motion.main)`
   padding-bottom: 2rem;
 `
 
-const Banner = styled.header`
+interface BannerProps {
+  banner: string
+}
+
+const Banner = styled.header<BannerProps>`
   display: flex;
   justify-content: center;
   background-size: cover;
   background-position: 50%;
-  background-image: url(${banner});
+  background-image: url(${props => props.banner});
   margin: 0 auto;
   padding: 7rem 0;
 
