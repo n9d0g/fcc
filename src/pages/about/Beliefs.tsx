@@ -6,6 +6,7 @@ import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
 import { useSinglePrismicDocument } from '@prismicio/react'
 import { AccordionItem } from '../../components/AccordionItem'
+import { Spinner } from '../../components/Spinner'
 
 export const Beliefs = () => {
   useDocumentTitle('Beliefs')
@@ -62,7 +63,7 @@ export const Beliefs = () => {
           </Content>
         </Container>
       ) : (
-        <h1>loading</h1>
+        <Spinner />
       )}
     </>
   )

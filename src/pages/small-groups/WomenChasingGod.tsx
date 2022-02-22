@@ -4,6 +4,7 @@ import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
 import { useSinglePrismicDocument } from '@prismicio/react'
+import { Spinner } from '../../components/Spinner'
 
 export const WomenChasingGod = () => {
   useDocumentTitle('Women Chasing God')
@@ -31,7 +32,7 @@ export const WomenChasingGod = () => {
           </Intro>
         </Container>
       ) : (
-        <h1>loading</h1>
+        <Spinner />
       )}
     </>
   )

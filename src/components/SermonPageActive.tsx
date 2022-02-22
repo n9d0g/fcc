@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import SermonContext from '../pages/sermons/SermonContext'
 import styled from 'styled-components'
+import { Spinner } from './Spinner'
 
 export const SermonPageActive = (props: any) => {
   const { sermonContext } = useContext(SermonContext)
@@ -28,7 +29,7 @@ export const SermonPageActive = (props: any) => {
           </VideoContainer>
         </Active>
       ) : (
-        <h1>loading</h1>
+        <Spinner />
       )}
     </>
   )

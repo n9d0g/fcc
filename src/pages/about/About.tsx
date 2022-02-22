@@ -1,39 +1,43 @@
 import { LandingPageSection } from '../../components/LandingPageSection'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
-import banner from '../../assets/pictures/about_bg.jpg'
 import styled from 'styled-components'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
+import { useSinglePrismicDocument } from '@prismicio/react'
+import { Spinner } from '../../components/Spinner'
 
 export const About = () => {
   useDocumentTitle('About')
+  const [document]: any = useSinglePrismicDocument('about')
+
   return (
-    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <Banner>
-        <BannerTitle>about FCC</BannerTitle>
-      </Banner>
-      <Breadcrumb>
-        <BreadcrumbItem location="/" title="home" />
-        <BreadcrumbItem location="/about" title="about" last />
-      </Breadcrumb>
-      <LandingPageSection
-        title="what we believe"
-        btnText="doctrinal statement"
-        btnLocation="/about/beliefs"
-      />
-      <LandingPageSection
-        title="mission & vision"
-        btnText="mission & vision"
-        btnLocation="/about/mission-vision"
-        flip={true}
-      />
-      <LandingPageSection
-        title="our team"
-        btnText="leadership"
-        btnLocation="/about/leadership"
-      />
-    </Container>
+    <>
+      {document ? (
+        <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <Banner banner={document.data.banner.url}>
+            <BannerTitle>{document.data.title}</BannerTitle>
+          </Banner>
+          <Breadcrumb>
+            <BreadcrumbItem location="/" title="home" />
+            <BreadcrumbItem location="/about" title="about" last />
+          </Breadcrumb>
+          {document.data.section.map((item: any, index: any) => (
+            <LandingPageSection
+              key={index}
+              title={item.section_title}
+              btnText={item.button_text}
+              btnLocation={item.button_location}
+              description={item.description}
+              picture={item.picture.url}
+              flip={item.flipped}
+            />
+          ))}
+        </Container>
+      ) : (
+        <Spinner />
+      )}
+    </>
   )
 }
 
@@ -43,12 +47,16 @@ const Container = styled(motion.main)`
   transition: var(--transition-delay);
 `
 
-const Banner = styled.header`
+interface BannerProps {
+  banner: string
+}
+
+const Banner = styled.header<BannerProps>`
   display: flex;
   justify-content: center;
   background-size: cover;
   background-position: 50%;
-  background-image: url(${banner});
+  background-image: url(${props => props.banner});
   margin: 0 auto;
   padding: 7rem 0;
 
