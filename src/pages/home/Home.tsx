@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { HomeMission } from './HomeMission'
 import { useSinglePrismicDocument } from '@prismicio/react'
+import { Spinner } from '../../components/Spinner'
 
 export const Home = () => {
   useDocumentTitle('Home')
@@ -34,7 +35,7 @@ export const Home = () => {
           </HomeContainer>
         </motion.main>
       ) : (
-        <h1>loading</h1>
+        <Spinner />
       )}
     </>
   )

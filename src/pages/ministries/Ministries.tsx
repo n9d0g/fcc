@@ -1,58 +1,45 @@
 import { LandingPageSection } from '../../components/LandingPageSection'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import styled from 'styled-components'
-import bg from '../../assets/pictures/ministry_bg.jpg'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
+import { useSinglePrismicDocument } from '@prismicio/react'
+import { Spinner } from '../../components/Spinner'
 
 export const Ministries = () => {
   useDocumentTitle('Ministries')
+  const [document]: any = useSinglePrismicDocument('ministries')
+
   return (
-    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <MinistriesSection>
-        <Banner>
-          <BannerTitle>our ministries</BannerTitle>
-        </Banner>
-        <Breadcrumb>
-          <BreadcrumbItem location="/" title="home" />
-          <BreadcrumbItem location="/ministries" title="ministries" last />
-        </Breadcrumb>
-        <LandingPageSection
-          title="MEN-istry"
-          btnText="men's ministry"
-          btnLocation="/ministries/men"
-          flip={true}
-        />
-        <LandingPageSection
-          title="WOMEN-instry"
-          btnText="women's ministry"
-          btnLocation="/ministries/women"
-        />
-        <LandingPageSection
-          title="preteens"
-          btnText="preteens"
-          btnLocation="/ministries/preteens"
-          flip={true}
-        />
-        <LandingPageSection
-          title="youth"
-          btnText="youth"
-          btnLocation="/ministries/youth"
-        />
-        <LandingPageSection
-          title="young adults"
-          btnText="young adults"
-          btnLocation="/ministries/YA"
-          flip={true}
-        />
-        <LandingPageSection
-          title="praise & worship"
-          btnText="praise"
-          btnLocation="/ministries/praise"
-        />
-      </MinistriesSection>
-    </Container>
+    <>
+      {document ? (
+        <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <MinistriesSection>
+            <Banner banner={document.data.banner.url}>
+              <BannerTitle>{document.data.title}</BannerTitle>
+            </Banner>
+            <Breadcrumb>
+              <BreadcrumbItem location="/" title="home" />
+              <BreadcrumbItem location="/ministries" title="ministries" last />
+            </Breadcrumb>
+            {document.data.section.map((item: any, index: any) => (
+              <LandingPageSection
+                key={index}
+                title={item.section_title}
+                btnText={item.button_text}
+                btnLocation={item.button_location}
+                description={item.description}
+                picture={item.picture.url}
+                flip={item.flipped}
+              />
+            ))}
+          </MinistriesSection>
+        </Container>
+      ) : (
+        <Spinner />
+      )}
+    </>
   )
 }
 
@@ -67,12 +54,16 @@ const MinistriesSection = styled.section`
   color: var(--main-black);
 `
 
-const Banner = styled.header`
+interface BannerProps {
+  banner: string
+}
+
+const Banner = styled.header<BannerProps>`
   display: flex;
   justify-content: center;
   background-size: cover;
   background-position: 50%;
-  background-image: url(${bg});
+  background-image: url(${props => props.banner});
   margin: 0 auto;
   padding: 7rem 0;
 
