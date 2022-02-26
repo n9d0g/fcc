@@ -148,10 +148,14 @@ const IconWrapper = styled.button`
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  transition: 0.3s;
+
+  @media (min-width: 60em) {
+    transition: 0.3s;
+  }
 
   @media (max-width: 60em) {
     display: flex;
+    transition: none;
   }
 
   &:hover,
@@ -169,6 +173,7 @@ const IconWrapperMobile = styled(IconWrapper)`
   &:focus {
     background: none;
     border-radius: none;
+    transition: none;
   }
 `
 
@@ -212,13 +217,14 @@ const SunMoon = styled.button`
   cursor: pointer;
   outline: inherit;
   font-size: 1.5rem;
-  transition: 0.5s;
+  transition: none;
 
   @media (min-width: 60em) {
     &:hover {
       transform: scale(1.2);
       background-color: var(--secondary-blue);
       border-radius: 1.2rem;
+      transition: 0.5s;
     }
   }
 `

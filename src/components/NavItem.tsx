@@ -42,10 +42,11 @@ const NavItemLink = styled(Link)`
   text-align: left;
   text-decoration: none;
   color: var(--main-white);
-  transition: 0.3s;
   cursor: pointer;
 
   @media (min-width: 60em) {
+    transition: 0.3s;
+
     &:hover,
     &:focus {
       transform: translateY(-2.5%);
@@ -75,14 +76,19 @@ const Text = styled.button`
   text-align: left;
   text-decoration: none;
   color: var(--white);
-  transition: 0.3s;
   cursor: pointer;
+
+  @media (min-width: 60em) {
+    transition: 0.3s;
+  }
 `
 
 const TextIcon = styled.span`
-  > svg {
-    transform: translateY(21%) scale(1.5, 1.5);
-    transition: 0.1s ease-in;
-    color: var(--white);
+  @media (min-width: 60em) {
+    > svg {
+      transform: translateY(21%) scale(1.5, 1.5);
+      transition: 0.1s ease-in;
+      color: var(--white);
+    }
   }
 `
