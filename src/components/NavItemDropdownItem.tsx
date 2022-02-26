@@ -20,8 +20,11 @@ const Item = styled(Link)`
   padding: 0.7rem;
   text-decoration: none;
   color: var(--white);
-  transition: 0.3s;
   box-shadow: 0px 24px 3px -24px var(--secondary-grey);
+
+  @media (min-width: 60em) {
+    transition: 0.3s;
+  }
 
   &:hover,
   &:focus {

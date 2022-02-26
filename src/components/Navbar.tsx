@@ -148,7 +148,10 @@ const IconWrapper = styled.button`
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  transition: 0.3s;
+
+  @media (min-width: 60em) {
+    transition: 0.3s;
+  }
 
   @media (max-width: 60em) {
     display: flex;
