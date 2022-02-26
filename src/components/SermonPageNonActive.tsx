@@ -28,12 +28,16 @@ export const SermonPageNonActive = (props: SermonPageNonActiveProps) => {
       ?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const sermons = props.data.sort((a: any, b: any) =>
+    a.date < b.date ? 1 : -1
+  )
+
   return (
     <Container>
       <Title>sermon archive</Title>
       <LineBreak />
       <SermonsContainer>
-        {props.data.map((item: SermonItemProps, index: number) => {
+        {sermons.map((item: SermonItemProps, index: number) => {
           return (
             <Item
               active={sermonContext === item}
