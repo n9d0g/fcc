@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react'
 import SermonContext from '../pages/sermons/SermonContext'
 import styled from 'styled-components'
+import { BsFilterRight } from 'react-icons/bs'
 
 interface SermonItemProps {
   title: string
@@ -15,8 +16,13 @@ interface SermonPageNonActiveProps {
 }
 
 export const SermonPageNonActive = (props: SermonPageNonActiveProps) => {
+  // sort sermons by date initially
+  const originalSermonData = props.data.sort((a: any, b: any) =>
+    a.date < b.date ? 1 : -1
+  )
   const [activeSermon, setActiveSermon] = useState<boolean>(false)
   const { sermonContext, setSermonContext } = useContext(SermonContext)
+  const [sermons, setSermons] = useState(originalSermonData)
 
   // TODO: TS any fix
   const toggle = (item: SermonItemProps, index: any) => {
@@ -28,14 +34,31 @@ export const SermonPageNonActive = (props: SermonPageNonActiveProps) => {
       ?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const sermons = props.data.sort((a: any, b: any) =>
-    a.date < b.date ? 1 : -1
-  )
+  // filter by pastor
+  const sortSermons = (event: any) => {
+    setSermons(originalSermonData)
+    if (event.target.value === '') return setSermons(originalSermonData)
+
+    const filteredSermons = sermons.filter(item =>
+      item.speaker.toLowerCase().includes(event.target.value)
+    )
+    setSermons(filteredSermons)
+  }
 
   return (
     <Container>
       <Title>sermon archive</Title>
       <LineBreak />
+      <SearchFilterContainer>
+        <SearchFilter
+          type="text"
+          placeholder="filter sermons by speaker..."
+          onKeyDown={sortSermons}
+          onKeyUp={sortSermons}
+          onChange={sortSermons}
+        />
+        <FilterIcon />
+      </SearchFilterContainer>
       <SermonsContainer>
         {sermons.map((item: SermonItemProps, index: number) => {
           return (
@@ -55,6 +78,29 @@ export const SermonPageNonActive = (props: SermonPageNonActiveProps) => {
     </Container>
   )
 }
+
+const SearchFilterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+`
+
+const FilterIcon = styled(BsFilterRight)`
+  width: 3rem;
+  height: 3rem;
+  transition: 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`
+
+const SearchFilter = styled.input`
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--main-blue);
+`
 
 const Container = styled.section`
   max-width: var(--width-max);
