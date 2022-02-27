@@ -46,12 +46,12 @@ export const Ministries = () => {
 const Container = styled(motion.main)`
   background-color: var(--main-white);
   color: var(--main-black);
-  transition: var(--transition-delay);
 `
 
 const MinistriesSection = styled.section`
   background-color: var(--main-white);
   color: var(--main-black);
+  transition: var(--transition-delay);
 `
 
 interface BannerProps {
