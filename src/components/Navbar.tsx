@@ -58,7 +58,9 @@ export const Navbar = () => {
           <NavItem location="/give" text="give" dropdown>
             <NavItemDropdown items={giveDropdownItems} right />
           </NavItem>
-          <SunMoon onClick={() => themeToggle()}>
+          <SunMoon
+            onClick={() => themeToggle()}
+            aria-label="Toggle Light/Dark Theme">
             {theme ? <Sun theme={theme} /> : <Moon theme={theme} />}
           </SunMoon>
         </NavRight>
