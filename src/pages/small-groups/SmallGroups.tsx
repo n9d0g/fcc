@@ -50,13 +50,13 @@ export const SmallGroups = () => {
 const Container = styled(motion.main)`
   background-color: var(--main-white);
   color: var(--main-black);
-  transition: var(--transition-delay);
 `
 
 const SmallGroupsSection = styled.section`
   text-align: center;
   background-color: var(--main-white);
   color: var(--main-black);
+  transition: var(--transition-delay);
 `
 
 interface BannerProps {
