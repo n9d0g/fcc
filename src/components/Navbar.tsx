@@ -219,14 +219,13 @@ const SunMoon = styled.button`
   cursor: pointer;
   outline: inherit;
   font-size: 1.5rem;
-  transition: none;
+  transition: 0.5s;
 
   @media (min-width: 60em) {
     &:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
       background-color: var(--secondary-blue);
       border-radius: 1.2rem;
-      transition: 0.5s;
     }
   }
 `
