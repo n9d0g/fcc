@@ -5,11 +5,12 @@ import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
 import { useSinglePrismicDocument } from '@prismicio/react'
 import { Spinner } from '../../components/Spinner'
+import { PraiseSchedule } from '../../components/PraiseSchedule'
 
 export const Praise = () => {
   useDocumentTitle('Praise')
   const [document]: any = useSinglePrismicDocument('praise')
-
+  
   return (
     <>
       {document ? (
@@ -30,6 +31,7 @@ export const Praise = () => {
             <IntroPicture picture={document.data.picture.url} />
             <IntroDescription>{document.data.description}</IntroDescription>
           </Intro>
+          <PraiseSchedule data={document.data.schedule} />
         </Container>
       ) : (
         <Spinner />
@@ -97,3 +99,4 @@ const IntroPicture = styled.div<IntroPictureProps>`
 const IntroDescription = styled.p`
   flex: 1;
 `
+
