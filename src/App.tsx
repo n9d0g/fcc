@@ -26,8 +26,6 @@ import { useState } from 'react'
 import ThemeContext from './ThemeContext'
 
 export const App = () => {
-  console.log('FCC Website v' + require('../package.json').version)
-
   const [theme, setTheme] = useState(true)
 
   return (
