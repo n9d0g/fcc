@@ -5,11 +5,12 @@ import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
 import { useSinglePrismicDocument } from '@prismicio/react'
 import { Spinner } from '../../components/Spinner'
+import { PraiseSchedule } from '../../components/PraiseSchedule'
 
 export const Praise = () => {
   useDocumentTitle('Praise')
   const [document]: any = useSinglePrismicDocument('praise')
-
+  
   return (
     <>
       {document ? (
@@ -30,34 +31,7 @@ export const Praise = () => {
             <IntroPicture picture={document.data.picture.url} />
             <IntroDescription>{document.data.description}</IntroDescription>
           </Intro>
-          <ScheduleContainer>
-            <ScheduleTitle>schedule</ScheduleTitle>
-            <WeekContainer>
-                <p>Date</p>
-                <p>Leader</p>
-                <p>Guitar</p>
-                <p>Piano</p>
-                <p>Bass</p>
-                <p>Drums</p>
-                <p>Backup</p>
-                <p>AV</p>
-              {document.data.schedule.map((item: any, index: any) => {
-                return (
-                  <>
-                    <p>{item.date}</p>
-                    <p>{item.leader}</p>
-                    <p>{item.guitar}</p>
-                    <p>{item.piano}</p>
-                    <p>{item.bass}</p>
-                    <p>{item.drums}</p>
-                    <p>{item.backup}</p>
-                    <p>{item.av}</p>
-                  </>
-                )
-              })}
-
-            </WeekContainer>
-          </ScheduleContainer>
+          <PraiseSchedule data={document.data.schedule} />
         </Container>
       ) : (
         <Spinner />
@@ -126,18 +100,3 @@ const IntroDescription = styled.p`
   flex: 1;
 `
 
-const ScheduleContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: var(--width-max);
-  margin: 0 auto;
-`
-
-const ScheduleTitle = styled.h2``
-
-const WeekContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 1rem;
-`
