@@ -17,6 +17,7 @@ body {
   --bg-colour: #fff;
   --sun-yellow: #e6e923;
   --moon-blue: #04046b;
+  --overlay: rgba(49, 49, 49, 0.8);
 }
 
 body.dark {
@@ -36,6 +37,7 @@ body.dark {
   --bg-colour: #0e141b;
   --sun-yellow: #e6e923;
   --moon-blue: #04046b;
+  --overlay: rgba(49, 49, 49, 0.8);
 }
 
 html {
