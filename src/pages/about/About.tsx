@@ -6,14 +6,16 @@ import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
 import { useSinglePrismicDocument } from '@prismicio/react'
 import { Spinner } from '../../components/Spinner'
+import { HomeJoin } from '../home/HomeJoin'
 
 export const About = () => {
   useDocumentTitle('About')
   const [document]: any = useSinglePrismicDocument('about')
+  const [documentHome]: any = useSinglePrismicDocument('home')
 
   return (
     <>
-      {document ? (
+      {document && documentHome ? (
         <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <Banner banner={document.data.banner.url}>
             <BannerTitle>{document.data.title}</BannerTitle>
@@ -22,6 +24,11 @@ export const About = () => {
             <BreadcrumbItem location="/" title="home" />
             <BreadcrumbItem location="/about" title="about" last />
           </Breadcrumb>
+            <HomeJoin
+              title={documentHome.data.home_join_title}
+              description={documentHome.data.join_prompt_description}
+              picture={documentHome.data.join_picture.url}
+            />
           {document.data.section.map((item: any, index: any) => (
             <LandingPageSection
               key={index}
