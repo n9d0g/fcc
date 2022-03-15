@@ -32,7 +32,9 @@ export const PraiseSchedule = (props: any) => {
           if (index === 0) first = true
           return (
             <Fragment key={index}>
-              <WeekData first={first}>{item.date}</WeekData>
+              <WeekData first={first}>
+                {item.date.replace('2022-', '')}
+              </WeekData>
               <WeekData first={first}>{item.leader}</WeekData>
               <WeekData first={first}>{item.guitar}</WeekData>
               <WeekData first={first}>{item.piano}</WeekData>
