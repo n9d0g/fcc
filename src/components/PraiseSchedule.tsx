@@ -22,7 +22,7 @@ export const PraiseSchedule = (props: any) => {
           <WeekDataHeader>🎸</WeekDataHeader>
           <WeekDataHeader>🎹</WeekDataHeader>
           <WeekDataHeader>🐟</WeekDataHeader>
-          <WeekDataHeader>🪘</WeekDataHeader>
+          <WeekDataHeader>🥁</WeekDataHeader>
           <WeekDataHeader>🎤</WeekDataHeader>
           <WeekDataHeader>🔊</WeekDataHeader>
           <WeekDataHeader>📖</WeekDataHeader>
@@ -61,7 +61,7 @@ const ScheduleContainer = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 80rem;
+  max-width: 70rem;
   margin: 0 auto;
   padding-bottom: 3rem;
 `
