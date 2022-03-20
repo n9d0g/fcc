@@ -1,8 +1,9 @@
 {
   "name": "fcc",
-  "version": "1.2.6",
+  "version": "1.2.8",
   "private": true,
   "dependencies": {
+    "@js-temporal/polyfill": "^0.4.0",
     "@prismicio/client": "^6.3.0",
     "@prismicio/react": "^2.0.6",
     "@react-google-maps/api": "^2.7.0",

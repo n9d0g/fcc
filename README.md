@@ -36,7 +36,8 @@ Some features are still under development, but here is a list of features that a
 - ✅ &nbsp;Built, hosted and deployed with Netlify
 - ✅ &nbsp;Prismic headless CMS integration for non-technical church members who would like to contribute
 - ✅ &nbsp;Dynamically filtered sermon search using .map() and .filter() array methods
+- ✅ &nbsp;CI/CD workflow (Netlify)
+- ✅ &nbsp;Temporal API (polyfill)
 - 🚧 &nbsp;Testing with Jest and react-testing-library
-- 🚧 &nbsp;CI/CD workflow
 - 🚧 &nbsp;Convert site to Next.js application for SSR
 - 🚧 &nbsp;Payment options through Stripe to aid with tithes and offerings

@@ -1,9 +1,8 @@
 import { Fragment } from 'react'
 import styled from 'styled-components'
-import { InfoModal } from './InfoModal'
 import { Temporal } from '@js-temporal/polyfill'
 
-export const PraiseSchedule = (props: any) => {
+export const SetupPackup = (props: any) => {
   // use new temporal API (polyfilled)
   let currentDate = Temporal.Now.plainDateISO().toString()
 
@@ -14,22 +13,12 @@ export const PraiseSchedule = (props: any) => {
 
   return (
     <ScheduleContainer>
-      <ScheduleTitle>Band of God schedule</ScheduleTitle>
-      <Legend>
-        📅: date; 👑: worship leader; 🎸: guitar; 🎹: piano; 🐟: bass; 🥁:
-        drums; 🎤: backup; 🔊: sound; 📖: details
-      </Legend>
+      <ScheduleTitle>setup/packup schedule</ScheduleTitle>
       <WeekContainer>
         <WeekDataHeaderContainer>
           <WeekDataHeader>📅</WeekDataHeader>
-          <WeekDataHeader>👑</WeekDataHeader>
-          <WeekDataHeader>🎸</WeekDataHeader>
-          <WeekDataHeader>🎹</WeekDataHeader>
-          <WeekDataHeader>🐟</WeekDataHeader>
-          <WeekDataHeader>🥁</WeekDataHeader>
-          <WeekDataHeader>🎤</WeekDataHeader>
-          <WeekDataHeader>🔊</WeekDataHeader>
-          <WeekDataHeader>📖</WeekDataHeader>
+          <WeekDataHeader>setup</WeekDataHeader>
+          <WeekDataHeader>packup</WeekDataHeader>
         </WeekDataHeaderContainer>
         {originalPraiseData.map((item: any, index: any) => {
           var first = false
@@ -39,21 +28,8 @@ export const PraiseSchedule = (props: any) => {
               <WeekData first={first}>
                 {item.date.replace('2022-', '')}
               </WeekData>
-              <WeekData first={first}>{item.leader}</WeekData>
-              <WeekData first={first}>{item.guitar}</WeekData>
-              <WeekData first={first}>{item.piano}</WeekData>
-              <WeekData first={first}>{item.bass}</WeekData>
-              <WeekData first={first}>{item.drums}</WeekData>
-              <WeekData first={first}>{item.backup}</WeekData>
-              <WeekData first={first}>{item.av}</WeekData>
-              <WeekData first={first}>
-                <InfoModal
-                  speaker={item.speaker}
-                  topic={item.topic}
-                  scripture={item.scripture}
-                  summary={item.summary}
-                />
-              </WeekData>
+              <WeekData first={first}>{item.setup}</WeekData>
+              <WeekData first={first}>{item.packup}</WeekData>
             </Fragment>
           )
         })}
@@ -78,7 +54,7 @@ const ScheduleTitle = styled.h2`
 
 const WeekContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   overflow: auto;
 `
 
@@ -115,10 +91,4 @@ const WeekDataHeader = styled.p`
   margin: 0;
   border: 1px solid var(--secondary-grey);
   font-weight: bold;
-`
-
-const Legend = styled.p`
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `
