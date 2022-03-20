@@ -54,7 +54,7 @@ const ScheduleTitle = styled.h2`
 
 const WeekContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 3fr 3fr;
   overflow: auto;
 `
 
@@ -66,6 +66,7 @@ const WeekData = styled.p<WeekDataProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   margin: 0;
   border: 1px solid var(--secondary-grey);
   color: ${props => (props.first ? `red` : `var(--main-black)`)};

@@ -90,6 +90,7 @@ const WeekData = styled.p<WeekDataProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   margin: 0;
   border: 1px solid var(--secondary-grey);
   color: ${props => (props.first ? `red` : `var(--main-black)`)};
@@ -121,4 +122,5 @@ const Legend = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 `
