@@ -16,8 +16,9 @@ export const PraiseSchedule = (props: any) => {
     <ScheduleContainer>
       <ScheduleTitle>Band of God schedule</ScheduleTitle>
       <Legend>
-        📅: date; 👑: worship leader; 🎸: guitar; 🎹: piano; 🐟: bass; 🥁:
-        drums; 🎤: backup; 🔊: sound; 📖: details
+        📅: date; 👑: worship leader; 🎸: guitar; <br />
+        🎹: piano; 🐟: bass; 🥁: drums;
+        <br /> 🎤: backup; 🔊: sound; 📖: details
       </Legend>
       <WeekContainer>
         <WeekDataHeaderContainer>
