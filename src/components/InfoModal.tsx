@@ -21,6 +21,10 @@ export const InfoModal = (props: any) => {
               </CloseButtonIcon>
             </CloseButton>
             <p>
+              <h4>speaker:</h4>
+              {props.speaker}
+            </p>
+            <p>
               <h4>topic:</h4>
               {props.topic}
             </p>
