@@ -33,8 +33,10 @@ export const PraiseSchedule = (props: any) => {
           <WeekDataHeader>📖</WeekDataHeader>
         </WeekDataHeaderContainer>
         {originalPraiseData.map((item: any, index: any) => {
+          // make the upcoming week red and bolded
           var first = false
           if (index === 0) first = true
+
           return (
             <Fragment key={index}>
               <WeekData first={first}>

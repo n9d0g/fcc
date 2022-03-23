@@ -5,26 +5,37 @@ import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
 import { useSinglePrismicDocument } from '@prismicio/react'
 import { Spinner } from '../../components/Spinner'
+import constants from '../../data/constants'
 
 export const Youth = () => {
   useDocumentTitle('Youth')
-  const [document]: any = useSinglePrismicDocument('youth')
+  const [youth]: any = useSinglePrismicDocument('youth')
 
   return (
     <>
-      {document ? (
+      {youth ? (
         <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-          <Banner banner={document.data.banner.url}>
-            <BannerTitle>{document.data.title}</BannerTitle>
+          <Banner banner={youth.data.banner.url}>
+            <BannerTitle>{youth.data.title}</BannerTitle>
           </Banner>
           <Breadcrumb>
-            <BreadcrumbItem location="/" title="home" />
-            <BreadcrumbItem location="/ministries" title="ministries" />
-            <BreadcrumbItem location="/ministries/youth" title="youth" last />
+            <BreadcrumbItem
+              location={constants.links.home.location}
+              title={constants.links.home.text}
+            />
+            <BreadcrumbItem
+              location={constants.links.ministries.location}
+              title={constants.links.ministries.text}
+            />
+            <BreadcrumbItem
+              location={constants.links.ministries.youth.location}
+              title={constants.links.ministries.youth.text}
+              last
+            />
           </Breadcrumb>
           <Intro>
-            <IntroPicture picture={document.data.picture.url} />
-            <IntroDescription>{document.data.description}</IntroDescription>
+            <IntroPicture picture={youth.data.picture.url} />
+            <IntroDescription>{youth.data.description}</IntroDescription>
           </Intro>
         </Container>
       ) : (

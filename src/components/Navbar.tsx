@@ -1,11 +1,6 @@
 import { Zoom } from './Zoom'
 import { NavItem } from './NavItem'
 import { NavItemDropdown } from './NavItemDropdown'
-import { aboutDropdownItems } from '../data/aboutDropdownItems'
-import { ministriesDropdownItems } from '../data/ministriesDropdownItems'
-import { smallGroupsDropdownItems } from '../data/smallGroupsDropdownItems'
-import { sermonsDropdownItems } from '../data/sermonsDropdownItems'
-import { giveDropdownItems } from '../data/giveDropdownItems'
 import { GoThreeBars } from 'react-icons/go'
 import { IoMdClose } from 'react-icons/io'
 import styled from 'styled-components'
@@ -16,6 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import { useOnClickOutside } from '../hooks/useOnClickOutside'
 import { BsFillMoonStarsFill, BsSunFill } from 'react-icons/bs'
 import ThemeContext from '../ThemeContext'
+import constants from '../data/constants'
 
 export const Navbar = () => {
   const [mobileClicked, setMobileClicked] = useState(false)
@@ -39,28 +35,49 @@ export const Navbar = () => {
       <Zoom />
       <Container>
         <NavLeft>
-          <NavItem location="/" text="freedom in christ church" />
+          <NavItem
+            location={constants.links.home.location}
+            text="Freedom in Christ Church"
+          />
         </NavLeft>
         <NavRight>
-          <NavItem location="/" text="home" />
-          <NavItem location="/about" text="about" dropdown>
-            <NavItemDropdown items={aboutDropdownItems} />
+          <NavItem
+            location={constants.links.home.location}
+            text={constants.links.home.text}
+          />
+          <NavItem
+            location={constants.links.about.location}
+            text={constants.links.about.text}
+            dropdown>
+            <NavItemDropdown items={constants.dropdowns.about} />
           </NavItem>
-          <NavItem location="/sermons" text="sermons" dropdown>
-            <NavItemDropdown items={sermonsDropdownItems} />
+          <NavItem
+            location={constants.links.sermons.location}
+            text={constants.links.sermons.text}
+            dropdown>
+            <NavItemDropdown items={constants.dropdowns.sermons} />
           </NavItem>
-          <NavItem location="/ministries" text="ministries" dropdown>
-            <NavItemDropdown items={ministriesDropdownItems} />
+          <NavItem
+            location={constants.links.ministries.location}
+            text={constants.links.ministries.text}
+            dropdown>
+            <NavItemDropdown items={constants.dropdowns.ministries} />
           </NavItem>
-          <NavItem location="/smallgroups" text="small groups" dropdown>
-            <NavItemDropdown items={smallGroupsDropdownItems} />
+          <NavItem
+            location={constants.links.smallGroups.location}
+            text={constants.links.smallGroups.text}
+            dropdown>
+            <NavItemDropdown items={constants.dropdowns.smallGroups} />
           </NavItem>
-          <NavItem location="/give" text="give" dropdown>
-            <NavItemDropdown items={giveDropdownItems} right />
+          <NavItem
+            location={constants.links.give.location}
+            text={constants.links.give.text}
+            dropdown>
+            <NavItemDropdown items={constants.dropdowns.give} right />
           </NavItem>
           <SunMoon
             onClick={() => themeToggle()}
-            aria-label="Toggle Light/Dark Theme">
+            aria-label={constants.aria.toggleTheme}>
             {theme ? <Sun theme={theme} /> : <Moon theme={theme} />}
           </SunMoon>
         </NavRight>
@@ -71,7 +88,7 @@ export const Navbar = () => {
             {theme ? <Sun theme={theme} /> : <Moon theme={theme} />}
           </SunMoonMobile>
           <IconWrapper onClick={() => setMobileClicked(!mobileClicked)}>
-            {!mobileClicked && <Bars aria-label="navigation" />}
+            {!mobileClicked && <Bars aria-label={constants.aria.nav} />}
           </IconWrapper>
         </MobileWrapper>
         {mobileClicked && (
@@ -79,21 +96,40 @@ export const Navbar = () => {
             <IconWrapperMobile onClick={() => setMobileClicked(!mobileClicked)}>
               <Cancel />
             </IconWrapperMobile>
-            <NavItemMobile location="/" text="home" home />
-            <NavItemMobile location="/about" text="about" dropdown>
-              <NavItemDropdownMobile items={aboutDropdownItems} />
+            <NavItemMobile
+              location={constants.links.home.location}
+              text={constants.links.home.text}
+              home
+            />
+            <NavItemMobile
+              location={constants.links.about.location}
+              text={constants.links.about.text}
+              dropdown>
+              <NavItemDropdownMobile items={constants.dropdowns.about} />
             </NavItemMobile>
-            <NavItemMobile location="/sermons" text="sermons" dropdown>
-              <NavItemDropdownMobile items={sermonsDropdownItems} />
+            <NavItemMobile
+              location={constants.links.sermons.location}
+              text={constants.links.sermons.text}
+              dropdown>
+              <NavItemDropdownMobile items={constants.dropdowns.sermons} />
             </NavItemMobile>
-            <NavItemMobile location="/ministries" text="ministries" dropdown>
-              <NavItemDropdownMobile items={ministriesDropdownItems} />
+            <NavItemMobile
+              location={constants.links.ministries.location}
+              text={constants.links.ministries.text}
+              dropdown>
+              <NavItemDropdownMobile items={constants.dropdowns.ministries} />
             </NavItemMobile>
-            <NavItemMobile location="/smallgroups" text="small groups" dropdown>
-              <NavItemDropdownMobile items={smallGroupsDropdownItems} />
+            <NavItemMobile
+              location={constants.links.smallGroups.location}
+              text={constants.links.smallGroups.text}
+              dropdown>
+              <NavItemDropdownMobile items={constants.dropdowns.smallGroups} />
             </NavItemMobile>
-            <NavItemMobile location="/give" text="give" dropdown>
-              <NavItemDropdownMobile items={giveDropdownItems} right />
+            <NavItemMobile
+              location={constants.links.give.location}
+              text={constants.links.give.text}
+              dropdown>
+              <NavItemDropdownMobile items={constants.dropdowns.give} right />
             </NavItemMobile>
           </Drawer>
         )}

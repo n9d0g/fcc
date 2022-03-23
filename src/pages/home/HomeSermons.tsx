@@ -58,20 +58,25 @@ const SermonContainer = styled.article`
   flex-direction: column;
   justify-content: center;
   gap: 5rem;
-  margin-top: 40px;
+  margin: 40px auto 0 auto;
+  max-width: var(--width-max);
+
   @media (max-width: 60em) {
     flex-direction: column;
   }
 `
 
 const NonActiveSermonContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 7rem;
   align-items: center;
   justify-content: center;
   gap: 3rem;
+
   @media (max-width: 60em) {
-    flex-direction: column;
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
 `
 

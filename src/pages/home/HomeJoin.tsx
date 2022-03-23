@@ -2,16 +2,17 @@ import { Button } from '../../components/Button'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
+import constants from '../../data/constants'
 
 const containerStyle = {
   width: '400px',
-  height: '400px'
-};
+  height: '400px',
+}
 
 const center = {
   lat: 43.659809,
-  lng: -79.604424 
-};
+  lng: -79.604424,
+}
 
 export const HomeJoin = (props: any) => {
   let apiKey: string = process.env.REACT_APP_GOOGLE_MAP_API!
@@ -32,21 +33,21 @@ export const HomeJoin = (props: any) => {
           <Description>{props.description}</Description>
           <Button
             external
-            location="https://us04web.zoom.us/j/3926981154?pwd=d1BHRTB3eStxZFZIS3lyWHBieENvZz09&fbclid=IwAR1N4y1LI5zX5bPnAABrXd_8ICuFko9Hw_5HV2P4wWj7U6JmALskzjO3H_U"
+            location={constants.links.zoom}
             text="join zoom here!"
           />
         </motion.div>
       </Content>
       <MapContainer
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ duration: 2 }}
-          variants={{
-            visible: { opacity: 1, y: 0 },
-            hidden: { opacity: 0, y: 50 },     
-          }}>
-        {(apiKey) && (
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 2 }}
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 50 },
+        }}>
+        {apiKey && (
           <LoadScript googleMapsApiKey={apiKey}>
             <GoogleMap
               mapContainerStyle={containerStyle}
@@ -60,8 +61,6 @@ export const HomeJoin = (props: any) => {
     </Join>
   )
 }
-
-
 
 const Join = styled.section`
   display: flex;
@@ -78,7 +77,7 @@ const Join = styled.section`
 `
 
 const MapContainer = styled(motion.div)`
-	display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
@@ -90,6 +89,7 @@ const MapContainer = styled(motion.div)`
     width: 85vw;
     max-height: 57vh;
     padding: 2rem;
+    margin-top: 2rem;
   }
 `
 

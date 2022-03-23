@@ -7,6 +7,7 @@ import { useSinglePrismicDocument } from '@prismicio/react'
 import { Spinner } from '../../components/Spinner'
 import { PraiseSchedule } from '../../components/PraiseSchedule'
 import { SetupPackup } from '../../components/SetupPackup'
+import constants from '../../data/constants'
 
 export const Praise = () => {
   useDocumentTitle('Praise')
@@ -20,11 +21,17 @@ export const Praise = () => {
             <BannerTitle>{document.data.title}</BannerTitle>
           </Banner>
           <Breadcrumb>
-            <BreadcrumbItem location="/" title="home" />
-            <BreadcrumbItem location="/ministries" title="ministries" />
             <BreadcrumbItem
-              location="/ministries/praise"
-              title="praise & worship"
+              location={constants.links.home.location}
+              title={constants.links.home.text}
+            />
+            <BreadcrumbItem
+              location={constants.links.ministries.location}
+              title={constants.links.ministries.text}
+            />
+            <BreadcrumbItem
+              location={constants.links.ministries.praise.location}
+              title={constants.links.ministries.praise.text}
               last
             />
           </Breadcrumb>

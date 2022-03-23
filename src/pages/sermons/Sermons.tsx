@@ -28,9 +28,7 @@ export const Sermons = () => {
           </Breadcrumb>
           <ActiveSermonContainer>
             <SermonContext.Provider value={{ sermonContext, setSermonContext }}>
-              {sermonContext && (
-                <SermonPageActive data={document.data.sermons} />
-              )}
+              {sermonContext && <SermonPageActive />}
               <SermonPageNonActive data={document.data.sermons} />
             </SermonContext.Provider>
           </ActiveSermonContainer>

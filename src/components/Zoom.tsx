@@ -1,9 +1,8 @@
-import React from 'react'
 import styled from 'styled-components'
+import constants from '../data/constants'
 
 export const Zoom = () => {
-  const link =
-    'https://us04web.zoom.us/j/3926981154?pwd=d1BHRTB3eStxZFZIS3lyWHBieENvZz09&fbclid=IwAR1N4y1LI5zX5bPnAABrXd_8ICuFko9Hw_5HV2P4wWj7U6JmALskzjO3H_U'
+  const link = constants.links.zoom
   return (
     <ZoomContainer>
       <Banner>

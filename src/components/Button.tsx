@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { BsArrowRightShort } from 'react-icons/bs'
+import constants from '../data/constants'
 
 interface ButtonProps {
   location: string
   text: string
-  documentTitle?: string
   margin?: boolean
   external?: boolean
   more?: boolean
@@ -17,8 +17,8 @@ export const Button = (props: ButtonProps) => {
       {props.external ? (
         <ExternalButton
           href={props.location}
-          target="_blank"
-          rel="nnoopener noreferrer">
+          target={constants.target}
+          rel={constants.rel}>
           <ButtonText>{props.text}</ButtonText>
         </ExternalButton>
       ) : (

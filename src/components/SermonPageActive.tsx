@@ -2,8 +2,9 @@ import React, { useContext } from 'react'
 import SermonContext from '../pages/sermons/SermonContext'
 import styled from 'styled-components'
 import { Spinner } from './Spinner'
+import constants from '../data/constants'
 
-export const SermonPageActive = (props: any) => {
+export const SermonPageActive = () => {
   const { sermonContext } = useContext(SermonContext)
 
   return (
@@ -22,10 +23,9 @@ export const SermonPageActive = (props: any) => {
           <VideoContainer>
             <Video
               src={`https://www.youtube.com/embed/${sermonContext.youtube}`}
-              width="1100"
-              height="640"
-              title="YouTube video player"
-              allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></Video>
+              title={constants.iframe.title}
+              allow={constants.iframe.allow}
+            />
           </VideoContainer>
         </Active>
       ) : (
