@@ -44,12 +44,13 @@ const ScheduleContainer = styled.section`
   justify-content: center;
   max-width: 70rem;
   margin: 0 auto;
-  padding-bottom: 3rem;
+  padding: 0 1rem 3rem 1rem;
 `
 
 const ScheduleTitle = styled.h2`
   display: flex;
   justify-content: center;
+  text-align: center;
 `
 
 const WeekContainer = styled.div`
