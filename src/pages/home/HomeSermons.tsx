@@ -63,7 +63,7 @@ const SermonContainer = styled.article`
   flex-direction: column;
   justify-content: center;
   gap: 5rem;
-  margin: 40px auto 0 auto;
+  margin: 3rem auto 0 auto;
   max-width: var(--width-max);
 
   @media (max-width: 60em) {
@@ -72,16 +72,15 @@ const SermonContainer = styled.article`
 `
 
 const NonActiveSermonContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 7rem;
+  display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 1rem;
   gap: 3rem;
 
   @media (max-width: 60em) {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+    flex-direction: column;
+    gap: 1rem;
   }
 `
 

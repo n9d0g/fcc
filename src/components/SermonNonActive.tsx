@@ -60,11 +60,12 @@ const Date = styled.h6`
 `
 
 const Sermon = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
-  width: auto;
+  min-height: 7rem;
+  width: 100%;
   background: var(--main-blue);
   color: var(--white);
   padding: 0.9rem;
