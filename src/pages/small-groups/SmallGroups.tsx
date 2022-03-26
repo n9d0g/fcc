@@ -6,6 +6,7 @@ import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
 import { useSinglePrismicDocument } from '@prismicio/react'
 import { Spinner } from '../../components/Spinner'
+import constants from '../../data/constants'
 
 export const SmallGroups = () => {
   useDocumentTitle('Small Groups')
@@ -20,10 +21,13 @@ export const SmallGroups = () => {
               <BannerTitle>{document.data.title}</BannerTitle>
             </Banner>
             <Breadcrumb>
-              <BreadcrumbItem location="/" title="home" />
               <BreadcrumbItem
-                location="/smallgroups"
-                title="small groups"
+                location={constants.links.home.location}
+                title={constants.links.home.text}
+              />
+              <BreadcrumbItem
+                location={constants.links.smallGroups.location}
+                title={constants.links.smallGroups.text}
                 last
               />
             </Breadcrumb>

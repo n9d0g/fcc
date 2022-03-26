@@ -4,6 +4,7 @@ import { SermonActive } from '../../components/SermonActive'
 import { Button } from '../../components/Button'
 import HomeSermonContext from './HomeSermonContext'
 import styled from 'styled-components'
+import constants from '../../data/constants'
 
 export const HomeSermons = (props: any) => {
   // sort sermons from newest to oldest
@@ -28,7 +29,11 @@ export const HomeSermons = (props: any) => {
         </HomeSermonContext.Provider>
       </SermonContainer>
       <SermonButtonContainer>
-        <Button location="/sermons" text="view all sermons" more />
+        <Button
+          location={constants.links.sermons.location}
+          text="view all sermons"
+          more
+        />
       </SermonButtonContainer>
     </Sermons>
   )

@@ -60,6 +60,22 @@ export default {
     smallGroups: {
       location: '/smallgroups',
       text: 'small groups',
+      allan: {
+        location: '/smallgroups/allan',
+        text: "allan's bible study",
+      },
+      mississauga: {
+        location: '/smallgroups/mississauga',
+        text: 'south mississauga',
+      },
+      womenChasingGod: {
+        location: '/smallgroups/women-chasing-god',
+        text: 'women chasing God',
+      },
+      yumul: {
+        location: '/smallgroups/yumul',
+        text: 'yumul bible study',
+      },
     },
     give: {
       location: '/give',
