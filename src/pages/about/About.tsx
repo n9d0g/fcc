@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 import { useSinglePrismicDocument } from '@prismicio/react'
 import { Spinner } from '../../components/Spinner'
 import { HomeJoin } from '../home/HomeJoin'
+import constants from '../../data/constants'
 
 export const About = () => {
   useDocumentTitle('About')
@@ -21,14 +22,21 @@ export const About = () => {
             <BannerTitle>{document.data.title}</BannerTitle>
           </Banner>
           <Breadcrumb>
-            <BreadcrumbItem location="/" title="home" />
-            <BreadcrumbItem location="/about" title="about" last />
-          </Breadcrumb>
-            <HomeJoin
-              title={documentHome.data.home_join_title}
-              description={documentHome.data.join_prompt_description}
-              picture={documentHome.data.join_picture.url}
+            <BreadcrumbItem
+              location={constants.links.home.location}
+              title={constants.links.home.text}
             />
+            <BreadcrumbItem
+              location={constants.links.about.location}
+              title={constants.links.about.text}
+              last
+            />
+          </Breadcrumb>
+          <HomeJoin
+            title={documentHome.data.home_join_title}
+            description={documentHome.data.join_prompt_description}
+            picture={documentHome.data.join_picture.url}
+          />
           {document.data.section.map((item: any, index: any) => (
             <LandingPageSection
               key={index}

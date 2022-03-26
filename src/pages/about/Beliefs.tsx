@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { useSinglePrismicDocument } from '@prismicio/react'
 import { AccordionItem } from '../../components/AccordionItem'
 import { Spinner } from '../../components/Spinner'
+import constants from '../../data/constants'
 
 export const Beliefs = () => {
   useDocumentTitle('Beliefs')
@@ -19,9 +20,19 @@ export const Beliefs = () => {
             <BannerTitle>{document.data.title}</BannerTitle>
           </Banner>
           <Breadcrumb>
-            <BreadcrumbItem location="/" title="home" />
-            <BreadcrumbItem location="/about" title="about" />
-            <BreadcrumbItem location="/about/beliefs" title="beliefs" last />
+            <BreadcrumbItem
+              location={constants.links.home.location}
+              title={constants.links.home.text}
+            />
+            <BreadcrumbItem
+              location={constants.links.about.location}
+              title={constants.links.about.text}
+            />
+            <BreadcrumbItem
+              location={constants.links.about.beliefs.location}
+              title={constants.links.about.beliefs.text}
+              last
+            />
           </Breadcrumb>
           <Intro>
             <IntroText>{document.data.cma_description}</IntroText>

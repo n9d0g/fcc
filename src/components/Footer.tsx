@@ -4,13 +4,9 @@ import {
   AiOutlineFacebook,
   AiOutlineYoutube,
 } from 'react-icons/ai'
-import { smallGroupsDropdownItems } from '../data/smallGroupsDropdownItems'
-import { ministriesDropdownItems } from '../data/ministriesDropdownItems'
-import { sermonsDropdownItems } from '../data/sermonsDropdownItems'
-import { aboutDropdownItems } from '../data/aboutDropdownItems'
-import { giveDropdownItems } from '../data/giveDropdownItems'
 import styled from 'styled-components'
 import { Logo } from './Logo'
+import constants from '../data/constants'
 
 interface DropdownItemProps {
   title: string
@@ -25,18 +21,10 @@ export const Footer = () => {
           <Logo />
         </FooterColumn>
         <FooterColumn>
-          <FooterLinkHeader to="/about">about</FooterLinkHeader>
-          {aboutDropdownItems.map((item: DropdownItemProps, index: number) => {
-            return (
-              <FooterLink to={item.location} key={index}>
-                <FooterLinkText key={index}>{item.title}</FooterLinkText>
-              </FooterLink>
-            )
-          })}
-        </FooterColumn>
-        <FooterColumn>
-          <FooterLinkHeader to="/sermons">sermons</FooterLinkHeader>
-          {sermonsDropdownItems.map(
+          <FooterLinkHeader to={constants.links.about.location}>
+            {constants.links.about.text}
+          </FooterLinkHeader>
+          {constants.dropdowns.about.map(
             (item: DropdownItemProps, index: number) => {
               return (
                 <FooterLink to={item.location} key={index}>
@@ -47,8 +35,10 @@ export const Footer = () => {
           )}
         </FooterColumn>
         <FooterColumn>
-          <FooterLinkHeader to="/ministries">ministries</FooterLinkHeader>
-          {ministriesDropdownItems.map(
+          <FooterLinkHeader to={constants.links.sermons.location}>
+            {constants.links.sermons.text}
+          </FooterLinkHeader>
+          {constants.dropdowns.sermons.map(
             (item: DropdownItemProps, index: number) => {
               return (
                 <FooterLink to={item.location} key={index}>
@@ -59,8 +49,24 @@ export const Footer = () => {
           )}
         </FooterColumn>
         <FooterColumn>
-          <FooterLinkHeader to="/smallgroups">small groups</FooterLinkHeader>
-          {smallGroupsDropdownItems.map(
+          <FooterLinkHeader to={constants.links.ministries.location}>
+            {constants.links.ministries.text}
+          </FooterLinkHeader>
+          {constants.dropdowns.ministries.map(
+            (item: DropdownItemProps, index: number) => {
+              return (
+                <FooterLink to={item.location} key={index}>
+                  <FooterLinkText key={index}>{item.title}</FooterLinkText>
+                </FooterLink>
+              )
+            }
+          )}
+        </FooterColumn>
+        <FooterColumn>
+          <FooterLinkHeader to={constants.links.smallGroups.location}>
+            {constants.links.smallGroups.text}
+          </FooterLinkHeader>
+          {constants.dropdowns.smallGroups.map(
             (item: DropdownItemProps, index: number) => {
               return (
                 <FooterLink key={index} to={item.location}>
@@ -71,47 +77,48 @@ export const Footer = () => {
           )}
         </FooterColumn>
         <FooterColumn>
-          <FooterLinkHeader to="/give">give</FooterLinkHeader>
-          {giveDropdownItems.map((item: DropdownItemProps, index: number) => {
-            return (
-              <FooterLink key={index} to={item.location}>
-                <FooterLinkText key={index}>{item.title}</FooterLinkText>
-              </FooterLink>
-            )
-          })}
+          <FooterLinkHeader to={constants.links.give.location}>
+            {constants.links.give.text}
+          </FooterLinkHeader>
+          {constants.dropdowns.give.map(
+            (item: DropdownItemProps, index: number) => {
+              return (
+                <FooterLink key={index} to={item.location}>
+                  <FooterLinkText key={index}>{item.title}</FooterLinkText>
+                </FooterLink>
+              )
+            }
+          )}
         </FooterColumn>
         <SocialColumn>
           <SocialIcon
-            aria-describedby="fcc instagram"
-            aria-label="fcc instagram"
-            href="https://www.instagram.com/fcc.canada/"
-            target="_blank"
-            rel="noreferrer">
+            aria-describedby={constants.aria.ig}
+            aria-label={constants.aria.ig}
+            href={constants.links.ig}
+            target={constants.target}
+            rel={constants.rel}>
             <AiOutlineInstagram />
           </SocialIcon>
           <SocialIcon
-            aria-describedby="fcc facebook"
-            aria-label="fcc facebook"
-            href="https://www.facebook.com/groups/1667915316820460"
-            target="_blank"
-            rel="noreferrer noopener">
+            aria-describedby={constants.aria.fb}
+            aria-label={constants.aria.fb}
+            href={constants.links.fb}
+            target={constants.target}
+            rel={constants.rel}>
             <AiOutlineFacebook />
           </SocialIcon>
           <SocialIcon
-            aria-describedby="fcc youtube"
-            aria-label="fcc youtube"
-            href="https://www.youtube.com/channel/UCaB7HWdt8W-ErHqgvhR__rw"
-            target="_blank"
-            rel="noreferrer noopener">
+            aria-describedby={constants.aria.yt}
+            aria-label={constants.aria.yt}
+            href={constants.links.yt}
+            target={constants.target}
+            rel={constants.rel}>
             <AiOutlineYoutube />
           </SocialIcon>
         </SocialColumn>
       </Container>
       <LineBreak />
-      <Copyright>
-        &copy; Copyright by Freedom in Christ Church Canada. All Rights
-        Reserved.
-      </Copyright>
+      <Copyright>&copy; {constants.copyright}</Copyright>
     </FooterSection>
   )
 }
@@ -143,7 +150,6 @@ const FooterColumn = styled.div`
 
   @media (max-width: 60em) {
     justify-content: center;
-    /* text-align: center; */
     padding: 0.5rem 1rem;
   }
 `

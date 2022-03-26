@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import HomeSermonContext from '../pages/home/HomeSermonContext'
 import styled from 'styled-components'
 
@@ -25,8 +25,10 @@ export const SermonNonActive = (props: SermonNonActiveProps) => {
     <>
       {activeSermon === props.data ? (
         <SermonClicked>
-          <Title>{props.data.title}</Title>
-          <Speaker>{props.data.speaker}</Speaker>
+          <div>
+            <Title>{props.data.title}</Title>
+            <Speaker>{props.data.speaker}</Speaker>
+          </div>
           <Date>{props.data.date}</Date>
         </SermonClicked>
       ) : (
@@ -35,8 +37,10 @@ export const SermonNonActive = (props: SermonNonActiveProps) => {
             setActiveSermon(props.data)
             scroll()
           }}>
-          <Title>{props.data.title}</Title>
-          <Speaker>{props.data.speaker}</Speaker>
+          <div>
+            <Title>{props.data.title}</Title>
+            <Speaker>{props.data.speaker}</Speaker>
+          </div>
           <Date>{props.data.date}</Date>
         </Sermon>
       )}
@@ -59,21 +63,18 @@ const Sermon = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
+  width: auto;
   background: var(--main-blue);
   color: var(--white);
   padding: 0.9rem;
   border-radius: 0.25rem;
-  margin-bottom: 1.5rem;
-  min-width: 18rem;
+  margin-bottom: 0.5rem;
   text-decoration: none;
   text-align: left;
   border: 2px solid transparent;
   cursor: pointer;
   transition: 0.3s;
-
-  @media (max-width: 60em) {
-    margin: 0 2rem;
-  }
 
   &:hover,
   &:focus {

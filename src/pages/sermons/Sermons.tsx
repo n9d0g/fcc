@@ -9,6 +9,7 @@ import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
 import { useSinglePrismicDocument } from '@prismicio/react'
 import { Spinner } from '../../components/Spinner'
+import constants from '../../data/constants'
 
 export const Sermons = () => {
   useDocumentTitle('Sermons')
@@ -23,14 +24,19 @@ export const Sermons = () => {
             <BannerTitle>{document.data.header}</BannerTitle>
           </Banner>
           <Breadcrumb>
-            <BreadcrumbItem location="/" title="home" />
-            <BreadcrumbItem location="/sermons" title="sermons" last />
+            <BreadcrumbItem
+              location={constants.links.home.location}
+              title={constants.links.home.text}
+            />
+            <BreadcrumbItem
+              location={constants.links.sermons.location}
+              title={constants.links.sermons.text}
+              last
+            />
           </Breadcrumb>
           <ActiveSermonContainer>
             <SermonContext.Provider value={{ sermonContext, setSermonContext }}>
-              {sermonContext && (
-                <SermonPageActive data={document.data.sermons} />
-              )}
+              {sermonContext && <SermonPageActive />}
               <SermonPageNonActive data={document.data.sermons} />
             </SermonContext.Provider>
           </ActiveSermonContainer>

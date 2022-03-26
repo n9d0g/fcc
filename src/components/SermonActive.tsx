@@ -1,5 +1,5 @@
-import React from 'react'
 import styled from 'styled-components'
+import constants from '../data/constants'
 
 interface SermonActiveProps {
   youtube: string
@@ -9,11 +9,10 @@ export const SermonActive = (props: SermonActiveProps) => {
   return (
     <SermonContainer>
       <Sermon
-        width="560"
-        height="349"
         src={`https://www.youtube.com/embed/${props.youtube}`}
-        title="YouTube video player"
-        allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></Sermon>
+        title={constants.iframe.title}
+        allow={constants.iframe.allow}
+      />
     </SermonContainer>
   )
 }

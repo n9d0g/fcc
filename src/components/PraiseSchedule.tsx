@@ -33,8 +33,10 @@ export const PraiseSchedule = (props: any) => {
           <WeekDataHeader>📖</WeekDataHeader>
         </WeekDataHeaderContainer>
         {originalPraiseData.map((item: any, index: any) => {
+          // make the upcoming week red and bolded
           var first = false
           if (index === 0) first = true
+
           return (
             <Fragment key={index}>
               <WeekData first={first}>
@@ -69,12 +71,13 @@ const ScheduleContainer = styled.section`
   justify-content: center;
   max-width: 70rem;
   margin: 0 auto;
-  padding-bottom: 3rem;
+  padding: 0 1rem 3rem 1rem;
 `
 
 const ScheduleTitle = styled.h2`
   display: flex;
   justify-content: center;
+  text-align: center;
 `
 
 const WeekContainer = styled.div`
@@ -124,4 +127,7 @@ const Legend = styled.p`
   justify-content: center;
   align-items: center;
   text-align: center;
+  @media (max-width: 60em) {
+    font-size: 0.9rem;
+  }
 `

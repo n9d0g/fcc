@@ -5,6 +5,7 @@ import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
 import { useSinglePrismicDocument } from '@prismicio/react'
 import { Spinner } from '../../components/Spinner'
+import constants from '../../data/constants'
 
 export const Give = () => {
   useDocumentTitle('Give')
@@ -19,8 +20,15 @@ export const Give = () => {
               <GiveBannerTitle>{document.data.title}</GiveBannerTitle>
             </GiveBanner>
             <Breadcrumb>
-              <BreadcrumbItem location="/" title="home" />
-              <BreadcrumbItem location="/give" title="give" last />
+              <BreadcrumbItem
+                location={constants.links.home.location}
+                title={constants.links.home.text}
+              />
+              <BreadcrumbItem
+                location={constants.links.give.location}
+                title={constants.links.give.text}
+                last
+              />
             </Breadcrumb>
             <GiveIntro>
               <GiveIntroText>{document.data.description}</GiveIntroText>

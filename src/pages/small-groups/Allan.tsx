@@ -5,6 +5,7 @@ import { BreadcrumbItem } from '../../components/BreadcrumbItem'
 import { motion } from 'framer-motion'
 import { useSinglePrismicDocument } from '@prismicio/react'
 import { Spinner } from '../../components/Spinner'
+import constants from '../../data/constants'
 
 export const Allan = () => {
   useDocumentTitle('Allan BS')
@@ -18,11 +19,17 @@ export const Allan = () => {
             <BannerTitle>{document.data.title}</BannerTitle>
           </Banner>
           <Breadcrumb>
-            <BreadcrumbItem location="/" title="home" />
-            <BreadcrumbItem location="/smallgroups" title="SGs" />
             <BreadcrumbItem
-              location="/smallgroups/allan"
-              title="allan's bible study"
+              location={constants.links.home.location}
+              title={constants.links.home.text}
+            />
+            <BreadcrumbItem
+              location={constants.links.smallGroups.location}
+              title={constants.links.smallGroups.text}
+            />
+            <BreadcrumbItem
+              location={constants.links.smallGroups.allan.location}
+              title={constants.links.smallGroups.allan.text}
               last
             />
           </Breadcrumb>

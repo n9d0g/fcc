@@ -2,6 +2,7 @@ import { Button } from '../../components/Button'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { Logo } from '../../components/Logo'
+import constants from '../../data/constants'
 
 export const HomeIntro = (props: any) => {
   return (
@@ -28,11 +29,10 @@ export const HomeIntro = (props: any) => {
           hidden: { opacity: 0, y: 50 },
         }}>
         <ButtonContainer>
-          <Button location="/about" text="I'm new" documentTitle="About" />
+          <Button location={constants.links.about.location} text="I'm new" />
           <Button
-            location="/sermons"
+            location={constants.links.sermons.location}
             text="Sermons"
-            documentTitle="Sermons"
             more
           />
         </ButtonContainer>
