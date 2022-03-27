@@ -21,17 +21,15 @@ export const PraiseSchedule = (props: any) => {
         <br /> 🎤: backup; 🔊: sound; 📖: details
       </Legend>
       <WeekContainer>
-        <WeekDataHeaderContainer>
-          <WeekDataHeader>📅</WeekDataHeader>
-          <WeekDataHeader>👑</WeekDataHeader>
-          <WeekDataHeader>🎸</WeekDataHeader>
-          <WeekDataHeader>🎹</WeekDataHeader>
-          <WeekDataHeader>🐟</WeekDataHeader>
-          <WeekDataHeader>🥁</WeekDataHeader>
-          <WeekDataHeader>🎤</WeekDataHeader>
-          <WeekDataHeader>🔊</WeekDataHeader>
-          <WeekDataHeader>📖</WeekDataHeader>
-        </WeekDataHeaderContainer>
+        <WeekDataHeader>📅</WeekDataHeader>
+        <WeekDataHeader>👑</WeekDataHeader>
+        <WeekDataHeader>🎸</WeekDataHeader>
+        <WeekDataHeader>🎹</WeekDataHeader>
+        <WeekDataHeader>🐟</WeekDataHeader>
+        <WeekDataHeader>🥁</WeekDataHeader>
+        <WeekDataHeader>🎤</WeekDataHeader>
+        <WeekDataHeader>🔊</WeekDataHeader>
+        <WeekDataHeader>📖</WeekDataHeader>
         {originalPraiseData.map((item: any, index: any) => {
           // make the upcoming week red and bolded
           var first = false
@@ -83,6 +81,7 @@ const ScheduleTitle = styled.h2`
 const WeekContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(9, 1fr);
+  grid-auto-rows: 1fr;
   overflow: auto;
 `
 
@@ -106,20 +105,21 @@ const WeekData = styled.p<WeekDataProps>`
   }
 `
 
-const WeekDataHeaderContainer = styled.div`
-  display: contents;
-  position: sticky;
-  align-self: flex-start;
-  top: 200px;
-`
-
 const WeekDataHeader = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   margin: 0;
   border: 1px solid var(--secondary-grey);
   font-weight: bold;
+  font-size: 1rem;
+  max-height: 2rem;
+
+  @media (max-width: 60em) {
+    font-size: 0.75rem;
+    max-height: 1.5rem;
+  }
 `
 
 const Legend = styled.p`
