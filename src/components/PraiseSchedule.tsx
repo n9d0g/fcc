@@ -172,8 +172,8 @@ const Legend = styled.p`
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: right;
-  margin: 3rem 1rem 0;
+  justify-content: flex-end;
+  margin: 1rem;
 `
 
 const SeeMoreButton = styled.button`
