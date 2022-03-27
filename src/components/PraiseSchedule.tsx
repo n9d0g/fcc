@@ -25,17 +25,15 @@ export const PraiseSchedule = (props: any) => {
         <br /> 🎤: backup; 🔊: sound; 📖: details
       </Legend>
       <WeekContainer>
-        <>
-          <WeekDataHeader>📅</WeekDataHeader>
-          <WeekDataHeader>👑</WeekDataHeader>
-          <WeekDataHeader>🎸</WeekDataHeader>
-          <WeekDataHeader>🎹</WeekDataHeader>
-          <WeekDataHeader>🐟</WeekDataHeader>
-          <WeekDataHeader>🥁</WeekDataHeader>
-          <WeekDataHeader>🎤</WeekDataHeader>
-          <WeekDataHeader>🔊</WeekDataHeader>
-          <WeekDataHeader>📖</WeekDataHeader>
-        </>
+        <WeekDataHeader>📅</WeekDataHeader>
+        <WeekDataHeader>👑</WeekDataHeader>
+        <WeekDataHeader>🎸</WeekDataHeader>
+        <WeekDataHeader>🎹</WeekDataHeader>
+        <WeekDataHeader>🐟</WeekDataHeader>
+        <WeekDataHeader>🥁</WeekDataHeader>
+        <WeekDataHeader>🎤</WeekDataHeader>
+        <WeekDataHeader>🔊</WeekDataHeader>
+        <WeekDataHeader>📖</WeekDataHeader>
         {fullSchedule
           ? slicedOriginalPraiseData.map((item: any, index: any) => {
               // make the upcoming week red and bolded
@@ -154,9 +152,11 @@ const WeekDataHeader = styled.p`
   border: 1px solid var(--secondary-grey);
   font-weight: bold;
   font-size: 1rem;
+  max-height: 2rem;
 
   @media (max-width: 60em) {
     font-size: 0.75rem;
+    max-height: 1.5rem;
   }
 `
 
