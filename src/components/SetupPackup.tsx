@@ -19,11 +19,9 @@ export const SetupPackup = (props: any) => {
     <ScheduleContainer>
       <ScheduleTitle>setup/packup schedule</ScheduleTitle>
       <WeekContainer>
-        <WeekDataHeaderContainer>
-          <WeekDataHeader>📅</WeekDataHeader>
-          <WeekDataHeader>setup</WeekDataHeader>
-          <WeekDataHeader>packup</WeekDataHeader>
-        </WeekDataHeaderContainer>
+        <WeekDataHeader>📅</WeekDataHeader>
+        <WeekDataHeader>setup</WeekDataHeader>
+        <WeekDataHeader>packup</WeekDataHeader>
         {fullSchedule
           ? slicedOriginalPraiseData.map((item: any, index: any) => {
               var first = false
@@ -101,13 +99,6 @@ const WeekData = styled.p<WeekDataProps>`
   @media (max-width: 60em) {
     font-size: 0.75rem;
   }
-`
-
-const WeekDataHeaderContainer = styled.div`
-  display: contents;
-  position: sticky;
-  align-self: flex-start;
-  top: 200px;
 `
 
 const WeekDataHeader = styled.p`
