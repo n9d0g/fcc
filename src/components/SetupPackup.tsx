@@ -19,9 +19,11 @@ export const SetupPackup = (props: any) => {
     <ScheduleContainer>
       <ScheduleTitle>setup/packup schedule</ScheduleTitle>
       <WeekContainer>
-        <WeekDataHeader>📅</WeekDataHeader>
-        <WeekDataHeader>setup</WeekDataHeader>
-        <WeekDataHeader>packup</WeekDataHeader>
+        <>
+          <WeekDataHeader>📅</WeekDataHeader>
+          <WeekDataHeader>setup</WeekDataHeader>
+          <WeekDataHeader>packup</WeekDataHeader>
+        </>
         {fullSchedule
           ? slicedOriginalPraiseData.map((item: any, index: any) => {
               var first = false
@@ -77,7 +79,7 @@ const ScheduleTitle = styled.h2`
 const WeekContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr 3fr;
-  grid-template-rows: 1fr;
+  grid-auto-rows: 1fr;
   overflow: auto;
 `
 
