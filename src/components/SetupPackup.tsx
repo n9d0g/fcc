@@ -110,6 +110,11 @@ const WeekDataHeader = styled.p`
   margin: 0;
   border: 1px solid var(--secondary-grey);
   font-weight: bold;
+  font-size: 1rem;
+
+  @media (max-width: 60em) {
+    font-size: 0.75rem;
+  }
 `
 
 const ButtonContainer = styled.div`
