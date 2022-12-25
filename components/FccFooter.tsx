@@ -1,12 +1,7 @@
 const FccFooter = () => {
   return (
-    <footer>
-      <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer">
-        Powered by{' '}
-      </a>
+    <footer className="flex flex-col justify-center items-center p-4">
+      <p>&copy; Freedom in Christ Church. All Rights Reserved.</p>
     </footer>
   )
 }

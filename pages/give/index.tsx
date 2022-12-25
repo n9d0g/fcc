@@ -1,7 +1,13 @@
-import React from 'react'
+import { Layout } from '../../components/Layout'
 
 const Give = () => {
-  return <main>Give</main>
+  return (
+    <Layout title="FCC | Give">
+      <section>
+        <h1 className="text-5xl">Give</h1>
+      </section>
+    </Layout>
+  )
 }
 
 export default Give
