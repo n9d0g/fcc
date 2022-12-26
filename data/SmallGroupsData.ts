@@ -1,11 +1,4 @@
 import {
-  Bars3Icon,
-  RocketLaunchIcon,
-  UserGroupIcon,
-  XMarkIcon,
-  InformationCircleIcon,
-  MusicalNoteIcon,
-  UserIcon,
   AcademicCapIcon,
   PuzzlePieceIcon,
   FireIcon,

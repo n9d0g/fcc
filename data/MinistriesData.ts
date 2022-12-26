@@ -1,17 +1,8 @@
 import {
-  Bars3Icon,
-  RocketLaunchIcon,
-  UserGroupIcon,
-  XMarkIcon,
-  InformationCircleIcon,
   MusicalNoteIcon,
   UserIcon,
   AcademicCapIcon,
   PuzzlePieceIcon,
-  FireIcon,
-  ArrowDownCircleIcon,
-  BoltIcon,
-  BellIcon,
 } from '@heroicons/react/24/outline'
 
 const MinistriesData = [
@@ -42,7 +33,7 @@ const MinistriesData = [
   {
     name: 'Young Adults',
     description: 'YA Ministry.',
-    href: '/ministries/youth',
+    href: '/ministries/young-adults',
     icon: PuzzlePieceIcon,
   },
   {

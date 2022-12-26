@@ -1,17 +1,7 @@
 import {
-  Bars3Icon,
   RocketLaunchIcon,
   UserGroupIcon,
-  XMarkIcon,
   InformationCircleIcon,
-  MusicalNoteIcon,
-  UserIcon,
-  AcademicCapIcon,
-  PuzzlePieceIcon,
-  FireIcon,
-  ArrowDownCircleIcon,
-  BoltIcon,
-  BellIcon,
 } from '@heroicons/react/24/outline'
 
 const AboutData = [

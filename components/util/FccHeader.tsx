@@ -5,6 +5,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import AboutData from '../../data/AboutData'
 import MinistriesData from '../../data/MinistriesData'
 import SmallGroupsData from '../../data/SmallGroupsData'
+import MenuItem from './MenuItem'
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
@@ -33,11 +34,7 @@ export default function Example() {
               </Popover.Button>
             </div>
             <Popover.Group as="nav" className="hidden space-x-10 md:flex">
-              <a
-                href="/"
-                className="text-base font-medium text-gray-500 hover:text-gray-900">
-                Home
-              </a>
+              <MenuItem href="/" title="Home" />
               <Popover className="relative">
                 {({ open }) => (
                   <>
@@ -93,13 +90,7 @@ export default function Example() {
                   </>
                 )}
               </Popover>
-
-              <a
-                href="/sermons"
-                className="text-base font-medium text-gray-500 hover:text-gray-900">
-                Sermons
-              </a>
-
+              <MenuItem href="/sermons" title="Sermons" />
               <Popover className="relative">
                 {({ open }) => (
                   <>
@@ -212,11 +203,7 @@ export default function Example() {
                 )}
               </Popover>
 
-              <a
-                href="/give"
-                className="text-base font-medium text-gray-500 hover:text-gray-900">
-                Give
-              </a>
+              <MenuItem href="/give" title="Give" />
             </Popover.Group>
           </div>
         </div>
