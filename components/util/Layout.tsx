@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import FccFooter from './FccFooter'
 import FccHead from './FccHead'
 import FccHeader from './FccHeader'

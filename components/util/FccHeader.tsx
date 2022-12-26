@@ -1,115 +1,10 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
-import {
-  Bars3Icon,
-  BookmarkSquareIcon,
-  CalendarIcon,
-  ChartBarIcon,
-  CursorArrowRaysIcon,
-  LifebuoyIcon,
-  ShieldCheckIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-
-const about = [
-  {
-    name: 'Beliefs',
-    description: 'Get a better understanding of the core beliefs of FCC.',
-    href: '/about/beliefs',
-    icon: ChartBarIcon,
-  },
-  {
-    name: 'Mission & Vision',
-    description: 'What is the mission & vision of FCC?',
-    href: '/about/mission-vision',
-    icon: CursorArrowRaysIcon,
-  },
-  {
-    name: 'Leadership',
-    description: 'Meet the leadership team.',
-    href: '/about/leadership',
-    icon: ShieldCheckIcon,
-  },
-]
-
-const ministries = [
-  {
-    name: 'Men',
-    description: "Men's Ministry.",
-    href: '/ministries/men',
-    icon: LifebuoyIcon,
-  },
-  {
-    name: 'Women',
-    description: "Women's Ministry.",
-    href: '/ministries/women',
-    icon: BookmarkSquareIcon,
-  },
-  {
-    name: 'Pre-Teens',
-    description: "Pre-teen's Ministry.",
-    href: '/ministries/preteens',
-    icon: CalendarIcon,
-  },
-  {
-    name: 'Youth',
-    description: 'Youth Ministry.',
-    href: '/ministries/youth',
-    icon: ShieldCheckIcon,
-  },
-  {
-    name: 'Young Adults',
-    description: 'YA Ministry.',
-    href: '/ministries/youth',
-    icon: ShieldCheckIcon,
-  },
-  {
-    name: 'Praise & Worship',
-    description: 'Praise and Worship Ministry.',
-    href: '/ministries/praise',
-    icon: ShieldCheckIcon,
-  },
-]
-
-const smallgroups = [
-  {
-    name: 'Women Chasing God',
-    description: 'Women Chasing God Small Group.',
-    href: '/smallgroups/women-chasing-god',
-    icon: LifebuoyIcon,
-  },
-  {
-    name: 'University Bible Study',
-    description: 'University Bible Study - ages 16-19.',
-    href: '/smallgroups/university-bible-study',
-    icon: BookmarkSquareIcon,
-  },
-  {
-    name: 'South Mississauga',
-    description: 'South Mississauga Bible Study.',
-    href: '/smallgroups/mississauga',
-    icon: CalendarIcon,
-  },
-  {
-    name: 'Yumul Bible Study',
-    description: 'Yumul Bible Study.',
-    href: '/smallgroups/yumul',
-    icon: ShieldCheckIcon,
-  },
-  {
-    name: "Bro. Allan's Bible Study",
-    description: "Bro. Allan's Bible Study",
-    href: '/smallgroups/allan',
-    icon: ShieldCheckIcon,
-  },
-  {
-    name: 'Young Adults',
-    description: 'Young Adults Small Group.',
-    href: '/smallgroups/young-adults',
-    icon: ShieldCheckIcon,
-  },
-]
+import AboutData from '../../data/AboutData'
+import MinistriesData from '../../data/MinistriesData'
+import SmallGroupsData from '../../data/SmallGroupsData'
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
@@ -172,7 +67,7 @@ export default function Example() {
                       <Popover.Panel className="absolute z-10 -ml-4 mt-3 w-screen max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
                         <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 z-10">
                           <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                            {about.map(item => (
+                            {AboutData.map(item => (
                               <a
                                 key={item.name}
                                 href={item.href}
@@ -234,7 +129,7 @@ export default function Example() {
                       <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-md -translate-x-1/2 transform px-2 sm:px-0">
                         <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                           <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                            {ministries.map(item => (
+                            {MinistriesData.map(item => (
                               <a
                                 key={item.name}
                                 href={item.href}
@@ -290,7 +185,7 @@ export default function Example() {
                       <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-md -translate-x-1/2 transform px-2 sm:px-0">
                         <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                           <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                            {smallgroups.map(item => (
+                            {SmallGroupsData.map(item => (
                               <a
                                 key={item.name}
                                 href={item.href}
@@ -356,7 +251,7 @@ export default function Example() {
                 </div>
                 <div className="mt-6">
                   <nav className="grid gap-y-8">
-                    {about.map(item => (
+                    {AboutData.map(item => (
                       <a
                         key={item.name}
                         href={item.href}
@@ -386,7 +281,7 @@ export default function Example() {
                     className="text-base font-medium text-gray-900 hover:text-gray-700">
                     Docs
                   </a>
-                  {ministries.map(item => (
+                  {MinistriesData.map(item => (
                     <a
                       key={item.name}
                       href={item.href}
