@@ -270,17 +270,6 @@ export default function Example() {
               </div>
               <div className="space-y-6 py-6 px-5">
                 <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                  <a
-                    href="#"
-                    className="text-base font-medium text-gray-900 hover:text-gray-700">
-                    Pricing
-                  </a>
-
-                  <a
-                    href="#"
-                    className="text-base font-medium text-gray-900 hover:text-gray-700">
-                    Docs
-                  </a>
                   {MinistriesData.map(item => (
                     <a
                       key={item.name}
@@ -289,19 +278,6 @@ export default function Example() {
                       {item.name}
                     </a>
                   ))}
-                </div>
-                <div>
-                  <a
-                    href="#"
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700">
-                    Sign up
-                  </a>
-                  <p className="mt-6 text-center text-base font-medium text-gray-500">
-                    Existing customer?{' '}
-                    <a href="#" className="text-blue-600 hover:text-blue-500">
-                      Sign in
-                    </a>
-                  </p>
                 </div>
               </div>
             </div>
