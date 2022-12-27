@@ -1,5 +1,4 @@
 import FooterListItem from '../footer/FooterListItem'
-import Image from 'next/image'
 
 const FccFooter = () => {
   return (
