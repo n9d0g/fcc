@@ -26,45 +26,26 @@ const PraiseModal = (props: ModalProps) => {
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none max-w-screen-sm mx-auto">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-nonep">
-                {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-3xl font-semibold whitespace-pre-line">
-                    {props.title} - {props.date}
-                  </h3>
-                  <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setShowModal(false)}>
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                      ×
-                    </span>
-                  </button>
-                </div>
-                {/*body*/}
                 <div className="relative p-6 flex-auto">
                   <h4 className="font-bold">SPEAKER</h4>
-                  <p className="my-4 text-slate-500 leading-relaxed w-full whitespace-pre-line">
+                  <p className="mb-2 text-slate-500 leading-relaxed w-full whitespace-pre-line">
                     {props.speaker}
                   </p>
-                  <h4 className="font-bold">TOPIC</h4>
-                  <p className="my-4 text-slate-500 leading-relaxed w-full whitespace-pre-line">
-                    {props.topic}
-                  </p>
                   <h4 className="font-bold">MESSAGE TITLE</h4>
-                  <p className="my-4 text-slate-500 leading-relaxed w-full whitespace-pre-line">
+                  <p className="mb-2 text-slate-500 leading-relaxed w-full whitespace-pre-line">
                     {props.messageTitle}
                   </p>
                   <h4 className="font-bold">SUMMARY</h4>
-                  <p className="my-4 text-slate-500 leading-relaxed w-full whitespace-pre-line">
+                  <p className="mb-2 text-slate-500 leading-relaxed w-full whitespace-pre-line">
                     {props.text}
                   </p>
                   <h4 className="font-bold">OBJECTIVE</h4>
-                  <p className="my-4 text-slate-500 leading-relaxed w-full whitespace-pre-line">
+                  <p className="mb-2 text-slate-500 leading-relaxed w-full whitespace-pre-line">
                     {props.objective}
                   </p>
                   <h4 className="font-bold">SCRIPTURE</h4>
-                  <p className="my-4 text-slate-500 leading-relaxed w-full whitespace-pre-line">
+                  <p className="mb-2 text-slate-500 leading-relaxed w-full whitespace-pre-line">
                     {props.scripture}
                   </p>
                 </div>
