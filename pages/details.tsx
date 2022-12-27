@@ -26,7 +26,12 @@ const Details = () => {
                             <th
                               scope="col"
                               className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                              OFFERING PRAYER
+                              OPENING PRAYER VERSE
+                            </th>
+                            <th
+                              scope="col"
+                              className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                              OPENING PRAYER
                             </th>
                             <th
                               scope="col"
@@ -36,12 +41,7 @@ const Details = () => {
                             <th
                               scope="col"
                               className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                              OPENING PRAYER VERSE
-                            </th>
-                            <th
-                              scope="col"
-                              className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                              OPENING PRAYER
+                              OFFERING PRAYER
                             </th>
                             <th
                               scope="col"
@@ -58,8 +58,14 @@ const Details = () => {
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             <Modal
-                              title="Offering Prayer"
-                              text={service['Offering prayer']}
+                              title="Offering Prayer Verse"
+                              text={service['Opening Prayer verse']}
+                            />
+                          </td>
+                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <Modal
+                              title="Opening Prayer"
+                              text={service['Opening prayer']}
                             />
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -70,14 +76,8 @@ const Details = () => {
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             <Modal
-                              title="Offering Prayer Verse"
-                              text={service['Opening Prayer verse']}
-                            />
-                          </td>
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            <Modal
-                              title="Opening Prayer"
-                              text={service['Opening prayer']}
+                              title="Offering Prayer"
+                              text={service['Offering prayer']}
                             />
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
