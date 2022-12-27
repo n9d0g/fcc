@@ -11,15 +11,13 @@ const YoungAdults = () => {
           </h1>
           <p>
             We are the Young Adults ministry of Freedom in Christ Church. We’re
-            here to grow with you as you step into your destiny. Our purpose is
-            to be a vibrant, thriving community that is at the centre of our
-            church. We are the future of FCC. If you are between the ages of
-            18-35+ and whether you’re single, in a relationship or married, you
-            are so welcome with us. We want to create an environment where you
-            will not only feel apart of something that is thriving and full of
-            life, but that you are thriving in the life that God has for you. We
-            want to connect you to others and empower you to fulfil God's
-            calling on your life.
+            here to grow with you as you step into your destiny. If you are
+            between the ages of 18-35+ and whether you’re single, in a
+            relationship or married, you are so welcome with us! We want to
+            create an environment where you will not only feel apart of
+            something that is thriving and full of life, but that you are
+            thriving in the life that God has for you. We want to connect you to
+            others and empower you to fulfil God's calling on your life.
           </p>
           <p>
             For more information of these and other upcoming events with the

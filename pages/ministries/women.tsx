@@ -12,10 +12,10 @@ const Women = () => {
             God and other women.
           </p>
           <p>
-            The women at Woodside have discovered that real life is only worth
-            living in a relationship with Jesus. You are of infinite value to
-            Him, and He is worth belonging to. He will never abandon you. He
-            will always love you – laugh lines, messes and all.
+            The women at Freedom in Christ Church have discovered that real life
+            is only worth living in a relationship with Jesus. You are of
+            infinite value to Him, and He is worth belonging to. He will never
+            abandon you. He will always love you – laugh lines, messes and all.
           </p>
           <p>
             At FCC we believe that we will find real life with Jesus through
