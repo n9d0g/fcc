@@ -8,7 +8,7 @@ const FccFooter = () => {
         <div className="mb-6 md:mb-0">
           <a href="/" className="flex items-center">
             <img src="/fcc-logo.svg" className="mr-3 h-14" alt="FCC Logo" />
-            <span className="self-center text-sm lg:text-2xl font-semibold whitespace-nowrap dark:text-white lg:pr-10">
+            <span className="self-center text-sm lg:text-2xl font-semibold whitespace-nowrap dark:text-white lg:pr-[10rem]">
               Freedom in <br /> Christ Church
             </span>
           </a>
