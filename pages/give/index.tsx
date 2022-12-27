@@ -6,7 +6,7 @@ const Give = () => {
     <Layout title="FCC | Give">
       <section className="flex flex-col md:flex-row container gap-6 justify-around items-center p-6">
         <div className="flex flex-col flex-1 gap-y-8">
-          <h1 className="text-5xl leading-snug">
+          <h1 className="text-5xl font-bold leading-snug">
             Generosity is a Form of Worship.
           </h1>
           <p>

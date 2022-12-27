@@ -12,7 +12,7 @@ const DropdownItem = (props: DropdownItemProps) => {
       href={props.href}
       className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
       <props.icon
-        className="h-6 w-6 flex-shrink-0 text-blue-600"
+        className="h-6 w-6 flex-shrink-0 text-blue"
         aria-hidden="true"
       />
       <div className="ml-4">
