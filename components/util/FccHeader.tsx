@@ -64,7 +64,7 @@ export default function Example() {
           leaveTo="opacity-0 scale-95">
           <Popover.Panel
             focus
-            className="absolute inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden">
+            className="absolute inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden z-10">
             <div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
               <div className="px-5 pt-5 pb-6">
                 <div className="flex items-center justify-between">
