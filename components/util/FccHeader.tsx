@@ -87,7 +87,7 @@ export default function Example() {
                     <MobileMenuItem href="/about" title="About" />
                     <MobileMenuItem href="/sermons" title="Sermons" />
                     <MobileMenuItem href="/ministries" title="Ministries" />
-                    <MobileMenuItem href="/small-groups" title="Small Groups" />
+                    <MobileMenuItem href="/smallgroups" title="Small Groups" />
                     <MobileMenuItem href="/give" title="Give" />
                   </nav>
                 </div>
