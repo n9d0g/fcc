@@ -58,30 +58,35 @@ const Details = () => {
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             <Modal
+                              date={service.DATE}
                               title="Offering Prayer Verse"
                               text={service['Opening Prayer verse']}
                             />
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             <Modal
+                              date={service.DATE}
                               title="Opening Prayer"
                               text={service['Opening prayer']}
                             />
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             <Modal
+                              date={service.DATE}
                               title="Offering Verse"
                               text={service['Offering verse']}
                             />
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             <Modal
+                              date={service.DATE}
                               title="Offering Prayer"
                               text={service['Offering prayer']}
                             />
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             <Modal
+                              date={service.DATE}
                               title="Scripture Reading"
                               text={service['Scripture reading']}
                             />
