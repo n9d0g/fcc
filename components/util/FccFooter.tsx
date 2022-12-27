@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const FccFooter = () => {
   return (
-    <footer className="p-4 bg-gray-900 sm:p-6">
+    <footer className="p-4 bg-gray-900 sm:p-6 md:py-[5rem]">
       <div className="container md:flex md:justify-between md:mx-auto">
         <div className="mb-6 md:mb-0">
           <a href="/" className="flex items-center">

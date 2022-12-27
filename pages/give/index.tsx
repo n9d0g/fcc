@@ -4,7 +4,7 @@ import Image from 'next/image'
 const Give = () => {
   return (
     <Layout title="FCC | Give">
-      <section className="flex flex-col md:flex-row container gap-6 justify-around items-center p-6">
+      <section className="flex flex-col md:flex-row container gap-6 justify-around items-center px-6 py-[10rem]">
         <div className="flex flex-col flex-1 gap-y-8">
           <h1 className="text-5xl font-bold leading-snug">
             Generosity is a Form of Worship.
