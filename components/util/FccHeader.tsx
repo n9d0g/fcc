@@ -44,6 +44,7 @@ export default function Example() {
               />
               <MenuItem
                 dropdown
+                smallGroups
                 title="Small Groups"
                 dropdownData={SmallGroupsData}
               />
