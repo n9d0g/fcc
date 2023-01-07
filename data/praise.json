@@ -1,6 +1,7 @@
 [
   {
     "date": "January 1",
+    "dateTemporal": "2023-01-01",
     "lead": "Nathan",
     "guitar": "John",
     "keys": "Nathan",
@@ -17,6 +18,7 @@
   },
   {
     "date": "January 8",
+    "dateTemporal": "2023-01-08",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -33,6 +35,7 @@
   },
   {
     "date": "January 15",
+    "dateTemporal": "2023-01-15",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -49,6 +52,7 @@
   },
   {
     "date": "January 22",
+    "dateTemporal": "2023-01-22",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -65,6 +69,7 @@
   },
   {
     "date": "January 29",
+    "dateTemporal": "2023-01-29",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -81,6 +86,7 @@
   },
   {
     "date": "February 5",
+    "dateTemporal": "2023-02-05",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -88,7 +94,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "COMMUNION SUNDAY/ LOVE MONTH \nKOINONIA SERIES  6 - The Problem with \"Over\"-Fellowship",
     "title": "Loser or Winner?",
     "scripture": "Acts 1:1-2:41, Acts 1:8, Acts 2:1-4, Acts 2:17, Acts 2:38-39, Acts 2:41, Acts 2:43, Acts 2:5-6",
@@ -98,6 +103,7 @@
   },
   {
     "date": "February 12",
+    "dateTemporal": "2023-02-12",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -114,6 +120,7 @@
   },
   {
     "date": "February 19",
+    "dateTemporal": "2023-02-19",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -121,7 +128,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "FAMILY DAY WEEKEND\nKOINONIA SERIES 8 - The Problem with Church Splits",
     "title": "Division or Multiplication?",
     "scripture": "Romans 14:19-22, Romans 15, Romans 15:5-7, Romans 16:17-18",
@@ -131,6 +137,7 @@
   },
   {
     "date": "February 26",
+    "dateTemporal": "2023-02-26",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -138,7 +145,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "KOINONIA SERIES 9  - The Problem with Giving",
     "title": "To Tithe or Not to Tithe: That is the Question",
     "scripture": "Acts 20:35, Galatians 3:7, 14:18-20, 28:22, 4:4-5, Hebrews 7:8-9, John 8:39, Leviticus 27:30, Malachi 3:10-12, Matthew 23:23, 28:19,  6:19-21, Matthew 6:33, Proverbs 3:9",
@@ -148,6 +154,7 @@
   },
   {
     "date": "March 5",
+    "dateTemporal": "2023-03-05",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -155,7 +162,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "COMMUNION SUNDAY/ \nHOT POTATOES SERIES 1 - About Godly Parenting",
     "title": "Mold and Mentor",
     "scripture": "Ephesians 4, Ephesians 5, Ephesians 6:1-4, Hebrews 11, Hebrews 11:6",
@@ -164,6 +170,7 @@
   },
   {
     "date": "March 12",
+    "dateTemporal": "2023-03-12",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -171,7 +178,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "DST BEGINS/ INTL WOMEN’S DAY\nWomen’s Sunday\nHOT POTATOES SERIES 2 - About Drinking",
     "title": "Drunk and Disillusioned",
     "scripture": "Matthew 11:19, Matthew 9:17, Romans 14:21, Titus 1:7, Titus 1:7",
@@ -180,6 +186,7 @@
   },
   {
     "date": "March 19",
+    "dateTemporal": "2023-03-19",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -187,7 +194,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "HOT POTATOES SERIES  3-  About Sin and Temptation",
     "title": "Flee and Fight",
     "scripture": "1 Timothy 6:11-12",
@@ -197,6 +203,7 @@
   },
   {
     "date": "March 26",
+    "dateTemporal": "2023-03-26",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -204,7 +211,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "POST-SERVICE LEADERS’ QUARTERLY REPORT\nHOT POTATOES SERIES 4 - About Abortion",
     "title": "Formed and Fulfilled",
     "scripture": "Genesis 2:7, Luke 1:15, Luke 1:41, Luke 2:16, Psalm 100, Psalm 139, Psalms 100:1-5",
@@ -213,6 +219,7 @@
   },
   {
     "date": "April 2",
+    "dateTemporal": "2023-04-02",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -220,7 +227,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "COMMUNION SUNDAY/PALM SUNDAY/ CHURCH ANNIVERSARY",
     "title": "Hosanna in the Highest",
     "scripture": "John 12:12-36",
@@ -229,6 +235,7 @@
   },
   {
     "date": "April 7",
+    "dateTemporal": "2023-04-07",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -236,7 +243,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "GOOD FRIDAY/ WASHING OF FEET",
     "title": "Seven Last Words of Jesus",
     "scripture": "John 19:26, John 19:26-30, John 19:28, John 19:30, Luke 23:24, Luke 23:24-46, Luke 23:43, Luke 23:46, Matthew 27:46, Psalms 2:2-8",
@@ -246,6 +252,7 @@
   },
   {
     "date": "April 9",
+    "dateTemporal": "2023-04-09",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -253,7 +260,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "EASTER SUNDAY",
     "title": "The Joy of Easter",
     "scripture": "1 Corinthians 15:12-15\nLuke 24:1-12",
@@ -263,6 +269,7 @@
   },
   {
     "date": "April 16",
+    "dateTemporal": "2023-04-16",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -270,7 +277,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "TEACHING SERIES 1\nChurch Leadership",
     "title": "Follow the Leader",
     "scripture": "1 Timothy 3:8-13, Acts 6:1-6, Acts 6:2, Acts 6:2-5, Mark 10:42-45",
@@ -279,6 +285,7 @@
   },
   {
     "date": "April 23",
+    "dateTemporal": "2023-04-23",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -286,7 +293,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "TEACHING SERIES 2\nCreation",
     "title": "Creation or Chance?",
     "scripture": "Genesis 1:1-2:3",
@@ -295,6 +301,7 @@
   },
   {
     "date": "April 30",
+    "dateTemporal": "2023-04-30",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -302,7 +309,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "EARTH DAY\nTEACHING SERIES 3\nKnowing our Enemy - Satan",
     "title": "Know Your Enemy",
     "scripture": "Peter, Colossians 1:16, Ephesians 6, Ezekiel 28, John 1:1-3, John 12:31, Luke 4, Matthew 4:1-11",
@@ -311,6 +317,7 @@
   },
   {
     "date": "May 7",
+    "dateTemporal": "2023-05-07",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -318,7 +325,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "COMMUNION SUNDAY\nTEACHING SERIES 4\nTrinity",
     "title": "God in Three Persons",
     "scripture": "Hebrews 4:15, John 1:1-14, John 14:25-26, John 14:9, John 16:12-15, John 20:28, Luke 3:21",
@@ -327,6 +333,7 @@
   },
   {
     "date": "May 14",
+    "dateTemporal": "2023-05-14",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -334,7 +341,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "MOTHER’S DAY SERVICE\n",
     "title": "Raising Eagles",
     "scripture": "1 Samuel 1:1-2:2",
@@ -344,6 +350,7 @@
   },
   {
     "date": "May 21",
+    "dateTemporal": "2023-05-21",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -351,7 +358,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "VICTORIA DAY WEEKEND\nTEACHING SERIES 5\nForgiveness",
     "title": "Let It Go",
     "scripture": "Colossians 3:1-18, Colossians 3:1-3:18, Isaiah 55:7, Luke 6:37, Psalm 130",
@@ -360,6 +366,7 @@
   },
   {
     "date": "May 28",
+    "dateTemporal": "2023-05-28",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -367,7 +374,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "TEACHING SERIES 6\nSanctification",
     "title": "Understanding Sanctification",
     "scripture": "Acts 15:8-9, Galatians 2:20, I Thessalonians, Luke 11:13, Romans 12:1-2",
@@ -376,6 +382,7 @@
   },
   {
     "date": "June 4",
+    "dateTemporal": "2023-06-04",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -383,7 +390,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "COMMUNION SUNDAY/ C&MA SUNDAY SERVICE",
     "title": "A Missionary Report",
     "scripture": "John 18:36, Matthew 28:18-20",
@@ -391,6 +397,7 @@
   },
   {
     "date": "June 11",
+    "dateTemporal": "2023-06-11",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -398,13 +405,13 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "PHILIPPINE Independence SUNDAY",
     "title": "Praying for the Philippines",
     "objective": "A report on the spiritual situation in the Philippines."
   },
   {
     "date": "June 18",
+    "dateTemporal": "2023-06-18",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -412,7 +419,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "FATHER’S DAY SERVICE",
     "title": "The Legacy of our Fathers",
     "scripture": "1 Corinthians 16:13, Colossians 3:18-20, 1 Thessalonians 2:10-12",
@@ -421,6 +427,7 @@
   },
   {
     "date": "June 25",
+    "dateTemporal": "2023-06-25",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -428,7 +435,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "GRADS DAY/ \nPOST-SERVICE LEADERS’ QUARTERLY REPORT",
     "title": "The School of Life",
     "scripture": "Psalm 73, Psalms 50, Psalms 73:1-28, Revelation 3:21, Nehemiah 12:46",
@@ -437,6 +443,7 @@
   },
   {
     "date": "July 2",
+    "dateTemporal": "2023-07-02",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -444,7 +451,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "COMMUNION SUNDAY/ CANADA DAY WEEKEND \n SPIRITUAL DISCIPLINES SERIES 1\n",
     "title": "What's the big deal about baptism?",
     "scripture": "Luke 23:43, Mark 16:16, Matthew 28:19, Matthew 3:13-15, Romans 6:3-4, Romans 6:4, Romans 6:6-7, Titus 3:4, Titus 3:5",
@@ -454,6 +460,7 @@
   },
   {
     "date": "July 9",
+    "dateTemporal": "2023-07-09",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -461,7 +468,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "CAMPING\n SPIRITUAL DISCIPLINES SERIES 2",
     "title": "What's the big deal about quiet time?",
     "scripture": "Mark 1:35-39, Daniel 6:1-28, Exodus 19:1-8",
@@ -470,6 +476,7 @@
   },
   {
     "date": "July 16",
+    "dateTemporal": "2023-07-16",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -477,7 +484,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": " SPIRITUAL DISCIPLINES SERIES 3",
     "title": "What's the big deal about servanthood?",
     "scripture": "James 4:6-7, Acts 20:13-38, Galatians 4:1-9, John 1:40-42",
@@ -486,6 +492,7 @@
   },
   {
     "date": "July 23",
+    "dateTemporal": "2023-07-23",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -493,7 +500,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "SPIRITUAL DISCIPLINES SERIES 4",
     "title": "What's the big deal about purity?",
     "scripture": "1 Thessalonians 4:3-8, Ephesians 5:1-3, Genesis 3, Hebrews 13:4, Leviticus 18, Mark 10, Matthew 19, Matthew 5, Proverbs 5:15-20, Romans 1:24",
@@ -502,6 +508,7 @@
   },
   {
     "date": "July 30",
+    "dateTemporal": "2023-07-30",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -509,7 +516,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "SPIRITUAL DISCIPLINES SERIES 5",
     "title": "What's the big deal about discipleship?",
     "scripture": "James 3:13, Luke 14:25-33, Luke 14:25-35, Luke 5:1-11",
@@ -518,6 +524,7 @@
   },
   {
     "date": "August 6",
+    "dateTemporal": "2023-08-06",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -525,13 +532,13 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "COMMUNION SUNDAY/ CIVIC HOLIDAY WEEKEND - EVANGELISM SERIES 1",
     "title": "P2C",
     "objective": "To share the evangelistic methods and tools used by CCC/Cru/P2C. (The Four Spiritual Laws)"
   },
   {
     "date": "August 13",
+    "dateTemporal": "2023-08-13",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -539,13 +546,13 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "FCC PICNIC\nEVANGELISM SERIES 2",
     "title": "PSALM",
     "objective": "To share the evangelistic methods and tools used by the PSALM. (Fishers of Men)"
   },
   {
     "date": "August 20",
+    "dateTemporal": "2023-08-20",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -553,13 +560,13 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "EVANGELISM SERIES 3",
     "title": "IVCF",
     "objective": "To share the evangelistic methods and tools used by IVCF. (The New Believer Witness)"
   },
   {
     "date": "August 27",
+    "dateTemporal": "2023-08-27",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -567,13 +574,13 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "INTERNATIONAL YOUTH DAY\nEVANGELISM SERIES 4",
     "title": "NAVIGATORS",
     "objective": "To share the evangelistic methods and tools used by the Navigators. (The Bridge to Life)"
   },
   {
     "date": "September 3",
+    "dateTemporal": "2023-09-03",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -581,7 +588,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "COMMUNION SUNDAY/ LABOR DAY WEEKEND/ SENIOR CITIZEN DAY - COMMUNION SERIES 1",
     "title": "The Passover",
     "scripture": "Exodus 12:7-13, Luke 22:1, Luke 22:8-22",
@@ -590,6 +596,7 @@
   },
   {
     "date": "September 10",
+    "dateTemporal": "2023-09-10",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -597,7 +604,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "COMMUNION SERIES 2",
     "title": "The Blood of Jesus",
     "scripture": "Hebrews 9:1-28, Revelation 1:5, Isaiah 1:18, Hebrews 9:12, Ephesians 1:11, Leviticus 17:11 ",
@@ -606,6 +612,7 @@
   },
   {
     "date": "September 17",
+    "dateTemporal": "2023-09-17",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -613,7 +620,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "COMMUNION SERIES 3",
     "title": "The Body of Christ",
     "scripture": "2 Corinthians 11:23-29, Matthew 26:26-28, 1 Corinthians 11:23-30, Luke 22:17-20",
@@ -622,6 +628,7 @@
   },
   {
     "date": "September 24",
+    "dateTemporal": "2023-09-24",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -629,7 +636,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "POST-SERVICE LEADERS’ QUARTERLY REPORT\nCOMMUNION SERIES 4",
     "title": "The Breaking of Bread",
     "scripture": "Job 10:1, John 14:6, John 20:19, John 8:1-32, Luke 24, Luke 24:13-35",
@@ -638,6 +644,7 @@
   },
   {
     "date": "October 1",
+    "dateTemporal": "2023-10-01",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -645,7 +652,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "COMMUNION SUNDAY",
     "title": "Spiritual Warfare",
     "scripture": "Ephesians 6:10-19",
@@ -654,6 +660,7 @@
   },
   {
     "date": "October 8",
+    "dateTemporal": "2023-10-08",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -670,6 +677,7 @@
   },
   {
     "date": "October 15",
+    "dateTemporal": "2023-10-15",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -677,7 +685,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "FCC RETREAT - PRAYER",
     "title": "Dangerous Prayers",
     "scripture": "Matthew 7:7-8,   John 17:13-19,  Genesis 32:22-32, Romans 12:1-2",
@@ -687,6 +694,7 @@
   },
   {
     "date": "October 22",
+    "dateTemporal": "2023-10-22",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -694,7 +702,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "PRAYER SERIES 1",
     "title": "Prayer and Fasting",
     "scripture": "Matthew 6:16-18, Acts 14:21-28, 1 Samuel 1:1-11, Psalms 112:2-111:12",
@@ -703,6 +710,7 @@
   },
   {
     "date": "October 29",
+    "dateTemporal": "2023-10-29",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -710,7 +718,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "PRAYER CONCERT SERVICE",
     "title": "Revive and Rejuvinate!",
     "scripture": "2 Chronicles 7:14, Colossians 4:2-6, Psalms 85:1-13, Matthew 7:7-8",
@@ -719,6 +726,7 @@
   },
   {
     "date": "November 5",
+    "dateTemporal": "2023-11-05",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -726,7 +734,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "DST ENDS/ COMMUNION SUNDAY/ ALLIANCE MISSION SUNDAY",
     "title": "Prayer and Intercession",
     "scripture": "Ephesians 1:3, Philippians 4:6, Romans 8, Romans 8:26, Romans 8:26-28, Romans 8:28",
@@ -735,6 +742,7 @@
   },
   {
     "date": "November 12",
+    "dateTemporal": "2023-11-12",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -742,7 +750,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "REMEMBRANCE SUNDAY\nPRAYER SERIES 2",
     "title": "Prayers in the Bible",
     "scripture": "2 Samuel 12:15-23; Psalm 51, 1 Kings 19:1-18, Habakkuk 3:1-21, Daniel 9:3-19",
@@ -751,6 +758,7 @@
   },
   {
     "date": "November 19",
+    "dateTemporal": "2023-11-19",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -758,7 +766,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "PRAYER SERIES 3",
     "title": "Prayer and the Church",
     "scripture": "Matthew 18:19, Matthew 18:19-20, Proverbs 18:10, Romans 15:30, Acts 1:14, Ephesians 6:12",
@@ -767,6 +774,7 @@
   },
   {
     "date": "November 26",
+    "dateTemporal": "2023-11-26",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -774,7 +782,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "PRAYER SERIES 4",
     "title": "Prayer and Missions",
     "scripture": "Colossians 4:2-6, Acts 12:24-13:3, Romans 10:13-14",
@@ -783,6 +790,7 @@
   },
   {
     "date": "December 3",
+    "dateTemporal": "2023-12-03",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -790,7 +798,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "COMMUNION SUNDAY/ ADVENT 1'",
     "title": "The History of Christmas",
     "scripture": "2 Corinthians 8:9, James 1:17, \n1 John 1:1-4, Luke 2:8-12 ",
@@ -799,6 +806,7 @@
   },
   {
     "date": "December 10",
+    "dateTemporal": "2023-12-10",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -806,7 +814,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "ADVENT 2\nHUMAN RIGHTS SUNDAY",
     "title": "The Relevance of Christmas",
     "scripture": "John 1:1-14, Luke 2:8-14",
@@ -815,6 +822,7 @@
   },
   {
     "date": "December 17",
+    "dateTemporal": "2023-12-17",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -822,7 +830,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "ADVENT 3/ CHRISTMAS SERVICE",
     "title": "The Blessing of Christmas",
     "scripture": "Luke 2:10-14, Luke 1:26-48",
@@ -832,6 +839,7 @@
   },
   {
     "date": "December 24",
+    "dateTemporal": "2023-12-24",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -839,7 +847,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "ADVENT 4\nCHRISTMAS EVE SERVICE",
     "title": "The Impact of Christmas",
     "scripture": "Acts 1:6-9,  1:8, Galatians 5:22-23, John 13:35, 14:15-17, 16:7,  3:16, Luke 11:13,  1:34,  1:35, Matthew 2:1-12, 3:11, Romans 5:5, 8:6",
@@ -848,6 +855,7 @@
   },
   {
     "date": "December 31",
+    "dateTemporal": "2023-12-31",
     "lead": "Nathan",
     "guitar": "Nathan",
     "keys": "Sarah",
@@ -855,7 +863,6 @@
     "drums": "Miguel",
     "backup": "Ymuz",
     "av": "John",
-
     "topic": "NEW YEAR SERVICE/ POST-SERVICE LEADERS’ END-OF-YEAR REPORT",
     "objective": "To introduce our theme for year 2024",
     "speaker": "ROLAND YUMUL - CONFIRMED"
