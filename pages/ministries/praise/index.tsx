@@ -27,11 +27,13 @@ const Praise = () => {
             If you are interested in getting involved with our worship teams
             please contact either Bro John Benologa or Nathan Lardizabal!
           </p>
-          <a href="/ministries/praise/schedule">
-            <button className="bg-white text-black p-6 border rounded">
-              Schedule
-            </button>
-          </a>
+          <div>
+            <a href="/ministries/praise/schedule">
+              <button className="bg-white text-black p-6 border rounded">
+                Schedule
+              </button>
+            </a>
+          </div>
         </div>
         <div className="hidden sm:flex relative flex-1 justify-center items-center">
           <Image

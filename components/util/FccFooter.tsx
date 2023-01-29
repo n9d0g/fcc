@@ -75,8 +75,8 @@ const FccFooter = () => {
                 title="Yumul Small Group"
               />
               <FooterListItem
-                href="/smallgroups/allan"
-                title="Bro. Allan's Small Group"
+                href="/smallgroups/macasaquit"
+                title="Macasaquit's Small Group"
               />
               <FooterListItem
                 href="/smallgroups/young-adults"

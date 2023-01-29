@@ -33,9 +33,9 @@ const SmallGroupsData = [
     icon: BoltIcon,
   },
   {
-    name: "Bro. Allan's Bible Study",
-    description: "Bro. Allan's Bible Study",
-    href: '/smallgroups/allan',
+    name: "Macasaquit's Bible Study",
+    description: "Macasaquit's Bible Study.",
+    href: '/smallgroups/macasaquit',
     icon: BellIcon,
   },
   {
