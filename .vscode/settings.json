@@ -1,3 +1,10 @@
 {
-  "conventionalCommits.scopes": ["pages", "readme", "footer", "nav", "praise"]
+  "conventionalCommits.scopes": [
+    "pages",
+    "readme",
+    "footer",
+    "nav",
+    "praise",
+    "home"
+  ]
 }
