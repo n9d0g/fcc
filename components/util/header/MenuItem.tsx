@@ -62,6 +62,7 @@ const MenuItem = (props: MenuItemProps) => {
                           icon: any
                         }) => (
                           <DropdownItem
+                            key={item.name}
                             name={item.name}
                             href={item.href}
                             description={item.description}
