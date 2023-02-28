@@ -13,9 +13,7 @@ export const Layout = (props: LayoutProps) => {
     <div className="flex flex-col justify-between min-h-screen">
       <FccHead title={props.title} />
       <FccHeader />
-      <main className="flex flex-col container justify-center items-center mx-auto">
-        {props.children}
-      </main>
+      {props.children}
       <FccFooter />
     </div>
   )

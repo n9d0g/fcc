@@ -6,9 +6,11 @@ import { Layout } from '../components/util/Layout'
 export default function Home() {
   return (
     <Layout title="FCC | Home">
-      <Hero />
-      <HomeJoin />
-      <HomeSermons />
+      <main className="container flex flex-col mx-auto">
+        <Hero />
+        <HomeJoin />
+        <HomeSermons />
+      </main>
     </Layout>
   )
 }
