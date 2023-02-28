@@ -6,8 +6,8 @@ const Leadership = () => {
     <Layout title="FCC | Leadership">
       <main className="flex flex-col min-h-[80vh] items-start justify-start sm: mx-4">
         <section className="container flex flex-col items-center h-full mt-[12rem] px-4 sm:px-6 mx-auto">
-          <h1 className="text-5xl font-bold">Leadership</h1>
-          <p className="my-10">
+          <h1 className="self-start text-5xl font-bold">Leadership</h1>
+          <p className="self-start my-10">
             This is the apostolic team that provides spiritual and
             organizational oversight for everything that happens at FCC.
           </p>
