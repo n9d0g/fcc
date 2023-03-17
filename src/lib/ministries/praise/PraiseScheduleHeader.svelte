@@ -1,0 +1,9 @@
+<p>date</p>
+<p>lead</p>
+<p>guitar</p>
+<p>piano</p>
+<p>bass</p>
+<p>drums</p>
+<p>backup</p>
+<p>soundAv</p>
+<p>details</p>
