@@ -1,11 +1,3 @@
 {
-  "conventionalCommits.scopes": [
-    "pages",
-    "readme",
-    "footer",
-    "nav",
-    "praise",
-    "home",
-    "sermons"
-  ]
+  "conventionalCommits.scopes": ["site"]
 }
