@@ -1,7 +1,5 @@
-<svelte:head>
-	<title>FCC | Give</title>
-</svelte:head>
+<script>
+	import SimpleLayout from '../../lib/SimpleLayout.svelte'
+</script>
 
-<section class="flex h-screen justify-center items-center">
-	<h1>give page</h1>
-</section>
+<SimpleLayout title="FCC | Give" text="give description" picture="give picture" />
