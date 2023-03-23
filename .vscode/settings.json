@@ -1,3 +1,10 @@
 {
-  "conventionalCommits.scopes": ["site", "pages", "packages", "mobile", "nav"]
+  "conventionalCommits.scopes": [
+    "site",
+    "pages",
+    "packages",
+    "mobile",
+    "nav",
+    "schedule"
+  ]
 }

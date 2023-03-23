@@ -27,9 +27,8 @@
 
 	const alert: ModalSettings = {
 		type: 'alert',
-		title: 'Example Alert',
-		body: 'This is an example modal.',
-		image: 'https://i.imgur.com/WOgTG96.gif'
+		title: 'Schedule Modal',
+		body: 'Schedule Modal Test'
 	}
 
 	const openDetails = () => {
