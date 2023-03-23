@@ -1,4 +1,5 @@
 <script lang="ts">
+	// imports
 	import { Table } from '@skeletonlabs/skeleton'
 	import type { TableSource } from '@skeletonlabs/skeleton'
 	import { tableMapperValues } from '@skeletonlabs/skeleton'
@@ -6,40 +7,34 @@
 	import FccLayout from '$lib/FccLayout.svelte'
 	import PageTitle from '$lib/PageTitle.svelte'
 	import { Modal, modalStore } from '@skeletonlabs/skeleton'
+	import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton'
 
+	// server fetching
 	import type { PageData } from './$types'
 	export let data: PageData
 
-	import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton'
-
+	// variables
 	let leader = ''
+	const alert: ModalSettings = {
+		type: 'alert',
+		title: `Praise Week Modal WIP 🚧`,
+		body: `WIP 🚧`
+	}
 
+	// functions
 	const upToDatePraiseData = () => {
-		return data.schedule.filter(
-			(item) => item.dateTemporal >= Temporal.Now.plainDateISO().toString()
-		)
+		return data.praise.filter((item) => item.date >= Temporal.Now.plainDateISO().toString())
+	}
+	const openDetails = (e) => {
+		modalStore.trigger(alert)
+	}
+	const handleInputChange = () => {
+		tableSimple = tableSimple
 	}
 
 	let tableSimple: TableSource = {
 		head: data.tableHeader,
 		body: tableMapperValues(upToDatePraiseData(), data.tableBody)
-	}
-
-	const alert: ModalSettings = {
-		type: 'alert',
-		title: 'Schedule Modal',
-		body: 'Schedule Modal Test'
-	}
-
-	const openDetails = () => {
-		modalStore.trigger(alert)
-	}
-
-	const handleInputChange = () => {
-		console.log(
-			data.schedule.filter((item) => item.lead.toLowerCase().includes(leader.toLowerCase()))
-		)
-		tableSimple = tableSimple
 	}
 </script>
 
@@ -50,7 +45,7 @@
 			disabled
 			class="input w-64"
 			type="text"
-			placeholder="Filter by leader - WIP"
+			placeholder="Filter by leader - WIP 🚧"
 			bind:value={leader}
 			on:input={handleInputChange}
 		/>
