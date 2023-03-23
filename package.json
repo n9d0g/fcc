@@ -37,6 +37,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@floating-ui/dom": "^1.2.5",
 		"@js-temporal/polyfill": "^0.4.3"
 	}
 }

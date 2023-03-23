@@ -9,7 +9,11 @@ module.exports = {
     ),
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        hero: "url('/hero.avif')",
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),

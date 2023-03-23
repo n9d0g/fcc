@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { LightSwitch } from '@skeletonlabs/skeleton'
 	import { AppBar } from '@skeletonlabs/skeleton'
 	import NavButton from './NavButton.svelte'
