@@ -5,7 +5,7 @@
 </script>
 
 <FccLayout title="FCC | Praise">
-	<PageTitle text="Praise" />
+	<PageTitle text="Praise & Worship Ministry." />
 	<div class="grid grid-cols-3 w-full gap-4 my-16">
 		<LandingPageCard title="Schedule" link="/ministries/praise/schedule" />
 	</div>

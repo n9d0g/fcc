@@ -4,6 +4,8 @@
 	import type { TableSource } from '@skeletonlabs/skeleton'
 	import { tableMapperValues } from '@skeletonlabs/skeleton'
 	import { Temporal } from '@js-temporal/polyfill'
+	import FccLayout from '$lib/FccLayout.svelte'
+	import PageTitle from '$lib/PageTitle.svelte'
 
 	const upToDatePraiseData = () => {
 		return praiseData.filter((item) => item.dateTemporal >= Temporal.Now.plainDateISO().toString())
@@ -24,11 +26,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>FCC | Praise Schedule</title>
-</svelte:head>
-
-<section class="container mx-auto flex flex-col justify-center">
-	<h1 class="text-3xl font-bold py-36">praise schedule</h1>
+<FccLayout title="FCC | Praise Schedule">
+	<PageTitle text="Praise Schedule." />
 	<Table source={tableSimple} interactive={true} />
-</section>
+</FccLayout>
