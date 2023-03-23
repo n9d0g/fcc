@@ -8,9 +8,8 @@
 
 	const alert: ModalSettings = {
 		type: 'alert',
-		title: 'Example Alert',
-		body: 'This is an example modal.',
-		image: 'https://i.imgur.com/WOgTG96.gif'
+		title: title,
+		body: speaker
 	}
 
 	const handleSermonClick = () => {

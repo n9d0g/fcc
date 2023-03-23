@@ -1,10 +1,13 @@
 <script>
-	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton'
-	import NavButton from './NavButton.svelte'
+	import { AppBar, Avatar, LightSwitch } from '@skeletonlabs/skeleton'
 </script>
 
 <AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
-	<svelte:fragment slot="lead"><p>logo here</p></svelte:fragment>
+	<svelte:fragment slot="lead">
+		<a href="/">
+			<Avatar src="/apple-touch-icon.png" class="cursor-pointer w-8 h-8" />
+		</a>
+	</svelte:fragment>
 	<svelte:fragment slot="headline"
 		><p class="text-center">
 			© Copyright by Freedom in Christ Church Canada. All Rights Reserved.
