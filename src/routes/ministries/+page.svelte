@@ -6,7 +6,7 @@
 
 <FccLayout title="FCC | Ministries">
 	<PageTitle text="Ministries." />
-	<div class="grid grid-cols-3 w-full gap-4 my-16">
+	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-4 my-16">
 		<LandingPageCard title="Praise & Worship" link="/ministries/praise" />
 		<LandingPageCard title="Men" link="/ministries/men" />
 		<LandingPageCard title="Women" link="/ministries/women" />

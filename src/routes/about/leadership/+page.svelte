@@ -10,7 +10,11 @@
 
 <FccLayout title="FCC | Leadership">
 	<PageTitle text="Leadership." />
-	<div class="grid grid-cols-3 w-full gap-4 my-16">
+	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-4 my-16">
+		<LeadershipCard />
+		<LeadershipCard />
+		<LeadershipCard />
+		<LeadershipCard />
 		<LeadershipCard />
 		<LeadershipCard />
 		<LeadershipCard />

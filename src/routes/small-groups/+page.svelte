@@ -6,7 +6,7 @@
 
 <FccLayout title="FCC | Small Groups">
 	<PageTitle text="Our Small Groups." />
-	<div class="grid grid-cols-3 w-full gap-4 my-16">
+	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-4 my-16">
 		<LandingPageCard title="Young Adults" link="/small-groups/young-adults" />
 		<LandingPageCard title="Women Chasing God" link="/small-groups/women-chasing-god" />
 		<LandingPageCard title="University Bible Study" link="/small-groups/university-bible-study" />

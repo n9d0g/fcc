@@ -5,4 +5,5 @@
 
 <FccLayout title="FCC | Mission & Vision">
 	<PageTitle text="Mission & Vision" />
+	<div class="min-h-screen" />
 </FccLayout>

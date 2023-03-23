@@ -28,5 +28,5 @@
 
 <FccLayout title="FCC | Praise Schedule">
 	<PageTitle text="Praise Schedule." />
-	<Table source={tableSimple} interactive={true} />
+	<Table source={tableSimple} interactive={true} class="rounded" />
 </FccLayout>
