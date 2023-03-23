@@ -1,10 +1,20 @@
 <script lang="ts">
+	import { Modal, modalStore } from '@skeletonlabs/skeleton'
+	import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton'
+
 	export let title: string
 	export let date: string
 	export let speaker: string
 
+	const alert: ModalSettings = {
+		type: 'alert',
+		title: 'Example Alert',
+		body: 'This is an example modal.',
+		image: 'https://i.imgur.com/WOgTG96.gif'
+	}
+
 	const handleSermonClick = () => {
-		console.log(title)
+		modalStore.trigger(alert)
 	}
 </script>
 
@@ -16,3 +26,5 @@
 	<section class="p-4">{date}</section>
 	<footer class="card-footer">{speaker}</footer>
 </button>
+
+<Modal />
