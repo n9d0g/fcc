@@ -23,7 +23,9 @@
 
 	// functions
 	const upToDatePraiseData = () => {
-		return data.praise.filter((item) => item.date >= Temporal.Now.plainDateISO().toString())
+		return data.praise
+			.filter((item) => item.date >= Temporal.Now.plainDateISO().toString())
+			.sort((a, b) => (a.date > b.date ? 1 : -1))
 	}
 	const openDetails = (e) => {
 		modalStore.trigger(alert)
