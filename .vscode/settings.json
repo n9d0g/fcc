@@ -5,6 +5,7 @@
     "packages",
     "mobile",
     "nav",
-    "schedule"
+    "schedule",
+    "versioning"
   ]
 }
