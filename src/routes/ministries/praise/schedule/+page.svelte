@@ -10,7 +10,7 @@
 	}
 
 	const tableSimple: TableSource = {
-		head: ['Date', 'Lead', 'Guitar', 'Keys', 'Bass', 'Drums', 'Backup', 'Sound/AV', 'Details'],
+		head: ['Date', 'Lead', 'Guitar', 'Keys', 'Bass', 'Drums', 'Backup', 'Sound/AV'],
 		body: tableMapperValues(upToDatePraiseData(), [
 			'date',
 			'lead',
@@ -19,8 +19,7 @@
 			'bass',
 			'drums',
 			'backup',
-			'av',
-			'details'
+			'av'
 		])
 	}
 </script>

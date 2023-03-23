@@ -3,4 +3,6 @@
 	export let link: string
 </script>
 
-<a href={link} class="flex w-32 btn hover:variant-soft h-8 btn-icon !bg-transparent p-4 ">{text}</a>
+<a href={link} class="flex w-32 btn hover:variant-filled-surface h-10 btn-icon bg-transparent p-4 "
+	>{text}</a
+>

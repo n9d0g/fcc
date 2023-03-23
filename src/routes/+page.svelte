@@ -1,15 +1,10 @@
-<svelte:head>
-	<title>Freedom in Christ Church</title>
-</svelte:head>
+<script>
+	import FccLayout from '$lib/FccLayout.svelte'
+</script>
 
-<section class="container mx-auto flex justify-center items-center h-screen">
-	<h1>
-		<span
-			class="bg-gradient-to-br from-pink-500 to-violet-500 bg-clip-text text-transparent box-decoration-clone"
-			>FCC Site Svelte Redesign</span
-		>
-	</h1>
-</section>
+<FccLayout title="FCC | Home">
+	<h1>Welcome to Freedom in Christ Church.</h1>
+</FccLayout>
 
 <style lang="postcss">
 	:global(html) {
