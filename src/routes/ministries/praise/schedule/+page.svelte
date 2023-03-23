@@ -17,21 +17,18 @@
 	let leader = ''
 	const alert: ModalSettings = {
 		type: 'alert',
-		title: 'Schedule Modal',
-		body: 'Schedule Modal Test'
+		title: `Praise Week Modal WIP 🚧`,
+		body: `WIP 🚧`
 	}
 
 	// functions
 	const upToDatePraiseData = () => {
 		return data.praise.filter((item) => item.date >= Temporal.Now.plainDateISO().toString())
 	}
-	const openDetails = () => {
+	const openDetails = (e) => {
 		modalStore.trigger(alert)
 	}
 	const handleInputChange = () => {
-		console.log(
-			data.praise.filter((item) => item.lead.toLowerCase().includes(leader.toLowerCase()))
-		)
 		tableSimple = tableSimple
 	}
 
@@ -48,7 +45,7 @@
 			disabled
 			class="input w-64"
 			type="text"
-			placeholder="Filter by leader - WIP"
+			placeholder="Filter by leader - WIP 🚧"
 			bind:value={leader}
 			on:input={handleInputChange}
 		/>

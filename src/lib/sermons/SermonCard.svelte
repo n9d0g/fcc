@@ -11,7 +11,7 @@
 	const alert: ModalSettings = {
 		type: 'alert',
 		title: title,
-		body: `${speaker} <br/><br/> ${scripture} <br/><br/> ${youtube}`
+		body: `${speaker} <br/><br/> ${scripture} <br/><br/> 🚧 <span class="text-red-500 font-bold">WIP</span> ${youtube} <span class="text-red-500 font-bold">WIP</span> 🚧`
 	}
 
 	const handleSermonClick = () => {
