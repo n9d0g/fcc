@@ -3,6 +3,17 @@
 	import { AppBar } from '@skeletonlabs/skeleton'
 	import NavButton from './NavButton.svelte'
 	import Icon from '@iconify/svelte'
+	import { sideNavOpen } from '$lib/stores/store.js'
+
+	let sideNavValue: boolean
+
+	sideNavOpen.subscribe((value) => {
+		sideNavValue = value
+	})
+
+	const handleSideNav = () => {
+		sideNavOpen.set(!sideNavValue)
+	}
 </script>
 
 <AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
@@ -17,6 +28,8 @@
 	</nav>
 	<svelte:fragment slot="trail">
 		<LightSwitch class="hidden lg:flex" />
-		<Icon class="lg:hidden flex w-8 h-8" icon="cil:hamburger-menu" />
+		<button on:click={handleSideNav}>
+			<Icon class="lg:hidden flex w-8 h-8 cursor-pointer" icon="cil:hamburger-menu" />
+		</button>
 	</svelte:fragment>
 </AppBar>
