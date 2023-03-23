@@ -1,5 +1,8 @@
-<script>
+<script lang="ts">
 	import SermonCard from '$lib/sermons/SermonCard.svelte'
+	import type { PageData } from './$types'
+
+	export let data: PageData
 </script>
 
 <svelte:head>
@@ -46,9 +49,15 @@
 <section class="container mx-auto my-16 h-2/6 flex flex-col justify-center gap-8 px-4">
 	<h2 class="text-2xl font-bold text-center">Recent Sermons</h2>
 	<div class="grid gap-4 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-		<SermonCard title="title" date="date" speaker="speaker" />
-		<SermonCard title="title" date="date" speaker="speaker" />
-		<SermonCard title="title" date="date" speaker="speaker" />
+		{#each data.sermons as sermon}
+			<SermonCard
+				title={sermon.title}
+				date={sermon.date}
+				speaker={sermon.speaker}
+				scripture={sermon.scripture}
+				youtube={sermon.youtube}
+			/>
+		{/each}
 	</div>
 	<div class="flex justify-center">
 		<a class="btn variant-filled" href="/sermons">View All Sermons</a>
