@@ -1,7 +1,7 @@
-<script>
-	export let title
-	export let date
-	export let speaker
+<script lang="ts">
+	export let title: string
+	export let date: string
+	export let speaker: string
 
 	const handleSermonClick = () => {
 		console.log(title)
@@ -10,9 +10,9 @@
 
 <button
 	on:click={handleSermonClick}
-	class="bg-slate-100 hover:bg-slate-200 cursor-pointer ease-in-out duration-100"
+	class="card card-hover flex flex-col justify-start items-start p-4"
 >
-	<h3>{title}</h3>
-	<h4>{date}</h4>
-	<h4>{speaker}</h4>
+	<header class="card-header">{title}</header>
+	<section class="p-4">{date}</section>
+	<footer class="card-footer">{speaker}</footer>
 </button>

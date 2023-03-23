@@ -1,30 +1,35 @@
-<script>
-	import PraiseScheduleHeader from '$lib/ministries/praise/PraiseScheduleHeader.svelte'
-	import PraiseScheduleRow from '$lib/ministries/praise/PraiseScheduleRow.svelte'
+<script lang="ts">
 	import praiseData from '$lib/ministries/praise/praise.json'
+	import { Table } from '@skeletonlabs/skeleton'
+	import type { TableSource } from '@skeletonlabs/skeleton'
+	import { tableMapperValues } from '@skeletonlabs/skeleton'
+	import { Temporal } from '@js-temporal/polyfill'
+
+	const upToDatePraiseData = () => {
+		return praiseData.filter((item) => item.dateTemporal >= Temporal.Now.plainDateISO().toString())
+	}
+
+	const tableSimple: TableSource = {
+		head: ['Date', 'Lead', 'Guitar', 'Keys', 'Bass', 'Drums', 'Backup', 'Sound/AV', 'Details'],
+		body: tableMapperValues(upToDatePraiseData(), [
+			'date',
+			'lead',
+			'guitar',
+			'keys',
+			'bass',
+			'drums',
+			'backup',
+			'av',
+			'details'
+		])
+	}
 </script>
 
 <svelte:head>
 	<title>FCC | Praise Schedule</title>
 </svelte:head>
 
-<section class="container mx-auto flex justify-center">
+<section class="container mx-auto flex flex-col justify-center">
 	<h1 class="text-3xl font-bold py-36">praise schedule</h1>
-</section>
-
-<section class="container mx-auto grid grid-cols-9">
-	<PraiseScheduleHeader />
-	{#each praiseData as row}
-		<PraiseScheduleRow
-			date={row.date}
-			lead={row.lead}
-			guitar={row.guitar}
-			piano={row.keys}
-			bass={row.bass}
-			drums={row.drums}
-			backup={row.backup}
-			soundAv={row.av}
-			details="details"
-		/>
-	{/each}
+	<Table source={tableSimple} interactive={true} />
 </section>
