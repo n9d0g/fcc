@@ -1,43 +1,38 @@
-# 📰 Freedom in Christ Church Website
+# create-svelte
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ec4b3ca5-b231-41e5-a9c5-99567360564c/deploy-status)](https://app.netlify.com/sites/fcccanada/deploys)
-![GitHub](https://img.shields.io/github/license/n9d0g/fcc?style=flat-square)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/n9d0g/fcc?style=flat-square)
-![GitHub last commit](https://img.shields.io/github/last-commit/n9d0g/fcc?style=flat-square)
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-Official website for the [Freedom in Christ Church](https://www.fcccanada.ca) based in Mississauga, ON. This website was developed with the growing need as the church continues to expand.
+## Creating a project
 
-## 🏁 Getting Started
+If you're seeing this, you've probably already done this step. Congrats!
 
-1. Clone repository `git clone https://github.com/n9d0g/fcc`
-2. Install dependencies `yarn add` or `npm i`
-3. Start application locally `yarn start` or `npm start`
+```bash
+# create a new project in the current directory
+npm create svelte@latest
 
-## 😤 Tech Stack
+# create a new project in my-app
+npm create svelte@latest my-app
+```
 
-- [TypeScript v4.4.2](https://www.typescriptlang.org/)
-- [React v17.0.2](https://reactjs.org/)
-- [Node v4.17.0](https://nodejs.org/en/)
-- [Styled Components v5.3.3](https://styled-components.com/)
-- [Framer Motion v6.2.6](https://www.framer.com/motion/)
-- [Netlify](https://www.netlify.com/)
-- [Prismic CMS](https://prismic.io/)
+## Developing
 
-## 😮 Features
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-Some features are still under development, but here is a list of features that are currently supported and what to expect with the next releases:
+```bash
+npm run dev
 
-- ✅ &nbsp;YouTube API integration for sermons content
-- ✅ &nbsp;Custom animations on SVGs, text, page transitions
-- ✅ &nbsp;Custom components
-- ✅ &nbsp;CSS Grid and Flexbox integration for CSS layout
-- ✅ &nbsp;Mobile friendly
-- ✅ &nbsp;Light/Dark mode
-- ✅ &nbsp;Built, hosted and deployed with Netlify
-- ✅ &nbsp;Prismic headless CMS integration for non-technical church members who would like to contribute
-- ✅ &nbsp;Dynamically filtered sermon search using .map() and .filter() array methods
-- ✅ &nbsp;CI/CD workflow (Netlify)
-- ✅ &nbsp;Temporal API (polyfill)
-- 🚧 &nbsp;Testing with Jest and react-testing-library
-- 🚧 &nbsp;Convert site to Next.js application for SSR
-- 🚧 &nbsp;Payment options through Stripe to aid with tithes and offerings
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
