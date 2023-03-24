@@ -35,6 +35,7 @@
 	<label class="flex items-center label my-4 gap-2">
 		<input class="input w-64" type="text" placeholder="Filter by speaker" bind:value={speaker} />
 	</label>
+	<Paginator bind:settings={page} class="my-8" />
 	{#key speaker}
 		<div class="grid gap-4 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 			{#each sortedSermons().slice(page.offset * page.limit, page.offset * page.limit + page.limit) as sermon}
@@ -47,6 +48,5 @@
 				/>
 			{/each}
 		</div>
-		<Paginator bind:settings={page} class="my-8" />
 	{/key}
 </FccLayout>
