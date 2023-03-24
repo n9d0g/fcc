@@ -23,13 +23,11 @@
 	on:click={handleSermonClick}
 	class="card card-hover flex flex-col justify-start items-start p-4"
 >
-	<header class="card-header font-bold">{title}</header>
+	<header class="card-header font-bold text-start">{title}</header>
 	<section class="flex flex-col justify-start items-start gap-4 p-4">
 		<p class="text-start">{speaker}</p>
-		<p class="text-start">{scripture}</p>
-		<a href={youtube} target="_blank" class="text-start">youtube link here</a>
 	</section>
-	<footer class="card-footer">{date}</footer>
+	<footer class="card-footer text-start">{date}</footer>
 </button>
 
 <Modal />

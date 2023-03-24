@@ -49,7 +49,7 @@
 <section class="container mx-auto my-16 h-2/6 flex flex-col justify-center gap-8 px-4">
 	<h2 class="text-2xl font-bold text-center">Recent Sermons</h2>
 	<div class="grid gap-4 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-		{#each data.sermons as sermon}
+		{#each data.sermons.slice(0, 3) as sermon}
 			<SermonCard
 				title={sermon.title}
 				date={sermon.date}
