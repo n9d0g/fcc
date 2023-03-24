@@ -3,8 +3,14 @@
 	import type { PageData } from './$types'
 	import { Toast, toastStore, type ToastSettings } from '@skeletonlabs/skeleton'
 	import { onMount } from 'svelte'
+	import { projectStarted } from '$lib/stores/store.js'
 
 	export let data: PageData
+
+	let el: any
+
+	let projectStartedValue: boolean
+	projectStarted.subscribe((value) => (projectStartedValue = value))
 
 	const t: ToastSettings = {
 		message: `Heads up! This site is still under 🚧 construction 🚧`,
@@ -12,7 +18,12 @@
 		background: 'variant-filled-error'
 	}
 
-	onMount(() => toastStore.trigger(t))
+	onMount(() => {
+		el.scrollIntoView()
+
+		if (!projectStartedValue) toastStore.trigger(t)
+		projectStarted.set(true)
+	})
 </script>
 
 <svelte:head>
@@ -20,7 +31,7 @@
 </svelte:head>
 
 <!-- hero -->
-<section class="h-[80vh] bg-hero bg-no-repeat bg-center bg-cover px-4">
+<section class="h-[80vh] bg-hero bg-no-repeat bg-center bg-cover px-4" bind:this={el}>
 	<div class="container h-full mx-auto flex flex-col justify-center items-center">
 		<h1 class="z-10 text-white text-3xl font-bold">Welcome to Freedom in Christ Church.</h1>
 		<h3 class="text-white my-8 text-lg text-center md:w-[50rem]">
