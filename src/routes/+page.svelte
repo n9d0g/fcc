@@ -1,8 +1,18 @@
 <script lang="ts">
 	import SermonCard from '$lib/sermons/SermonCard.svelte'
 	import type { PageData } from './$types'
+	import { Toast, toastStore, type ToastSettings } from '@skeletonlabs/skeleton'
+	import { onMount } from 'svelte'
 
 	export let data: PageData
+
+	const t: ToastSettings = {
+		message: `Heads up! This site is still under 🚧 construction 🚧`,
+		timeout: 10000,
+		background: 'variant-filled-error'
+	}
+
+	onMount(() => toastStore.trigger(t))
 </script>
 
 <svelte:head>
@@ -63,6 +73,8 @@
 		<a class="btn variant-filled" href="/sermons">View All Sermons</a>
 	</div>
 </section>
+
+<Toast position="t" />
 
 <style lang="postcss">
 	:global(html) {
