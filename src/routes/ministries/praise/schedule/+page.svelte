@@ -8,6 +8,7 @@
 	import PageTitle from '$lib/PageTitle.svelte'
 	import { Modal, modalStore } from '@skeletonlabs/skeleton'
 	import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton'
+	import PraiseModal from '$lib/ministries/praise/PraiseModal.svelte'
 
 	// server fetching
 	import type { PageData } from './$types'
@@ -15,10 +16,11 @@
 
 	// variables
 	let leader = ''
-	const alert: ModalSettings = {
-		type: 'alert',
-		title: `Praise Week Modal WIP 🚧`,
-		body: `WIP 🚧`
+
+	const modalComponentRegistry: Record<string, ModalComponent> = {
+		modalComponentOne: {
+			ref: PraiseModal
+		}
 	}
 
 	// functions
@@ -27,16 +29,25 @@
 			.filter((item) => item.date >= Temporal.Now.plainDateISO().toString())
 			.sort((a, b) => (a.date > b.date ? 1 : -1))
 	}
-	const openDetails = (e) => {
+
+	const openDetails = (e: any) => {
+		const alert: ModalSettings = {
+			type: 'component',
+			component: 'modalComponentOne',
+			meta: { ...e.detail }
+		}
+
 		modalStore.trigger(alert)
 	}
+
 	const handleInputChange = () => {
 		tableSimple = tableSimple
 	}
 
 	let tableSimple: TableSource = {
 		head: data.tableHeader,
-		body: tableMapperValues(upToDatePraiseData(), data.tableBody)
+		body: tableMapperValues(upToDatePraiseData(), data.tableBody),
+		meta: tableMapperValues(upToDatePraiseData(), data.tableMeta)
 	}
 </script>
 
@@ -60,5 +71,5 @@
 			class="rounded h-[60vh]"
 		/>
 	{/key}
-	<Modal />
+	<Modal components={modalComponentRegistry} />
 </FccLayout>
