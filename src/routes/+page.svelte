@@ -3,8 +3,12 @@
 	import type { PageData } from './$types'
 	import { Toast, toastStore, type ToastSettings } from '@skeletonlabs/skeleton'
 	import { onMount } from 'svelte'
+	import { projectStarted } from '$lib/stores/store.js'
 
 	export let data: PageData
+
+	let projectStartedValue: boolean
+	projectStarted.subscribe((value) => (projectStartedValue = value))
 
 	const t: ToastSettings = {
 		message: `Heads up! This site is still under 🚧 construction 🚧`,
@@ -12,7 +16,10 @@
 		background: 'variant-filled-error'
 	}
 
-	onMount(() => toastStore.trigger(t))
+	onMount(() => {
+		if (!projectStartedValue) toastStore.trigger(t)
+		projectStarted.set(true)
+	})
 </script>
 
 <svelte:head>
