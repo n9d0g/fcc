@@ -4,7 +4,7 @@
 	export let parent: any
 
 	// base classes
-	const cCard = 'card p-4 w-modal-slim shadow-xl space-y-4'
+	const cCard = 'card p-4 w-modal-slim shadow-xl space-y-4 min-h-fit'
 	const cHeader = 'text-2xl font-bold'
 </script>
 
