@@ -53,7 +53,12 @@
 		/>
 	</label>
 	{#key leader}
-		<Table source={tableSimple} interactive={true} on:selected={openDetails} class="rounded" />
+		<Table
+			source={tableSimple}
+			interactive={true}
+			on:selected={openDetails}
+			class="rounded h-[60vh]"
+		/>
 	{/key}
 	<Modal />
 </FccLayout>
