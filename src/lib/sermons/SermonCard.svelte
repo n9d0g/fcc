@@ -11,7 +11,7 @@
 	const alert: ModalSettings = {
 		type: 'alert',
 		title: title,
-		body: `${speaker} <br/><br/> ${scripture} <br/><br/> 🚧 <span class="text-red-500 font-bold">WIP</span> ${youtube} <span class="text-red-500 font-bold">WIP</span> 🚧`
+		body: `${speaker} <br/><br/> ${scripture} <br/><br/> 🚧 <a href="${youtube}" target="_blank" class="text-start">youtube link here</a>, youtube video embed WIP 🚧`
 	}
 
 	const handleSermonClick = () => {
@@ -27,7 +27,7 @@
 	<section class="flex flex-col justify-start items-start gap-4 p-4">
 		<p class="text-start">{speaker}</p>
 		<p class="text-start">{scripture}</p>
-		<p class="text-start">{youtube}</p>
+		<a href={youtube} target="_blank" class="text-start">youtube link here</a>
 	</section>
 	<footer class="card-footer">{date}</footer>
 </button>
