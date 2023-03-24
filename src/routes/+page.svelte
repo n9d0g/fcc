@@ -33,7 +33,7 @@
 		<a
 			href="https://www.google.ca/maps/place/5225+Orbitor+Dr,+Mississauga,+ON+L4W+4Y8/@43.6598788,-79.6065117,17z/data=!3m1!4b1!4m6!3m5!1s0x882b38554ef96393:0x5a2b697b840d7a7d!8m2!3d43.6598749!4d-79.604323!16s%2Fg%2F11b8v4jvnm"
 			target="_blank"
-			class="font-bold">5225 Orbitor Drive Unit 5, Mississauga, ON.</a
+			class="font-bold">5225 Orbitor Drive Unit 3, Mississauga, ON.</a
 		>
 	</p>
 	<div class="flex justify-center">
