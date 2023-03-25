@@ -13,7 +13,7 @@
 </script>
 
 <section class={cCard}>
-	<header class={cHeader}>{$modalStore[0]?.meta.title} - {$modalStore[0]?.meta.date}</header>
+	<header class={cHeader}>{$modalStore[0]?.meta.title}</header>
 
 	<p><span class="font-bold">Speaker:</span> {$modalStore[0]?.meta.speaker}</p>
 	<p class="pb-8"><span class="font-bold">Scripture:</span> {$modalStore[0]?.meta.scripture}</p>
