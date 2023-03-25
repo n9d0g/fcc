@@ -9,7 +9,12 @@ const client = createClient({
 })
 
 export const load = (async () => {
-  const data = await client.fetch(`*[_type == "praise"]`)
+  const data = await client.fetch(`
+    *[_type == "praise"] {
+      av, backup, bass, date, drums, electric, guitar, keys, lead, objective, scripture, series, speaker, summary, topic, unavailable,
+      'pdfURL': pdf.asset->url
+    }
+  `)
 
   if (data)
     return {
@@ -46,6 +51,7 @@ export const load = (async () => {
         'objective',
         'summary',
         'date',
+        'pdfURL',
       ],
     }
 
