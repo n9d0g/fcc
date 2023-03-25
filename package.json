@@ -1,6 +1,6 @@
 {
   "name": "fcc",
-  "version": "3.0.17",
+  "version": "3.0.18",
   "private": true,
   "scripts": {
     "dev": "vite dev",
