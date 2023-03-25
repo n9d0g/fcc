@@ -1,13 +1,29 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
+	import { projectStarted } from '$lib/stores/store.js'
+	import { Toast, toastStore, type ToastSettings } from '@skeletonlabs/skeleton'
 
 	// props
 	export let title: string
 
 	// variables
 	let el: any
+	let projectStartedValue: boolean
+	projectStarted.subscribe((value) => (projectStartedValue = value))
 
-	onMount(() => el.scrollIntoView())
+	const t: ToastSettings = {
+		message: `Heads up! This site is still under 🚧 construction 🚧`,
+		timeout: 10000,
+		background: 'variant-filled-error'
+	}
+
+	// when component is mounted
+	onMount(() => {
+		el.scrollIntoView()
+
+		if (!projectStartedValue) toastStore.trigger(t)
+		projectStarted.set(true)
+	})
 </script>
 
 <svelte:head>
@@ -20,3 +36,5 @@
 >
 	<slot />
 </section>
+
+<Toast position="t" />
