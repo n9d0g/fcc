@@ -5,7 +5,7 @@
 
 	// base classes
 	const cCard = 'flex flex-col card p-4 w-modal-slim shadow-xl space-y-4 min-h-fit'
-	const cHeader = 'text-2xl font-bold mb-8'
+	const cHeader = 'text-2xl font-bold mb-16'
 </script>
 
 <section class={cCard}>
