@@ -5,11 +5,11 @@
 
 	// base classes
 	const cCard = 'flex flex-col card p-4 w-modal-slim shadow-xl space-y-4 min-h-fit'
-	const cHeader = 'text-2xl font-bold'
+	// const cHeader = 'text-2xl font-bold'
 </script>
 
 <section class={cCard}>
-	<header class={cHeader}>{$modalStore[0]?.meta[6]}</header>
+	<!-- <header class={cHeader}>{$modalStore[0]?.meta[6]}</header> -->
 	<p><span class="font-bold">Series:</span><br /> {$modalStore[0]?.meta[0]}</p>
 	<p><span class="font-bold">Sermon Title:</span><br /> {$modalStore[0]?.meta[1]}</p>
 	<p><span class="font-bold">Speaker:</span><br /> {$modalStore[0]?.meta[2]}</p>
