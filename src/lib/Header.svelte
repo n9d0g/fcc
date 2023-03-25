@@ -31,7 +31,7 @@
 		<NavButton text="Give" link="/give" />
 	</nav>
 	<svelte:fragment slot="trail">
-		<LightSwitch class="hidden lg:flex" />
+		<LightSwitch />
 		<button on:click={handleSideNav}>
 			<Icon class="lg:hidden flex w-8 h-8 cursor-pointer" icon="cil:hamburger-menu" />
 		</button>
