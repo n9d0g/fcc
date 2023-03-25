@@ -13,6 +13,11 @@ module.exports = {
       backgroundImage: {
         hero: "url('/hero.jpg')",
       },
+      colors: {
+        facebook: '#4267B2',
+        instagram: '#F56040',
+        youtube: '#c4302b',
+      },
     },
   },
   plugins: [

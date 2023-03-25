@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { sideNavOpen } from '$lib/stores/store.js'
+	import { LightSwitch } from '@skeletonlabs/skeleton'
 
 	let sideNavOpenValue: boolean
 	sideNavOpen.subscribe((value) => {
@@ -13,6 +14,7 @@
 
 {#if sideNavOpenValue}
 	<section class="lg:hidden flex flex-col gap-8 p-8 min-h-screen w-screen">
+		<LightSwitch class="ml-4" />
 		<a on:click={closeSideNav} class="btn flex justify-start" href="/">Home</a>
 		<a on:click={closeSideNav} class="btn flex justify-start" href="/about">About</a>
 		<a on:click={closeSideNav} class="btn flex justify-start" href="/sermons">Sermons</a>
