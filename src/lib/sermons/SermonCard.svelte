@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Modal, modalStore } from '@skeletonlabs/skeleton'
 	import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton'
+	import SermonModal from '$lib/sermons/SermonModal.svelte'
 
 	export let title: string
 	export let date: string
@@ -8,13 +9,25 @@
 	export let scripture: string
 	export let youtube: string
 
-	const alert: ModalSettings = {
-		type: 'alert',
-		title: title,
-		body: `${speaker} <br/><br/> ${scripture} <br/><br/> 🚧 <a href="${youtube}" target="_blank" class="text-start">youtube link here</a>, youtube video embed WIP 🚧`
+	const modalComponentRegistry: Record<string, ModalComponent> = {
+		modalComponentOne: {
+			ref: SermonModal
+		}
 	}
 
 	const handleSermonClick = () => {
+		const alert: ModalSettings = {
+			type: 'component',
+			component: 'modalComponentOne',
+			meta: {
+				title: title,
+				date: date,
+				speaker: speaker,
+				scripture: scripture,
+				youtube: youtube
+			}
+		}
+
 		modalStore.trigger(alert)
 	}
 </script>
@@ -30,4 +43,4 @@
 	<footer class="card-footer text-start">{date}</footer>
 </button>
 
-<Modal />
+<Modal components={modalComponentRegistry} />
