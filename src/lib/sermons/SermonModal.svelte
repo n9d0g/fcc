@@ -7,8 +7,6 @@
 
 	let youtubeId = $modalStore[0]?.meta.youtube.replace('https://www.youtube.com/watch?v=', '')
 
-	console.log(youtubeId)
-
 	// base classes
 	const cCard = 'card p-4 w-modal shadow-xl space-y-4 min-h-fit'
 	const cHeader = 'text-2xl font-bold'
