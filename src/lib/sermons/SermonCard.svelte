@@ -9,19 +9,13 @@
 	export let scripture: string
 	export let youtube: string
 
-	const alert: ModalSettings = {
-		type: 'alert',
-		title: title,
-		body: `${speaker} <br/><br/> ${scripture} <br/><br/> 🚧 <a href="${youtube}" target="_blank" class="text-start">youtube link here</a>, youtube video embed WIP 🚧`
-	}
-
 	const modalComponentRegistry: Record<string, ModalComponent> = {
 		modalComponentOne: {
 			ref: SermonModal
 		}
 	}
 
-	const handleSermonClick = (e) => {
+	const handleSermonClick = () => {
 		const alert: ModalSettings = {
 			type: 'component',
 			component: 'modalComponentOne',
