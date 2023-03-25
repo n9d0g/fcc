@@ -36,6 +36,15 @@ export const load = (async () => {
         'av',
         'unavailable',
       ],
+      tableMeta: [
+        'series',
+        'topic',
+        'speaker',
+        'scripture',
+        'objective',
+        'summary',
+        'date',
+      ],
     }
 
   return {
