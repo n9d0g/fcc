@@ -3,8 +3,6 @@
 	import FaFacebook from 'svelte-icons/fa/FaFacebook.svelte'
 	import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
 	import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte'
-
-	const footerSocial = 'unstyled logo-item p-4 text-red-500'
 </script>
 
 <AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
@@ -15,23 +13,27 @@
 	</svelte:fragment>
 	<svelte:fragment slot="headline">
 		<p class="text-center">© Copyright by Freedom in Christ Church Canada. All Rights Reserved.</p>
-		<div class="flex justify-center logo-cloud gap-4 w-[30rem] mx-auto my-4">
+		<div class="flex justify-center logo-cloud gap:1 lg:gap-4 max-w-[30rem] mx-auto my-4">
 			<a
-				class={footerSocial}
+				class="unstyled logo-item p-4 text-gray hover:text-youtube transition"
 				href="https://www.youtube.com/@freedominchristchurchcanada"
 				target="_blank"
 			>
-				<span class="text-gray w-8"><FaYoutube /></span>
-			</a>
-			<a class={footerSocial} href="https://www.instagram.com/fcc.canada/" target="_blank">
-				<span class="text-gray w-8"><FaInstagram /></span>
+				<span class=" w-6"><FaYoutube /></span>
 			</a>
 			<a
-				class={footerSocial}
+				class="unstyled logo-item p-4 text-gray hover:text-instagram transition"
+				href="https://www.instagram.com/fcc.canada/"
+				target="_blank"
+			>
+				<span class="w-6"><FaInstagram /></span>
+			</a>
+			<a
+				class="unstyled logo-item p-4 text-gray hover:text-facebook transition"
 				href="https://www.facebook.com/groups/1667915316820460"
 				target="_blank"
 			>
-				<span class="text-gray w-8"><FaFacebook /></span>
+				<span class="w-6"><FaFacebook /></span>
 			</a>
 		</div>
 	</svelte:fragment>
