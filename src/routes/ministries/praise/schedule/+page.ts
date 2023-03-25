@@ -21,8 +21,9 @@ export const load = (async () => {
         'Keys 🎹',
         'Bass 🎸',
         'Drums 🥁',
+        'Electric 🎸',
         'Backup 🗣️',
-        'Sound/AV 🔊',
+        'AV 🔊',
         'Unavailable 🙅‍♂️',
       ],
       tableBody: [
@@ -32,6 +33,7 @@ export const load = (async () => {
         'keys',
         'bass',
         'drums',
+        'electric',
         'backup',
         'av',
         'unavailable',
