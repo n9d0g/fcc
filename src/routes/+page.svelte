@@ -1,29 +1,29 @@
 <script lang="ts">
+	import { page } from '$app/stores'
 	import SermonCard from '$lib/sermons/SermonCard.svelte'
-	import type { PageData } from './$types'
-	import { Toast, toastStore, type ToastSettings } from '@skeletonlabs/skeleton'
+	import { activeNav } from '$lib/stores/store'
 	import { onMount } from 'svelte'
-	import { projectStarted } from '$lib/stores/store.js'
+	import type { PageData } from './$types'
 
 	// props
 	export let data: PageData
 
 	// variables
 	let el: any
-	let projectStartedValue: boolean
-	projectStarted.subscribe((value) => (projectStartedValue = value))
 
-	const t: ToastSettings = {
-		message: `Heads up! This site is still under 🚧 construction 🚧`,
-		timeout: 10000,
-		background: 'variant-filled-primary'
-	}
+	let path: string
+	$: path = $page.url.pathname
 
 	onMount(() => {
 		el.scrollIntoView()
+		document.body.scrollTop = document.documentElement.scrollTop = 0
 
-		if (!projectStartedValue) toastStore.trigger(t)
-		projectStarted.set(true)
+		if (path.includes('about')) activeNav.set('about')
+		else if (path.includes('sermons')) activeNav.set('sermons')
+		else if (path.includes('ministries')) activeNav.set('ministries')
+		else if (path.includes('small-groups')) activeNav.set('small-groups')
+		else if (path.includes('give')) activeNav.set('give')
+		else activeNav.set('home')
 	})
 </script>
 
@@ -85,8 +85,6 @@
 		<a class="btn variant-filled" href="/sermons">View All Sermons</a>
 	</div>
 </section>
-
-<Toast position="t" />
 
 <style lang="postcss">
 	:global(html) {

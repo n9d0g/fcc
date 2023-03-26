@@ -1,28 +1,27 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
-	import { projectStarted } from '$lib/stores/store.js'
-	import { Toast, toastStore, type ToastSettings } from '@skeletonlabs/skeleton'
+	import { activeNav } from '$lib/stores/store.js'
+	import { page } from '$app/stores'
 
 	// props
 	export let title: string
 
 	// variables
 	let el: any
-	let projectStartedValue: boolean
-	projectStarted.subscribe((value) => (projectStartedValue = value))
 
-	const t: ToastSettings = {
-		message: `Heads up! This site is still under 🚧 construction 🚧`,
-		timeout: 10000,
-		background: 'variant-filled-primary'
-	}
+	let path: string
+	$: path = $page.url.pathname
 
-	// when component is mounted
 	onMount(() => {
 		el.scrollIntoView()
+		document.body.scrollTop = document.documentElement.scrollTop = 0
 
-		if (!projectStartedValue) toastStore.trigger(t)
-		projectStarted.set(true)
+		if (path.includes('about')) activeNav.set('about')
+		else if (path.includes('sermons')) activeNav.set('sermons')
+		else if (path.includes('ministries')) activeNav.set('ministries')
+		else if (path.includes('small-groups')) activeNav.set('small-groups')
+		else if (path.includes('give')) activeNav.set('give')
+		else activeNav.set('home')
 	})
 </script>
 
@@ -36,5 +35,3 @@
 >
 	<slot />
 </section>
-
-<Toast position="t" />
