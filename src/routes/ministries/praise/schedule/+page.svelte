@@ -1,6 +1,6 @@
 <script lang="ts">
 	// imports
-	import { Table } from '@skeletonlabs/skeleton'
+	import { popup, Table, type PopupSettings } from '@skeletonlabs/skeleton'
 	import type { TableSource } from '@skeletonlabs/skeleton'
 	import { tableMapperValues } from '@skeletonlabs/skeleton'
 	import { Temporal } from '@js-temporal/polyfill'
@@ -19,8 +19,14 @@
 
 	const modalComponentRegistry: Record<string, ModalComponent> = {
 		modalComponentOne: {
-			ref: PraiseModal
-		}
+			ref: PraiseModal,
+		},
+	}
+
+	let popupSettings: PopupSettings = {
+		event: 'hover',
+		target: 'detailsToolTip',
+		placement: 'top',
 	}
 
 	// functions
@@ -34,7 +40,7 @@
 		const alert: ModalSettings = {
 			type: 'component',
 			component: 'modalComponentOne',
-			meta: { ...e.detail }
+			meta: { ...e.detail },
 		}
 
 		modalStore.trigger(alert)
@@ -47,7 +53,7 @@
 	let tableSimple: TableSource = {
 		head: data.tableHeader,
 		body: tableMapperValues(upToDatePraiseData(), data.tableBody),
-		meta: tableMapperValues(upToDatePraiseData(), data.tableMeta)
+		meta: tableMapperValues(upToDatePraiseData(), data.tableMeta),
 	}
 </script>
 
@@ -63,13 +69,22 @@
 			on:input={handleInputChange}
 		/>
 	</label>
-	{#key leader}
-		<Table
-			source={tableSimple}
-			interactive={true}
-			on:selected={openDetails}
-			class="rounded h-[60vh]"
-		/>
-	{/key}
+	<span
+		class="text-xs text-center card variant-filled-primary p-2 whitespace-nowrap shadow-xl"
+		data-popup="detailsToolTip"
+	>
+		<span class="arrow variant-filled-primary" />
+		Click on a row to view details 🔎
+	</span>
+	<div use:popup={popupSettings}>
+		{#key leader}
+			<Table
+				source={tableSimple}
+				interactive={true}
+				on:selected={openDetails}
+				class="rounded h-[60vh]"
+			/>
+		{/key}
+	</div>
 	<Modal components={modalComponentRegistry} />
 </FccLayout>

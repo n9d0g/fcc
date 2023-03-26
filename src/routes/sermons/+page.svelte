@@ -26,7 +26,7 @@
 		offset: 0,
 		limit: 4,
 		size: source.length,
-		amounts: [1, 2, 4, 8, 16]
+		amounts: [1, 2, 4, 8, 16],
 	}
 </script>
 

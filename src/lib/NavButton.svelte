@@ -1,39 +1,22 @@
 <script lang="ts">
-	import { ListBox, ListBoxItem, popup } from '@skeletonlabs/skeleton'
-	import type { PopupSettings } from '@skeletonlabs/skeleton'
-
+	// props
 	export let text: string
 	export let link: string
+	export let nav: string
 
-	let comboboxValue: string = text
+	// TODO: active nav
+	let activeNav: boolean = false
 
-	let popupCombobox: PopupSettings = {
-		event: 'hover',
-		target: 'combobox',
-		placement: 'bottom',
-		closeQuery: '.listbox-item'
-	}
+	if (link === '/' && nav === 'home') activeNav = true
+	else if (link.includes(nav)) activeNav = true
+
+	const activeClass =
+		'flex w-32 btn hover:variant-filled h-10 btn-icon bg-transparent p-4 z-20 font-bold variant-filled'
+	const nonActiveClass = 'flex w-32 btn hover:variant-filled h-10 btn-icon bg-transparent p-4 z-20'
+
+	console.log(nav)
 </script>
 
-<!-- <a
-	href={link}
-	class="flex w-32 btn hover:variant-filled-surface h-10 btn-icon bg-transparent p-4"
-	use:popup={popupCombobox}>{comboboxValue ?? 'Trigger'}</a
-> -->
-
-<a
-	href={link}
-	class="flex w-32 btn hover:variant-filled-surface h-10 btn-icon bg-transparent p-4"
-	use:popup={popupCombobox}>{comboboxValue}</a
->
-
-<!-- <div class="card w-48 py-2" data-popup="combobox">
-	<ListBox rounded="rounded-none">
-		<ListBoxItem bind:group={comboboxValue} name="medium" value="books">Books</ListBoxItem>
-		<ListBoxItem bind:group={comboboxValue} name="medium" value="movies">Movies</ListBoxItem>
-		<ListBoxItem bind:group={comboboxValue} name="medium" value="television">
-			Television
-		</ListBoxItem>
-	</ListBox>
-	<div class="arrow bg-surface-100-800-token" />
-</div> -->
+<a href={link} class={activeNav ? activeClass : nonActiveClass}>
+	{text}
+</a>

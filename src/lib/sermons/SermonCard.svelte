@@ -11,8 +11,8 @@
 
 	const modalComponentRegistry: Record<string, ModalComponent> = {
 		modalComponentOne: {
-			ref: SermonModal
-		}
+			ref: SermonModal,
+		},
 	}
 
 	const handleSermonClick = () => {
@@ -24,8 +24,8 @@
 				date: date,
 				speaker: speaker,
 				scripture: scripture,
-				youtube: youtube
-			}
+				youtube: youtube,
+			},
 		}
 
 		modalStore.trigger(alert)
