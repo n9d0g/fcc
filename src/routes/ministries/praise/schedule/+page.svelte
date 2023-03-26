@@ -19,14 +19,14 @@
 
 	const modalComponentRegistry: Record<string, ModalComponent> = {
 		modalComponentOne: {
-			ref: PraiseModal
-		}
+			ref: PraiseModal,
+		},
 	}
 
 	let popupSettings: PopupSettings = {
 		event: 'hover',
 		target: 'detailsToolTip',
-		placement: 'top'
+		placement: 'top',
 	}
 
 	// functions
@@ -40,7 +40,7 @@
 		const alert: ModalSettings = {
 			type: 'component',
 			component: 'modalComponentOne',
-			meta: { ...e.detail }
+			meta: { ...e.detail },
 		}
 
 		modalStore.trigger(alert)
@@ -53,7 +53,7 @@
 	let tableSimple: TableSource = {
 		head: data.tableHeader,
 		body: tableMapperValues(upToDatePraiseData(), data.tableBody),
-		meta: tableMapperValues(upToDatePraiseData(), data.tableMeta)
+		meta: tableMapperValues(upToDatePraiseData(), data.tableMeta),
 	}
 </script>
 

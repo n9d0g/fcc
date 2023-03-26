@@ -10,7 +10,7 @@
 		title: $modalStore[0]?.meta.title,
 		speaker: $modalStore[0]?.meta.speaker,
 		scripture: $modalStore[0]?.meta.scripture,
-		youtube: $modalStore[0]?.meta.youtube.replace('https://www.youtube.com/watch?v=', '')
+		youtube: $modalStore[0]?.meta.youtube.replace('https://www.youtube.com/watch?v=', ''),
 	}
 
 	// base classes

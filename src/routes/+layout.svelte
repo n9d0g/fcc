@@ -9,7 +9,7 @@
 		storePopup,
 		Toast,
 		toastStore,
-		type ToastSettings
+		type ToastSettings,
 	} from '@skeletonlabs/skeleton'
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom'
 	import SideNav from '$lib/SideNav.svelte'
@@ -25,7 +25,7 @@
 	const t: ToastSettings = {
 		message: `Heads up! This site is still under 🚧 construction 🚧`,
 		timeout: 3000,
-		background: 'variant-filled-primary'
+		background: 'variant-filled-primary',
 	}
 
 	// when component is mounted

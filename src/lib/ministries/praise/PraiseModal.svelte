@@ -11,7 +11,7 @@
 		scripture: $modalStore[0]?.meta[3],
 		objective: $modalStore[0]?.meta[4],
 		summary: $modalStore[0]?.meta[5],
-		pdf: $modalStore[0]?.meta[7]
+		pdf: $modalStore[0]?.meta[7],
 	}
 
 	// base classes
