@@ -15,7 +15,7 @@
 	}
 
 	// base classes
-	const cCard = 'flex flex-col card p-4 w-modal shadow-xl space-y-4 min-h-fit'
+	const cCard = 'flex flex-col card p-4 w-modal shadow-xl space-y-4 min-h-screen md:min-h-fit'
 	const cHeader = 'text-2xl font-bold'
 	const cChords = 'btn variant-filled-tertiary my-4'
 
@@ -52,8 +52,6 @@
 		<a href={metaData.pdf} class={cChords}> PDF Chords </a>
 	{/if}
 	<footer class="modal-footer {parent.regionFooter}">
-		<button class="btn variant-filled-primary" on:click={parent.onClose}>
-			{parent.buttonTextCancel}
-		</button>
+		<button class="btn variant-filled-primary" on:click={parent.onClose}> Close </button>
 	</footer>
 </section>

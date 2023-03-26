@@ -14,7 +14,7 @@
 	const t: ToastSettings = {
 		message: `Heads up! This site is still under 🚧 construction 🚧`,
 		timeout: 10000,
-		background: 'variant-filled-error'
+		background: 'variant-filled-primary'
 	}
 
 	// when component is mounted

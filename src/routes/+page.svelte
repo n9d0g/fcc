@@ -5,17 +5,18 @@
 	import { onMount } from 'svelte'
 	import { projectStarted } from '$lib/stores/store.js'
 
+	// props
 	export let data: PageData
 
+	// variables
 	let el: any
-
 	let projectStartedValue: boolean
 	projectStarted.subscribe((value) => (projectStartedValue = value))
 
 	const t: ToastSettings = {
 		message: `Heads up! This site is still under 🚧 construction 🚧`,
 		timeout: 10000,
-		background: 'variant-filled-error'
+		background: 'variant-filled-primary'
 	}
 
 	onMount(() => {
