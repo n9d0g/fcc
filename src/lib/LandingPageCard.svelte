@@ -3,6 +3,9 @@
 	export let link: string
 </script>
 
-<a href={link} class="card card-hover flex justify-center items-center h-64 rounded-md">
+<a
+	href={link}
+	class="card card-hover flex justify-center items-center text-center h-64 rounded-md p-4"
+>
 	<h2 class="text-xl">{title}</h2>
 </a>

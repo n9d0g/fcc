@@ -32,7 +32,7 @@
 
 <FccLayout title="FCC | Sermons">
 	<PageTitle text="Sermons." />
-	<label class="flex items-center label my-4 gap-2">
+	<label class="flex items-center label my-4 gap-2 max-w-fit">
 		<input class="input w-64" type="text" placeholder="Filter by speaker" bind:value={speaker} />
 	</label>
 	<Paginator bind:settings={page} class="my-8" />
