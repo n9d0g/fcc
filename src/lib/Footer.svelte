@@ -3,6 +3,7 @@
 	import FaFacebook from 'svelte-icons/fa/FaFacebook.svelte'
 	import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
 	import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte'
+	import GoGitCommit from 'svelte-icons/go/GoGitCommit.svelte'
 	import { version } from '$app/environment'
 </script>
 
@@ -39,9 +40,11 @@
 		</div>
 		<a
 			href="https://github.com/n9d0g/fcc/releases"
-			class="flex justify-center mx-auto my-4 text-sm text-surface-400 hover:text-secondary-500 w-fit italic"
+			class="flex justify-center items-center mx-auto my-4 text-sm text-surface-400 hover:text-secondary-500 w-fit italic"
 		>
-			v{version}
+			v{version} (&nbsp;
+			<span class="flex items-center justify-center w-4 h-4"><GoGitCommit /></span>
+			&nbsp;{LAST_COMMIT.slice(0, 7)})
 		</a>
 		<p class="text-center">© Copyright by Freedom in Christ Church Canada. All Rights Reserved.</p>
 	</svelte:fragment>
