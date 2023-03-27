@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { AppBar, Avatar, LightSwitch } from '@skeletonlabs/skeleton'
 	import FaFacebook from 'svelte-icons/fa/FaFacebook.svelte'
 	import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
