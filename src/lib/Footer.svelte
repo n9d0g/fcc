@@ -3,6 +3,7 @@
 	import FaFacebook from 'svelte-icons/fa/FaFacebook.svelte'
 	import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
 	import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte'
+	import { version } from '$app/environment'
 </script>
 
 <AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
@@ -12,7 +13,7 @@
 		</a>
 	</svelte:fragment>
 	<svelte:fragment slot="headline">
-		<p class="text-center">© Copyright by Freedom in Christ Church Canada. All Rights Reserved.</p>
+		<hr class="my-4" />
 		<div class="flex justify-center logo-cloud gap:1 lg:gap-4 max-w-[30rem] mx-auto my-4">
 			<a
 				class="unstyled logo-item p-4 text-gray hover:text-youtube transition"
@@ -36,6 +37,13 @@
 				<span class="w-6"><FaFacebook /></span>
 			</a>
 		</div>
+		<a
+			href="https://github.com/n9d0g/fcc/releases"
+			class="flex justify-center mx-auto my-4 text-sm text-surface-400 hover:text-secondary-500 w-fit italic"
+		>
+			v{version}
+		</a>
+		<p class="text-center">© Copyright by Freedom in Christ Church Canada. All Rights Reserved.</p>
 	</svelte:fragment>
 	<svelte:fragment slot="trail"><LightSwitch /></svelte:fragment>
 </AppBar>
