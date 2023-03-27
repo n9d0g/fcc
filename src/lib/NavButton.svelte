@@ -13,8 +13,6 @@
 	const activeClass =
 		'flex w-32 btn hover:variant-filled h-10 btn-icon bg-transparent p-4 z-20 font-bold variant-filled'
 	const nonActiveClass = 'flex w-32 btn hover:variant-filled h-10 btn-icon bg-transparent p-4 z-20'
-
-	console.log(nav)
 </script>
 
 <a href={link} class={activeNav ? activeClass : nonActiveClass}>
