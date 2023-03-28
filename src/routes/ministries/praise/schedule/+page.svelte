@@ -88,7 +88,8 @@
 				source={tableSimple}
 				interactive={true}
 				on:selected={openDetails}
-				class="rounded h-[60vh]"
+				regionHead="sticky top-0"
+				class="h-[60vh]"
 			/>
 		{/key}
 	</div>
