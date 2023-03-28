@@ -1,6 +1,6 @@
 {
   "name": "fcc",
-  "version": "3.0.27",
+  "version": "3.0.28",
   "private": true,
   "scripts": {
     "dev": "vite dev",
@@ -16,7 +16,7 @@
   "devDependencies": {
     "@iconify/svelte": "^3.1.0",
     "@playwright/test": "^1.28.1",
-    "@skeletonlabs/skeleton": "^1.0.0",
+    "@skeletonlabs/skeleton": "^1.1.0",
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/kit": "^1.5.0",
     "@tailwindcss/forms": "^0.5.3",
