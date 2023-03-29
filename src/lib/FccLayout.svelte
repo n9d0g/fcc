@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte'
 	import { activeNav } from '$lib/stores/store.js'
 	import { page } from '$app/stores'
-	import { fly } from 'svelte/transition'
+	import { fade } from 'svelte/transition'
 
 	// props
 	export let title: string
@@ -14,9 +14,13 @@
 	let path: string
 	$: path = $page.url.pathname
 
-	onMount(() => {
+	const scrollToTop = () => {
 		el.scrollIntoView()
 		document.body.scrollTop = document.documentElement.scrollTop = 0
+	}
+
+	onMount(() => {
+		scrollToTop()
 
 		if (path.includes('about')) activeNav.set('about')
 		else if (path.includes('sermons')) activeNav.set('sermons')
@@ -34,8 +38,10 @@
 <section
 	class="container mx-auto my-8 lg:my-16 flex flex-col h-fit lg:min-h-screen px-4"
 	bind:this={el}
-	in:fly={{ y: -50, duration: 250, delay: 300 }}
-	out:fly={{ y: -50, duration: 250 }}
+	in:fade
+	out:fade
+	on:introstart={() => scrollToTop()}
+	on:outroend={() => scrollToTop()}
 >
 	<!-- breadcrumb -->
 	<ol class="flex justify-end breadcrumb">
