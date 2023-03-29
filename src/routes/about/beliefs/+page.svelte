@@ -8,7 +8,7 @@
 </script>
 
 <FccLayout title="FCC | Beliefs">
-	<PageTitle text="Our Beliefs" />
+	<PageTitle text="Our Beliefs." />
 	<h2 class="my-10">Our Core Values</h2>
 	<Stepper stepTerm="Core Value">
 		{#each data.coreValues as value}
