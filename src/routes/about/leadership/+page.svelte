@@ -5,13 +5,19 @@
 	import type { PageData } from './$types'
 
 	export let data: PageData
+
+	const breadcrumb = [
+		{ title: 'Home', href: '/' },
+		{ title: 'About', href: '/about' },
+		{ title: 'Leadership', href: '/about/leadership' },
+	]
 </script>
 
 <svelte:head>
 	<title>FCC | Leadership</title>
 </svelte:head>
 
-<FccLayout title="FCC | Leadership">
+<FccLayout {breadcrumb} title="FCC | Leadership">
 	<PageTitle text="Leadership." />
 	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-4 my-16">
 		{#each data.leaders as leader}

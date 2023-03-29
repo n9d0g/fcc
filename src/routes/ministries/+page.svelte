@@ -2,9 +2,14 @@
 	import FccLayout from '$lib/FccLayout.svelte'
 	import LandingPageCard from '$lib/LandingPageCard.svelte'
 	import PageTitle from '$lib/PageTitle.svelte'
+
+	const breadcrumb = [
+		{ title: 'Home', href: '/' },
+		{ title: 'Ministries', href: '/ministries' },
+	]
 </script>
 
-<FccLayout title="FCC | Ministries">
+<FccLayout {breadcrumb} title="FCC | Ministries">
 	<PageTitle text="Ministries." />
 	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-4 my-16">
 		<LandingPageCard title="Praise & Worship" link="/ministries/praise" />

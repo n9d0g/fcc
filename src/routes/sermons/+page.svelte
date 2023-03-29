@@ -28,9 +28,14 @@
 		size: source.length,
 		amounts: [1, 2, 4, 8, 16],
 	}
+
+	const breadcrumb = [
+		{ title: 'Home', href: '/' },
+		{ title: 'Sermons', href: '/sermons' },
+	]
 </script>
 
-<FccLayout title="FCC | Sermons">
+<FccLayout {breadcrumb} title="FCC | Sermons">
 	<PageTitle text="Sermons." />
 	<label class="flex items-center label my-4 gap-2 max-w-fit">
 		<input class="input w-64" type="text" placeholder="Filter by speaker" bind:value={speaker} />

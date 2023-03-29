@@ -55,9 +55,16 @@
 		body: tableMapperValues(upToDatePraiseData(), data.tableBody),
 		meta: tableMapperValues(upToDatePraiseData(), data.tableMeta),
 	}
+
+	const breadcrumb = [
+		{ title: 'Home', href: '/' },
+		{ title: 'Ministries', href: '/ministries' },
+		{ title: 'Praise & Worship', href: '/ministries/praise' },
+		{ title: 'Schedule', href: '/ministries/praise/schedule' },
+	]
 </script>
 
-<FccLayout title="FCC | Praise Schedule">
+<FccLayout {breadcrumb} title="FCC | Praise Schedule">
 	<PageTitle text="Praise Schedule." />
 	<label class="flex flex-col gap-4 label my-8">
 		<input
