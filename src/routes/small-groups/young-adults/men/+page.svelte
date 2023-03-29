@@ -20,9 +20,16 @@
 		head: ['Date', 'Week', 'Leader', 'Chapter'],
 		body: tableMapperValues(upToDateSchedule, ['date', 'week', 'leader', 'chapter']),
 	}
+
+	const breadcrumb = [
+		{ title: 'Home', href: '/' },
+		{ title: 'Small Groups', href: '/small-groups' },
+		{ title: 'Young Adults', href: '/small-groups/young-adults' },
+		{ title: 'Men', href: '/small-groups/young-adults/men' },
+	]
 </script>
 
-<FccLayout title="FCC | Young Adults - Men">
+<FccLayout {breadcrumb} title="FCC | Young Adults - Men">
 	<PageTitle text="FCC Young Adults Men's Small Group." />
 	<h2>Current Book: Rest & War</h2>
 	<a href={pdfLink} class="btn variant-filled-tertiary my-8 w-fit">Rest & War PDF Download</a>

@@ -1,9 +1,15 @@
 <script lang="ts">
 	import FccLayout from '$lib/FccLayout.svelte'
 	import PageTitle from '$lib/PageTitle.svelte'
+
+	const breadcrumb = [
+		{ title: 'Home', href: '/' },
+		{ title: 'About', href: '/about' },
+		{ title: 'Mission & Vision', href: '/mission-vision' },
+	]
 </script>
 
-<FccLayout title="FCC | Mission & Vision">
+<FccLayout {breadcrumb} title="FCC | Mission & Vision">
 	<PageTitle text="Our Mission & Vision." />
 	<div class="min-h-screen" />
 </FccLayout>

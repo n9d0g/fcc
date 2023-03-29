@@ -5,9 +5,15 @@
 	import type { PageData } from './$types'
 
 	export let data: PageData
+
+	const breadcrumb = [
+		{ title: 'Home', href: '/' },
+		{ title: 'About', href: '/about' },
+		{ title: 'Beliefs', href: '/about/beliefs' },
+	]
 </script>
 
-<FccLayout title="FCC | Beliefs">
+<FccLayout {breadcrumb} title="FCC | Beliefs">
 	<PageTitle text="Our Beliefs." />
 	<h2 class="my-10">Our Core Values</h2>
 	<Stepper stepTerm="Core Value">

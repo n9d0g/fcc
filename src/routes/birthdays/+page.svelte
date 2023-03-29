@@ -16,9 +16,14 @@
 	const filteredBirthdays = () => {
 		return birthdays.filter((item: any) => item.name.toLowerCase().includes(filter.toLowerCase()))
 	}
+
+	const breadcrumb = [
+		{ title: 'Home', href: '/' },
+		{ title: 'Birthdays', href: '/birthdays' },
+	]
 </script>
 
-<FccLayout title="FCC | Birthdays">
+<FccLayout {breadcrumb} title="FCC | Birthdays">
 	<PageTitle text="FCC Birthdays." />
 
 	<div class="flex flex-col justify-center items-center gap-8">
@@ -50,12 +55,6 @@
 							</tr>
 						{/each}
 					</tbody>
-					<tfoot>
-						<tr>
-							<th />
-							<th>Total: {filteredBirthdays().length}</th>
-						</tr>
-					</tfoot>
 				</table>
 			</div>
 		{/key}

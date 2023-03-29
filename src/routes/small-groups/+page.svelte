@@ -2,9 +2,14 @@
 	import FccLayout from '$lib/FccLayout.svelte'
 	import LandingPageCard from '$lib/LandingPageCard.svelte'
 	import PageTitle from '$lib/PageTitle.svelte'
+
+	const breadcrumb = [
+		{ title: 'Home', href: '/' },
+		{ title: 'Small Groups', href: '/small-groups' },
+	]
 </script>
 
-<FccLayout title="FCC | Small Groups">
+<FccLayout {breadcrumb} title="FCC | Small Groups">
 	<PageTitle text="Our Small Groups." />
 	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-4 my-16">
 		<LandingPageCard title="Young Adults" link="/small-groups/young-adults" />
