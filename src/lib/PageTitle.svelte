@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let text
+	export let text: string
 </script>
 
 <div class="my-4 lg:my-16">
