@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte'
 	import { activeNav } from '$lib/stores/store.js'
 	import { page } from '$app/stores'
+	import { fly } from 'svelte/transition'
 
 	// props
 	export let title: string
@@ -33,6 +34,8 @@
 <section
 	class="container mx-auto my-8 lg:my-16 flex flex-col h-fit lg:min-h-screen px-4"
 	bind:this={el}
+	in:fly={{ y: -50, duration: 250, delay: 300 }}
+	out:fly={{ y: -50, duration: 250 }}
 >
 	<!-- breadcrumb -->
 	<ol class="flex justify-end breadcrumb">
