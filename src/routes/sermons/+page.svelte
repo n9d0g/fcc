@@ -42,7 +42,9 @@
 	</label>
 	{#key speaker}
 		{#if speaker !== ''}
-			<p class="flex justify-center mx-auto">{sortedSermons().length} results found:</p>
+			<p class="flex justify-center mx-auto">
+				{sortedSermons().length} result{#if sortedSermons().length !== 1}s{/if} found:
+			</p>
 		{/if}
 		<Paginator bind:settings={page} class="my-8" />
 		<div class="grid gap-4 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -57,5 +59,6 @@
 				/>
 			{/each}
 		</div>
+		<Paginator bind:settings={page} class="md:hidden my-8" />
 	{/key}
 </FccLayout>
