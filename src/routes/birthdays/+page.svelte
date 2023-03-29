@@ -10,10 +10,11 @@
 	const birthdays = data.data
 	const tHead = ['Name', 'Date']
 	let filter = ''
+	let selected: any
 
 	// functions
 	const filteredBirthdays = () => {
-		return birthdays.filter((item) => item.name.toLowerCase().includes(filter.toLowerCase()))
+		return birthdays.filter((item: any) => item.name.toLowerCase().includes(filter.toLowerCase()))
 	}
 </script>
 
@@ -21,12 +22,18 @@
 	<PageTitle text="FCC Birthdays." />
 
 	<div class="flex flex-col justify-center items-center gap-8">
-		<label class="label">
-			<input class="input w-full" type="text" placeholder="Filter by name" bind:value={filter} />
-		</label>
+		<div class="flex flex-col w-full mx-4 md:w-1/2 lg:2/3 gap-4">
+			<select class="select" bind:value={selected} disabled>
+				<option value="1" selected>Birthdays</option>
+				<option value="2">Wedding Anniversaries</option>
+			</select>
+			<label class="label">
+				<input class="input w-full" type="text" placeholder="Filter by name" bind:value={filter} />
+			</label>
+		</div>
 
 		{#key filter}
-			<div class="table-container w-screen md:w-1/2 lg:2/3">
+			<div class="table-container w-full mx-4 md:w-1/2 lg:2/3">
 				<table class="table table-hover table-compact">
 					<thead>
 						<tr>
@@ -39,14 +46,14 @@
 						{#each filteredBirthdays() as birthday}
 							<tr>
 								<td>{birthday.name}</td>
-								<td>{birthday.birthday}</td>
+								<td>{birthday.birthday.slice(5, 10)}</td>
 							</tr>
 						{/each}
 					</tbody>
 					<tfoot>
 						<tr>
-							<th>Total:</th>
-							<th>{filteredBirthdays().length}</th>
+							<th />
+							<th>Total: {filteredBirthdays().length}</th>
 						</tr>
 					</tfoot>
 				</table>
