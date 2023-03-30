@@ -112,11 +112,11 @@ export const sermonModalSettings = (
   return settings
 }
 
-export const praiseModalSettings = e => {
+export const praiseModalSettings = meta => {
   const settings: ModalSettings = {
     type: 'component',
     component: 'PraiseModalComponent',
-    meta: { ...e.detail },
+    meta: { ...meta },
   }
 
   return settings

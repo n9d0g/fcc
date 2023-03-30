@@ -4,14 +4,14 @@
 	export let parent: any
 
 	const metaData = {
-		date: $modalStore[0]?.meta[6],
-		speaker: $modalStore[0]?.meta[2],
-		title: $modalStore[0]?.meta[1],
-		series: $modalStore[0]?.meta[0],
-		scripture: $modalStore[0]?.meta[3],
-		objective: $modalStore[0]?.meta[4],
-		summary: $modalStore[0]?.meta[5],
-		pdf: $modalStore[0]?.meta[7],
+		date: $modalStore[0]?.meta.date,
+		speaker: $modalStore[0]?.meta.speaker,
+		title: $modalStore[0]?.meta.title,
+		series: $modalStore[0]?.meta.series,
+		scripture: $modalStore[0]?.meta.scripture,
+		objective: $modalStore[0]?.meta.objective,
+		summary: $modalStore[0]?.meta.summary,
+		pdf: $modalStore[0]?.meta.pdf,
 	}
 
 	// base classes
