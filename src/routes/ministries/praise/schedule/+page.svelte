@@ -3,6 +3,7 @@
 	import { popup, type PopupSettings } from '@skeletonlabs/skeleton'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import PageTitle from '$lib/components/PageTitle.svelte'
+	import DetailsTooltip from '$lib/components/ministries/praise/DetailsTooltip.svelte'
 	import { modalStore } from '@skeletonlabs/skeleton'
 	import { updatedDataFiltered, praiseModalSettings, searchFilter } from '$lib/utils'
 
@@ -53,19 +54,10 @@
 	<label class="flex flex-col gap-4 label my-8">
 		<input class="input w-64" type="text" placeholder="Filter by leader" bind:value={leader} />
 	</label>
-	<span
-		class="text-xs text-center card variant-filled-primary p-2 whitespace-nowrap shadow-xl"
-		data-popup="detailsToolTip"
-	>
-		<span class="arrow variant-filled-primary" />
-		Click on a row to view details 🔎
-	</span>
-	<!-- mobile tip -->
-	<span
-		class="flex lg:hidden text-xs text-center variant-filled-primary w-fit p-2 whitespace-nowrap shadow-xl rounded-xl my-2 mx-auto"
-	>
-		Click on a row to view details 🔎
-	</span>
+
+	<DetailsTooltip />
+
+	<!-- schedule table -->
 	<div use:popup={popupSettings}>
 		<div class="table-container h-[60vh] w-full">
 			<table class="table table-hover table-compact">
