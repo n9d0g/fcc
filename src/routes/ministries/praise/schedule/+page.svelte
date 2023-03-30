@@ -3,13 +3,10 @@
 	import { popup, Table, type PopupSettings } from '@skeletonlabs/skeleton'
 	import type { TableSource } from '@skeletonlabs/skeleton'
 	import { tableMapperValues } from '@skeletonlabs/skeleton'
-	import { Temporal } from '@js-temporal/polyfill'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import PageTitle from '$lib/components/PageTitle.svelte'
-	import { Modal, modalStore } from '@skeletonlabs/skeleton'
-	import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton'
-	import PraiseModal from '$lib/components/ministries/praise/PraiseModal.svelte'
-	import { updatedDataFiltered } from '$lib/utils'
+	import { modalStore } from '@skeletonlabs/skeleton'
+	import { updatedDataFiltered, praiseModalSettings } from '$lib/utils'
 
 	// server fetching
 	import type { PageData } from './$types'
@@ -19,12 +16,6 @@
 	let leader = ''
 	const upToDatePraiseData = updatedDataFiltered(data.praise, 'date')
 
-	const modalComponentRegistry: Record<string, ModalComponent> = {
-		modalComponentOne: {
-			ref: PraiseModal,
-		},
-	}
-
 	let popupSettings: PopupSettings = {
 		event: 'hover',
 		target: 'detailsToolTip',
@@ -33,13 +24,8 @@
 
 	// functions
 	const openDetails = (e: any) => {
-		const alert: ModalSettings = {
-			type: 'component',
-			component: 'modalComponentOne',
-			meta: { ...e.detail },
-		}
-
-		modalStore.trigger(alert)
+		const settings = praiseModalSettings(e)
+		modalStore.trigger(settings)
 	}
 
 	const handleInputChange = () => {
@@ -96,5 +82,4 @@
 			/>
 		{/key}
 	</div>
-	<Modal components={modalComponentRegistry} />
 </FccLayout>

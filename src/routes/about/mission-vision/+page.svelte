@@ -11,5 +11,4 @@
 
 <FccLayout {breadcrumb} title="FCC | Mission & Vision">
 	<PageTitle text="Our Mission & Vision." />
-	<div class="min-h-screen" />
 </FccLayout>

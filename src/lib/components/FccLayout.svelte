@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 	import { page } from '$app/stores'
-	import { fade } from 'svelte/transition'
+	import { fade, fly } from 'svelte/transition'
 	import { scrollToTop, setNavActiveState } from '$lib/utils'
 
 	// props
@@ -9,11 +9,12 @@
 	export let breadcrumb: any
 
 	// variables
+	let el: any
 	let path: string
 	$: path = $page.url.pathname
 
 	onMount(() => {
-		scrollToTop()
+		scrollToTop(el)
 		setNavActiveState(path)
 	})
 </script>
@@ -23,11 +24,10 @@
 </svelte:head>
 
 <section
-	class="container mx-auto my-8 lg:my-16 flex flex-col h-fit lg:min-h-screen px-4"
-	in:fade
-	out:fade
-	on:introstart={() => scrollToTop()}
-	on:outroend={() => scrollToTop()}
+	bind:this={el}
+	class="container mx-auto my-8 lg:my-16 flex flex-col h-fit px-4"
+	transition:fade={{ duration: 500 }}
+	on:outroend={() => scrollToTop(el)}
 >
 	<!-- breadcrumb -->
 	<ol class="flex justify-end breadcrumb">
