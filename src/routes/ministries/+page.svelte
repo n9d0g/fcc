@@ -1,7 +1,7 @@
 <script lang="ts">
-	import FccLayout from '$lib/FccLayout.svelte'
-	import LandingPageCard from '$lib/LandingPageCard.svelte'
-	import PageTitle from '$lib/PageTitle.svelte'
+	import FccLayout from '$lib/components/FccLayout.svelte'
+	import LandingPageCard from '$lib/components/LandingPageCard.svelte'
+	import PageTitle from '$lib/components/PageTitle.svelte'
 
 	const breadcrumb = [
 		{ title: 'Home', href: '/' },

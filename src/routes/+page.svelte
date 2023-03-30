@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores'
-	import SermonCard from '$lib/sermons/SermonCard.svelte'
+	import SermonCard from '$lib/components/sermons/SermonCard.svelte'
 	import { activeNav } from '$lib/stores/store'
 	import { onMount } from 'svelte'
 	import type { PageData } from './$types'

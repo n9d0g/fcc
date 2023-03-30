@@ -1,7 +1,7 @@
 <script lang="ts">
-	import SermonCard from '$lib/sermons/SermonCard.svelte'
-	import PageTitle from '$lib/PageTitle.svelte'
-	import FccLayout from '$lib/FccLayout.svelte'
+	import SermonCard from '$lib/components/sermons/SermonCard.svelte'
+	import PageTitle from '$lib/components/PageTitle.svelte'
+	import FccLayout from '$lib/components/FccLayout.svelte'
 	import type { PageData } from './$types'
 	import { Paginator } from '@skeletonlabs/skeleton'
 

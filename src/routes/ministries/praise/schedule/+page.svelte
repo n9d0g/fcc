@@ -4,11 +4,11 @@
 	import type { TableSource } from '@skeletonlabs/skeleton'
 	import { tableMapperValues } from '@skeletonlabs/skeleton'
 	import { Temporal } from '@js-temporal/polyfill'
-	import FccLayout from '$lib/FccLayout.svelte'
-	import PageTitle from '$lib/PageTitle.svelte'
+	import FccLayout from '$lib/components/FccLayout.svelte'
+	import PageTitle from '$lib/components/PageTitle.svelte'
 	import { Modal, modalStore } from '@skeletonlabs/skeleton'
 	import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton'
-	import PraiseModal from '$lib/ministries/praise/PraiseModal.svelte'
+	import PraiseModal from '$lib/components/ministries/praise/PraiseModal.svelte'
 
 	// server fetching
 	import type { PageData } from './$types'

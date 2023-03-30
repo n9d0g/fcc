@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { Avatar, LightSwitch } from '@skeletonlabs/skeleton'
 	import { AppBar } from '@skeletonlabs/skeleton'
-	import NavButton from './NavButton.svelte'
 	import Icon from '@iconify/svelte'
+	import NavButton from '$lib/components/NavButton.svelte'
 	import { sideNavOpen, activeNav } from '$lib/stores/store.js'
 
 	// variables
