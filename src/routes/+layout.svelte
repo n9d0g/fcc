@@ -26,7 +26,7 @@
 
 <!-- singleton skeleton components -->
 <SideNav />
-<Toast position="t" />
+<Toast position="b" />
 <Modal components={modalComponentRegistry} />
 
 <AppShell>
