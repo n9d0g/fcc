@@ -1,9 +1,10 @@
 <script lang="ts">
+	import { Paginator } from '@skeletonlabs/skeleton'
 	import SermonCard from '$lib/components/sermons/SermonCard.svelte'
 	import PageTitle from '$lib/components/PageTitle.svelte'
 	import FccLayout from '$lib/components/FccLayout.svelte'
+	import { searchFilter } from '$lib/utils'
 	import type { PageData } from './$types'
-	import { Paginator } from '@skeletonlabs/skeleton'
 
 	// props
 	export let data: PageData
@@ -14,10 +15,7 @@
 	// functions
 	const sortedSermons = () => {
 		if (speaker.length === 0) return data.sermons
-		else
-			return data.sermons.filter((item) =>
-				item.speaker.toLowerCase().includes(speaker.toLowerCase())
-			)
+		else return searchFilter(data.sermons, 'speaker', speaker)
 	}
 
 	// pagination
