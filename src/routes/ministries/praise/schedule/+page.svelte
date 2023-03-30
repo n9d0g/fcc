@@ -6,9 +6,11 @@
 	import DetailsTooltip from '$lib/components/ministries/praise/DetailsTooltip.svelte'
 	import { modalStore } from '@skeletonlabs/skeleton'
 	import { updatedDataFiltered, praiseModalSettings, searchFilter } from '$lib/utils'
+	import GoX from 'svelte-icons/go/GoX.svelte'
 
 	// server fetching
 	import type { PageData } from './$types'
+	import { fade } from 'svelte/transition'
 	export let data: PageData
 
 	let tHead: any = data.tableHeader
@@ -51,8 +53,17 @@
 
 <FccLayout {breadcrumb} title="FCC | Praise Schedule">
 	<PageTitle text="Praise Schedule." />
-	<label class="flex flex-col gap-4 label my-8">
+	<label class="flex gap-4 label my-8">
 		<input class="input w-64" type="text" placeholder="Filter by leader" bind:value={leader} />
+		{#if leader.length > 0}
+			<button
+				transition:fade={{ duration: 150 }}
+				on:click={() => (leader = '')}
+				class="flex item-center variant-filled-primary justify-center btn-icon w-[4rem] h-9"
+			>
+				Clear
+			</button>
+		{/if}
 	</label>
 
 	<DetailsTooltip />
@@ -75,9 +86,7 @@
 								{#each tBody as col}
 									{#if week[col]}
 										{#if col === 'date'}
-											<td
-												class="sticky bg-surface-100-800-token left-0 pl-3 text-left table-cell-fit"
-											>
+											<td class="sticky bg-surface-100-800-token left-0 pl-3 text-left table-cell-fit">
 												{week[col]}
 											</td>
 										{:else}
