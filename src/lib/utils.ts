@@ -2,7 +2,10 @@ import { activeNav } from '$lib/stores/store.js'
 import { Temporal } from '@js-temporal/polyfill'
 import { disableScrollHandling } from '$app/navigation'
 
-export const scrollToTop = () => {
+export const scrollToTop = (el: any) => {
+  // window.scrollBy(0, -window.innerHeight)
+
+  el.scrollIntoView()
   document.body.scrollTop = document.documentElement.scrollTop = 0
 
   try {

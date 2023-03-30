@@ -11,11 +11,12 @@
 	export let data: PageData
 
 	// variables
+	let el: any
 	let path: string
 	$: path = $page.url.pathname
 
 	onMount(() => {
-		scrollToTop()
+		scrollToTop(el)
 		setNavActiveState(path)
 	})
 </script>
@@ -24,6 +25,7 @@
 	<title>Freedom in Christ Church.</title>
 </svelte:head>
 
+<div bind:this={el} />
 <Hero />
 <HomeWelcome links={data.links} />
 <HomeSermons sermons={data.sermons} />

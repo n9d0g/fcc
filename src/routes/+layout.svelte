@@ -39,7 +39,7 @@
 	<svelte:fragment slot="header"><Header /></svelte:fragment>
 	<svelte:fragment slot="sidebarRight"><SideNav /></svelte:fragment>
 	<slot />
-	<Footer />
+	<svelte:fragment slot="pageFooter"><Footer /></svelte:fragment>
 </AppShell>
 
 <Toast position="t" />
