@@ -1,7 +1,7 @@
 <script lang="ts">
-	import LeadershipCard from '$lib/about/leadership/LeadershipCard.svelte'
-	import FccLayout from '$lib/FccLayout.svelte'
-	import PageTitle from '$lib/PageTitle.svelte'
+	import LeadershipCard from '$lib/components/about/leadership/LeadershipCard.svelte'
+	import FccLayout from '$lib/components/FccLayout.svelte'
+	import PageTitle from '$lib/components/PageTitle.svelte'
 	import type { PageData } from './$types'
 
 	export let data: PageData

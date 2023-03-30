@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Modal, modalStore } from '@skeletonlabs/skeleton'
 	import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton'
-	import SermonModal from '$lib/sermons/SermonModal.svelte'
+	import SermonModal from '$lib/components/sermons/SermonModal.svelte'
 
 	export let title: string
 	export let date: string

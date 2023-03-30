@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores'
-	import FccLayout from '$lib/FccLayout.svelte'
+	import FccLayout from '$lib/components/FccLayout.svelte'
 
 	const breadcrumb = [
 		{ title: 'Home', href: '/' },

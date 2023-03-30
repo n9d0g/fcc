@@ -1,6 +1,7 @@
 <script lang="ts">
-	import FccLayout from '$lib/FccLayout.svelte'
-	import PageTitle from '$lib/PageTitle.svelte'
+	import FccLayout from '$lib/components/FccLayout.svelte'
+	import PageTitle from '$lib/components/PageTitle.svelte'
+	import { searchFilter } from '$lib/utils'
 	import type { PageData } from './$types'
 
 	// props
@@ -11,11 +12,6 @@
 	const tHead = ['Name', 'Date']
 	let filter = ''
 	let selected: any
-
-	// functions
-	const filteredBirthdays = () => {
-		return birthdays.filter((item: any) => item.name.toLowerCase().includes(filter.toLowerCase()))
-	}
 
 	const breadcrumb = [
 		{ title: 'Home', href: '/' },
@@ -48,7 +44,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						{#each filteredBirthdays() as birthday}
+						{#each searchFilter(birthdays, 'name', filter) as birthday}
 							<tr>
 								<td>{birthday.name}</td>
 								<td>{birthday.birthday.slice(5, 10)}</td>

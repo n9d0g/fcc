@@ -1,33 +1,20 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
-	import { activeNav } from '$lib/stores/store.js'
 	import { page } from '$app/stores'
 	import { fade } from 'svelte/transition'
+	import { scrollToTop, setNavActiveState } from '$lib/utils'
 
 	// props
 	export let title: string
 	export let breadcrumb: any
 
 	// variables
-	let el: any
-
 	let path: string
 	$: path = $page.url.pathname
 
-	const scrollToTop = () => {
-		el.scrollIntoView()
-		document.body.scrollTop = document.documentElement.scrollTop = 0
-	}
-
 	onMount(() => {
 		scrollToTop()
-
-		if (path.includes('about')) activeNav.set('about')
-		else if (path.includes('sermons')) activeNav.set('sermons')
-		else if (path.includes('ministries')) activeNav.set('ministries')
-		else if (path.includes('small-groups')) activeNav.set('small-groups')
-		else if (path.includes('give')) activeNav.set('give')
-		else activeNav.set('home')
+		setNavActiveState(path)
 	})
 </script>
 
@@ -37,7 +24,6 @@
 
 <section
 	class="container mx-auto my-8 lg:my-16 flex flex-col h-fit lg:min-h-screen px-4"
-	bind:this={el}
 	in:fade
 	out:fade
 	on:introstart={() => scrollToTop()}

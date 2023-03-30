@@ -4,11 +4,12 @@
 	import type { TableSource } from '@skeletonlabs/skeleton'
 	import { tableMapperValues } from '@skeletonlabs/skeleton'
 	import { Temporal } from '@js-temporal/polyfill'
-	import FccLayout from '$lib/FccLayout.svelte'
-	import PageTitle from '$lib/PageTitle.svelte'
+	import FccLayout from '$lib/components/FccLayout.svelte'
+	import PageTitle from '$lib/components/PageTitle.svelte'
 	import { Modal, modalStore } from '@skeletonlabs/skeleton'
 	import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton'
-	import PraiseModal from '$lib/ministries/praise/PraiseModal.svelte'
+	import PraiseModal from '$lib/components/ministries/praise/PraiseModal.svelte'
+	import { updatedDataFiltered } from '$lib/utils'
 
 	// server fetching
 	import type { PageData } from './$types'
@@ -16,6 +17,7 @@
 
 	// variables
 	let leader = ''
+	const upToDatePraiseData = updatedDataFiltered(data.praise, 'date')
 
 	const modalComponentRegistry: Record<string, ModalComponent> = {
 		modalComponentOne: {
@@ -30,12 +32,6 @@
 	}
 
 	// functions
-	const upToDatePraiseData = () => {
-		return data.praise
-			.filter((item) => item.date >= Temporal.Now.plainDateISO().toString())
-			.sort((a, b) => (a.date > b.date ? 1 : -1))
-	}
-
 	const openDetails = (e: any) => {
 		const alert: ModalSettings = {
 			type: 'component',
@@ -52,8 +48,8 @@
 
 	let tableSimple: TableSource = {
 		head: data.tableHeader,
-		body: tableMapperValues(upToDatePraiseData(), data.tableBody),
-		meta: tableMapperValues(upToDatePraiseData(), data.tableMeta),
+		body: tableMapperValues(upToDatePraiseData, data.tableBody),
+		meta: tableMapperValues(upToDatePraiseData, data.tableMeta),
 	}
 
 	const breadcrumb = [

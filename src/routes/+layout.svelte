@@ -2,8 +2,6 @@
 	import '@skeletonlabs/skeleton/themes/theme-crimson.css'
 	import '@skeletonlabs/skeleton/styles/all.css'
 	import '../app.postcss'
-	import Footer from '../lib/Footer.svelte'
-	import Header from '../lib/Header.svelte'
 	import {
 		AppShell,
 		storePopup,
@@ -12,8 +10,10 @@
 		type ToastSettings,
 	} from '@skeletonlabs/skeleton'
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom'
-	import SideNav from '$lib/SideNav.svelte'
 	import { onMount } from 'svelte'
+	import Footer from '$lib/components/Footer.svelte'
+	import Header from '$lib/components/Header.svelte'
+	import SideNav from '$lib/components/SideNav.svelte'
 	import { projectStarted } from '$lib/stores/store.js'
 
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow })
