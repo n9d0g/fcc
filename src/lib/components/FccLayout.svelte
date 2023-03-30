@@ -26,9 +26,7 @@
 <section
 	bind:this={el}
 	class="container mx-auto my-8 lg:my-16 flex flex-col h-fit px-4"
-	in:fade={{ duration: 500 }}
-	out:fade={{ duration: 500 }}
-	on:introstart={() => scrollToTop(el)}
+	transition:fade={{ duration: 500 }}
 	on:outroend={() => scrollToTop(el)}
 >
 	<!-- breadcrumb -->

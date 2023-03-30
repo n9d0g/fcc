@@ -6,6 +6,7 @@
 	import type { PageData } from './$types'
 	import HomeWelcome from '$lib/components/home/HomeWelcome.svelte'
 	import HomeSermons from '$lib/components/home/HomeSermons.svelte'
+	import { fade } from 'svelte/transition'
 
 	// props
 	export let data: PageData
@@ -25,10 +26,11 @@
 	<title>Freedom in Christ Church.</title>
 </svelte:head>
 
-<div bind:this={el} />
-<Hero />
-<HomeWelcome links={data.links} />
-<HomeSermons sermons={data.sermons} />
+<div bind:this={el} transition:fade={{ duration: 500 }} on:outroend={() => scrollToTop(el)}>
+	<Hero />
+	<HomeWelcome links={data.links} />
+	<HomeSermons sermons={data.sermons} />
+</div>
 
 <style lang="postcss">
 	:global(html) {

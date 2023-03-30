@@ -3,21 +3,12 @@
 	import { AppBar } from '@skeletonlabs/skeleton'
 	import Icon from '@iconify/svelte'
 	import NavButton from '$lib/components/NavButton.svelte'
-	import { sideNavOpen, activeNav } from '$lib/stores/store.js'
+	import { activeNav } from '$lib/stores/store.js'
+	import { drawerSettings, navOptions, openSideNav } from '$lib/utils'
 
 	// variables
-	let sideNavValue: boolean
-	sideNavOpen.subscribe((value) => {
-		sideNavValue = value
-	})
-
 	let activeNavValue: string
 	activeNav.subscribe((value) => (activeNavValue = value))
-
-	// functions
-	const handleSideNav = () => {
-		sideNavOpen.set(!sideNavValue)
-	}
 </script>
 
 <div class="bg-surface-100-800-token">
@@ -33,19 +24,18 @@
 				<Avatar src="/apple-touch-icon.png" class="cursor-pointer w-8 h-8" />
 			</a>
 		</svelte:fragment>
+
 		<nav class="hidden lg:flex justify-center items-center gap-4 z-10">
 			{#key activeNavValue}
-				<NavButton text="Home" link="/" nav={activeNavValue} />
-				<NavButton text="About" link="/about" nav={activeNavValue} />
-				<NavButton text="Sermons" link="/sermons" nav={activeNavValue} />
-				<NavButton text="Ministries" link="/ministries" nav={activeNavValue} />
-				<NavButton text="Small Groups" link="/small-groups" nav={activeNavValue} />
-				<NavButton text="Give" link="/give" nav={activeNavValue} />
+				{#each navOptions() as option}
+					<NavButton text={option.title} link={option.href} nav={activeNavValue} />
+				{/each}
 			{/key}
 		</nav>
+
 		<svelte:fragment slot="trail">
 			<LightSwitch class="z-0" />
-			<button on:click={handleSideNav} class="z-0">
+			<button on:click={() => openSideNav(drawerSettings)} class="z-0">
 				<Icon class="lg:hidden flex w-8 h-8 cursor-pointer" icon="cil:hamburger-menu" />
 			</button>
 		</svelte:fragment>

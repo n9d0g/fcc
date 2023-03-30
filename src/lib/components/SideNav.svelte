@@ -1,23 +1,14 @@
 <script lang="ts">
-	import { sideNavOpen } from '$lib/stores/store.js'
-
-	let sideNavOpenValue: boolean
-	sideNavOpen.subscribe((value) => {
-		sideNavOpenValue = value
-	})
-
-	const closeSideNav = () => {
-		sideNavOpen.set(false)
-	}
+	import { Drawer } from '@skeletonlabs/skeleton'
+	import { navOptions, closeSideNav } from '$lib/utils'
 </script>
 
-{#if sideNavOpenValue}
+<Drawer>
 	<section class="lg:hidden flex flex-col gap-8 p-8 w-screen">
-		<a on:click={closeSideNav} class="btn flex justify-start" href="/">Home</a>
-		<a on:click={closeSideNav} class="btn flex justify-start" href="/about">About</a>
-		<a on:click={closeSideNav} class="btn flex justify-start" href="/sermons">Sermons</a>
-		<a on:click={closeSideNav} class="btn flex justify-start" href="/ministries">Ministries</a>
-		<a on:click={closeSideNav} class="btn flex justify-start" href="/small-groups">Small Groups</a>
-		<a on:click={closeSideNav} class="btn flex justify-start" href="/give">Give</a>
+		{#each navOptions() as option}
+			<a on:click={closeSideNav} class="btn flex justify-start" href={option.href}>
+				{option.title}
+			</a>
+		{/each}
 	</section>
-{/if}
+</Drawer>
