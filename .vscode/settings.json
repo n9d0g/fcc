@@ -1,17 +1,17 @@
 {
-  "conventionalCommits.scopes": [
-    "site",
-    "pages",
-    "packages",
-    "mobile",
-    "nav",
-    "schedule",
-    "versioning",
-    "sermons",
-    "readme",
-    "footer",
-    "header",
-    "small-groups",
-    "project structure"
-  ]
+	"conventionalCommits.scopes": [
+		"site",
+		"pages",
+		"packages",
+		"mobile",
+		"nav",
+		"schedule",
+		"versioning",
+		"sermons",
+		"readme",
+		"footer",
+		"header",
+		"small-groups",
+		"project structure"
+	]
 }
