@@ -1,16 +1,17 @@
 <script lang="ts">
 	// imports
-	import { popup, Table, type PopupSettings } from '@skeletonlabs/skeleton'
-	import type { TableSource } from '@skeletonlabs/skeleton'
-	import { tableMapperValues } from '@skeletonlabs/skeleton'
+	import { popup, type PopupSettings } from '@skeletonlabs/skeleton'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import PageTitle from '$lib/components/PageTitle.svelte'
 	import { modalStore } from '@skeletonlabs/skeleton'
-	import { updatedDataFiltered, praiseModalSettings } from '$lib/utils'
+	import { updatedDataFiltered, praiseModalSettings, searchFilter } from '$lib/utils'
 
 	// server fetching
 	import type { PageData } from './$types'
 	export let data: PageData
+
+	let tHead: any = data.tableHeader
+	let tBody: any = data.tableBody
 
 	// variables
 	let leader = ''
@@ -24,18 +25,19 @@
 
 	// functions
 	const openDetails = (e: any) => {
-		const settings = praiseModalSettings(e)
+		const meta = {
+			series: e.series,
+			title: e.title,
+			speaker: e.speaker,
+			scripture: e.scripture,
+			objective: e.objective,
+			summary: e.summary,
+			date: e.date,
+			pdf: e.pdfURL,
+		}
+
+		const settings = praiseModalSettings(meta)
 		modalStore.trigger(settings)
-	}
-
-	const handleInputChange = () => {
-		tableSimple = tableSimple
-	}
-
-	let tableSimple: TableSource = {
-		head: data.tableHeader,
-		body: tableMapperValues(upToDatePraiseData, data.tableBody),
-		meta: tableMapperValues(upToDatePraiseData, data.tableMeta),
 	}
 
 	const breadcrumb = [
@@ -49,14 +51,7 @@
 <FccLayout {breadcrumb} title="FCC | Praise Schedule">
 	<PageTitle text="Praise Schedule." />
 	<label class="flex flex-col gap-4 label my-8">
-		<input
-			disabled
-			class="input w-64"
-			type="text"
-			placeholder="Filter by leader - WIP 🚧"
-			bind:value={leader}
-			on:input={handleInputChange}
-		/>
+		<input class="input w-64" type="text" placeholder="Filter by leader" bind:value={leader} />
 	</label>
 	<span
 		class="text-xs text-center card variant-filled-primary p-2 whitespace-nowrap shadow-xl"
@@ -72,14 +67,39 @@
 		Click on a row to view details 🔎
 	</span>
 	<div use:popup={popupSettings}>
-		{#key leader}
-			<Table
-				source={tableSimple}
-				interactive={true}
-				on:selected={openDetails}
-				regionHead="sticky top-0"
-				class="h-[60vh]"
-			/>
-		{/key}
+		<div class="table-container h-[60vh] w-full">
+			<table class="table table-hover table-compact">
+				<thead>
+					<tr class="sticky variant-filled-secondary top-0 z-10">
+						{#each tHead as header}
+							<th class="p-3 font-bold text-left table-cell-fit">{header}</th>
+						{/each}
+					</tr>
+				</thead>
+				{#key leader}
+					<tbody>
+						{#each searchFilter(upToDatePraiseData, 'lead', leader) as week}
+							<tr on:click={() => openDetails(week)} class="cursor-pointer">
+								{#each tBody as col}
+									{#if week[col]}
+										{#if col === 'date'}
+											<td
+												class="sticky bg-surface-100-800-token left-0 pl-3 text-left table-cell-fit"
+											>
+												{week[col]}
+											</td>
+										{:else}
+											<td class="pl-3 text-left">{week[col]}</td>
+										{/if}
+									{:else}
+										<td class="text-left" />
+									{/if}
+								{/each}
+							</tr>
+						{/each}
+					</tbody>
+				{/key}
+			</table>
+		</div>
 	</div>
 </FccLayout>
