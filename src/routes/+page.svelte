@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 	import { page } from '$app/stores'
-	import { scrollToTop, setNavActiveState } from '$lib/utils'
+	import { setNavActiveState } from '$lib/utils'
 	import Hero from '$lib/components/home/Hero.svelte'
 	import type { PageData } from './$types'
 	import HomeWelcome from '$lib/components/home/HomeWelcome.svelte'
@@ -12,24 +12,22 @@
 	export let data: PageData
 
 	// variables
-	let el: any
 	let path: string
 	$: path = $page.url.pathname
+	let links: any = data.links
+	let sermons: any = data.sermons
 
-	onMount(() => {
-		scrollToTop(el)
-		setNavActiveState(path)
-	})
+	onMount(() => setNavActiveState(path))
 </script>
 
 <svelte:head>
 	<title>Freedom in Christ Church.</title>
 </svelte:head>
 
-<div bind:this={el} transition:fade={{ duration: 500 }} on:outroend={() => scrollToTop(el)}>
+<div transition:fade={{ duration: 150 }}>
 	<Hero />
-	<HomeWelcome links={data.links} />
-	<HomeSermons sermons={data.sermons} />
+	<HomeWelcome {links} />
+	<HomeSermons {sermons} />
 </div>
 
 <style lang="postcss">

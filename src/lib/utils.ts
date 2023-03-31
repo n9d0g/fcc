@@ -13,15 +13,6 @@ import {
 import SermonModal from './components/sermons/SermonModal.svelte'
 import PraiseModal from './components/ministries/praise/PraiseModal.svelte'
 
-// testing new sveltekit after navigation jump fixes
-export const scrollToTop = (el: any) => {
-  // el.scrollIntoView()
-  // document.body.scrollTop = document.documentElement.scrollTop = 0
-  // try {
-  //   disableScrollHandling()
-  // } catch (e) {}
-}
-
 export const setNavActiveState = (path: any) => {
   if (path.includes('about')) activeNav.set('about')
   else if (path.includes('sermons')) activeNav.set('sermons')
