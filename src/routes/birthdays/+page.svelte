@@ -46,7 +46,12 @@
 					<tbody>
 						{#each searchFilter(birthdays, 'name', filter) as birthday}
 							<tr>
-								<td>{birthday.name}</td>
+								<td>
+									{birthday.name}
+									{#if birthday.wa}
+										(Wedding Annviversary)
+									{/if}
+								</td>
 								<td>{birthday.birthday.slice(5, 10)}</td>
 							</tr>
 						{/each}
