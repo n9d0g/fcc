@@ -1,34 +1,25 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 	import { page } from '$app/stores'
-	import { fade, fly } from 'svelte/transition'
-	import { scrollToTop, setNavActiveState } from '$lib/utils'
+	import { fade } from 'svelte/transition'
+	import { setNavActiveState } from '$lib/utils'
 
 	// props
 	export let title: string
 	export let breadcrumb: any
 
 	// variables
-	let el: any
 	let path: string
 	$: path = $page.url.pathname
 
-	onMount(() => {
-		scrollToTop(el)
-		setNavActiveState(path)
-	})
+	onMount(() => setNavActiveState(path))
 </script>
 
 <svelte:head>
 	<title>{title}</title>
 </svelte:head>
 
-<section
-	bind:this={el}
-	class="container mx-auto my-8 lg:my-16 flex flex-col h-fit px-4"
-	transition:fade={{ duration: 500 }}
-	on:outroend={() => scrollToTop(el)}
->
+<section class="container mx-auto my-8 lg:my-16 flex flex-col h-fit px-4" transition:fade={{ duration: 150 }}>
 	<!-- breadcrumb -->
 	<ol class="flex justify-end breadcrumb">
 		{#each breadcrumb as link, index}
