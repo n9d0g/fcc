@@ -9,18 +9,27 @@
 	import Footer from '$lib/components/Footer.svelte'
 	import Header from '$lib/components/Header.svelte'
 	import SideNav from '$lib/components/SideNav.svelte'
-	import { projectStarted } from '$lib/stores/store.js'
-	import { modalComponentRegistry, toastSettings } from '$lib/utils'
+	import { activePath, projectStarted } from '$lib/stores/store.js'
+	import { devToastSettings, getBirthdays, isDevEnv, modalComponentRegistry, wipToastSettings } from '$lib/utils'
 
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow })
 
 	// variables
 	let projectStartedValue: boolean
 	projectStarted.subscribe((value) => (projectStartedValue = value))
+	let activePathValue: string
+	activePath.subscribe((value) => (activePathValue = value))
 
 	// when component is mounted
-	onMount(() => {
-		if (!projectStartedValue) toastStore.trigger(toastSettings)
+	onMount(async () => {
+		if (!projectStartedValue) {
+			// show dev toast on non-prod sites
+			if (isDevEnv(activePathValue)) toastStore.trigger(devToastSettings)
+
+			toastStore.trigger(wipToastSettings)
+			getBirthdays()
+		}
+
 		projectStarted.set(true)
 	})
 </script>

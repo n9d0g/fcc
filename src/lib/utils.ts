@@ -1,4 +1,4 @@
-import { activeNav } from '$lib/stores/store.js'
+import { activeBirthdays, activeNav, activePath } from '$lib/stores/store.js'
 import { Temporal } from '@js-temporal/polyfill'
 import {
   drawerStore,
@@ -8,10 +8,23 @@ import {
   type ToastSettings,
   type AutocompleteOption,
   type PopupSettings,
+  toastStore,
 } from '@skeletonlabs/skeleton'
 import SermonModal from './components/sermons/SermonModal.svelte'
 import PraiseModal from './components/ministries/praise/PraiseModal.svelte'
+import { createClient } from '@sanity/client'
 
+const client = createClient({
+  projectId: 'ygo45klz',
+  dataset: 'production',
+  apiVersion: '2023-03-21',
+  useCdn: false,
+})
+
+let activeBdayValues: any = ''
+activeBirthdays.subscribe(value => (activeBdayValues = value))
+
+// exported functions
 export const setNavActiveState = (path: any) => {
   if (path.includes('about')) activeNav.set('about')
   else if (path.includes('sermons')) activeNav.set('sermons')
@@ -19,6 +32,10 @@ export const setNavActiveState = (path: any) => {
   else if (path.includes('small-groups')) activeNav.set('small-groups')
   else if (path.includes('give')) activeNav.set('give')
   else activeNav.set('home')
+}
+
+export const setActivePath = (path: any) => {
+  activePath.set(path)
 }
 
 export const searchFilter = (
@@ -114,7 +131,7 @@ export const praiseModalSettings = (meta: any) => {
   return settings
 }
 
-export const toastSettings: ToastSettings = {
+export const wipToastSettings: ToastSettings = {
   message: `Heads up! This site is still under 🚧 construction 🚧`,
   timeout: 3000,
   background: 'variant-filled-primary',
@@ -124,6 +141,51 @@ export const devToastSettings: ToastSettings = {
   message: `📣 DEV SITE 📣`,
   autohide: false,
   background: 'variant-filled-error',
+}
+
+const isPastor = (person: any) => {
+  if (person.pastor) return true
+  return false
+}
+
+const isWeddingAnniversary = (person: any) => {
+  if (person.wa) return true
+  return false
+}
+
+export const getBirthdays: any = async () => {
+  const data = await client.fetch(`
+    *[_type == "birthdays"] {
+      name, birthday, pastor, wa
+    }
+  `)
+  let today = Temporal.Now.plainDateISO().toString()
+
+  if (data) {
+    activeBirthdays.set(
+      data
+        .sort((a: any, b: any) => (a.name > b.name ? 1 : -1))
+        .filter(
+          (member: any) => member.birthday.slice(5, 10) === today.slice(5, 10)
+        )
+    )
+
+    for (let i = 0; i < activeBdayValues.length; i++) {
+      toastStore.trigger({
+        message: `🎉 Happy ${
+          isWeddingAnniversary(activeBdayValues[i])
+            ? 'Wedding Anniversary'
+            : 'Birthday'
+        } ${isPastor(activeBdayValues[i]) ? 'Pastor' : ''}  ${
+          activeBdayValues[i].name
+        } 🎉`,
+        timeout: 4000,
+        background: 'variant-filled-secondary',
+      })
+    }
+  }
+
+  return false
 }
 
 export const isDevEnv = (path: string) => {
