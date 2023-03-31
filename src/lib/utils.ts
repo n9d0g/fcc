@@ -7,6 +7,8 @@ import {
   type ModalComponent,
   type ModalSettings,
   type ToastSettings,
+  type AutocompleteOption,
+  type PopupSettings,
 } from '@skeletonlabs/skeleton'
 import SermonModal from './components/sermons/SermonModal.svelte'
 import PraiseModal from './components/ministries/praise/PraiseModal.svelte'
@@ -134,4 +136,27 @@ export const closeSideNav = () => {
 
 export const openSideNav = (settings: any) => {
   return drawerStore.open(settings)
+}
+
+export const praiseLeaderOptions: AutocompleteOption[] = [
+  { label: 'FCC Men', value: 'men', keywords: '' },
+  {
+    label: 'FCC Pre-teens',
+    value: 'preteens',
+    keywords: 'preteens, youth, kids',
+  },
+  { label: 'FCC Women', value: 'women', keywords: '' },
+  { label: 'James', value: 'james', keywords: '' },
+  { label: 'John', value: 'john', keywords: '' },
+  { label: 'Joi', value: 'joi', keywords: '' },
+  { label: 'Nathan', value: 'nathan', keywords: '' },
+  { label: 'Raquel', value: 'raquel', keywords: '' },
+  { label: 'Rommel', value: 'rommel', keywords: '' },
+]
+
+export const praiseFilterPopupSettings: PopupSettings = {
+  event: 'focus',
+  target: 'praiseAutocomplete',
+  placement: 'bottom',
+  closeQuery: '.autocomplete-list, .list-nav, ul, li, .autocomplete-item',
 }

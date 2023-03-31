@@ -5,8 +5,14 @@
 	import PageTitle from '$lib/components/PageTitle.svelte'
 	import DetailsTooltip from '$lib/components/ministries/praise/DetailsTooltip.svelte'
 	import { modalStore } from '@skeletonlabs/skeleton'
-	import { updatedDataFiltered, praiseModalSettings, searchFilter } from '$lib/utils'
-	import GoX from 'svelte-icons/go/GoX.svelte'
+	import {
+		updatedDataFiltered,
+		praiseModalSettings,
+		searchFilter,
+		praiseLeaderOptions,
+		praiseFilterPopupSettings,
+	} from '$lib/utils'
+	import { Autocomplete } from '@skeletonlabs/skeleton'
 
 	// server fetching
 	import type { PageData } from './$types'
@@ -15,6 +21,7 @@
 
 	let tHead: any = data.tableHeader
 	let tBody: any = data.tableBody
+	let schedTable: any
 
 	// variables
 	let leader = ''
@@ -43,6 +50,12 @@
 		modalStore.trigger(settings)
 	}
 
+	const onFilterSelection = (e) => {
+		console.log(e)
+		// schedTable.focus()
+		leader = e.detail.label
+	}
+
 	const breadcrumb = [
 		{ title: 'Home', href: '/' },
 		{ title: 'Ministries', href: '/ministries' },
@@ -53,8 +66,14 @@
 
 <FccLayout {breadcrumb} title="FCC | Praise Schedule">
 	<PageTitle text="Praise Schedule." />
-	<label class="flex gap-4 label my-8">
-		<input class="input w-64" type="text" placeholder="Filter by leader" bind:value={leader} />
+	<label class="flex gap-4 label my-8 max-w-fit">
+		<input
+			class="autocomplete input w-64 max-w-fit"
+			type="search"
+			placeholder="Filter by leader"
+			bind:value={leader}
+			use:popup={praiseFilterPopupSettings}
+		/>
 		{#if leader.length > 0}
 			<button
 				transition:fade={{ duration: 150 }}
@@ -65,11 +84,20 @@
 			</button>
 		{/if}
 	</label>
+	<div data-popup="praiseAutocomplete" class="z-30 bg-surface-100-800-token w-64 rounded-md text-left p-4">
+		<Autocomplete
+			bind:input={leader}
+			options={praiseLeaderOptions}
+			on:selection={onFilterSelection}
+			emptyState="No results found 🙈"
+			class=""
+		/>
+	</div>
 
 	<DetailsTooltip />
 
 	<!-- schedule table -->
-	<div use:popup={popupSettings}>
+	<div use:popup={popupSettings} bind:this={schedTable}>
 		<div class="table-container h-[60vh] w-full">
 			<table class="table table-hover table-compact">
 				<thead>
