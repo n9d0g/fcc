@@ -1,4 +1,4 @@
-import { activeBirthdays, activeNav } from '$lib/stores/store.js'
+import { activeBirthdays, activeNav, activePath } from '$lib/stores/store.js'
 import { Temporal } from '@js-temporal/polyfill'
 import {
   drawerStore,
@@ -32,6 +32,10 @@ export const setNavActiveState = (path: any) => {
   else if (path.includes('small-groups')) activeNav.set('small-groups')
   else if (path.includes('give')) activeNav.set('give')
   else activeNav.set('home')
+}
+
+export const setActivePath = (path: any) => {
+  activePath.set(path)
 }
 
 export const searchFilter = (
@@ -127,7 +131,7 @@ export const praiseModalSettings = (meta: any) => {
   return settings
 }
 
-export const toastSettings: ToastSettings = {
+export const wipToastSettings: ToastSettings = {
   message: `Heads up! This site is still under 🚧 construction 🚧`,
   timeout: 3000,
   background: 'variant-filled-primary',

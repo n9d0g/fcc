@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 	import { page } from '$app/stores'
-	import { devToastSettings, isDevEnv, setNavActiveState } from '$lib/utils'
+	import { setActivePath, setNavActiveState } from '$lib/utils'
 	import Hero from '$lib/components/home/Hero.svelte'
 	import type { PageData } from './$types'
 	import HomeWelcome from '$lib/components/home/HomeWelcome.svelte'
 	import HomeSermons from '$lib/components/home/HomeSermons.svelte'
 	import { fade } from 'svelte/transition'
-	import { toastStore } from '@skeletonlabs/skeleton'
 
 	// props
 	export let data: PageData
@@ -21,8 +20,8 @@
 	let sermons: any = data.sermons
 
 	onMount(() => {
+		setActivePath(url)
 		setNavActiveState(path)
-		if (isDevEnv(url)) toastStore.trigger(devToastSettings)
 	})
 </script>
 
