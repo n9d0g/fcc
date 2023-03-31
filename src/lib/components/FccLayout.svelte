@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte'
 	import { page } from '$app/stores'
 	import { fade } from 'svelte/transition'
-	import { setNavActiveState } from '$lib/utils'
+	import { setNavActiveState, isDevEnv, devToastSettings } from '$lib/utils'
+	import { toastStore } from '@skeletonlabs/skeleton'
 
 	// props
 	export let title: string
@@ -11,8 +12,12 @@
 	// variables
 	let path: string
 	$: path = $page.url.pathname
+	let url: string = $page.url.href
 
-	onMount(() => setNavActiveState(path))
+	onMount(() => {
+		setNavActiveState(path)
+		if (isDevEnv(url)) toastStore.trigger(devToastSettings)
+	})
 </script>
 
 <svelte:head>

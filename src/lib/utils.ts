@@ -1,6 +1,5 @@
 import { activeNav } from '$lib/stores/store.js'
 import { Temporal } from '@js-temporal/polyfill'
-import { disableScrollHandling } from '$app/navigation'
 import {
   drawerStore,
   type DrawerSettings,
@@ -119,6 +118,23 @@ export const toastSettings: ToastSettings = {
   message: `Heads up! This site is still under 🚧 construction 🚧`,
   timeout: 3000,
   background: 'variant-filled-primary',
+}
+
+export const devToastSettings: ToastSettings = {
+  message: `📣 DEV SITE 📣`,
+  autohide: false,
+  background: 'variant-filled-error',
+}
+
+export const isDevEnv = (path: string) => {
+  if (
+    path.includes('dev.') ||
+    path.includes('localhost') ||
+    path.includes('127.0.0.1')
+  )
+    return true
+
+  return false
 }
 
 export const closeSideNav = () => {
