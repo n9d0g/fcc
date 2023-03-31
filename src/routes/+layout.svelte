@@ -10,7 +10,7 @@
 	import Header from '$lib/components/Header.svelte'
 	import SideNav from '$lib/components/SideNav.svelte'
 	import { projectStarted } from '$lib/stores/store.js'
-	import { modalComponentRegistry, toastSettings } from '$lib/utils'
+	import { getBirthdays, modalComponentRegistry, toastSettings } from '$lib/utils'
 
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow })
 
@@ -19,8 +19,12 @@
 	projectStarted.subscribe((value) => (projectStartedValue = value))
 
 	// when component is mounted
-	onMount(() => {
-		if (!projectStartedValue) toastStore.trigger(toastSettings)
+	onMount(async () => {
+		if (!projectStartedValue) {
+			toastStore.trigger(toastSettings)
+			getBirthdays()
+		}
+
 		projectStarted.set(true)
 	})
 </script>
