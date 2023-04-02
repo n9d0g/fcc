@@ -28,6 +28,6 @@
 	<Youtube id={metaData.youtube} --title-color="transparent" --title-shadow-color="transparent" />
 
 	<footer class="modal-footer {parent.regionFooter}">
-		<button class="btn variant-filled-primary" on:click={parent.onClose}> Close </button>
+		<button class="btn variant-filled-error" on:click={parent.onClose}> Close </button>
 	</footer>
 </section>
