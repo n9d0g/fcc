@@ -37,7 +37,7 @@
 	const openDetails = (e: any) => {
 		const meta = {
 			series: e.series,
-			title: e.title,
+			title: e.topic,
 			speaker: e.speaker,
 			scripture: e.scripture,
 			objective: e.objective,
