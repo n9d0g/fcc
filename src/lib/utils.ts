@@ -15,7 +15,7 @@ import PraiseModal from './components/ministries/praise/PraiseModal.svelte'
 import { createClient } from '@sanity/client'
 
 const client = createClient({
-  projectId: 'ygo45klz',
+  projectId: import.meta.env.VITE_SANITY_ID,
   dataset: 'production',
   apiVersion: '2023-03-21',
   useCdn: false,
