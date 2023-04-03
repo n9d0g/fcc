@@ -6,6 +6,8 @@
 	import { searchFilter } from '$lib/utils'
 	import type { PageData } from './$types'
 	import { breadcrumbs } from '$lib/constants'
+	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
+	import { fade } from 'svelte/transition'
 
 	// props
 	export let data: PageData
@@ -33,12 +35,21 @@
 
 <FccLayout {breadcrumb} title="FCC | Sermons">
 	<PageTitle text="Sermons." />
-	<label class="flex items-center label my-4 gap-2 max-w-fit">
+	<label class="relative flex flex-col items-center label my-4 gap-2 max-w-fit">
 		<input class="input w-64" type="text" placeholder="Filter by speaker" bind:value={speaker} />
+		{#if speaker !== ''}
+			<button
+				transition:fade={{ duration: 150 }}
+				on:click={() => (speaker = '')}
+				class="absolute right-0 translate-x-[-7px] translate-y-[2px] cursor-pointer variant-filled-error rounded-xl w-7 h-7"
+			>
+				<IoIosClose />
+			</button>
+		{/if}
 	</label>
 	{#key speaker}
 		{#if speaker !== ''}
-			<p class="flex justify-center mx-auto">
+			<p transition:fade={{ duration: 150 }} class="flex justify-center mx-auto">
 				{sortedSermons().length} result{#if sortedSermons().length !== 1}s{/if} found:
 			</p>
 		{/if}
