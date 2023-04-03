@@ -1,16 +1,13 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import PageTitle from '$lib/components/PageTitle.svelte'
+	import { breadcrumbs } from '$lib/constants'
 	import { Stepper, Step } from '@skeletonlabs/skeleton'
 	import type { PageData } from './$types'
 
 	export let data: PageData
 
-	const breadcrumb = [
-		{ title: 'Home', href: '/' },
-		{ title: 'About', href: '/about' },
-		{ title: 'Beliefs', href: '/about/beliefs' },
-	]
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.about, breadcrumbs.beliefs]
 </script>
 
 <FccLayout {breadcrumb} title="FCC | Beliefs">

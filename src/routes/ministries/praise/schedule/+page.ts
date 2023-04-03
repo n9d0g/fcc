@@ -1,12 +1,5 @@
 import type { PageLoad } from './$types'
-import { createClient } from '@sanity/client'
-
-const client = createClient({
-  projectId: import.meta.env.VITE_SANITY_ID,
-  dataset: 'production',
-  apiVersion: '2023-03-21',
-  useCdn: false,
-})
+import { client } from '$lib/constants'
 
 export const load = (async () => {
   const data = await client.fetch(`

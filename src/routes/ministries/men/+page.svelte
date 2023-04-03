@@ -1,12 +1,9 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import PageTitle from '$lib/components/PageTitle.svelte'
+	import { breadcrumbs } from '$lib/constants'
 
-	const breadcrumb = [
-		{ title: 'Home', href: '/' },
-		{ title: 'Ministries', href: '/ministries' },
-		{ title: 'Men', href: '/ministries/men' },
-	]
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.ministriesMen]
 </script>
 
 <FccLayout {breadcrumb} title="FCC | Men">

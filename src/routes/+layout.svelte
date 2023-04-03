@@ -10,7 +10,8 @@
 	import Header from '$lib/components/Header.svelte'
 	import SideNav from '$lib/components/SideNav.svelte'
 	import { activePath, projectStarted } from '$lib/stores/store.js'
-	import { devToastSettings, getBirthdays, isDevEnv, modalComponentRegistry, wipToastSettings } from '$lib/utils'
+	import { getBirthdays, isDevEnv } from '$lib/utils'
+	import { devToastSettings, wipToastSettings, modalComponentRegistry } from '$lib/constants'
 
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow })
 

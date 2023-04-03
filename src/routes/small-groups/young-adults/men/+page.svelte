@@ -1,32 +1,25 @@
 <script lang="ts">
-	import FccLayout from '$lib/components/FccLayout.svelte'
-	import PageTitle from '$lib/components/PageTitle.svelte'
 	import { Table, tableMapperValues } from '@skeletonlabs/skeleton'
 	import type { TableSource } from '@skeletonlabs/skeleton'
+	import FccLayout from '$lib/components/FccLayout.svelte'
+	import PageTitle from '$lib/components/PageTitle.svelte'
+	import { dateToday, breadcrumbs } from '$lib/constants'
 
 	// server fetching
 	import type { PageData } from './$types'
-	import { Temporal } from '@js-temporal/polyfill'
 	export let data: PageData
 
 	// variables
 	const pdfLink = data.data[0].pdf
 	const schedule = data.data[0].schedule
-	const upToDateSchedule = schedule
-		.filter((item) => item.date >= Temporal.Now.plainDateISO().toString())
-		.sort((a, b) => (a.date > b.date ? 1 : -1))
+	const upToDateSchedule = schedule.filter((item) => item.date >= dateToday).sort((a, b) => (a.date > b.date ? 1 : -1))
 
 	let table: TableSource = {
 		head: ['Date', 'Week', 'Leader', 'Chapter'],
 		body: tableMapperValues(upToDateSchedule, ['date', 'week', 'leader', 'chapter']),
 	}
 
-	const breadcrumb = [
-		{ title: 'Home', href: '/' },
-		{ title: 'Small Groups', href: '/small-groups' },
-		{ title: 'Young Adults', href: '/small-groups/young-adults' },
-		{ title: 'Men', href: '/small-groups/young-adults/men' },
-	]
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.smallgroups, breadcrumbs.sgYA, breadcrumbs.men]
 </script>
 
 <FccLayout {breadcrumb} title="FCC | Young Adults - Men">
