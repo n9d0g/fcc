@@ -86,10 +86,10 @@
 
 	<!-- schedule table -->
 	<div use:popup={popupSettings} bind:this={schedTable}>
-		<div class="table-container h-[60vh] w-full">
-			<table class="table table-hover table-compact">
+		<div class="relative table-container h-[60vh] w-full">
+			<table class="table table-hover table-compact relative overflow-scroll">
 				<thead>
-					<tr class="sticky variant-filled-secondary top-0 z-10">
+					<tr class="sticky top-0 variant-filled-secondary z-10">
 						{#each tHead as header}
 							<th class="p-3 font-bold text-left table-cell-fit">{header}</th>
 						{/each}
