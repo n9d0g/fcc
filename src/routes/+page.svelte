@@ -32,7 +32,7 @@
 
 <div transition:fade={{ duration: 150 }}>
 	<Hero />
-	<HomeNextEvent />
+	<HomeNextEvent pageInfo={data.pages} />
 	<HomeWelcome {links} />
 	<HomeSermons {sermons} />
 </div>
