@@ -9,6 +9,12 @@ import type {
 import SermonModal from './components/sermons/SermonModal.svelte'
 import PraiseModal from './components/ministries/praise/PraiseModal.svelte'
 import { Temporal } from '@js-temporal/polyfill'
+import MdHome from 'svelte-icons/md/MdHome.svelte'
+import MdLocalFlorist from 'svelte-icons/md/MdLocalFlorist.svelte'
+import IoMdBook from 'svelte-icons/io/IoMdBook.svelte'
+import MdLightbulbOutline from 'svelte-icons/md/MdLightbulbOutline.svelte'
+import IoMdPeople from 'svelte-icons/io/IoMdPeople.svelte'
+import FaMoneyCheckAlt from 'svelte-icons/fa/FaMoneyCheckAlt.svelte'
 
 export const breadcrumbs = {
   home: { title: 'Home', href: '/' },
@@ -62,26 +68,32 @@ export const navOptions = [
   {
     href: '/',
     title: 'Home',
+    icon: MdHome,
   },
   {
     href: '/about',
     title: 'About',
+    icon: MdLightbulbOutline,
   },
   {
     href: '/sermons',
     title: 'Sermons',
+    icon: IoMdBook,
   },
   {
     href: '/ministries',
     title: 'Ministries',
+    icon: MdLocalFlorist,
   },
   {
     href: '/small-groups',
     title: 'Small Groups',
+    icon: IoMdPeople,
   },
   {
     href: '/give',
     title: 'Give',
+    icon: FaMoneyCheckAlt,
   },
 ]
 

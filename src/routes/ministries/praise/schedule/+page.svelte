@@ -12,6 +12,7 @@
 	// server fetching
 	import type { PageData } from './$types'
 	import { fade } from 'svelte/transition'
+	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
 	export let data: PageData
 
 	// variables
@@ -53,7 +54,7 @@
 
 <FccLayout {breadcrumb} title="FCC | Praise Schedule">
 	<PageTitle text="Praise Schedule." />
-	<label class="flex gap-4 label my-8 max-w-fit">
+	<label class="relative flex gap-4 label my-8 max-w-fit">
 		<input
 			class="autocomplete input w-64 max-w-fit"
 			type="search"
@@ -65,9 +66,9 @@
 			<button
 				transition:fade={{ duration: 150 }}
 				on:click={() => (leader = '')}
-				class="flex item-center variant-filled-error justify-center btn-icon w-[4rem] h-9"
+				class="absolute right-0 translate-x-[-7px] translate-y-[2px] cursor-pointer variant-filled-error rounded-xl w-7 h-7"
 			>
-				Clear
+				<IoIosClose />
 			</button>
 		{/if}
 	</label>
