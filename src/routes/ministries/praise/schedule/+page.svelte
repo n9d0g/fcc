@@ -78,7 +78,7 @@
 			<button
 				transition:fade={{ duration: 150 }}
 				on:click={() => (leader = '')}
-				class="flex item-center variant-filled-primary justify-center btn-icon w-[4rem] h-9"
+				class="flex item-center variant-filled-error justify-center btn-icon w-[4rem] h-9"
 			>
 				Clear
 			</button>
