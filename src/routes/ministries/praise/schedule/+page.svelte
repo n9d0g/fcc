@@ -14,10 +14,10 @@
 	import { fade } from 'svelte/transition'
 	export let data: PageData
 
+	// variables
 	let tHead: any = data.tableHeader
 	let tBody: any = data.tableBody
-
-	// variables
+	let schedTable: any
 	let leader = ''
 	const upToDatePraiseData = updatedDataFiltered(data.praise, 'date')
 
