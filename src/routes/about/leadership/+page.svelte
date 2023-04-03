@@ -2,15 +2,12 @@
 	import LeadershipCard from '$lib/components/about/leadership/LeadershipCard.svelte'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import PageTitle from '$lib/components/PageTitle.svelte'
+	import { breadcrumbs } from '$lib/constants'
 	import type { PageData } from './$types'
 
 	export let data: PageData
 
-	const breadcrumb = [
-		{ title: 'Home', href: '/' },
-		{ title: 'About', href: '/about' },
-		{ title: 'Leadership', href: '/about/leadership' },
-	]
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.about, breadcrumbs.leadership]
 </script>
 
 <svelte:head>

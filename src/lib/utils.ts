@@ -2,27 +2,23 @@ import { activeBirthdays, activeNav, activePath } from '$lib/stores/store.js'
 import { Temporal } from '@js-temporal/polyfill'
 import {
   drawerStore,
-  type DrawerSettings,
-  type ModalComponent,
-  type ModalSettings,
-  type ToastSettings,
-  type AutocompleteOption,
-  type PopupSettings,
   toastStore,
+  type ModalSettings,
 } from '@skeletonlabs/skeleton'
-import SermonModal from './components/sermons/SermonModal.svelte'
-import PraiseModal from './components/ministries/praise/PraiseModal.svelte'
-import { createClient } from '@sanity/client'
-
-const client = createClient({
-  projectId: 'ygo45klz',
-  dataset: 'production',
-  apiVersion: '2023-03-21',
-  useCdn: false,
-})
+import { client, dateToday } from '$lib/constants'
 
 let activeBdayValues: any = ''
 activeBirthdays.subscribe(value => (activeBdayValues = value))
+
+const isPastor = (person: any) => {
+  if (person.pastor) return true
+  return false
+}
+
+const isWeddingAnniversary = (person: any) => {
+  if (person.wa) return true
+  return false
+}
 
 // exported functions
 export const setNavActiveState = (path: any) => {
@@ -56,49 +52,7 @@ export const updatedDataFiltered = (array: any, field: string) => {
     .sort((a: any, b: any) => (a[field] > b[field] ? 1 : -1))
 }
 
-export const navOptions = () => {
-  return [
-    {
-      href: '/',
-      title: 'Home',
-    },
-    {
-      href: '/about',
-      title: 'About',
-    },
-    {
-      href: '/sermons',
-      title: 'Sermons',
-    },
-    {
-      href: '/ministries',
-      title: 'Ministries',
-    },
-    {
-      href: '/small-groups',
-      title: 'Small Groups',
-    },
-    {
-      href: '/give',
-      title: 'Give',
-    },
-  ]
-}
-
 // skeleton utils
-export const drawerSettings: DrawerSettings = {
-  position: 'right',
-}
-
-export const modalComponentRegistry: Record<string, ModalComponent> = {
-  SermonModalComponent: {
-    ref: SermonModal,
-  },
-  PraiseModalComponent: {
-    ref: PraiseModal,
-  },
-}
-
 export const sermonModalSettings = (
   title: string,
   date: string,
@@ -131,42 +85,20 @@ export const praiseModalSettings = (meta: any) => {
   return settings
 }
 
-export const wipToastSettings: ToastSettings = {
-  message: `Heads up! This site is still under 🚧 construction 🚧`,
-  timeout: 3000,
-  background: 'variant-filled-primary',
-}
-
-export const devToastSettings: ToastSettings = {
-  message: `📣 DEV SITE 📣`,
-  autohide: false,
-  background: 'variant-filled-error',
-}
-
-const isPastor = (person: any) => {
-  if (person.pastor) return true
-  return false
-}
-
-const isWeddingAnniversary = (person: any) => {
-  if (person.wa) return true
-  return false
-}
-
 export const getBirthdays: any = async () => {
   const data = await client.fetch(`
     *[_type == "birthdays"] {
       name, birthday, pastor, wa
     }
   `)
-  let today = Temporal.Now.plainDateISO().toString()
 
   if (data) {
     activeBirthdays.set(
       data
         .sort((a: any, b: any) => (a.name > b.name ? 1 : -1))
         .filter(
-          (member: any) => member.birthday.slice(5, 10) === today.slice(5, 10)
+          (member: any) =>
+            member.birthday.slice(5, 10) === dateToday.slice(5, 10)
         )
     )
 
@@ -205,27 +137,4 @@ export const closeSideNav = () => {
 
 export const openSideNav = (settings: any) => {
   return drawerStore.open(settings)
-}
-
-export const praiseLeaderOptions: AutocompleteOption[] = [
-  { label: 'FCC Men', value: 'men', keywords: '' },
-  {
-    label: 'FCC Pre-teens',
-    value: 'preteens',
-    keywords: 'preteens, youth, kids',
-  },
-  { label: 'FCC Women', value: 'women', keywords: '' },
-  { label: 'James', value: 'james', keywords: '' },
-  { label: 'John', value: 'john', keywords: '' },
-  { label: 'Joi', value: 'joi', keywords: '' },
-  { label: 'Nathan', value: 'nathan', keywords: '' },
-  { label: 'Raquel', value: 'raquel', keywords: '' },
-  { label: 'Rommel', value: 'rommel', keywords: '' },
-]
-
-export const praiseFilterPopupSettings: PopupSettings = {
-  event: 'focus',
-  target: 'praiseAutocomplete',
-  placement: 'bottom',
-  closeQuery: '.autocomplete-list, .list-nav, ul, li, .autocomplete-item',
 }

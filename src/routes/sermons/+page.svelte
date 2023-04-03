@@ -5,6 +5,7 @@
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import { searchFilter } from '$lib/utils'
 	import type { PageData } from './$types'
+	import { breadcrumbs } from '$lib/constants'
 
 	// props
 	export let data: PageData
@@ -27,10 +28,7 @@
 		amounts: [1, 2, 4, 8, 16],
 	}
 
-	const breadcrumb = [
-		{ title: 'Home', href: '/' },
-		{ title: 'Sermons', href: '/sermons' },
-	]
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.sermons]
 </script>
 
 <FccLayout {breadcrumb} title="FCC | Sermons">

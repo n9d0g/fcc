@@ -2,12 +2,9 @@
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import LandingPageCard from '$lib/components/LandingPageCard.svelte'
 	import PageTitle from '$lib/components/PageTitle.svelte'
+	import { breadcrumbs } from '$lib/constants'
 
-	const breadcrumb = [
-		{ title: 'Home', href: '/' },
-		{ title: 'Small Groups', href: '/small-groups' },
-		{ title: 'Young Adults', href: '/small-groups/young-adults' },
-	]
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.smallgroups, breadcrumbs.sgYA]
 </script>
 
 <FccLayout {breadcrumb} title="FCC | Young Adults SG">

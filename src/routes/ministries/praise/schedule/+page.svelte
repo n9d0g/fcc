@@ -1,18 +1,13 @@
 <script lang="ts">
 	// imports
 	import { popup, type PopupSettings } from '@skeletonlabs/skeleton'
+	import { Autocomplete } from '@skeletonlabs/skeleton'
+	import { modalStore } from '@skeletonlabs/skeleton'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import PageTitle from '$lib/components/PageTitle.svelte'
 	import DetailsTooltip from '$lib/components/ministries/praise/DetailsTooltip.svelte'
-	import { modalStore } from '@skeletonlabs/skeleton'
-	import {
-		updatedDataFiltered,
-		praiseModalSettings,
-		searchFilter,
-		praiseLeaderOptions,
-		praiseFilterPopupSettings,
-	} from '$lib/utils'
-	import { Autocomplete } from '@skeletonlabs/skeleton'
+	import { updatedDataFiltered, praiseModalSettings, searchFilter } from '$lib/utils'
+	import { praiseLeaderOptions, praiseFilterPopupSettings, breadcrumbs } from '$lib/constants'
 
 	// server fetching
 	import type { PageData } from './$types'
@@ -51,17 +46,10 @@
 	}
 
 	const onFilterSelection = (e) => {
-		console.log(e)
-		// schedTable.focus()
 		leader = e.detail.label
 	}
 
-	const breadcrumb = [
-		{ title: 'Home', href: '/' },
-		{ title: 'Ministries', href: '/ministries' },
-		{ title: 'Praise & Worship', href: '/ministries/praise' },
-		{ title: 'Schedule', href: '/ministries/praise/schedule' },
-	]
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.praise, breadcrumbs.schedule]
 </script>
 
 <FccLayout {breadcrumb} title="FCC | Praise Schedule">
@@ -78,7 +66,7 @@
 			<button
 				transition:fade={{ duration: 150 }}
 				on:click={() => (leader = '')}
-				class="flex item-center variant-filled-primary justify-center btn-icon w-[4rem] h-9"
+				class="flex item-center variant-filled-error justify-center btn-icon w-[4rem] h-9"
 			>
 				Clear
 			</button>

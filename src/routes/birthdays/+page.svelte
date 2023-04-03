@@ -1,6 +1,7 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import PageTitle from '$lib/components/PageTitle.svelte'
+	import { breadcrumbs } from '$lib/constants'
 	import { searchFilter } from '$lib/utils'
 	import type { PageData } from './$types'
 
@@ -13,10 +14,7 @@
 	let filter = ''
 	let selected: any
 
-	const breadcrumb = [
-		{ title: 'Home', href: '/' },
-		{ title: 'Birthdays', href: '/birthdays' },
-	]
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.birthdays]
 </script>
 
 <FccLayout {breadcrumb} title="FCC | Birthdays">

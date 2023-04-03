@@ -4,7 +4,8 @@
 	import Icon from '@iconify/svelte'
 	import NavButton from '$lib/components/NavButton.svelte'
 	import { activeNav } from '$lib/stores/store.js'
-	import { drawerSettings, navOptions, openSideNav } from '$lib/utils'
+	import { openSideNav } from '$lib/utils'
+	import { navOptions, drawerSettings } from '$lib/constants'
 
 	// variables
 	let activeNavValue: string
@@ -27,7 +28,7 @@
 
 		<nav class="hidden lg:flex justify-center items-center gap-4 z-10">
 			{#key activeNavValue}
-				{#each navOptions() as option}
+				{#each navOptions as option}
 					<NavButton text={option.title} link={option.href} nav={activeNavValue} />
 				{/each}
 			{/key}
