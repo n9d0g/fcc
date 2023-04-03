@@ -41,7 +41,7 @@
 			<button
 				transition:fade={{ duration: 150 }}
 				on:click={() => (speaker = '')}
-				class="absolute right-0 translate-x-[-7px] translate-y-[2px] cursor-pointer variant-filled-error rounded-xl w-7 h-7"
+				class="absolute right-0 translate-x-[-7px] translate-y-[3px] cursor-pointer rounded-xl w-7 h-7"
 			>
 				<IoIosClose />
 			</button>
