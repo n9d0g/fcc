@@ -56,7 +56,7 @@
 	<PageTitle text="Praise Schedule." />
 	<label class="relative flex gap-4 label my-8 max-w-fit">
 		<input
-			class="autocomplete input w-64 max-w-fit"
+			class="autocomplete input w-64 max-w-full"
 			type="search"
 			placeholder="Filter by leader"
 			bind:value={leader}
@@ -66,12 +66,13 @@
 			<button
 				transition:fade={{ duration: 150 }}
 				on:click={() => (leader = '')}
-				class="absolute right-0 translate-x-[-7px] translate-y-[2px] cursor-pointer variant-filled-error rounded-xl w-7 h-7"
+				class="absolute right-0 translate-x-[-7px] translate-y-[3px] cursor-pointer rounded-xl w-7 h-7"
 			>
 				<IoIosClose />
 			</button>
 		{/if}
 	</label>
+
 	<div data-popup="praiseAutocomplete" class="z-30 bg-surface-100-800-token w-64 rounded-md text-left p-4">
 		<Autocomplete
 			bind:input={leader}
