@@ -12,12 +12,10 @@
 	// server fetching
 	import type { PageData } from './$types'
 	import { fade } from 'svelte/transition'
-	import { e } from 'vitest/dist/index-5aad25c1'
 	export let data: PageData
 
 	let tHead: any = data.tableHeader
 	let tBody: any = data.tableBody
-	let schedTable: any
 
 	// variables
 	let leader = ''
