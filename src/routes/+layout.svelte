@@ -12,14 +12,20 @@
 	import { activePath, projectStarted } from '$lib/stores/store.js'
 	import { getBirthdays, isDevEnv } from '$lib/utils'
 	import { devToastSettings, wipToastSettings, modalComponentRegistry } from '$lib/constants'
+	import { afterNavigate } from '$app/navigation'
 
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow })
 
 	// variables
-	let projectStartedValue: boolean
+	let projectStartedValue: boolean = false
 	projectStarted.subscribe((value) => (projectStartedValue = value))
-	let activePathValue: string
+	let activePathValue: string = ''
 	activePath.subscribe((value) => (activePathValue = value))
+
+	// scroll to top on every navigate
+	afterNavigate((nav) => {
+		if (nav.type === 'link') document.getElementById('page')?.scrollTo(0, 0)
+	})
 
 	// when component is mounted
 	onMount(async () => {
