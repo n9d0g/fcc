@@ -12,6 +12,7 @@
 	// server fetching
 	import type { PageData } from './$types'
 	import { fade } from 'svelte/transition'
+	import { e } from 'vitest/dist/index-5aad25c1'
 	export let data: PageData
 
 	let tHead: any = data.tableHeader
@@ -90,8 +91,12 @@
 			<table class="table table-hover table-compact relative overflow-scroll">
 				<thead>
 					<tr class="sticky top-0 variant-filled-secondary z-10">
-						{#each tHead as header}
-							<th class="p-3 font-bold text-left table-cell-fit">{header}</th>
+						{#each tHead as header, index}
+							{#if index === 0}
+								<th class="sticky left-0 p-3 font-bold text-left table-cell-fit">{header}</th>
+							{:else}
+								<th class="p-3 font-bold text-left table-cell-fit">{header}</th>
+							{/if}
 						{/each}
 					</tr>
 				</thead>
