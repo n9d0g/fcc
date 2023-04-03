@@ -2,11 +2,13 @@ import type { PageLoad } from './$types'
 import { client, links } from '$lib/constants'
 
 export const load = (async () => {
-  const data = await client.fetch(`*[_type == "sermons"]`)
+  const sermons = await client.fetch(`*[_type == "sermons"]`)
+  const pages = await client.fetch(`*[_type == "pages"]`)
 
-  if (data)
+  if (sermons && pages)
     return {
-      sermons: data.sort((a, b) => (a.date < b.date ? 1 : -1)),
+      sermons: sermons.sort((a, b) => (a.date < b.date ? 1 : -1)),
+      pages: pages[0],
       links: { googleMaps: links.googleMaps, zoom: links.zoom },
     }
 

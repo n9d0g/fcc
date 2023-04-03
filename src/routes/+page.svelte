@@ -3,10 +3,11 @@
 	import { page } from '$app/stores'
 	import { setActivePath, setNavActiveState } from '$lib/utils'
 	import Hero from '$lib/components/home/Hero.svelte'
-	import type { PageData } from './$types'
 	import HomeWelcome from '$lib/components/home/HomeWelcome.svelte'
+	import HomeNextEvent from '$lib/components/home/HomeNextEvent.svelte'
 	import HomeSermons from '$lib/components/home/HomeSermons.svelte'
 	import { fade } from 'svelte/transition'
+	import type { PageData } from './$types'
 
 	// props
 	export let data: PageData
@@ -31,6 +32,7 @@
 
 <div transition:fade={{ duration: 150 }}>
 	<Hero />
+	<HomeNextEvent pageInfo={data.pages} />
 	<HomeWelcome {links} />
 	<HomeSermons {sermons} />
 </div>
