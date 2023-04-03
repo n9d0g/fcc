@@ -22,7 +22,7 @@ export const breadcrumbs = {
   beliefs: { title: 'Beliefs', href: '/about/beliefs' },
   ministries: { title: 'Ministries', href: '/ministries' },
   sermons: { title: 'Sermons', href: '/sermons' },
-  praise: { title: 'Praise & Worship', href: '/praise' },
+  praise: { title: 'Praise & Worship', href: '/ministries/praise' },
   schedule: { title: 'Schedule', href: '/ministries/praise/schedule' },
   preteens: { title: 'Preteens', href: '/ministries/preteens' },
   leadership: { title: 'Leadership', href: '/about/leadership' },
@@ -40,12 +40,15 @@ export const breadcrumbs = {
     title: 'South Mississauga',
     href: '/small-groups/south-mississauga',
   },
-  ubs: { title: 'University Bible Study', href: '/university-bible-study' },
+  ubs: {
+    title: 'University Bible Study',
+    href: '/small-groups/university-bible-study',
+  },
   womenChasingGod: {
     title: 'Women Chasing God',
     href: '/small-groups/women-chasing-god',
   },
-  missionVision: { title: 'Mission & Vision', href: '/mission-vision' },
+  missionVision: { title: 'Mission & Vision', href: '/about/mission-vision' },
   sgYA: { title: 'Young Adults', href: '/small-groups/young-adults' },
   sgYAWomen: { title: 'Women', href: '/small-groups/young-adults/women' },
   yumul: {
