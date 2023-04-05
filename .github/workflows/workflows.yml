@@ -1,12 +1,9 @@
 name: playwright
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
   deployment_status:
+    branches: [main]
 jobs:
-  playwright:
+  tests:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     if: github.event.deployment_status.state == 'success'

@@ -61,7 +61,7 @@ export const breadcrumbs = {
 }
 
 export const client = createClient({
-  projectId: import.meta.env.VITE_SANITY_ID,
+  projectId: 'ygo45klz',
   dataset: 'production',
   apiVersion: '2023-03-30',
   useCdn: false,
