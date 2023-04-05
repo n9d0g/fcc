@@ -1,23 +1,25 @@
-name: Playwright Tests
+name: playwright
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+  deployment_status:
 jobs:
-  test:
+  playwright:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    if: github.event.deployment_status.state == 'success'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
-      - name: Install dependencies
+          node-version: '18.15.0'
+      - name: install deps
         run: npm ci
-      - name: Install Playwright Browsers
+      - name: install browsers
         run: npx playwright install --with-deps
-      - name: Run Playwright tests
+      - name: run tests
         run: npx playwright test
       - uses: actions/upload-artifact@v3
         if: always()
