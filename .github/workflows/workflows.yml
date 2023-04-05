@@ -3,12 +3,12 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
+    branches: [main, dev]
 jobs:
   tests:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    if: github.event.deployment_status.state == 'success'
+    # if: github.event.deployment_status.state == 'success'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
