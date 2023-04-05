@@ -1,7 +1,9 @@
 name: playwright
 on:
-  deployment_status:
-    branches: [main, dev]
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
   tests:
     timeout-minutes: 60
