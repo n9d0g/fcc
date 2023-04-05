@@ -1,9 +1,11 @@
 name: playwright
+
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main, dev]
+
 jobs:
   tests:
     timeout-minutes: 60
