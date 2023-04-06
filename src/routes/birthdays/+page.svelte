@@ -51,7 +51,7 @@
 			<div class="flex gap-6">
 				<label class="label flex-1">
 					<span>Type:</span>
-					<select class="select" bind:value={bdayType} on:click={handleBdayType}>
+					<select class="select" bind:value={bdayType} on:change={handleBdayType}>
 						<option value="1">Birthdays</option>
 						<option value="2">Wedding Anniversaries</option>
 						<option value="3">All</option>
@@ -59,7 +59,7 @@
 				</label>
 				<label class="label flex-1">
 					<span>Sort:</span>
-					<select class="select" bind:value={sortType} on:click={handleSortType}>
+					<select class="select" bind:value={sortType} on:change={handleSortType}>
 						<option value="1">Date</option>
 						<option value="2">Alphabetical</option>
 					</select>
