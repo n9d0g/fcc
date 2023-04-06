@@ -10,7 +10,7 @@ export const load = (async () => {
 
   if (data)
     return {
-      data: data.sort((a, b) => (a.name > b.name ? 1 : -1)),
+      data: data.sort((a: any, b: any) => (a.name > b.name ? 1 : -1)),
     }
 
   return {
