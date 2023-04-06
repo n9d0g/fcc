@@ -16,6 +16,7 @@
 	let sortType: any
 	let bdayTypeValue: number = 1
 	let sortTypeValue: number = 1
+	let updateKey: number = 0
 
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.birthdays]
 
@@ -30,6 +31,16 @@
 			return bdayObj.sort((a: any, b: any) => (a.birthday.slice(5, 10) > b.birthday.slice(5, 10) ? 1 : -1))
 		else return bdayObj.sort((a: any, b: any) => (a.name > b.name ? 1 : -1))
 	}
+
+	const handleBdayType = () => {
+		bdayTypeValue = bdayType
+		updateKey += 1
+	}
+
+	const handleSortType = () => {
+		sortTypeValue = sortType
+		updateKey += 1
+	}
 </script>
 
 <FccLayout {breadcrumb} title="FCC | Birthdays">
@@ -40,7 +51,7 @@
 			<div class="flex gap-6">
 				<label class="label flex-1">
 					<span>Type:</span>
-					<select class="select" bind:value={bdayType} on:click={() => (bdayTypeValue = bdayType)}>
+					<select class="select" bind:value={bdayType} on:click={handleBdayType}>
 						<option value="1">Birthdays</option>
 						<option value="2">Wedding Anniversaries</option>
 						<option value="3">All</option>
@@ -48,7 +59,7 @@
 				</label>
 				<label class="label flex-1">
 					<span>Sort:</span>
-					<select class="select" bind:value={sortType} on:click={() => (sortTypeValue = sortType)}>
+					<select class="select" bind:value={sortType} on:click={handleSortType}>
 						<option value="1">Date</option>
 						<option value="2">Alphabetical</option>
 					</select>
