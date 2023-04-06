@@ -12,9 +12,24 @@
 	const birthdays = data.data
 	const tHead = ['Name', 'Date']
 	let filter = ''
-	let selected: any
+	let bdayType: any
+	let sortType: any
+	let bdayTypeValue: number = 1
+	let sortTypeValue: number = 1
 
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.birthdays]
+
+	const filterBirthdays = (option: number) => {
+		if (option == 1) return birthdays.filter((bday: any) => bday.wa === false)
+		else if (option == 2) return birthdays.filter((bday: any) => bday.wa === true)
+		else return birthdays
+	}
+
+	const sortBirthdays = (bdayObj: any) => {
+		if (sortTypeValue == 1)
+			return bdayObj.sort((a: any, b: any) => (a.birthday.slice(5, 10) > b.birthday.slice(5, 10) ? 1 : -1))
+		else return bdayObj.sort((a: any, b: any) => (a.name > b.name ? 1 : -1))
+	}
 </script>
 
 <FccLayout {breadcrumb} title="FCC | Birthdays">
@@ -22,16 +37,30 @@
 
 	<div class="flex flex-col justify-center items-center gap-8">
 		<div class="flex flex-col w-full mx-4 md:w-1/2 lg:2/3 gap-4">
-			<select class="select" bind:value={selected} disabled>
-				<option value="1" selected>Birthdays</option>
-				<option value="2">Wedding Anniversaries</option>
-			</select>
+			<div class="flex gap-6">
+				<label class="label flex-1">
+					<span>Type:</span>
+					<select class="select" bind:value={bdayType} on:click={() => (bdayTypeValue = bdayType)}>
+						<option value="1">Birthdays</option>
+						<option value="2">Wedding Anniversaries</option>
+						<option value="3">All</option>
+					</select>
+				</label>
+				<label class="label flex-1">
+					<span>Sort:</span>
+					<select class="select" bind:value={sortType} on:click={() => (sortTypeValue = sortType)}>
+						<option value="1">Date</option>
+						<option value="2">Alphabetical</option>
+					</select>
+				</label>
+			</div>
 			<label class="label">
+				<span>Filter:</span>
 				<input class="input w-full" type="text" placeholder="Filter by name" bind:value={filter} />
 			</label>
 		</div>
 
-		{#key filter}
+		{#key sortTypeValue}
 			<div class="table-container w-full mx-4 md:w-1/2 lg:2/3">
 				<table class="table table-hover table-compact">
 					<thead>
@@ -42,12 +71,12 @@
 						</tr>
 					</thead>
 					<tbody>
-						{#each searchFilter(birthdays, 'name', filter) as birthday}
+						{#each searchFilter(sortBirthdays(filterBirthdays(bdayTypeValue)), 'name', filter) as birthday}
 							<tr>
 								<td>
 									{birthday.name}
 									{#if birthday.wa}
-										(Wedding Annviversary)
+										(WA)
 									{/if}
 								</td>
 								<td>{birthday.birthday.slice(5, 10)}</td>
