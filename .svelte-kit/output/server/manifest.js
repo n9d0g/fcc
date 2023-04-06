@@ -1,10 +1,10 @@
 export const manifest = {
 	appDir: "_app",
 	appPath: "_app",
-	assets: new Set(["android-chrome-192x192.png","android-chrome-512x512.png","apple-touch-icon.png","favicon-16x16.png","favicon-32x32.png","favicon.ico","favicon.png","hero.jpg"]),
+	assets: new Set([".DS_Store","android-chrome-192x192.png","android-chrome-512x512.png","apple-touch-icon.png","favicon-16x16.png","favicon-32x32.png","favicon.ico","favicon.png","hero.jpg"]),
 	mimeTypes: {".png":"image/png",".ico":"image/vnd.microsoft.icon",".jpg":"image/jpeg"},
 	_: {
-		client: {"start":{"file":"_app/immutable/entry/start.4b6eac09.js","imports":["_app/immutable/entry/start.4b6eac09.js","_app/immutable/chunks/index.a2dad92e.js","_app/immutable/chunks/singletons.2817e922.js","_app/immutable/chunks/index.4a0233d4.js","_app/immutable/chunks/control.e7f5239e.js"],"stylesheets":[],"fonts":[]},"app":{"file":"_app/immutable/entry/app.ae9aa631.js","imports":["_app/immutable/entry/app.ae9aa631.js","_app/immutable/chunks/preload-helper.41c905a7.js","_app/immutable/chunks/index.a2dad92e.js"],"stylesheets":[],"fonts":[]}},
+		client: {"start":{"file":"_app/immutable/entry/start.8846c3cc.js","imports":["_app/immutable/entry/start.8846c3cc.js","_app/immutable/chunks/index.a2dad92e.js","_app/immutable/chunks/singletons.21636c6b.js","_app/immutable/chunks/index.4a0233d4.js","_app/immutable/chunks/control.e7f5239e.js"],"stylesheets":[],"fonts":[]},"app":{"file":"_app/immutable/entry/app.a9c03e4e.js","imports":["_app/immutable/entry/app.a9c03e4e.js","_app/immutable/chunks/preload-helper.41c905a7.js","_app/immutable/chunks/index.a2dad92e.js"],"stylesheets":[],"fonts":[]}},
 		nodes: [
 			() => import('./nodes/0.js'),
 			() => import('./nodes/1.js'),

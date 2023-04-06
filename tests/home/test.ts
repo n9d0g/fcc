@@ -7,14 +7,14 @@ test('home: has title', async ({ page }) => {
   await expect(page).toHaveTitle('Freedom in Christ Church.')
 })
 
-test('home: hero has h1', async ({ page }) => {
+test('home: hero has main header', async ({ page }) => {
   await page.goto(devHome)
   await expect(
     page.getByRole('heading', { name: 'Welcome to Freedom in Christ Church.' })
   ).toBeVisible()
 })
 
-test('home: hero has h3', async ({ page }) => {
+test('home: hero has subheader', async ({ page }) => {
   await page.goto(devHome)
   await expect(
     page.getByRole('heading', {
@@ -23,8 +23,32 @@ test('home: hero has h3', async ({ page }) => {
   ).toBeVisible()
 })
 
-// test("home: i'm new button", async ({ page }) => {
-//   await page.goto('/')
-//   await page.getByText("i'm new").click()
-//   await expect(page).toHaveURL('/about')
+test('home: next events has header', async ({ page }) => {
+  await page.goto(devHome)
+  await expect(
+    page.getByRole('heading', {
+      name: 'Next Event:',
+    })
+  ).toBeVisible()
+})
+
+test("home: i'm new button", async ({ page }) => {
+  await page.goto(devHome)
+  await page.getByText("i'm new").click()
+  await expect(page).toHaveURL(/.*about/)
+})
+
+// test('home: sermons button', async ({ page }) => {
+//   await page.goto(devHome)
+//   await page.getByRole('link', { name: 'Sermons' }).click()
+//   await expect(page).toHaveURL(/.*sermons/)
 // })
+
+test('home: invite section has header', async ({ page }) => {
+  await page.goto(devHome)
+  await expect(
+    page.getByRole('heading', {
+      name: 'Come join us!',
+    })
+  ).toBeVisible()
+})
