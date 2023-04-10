@@ -3,9 +3,8 @@
 	import PageTitle from '$lib/components/PageTitle.svelte'
 	import { breadcrumbs } from '$lib/constants'
 	import { Stepper, Step } from '@skeletonlabs/skeleton'
-	import type { PageData } from './$types'
 
-	export let data: PageData
+	export let data
 
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.about, breadcrumbs.beliefs]
 </script>

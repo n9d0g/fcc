@@ -4,13 +4,12 @@
 	import PageTitle from '$lib/components/PageTitle.svelte'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import { searchFilter } from '$lib/utils'
-	import type { PageData } from './$types'
 	import { breadcrumbs } from '$lib/constants'
 	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
 	import { fade } from 'svelte/transition'
 
 	// props
-	export let data: PageData
+	export let data
 
 	// variables
 	let speaker = ''
