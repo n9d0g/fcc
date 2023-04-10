@@ -7,10 +7,9 @@
 	import HomeNextEvent from '$lib/components/home/HomeNextEvent.svelte'
 	import HomeSermons from '$lib/components/home/HomeSermons.svelte'
 	import { fade } from 'svelte/transition'
-	import type { PageData } from './$types'
 
 	// props
-	export let data: PageData
+	export let data
 
 	// variables
 	let path: string
@@ -32,8 +31,8 @@
 
 <div transition:fade={{ duration: 150 }}>
 	<Hero />
-	<HomeNextEvent pageInfo={data.pages} />
 	<HomeWelcome {links} />
+	<HomeNextEvent pageInfo={data.pages} />
 	<HomeSermons {sermons} />
 </div>
 

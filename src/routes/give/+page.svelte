@@ -1,11 +1,10 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import PageTitle from '$lib/components/PageTitle.svelte'
-	import { breadcrumbs, links } from '$lib/constants'
+	import { breadcrumbs } from '$lib/constants'
 
 	// server fetching
-	import type { PageData } from './$types'
-	export let data: PageData
+	export let data
 
 	const links = data.links
 

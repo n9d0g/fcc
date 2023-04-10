@@ -6,13 +6,14 @@
 	import { dateToday, breadcrumbs } from '$lib/constants'
 
 	// server fetching
-	import type { PageData } from './$types'
-	export let data: PageData
+	export let data
 
 	// variables
 	const pdfLink = data.data[0].pdf
 	const schedule = data.data[0].schedule
-	const upToDateSchedule = schedule.filter((item) => item.date >= dateToday).sort((a, b) => (a.date > b.date ? 1 : -1))
+	const upToDateSchedule = schedule
+		.filter((item: any) => item.date >= dateToday)
+		.sort((a: any, b: any) => (a.date > b.date ? 1 : -1))
 
 	let table: TableSource = {
 		head: ['Date', 'Week', 'Leader', 'Chapter'],

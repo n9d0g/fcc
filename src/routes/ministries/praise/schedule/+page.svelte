@@ -10,10 +10,9 @@
 	import { praiseLeaderOptions, praiseFilterPopupSettings, breadcrumbs } from '$lib/constants'
 
 	// server fetching
-	import type { PageData } from './$types'
 	import { fade } from 'svelte/transition'
 	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
-	export let data: PageData
+	export let data
 
 	// variables
 	let tHead: any = data.tableHeader

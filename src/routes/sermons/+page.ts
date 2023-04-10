@@ -1,7 +1,6 @@
-import type { PageLoad } from './$types'
 import { client } from '$lib/constants'
 
-export const load = (async () => {
+export const load = async () => {
   const data = await client.fetch(`*[_type == "sermons"]`)
 
   if (data) return { sermons: data.sort((a, b) => (a.date < b.date ? 1 : -1)) }
@@ -10,4 +9,4 @@ export const load = (async () => {
     status: 500,
     body: new Error('Internal Server Error'),
   }
-}) satisfies PageLoad
+}

@@ -3,10 +3,9 @@
 	import PageTitle from '$lib/components/PageTitle.svelte'
 	import { breadcrumbs } from '$lib/constants'
 	import { searchFilter } from '$lib/utils'
-	import type { PageData } from './$types'
 
 	// props
-	export let data: PageData
+	export let data
 
 	// variable
 	const birthdays = data.data
