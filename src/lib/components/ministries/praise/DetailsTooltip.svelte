@@ -1,5 +1,5 @@
 <span
-	class="text-xs text-center card variant-filled-primary p-2 whitespace-nowrap shadow-xl"
+	class="card variant-filled-primary whitespace-nowrap p-2 text-center text-xs shadow-xl"
 	data-popup="detailsToolTip"
 >
 	<span class="arrow variant-filled-primary" />
@@ -7,7 +7,7 @@
 </span>
 <!-- mobile tip -->
 <span
-	class="flex lg:hidden text-xs text-center variant-filled-primary w-fit p-2 whitespace-nowrap shadow-xl rounded-xl my-2 mx-auto"
+	class="variant-filled-primary mx-auto my-2 flex w-fit whitespace-nowrap rounded-xl p-2 text-center text-xs shadow-xl lg:hidden"
 >
 	Click on a row to view details 🔎
 </span>

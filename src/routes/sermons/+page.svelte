@@ -34,13 +34,13 @@
 
 <FccLayout {breadcrumb} title="FCC | Sermons">
 	<PageTitle text="Sermons." />
-	<label class="relative flex flex-col items-center label my-4 gap-2 max-w-fit">
+	<label class="label relative my-4 flex max-w-fit flex-col items-center gap-2">
 		<input class="input w-64" type="text" placeholder="Filter by speaker" bind:value={speaker} />
 		{#if speaker !== ''}
 			<button
 				transition:fade={{ duration: 150 }}
 				on:click={() => (speaker = '')}
-				class="absolute right-0 translate-x-[-7px] translate-y-[3px] cursor-pointer rounded-xl w-7 h-7"
+				class="absolute right-0 h-7 w-7 translate-x-[-7px] translate-y-[3px] cursor-pointer rounded-xl"
 			>
 				<IoIosClose />
 			</button>
@@ -48,12 +48,12 @@
 	</label>
 	{#key speaker}
 		{#if speaker !== ''}
-			<p transition:fade={{ duration: 150 }} class="flex justify-center mx-auto">
+			<p transition:fade={{ duration: 150 }} class="mx-auto flex justify-center">
 				{sortedSermons().length} result{#if sortedSermons().length !== 1}s{/if} found:
 			</p>
 		{/if}
 		<Paginator bind:settings={page} class="my-8" />
-		<div class="grid gap-4 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+		<div class="xs:grid-cols-1 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 			{#each sortedSermons().slice(page.offset * page.limit, page.offset * page.limit + page.limit) as sermon}
 				<SermonCard
 					title={sermon.title}
@@ -65,6 +65,6 @@
 				/>
 			{/each}
 		</div>
-		<Paginator bind:settings={page} class="md:hidden my-8" />
+		<Paginator bind:settings={page} class="my-8 md:hidden" />
 	{/key}
 </FccLayout>

@@ -3,9 +3,9 @@
 	export let sermons: any
 </script>
 
-<section class="container mx-auto flex flex-col justify-center my-16 h-fit gap-8 px-4">
-	<h2 class="text-2xl font-bold text-center">Recent Sermons</h2>
-	<div class="grid gap-4 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+<section class="container mx-auto my-16 flex h-fit flex-col justify-center gap-8 px-4">
+	<h2 class="text-center text-2xl font-bold">Recent Sermons</h2>
+	<div class="xs:grid-cols-1 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
 		{#each sermons.slice(0, 3) as sermon}
 			<SermonCard
 				title={sermon.title}

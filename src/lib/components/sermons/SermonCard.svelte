@@ -15,13 +15,10 @@
 	}
 </script>
 
-<button
-	on:click={handleSermonClick}
-	class="card card-hover flex flex-col justify-start items-start"
->
+<button on:click={handleSermonClick} class="card card-hover flex flex-col items-start justify-start">
 	<img src={thumb} alt="{title} Image" class="w-full rounded-t-lg" />
-	<header class="card-header font-bold text-start">{title}</header>
-	<section class="flex flex-col justify-start items-start gap-4 p-4">
+	<header class="card-header text-start font-bold">{title}</header>
+	<section class="flex flex-col items-start justify-start gap-4 p-4">
 		<p class="text-start">{speaker}</p>
 	</section>
 	<footer class="card-footer text-start">{date}</footer>

@@ -9,7 +9,7 @@
 
 <FccLayout {breadcrumb} title="FCC | Young Adults SG">
 	<PageTitle text="FCC Young Adults Small Group." />
-	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-4 my-16">
+	<div class="my-16 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
 		<LandingPageCard title="YA Men" link="/small-groups/young-adults/men" />
 		<LandingPageCard title="YA Women" link="/small-groups/young-adults/women" />
 	</div>
