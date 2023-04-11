@@ -14,7 +14,7 @@
 	}
 </script>
 
-<div class="flex items-center card card-hover h-64 py-8 px-4" use:popup={popupSettings}>
+<div class="card card-hover flex h-64 items-center px-4 py-8" use:popup={popupSettings}>
 	<Avatar src={img} width="w-32" height="h-32" rounded="rounded-full" />
 	<div class="flex flex-col">
 		<h4 class="card-header">{name}</h4>

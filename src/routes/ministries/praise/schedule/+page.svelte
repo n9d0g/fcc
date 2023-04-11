@@ -53,7 +53,7 @@
 
 <FccLayout {breadcrumb} title="FCC | Praise Schedule">
 	<PageTitle text="Praise Schedule." />
-	<label class="relative flex gap-4 label my-8 max-w-fit">
+	<label class="label relative my-8 flex max-w-fit gap-4">
 		<input
 			class="autocomplete input w-64 max-w-full"
 			type="search"
@@ -65,14 +65,14 @@
 			<button
 				transition:fade={{ duration: 150 }}
 				on:click={() => (leader = '')}
-				class="absolute right-0 translate-x-[-7px] translate-y-[3px] cursor-pointer rounded-xl w-7 h-7"
+				class="absolute right-0 h-7 w-7 translate-x-[-7px] translate-y-[3px] cursor-pointer rounded-xl"
 			>
 				<IoIosClose />
 			</button>
 		{/if}
 	</label>
 
-	<div data-popup="praiseAutocomplete" class="z-30 bg-surface-100-800-token w-64 rounded-md text-left p-4">
+	<div data-popup="praiseAutocomplete" class="z-30 w-64 rounded-md p-4 text-left bg-surface-100-800-token">
 		<Autocomplete
 			bind:input={leader}
 			options={praiseLeaderOptions}
@@ -86,17 +86,17 @@
 
 	<!-- schedule table -->
 	<div use:popup={popupSettings} bind:this={schedTable}>
-		<div class="relative table-container h-[60vh] w-full">
-			<table class="table table-hover table-compact relative overflow-scroll">
+		<div class="table-container relative h-[60vh] w-full">
+			<table class="table-hover table-compact relative table overflow-scroll">
 				<thead>
-					<tr class="sticky top-0 variant-filled-secondary z-10">
+					<tr class="variant-filled-secondary sticky top-0 z-10">
 						{#each tHead as header, index}
 							{#if index === 0}
-								<th class="sticky left-0 p-3 font-bold text-left table-cell-fit z-30 variant-filled-secondary"
+								<th class="table-cell-fit variant-filled-secondary sticky left-0 z-30 p-3 text-left font-bold"
 									>{header}</th
 								>
 							{:else}
-								<th class="p-3 font-bold text-left table-cell-fit">{header}</th>
+								<th class="table-cell-fit p-3 text-left font-bold">{header}</th>
 							{/if}
 						{/each}
 					</tr>
@@ -108,7 +108,7 @@
 								{#each tBody as col}
 									{#if week[col]}
 										{#if col === 'date'}
-											<td class="sticky bg-surface-100-800-token left-0 pl-3 text-left table-cell-fit">
+											<td class="table-cell-fit sticky left-0 pl-3 text-left bg-surface-100-800-token">
 												{week[col]}
 											</td>
 										{:else}

@@ -22,11 +22,11 @@
 	>
 		<svelte:fragment slot="lead">
 			<a href="/">
-				<Avatar src="/apple-touch-icon.png" class="cursor-pointer w-8 h-8" />
+				<Avatar src="/apple-touch-icon.png" class="h-8 w-8 cursor-pointer" />
 			</a>
 		</svelte:fragment>
 
-		<nav class="hidden lg:flex justify-center items-center gap-4 z-10">
+		<nav class="z-10 hidden items-center justify-center gap-4 lg:flex">
 			{#key activeNavValue}
 				{#each navOptions as option}
 					<NavButton text={option.title} link={option.href} nav={activeNavValue} />
@@ -37,7 +37,7 @@
 		<svelte:fragment slot="trail">
 			<LightSwitch class="z-0" />
 			<button on:click={() => openSideNav(drawerSettings)} class="z-0">
-				<Icon class="lg:hidden flex w-8 h-8 cursor-pointer" icon="cil:hamburger-menu" />
+				<Icon class="flex h-8 w-8 cursor-pointer lg:hidden" icon="cil:hamburger-menu" />
 			</button>
 		</svelte:fragment>
 	</AppBar>

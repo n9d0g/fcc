@@ -23,9 +23,9 @@
 	<title>{title}</title>
 </svelte:head>
 
-<section class="container mx-auto my-8 lg:my-16 flex flex-col h-fit px-4" transition:fade={{ duration: 150 }}>
+<section class="container mx-auto my-8 flex h-fit flex-col px-4 lg:my-16" transition:fade={{ duration: 150 }}>
 	<!-- breadcrumb -->
-	<ol class="flex justify-end breadcrumb">
+	<ol class="breadcrumb flex justify-end">
 		{#each breadcrumb as link, index}
 			{#if index !== breadcrumb.length - 1}
 				<li class="crumb capitalize"><a href={link.href}>{link.title}</a></li>

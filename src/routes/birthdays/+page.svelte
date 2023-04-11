@@ -45,8 +45,8 @@
 <FccLayout {breadcrumb} title="FCC | Birthdays">
 	<PageTitle text="FCC Birthdays." />
 
-	<div class="flex flex-col justify-center items-center gap-8">
-		<div class="flex flex-col w-full mx-4 md:w-1/2 lg:2/3 gap-4">
+	<div class="flex flex-col items-center justify-center gap-8">
+		<div class="lg:2/3 mx-4 flex w-full flex-col gap-4 md:w-1/2">
 			<div class="flex gap-6">
 				<label class="label flex-1">
 					<span>Type:</span>
@@ -71,8 +71,8 @@
 		</div>
 
 		{#key sortTypeValue}
-			<div class="table-container w-full mx-4 md:w-1/2 lg:2/3">
-				<table class="table table-hover table-compact">
+			<div class="lg:2/3 table-container mx-4 w-full md:w-1/2">
+				<table class="table-hover table-compact table">
 					<thead>
 						<tr>
 							{#each tHead as header}

@@ -5,14 +5,14 @@
 </script>
 
 <Drawer>
-	<section class="lg:hidden flex flex-col gap-8 p-8 overflow-hidden">
+	<section class="flex flex-col gap-8 overflow-hidden p-8 lg:hidden">
 		{#each navOptions as option}
 			<a
 				on:click={closeSideNav}
 				href={option.href}
-				class="btn flex gap-2 justify-start align-center focus:ring-0 focus:ring-offset-0"
+				class="align-center btn flex justify-start gap-2 focus:ring-0 focus:ring-offset-0"
 			>
-				<span class="flex justify-center align-center w-5 h-5">
+				<span class="align-center flex h-5 w-5 justify-center">
 					<svelte:component this={option.icon} />
 				</span>
 				{option.title}

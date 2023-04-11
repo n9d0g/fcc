@@ -17,28 +17,28 @@
 	>
 		<svelte:fragment slot="lead">
 			<a href="/">
-				<Avatar src="/apple-touch-icon.png" class="cursor-pointer w-8 h-8" />
+				<Avatar src="/apple-touch-icon.png" class="h-8 w-8 cursor-pointer" />
 			</a>
 		</svelte:fragment>
 		<svelte:fragment slot="headline">
 			<hr class="my-4" />
-			<div class="flex justify-center logo-cloud gap:1 lg:gap-4 max-w-[30rem] mx-auto my-4">
-				<a class="unstyled logo-item p-4 text-gray hover:text-youtube transition" href={links.youtube} target="_blank">
+			<div class="gap:1 logo-cloud mx-auto my-4 flex max-w-[30rem] justify-center lg:gap-4">
+				<a class="unstyled text-gray logo-item p-4 transition hover:text-youtube" href={links.youtube} target="_blank">
 					<span class=" w-6"><FaYoutube /></span>
 				</a>
-				<a class="unstyled logo-item p-4 text-gray hover:text-instagram transition" href={links.ig} target="_blank">
+				<a class="unstyled text-gray logo-item p-4 transition hover:text-instagram" href={links.ig} target="_blank">
 					<span class="w-6"><FaInstagram /></span>
 				</a>
-				<a class="unstyled logo-item p-4 text-gray hover:text-facebook transition" href={links.fb} target="_blank">
+				<a class="unstyled text-gray logo-item p-4 transition hover:text-facebook" href={links.fb} target="_blank">
 					<span class="w-6"><FaFacebook /></span>
 				</a>
 			</div>
 			<a
 				href={links.ghReleases}
-				class="flex justify-center items-center mx-auto my-4 text-sm text-surface-400 hover:text-secondary-500 w-fit italic"
+				class="mx-auto my-4 flex w-fit items-center justify-center text-sm italic text-surface-400 hover:text-secondary-500"
 			>
 				v{version} (&nbsp;
-				<span class="flex items-center justify-center w-4 h-4"><GoGitCommit /></span>
+				<span class="flex h-4 w-4 items-center justify-center"><GoGitCommit /></span>
 
 				<!-- svelte-ignore missing-declaration -->
 				&nbsp;{__LAST_COMMIT__.slice(0, 7)})

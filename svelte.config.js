@@ -10,18 +10,18 @@ const pkg = JSON.parse(json)
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  kit: {
-    adapter: adapter(),
-    version: {
-      name: pkg.version,
-    },
-  },
-  preprocess: [
-    vitePreprocess(),
-    preprocess({
-      postcss: true,
-    }),
-  ],
+	kit: {
+		adapter: adapter(),
+		version: {
+			name: pkg.version,
+		},
+	},
+	preprocess: [
+		vitePreprocess(),
+		preprocess({
+			postcss: true,
+		}),
+	],
 }
 
 export default config

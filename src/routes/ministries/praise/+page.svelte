@@ -9,7 +9,7 @@
 
 <FccLayout {breadcrumb} title="FCC | Praise">
 	<PageTitle text="Praise & Worship Ministry." />
-	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-4 my-16">
+	<div class="my-16 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
 		<LandingPageCard title="Schedule" link="/ministries/praise/schedule" />
 	</div>
 </FccLayout>

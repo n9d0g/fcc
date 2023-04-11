@@ -16,7 +16,7 @@
 		{#each data.coreValues as value}
 			<Step>
 				<svelte:fragment slot="header">{value.title}</svelte:fragment>
-				<p class="text-lg h-fit lg:h-16">
+				<p class="h-fit text-lg lg:h-16">
 					{value.text}
 				</p>
 			</Step>
@@ -27,7 +27,7 @@
 		{#each data.statementsOfFaith as statement}
 			<Step>
 				<svelte:fragment slot="header">{statement.title}</svelte:fragment>
-				<p class="text-lg h-fit lg:h-16">
+				<p class="h-fit text-lg lg:h-16">
 					{statement.text}
 				</p>
 			</Step>

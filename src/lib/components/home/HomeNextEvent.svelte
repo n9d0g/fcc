@@ -4,9 +4,9 @@
 	export let pageInfo
 </script>
 
-<section class="container mx-auto flex flex-col justify-center items-center gap-16 my-32">
-	<h2 class="text-2xl font-bold text-center">Next Event:</h2>
+<section class="container mx-auto my-32 flex flex-col items-center justify-center gap-16">
+	<h2 class="text-center text-2xl font-bold">Next Event:</h2>
 	<a href={links.zoom}>
-		<img class="lg:w-[50rem] h-auto" src={pageInfo.weeklyInvite} alt="" />
+		<img class="h-auto lg:w-[50rem]" src={pageInfo.weeklyInvite} alt="" />
 	</a>
 </section>
