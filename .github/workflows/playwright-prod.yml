@@ -1,13 +1,14 @@
 name: playwright
 
 on:
-  push:
-    branches: [main]
+  # uncomment when fcccanada.ca tests are made
+  # push:
+  #   branches: [main]
   pull_request:
     branches: [main, dev]
 
 jobs:
-  tests:
+  tests-prod:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     # if: github.event.deployment_status.state == 'success'
