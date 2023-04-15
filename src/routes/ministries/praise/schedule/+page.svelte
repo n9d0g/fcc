@@ -112,7 +112,7 @@
 												{week[col]}
 											</td>
 										{:else}
-											<td class="pl-3 text-left">{week[col]}</td>
+											<td class="whitespace-nowrap pl-3 text-left">{week[col]}</td>
 										{/if}
 									{:else}
 										<td class="text-left" />
