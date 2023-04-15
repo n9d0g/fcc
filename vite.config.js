@@ -1,10 +1,9 @@
 import { sveltekit } from '@sveltejs/kit/vite'
 import { defineConfig } from 'vitest/config'
 import { execSync } from 'child_process'
-import { imageTools } from 'vite-imagetools'
 
 export default defineConfig({
-  plugins: [sveltekit(), imageTools()],
+  plugins: [sveltekit()],
   test: {
     include: ['src/**/*.{test,spec}.{js,ts}'],
   },
