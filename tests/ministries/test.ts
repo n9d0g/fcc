@@ -118,9 +118,7 @@ test('ministries/praise/schedule: header visible', async ({ page }) => {
 
 test('ministries/praise/schedule: filter input visible', async ({ page }) => {
   await page.goto(schedulePage)
-  await expect(
-    page.getByRole('search', { name: 'Filter by leader' })
-  ).toBeVisible()
+  await expect(page.getByTestId('schedule-search')).toBeVisible()
 })
 
 test('ministries/praise/schedule: table visible', async ({ page }) => {

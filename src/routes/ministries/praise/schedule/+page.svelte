@@ -60,6 +60,7 @@
 			placeholder="Filter by leader"
 			bind:value={leader}
 			use:popup={praiseFilterPopupSettings}
+			data-testid="schedule-search"
 		/>
 		{#if leader.length > 0}
 			<button
