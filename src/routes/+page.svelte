@@ -30,6 +30,7 @@
 	<title>{headData.home.title}</title>
 	<meta name="description" content={headData.home.description} />
 	{@html `
+	<link rel="canonical" href="${url}"/>
 	<script type="application/ld+json">
 		{
 			"@context": "http://schema.org",
