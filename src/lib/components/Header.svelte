@@ -36,7 +36,7 @@
 
 		<svelte:fragment slot="trail">
 			<LightSwitch class="z-0" />
-			<button on:click={() => openSideNav(drawerSettings)} class="z-0">
+			<button on:click={() => openSideNav(drawerSettings)} class="z-0" aria-label="Mobile Nav Button">
 				<Icon class="flex h-8 w-8 cursor-pointer lg:hidden" icon="cil:hamburger-menu" />
 			</button>
 		</svelte:fragment>
