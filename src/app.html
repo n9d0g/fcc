@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-		%sveltekit.head%
-	</head>
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-T8C65W32W8"></script>
-	<script>
-		window.dataLayer = window.dataLayer || []
-		function gtag() {
-			dataLayer.push(arguments)
-		}
-		gtag('js', new Date())
-		gtag('config', 'G-T8C65W32W8')
-	</script>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0"
+    />
+    %sveltekit.head%
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-T8C65W32W8"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || []
+    function gtag() {
+      dataLayer.push(arguments)
+    }
+    gtag('js', new Date())
+    gtag('config', 'G-T8C65W32W8')
+  </script>
 
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents" class="h-full overflow-hidden">%sveltekit.body%</div>
-	</body>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents" class="h-full overflow-hidden">
+      %sveltekit.body%
+    </div>
+  </body>
 </html>
