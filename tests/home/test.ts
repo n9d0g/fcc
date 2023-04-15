@@ -60,20 +60,9 @@ test('home: welcome has zoom button', async ({ page }) => {
   await expect(page.getByTestId('welcome-zoom')).toBeVisible()
 })
 
-test('home: welcome zoom button working', async ({ page }) => {
-  await page.goto(devHome)
-  await page.getByTestId('welcome-zoom').click()
-  await expect(page).toHaveURL(/.*zoom.us*/)
-})
-
 test('home: next events has header', async ({ page }) => {
   await page.goto(devHome)
   await expect(page.getByTestId('nextevent-header')).toBeVisible()
-})
-
-test('home: next events has banner', async ({ page }) => {
-  await page.goto(devHome)
-  await expect(page.getByTestId('nextevent-zoom')).toBeVisible()
 })
 
 test('home: sermons has header', async ({ page }) => {

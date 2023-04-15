@@ -14,7 +14,7 @@
 <FccLayout {breadcrumb} title="FCC | Give">
 	<PageTitle text="Generosity is a form of Worship." />
 	<div class="my-8 grid grid-cols-1 items-center gap-8 md:grid-cols-2">
-		<p class="unstyled my-8 text-center text-xl leading-relaxed">
+		<p class="unstyled my-8 text-center text-xl leading-relaxed" data-testid="give-description">
 			At Freedom in Christ Church, we believe in the joy of giving <a
 				href={links.verse1}
 				target="_blank"
@@ -27,7 +27,10 @@
 		<img src={links.pic1} alt="FCC Give" class="h-auto w-full" />
 	</div>
 
-	<p class="unstyled mx-auto my-8 text-center text-xl leading-relaxed md:max-w-4xl">
+	<p
+		class="unstyled mx-auto my-8 text-center text-xl leading-relaxed md:max-w-4xl"
+		data-testid="give-etransfer-details"
+	>
 		You can give online by sending an e-transfer to{' '}
 		<a href={links.etransfer} class="font-bold">fcc.fcac@gmail.com</a>, or by filling out one of our offering envelopes
 		at our Sunday services located at

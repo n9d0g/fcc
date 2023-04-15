@@ -87,7 +87,7 @@
 	<!-- schedule table -->
 	<div use:popup={popupSettings} bind:this={schedTable}>
 		<div class="table-container relative h-[60vh] w-full">
-			<table class="table-hover table-compact relative table overflow-scroll">
+			<table class="table-hover table-compact relative table overflow-scroll" data-testid="schedule-table">
 				<thead>
 					<tr class="variant-filled-secondary sticky top-0 z-10">
 						{#each tHead as header, index}
