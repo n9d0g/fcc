@@ -52,7 +52,7 @@
 	}
 </script>
 
-<FccLayout {breadcrumb} title="FCC | Birthdays">
+<FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="FCC Birthdays." />
 
 	<div class="flex flex-col items-center justify-center gap-8">

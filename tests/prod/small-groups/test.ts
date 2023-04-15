@@ -84,7 +84,7 @@ test('smallgroups: macasaquit button working', async ({ page }) => {
 // YA page
 test('smallgroups/YA: has title', async ({ page }) => {
   await page.goto(YAPage)
-  await expect(page).toHaveTitle('FCC | Young Adults SG')
+  await expect(page).toHaveTitle("FCC | Young Adults' Small Group")
 })
 
 test('smallgroups/YA: header visible', async ({ page }) => {

@@ -7,6 +7,7 @@
 	import HomeNextEvent from '$lib/components/home/HomeNextEvent.svelte'
 	import HomeSermons from '$lib/components/home/HomeSermons.svelte'
 	import { fade } from 'svelte/transition'
+	import { headData } from '$lib/constants'
 
 	// props
 	export let data
@@ -26,7 +27,20 @@
 </script>
 
 <svelte:head>
-	<title>Freedom in Christ Church.</title>
+	<title>{headData.home.title}</title>
+	<meta name="description" content={headData.home.description} />
+	{@html `
+	<link rel="canonical" href="${url}"/>
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org",
+			"@type": "website",
+			"name": "${headData.home.title}",
+			"description": "${headData.home.description}",
+			"url": "${url}"
+		}
+	</script>
+	`}
 </svelte:head>
 
 <div transition:fade={{ duration: 150 }}>

@@ -4,10 +4,12 @@
 	import PageTitle from '$lib/components/PageTitle.svelte'
 	import { breadcrumbs } from '$lib/constants'
 
+	export let data
+
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries]
 </script>
 
-<FccLayout {breadcrumb} title="FCC | Ministries">
+<FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="Ministries." />
 	<div class="my-8 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:my-16 md:grid-cols-3">
 		<LandingPageCard title="Praise & Worship" link="/ministries/praise" />
