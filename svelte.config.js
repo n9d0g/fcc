@@ -15,9 +15,6 @@ const config = {
     version: {
       name: pkg.version,
     },
-    // since <link rel="stylesheet"> isn't
-    // allowed, inline all styles
-    inlineStyleThreshold: Infinity,
   },
   preprocess: [
     vitePreprocess(),
