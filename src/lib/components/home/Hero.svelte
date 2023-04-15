@@ -6,8 +6,8 @@
 			healthy reproducing churches.
 		</h3>
 		<div class="my-8 flex gap-8">
-			<a href="/about" class="btn variant-filled">I'm new</a>
-			<a href="/sermons" class="btn variant-filled">Sermons</a>
+			<a href="/about" class="btn variant-filled" data-testid="hero-im-new">I'm new</a>
+			<a href="/sermons" class="btn variant-filled" data-testid="hero-sermons">Sermons</a>
 		</div>
 	</div>
 </section>
