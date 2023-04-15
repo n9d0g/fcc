@@ -9,7 +9,7 @@
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.about, breadcrumbs.beliefs]
 </script>
 
-<FccLayout {breadcrumb} title="FCC | Beliefs">
+<FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="Our Beliefs." />
 	<h2 class="my-10">Our Core Values</h2>
 	<Stepper stepTerm="Core Value">

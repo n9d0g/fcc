@@ -3,9 +3,11 @@
 	import PageTitle from '$lib/components/PageTitle.svelte'
 	import { breadcrumbs } from '$lib/constants'
 
+	export let data
+
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.smallgroups, breadcrumbs.southMississauga]
 </script>
 
-<FccLayout {breadcrumb} title="FCC | South Mississauga SG">
+<FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="South Mississauga Small Group." />
 </FccLayout>

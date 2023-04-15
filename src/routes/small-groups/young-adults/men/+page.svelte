@@ -23,7 +23,7 @@
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.smallgroups, breadcrumbs.sgYA, breadcrumbs.men]
 </script>
 
-<FccLayout {breadcrumb} title="FCC | Young Adults - Men">
+<FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="FCC Young Adults Men's Small Group." />
 	<h2>Current Book: Rest & War</h2>
 	<a href={pdfLink} class="btn variant-filled-tertiary my-8 w-fit">Rest & War PDF Download</a>

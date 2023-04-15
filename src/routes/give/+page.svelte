@@ -11,7 +11,7 @@
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.give]
 </script>
 
-<FccLayout {breadcrumb} title="FCC | Give">
+<FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="Generosity is a form of Worship." />
 	<div class="my-8 grid grid-cols-1 items-center gap-8 md:grid-cols-2">
 		<p class="unstyled my-8 text-center text-xl leading-relaxed" data-testid="give-description">

@@ -51,7 +51,7 @@
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.praise, breadcrumbs.schedule]
 </script>
 
-<FccLayout {breadcrumb} title="FCC | Praise Schedule">
+<FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="Praise Schedule." />
 	<label class="label relative my-8 flex max-w-fit gap-4">
 		<input

@@ -3,9 +3,11 @@
 	import PageTitle from '$lib/components/PageTitle.svelte'
 	import { breadcrumbs } from '$lib/constants'
 
+	export let data
+
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.smallgroups, breadcrumbs.macasaquit]
 </script>
 
-<FccLayout {breadcrumb} title="FCC | Macasaquit Bible Study">
+<FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="Macasaquit Bible Study." />
 </FccLayout>

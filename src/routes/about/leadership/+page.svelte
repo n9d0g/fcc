@@ -9,11 +9,7 @@
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.about, breadcrumbs.leadership]
 </script>
 
-<svelte:head>
-	<title>FCC | Leadership</title>
-</svelte:head>
-
-<FccLayout {breadcrumb} title="FCC | Leadership">
+<FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="Leadership." />
 	<div class="my-16 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
 		{#each data.leaders as leader}

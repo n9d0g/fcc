@@ -5,7 +5,7 @@
 	import { setNavActiveState, setActivePath } from '$lib/utils'
 
 	// props
-	export let title: string
+	export let headData: any
 	export let breadcrumb: any
 
 	// variables
@@ -20,7 +20,19 @@
 </script>
 
 <svelte:head>
-	<title>{title}</title>
+	<title>{headData.title}</title>
+	<meta name="description" content={headData.description} />
+	{@html `
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org",
+			"@type": "website",
+			"name": "${headData.title}",
+			"description": "${headData.description}",
+			"url": "${url}"
+		}
+	</script>
+	`}
 </svelte:head>
 
 <section class="container mx-auto my-8 flex h-fit flex-col px-4 lg:my-16" transition:fade={{ duration: 150 }}>

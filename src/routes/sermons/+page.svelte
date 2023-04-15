@@ -32,7 +32,7 @@
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.sermons]
 </script>
 
-<FccLayout {breadcrumb} title="FCC | Sermons">
+<FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="Sermons." />
 	<label class="label relative my-4 flex max-w-fit flex-col items-center gap-2">
 		<input class="input w-64" type="text" placeholder="Filter by speaker" bind:value={speaker} />

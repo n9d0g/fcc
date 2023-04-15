@@ -1,4 +1,4 @@
-import { client } from '$lib/constants'
+import { client, headData } from '$lib/constants'
 
 export const load = async () => {
   const data = await client.fetch(`
@@ -10,6 +10,7 @@ export const load = async () => {
   if (data)
     return {
       data: data.sort((a: any, b: any) => (a.name > b.name ? 1 : -1)),
+      headData: headData.birthdays,
       months: [
         {
           name: 'All',

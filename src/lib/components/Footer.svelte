@@ -23,13 +23,28 @@
 		<svelte:fragment slot="headline">
 			<hr class="my-4" />
 			<div class="gap:1 logo-cloud mx-auto my-4 flex max-w-[30rem] justify-center lg:gap-4">
-				<a class="unstyled text-gray logo-item p-4 transition hover:text-youtube" href={links.youtube} target="_blank">
+				<a
+					class="unstyled text-gray logo-item p-4 transition hover:text-youtube"
+					href={links.youtube}
+					target="_blank"
+					aria-label="YouTube Link"
+				>
 					<span class=" w-6"><FaYoutube /></span>
 				</a>
-				<a class="unstyled text-gray logo-item p-4 transition hover:text-instagram" href={links.ig} target="_blank">
+				<a
+					class="unstyled text-gray logo-item p-4 transition hover:text-instagram"
+					href={links.ig}
+					target="_blank"
+					aria-label="Instagram Link"
+				>
 					<span class="w-6"><FaInstagram /></span>
 				</a>
-				<a class="unstyled text-gray logo-item p-4 transition hover:text-facebook" href={links.fb} target="_blank">
+				<a
+					class="unstyled text-gray logo-item p-4 transition hover:text-facebook"
+					href={links.fb}
+					target="_blank"
+					aria-label="Facebook Link"
+				>
 					<span class="w-6"><FaFacebook /></span>
 				</a>
 			</div>
