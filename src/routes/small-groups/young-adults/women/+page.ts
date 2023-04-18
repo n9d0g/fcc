@@ -1,7 +1,7 @@
 import { headData } from '$lib/constants'
 
 export const load = async () => {
-  return {
-    headData: headData.smallgroupsYAWomen,
-  }
+	return {
+		headData: headData.smallgroupsYAWomen,
+	}
 }
