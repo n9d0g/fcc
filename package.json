@@ -50,8 +50,5 @@
     "@js-temporal/polyfill": "^0.4.3",
     "@sanity/client": "^5.4.2",
     "svelte-icons": "^2.1.0"
-  },
-  "engines": {
-    "node": "20.0.0"
   }
 }
