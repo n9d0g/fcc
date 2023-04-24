@@ -52,8 +52,8 @@ export const breadcrumbs = {
 	sgYA: { title: 'Young Adults', href: '/small-groups/young-adults' },
 	sgYAWomen: { title: 'Women', href: '/small-groups/young-adults/women' },
 	yumul: {
-		title: 'Yumul Bible Study',
-		href: '/small-groups/yumul-bible-study',
+		title: 'Partners in Prayer',
+		href: '/small-groups/partners-in-prayer',
 	},
 	birthdays: { title: 'Birthdays', href: '/birthdays' },
 	give: { title: 'Give', href: '/give' },
@@ -282,8 +282,8 @@ export const headData = {
 		description: 'Macasaquit Small Group page for the Freedom in Christ Church.',
 	},
 	smallgroupsYumul: {
-		title: 'FCC | Yumul Small Group',
-		description: 'Yumul Small Group page for the Freedom in Christ Church.',
+		title: 'FCC | Partners in Prayer Bible Study',
+		description: 'Partners in Prayer Bible Study Small Group page for the Freedom in Christ Church.',
 	},
 	smallgroupsSouthMississauga: {
 		title: 'FCC | South Mississauga Small Group',

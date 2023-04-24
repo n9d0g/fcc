@@ -33,9 +33,9 @@ test('smallgroups: south mississauga button visible', async ({ page }) => {
 	await expect(page.getByText('South Mississauga')).toBeVisible()
 })
 
-test('smallgroups: yumul bs button visible', async ({ page }) => {
+test('smallgroups: PiP bs button visible', async ({ page }) => {
 	await page.goto(sgPage)
-	await expect(page.getByText('Yumul Bible Study')).toBeVisible()
+	await expect(page.getByText('Partners in Prayer Bible Study')).toBeVisible()
 })
 
 test('smallgroups: macasaquit bs button visible', async ({ page }) => {
@@ -67,10 +67,10 @@ test('smallgroups: south mississauga button working', async ({ page }) => {
 	await expect(page).toHaveURL(/.*south-mississauga/)
 })
 
-test('smallgroups: yumul button working', async ({ page }) => {
+test('smallgroups: PiP button working', async ({ page }) => {
 	await page.goto(sgPage)
-	await page.getByText('Yumul Bible Study').click()
-	await expect(page).toHaveURL(/.*yumul-bible-study/)
+	await page.getByText('Partners in Prayer Bible Study').click()
+	await expect(page).toHaveURL(/.*partners-in-prayer/)
 })
 
 test('smallgroups: macasaquit button working', async ({ page }) => {

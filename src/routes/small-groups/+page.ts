@@ -19,8 +19,8 @@ export const load = async () => {
 			link: '/small-groups/south-mississauga',
 		},
 		{
-			title: 'Yumul Bible Study',
-			link: '/small-groups/yumul-bible-study',
+			title: 'Partners in Prayer Bible Study',
+			link: '/small-groups/partners-in-prayer',
 		},
 		{
 			title: 'Macasaquit Bible Study',
