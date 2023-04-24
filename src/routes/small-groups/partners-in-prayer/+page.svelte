@@ -9,5 +9,5 @@
 </script>
 
 <FccLayout {breadcrumb} headData={data.headData}>
-	<PageTitle text="FCC Yumul Bible Study." />
+	<PageTitle text="FCC Partners in Prayer Bible Study Group." />
 </FccLayout>
