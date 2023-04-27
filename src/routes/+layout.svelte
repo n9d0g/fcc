@@ -5,8 +5,6 @@
 	import '../app.postcss'
 	import { AppShell, Modal, storePopup, Toast, toastStore } from '@skeletonlabs/skeleton'
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom'
-	import { dev } from '$app/environment'
-	import { inject } from '@vercel/analytics'
 	import { onMount } from 'svelte'
 	import Footer from '$lib/components/Footer.svelte'
 	import Header from '$lib/components/Header.svelte'
@@ -15,9 +13,6 @@
 	import { getBirthdays, isDevEnv } from '$lib/utils'
 	import { devToastSettings, wipToastSettings, modalComponentRegistry } from '$lib/constants'
 	import { afterNavigate } from '$app/navigation'
-
-	// vercel analytics
-	inject({ mode: dev ? 'development' : 'production' })
 
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow })
 
