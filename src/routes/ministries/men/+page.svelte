@@ -22,14 +22,14 @@
 	</p>
 	<!-- svelte-ignore a11y-img-redundant-alt -->
 	<img src={cover} alt="Men's Ministry Cover Photo" class="h-auto w-full" />
-	<div class="my-8 grid grid-cols-2 justify-center align-middle">
-		<div>
+	<div class="my-8 grid grid-cols-1 justify-center gap-8 align-middle md:grid-cols-3">
+		<div class="flex justify-center">
 			<!-- svelte-ignore a11y-media-has-caption -->
 			<video controls class="flex align-middle">
 				<source src={vid1} />
 			</video>
 		</div>
-		<div class="flex align-middle">
+		<div class="flex justify-center align-middle md:col-span-2">
 			<!-- svelte-ignore a11y-media-has-caption -->
 			<video controls>
 				<source src={vid2} />
