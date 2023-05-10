@@ -2,7 +2,7 @@
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import PageTitle from '$lib/components/PageTitle.svelte'
 	import { breadcrumbs } from '$lib/constants'
-	import cover from '$lib/assets/ministries/men/men-img1.jpg'
+	import cover from '$lib/assets/ministries/men/men-img1.avif'
 	import vid1 from '$lib/assets/ministries/men/men-vid1.mp4'
 	import vid2 from '$lib/assets/ministries/men/men-vid2.mp4'
 
