@@ -44,7 +44,7 @@
 		modalStore.trigger(settings)
 	}
 
-	const onFilterSelection = (e) => {
+	const onFilterSelection = (e: any) => {
 		leader = e.detail.label
 	}
 

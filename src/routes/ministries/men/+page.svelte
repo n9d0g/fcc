@@ -13,7 +13,7 @@
 
 <FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="FCC Men's Ministry." />
-	<p class="unstyled my-8 text-center text-xl leading-relaxed">
+	<p class="my-8 text-center text-xl leading-relaxed">
 		Our various activities, events and meetings are all geared towards helping MEN of all ages come together for times
 		of fun, fellowship and teaching with the goals of becoming the spiritual leaders God has designed them to be.
 		<br />

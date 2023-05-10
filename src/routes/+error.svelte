@@ -12,5 +12,5 @@
 </script>
 
 <FccLayout {breadcrumb} {headData}>
-	<h2>{$page.status}: {$page.error?.message}</h2>
+	<h2 class="h2">{$page.status}: {$page.error?.message}</h2>
 </FccLayout>

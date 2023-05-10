@@ -25,7 +25,7 @@
 
 <FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="FCC Young Adults Men's Small Group." />
-	<h2>Current Book: Rest & War</h2>
-	<a href={pdfLink} class="btn variant-filled-tertiary my-8 w-fit">Rest & War PDF Download</a>
+	<h2 class="h2">Current Book: Rest & War</h2>
+	<a href={pdfLink} class="anchor btn variant-filled-tertiary my-8 w-fit">Rest & War PDF Download</a>
 	<Table source={table} regionCell="justify-center" class="max-w-[30rem]" />
 </FccLayout>

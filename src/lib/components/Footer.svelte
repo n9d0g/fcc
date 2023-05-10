@@ -16,7 +16,7 @@
 		class="container mx-auto"
 	>
 		<svelte:fragment slot="lead">
-			<a href="/" aria-label="Home Logo Button">
+			<a class="anchor" href="/" aria-label="Home Logo Button">
 				<Avatar src="/apple-touch-icon.png" class="h-8 w-8 cursor-pointer" />
 			</a>
 		</svelte:fragment>
@@ -24,7 +24,7 @@
 			<hr class="my-4" />
 			<div class="gap:1 logo-cloud mx-auto my-4 flex max-w-[30rem] justify-center lg:gap-4">
 				<a
-					class="unstyled text-gray logo-item p-4 transition hover:text-youtube"
+					class="text-gray anchor logo-item p-4 transition hover:text-youtube"
 					href={links.youtube}
 					target="_blank"
 					aria-label="YouTube Link"
@@ -32,7 +32,7 @@
 					<span class=" w-6"><FaYoutube /></span>
 				</a>
 				<a
-					class="unstyled text-gray logo-item p-4 transition hover:text-instagram"
+					class="text-gray anchor logo-item p-4 transition hover:text-instagram"
 					href={links.ig}
 					target="_blank"
 					aria-label="Instagram Link"
@@ -40,7 +40,7 @@
 					<span class="w-6"><FaInstagram /></span>
 				</a>
 				<a
-					class="unstyled text-gray logo-item p-4 transition hover:text-facebook"
+					class="text-gray anchor logo-item p-4 transition hover:text-facebook"
 					href={links.fb}
 					target="_blank"
 					aria-label="Facebook Link"
