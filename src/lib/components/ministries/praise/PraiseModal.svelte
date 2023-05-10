@@ -17,7 +17,7 @@
 	// base classes
 	const cCard = 'flex flex-col card p-4 w-modal shadow-xl space-y-4 min-h-fit'
 	const cHeader = 'text-2xl font-bold'
-	const cChords = 'btn variant-filled-tertiary my-4'
+	const cChords = 'anchor btn variant-filled-tertiary my-4'
 </script>
 
 <section class={cCard}>

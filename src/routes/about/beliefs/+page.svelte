@@ -11,7 +11,7 @@
 
 <FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="Our Beliefs." />
-	<h2 class="my-10">Our Core Values</h2>
+	<h2 class="h2 my-10">Our Core Values</h2>
 	<Stepper stepTerm="Core Value">
 		{#each data.coreValues as value}
 			<Step>
@@ -22,7 +22,7 @@
 			</Step>
 		{/each}
 	</Stepper>
-	<h2 class="my-10">Statement of Faith</h2>
+	<h2 class="h2 my-10">Statement of Faith</h2>
 	<Stepper stepTerm="Statement">
 		{#each data.statementsOfFaith as statement}
 			<Step>

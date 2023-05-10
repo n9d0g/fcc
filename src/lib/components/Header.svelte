@@ -21,7 +21,7 @@
 		class="container mx-auto"
 	>
 		<svelte:fragment slot="lead">
-			<a href="/" aria-label="Home Logo Button">
+			<a class="anchor" href="/" aria-label="Home Logo Button">
 				<Avatar src="/apple-touch-icon.png" class="h-8 w-8 cursor-pointer" />
 			</a>
 		</svelte:fragment>

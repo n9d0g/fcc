@@ -1,7 +1,7 @@
 <script lang="ts">
 	// import '@skeletonlabs/skeleton/themes/theme-crimson.css'
 	import '../theme.postcss'
-	import '@skeletonlabs/skeleton/styles/all.css'
+	import '@skeletonlabs/skeleton/styles/skeleton.css'
 	import '../app.postcss'
 	import { AppShell, Modal, storePopup, Toast, toastStore } from '@skeletonlabs/skeleton'
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom'
