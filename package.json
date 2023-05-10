@@ -17,7 +17,9 @@
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
     "format": "prettier --plugin-search-dir . --write .",
     "fresh": "rm -rf node_modules .svelte-kit playwright-report test-results package-lock.json && npm i && npm run format",
-    "fresh:start": "rm -rf node_modules .svelte-kit playwright-report test-results package-lock.json && npm i && npm run format && npm run dev"
+    "fresh:start": "rm -rf node_modules .svelte-kit playwright-report test-results package-lock.json && npm i && npm run format && npm run dev",
+    "unlighthouse": "npx unlighthouse --site fcccanada.ca",
+    "unlighthouse:dev": "npx unlighthouse --site dev.fcccanada.ca"
   },
   "devDependencies": {
     "@iconify/svelte": "^3.1.3",
