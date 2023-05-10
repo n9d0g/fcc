@@ -172,12 +172,6 @@ export const modalComponentRegistry: Record<string, ModalComponent> = {
 	},
 }
 
-export const wipToastSettings: ToastSettings = {
-	message: `Heads up! This site is still under 🚧 construction 🚧`,
-	timeout: 3000,
-	background: 'variant-filled-primary',
-}
-
 export const devToastSettings: ToastSettings = {
 	message: `📣 DEV SITE 📣`,
 	autohide: false,
