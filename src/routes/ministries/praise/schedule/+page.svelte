@@ -8,10 +8,10 @@
 	import DetailsTooltip from '$lib/components/ministries/praise/DetailsTooltip.svelte'
 	import { updatedDataFiltered, praiseModalSettings, searchFilter } from '$lib/utils'
 	import { praiseLeaderOptions, praiseFilterPopupSettings, breadcrumbs } from '$lib/constants'
-
-	// server fetching
 	import { fade } from 'svelte/transition'
 	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
+
+	// server fetching
 	export let data
 
 	// variables
