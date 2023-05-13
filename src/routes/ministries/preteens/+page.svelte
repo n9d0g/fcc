@@ -5,7 +5,7 @@
 
 	export let data
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.preteens]
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.ministries.preteens]
 </script>
 
 <FccLayout {breadcrumb} headData={data.headData}>

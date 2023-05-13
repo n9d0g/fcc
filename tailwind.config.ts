@@ -24,5 +24,8 @@ export default {
   plugins: [
     require('@tailwindcss/forms'),
     ...require('@skeletonlabs/skeleton/tailwind/skeleton.cjs')(),
+    require('tailwindcss/plugin')(({ addVariant }) => {
+      addVariant('search-cancel', '&::-webkit-search-cancel-button')
+    }),
   ],
 } satisfies Config

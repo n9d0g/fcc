@@ -8,10 +8,10 @@
 	import DetailsTooltip from '$lib/components/ministries/praise/DetailsTooltip.svelte'
 	import { updatedDataFiltered, praiseModalSettings, searchFilter } from '$lib/utils'
 	import { praiseLeaderOptions, praiseFilterPopupSettings, breadcrumbs } from '$lib/constants'
-
-	// server fetching
 	import { fade } from 'svelte/transition'
 	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
+
+	// server fetching
 	export let data
 
 	// variables
@@ -48,7 +48,12 @@
 		leader = e.detail.label
 	}
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.praise, breadcrumbs.schedule]
+	const breadcrumb = [
+		breadcrumbs.home,
+		breadcrumbs.ministries,
+		breadcrumbs.ministries.praise,
+		breadcrumbs.ministries.praise.schedule,
+	]
 </script>
 
 <FccLayout {breadcrumb} headData={data.headData}>

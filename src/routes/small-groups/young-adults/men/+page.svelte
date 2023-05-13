@@ -20,7 +20,12 @@
 		body: tableMapperValues(upToDateSchedule, ['date', 'week', 'leader', 'chapter']),
 	}
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.smallgroups, breadcrumbs.sgYA, breadcrumbs.men]
+	const breadcrumb = [
+		breadcrumbs.home,
+		breadcrumbs.smallgroups,
+		breadcrumbs.smallgroups.ya,
+		breadcrumbs.smallgroups.ya.men,
+	]
 </script>
 
 <FccLayout {breadcrumb} headData={data.headData}>
