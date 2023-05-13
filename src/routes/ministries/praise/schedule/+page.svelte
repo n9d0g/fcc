@@ -48,7 +48,12 @@
 		leader = e.detail.label
 	}
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.praise, breadcrumbs.schedule]
+	const breadcrumb = [
+		breadcrumbs.home,
+		breadcrumbs.ministries,
+		breadcrumbs.ministries.praise,
+		breadcrumbs.ministries.praise.schedule,
+	]
 </script>
 
 <FccLayout {breadcrumb} headData={data.headData}>

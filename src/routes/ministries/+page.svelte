@@ -13,6 +13,7 @@
 	<PageTitle text="Ministries." />
 	<div class="my-8 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:my-16 md:grid-cols-3">
 		<LandingPageCard title="Praise & Worship" link="/ministries/praise" />
+		<LandingPageCard title="Prayer" link="/ministries/prayer" />
 		<LandingPageCard title="Men" link="/ministries/men" />
 		<LandingPageCard title="Women" link="/ministries/women" />
 		<LandingPageCard title="Pre-teens" link="/ministries/preteens" />

@@ -5,9 +5,9 @@
 
 	export let data
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.ministries.preteens]
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.ministries.prayer]
 </script>
 
 <FccLayout {breadcrumb} headData={data.headData}>
-	<PageTitle text="FCC Pre-teen's Ministry." />
+	<PageTitle text="FCC Prayer Ministry." />
 </FccLayout>
