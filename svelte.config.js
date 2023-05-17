@@ -1,6 +1,8 @@
 import preprocess from 'svelte-preprocess'
 import adapter from '@sveltejs/adapter-auto'
 import { vitePreprocess } from '@sveltejs/kit/vite'
+import seqPreprocessor from 'svelte-sequential-preprocessor'
+import { preprocessThrelte } from '@threlte/preprocess'
 import { readFileSync } from 'fs'
 import { fileURLToPath } from 'url'
 
@@ -21,6 +23,7 @@ const config = {
 		preprocess({
 			postcss: true,
 		}),
+		seqPreprocessor([preprocess(), preprocessThrelte()]),
 	],
 }
 
