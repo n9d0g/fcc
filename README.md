@@ -14,7 +14,7 @@ Official website for the Freedom in Christ Church based in Mississauga, ON.
 
 ![Tailwind](https://img.shields.io/github/package-json/dependency-version/n9d0g/fcc/dev/tailwindcss/main?style=for-the-badge) ![Tailwind](https://img.shields.io/npm/v/tailwindcss?style=for-the-badge)
 
-![Sanity](https://img.shields.io/github/package-json/dependency-version/n9d0g/fcc/@sanity/client?style=for-the-badge) ![Sanity](https://img.shields.io/npm/v/@sanity/client?style=for-the-badge)
+![Sanity](https://img.shields.io/github/package-json/dependency-version/n9d0g/fcc/dev/@sanity/client?style=for-the-badge) ![Sanity](https://img.shields.io/npm/v/@sanity/client?style=for-the-badge)
 
 ![Skeleton](https://img.shields.io/github/package-json/dependency-version/n9d0g/fcc/dev/@skeletonlabs/skeleton/main?style=for-the-badge) ![Skeleton](https://img.shields.io/npm/v/@skeletonlabs/skeleton?style=for-the-badge)
 
