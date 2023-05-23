@@ -50,6 +50,6 @@
 		<a href={metaData.pdf} class={cChords}> PDF Chords </a>
 	{/if}
 	<footer class="modal-footer {parent.regionFooter}">
-		<button class="btn variant-filled-error" on:click={parent.onClose}> Close </button>
+		<button class="variant-filled-error btn" on:click={parent.onClose}> Close </button>
 	</footer>
 </section>
