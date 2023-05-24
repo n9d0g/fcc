@@ -7,7 +7,7 @@
 	import PageTitle from '$lib/components/PageTitle.svelte'
 	import DetailsTooltip from '$lib/components/ministries/praise/DetailsTooltip.svelte'
 	import { updatedDataFiltered, praiseModalSettings, searchFilter } from '$lib/utils'
-	import { praiseLeaderOptions, praiseFilterPopupSettings, breadcrumbs } from '$lib/constants'
+	import { praiseLeaderOptions, praiseFilterPopupSettings, breadcrumbs, links } from '$lib/constants'
 	import { fade } from 'svelte/transition'
 	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
 
@@ -130,5 +130,10 @@
 				{/key}
 			</table>
 		</div>
+	</div>
+
+	<!-- link to excel sheet -->
+	<div class="flex justify-center w-full my-8">
+		<a href={links.excel} target="_blank" class="btn variant-filled"> Excel Data Sheet </a>
 	</div>
 </FccLayout>
