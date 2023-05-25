@@ -17,10 +17,10 @@ jobs:
         with:
           node-version: '18.15.0'
       - name: install deps
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       - name: build
-        run: npm run build
+        run: pnpm build
       - name: run semantic-release
-        run: npx semantic-release
+        run: pnpm exec semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
