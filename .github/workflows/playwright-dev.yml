@@ -15,11 +15,11 @@ jobs:
         with:
           node-version: '18.15.0'
       - name: install deps
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       - name: install browsers
-        run: npx playwright install --with-deps
+        run: pnpm exec playwright install --with-deps
       - name: run tests
-        run: npx playwright test tests/dev
+        run: pnpm exec playwright test tests/dev
       - uses: actions/upload-artifact@v3
         if: always()
         with:

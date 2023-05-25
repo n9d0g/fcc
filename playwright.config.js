@@ -3,7 +3,7 @@ const config = {
 	testDir: 'tests',
 	fullyParallel: true,
 	webServer: {
-		command: 'npm run build && npm run preview',
+		command: 'pnpm build && pnpm preview',
 		port: 4173,
 	},
 	reporter: [['html', { open: 'always' }]],
