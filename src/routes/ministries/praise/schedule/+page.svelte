@@ -133,7 +133,7 @@
 	</div>
 
 	<!-- link to excel sheet -->
-	<div class="flex justify-center w-full my-8">
+	<div class="my-8 flex w-full justify-center">
 		<a href={links.excel} target="_blank" class="btn variant-filled"> Excel Data Sheet </a>
 	</div>
 </FccLayout>
