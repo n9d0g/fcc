@@ -6,6 +6,9 @@ on:
 
 jobs:
   release:
+    strategy:
+      matrix:
+        node-version: [18.15.0]
     permissions:
       contents: write
       issues: write
@@ -13,11 +16,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: pnpm/action-setup@v2
         with:
-          node-version: '18.15.0'
+          version: 7
+      - name: use node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
       - name: install deps
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
       - name: build
         run: pnpm build
       - name: run semantic-release
