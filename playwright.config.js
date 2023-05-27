@@ -6,7 +6,7 @@ const config = {
 		command: 'pnpm build && pnpm preview',
 		port: 4173,
 	},
-	reporter: [['html', { open: 'always' }]],
+	// reporter: [['html', { open: 'always' }]],
 }
 
 export default config
