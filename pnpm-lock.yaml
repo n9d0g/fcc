@@ -8,9 +8,6 @@ importers:
 
   .:
     devDependencies:
-      '@dimforge/rapier3d-compat':
-        specifier: ^0.11.2
-        version: 0.11.2
       '@floating-ui/dom':
         specifier: ^1.2.8
         version: 1.2.8
@@ -50,30 +47,6 @@ importers:
       '@tailwindcss/forms':
         specifier: ^0.5.3
         version: 0.5.3(tailwindcss@3.3.2)
-      '@theatre/core':
-        specifier: ^0.6.1
-        version: 0.6.1
-      '@theatre/studio':
-        specifier: ^0.6.1
-        version: 0.6.1(@theatre/core@0.6.1)
-      '@threlte/core':
-        specifier: ^5.0.9
-        version: 5.0.9
-      '@threlte/extras':
-        specifier: ^4.9.3
-        version: 4.9.3(three@0.152.2)
-      '@threlte/preprocess':
-        specifier: ^0.0.2
-        version: 0.0.2
-      '@threlte/rapier':
-        specifier: ^0.5.0
-        version: 0.5.0
-      '@threlte/theatre':
-        specifier: ^0.0.2
-        version: 0.0.2
-      '@types/three':
-        specifier: ^0.152.1
-        version: 0.152.1
       autoprefixer:
         specifier: ^10.4.14
         version: 10.4.14(postcss@8.4.24)
@@ -125,9 +98,6 @@ importers:
       tailwindcss:
         specifier: ^3.3.2
         version: 3.3.2
-      three:
-        specifier: ^0.152.2
-        version: 0.152.2
       typescript:
         specifier: ^5.0.4
         version: 5.0.4
@@ -172,10 +142,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@dimforge/rapier3d-compat@0.11.2:
-    resolution: {integrity: sha512-vdWmlkpS3G8nGAzLuK7GYTpNdrkn/0NKCe0l1Jqxc7ZZOB3N0q9uG/Ap9l9bothWuAvxscIt0U97GVLr0lXWLg==}
-    dev: true
 
   /@esbuild/android-arm64@0.17.19:
     resolution: {integrity: sha512-KBMWvEZooR7+kzY0BtbTQn0OAYY7CsiydT63pVEaPtVYF0hXbUaOyZog37DKxK7NF3XacBJOpYT4adIJh+avxA==}
@@ -805,8 +771,8 @@ packages:
       tempy: 3.0.0
     dev: true
 
-  /@semantic-release/release-notes-generator@11.0.1(semantic-release@21.0.2):
-    resolution: {integrity: sha512-4deWsiY4Rg80oc9Ms11N20BIDgYkPMys4scNYQpi2Njdrtw5Z55nXKNsUN3kn6Sy/nI9dqqbp5L63TL4luI5Bw==}
+  /@semantic-release/release-notes-generator@11.0.2(semantic-release@21.0.2):
+    resolution: {integrity: sha512-B+Aa82uciufoaoJulnzq7ezqH36nrHOO15ubJmg2hZitzCpPAa6X0pOtkffG+30HLdck5Ky2uJC4uAm/YylbOw==}
     engines: {node: '>=18'}
     peerDependencies:
       semantic-release: '>=20.1.0'
@@ -816,7 +782,7 @@ packages:
       conventional-commits-filter: 2.0.7
       conventional-commits-parser: 3.2.4
       debug: 4.3.4
-      get-stream: 6.0.1
+      get-stream: 7.0.0
       import-from: 4.0.0
       into-stream: 7.0.0
       lodash-es: 4.17.21
@@ -928,55 +894,6 @@ packages:
       tailwindcss: 3.3.2
     dev: true
 
-  /@theatre/core@0.6.1:
-    resolution: {integrity: sha512-ZvSqAAB2LVVnB6hDzKQOVHjeZtb7Hvqu1IrFRITv4Kq6465Cn9VI2nwcDjelDCOmTIv23pd8d3Fz2DPYjjF9mg==}
-    dependencies:
-      '@theatre/dataverse': 0.6.1
-    dev: true
-
-  /@theatre/dataverse@0.6.1:
-    resolution: {integrity: sha512-iomovt4oWCEAZFP6/BdSJAb2cAjPOs6y3wh7QlrUBmEwdQ/21ISK9N2IsCzlJ0t16w58l7Eh61Gw60Y0t7/uNA==}
-    dependencies:
-      lodash-es: 4.17.21
-    dev: true
-
-  /@theatre/studio@0.6.1(@theatre/core@0.6.1):
-    resolution: {integrity: sha512-aJlHnfYctYbw2zDd+AK0ts4oKR4RuiQZCgMhANKv8VucINFqfDFcl6ixN6qxCTQfBFe4s/qyyc9y/9Np1ZCPwQ==}
-    peerDependencies:
-      '@theatre/core': '*'
-    dependencies:
-      '@theatre/core': 0.6.1
-      '@theatre/dataverse': 0.6.1
-    dev: true
-
-  /@threlte/core@5.0.9:
-    resolution: {integrity: sha512-3u8SGLD/fzOh0sEf1MDa0FVpp7oLqdEUR8nvGEkWZvGDwKUlhe0XxSmXNzvAYwCSnNLsYYfwiAWy8wBrVkoRlg==}
-    dev: true
-
-  /@threlte/extras@4.9.3(three@0.152.2):
-    resolution: {integrity: sha512-1XVa9a3C+EQE9vMCZopZ2oZGncDlk/Claz+voFCTZvUqJl0xpPWBQTPNM6V61nXu8k5t+JKSGam3TWygBnfxug==}
-    dependencies:
-      troika-three-text: 0.46.4(three@0.152.2)
-    transitivePeerDependencies:
-      - three
-    dev: true
-
-  /@threlte/preprocess@0.0.2:
-    resolution: {integrity: sha512-Eb3u3nAEBSFpadQvCdeZKy0xE4kgnlmxeTxnzTsmvUJt5ZEadbMg1+/LXn0oAYgFO72YQ62CJ7WI4hmoQSpOeA==}
-    dev: true
-
-  /@threlte/rapier@0.5.0:
-    resolution: {integrity: sha512-+lZ24lPdKLyXZA4iQvRl8prpQF9ARRaETm1EtkRCZSZm8NjSNKcpD6Gk5hCsI0PQbzCavY2FOrSvCPUbBuQgTA==}
-    dev: true
-
-  /@threlte/theatre@0.0.2:
-    resolution: {integrity: sha512-Pu8wwEOmzJ3Dqs1h2SeEUQG3lyg4M3ppRj/TGONijTSAchprfY4kTXBI1hZz1k6mn2c2FNY13HsiAjwQJnMWug==}
-    dev: true
-
-  /@tweenjs/tween.js@18.6.4:
-    resolution: {integrity: sha512-lB9lMjuqjtuJrx7/kOkqQBtllspPIN+96OvTCeJ2j5FEzinoAXTdAMFnDAQT1KVPRlnYfBrqxtqP66vDM40xxQ==}
-    dev: true
-
   /@types/chai-subset@1.3.3:
     resolution: {integrity: sha512-frBecisrNGz+F4T6bcc+NLeolfiojh5FxW2klu669+8BARtyQv2C/GkNW6FUodVe4BroGMP/wER/YDGc7rEllw==}
     dependencies:
@@ -1013,24 +930,6 @@ packages:
 
   /@types/pug@2.0.6:
     resolution: {integrity: sha512-SnHmG9wN1UVmagJOnyo/qkk0Z7gejYxOYYmaAwr5u2yFYfsupN3sg10kyzN8Hep/2zbHxCnsumxOoRIRMBwKCg==}
-    dev: true
-
-  /@types/stats.js@0.17.0:
-    resolution: {integrity: sha512-9w+a7bR8PeB0dCT/HBULU2fMqf6BAzvKbxFboYhmDtDkKPiyXYbjoe2auwsXlEFI7CFNMF1dCv3dFH5Poy9R1w==}
-    dev: true
-
-  /@types/three@0.152.1:
-    resolution: {integrity: sha512-PMOCQnx9JRmq+2OUGTPoY9h1hTWD2L7/nmuW/SyNq1Vbq3Lwt3MNdl3wYSa4DvLTGv62NmIXD9jYdAOwohwJyw==}
-    dependencies:
-      '@tweenjs/tween.js': 18.6.4
-      '@types/stats.js': 0.17.0
-      '@types/webxr': 0.5.2
-      fflate: 0.6.10
-      lil-gui: 0.17.0
-    dev: true
-
-  /@types/webxr@0.5.2:
-    resolution: {integrity: sha512-szL74BnIcok9m7QwYtVmQ+EdIKwbjPANudfuvDrAF8Cljg9MKUlIoc1w5tjj9PMpeSH3U1Xnx//czQybJ0EfSw==}
     dev: true
 
   /@vercel/nft@0.22.6:
@@ -1282,12 +1181,6 @@ packages:
 
   /before-after-hook@2.2.3:
     resolution: {integrity: sha512-NzUnlZexiaH/46WDhANlyR2bXRopNg4F/zuSA3OpZnllCUgRaOF2znDioDWrmbNVsuZk6l9pMquQB38cfBZwkQ==}
-    dev: true
-
-  /bidi-js@1.0.2:
-    resolution: {integrity: sha512-rzSy/k7WdX5zOyeHHCOixGXbCHkyogkxPKL2r8QtzHmVQDiWCXUWa18bLdMWT9CYMLOYTjWpTHawuev2ouYJVw==}
-    dependencies:
-      require-from-string: 2.0.2
     dev: true
 
   /binary-extensions@2.2.0:
@@ -2024,10 +1917,6 @@ packages:
       reusify: 1.0.4
     dev: true
 
-  /fflate@0.6.10:
-    resolution: {integrity: sha512-IQrh3lEPM93wVCEczc9SaAOvkmcoQn/G8Bo1e8ZPlY3X3bnAxWaBdvTdvM1hP62iZp0BXWDy4vTAy4fF0+Dlpg==}
-    dev: true
-
   /figures@2.0.0:
     resolution: {integrity: sha512-Oa2M9atig69ZkfwiApY8F2Yy+tzMbazyvqv21R0NsSC8floSOC09BbT1ITWAdoMGQvJ/aZnR1KMwdx9tvHnTNA==}
     engines: {node: '>=4'}
@@ -2211,6 +2100,11 @@ packages:
   /get-stream@6.0.1:
     resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
     engines: {node: '>=10'}
+    dev: true
+
+  /get-stream@7.0.0:
+    resolution: {integrity: sha512-ql6FW5b8tgMYvI4UaoxG3EQN3VyZ6VeQpxNBGg5BZ4xD4u+HJeprzhMMA4OCBEGQgSR+m87pstWMpiVW64W8Fw==}
+    engines: {node: '>=16'}
     dev: true
 
   /git-log-parser@1.2.0:
@@ -2662,10 +2556,6 @@ packages:
     dependencies:
       prelude-ls: 1.2.1
       type-check: 0.4.0
-    dev: true
-
-  /lil-gui@0.17.0:
-    resolution: {integrity: sha512-MVBHmgY+uEbmJNApAaPbtvNh1RCAeMnKym82SBjtp5rODTYKWtM+MXHCifLe2H2Ti1HuBGBtK/5SyG4ShQ3pUQ==}
     dev: true
 
   /lilconfig@2.1.0:
@@ -3770,11 +3660,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /require-from-string@2.0.2:
-    resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
-    engines: {node: '>=0.10.0'}
-    dev: true
-
   /resolve-from@4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
     engines: {node: '>=4'}
@@ -3866,7 +3751,7 @@ packages:
       '@semantic-release/error': 3.0.0
       '@semantic-release/github': 8.1.0(semantic-release@21.0.2)
       '@semantic-release/npm': 10.0.3(semantic-release@21.0.2)
-      '@semantic-release/release-notes-generator': 11.0.1(semantic-release@21.0.2)
+      '@semantic-release/release-notes-generator': 11.0.2(semantic-release@21.0.2)
       aggregate-error: 4.0.1
       cosmiconfig: 8.1.3
       debug: 4.3.4
@@ -4363,10 +4248,6 @@ packages:
       any-promise: 1.3.0
     dev: true
 
-  /three@0.152.2:
-    resolution: {integrity: sha512-Ff9zIpSfkkqcBcpdiFo2f35vA9ZucO+N8TNacJOqaEE6DrB0eufItVMib8bK8Pcju/ZNT6a7blE1GhTpkdsILw==}
-    dev: true
-
   /through2@2.0.5:
     resolution: {integrity: sha512-/mrRod8xqpA+IHSLyGCQ2s8SPHiCDEeQJSep1jqLYeEUClOFG2Qsh+4FU6G9VeqpZnGW/Su8LQGc4YKni5rYSQ==}
     dependencies:
@@ -4433,30 +4314,6 @@ packages:
   /trim-newlines@3.0.1:
     resolution: {integrity: sha512-c1PTsA3tYrIsLGkJkzHF+w9F2EyxfXGo4UyJc4pFL++FMjnq0HJS69T3M7d//gKrFKwy429bouPescbjecU+Zw==}
     engines: {node: '>=8'}
-    dev: true
-
-  /troika-three-text@0.46.4(three@0.152.2):
-    resolution: {integrity: sha512-Qsv0HhUKTZgSmAJs5wvO7YlBoJSP9TGPLmrg+K9pbQq4lseQdcevbno/WI38bwJBZ/qS56hvfqEzY0zUEFzDIw==}
-    peerDependencies:
-      three: '>=0.103.0'
-    dependencies:
-      bidi-js: 1.0.2
-      three: 0.152.2
-      troika-three-utils: 0.46.0(three@0.152.2)
-      troika-worker-utils: 0.46.0
-      webgl-sdf-generator: 1.1.1
-    dev: true
-
-  /troika-three-utils@0.46.0(three@0.152.2):
-    resolution: {integrity: sha512-llHyrXAcwzr0bpg80GxsIp73N7FuImm4WCrKDJkAqcAsWmE5pfP9+Qzw+oMWK1P/AdHQ79eOrOl9NjyW4aOw0w==}
-    peerDependencies:
-      three: '>=0.103.0'
-    dependencies:
-      three: 0.152.2
-    dev: true
-
-  /troika-worker-utils@0.46.0:
-    resolution: {integrity: sha512-bzOx5f2ZBxkFhXtIvDJlLn2AI3bzCkGVbCndl/2dL5QZrwHEKl45OEIilCxYQQWJG1rEbOD9O80tMjoYjw19OA==}
     dev: true
 
   /ts-interface-checker@0.1.13:
@@ -4721,10 +4578,6 @@ packages:
       - sugarss
       - supports-color
       - terser
-    dev: true
-
-  /webgl-sdf-generator@1.1.1:
-    resolution: {integrity: sha512-9Z0JcMTFxeE+b2x1LJTdnaT8rT8aEp7MVxkNwoycNmJWwPdzoXzMh0BjJSh/AEFP+KPYZUli814h8bJZFIZ2jA==}
     dev: true
 
   /webidl-conversions@3.0.1:
