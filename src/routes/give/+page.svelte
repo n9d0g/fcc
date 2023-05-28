@@ -32,15 +32,15 @@
 	</section>
 
 	<section>
-		<div class="grid grid-cols-1 auto-rows-fr md:grid-cols-2 gap-4 my-8">
-			<div class="card p-4 flex flex-col justify-center text-2xl items-center">
+		<div class="my-8 grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-2">
+			<div class="card flex flex-col items-center justify-center p-4 text-2xl">
 				<p class="text-center">Online e-transfer:</p>
 				<div>
 					<a href={links.etransfer} class="anchor font-bold">fcc.fcac@gmail.com</a>
 				</div>
 			</div>
-			<div class="card p-4 flex flex-col justify-center text-2xl items-center">
-				<p class="flex flex-col text-center py-4">
+			<div class="card flex flex-col items-center justify-center p-4 text-2xl">
+				<p class="flex flex-col py-4 text-center">
 					Filling out an offering envelope at our weekly services located at:
 					<a href={links.googleMaps} target="_blank" class="anchor font-bold">
 						5225 Orbitor Drive Unit 3, Mississauga, ON.
