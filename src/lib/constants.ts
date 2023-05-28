@@ -22,7 +22,6 @@ export const breadcrumbs = {
 	birthdays: { title: 'Birthdays', href: '/birthdays' },
 	give: { title: 'Give', href: '/give' },
 	error: { title: 'Error', href: '/error' },
-	threlte: { title: 'Threlte', href: '/threlte' },
 	about: {
 		title: 'About',
 		href: '/about',
@@ -327,9 +326,5 @@ export const headData = {
 	smallgroupsYAWomen: {
 		title: "FCC | Women's YA Small Group",
 		description: "Women's Young Adults' Small Group page for the Freedom in Christ Church.",
-	},
-	threlte: {
-		title: 'FCC | Threlte Testing',
-		description: 'Threlte testing page for the Freedom in Christ Church.',
 	},
 }

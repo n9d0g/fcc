@@ -14,6 +14,6 @@ export default defineConfig({
 		__LAST_COMMIT__: JSON.stringify(execSync('git rev-parse HEAD').toString().trim()),
 	},
 	ssr: {
-		noExternal: ['three', 'troika-three-text'],
+		noExternal: [],
 	},
 })
