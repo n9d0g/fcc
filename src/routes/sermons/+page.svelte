@@ -34,13 +34,14 @@
 
 <FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="Sermons." />
-	<label class="label relative my-4 flex max-w-fit flex-col items-center gap-2">
+	<label class="label relative my-4 flex max-w-fit flex-col items-left gap-2">
+		<span>Filter by speaker:</span>
 		<input class="input w-64" type="text" placeholder="Filter by speaker" bind:value={speaker} />
 		{#if speaker !== ''}
 			<button
 				transition:fade={{ duration: 150 }}
 				on:click={() => (speaker = '')}
-				class="absolute right-0 h-7 w-7 translate-x-[-7px] translate-y-[3px] cursor-pointer rounded-xl"
+				class="absolute right-2 h-7 w-7 top-10 cursor-pointer rounded-xl"
 			>
 				<IoIosClose />
 			</button>

@@ -20,7 +20,7 @@
 	let monthTypeValue: number = 0
 	let updateKey: number = 0
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.birthdays]
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.misc, breadcrumbs.misc.birthdays]
 
 	const filterBirthdays = () => {
 		let res = birthdays

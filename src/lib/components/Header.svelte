@@ -26,7 +26,7 @@
 			</a>
 		</svelte:fragment>
 
-		<nav class="z-10 hidden items-center justify-center gap-4 lg:flex">
+		<nav class="z-10 hidden items-center justify-center lg:flex lg:gap-4">
 			{#key activeNavValue}
 				{#each navOptions as option}
 					<NavButton text={option.title} link={option.href} nav={activeNavValue} />
