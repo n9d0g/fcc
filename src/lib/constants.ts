@@ -19,7 +19,6 @@ import FaMoneyCheckAlt from 'svelte-icons/fa/FaMoneyCheckAlt.svelte'
 export const breadcrumbs = {
 	home: { title: 'Home', href: '/' },
 	sermons: { title: 'Sermons', href: '/sermons' },
-	birthdays: { title: 'Birthdays', href: '/birthdays' },
 	give: { title: 'Give', href: '/give' },
 	error: { title: 'Error', href: '/error' },
 	about: {
@@ -74,6 +73,11 @@ export const breadcrumbs = {
 			href: '/small-groups/partners-in-prayer',
 		},
 	},
+	misc: {
+		title: 'Miscellaneous',
+		href: '/misc',
+		birthdays: { title: 'Birthdays', href: '/birthdays' },
+	},
 }
 
 export const client = createClient({
@@ -84,11 +88,6 @@ export const client = createClient({
 })
 
 export const navOptions = [
-	{
-		href: '/',
-		title: 'Home',
-		icon: MdHome,
-	},
 	{
 		href: '/about',
 		title: 'About',
@@ -112,6 +111,11 @@ export const navOptions = [
 	{
 		href: '/give',
 		title: 'Give',
+		icon: FaMoneyCheckAlt,
+	},
+	{
+		href: '/misc',
+		title: 'Misc',
 		icon: FaMoneyCheckAlt,
 	},
 ]
