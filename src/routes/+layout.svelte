@@ -31,9 +31,9 @@
 	onMount(async () => {
 		if (!projectStartedValue) {
 			// show dev toast on non-prod sites
-			if (isDevEnv(activePathValue)) toastStore.trigger(devToastSettings)
+			if (isDevEnv(activePathValue)) await toastStore.trigger(devToastSettings)
 
-			getBirthdays()
+			await getBirthdays()
 		}
 
 		projectStarted.set(true)
