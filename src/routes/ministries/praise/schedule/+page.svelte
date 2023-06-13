@@ -58,10 +58,11 @@
 
 <FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="Praise Schedule." />
-	<label class="label relative my-8 flex max-w-fit gap-4">
+	<div class="relative my-8 flex max-w-fit flex-col gap-4">
+		<label class="label">Filter by leader:</label>
 		<input
 			class="autocomplete input w-64 max-w-full"
-			type="search"
+			type="text"
 			placeholder="Filter by leader"
 			bind:value={leader}
 			use:popup={praiseFilterPopupSettings}
@@ -71,12 +72,12 @@
 			<button
 				transition:fade={{ duration: 150 }}
 				on:click={() => (leader = '')}
-				class="absolute right-0 h-7 w-7 translate-x-[-7px] translate-y-[3px] cursor-pointer rounded-xl"
+				class="absolute right-2 top-[47px] h-7 w-7 cursor-pointer rounded-xl"
 			>
 				<IoIosClose />
 			</button>
 		{/if}
-	</label>
+	</div>
 
 	<div data-popup="praiseAutocomplete" class="z-30 w-64 rounded-md p-4 text-left bg-surface-100-800-token">
 		<Autocomplete
