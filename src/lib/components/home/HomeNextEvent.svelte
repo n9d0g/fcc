@@ -2,8 +2,6 @@
 	import { links } from '$lib/constants'
 
 	export let pageInfo: any
-
-	console.log(pageInfo.invite)
 </script>
 
 <section class="container mx-auto my-32 flex flex-col items-center justify-center gap-16">

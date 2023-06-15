@@ -22,7 +22,7 @@
 		<h5 class="card-footer">{title}</h5>
 	</div>
 	<div class="card variant-filled-surface p-4" data-popup="leaderDetails">
-		{#if subministries !== null}
+		{#if subministries}
 			{#each subministries as subministry}
 				<h6>{subministry.name}</h6>
 				<p>{subministry.ministry}</p>
