@@ -6,6 +6,7 @@
 	export let name: string
 	export let title: string
 	export let img: string
+	export let subministries: any
 
 	let popupSettings: PopupSettings = {
 		event: 'hover',
@@ -21,7 +22,12 @@
 		<h5 class="card-footer">{title}</h5>
 	</div>
 	<div class="card variant-filled-surface p-4" data-popup="leaderDetails">
-		🚧 Leader details WIP 🚧
-		<div class="arrow variant-filled-surface" />
+		{#if subministries !== null}
+			{#each subministries as subministry}
+				<h6>{subministry.name}</h6>
+				<p>{subministry.ministry}</p>
+			{/each}
+		{/if}
+		<span class="arrow variant-filled-surface" />
 	</div>
 </div>

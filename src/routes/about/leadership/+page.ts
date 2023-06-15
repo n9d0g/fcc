@@ -1,17 +1,17 @@
 import { client, headData } from '$lib/constants'
 
 export const load = async () => {
-  const data = await client.fetch(`
+	const data = await client.fetch(`
     *[_type == "leadership"] {
-			name, title,
+			name, title, subministries,
       'img': image.asset->url
     }
   `)
 
-  if (data) {
-    return {
-      leaders: data,
-      headData: headData.leadership,
-    }
-  }
+	if (data) {
+		return {
+			leaders: data,
+			headData: headData.leadership,
+		}
+	}
 }

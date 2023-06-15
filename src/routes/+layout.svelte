@@ -1,8 +1,10 @@
 <script lang="ts">
-	// import '@skeletonlabs/skeleton/themes/theme-crimson.css'
+	// mandatory imports
 	import '../theme.postcss'
 	import '@skeletonlabs/skeleton/styles/skeleton.css'
 	import '../app.postcss'
+
+	// skeleton imports
 	import { AppShell, Modal, storePopup, Toast, toastStore } from '@skeletonlabs/skeleton'
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom'
 	import { onMount } from 'svelte'
