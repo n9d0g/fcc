@@ -9,11 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: pnpm/action-setup@v2
         with:
-          node-version: '18.15.0'
+          version: 7
+      - name: use node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
       - name: install unlighthouse and puppeteer
-        run: pnpm i -g @unlighthouse/cli puppeteer
+        run: pnpm install -g @unlighthouse/cli puppeteer
       - name: run unlighthouse on dev site
         run: unlighthouse-ci --site dev.fcccanada.ca --build-static
       - name: run unlighthouse on prod site
