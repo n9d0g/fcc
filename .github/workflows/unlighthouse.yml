@@ -1,0 +1,20 @@
+name: unlighthouse
+
+on:
+  push:
+    branches: [main, dev]
+
+jobs:
+  unlighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.15.0'
+      - name: install unlighthouse and puppeteer
+        run: pnpm i -g @unlighthouse/cli puppeteer
+      - name: run unlighthouse on dev site
+        run: unlighthouse-ci --site dev.fcccanada.ca --build-static
+      - name: run unlighthouse on prod site
+        run: unlighthouse-ci --site fcccanada.ca --build-static
