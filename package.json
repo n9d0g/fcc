@@ -21,7 +21,7 @@
 		"unlighthouse:dev": "npx unlighthouse --site dev.fcccanada.ca"
 	},
 	"devDependencies": {
-		"@floating-ui/dom": "^1.3.0",
+		"@floating-ui/dom": "^1.4.1",
 		"@iconify/svelte": "^3.1.4",
 		"@js-temporal/polyfill": "^0.4.4",
 		"@playwright/test": "^1.35.1",
@@ -32,11 +32,11 @@
 		"@skeletonlabs/skeleton": "^1.7.1",
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/adapter-vercel": "^3.0.1",
-		"@sveltejs/kit": "^1.20.2",
+		"@sveltejs/kit": "^1.20.4",
 		"@tailwindcss/forms": "^0.5.3",
 		"@types/node": "^20.3.1",
 		"autoprefixer": "^10.4.14",
-		"eslint": "^8.42.0",
+		"eslint": "^8.43.0",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"postcss": "^8.4.24",
@@ -54,6 +54,6 @@
 		"tailwindcss": "^3.3.2",
 		"typescript": "^5.1.3",
 		"vite": "^4.3.9",
-		"vitest": "^0.32.0"
+		"vitest": "^0.32.2"
 	}
 }
