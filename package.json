@@ -21,7 +21,7 @@
 		"unlighthouse:dev": "npx unlighthouse --site dev.fcccanada.ca"
 	},
 	"devDependencies": {
-		"@floating-ui/dom": "^1.4.1",
+		"@floating-ui/dom": "^1.4.2",
 		"@iconify/svelte": "^3.1.4",
 		"@js-temporal/polyfill": "^0.4.4",
 		"@playwright/test": "^1.35.1",
@@ -29,7 +29,7 @@
 		"@semantic-release/git": "^10.0.1",
 		"@semantic-release/github": "^9.0.3",
 		"@semantic-release/npm": "^10.0.4",
-		"@skeletonlabs/skeleton": "^1.7.1",
+		"@skeletonlabs/skeleton": "^1.8.0",
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/adapter-vercel": "^3.0.1",
 		"@sveltejs/kit": "^1.20.4",
@@ -45,8 +45,8 @@
 		"prettier-plugin-svelte": "^2.10.1",
 		"prettier-plugin-tailwindcss": "^0.3.0",
 		"semantic-release": "^21.0.5",
-		"svelte": "^3.59.1",
-		"svelte-check": "^3.4.3",
+		"svelte": "^3.59.2",
+		"svelte-check": "^3.4.4",
 		"svelte-icons": "^2.1.0",
 		"svelte-preprocess": "^5.0.4",
 		"svelte-sequential-preprocessor": "^1.0.0",
