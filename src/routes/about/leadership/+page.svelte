@@ -13,7 +13,7 @@
 	<PageTitle text="Leadership." />
 	<div class="my-16 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
 		{#each data.leaders as leader}
-			<LeadershipCard img={leader.img} name={leader.name} title={leader.title} />
+			<LeadershipCard img={leader.img} name={leader.name} title={leader.title} subministries={leader.subministries} />
 		{/each}
 	</div>
 </FccLayout>

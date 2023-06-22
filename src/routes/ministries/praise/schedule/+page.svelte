@@ -99,9 +99,9 @@
 					<tr class="variant-filled-secondary sticky top-0 z-10">
 						{#each tHead as header, index}
 							{#if index === 0}
-								<th class="table-cell-fit variant-filled-secondary sticky left-0 z-30 p-3 text-left font-bold"
-									>{header}</th
-								>
+								<th class="table-cell-fit variant-filled-secondary sticky left-0 z-30 p-3 text-left font-bold">
+									{header}
+								</th>
 							{:else}
 								<th class="table-cell-fit p-3 text-left font-bold">{header}</th>
 							{/if}

@@ -77,6 +77,7 @@ export const breadcrumbs = {
 		title: 'Miscellaneous',
 		href: '/misc',
 		birthdays: { title: 'Birthdays', href: '/birthdays' },
+		sundayMinistries: { title: 'Sunday Ministries', href: '/sunday-ministries' },
 	},
 }
 
@@ -269,6 +270,14 @@ export const headData = {
 	give: {
 		title: 'FCC | Give',
 		description: 'Give / Offering page for the Freedom in Christ Church. Generosity is a form of Worship.',
+	},
+	misc: {
+		title: 'FCC | Miscellaneous',
+		description: 'Miscellaneous page for the Freedom in Christ Church. Generosity is a form of Worship.',
+	},
+	sundayMinistries: {
+		title: 'FCC | Sunday Ministries',
+		description: 'Sunday Ministries page for the Freedom in Christ Church. Generosity is a form of Worship.',
 	},
 	ministriesMen: {
 		title: 'FCC | Ministries - Men',

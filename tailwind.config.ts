@@ -12,8 +12,8 @@ export default {
 				hero: "url('/hero.avif')",
 			},
 			colors: {
-				facebook: '#4267B2',
-				instagram: '#F56040',
+				facebook: '#4267b2',
+				instagram: '#f56040',
 				youtube: '#c4302b',
 			},
 		},

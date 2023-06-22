@@ -2,7 +2,10 @@ import { client, links } from '$lib/constants'
 
 export const load = async () => {
 	const sermons = await client.fetch(`*[_type == "sermons"]`)
-	const pages = await client.fetch(`*[_type == "pages"]`)
+	const pages = await client.fetch(`*[_type == "pages"] {
+		page,
+		'invite': weeklyInvite.asset->url 
+	}`)
 
 	if (sermons && pages)
 		return {
