@@ -43,18 +43,18 @@ export const updatedDataFiltered = (array: any, field: string) => {
 
 export const getMonth = (temporalDate: string) => {
 	let months = [
-		"January",
-		"February",
-		"March",
-		"April",
-		"May",
-		"June",
-		"July",
-		"August",
-		"September",
-		"October",
-		"November",
-		"December",
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December',
 	]
 	let currentMonth: number = Number(temporalDate.slice(5, 7))
 
