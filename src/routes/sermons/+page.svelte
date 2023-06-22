@@ -34,6 +34,7 @@
 
 <FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="Sermons." />
+	<!-- search input -->
 	<label class="items-left label relative my-4 flex max-w-fit flex-col gap-2">
 		<span>Filter by speaker:</span>
 		<input class="input w-64" type="text" placeholder="Filter by speaker" bind:value={speaker} />
@@ -47,6 +48,8 @@
 			</button>
 		{/if}
 	</label>
+
+	<!-- sermon paginator -->
 	{#key speaker}
 		{#if speaker !== ''}
 			<p transition:fade={{ duration: 150 }} class="mx-auto flex justify-center">

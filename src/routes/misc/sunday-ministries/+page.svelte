@@ -36,7 +36,7 @@
 			<tbody>
 				{#each tBody as month}
 					<tr class="text-center">
-						<td class="table-cell-fit sticky left-0 pl-3 text-left bg-surface-100-800-token font-bold">
+						<td class="table-cell-fit sticky left-0 pl-3 text-left font-bold bg-surface-100-800-token">
 							{getMonth(month.date)}
 						</td>
 						<td class="whitespace-nowrap pl-3 text-left">{month.presider}</td>

@@ -1,4 +1,4 @@
-name: unlighthouse
+name: unlighthouse-mobile
 
 on:
   push:
@@ -24,4 +24,4 @@ jobs:
         run: unlighthouse-ci --site fcccanada.ca --reporter jsonExpanded --budget 90
       - name: dev site workflow
         if: contains(github.ref, 'dev')
-        run: unlighthouse-ci --site dev.fcccanada.ca --reporter jsonExpanded --budget 90
+        run: unlighthouse-ci --site dev.fcccanada.ca  --reporter jsonExpanded --budget 90

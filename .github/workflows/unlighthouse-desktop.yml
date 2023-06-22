@@ -1,0 +1,27 @@
+name: unlighthouse-desktop
+
+on:
+  push:
+    branches: [main, dev]
+
+jobs:
+  unlighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - name: use node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - name: install unlighthouse and puppeteer
+        run: pnpm install -g @unlighthouse/cli puppeteer
+      - name: prod site workflow
+        if: contains(github.ref, 'main')
+        run: unlighthouse-ci --site fcccanada.ca --desktop --reporter jsonExpanded --budget 90
+      - name: dev site workflow
+        if: contains(github.ref, 'dev')
+        run: unlighthouse-ci --site dev.fcccanada.ca --desktop --reporter jsonExpanded --budget 90
