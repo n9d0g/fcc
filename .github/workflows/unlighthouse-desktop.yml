@@ -1,4 +1,4 @@
-name: unlighthouse
+name: unlighthouse-desktop
 
 on:
   push:
