@@ -19,11 +19,9 @@ jobs:
           cache: 'pnpm'
       - name: install unlighthouse and puppeteer
         run: pnpm install -g @unlighthouse/cli puppeteer
+      - name: prod site workflow
         if: contains(github.ref, 'main')
-        steps:
-        - name: run unlighthouse on prod site
-          run: unlighthouse-ci --site fcccanada.ca --build-static
+        run: unlighthouse-ci --site fcccanada.ca --build-static
+      - name: dev site workflow 
         if: contains(github.ref, 'dev')
-        steps:
-        - name: run unlighthouse on dev site
-          run: unlighthouse-ci --site dev.fcccanada.ca --build-static
+        run: unlighthouse-ci --site dev.fcccanada.ca --build-static

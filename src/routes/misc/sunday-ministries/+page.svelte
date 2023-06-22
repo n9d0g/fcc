@@ -14,7 +14,7 @@
 	<!-- responsive container -->
 	<div class="table-container relative">
 		<!-- skeleton table -->
-		<table class="table relative overflow-scroll">
+		<table class="relative table overflow-scroll">
 			<thead>
 				<tr class="variant-filled-secondary sticky top-0 z-10">
 					{#each data.tableHeaders as header, index}
