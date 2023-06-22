@@ -6,9 +6,9 @@ export const load = async () => {
 
 	return {
 		headData: headData.sundayMinistries,
-		tableBody: updatedDataFiltered(data, 'date'), 
+		tableBody: updatedDataFiltered(data, 'date'),
 		tableHeaders: [
-			'Date',
+			'Month',
 			'Presider',
 			'Worship Service Invites',
 			'Opening Prayer',

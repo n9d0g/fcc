@@ -2,7 +2,7 @@
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import PageTitle from '$lib/components/PageTitle.svelte'
 	import { breadcrumbs } from '$lib/constants'
-	import { Temporal } from '@js-temporal/polyfill'
+	import { getMonth } from '$lib/utils.js'
 
 	export let data
 
@@ -35,9 +35,9 @@
 			</thead>
 			<tbody>
 				{#each tBody as month}
-					<tr>
-						<td class="table-cell-fit sticky left-0 pl-3 text-left bg-surface-100-800-token">
-							{Temporal.PlainYearMonth.from(month.date)}
+					<tr class="text-center">
+						<td class="table-cell-fit sticky left-0 pl-3 text-left bg-surface-100-800-token font-bold">
+							{getMonth(month.date)}
 						</td>
 						<td class="whitespace-nowrap pl-3 text-left">{month.presider}</td>
 						<td class="whitespace-nowrap pl-3 text-left">{month.invites}</td>
