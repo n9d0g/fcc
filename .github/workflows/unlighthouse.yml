@@ -22,6 +22,6 @@ jobs:
       - name: prod site workflow
         if: contains(github.ref, 'main')
         run: unlighthouse-ci --site fcccanada.ca --build-static
-      - name: dev site workflow 
+      - name: dev site workflow
         if: contains(github.ref, 'dev')
         run: unlighthouse-ci --site dev.fcccanada.ca --build-static
