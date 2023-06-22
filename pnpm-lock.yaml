@@ -779,7 +779,7 @@ packages:
       lodash-es: 4.17.21
       nerf-dart: 1.0.0
       normalize-url: 8.0.0
-      npm: 9.7.1
+      npm: 9.7.2
       rc: 1.2.8
       read-pkg: 8.0.0
       registry-auth-token: 5.0.2
@@ -1233,7 +1233,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001506
-      electron-to-chromium: 1.4.435
+      electron-to-chromium: 1.4.437
       node-releases: 2.0.12
       update-browserslist-db: 1.0.11(browserslist@4.21.9)
     dev: true
@@ -1653,8 +1653,8 @@ packages:
       readable-stream: 2.3.8
     dev: true
 
-  /electron-to-chromium@1.4.435:
-    resolution: {integrity: sha512-B0CBWVFhvoQCW/XtjRzgrmqcgVWg6RXOEM/dK59+wFV93BFGR6AeNKc4OyhM+T3IhJaOOG8o/V+33Y2mwJWtzw==}
+  /electron-to-chromium@1.4.437:
+    resolution: {integrity: sha512-ZFekRuBOHUXp21wrR5lshT6pZa/KmjkhKBAtmZz4NN5sCWlHOk3kdhiwFINrDBsRLX6FjyBAb1TRN+KBeNlyzQ==}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -2995,8 +2995,8 @@ packages:
       path-key: 4.0.0
     dev: true
 
-  /npm@9.7.1:
-    resolution: {integrity: sha512-kxMviaiLX4Lfnjy2dt7EWB87v5QdLiGpy04S2ORdKLmPqFhgy8g4cgJjQfnWob4mJIaNHjBO+hk45CvLlsZZ8g==}
+  /npm@9.7.2:
+    resolution: {integrity: sha512-LLoOudiSURxzRxfGj+vsD+hKKv2EfxyshDOznxruIkZMouvbaF5sFm4yAwHqxS8aVaOdRl03pRmGpcrFMqMt3g==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     hasBin: true
     dev: true
@@ -3059,6 +3059,7 @@ packages:
       - semver
       - sigstore
       - ssri
+      - supports-color
       - tar
       - text-table
       - tiny-relative-date
