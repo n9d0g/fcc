@@ -12,7 +12,7 @@
 	import Header from '$lib/components/Header.svelte'
 	import SideNav from '$lib/components/SideNav.svelte'
 	import { activePath, projectStarted } from '$lib/stores/store.js'
-	import { getBirthdays, isDevEnv } from '$lib/utils'
+	import { isDevEnv } from '$lib/utils'
 	import { devToastSettings, modalComponentRegistry } from '$lib/constants'
 	import { afterNavigate } from '$app/navigation'
 
@@ -34,8 +34,6 @@
 		if (!projectStartedValue) {
 			// show dev toast on non-prod sites
 			if (isDevEnv(activePathValue)) await toastStore.trigger(devToastSettings)
-
-			await getBirthdays()
 		}
 
 		projectStarted.set(true)

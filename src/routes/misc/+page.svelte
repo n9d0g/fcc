@@ -12,7 +12,6 @@
 <FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="FCC Miscellaneous." />
 	<div class="my-8 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:my-16 md:grid-cols-3">
-		<LandingPageCard title="Birthdays" link="/misc/birthdays" />
 		<LandingPageCard title="Sunday Ministries" link="/misc/sunday-ministries" />
 	</div>
 </FccLayout>
