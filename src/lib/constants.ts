@@ -76,7 +76,6 @@ export const breadcrumbs = {
 	misc: {
 		title: 'Miscellaneous',
 		href: '/misc',
-		birthdays: { title: 'Birthdays', href: '/birthdays' },
 		sundayMinistries: { title: 'Sunday Ministries', href: '/sunday-ministries' },
 	},
 }
@@ -262,10 +261,6 @@ export const headData = {
 	schedule: {
 		title: 'FCC | Praise Schedule',
 		description: 'Praise & Worship Schedule page for the Freedom in Christ Church.',
-	},
-	birthdays: {
-		title: 'FCC | Birthdays',
-		description: 'Birthdays page for the Freedom in Christ Church.',
 	},
 	give: {
 		title: 'FCC | Give',

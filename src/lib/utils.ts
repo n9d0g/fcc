@@ -1,10 +1,7 @@
-import { activeBirthdays, activeNav, activePath } from '$lib/stores/store.js'
+import { activeNav, activePath } from '$lib/stores/store.js'
 import { Temporal } from '@js-temporal/polyfill'
 import { drawerStore, toastStore, type ModalSettings } from '@skeletonlabs/skeleton'
 import { client, dateToday } from '$lib/constants'
-
-let activeBdayValues: any = ''
-activeBirthdays.subscribe((value) => (activeBdayValues = value))
 
 const isPastor = (person: any) => {
 	if (person.pastor) return true
@@ -92,34 +89,6 @@ export const praiseModalSettings = (meta: any) => {
 	}
 
 	return settings
-}
-
-export const getBirthdays: any = async () => {
-	const data = await client.fetch(`
-    *[_type == "birthdays"] {
-      name, birthday, pastor, wa
-    }
-  `)
-
-	if (data) {
-		activeBirthdays.set(
-			data
-				.sort((a: any, b: any) => (a.name > b.name ? 1 : -1))
-				.filter((member: any) => member.birthday.slice(5, 10) === dateToday.slice(5, 10))
-		)
-
-		for (let i = 0; i < activeBdayValues.length; i++) {
-			toastStore.trigger({
-				message: `🎉 Happy ${isWeddingAnniversary(activeBdayValues[i]) ? 'Wedding Anniversary' : 'Birthday'} ${
-					isPastor(activeBdayValues[i]) ? 'Pastor' : ''
-				}  ${activeBdayValues[i].name} 🎉`,
-				timeout: 4000,
-				background: 'variant-filled-secondary',
-			})
-		}
-	}
-
-	return false
 }
 
 export const isDevEnv = (path: string) => {
