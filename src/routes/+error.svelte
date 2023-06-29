@@ -22,7 +22,6 @@
 			<a href="/sermons" class="anchor">Sermons</a>
 			<a href="/ministries" class="anchor">Ministries</a>
 			<a href="/small-groups" class="anchor">Small Groups</a>
-			<a href="/misc" class="anchor">Misc</a>
 		</div>
 	</section>
 </FccLayout>
