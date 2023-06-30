@@ -17,7 +17,6 @@ const isWeddingAnniversary = (person: any) => {
 export const setNavActiveState = (path: any) => {
 	if (path.includes('about')) activeNav.set('about')
 	else if (path.includes('sermons')) activeNav.set('sermons')
-	else if (path.includes('misc')) activeNav.set('misc')
 	else if (path.includes('ministries')) activeNav.set('ministries')
 	else if (path.includes('small-groups')) activeNav.set('small-groups')
 	else if (path.includes('give')) activeNav.set('give')

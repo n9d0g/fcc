@@ -10,7 +10,7 @@
 	let tHeaders: any = data.tableHeaders
 	let tBody: any = data.tableBody
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.misc, breadcrumbs.misc.sundayMinistries]
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.ministries.sundayMinistries]
 </script>
 
 <FccLayout {breadcrumb} headData={data.headData}>

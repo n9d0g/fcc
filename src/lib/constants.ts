@@ -42,6 +42,7 @@ export const breadcrumbs = {
 			href: '/ministries/praise',
 			schedule: { title: 'Schedule', href: '/ministries/praise/schedule' },
 		},
+		sundayMinistries: { title: 'Sunday Ministries', href: '/sunday-ministries' },
 	},
 	smallgroups: {
 		title: 'Small Groups',
@@ -72,11 +73,6 @@ export const breadcrumbs = {
 			title: 'Partners in Prayer',
 			href: '/small-groups/partners-in-prayer',
 		},
-	},
-	misc: {
-		title: 'Miscellaneous',
-		href: '/misc',
-		sundayMinistries: { title: 'Sunday Ministries', href: '/sunday-ministries' },
 	},
 }
 
@@ -111,11 +107,6 @@ export const navOptions = [
 	{
 		href: '/give',
 		title: 'Give',
-		icon: FaMoneyCheckAlt,
-	},
-	{
-		href: '/misc',
-		title: 'Misc',
 		icon: FaMoneyCheckAlt,
 	},
 ]
@@ -265,10 +256,6 @@ export const headData = {
 	give: {
 		title: 'FCC | Give',
 		description: 'Give / Offering page for the Freedom in Christ Church. Generosity is a form of Worship.',
-	},
-	misc: {
-		title: 'FCC | Miscellaneous',
-		description: 'Miscellaneous page for the Freedom in Christ Church. Generosity is a form of Worship.',
 	},
 	sundayMinistries: {
 		title: 'FCC | Sunday Ministries',
