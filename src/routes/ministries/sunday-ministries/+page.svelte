@@ -1,7 +1,7 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import PageTitle from '$lib/components/PageTitle.svelte'
-	import { breadcrumbs } from '$lib/constants'
+	import { breadcrumbs, links } from '$lib/constants'
 	import { getMonth } from '$lib/utils.js'
 
 	export let data
@@ -56,5 +56,10 @@
 				{/each}
 			</tbody>
 		</table>
+	</div>
+
+	<!-- link to excel sheet -->
+	<div class="my-8 flex w-full justify-center">
+		<a href={links.excel} target="_blank" class="btn variant-filled"> Excel Data Sheet </a>
 	</div>
 </FccLayout>
