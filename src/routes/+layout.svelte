@@ -7,6 +7,8 @@
 	// skeleton imports
 	import { AppShell, Modal, storePopup, Toast, toastStore } from '@skeletonlabs/skeleton'
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom'
+
+	// regular imports
 	import { onMount } from 'svelte'
 	import Footer from '$lib/components/Footer.svelte'
 	import Header from '$lib/components/Header.svelte'
@@ -15,8 +17,12 @@
 	import { isDevEnv } from '$lib/utils'
 	import { devToastSettings, modalComponentRegistry } from '$lib/constants'
 	import { afterNavigate } from '$app/navigation'
+	import { fade } from 'svelte/transition'
 
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow })
+
+	// props
+	export let data
 
 	// variables
 	let projectStartedValue: boolean = false
@@ -47,6 +53,10 @@
 
 <AppShell>
 	<svelte:fragment slot="header"><Header /></svelte:fragment>
-	<slot />
+	{#key data.url}
+		<div in:fade={{ duration: 150, delay: 150 }} out:fade={{ duration: 150 }}>
+			<slot />
+		</div>
+	{/key}
 	<svelte:fragment slot="pageFooter"><Footer /></svelte:fragment>
 </AppShell>

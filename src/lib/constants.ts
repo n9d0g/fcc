@@ -170,8 +170,9 @@ export const leaders = [
 ]
 
 export const missionVision = {
-	mission: "To introduce and represent Christ through our nurturing, small group-driven ministries in the community.",
-	vision: "A Christ-centred, Holy Spirit-led community committed to the building of strong relationships and planting of healthy reproducing churches."
+	mission: 'To introduce and represent Christ through our nurturing, small group-driven ministries in the community.',
+	vision:
+		'A Christ-centred, Holy Spirit-led community committed to the building of strong relationships and planting of healthy reproducing churches.',
 }
 
 export const dateToday = Temporal.Now.plainDateISO().toString()
