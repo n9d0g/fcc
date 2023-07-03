@@ -11,9 +11,15 @@
 
 <FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="Leadership." />
-	<div class="my-16 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+	<div class="my-16 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 		{#each data.leaders as leader}
-			<LeadershipCard img={leader.img} name={leader.name} title={leader.title} subministries={leader.subministries} />
+			<LeadershipCard
+				img={leader.img}
+				name={leader.name}
+				title={leader.title}
+				subministries={leader.subministries}
+				sort={leader.sort}
+			/>
 		{/each}
 	</div>
 </FccLayout>

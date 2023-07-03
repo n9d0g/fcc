@@ -21,12 +21,6 @@
 	let leader = ''
 	const upToDatePraiseData = updatedDataFiltered(data.praise, 'date')
 
-	let popupSettings: PopupSettings = {
-		event: 'hover',
-		target: 'detailsToolTip',
-		placement: 'top',
-	}
-
 	// functions
 	const openDetails = (e: any) => {
 		const meta = {
@@ -59,8 +53,9 @@
 <FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="Praise Schedule." />
 	<div class="relative my-8 flex max-w-fit flex-col gap-4">
-		<label class="label">Filter by leader:</label>
+		<label class="label" for="autocomplete">Filter by leader:</label>
 		<input
+			id="autocomplete"
 			class="autocomplete input w-64 max-w-full"
 			type="text"
 			placeholder="Filter by leader"
@@ -92,7 +87,7 @@
 	<DetailsTooltip />
 
 	<!-- schedule table -->
-	<div use:popup={popupSettings} bind:this={schedTable}>
+	<div bind:this={schedTable}>
 		<div class="table-container relative h-[60vh] w-full">
 			<table class="table-hover table-compact relative table overflow-scroll" data-testid="schedule-table">
 				<thead>

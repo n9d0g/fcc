@@ -19,7 +19,7 @@
 	import { afterNavigate } from '$app/navigation'
 	import { fade } from 'svelte/transition'
 
-	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow })
+	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow })
 
 	// props
 	export let data
