@@ -1,7 +1,6 @@
 <script lang="ts">
 	// imports
 	import { Avatar, popup, type PopupSettings } from '@skeletonlabs/skeleton'
-	import { onMount } from 'svelte'
 
 	// props
 	export let name: string
@@ -24,9 +23,9 @@
 	<div class="flex flex-col">
 		<h4 class="h4 card-header font-bold">{name}</h4>
 		<p class="card-footer italic">{title}</p>
-		{#if subministries !== null}
+		<!-- {#if subministries !== null}
 			<button use:popup={popupSettings} type="button" class="btn variant-filled cursor-pointer">Sub-Ministries</button>
-		{/if}
+		{/if} -->
 	</div>
 </div>
 
