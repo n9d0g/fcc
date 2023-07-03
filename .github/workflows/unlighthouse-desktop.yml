@@ -5,7 +5,7 @@ on:
     branches: [main, dev]
 
 jobs:
-  unlighthouse:
+  unlighthouse-desktop:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,9 +19,9 @@ jobs:
           cache: 'pnpm'
       - name: install unlighthouse and puppeteer
         run: pnpm install -g @unlighthouse/cli puppeteer
-      - name: prod site workflow
+      - name: desktop prod site workflow
         if: contains(github.ref, 'main')
         run: unlighthouse-ci --site fcccanada.ca --desktop --reporter jsonExpanded --budget 90
-      - name: dev site workflow
+      - name: desktop dev site workflow
         if: contains(github.ref, 'dev')
         run: unlighthouse-ci --site dev.fcccanada.ca --desktop --reporter jsonExpanded --budget 90
