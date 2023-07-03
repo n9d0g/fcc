@@ -9,7 +9,6 @@ import type {
 import SermonModal from './components/sermons/SermonModal.svelte'
 import PraiseModal from './components/ministries/praise/PraiseModal.svelte'
 import { Temporal } from '@js-temporal/polyfill'
-import MdHome from 'svelte-icons/md/MdHome.svelte'
 import MdLocalFlorist from 'svelte-icons/md/MdLocalFlorist.svelte'
 import IoMdBook from 'svelte-icons/io/IoMdBook.svelte'
 import MdLightbulbOutline from 'svelte-icons/md/MdLightbulbOutline.svelte'
@@ -169,6 +168,12 @@ export const leaders = [
 		img: 'https://cdn.discordapp.com/avatars/337151082566254592/a6596db63639c9eb5ea5f554dc9806de.webp?size=128',
 	},
 ]
+
+export const missionVision = {
+	mission: 'To introduce and represent Christ through our nurturing, small group-driven ministries in the community.',
+	vision:
+		'A Christ-centred, Holy Spirit-led community committed to the building of strong relationships and planting of healthy reproducing churches.',
+}
 
 export const dateToday = Temporal.Now.plainDateISO().toString()
 
