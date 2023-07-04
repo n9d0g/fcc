@@ -576,8 +576,8 @@ packages:
       '@octokit/types': 9.3.2
     dev: true
 
-  /@octokit/plugin-retry@5.0.4(@octokit/core@4.2.4):
-    resolution: {integrity: sha512-hw00fDIhOgijy4aSxS6weWF5uqZVeoiC/AptLLyjL8KFCJRGRaXfcfgj76h/Z3cSLTjRsEIQnNCTig8INttL/g==}
+  /@octokit/plugin-retry@5.0.5(@octokit/core@4.2.4):
+    resolution: {integrity: sha512-sB1RWMhSrre02Atv95K6bhESlJ/sPdZkK/wE/w1IdSCe0yM6FxSjksLa6T7aAvxvxlLKzQEC4KIiqpqyov1Tbg==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@octokit/core': '>=3'
@@ -766,7 +766,7 @@ packages:
     dependencies:
       '@octokit/core': 4.2.4
       '@octokit/plugin-paginate-rest': 7.1.2(@octokit/core@4.2.4)
-      '@octokit/plugin-retry': 5.0.4(@octokit/core@4.2.4)
+      '@octokit/plugin-retry': 5.0.5(@octokit/core@4.2.4)
       '@octokit/plugin-throttling': 6.1.0(@octokit/core@4.2.4)
       '@semantic-release/error': 4.0.0
       aggregate-error: 4.0.1
@@ -1211,7 +1211,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.9
-      caniuse-lite: 1.0.30001511
+      caniuse-lite: 1.0.30001512
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -1267,8 +1267,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001511
-      electron-to-chromium: 1.4.447
+      caniuse-lite: 1.0.30001512
+      electron-to-chromium: 1.4.449
       node-releases: 2.0.12
       update-browserslist-db: 1.0.11(browserslist@4.21.9)
     dev: true
@@ -1313,8 +1313,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite@1.0.30001511:
-    resolution: {integrity: sha512-NaWPJawcoedlghN4P7bDNeADD7K+rZaY6V8ZcME7PkEZo/nfOg+lnrUgRWiKbNxcQ4/toFKSxnS4WdbyPZnKkw==}
+  /caniuse-lite@1.0.30001512:
+    resolution: {integrity: sha512-2S9nK0G/mE+jasCUsMPlARhRCts1ebcp2Ji8Y8PWi4NDE1iRdLCnEPHkEfeBrGC45L4isBx5ur3IQ6yTE2mRZw==}
     dev: true
 
   /cardinal@2.1.1:
@@ -1690,8 +1690,8 @@ packages:
       readable-stream: 2.3.8
     dev: true
 
-  /electron-to-chromium@1.4.447:
-    resolution: {integrity: sha512-sxX0LXh+uL41hSJsujAN86PjhrV/6c79XmpY0TvjZStV6VxIgarf8SRkUoUTuYmFcZQTemsoqo8qXOGw5npWfw==}
+  /electron-to-chromium@1.4.449:
+    resolution: {integrity: sha512-TxLRpRUj/107ATefeP8VIUWNOv90xJxZZbCW/eIbSZQiuiFANCx2b7u+GbVc9X4gU+xnbvypNMYVM/WArE1DNQ==}
     dev: true
 
   /emoji-regex@8.0.0:

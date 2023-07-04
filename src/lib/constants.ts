@@ -14,12 +14,14 @@ import IoMdBook from 'svelte-icons/io/IoMdBook.svelte'
 import MdLightbulbOutline from 'svelte-icons/md/MdLightbulbOutline.svelte'
 import IoMdPeople from 'svelte-icons/io/IoMdPeople.svelte'
 import FaMoneyCheckAlt from 'svelte-icons/fa/FaMoneyCheckAlt.svelte'
+import FaRegCalendar from 'svelte-icons/fa/FaRegCalendar.svelte'
 
 export const breadcrumbs = {
 	home: { title: 'Home', href: '/' },
 	sermons: { title: 'Sermons', href: '/sermons' },
 	give: { title: 'Give', href: '/give' },
 	error: { title: 'Error', href: '/error' },
+	events: { title: 'Events', href: '/events' },
 	about: {
 		title: 'About',
 		href: '/about',
@@ -92,6 +94,11 @@ export const navOptions = [
 		href: '/sermons',
 		title: 'Sermons',
 		icon: IoMdBook,
+	},
+	{
+		href: '/events',
+		title: 'Events',
+		icon: FaRegCalendar,
 	},
 	{
 		href: '/ministries',
@@ -326,5 +333,9 @@ export const headData = {
 	smallgroupsYAWomen: {
 		title: "FCC | Women's YA Small Group",
 		description: "Women's Young Adults' Small Group page for the Freedom in Christ Church.",
+	},
+	events: {
+		title: 'FCC | Events',
+		description: 'FCC Events page for the Freedom in Christ Church.',
 	},
 }
