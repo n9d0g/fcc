@@ -1,17 +1,6 @@
 import { activeNav, activePath } from '$lib/stores/store.js'
 import { Temporal } from '@js-temporal/polyfill'
-import { drawerStore, toastStore, type ModalSettings } from '@skeletonlabs/skeleton'
-import { client, dateToday } from '$lib/constants'
-
-const isPastor = (person: any) => {
-	if (person.pastor) return true
-	return false
-}
-
-const isWeddingAnniversary = (person: any) => {
-	if (person.wa) return true
-	return false
-}
+import { drawerStore, type ModalSettings } from '@skeletonlabs/skeleton'
 
 // exported functions
 export const setNavActiveState = (path: any) => {
@@ -20,6 +9,7 @@ export const setNavActiveState = (path: any) => {
 	else if (path.includes('ministries')) activeNav.set('ministries')
 	else if (path.includes('small-groups')) activeNav.set('small-groups')
 	else if (path.includes('give')) activeNav.set('give')
+	else if (path.includes('events')) activeNav.set('events')
 	else activeNav.set('home')
 }
 
