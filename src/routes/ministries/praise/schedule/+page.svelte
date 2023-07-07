@@ -1,13 +1,12 @@
 <script lang="ts">
 	// imports
-	import { popup, type PopupSettings } from '@skeletonlabs/skeleton'
+	import { popup } from '@skeletonlabs/skeleton'
 	import { Autocomplete } from '@skeletonlabs/skeleton'
 	import { modalStore } from '@skeletonlabs/skeleton'
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import PageTitle from '$lib/components/PageTitle.svelte'
 	import DetailsTooltip from '$lib/components/ministries/praise/DetailsTooltip.svelte'
 	import { updatedDataFiltered, praiseModalSettings, searchFilter } from '$lib/utils'
-	import { praiseLeaderOptions, praiseFilterPopupSettings, breadcrumbs, links } from '$lib/constants'
+	import { praiseLeaderOptions, praiseFilterPopupSettings, links } from '$lib/constants'
 	import { fade } from 'svelte/transition'
 	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
 
@@ -20,6 +19,9 @@
 	let schedTable: any
 	let leader = ''
 	const upToDatePraiseData = updatedDataFiltered(data.praise, 'date')
+	const title = data.title
+	const breadcrumb = data.breadcrumb
+	const headData = data.headData
 
 	// functions
 	const openDetails = (e: any) => {
@@ -41,18 +43,11 @@
 	const onFilterSelection = (e: any) => {
 		leader = e.detail.label
 	}
-
-	const breadcrumb = [
-		breadcrumbs.home,
-		breadcrumbs.ministries,
-		breadcrumbs.ministries.praise,
-		breadcrumbs.ministries.praise.schedule,
-	]
 </script>
 
-<FccLayout {breadcrumb} headData={data.headData}>
-	<PageTitle text="Praise Schedule." />
+<FccLayout {title} {breadcrumb} {headData}>
 	<div class="relative my-8 flex max-w-fit flex-col gap-4">
+		<!-- filter searching -->
 		<label class="label" for="autocomplete">Filter by leader:</label>
 		<input
 			id="autocomplete"
@@ -74,6 +69,7 @@
 		{/if}
 	</div>
 
+	<!-- autocomplete modal -->
 	<div data-popup="praiseAutocomplete" class="z-30 w-64 rounded-md p-4 text-left bg-surface-100-800-token">
 		<Autocomplete
 			bind:input={leader}

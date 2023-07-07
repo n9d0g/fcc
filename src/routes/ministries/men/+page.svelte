@@ -1,18 +1,17 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import PageTitle from '$lib/components/PageTitle.svelte'
-	import { breadcrumbs } from '$lib/constants'
 	import cover from '$lib/assets/ministries/men/men-img1.avif'
 	import vid1 from '$lib/assets/ministries/men/men-vid1.mp4'
 	import vid2 from '$lib/assets/ministries/men/men-vid2.mp4'
 
 	export let data
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.ministries.men]
+	const title = data.title
+	const breadcrumb = data.breadcrumb
+	const headData = data.headData
 </script>
 
-<FccLayout {breadcrumb} headData={data.headData}>
-	<PageTitle text="FCC Men's Ministry." />
+<FccLayout {title} {breadcrumb} {headData}>
 	<p class="my-8 text-center text-xl leading-relaxed">
 		Our various activities, events and meetings are all geared towards helping MEN of all ages come together for times
 		of fun, fellowship and teaching with the goals of becoming the spiritual leaders God has designed them to be.

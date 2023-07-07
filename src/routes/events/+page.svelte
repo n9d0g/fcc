@@ -1,17 +1,16 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import PageTitle from '$lib/components/PageTitle.svelte'
-	import { breadcrumbs } from '$lib/constants'
 
 	// server fetching
 	export let data
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.events]
+	const title = data.title
+	const breadcrumb = data.breadcrumb
+	const headData = data.headData
 </script>
 
-<FccLayout {breadcrumb} headData={data.headData}>
-	<PageTitle text="FCC Events." />
-	<section class="container mx-auto">
+<FccLayout {title} {breadcrumb} {headData}>
+	<div class="container mx-auto">
 		<p class="mb-4">Calendar view of the events at FCC.</p>
 		<iframe
 			title="FCC Calendar"
@@ -22,5 +21,5 @@
 			height="900px"
 			class="rounded"
 		/>
-	</section>
+	</div>
 </FccLayout>

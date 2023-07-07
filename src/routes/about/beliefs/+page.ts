@@ -1,7 +1,12 @@
 import { headData } from '$lib/constants'
+import { breadcrumbs } from '$lib/constants'
 
 export const load = () => {
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.about, breadcrumbs.about.beliefs]
+
 	return {
+		title: "Our Beliefs.",
+		breadcrumb: breadcrumb,
 		coreValues: [
 			{
 				title: '1. The Glory of the Triune God',
