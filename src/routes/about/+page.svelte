@@ -1,19 +1,14 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import LandingPageCard from '$lib/components/LandingPageCard.svelte'
-	import PageTitle from '$lib/components/PageTitle.svelte'
-	import { breadcrumbs } from '$lib/constants'
+	import LandingPageGrid from '$lib/components/LandingPageGrid.svelte'
 
 	export let data
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.about]
+	const title = data.title
+	const headData = data.headData
+	const breadcrumb = data.breadcrumb
 </script>
 
-<FccLayout {breadcrumb} headData={data.headData}>
-	<PageTitle text="About FCC." />
-	<div class="my-8 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:my-16 md:grid-cols-3">
-		<LandingPageCard title="Beliefs" link="/about/beliefs" />
-		<LandingPageCard title="Mission & Vision" link="/about/mission-vision" />
-		<LandingPageCard title="Leadership" link="/about/leadership" />
-	</div>
+<FccLayout {title} {breadcrumb} {headData}>
+	<LandingPageGrid items={data.landingPageItems} />
 </FccLayout>

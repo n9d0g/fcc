@@ -3,15 +3,15 @@
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import { breadcrumbs } from '$lib/constants'
 
+	const title = 'FCC | 404'
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.error]
-
 	const headData = {
 		title: 'FCC | 404',
 		description: 'This page does not exist.',
 	}
 </script>
 
-<FccLayout {breadcrumb} {headData}>
+<FccLayout {title} {breadcrumb} {headData}>
 	<section class="my-4 flex min-h-[50vh] flex-col items-center justify-center gap-8 text-center">
 		<h1 class="h1 text-4xl md:text-6xl lg:text-9xl">{$page.status}: {$page.error?.message}</h1>
 		<h2 class="h2">Whoops! Looks like this page doesn't exist.</h2>

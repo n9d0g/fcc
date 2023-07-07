@@ -4,6 +4,7 @@
 	import { setNavActiveState, setActivePath } from '$lib/utils'
 
 	// props
+	export let title: any
 	export let headData: any
 	export let breadcrumb: any
 
@@ -36,6 +37,11 @@
 </svelte:head>
 
 <section class="container mx-auto my-8 flex h-fit flex-col px-4 lg:my-16">
+	<!-- page title -->
+	<div class="mt-6 mb-4 xl:my-8">
+		<h1 class="h1 font-bold">{title}</h1>
+	</div>
+
 	<!-- breadcrumb -->
 	<ol class="breadcrumb flex justify-end">
 		{#each breadcrumb as link, index}

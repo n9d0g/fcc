@@ -1,19 +1,16 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import PageTitle from '$lib/components/PageTitle.svelte'
-	import { breadcrumbs } from '$lib/constants'
 
 	// server fetching
 	export let data
 
 	const links = data.links
-
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.give]
+	const title = data.title
+	const breadcrumb = data.breadcrumb
+	const headData = data.headData
 </script>
 
-<FccLayout {breadcrumb} headData={data.headData}>
-	<PageTitle text="Generosity is a form of Worship." />
-
+<FccLayout {title} {breadcrumb} {headData}>
 	<section>
 		<div class="my-8 grid grid-cols-1 items-center gap-8 md:grid-cols-2">
 			<p class="my-8 text-center text-xl leading-relaxed" data-testid="give-description">

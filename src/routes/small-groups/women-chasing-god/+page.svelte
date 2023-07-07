@@ -1,16 +1,15 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import PageTitle from '$lib/components/PageTitle.svelte'
-	import { breadcrumbs, links } from '$lib/constants'
 
 	export let data
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.smallgroups, breadcrumbs.smallgroups.womenChasingGod]
+	const title = data.title
+	const breadcrumb = data.breadcrumb
+	const headData = data.headData
+	const links = data.links
 </script>
 
-<FccLayout {breadcrumb} headData={data.headData}>
-	<PageTitle text="FCC Women Chasing God Small Group." />
-
+<FccLayout {title} {breadcrumb} {headData}>
 	<div class="flex flex-col gap-4">
 		<div class="w-fit">
 			<a href={links.wcgZoom} target="_blank" class="btn variant-filled"> Join Zoom Meeting </a>

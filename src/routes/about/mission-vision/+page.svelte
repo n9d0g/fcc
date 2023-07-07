@@ -1,20 +1,22 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import PageTitle from '$lib/components/PageTitle.svelte'
-	import { breadcrumbs, missionVision } from '$lib/constants'
 
 	export let data
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.about, breadcrumbs.about.missionVision]
+	const title = data.title
+	const breadcrumb = data.breadcrumb
+	const headData = data.headData
+	const missionVision = data.missionVision
 </script>
 
-<FccLayout {breadcrumb} headData={data.headData}>
-	<PageTitle text="Our Mission & Vision." />
+<FccLayout {title} {breadcrumb} {headData}>
 	<div class="grid gap-4 md:grid-cols-2">
+		<!-- mission -->
 		<div class="flex flex-col items-start justify-start gap-6">
 			<h2 class="h2 font-bold">Our Mission:</h2>
 			<h3 class="h3">{missionVision.mission}</h3>
 		</div>
+		<!-- vision -->
 		<div class="flex flex-col items-start justify-start gap-6">
 			<h2 class="h2 font-bold">Our Vision:</h2>
 			<h3 class="h3">{missionVision.vision}</h3>

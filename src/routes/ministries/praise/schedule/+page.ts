@@ -1,4 +1,4 @@
-import { client, headData } from '$lib/constants'
+import { client, headData, breadcrumbs } from '$lib/constants'
 
 export const load = async () => {
 	const data = await client.fetch(`
@@ -8,8 +8,18 @@ export const load = async () => {
     }
   `)
 
+	const breadcrumb = [
+		breadcrumbs.home,
+		breadcrumbs.ministries,
+		breadcrumbs.ministries.praise,
+		breadcrumbs.ministries.praise.schedule,
+	]
+
+
 	if (data)
 		return {
+			title: "Praise Schedule.",
+			breadcrumb: breadcrumb,
 			praise: data,
 			tableHeader: [
 				'Date 📅',

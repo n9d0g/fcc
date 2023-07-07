@@ -1,4 +1,4 @@
-import { headData, client } from '$lib/constants'
+import { headData, client, breadcrumbs } from '$lib/constants'
 import { updatedDataFiltered } from '$lib/utils'
 
 export const load = async () => {
@@ -8,8 +8,12 @@ export const load = async () => {
     }
   `)
 
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.ministries.prayer]
+
 	if (data) {
 		return {
+			title: "FCC Prayer Ministry.",
+			breadcrumb: breadcrumb,
 			data: updatedDataFiltered(data, 'date'),
 			headData: headData.ministriesPrayer,
 		}

@@ -1,17 +1,18 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import PageTitle from '$lib/components/PageTitle.svelte'
-	import { breadcrumbs } from '$lib/constants'
 	import { Stepper, Step } from '@skeletonlabs/skeleton'
 
 	export let data
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.about, breadcrumbs.about.beliefs]
+	const title = data.title
+	const breadcrumb = data.breadcrumb
+	const headData = data.headData
 </script>
 
-<FccLayout {breadcrumb} headData={data.headData}>
-	<PageTitle text="Our Beliefs." />
+<FccLayout {title} {breadcrumb} {headData}>
 	<h2 class="h2 my-10">Our Core Values</h2>
+
+	<!-- core values -->
 	<Stepper stepTerm="Core Value">
 		{#each data.coreValues as value}
 			<Step>
@@ -22,6 +23,8 @@
 			</Step>
 		{/each}
 	</Stepper>
+
+	<!-- statement of faith -->
 	<h2 class="h2 my-10">Statement of Faith</h2>
 	<Stepper stepTerm="Statement">
 		{#each data.statementsOfFaith as statement}
