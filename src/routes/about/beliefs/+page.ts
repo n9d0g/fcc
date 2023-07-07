@@ -1,5 +1,4 @@
-import { headData } from '$lib/constants'
-import { breadcrumbs } from '$lib/constants'
+import { headData, breadcrumbs } from '$lib/constants'
 
 export const load = () => {
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.about, breadcrumbs.about.beliefs]

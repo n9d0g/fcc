@@ -1,5 +1,4 @@
-import { client, headData } from '$lib/constants'
-import { breadcrumbs } from '$lib/constants'
+import { client, headData, breadcrumbs } from '$lib/constants'
 
 export const load = async () => {
 	const data = await client.fetch(`

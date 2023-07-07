@@ -1,10 +1,13 @@
-import { client, headData } from '$lib/constants'
+import { client, headData, breadcrumbs } from '$lib/constants'
 import { updatedDataFiltered } from '$lib/utils'
 
 export const load = async () => {
 	const data = await client.fetch(`*[_type == "sunday-ministries"]`)
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.ministries.sundayMinistries]
 
 	return {
+		title: "Sunday Ministries.",
+		breadcrumb: breadcrumb,
 		headData: headData.sundayMinistries,
 		tableBody: updatedDataFiltered(data, 'date'),
 		tableHeaders: [

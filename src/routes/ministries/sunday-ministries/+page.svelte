@@ -1,7 +1,6 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import PageTitle from '$lib/components/PageTitle.svelte'
-	import { breadcrumbs, links } from '$lib/constants'
+	import { links } from '$lib/constants'
 	import { getMonth } from '$lib/utils.js'
 
 	export let data
@@ -10,12 +9,12 @@
 	let tHeaders: any = data.tableHeaders
 	let tBody: any = data.tableBody
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.ministries.sundayMinistries]
+	const title = data.title
+	const breadcrumb = data.breadcrumb
+	const headData = data.headData
 </script>
 
-<FccLayout {breadcrumb} headData={data.headData}>
-	<PageTitle text="Sunday Ministries." />
-
+<FccLayout {title} {breadcrumb} {headData}>
 	<!-- responsive container -->
 	<div class="table-container relative">
 		<!-- skeleton table -->

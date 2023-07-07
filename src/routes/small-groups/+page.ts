@@ -1,4 +1,4 @@
-import { headData } from '$lib/constants'
+import { headData, breadcrumbs } from '$lib/constants'
 
 export const load = async () => {
 	const gridData = [
@@ -28,7 +28,11 @@ export const load = async () => {
 		},
 	]
 
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.smallgroups]
+
 	return {
+		title: "Our Small Groups.",
+		breadcrumb: breadcrumb,
 		headData: headData.smallgroups,
 		landingPageItems: gridData,
 	}

@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { Paginator } from '@skeletonlabs/skeleton'
 	import SermonCard from '$lib/components/sermons/SermonCard.svelte'
-	import PageTitle from '$lib/components/PageTitle.svelte'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import { searchFilter } from '$lib/utils'
-	import { breadcrumbs } from '$lib/constants'
 	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
 	import { fade } from 'svelte/transition'
 
@@ -13,6 +11,9 @@
 
 	// variables
 	let speaker = ''
+	const title = data.title
+	const breadcrumb = data.breadcrumb
+	const headData = data.headData
 
 	// functions
 	const sortedSermons = () => {
@@ -28,12 +29,9 @@
 		size: source.length,
 		amounts: [1, 2, 4, 8, 16],
 	}
-
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.sermons]
 </script>
 
-<FccLayout {breadcrumb} headData={data.headData}>
-	<PageTitle text="Sermons." />
+<FccLayout {title} {breadcrumb} {headData}>
 	<!-- search input -->
 	<label class="items-left label relative my-4 flex max-w-fit flex-col gap-2">
 		<span>Filter by speaker:</span>

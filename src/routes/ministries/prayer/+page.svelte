@@ -1,21 +1,20 @@
 <script lang="ts">
-	import FccLayout from '$lib/components/FccLayout.svelte'
-	import PageTitle from '$lib/components/PageTitle.svelte'
-	import { breadcrumbs } from '$lib/constants'
 	import { searchFilter } from '$lib/utils'
-	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
 	import { fade } from 'svelte/transition'
+	import FccLayout from '$lib/components/FccLayout.svelte'
+	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
 
 	// server fetching
 	export let data
 
+	const title = data.title
+	const breadcrumb = data.breadcrumb
+	const headData = data.headData
 	const prayerData = data.data
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.ministries.prayer]
 	let filterQuery = ''
 </script>
 
-<FccLayout {breadcrumb} headData={data.headData}>
-	<PageTitle text="FCC Prayer Ministry." />
+<FccLayout {title} {breadcrumb} {headData}>
 	<!-- copy -->
 	<h2 class="h2 font-bold text-red-500">Please take note of the following:</h2>
 	<ul class="my-2 list-outside list-disc pl-4">
