@@ -1,6 +1,6 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import LandingPageCard from '$lib/components/LandingPageCard.svelte'
+	import LandingPageGrid from '$lib/components/LandingPageGrid.svelte'
 	import PageTitle from '$lib/components/PageTitle.svelte'
 	import { breadcrumbs } from '$lib/constants'
 
@@ -11,9 +11,5 @@
 
 <FccLayout {breadcrumb} headData={data.headData}>
 	<PageTitle text="Our Small Groups." />
-	<div class="my-8 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:my-16 md:grid-cols-3">
-		{#each data.gridData as card}
-			<LandingPageCard title={card.title} link={card.link} />
-		{/each}
-	</div>
+	<LandingPageGrid items={data.landingPageItems} />
 </FccLayout>

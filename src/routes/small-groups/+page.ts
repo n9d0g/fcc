@@ -30,6 +30,6 @@ export const load = async () => {
 
 	return {
 		headData: headData.smallgroups,
-		gridData: gridData,
+		landingPageItems: gridData,
 	}
 }
