@@ -12,7 +12,7 @@ export const load = async () => {
 
 	if (data) {
 		return {
-			title: "FCC Prayer Ministry.",
+			title: 'FCC Prayer Ministry.',
 			breadcrumb: breadcrumb,
 			data: updatedDataFiltered(data, 'date'),
 			headData: headData.ministriesPrayer,

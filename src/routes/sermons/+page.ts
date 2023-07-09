@@ -6,7 +6,7 @@ export const load = async () => {
 
 	if (data)
 		return {
-			title: "Sermons.",
+			title: 'Sermons.',
 			breadcrumb: breadcrumb,
 			sermons: data.sort((a: any, b: any) => (a.date < b.date ? 1 : -1)),
 			headData: headData.sermons,

@@ -6,7 +6,7 @@ export const load = async () => {
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.ministries.sundayMinistries]
 
 	return {
-		title: "Sunday Ministries.",
+		title: 'Sunday Ministries.',
 		breadcrumb: breadcrumb,
 		headData: headData.sundayMinistries,
 		tableBody: updatedDataFiltered(data, 'date'),

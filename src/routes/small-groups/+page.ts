@@ -31,7 +31,7 @@ export const load = async () => {
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.smallgroups]
 
 	return {
-		title: "Our Small Groups.",
+		title: 'Our Small Groups.',
 		breadcrumb: breadcrumb,
 		headData: headData.smallgroups,
 		landingPageItems: gridData,
