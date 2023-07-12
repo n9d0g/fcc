@@ -4,7 +4,7 @@ export const load = () => {
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.about, breadcrumbs.about.beliefs]
 
 	return {
-		title: "Our Beliefs.",
+		title: 'Our Beliefs.',
 		breadcrumb: breadcrumb,
 		coreValues: [
 			{

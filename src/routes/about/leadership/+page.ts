@@ -12,7 +12,7 @@ export const load = async () => {
 
 	if (data) {
 		return {
-			title: "Leadership.",
+			title: 'Leadership.',
 			breadcrumb: breadcrumb,
 			leaders: data.sort((a: any, b: any) => (a.sort > b.sort ? 1 : -1)),
 			headData: headData.leadership,

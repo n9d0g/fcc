@@ -15,10 +15,9 @@ export const load = async () => {
 		breadcrumbs.ministries.praise.schedule,
 	]
 
-
 	if (data)
 		return {
-			title: "Praise Schedule.",
+			title: 'Praise Schedule.',
 			breadcrumb: breadcrumb,
 			praise: data,
 			tableHeader: [

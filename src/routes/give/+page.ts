@@ -4,7 +4,7 @@ export const load = async () => {
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.give]
 
 	return {
-		title: "Generosity is a form of Worship.",
+		title: 'Generosity is a form of Worship.',
 		breadcrumb: breadcrumb,
 		links: {
 			verse1: links.giveVerse1,

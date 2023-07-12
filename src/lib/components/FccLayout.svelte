@@ -49,7 +49,7 @@
 	</ol>
 
 	<!-- page title -->
-	<div class="mt-6 mb-4 xl:my-8">
+	<div class="mb-4 mt-6 xl:my-8">
 		<h1 class="h1 font-bold">{title}</h1>
 	</div>
 
