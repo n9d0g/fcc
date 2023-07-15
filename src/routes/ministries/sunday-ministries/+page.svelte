@@ -18,7 +18,7 @@
 	<!-- responsive container -->
 	<div class="table-container relative">
 		<!-- skeleton table -->
-		<table class="relative table overflow-scroll">
+		<table class="table relative overflow-scroll">
 			<thead>
 				<tr class="variant-filled-secondary sticky top-0 z-10">
 					{#each tHeaders as header, index}
@@ -35,7 +35,7 @@
 			<tbody>
 				{#each tBody as month}
 					<tr class="text-center">
-						<td class="table-cell-fit sticky left-0 pl-3 text-left font-bold bg-surface-100-800-token">
+						<td class="table-cell-fit bg-surface-100-800-token sticky left-0 pl-3 text-left font-bold">
 							{getMonth(month.date)}
 						</td>
 						<td class="whitespace-nowrap pl-3 text-left">{month.presider}</td>

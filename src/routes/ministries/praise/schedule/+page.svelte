@@ -70,7 +70,7 @@
 	</div>
 
 	<!-- autocomplete modal -->
-	<div data-popup="praiseAutocomplete" class="z-30 w-64 rounded-md p-4 text-left bg-surface-100-800-token">
+	<div data-popup="praiseAutocomplete" class="bg-surface-100-800-token z-30 w-64 rounded-md p-4 text-left">
 		<Autocomplete
 			bind:input={leader}
 			options={praiseLeaderOptions}
@@ -85,7 +85,7 @@
 	<!-- schedule table -->
 	<div bind:this={schedTable}>
 		<div class="table-container relative h-[60vh] w-full">
-			<table class="table-hover table-compact relative table overflow-scroll" data-testid="schedule-table">
+			<table class="table table-hover table-compact relative overflow-scroll" data-testid="schedule-table">
 				<thead>
 					<tr class="variant-filled-secondary sticky top-0 z-10">
 						{#each tHead as header, index}
@@ -106,7 +106,7 @@
 								{#each tBody as col}
 									{#if week[col]}
 										{#if col === 'date'}
-											<td class="table-cell-fit sticky left-0 pl-3 text-left bg-surface-100-800-token">
+											<td class="table-cell-fit bg-surface-100-800-token sticky left-0 pl-3 text-left">
 												{week[col]}
 											</td>
 										{:else}
