@@ -21,7 +21,7 @@
 <div class="card card-hover flex h-64 items-center px-4 py-8">
 	<Avatar src={img} width="w-32" height="h-32" rounded="rounded-full" />
 	<div class="flex flex-col">
-		<h4 class="card-header h4 font-bold">{name}</h4>
+		<h4 class="h4 card-header font-bold">{name}</h4>
 		<p class="card-footer italic">{title}</p>
 		<!-- {#if subministries !== null}
 			<button use:popup={popupSettings} type="button" class="btn variant-filled cursor-pointer">Sub-Ministries</button>
