@@ -5,7 +5,7 @@
 	import { modalStore } from '@skeletonlabs/skeleton'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import DetailsTooltip from '$lib/components/ministries/praise/DetailsTooltip.svelte'
-	import { updatedDataFiltered, praiseModalSettings, searchFilter } from '$lib/utils'
+	import { updatedDataFiltered, praiseModalSettings, searchFilter, getMonthDay } from '$lib/utils'
 	import { praiseLeaderOptions, praiseFilterPopupSettings, links } from '$lib/constants'
 	import { fade } from 'svelte/transition'
 	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
@@ -107,7 +107,7 @@
 									{#if week[col]}
 										{#if col === 'date'}
 											<td class="table-cell-fit bg-surface-100-800-token sticky left-0 pl-3 text-left">
-												{week[col]}
+												{getMonthDay(week[col])}
 											</td>
 										{:else}
 											<td class="whitespace-nowrap pl-3 text-left">{week[col]}</td>
