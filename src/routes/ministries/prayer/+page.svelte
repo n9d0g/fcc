@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { searchFilter } from '$lib/utils'
+	import { searchFilter, getMonthDay } from '$lib/utils'
 	import { fade } from 'svelte/transition'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
@@ -78,7 +78,7 @@
 			<tbody>
 				{#each searchFilter(prayerData, 'name', filterQuery) as row}
 					<tr>
-						<td>{row.date}</td>
+						<td>{getMonthDay(row.date)}</td>
 						<td>{row.name}</td>
 						<td>{row.scripture}</td>
 					</tr>

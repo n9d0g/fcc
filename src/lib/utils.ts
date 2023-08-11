@@ -47,6 +47,27 @@ export const getMonth = (temporalDate: string) => {
 	return months[currentMonth - 1]
 }
 
+export const getMonthDay = (temporalDate: string) => {
+	let months = [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December',
+	]
+	let currentMonth: number = Number(temporalDate.slice(5, 7))
+	let currentDay: string = temporalDate.slice(8, 10)
+
+	return months[currentMonth - 1].slice(0, 3) + ' ' + currentDay
+}
+
 // skeleton utils
 export const sermonModalSettings = (
 	title: string,
