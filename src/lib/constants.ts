@@ -22,6 +22,7 @@ export const breadcrumbs = {
 	give: { title: 'Give', href: '/give' },
 	error: { title: 'Error', href: '/error' },
 	events: { title: 'Events', href: '/events' },
+	login: { title: 'Login', href: '/login' },
 	about: {
 		title: 'About',
 		href: '/about',
@@ -294,5 +295,9 @@ export const headData = {
 	events: {
 		title: 'FCC | Events',
 		description: 'FCC Events page for the Freedom in Christ Church.',
+	},
+	login: {
+		title: 'FCC | Login',
+		description: 'FCC Login page for the Freedom in Christ Church.',
 	},
 }
