@@ -21,12 +21,12 @@
 		class="container mx-auto"
 	>
 		<svelte:fragment slot="lead">
-			<a class="anchor" href="/" aria-label="Home Logo Button">
+			<a class="anchor" href="/" aria-label="Home Logo Button" data-sveltekit-preload-data="hover">
 				<Avatar src="/apple-touch-icon.png" class="h-8 w-8 cursor-pointer" />
 			</a>
 		</svelte:fragment>
 
-		<nav class="z-10 hidden items-center justify-center lg:flex lg:gap-4">
+		<nav class="z-10 hidden items-center justify-center lg:flex lg:gap-4" data-sveltekit-preload-data="hover">
 			{#key activeNavValue}
 				{#each navOptions as option}
 					<NavButton text={option.title} link={option.href} nav={activeNavValue} />
