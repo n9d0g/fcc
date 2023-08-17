@@ -18,6 +18,6 @@
 		{/each}
 	</div>
 	<div class="flex justify-center">
-		<a class="btn variant-filled" href="/sermons">View All Sermons</a>
+		<a class="btn variant-filled" href="/sermons" data-sveltekit-preload-data="hover">View All Sermons</a>
 	</div>
 </section>
