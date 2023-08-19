@@ -20,6 +20,9 @@
 		"unlighthouse": "npx unlighthouse --site fcccanada.ca",
 		"unlighthouse:dev": "npx unlighthouse --site dev.fcccanada.ca"
 	},
+	"dependencies": {
+		"ui": "workspace:*"
+	},
 	"devDependencies": {
 		"@floating-ui/dom": "^1.5.1",
 		"@iconify/svelte": "^3.1.4",

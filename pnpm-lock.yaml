@@ -20,41 +20,11 @@ importers:
         specifier: latest
         version: 1.10.12
 
-  apps/docs:
+  apps/fcccanada.ca:
     dependencies:
       ui:
         specifier: workspace:*
         version: link:../../packages/ui
-    devDependencies:
-      '@sveltejs/adapter-auto':
-        specifier: latest
-        version: 2.1.0(@sveltejs/kit@1.22.6)
-      '@sveltejs/kit':
-        specifier: latest
-        version: 1.22.6(svelte@3.58.0)(vite@4.2.1)
-      eslint-config-custom:
-        specifier: workspace:*
-        version: link:../../packages/eslint-config-custom
-      svelte:
-        specifier: ^3.44.0
-        version: 3.58.0
-      svelte-check:
-        specifier: ^2.7.1
-        version: 2.10.3(svelte@3.58.0)
-      svelte-preprocess:
-        specifier: ^4.10.6
-        version: 4.10.7(svelte@3.58.0)(typescript@4.9.5)
-      tslib:
-        specifier: ^2.3.1
-        version: 2.5.0
-      typescript:
-        specifier: ^4.7.2
-        version: 4.9.5
-      vite:
-        specifier: ^4.0.0
-        version: 4.2.1
-
-  apps/fcccanada.ca:
     devDependencies:
       '@floating-ui/dom':
         specifier: ^1.5.1
