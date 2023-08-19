@@ -15,6 +15,7 @@ import MdLightbulbOutline from 'svelte-icons/md/MdLightbulbOutline.svelte'
 import IoMdPeople from 'svelte-icons/io/IoMdPeople.svelte'
 import FaMoneyCheckAlt from 'svelte-icons/fa/FaMoneyCheckAlt.svelte'
 import FaRegCalendar from 'svelte-icons/fa/FaRegCalendar.svelte'
+import IoMdLogIn from 'svelte-icons/io/IoMdLogIn.svelte'
 
 export const breadcrumbs = {
 	home: { title: 'Home', href: '/' },
@@ -115,6 +116,12 @@ export const navOptions = [
 		href: '/give',
 		title: 'Give',
 		icon: FaMoneyCheckAlt,
+	},
+	{
+		// href: '/login',
+		href: '/',
+		title: 'Login',
+		icon: IoMdLogIn,
 	},
 ]
 
