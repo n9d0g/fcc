@@ -8,6 +8,15 @@ importers:
         specifier: ^7.3.0
         version: 7.3.0
     devDependencies:
+      '@semantic-release/git':
+        specifier: ^10.0.1
+        version: 10.0.1(semantic-release@21.0.7)
+      '@semantic-release/github':
+        specifier: ^9.0.4
+        version: 9.0.4(semantic-release@21.0.7)
+      '@semantic-release/npm':
+        specifier: ^10.0.4
+        version: 10.0.4(semantic-release@21.0.7)
       eslint:
         specifier: ^8.0.0
         version: 8.47.0
@@ -17,6 +26,9 @@ importers:
       prettier-plugin-svelte:
         specifier: ^2.7.0
         version: 2.7.0(prettier@2.8.8)(svelte@3.9.2)
+      semantic-release:
+        specifier: ^21.0.7
+        version: 21.0.7
       turbo:
         specifier: latest
         version: 1.10.12
@@ -6652,7 +6664,7 @@ packages:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
     engines: {node: '>=8'}
     dependencies:
-      semver: 6.3.1
+      semver: 6.1.1
 
   /map-obj@1.0.1:
     resolution: {integrity: sha512-7N/q3lyZ+LVCp7PzuxrJr4KMbBE2hW7BT7YNia330OFxIf4d3r5zVpicP2650l7CPN6RM9zOJRl3NGpqSiw3Eg==}
@@ -8463,7 +8475,6 @@ packages:
   /semver@6.1.1:
     resolution: {integrity: sha512-rWYq2e5iYW+fFe/oPPtYJxYgjBm8sC4rmoGdUOgBB7VnwKt6HrL793l2voH1UlsyYZpJ4g0wfjnTEO1s1NP2eQ==}
     hasBin: true
-    dev: false
 
   /semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}

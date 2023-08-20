@@ -1,6 +1,6 @@
 {
-	"name": "fcc",
-	"version": "3.10.1",
+  "name": "fcc",
+  "version": "3.10.1",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -12,9 +12,13 @@
     "fresh:start": "pnpm fresh && pnpm dev"
   },
   "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.0.4",
+    "@semantic-release/npm": "^10.0.4",
     "eslint": "^8.0.0",
     "prettier": "^2.7.1",
     "prettier-plugin-svelte": "^2.7.0",
+    "semantic-release": "^21.0.7",
     "turbo": "latest"
   },
   "packageManager": "pnpm@8.6.10",
