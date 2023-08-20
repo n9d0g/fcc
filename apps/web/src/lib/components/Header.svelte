@@ -35,7 +35,9 @@
 		<nav class="z-10 hidden items-center justify-center lg:flex lg:gap-4" data-sveltekit-preload-data="hover">
 			{#key activeNavValue}
 				{#each navOptions as option}
-					<NavButton text={option.title} link={option.href} nav={activeNavValue} />
+					{#if option.title !== 'Login'}
+						<NavButton text={option.title} link={option.href} nav={activeNavValue} />
+					{/if}
 				{/each}
 			{/key}
 		</nav>
