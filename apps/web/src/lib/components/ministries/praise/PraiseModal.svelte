@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getMonthDayFull } from '$lib/utils'
 	import { modalStore } from '@skeletonlabs/skeleton'
 
 	export let parent: any
@@ -21,7 +22,7 @@
 </script>
 
 <section class={cCard}>
-	<header class={cHeader}>{metaData.date}</header>
+	<header class={cHeader}>{getMonthDayFull(metaData.date)}</header>
 	{#if metaData.speaker}
 		<p><span class="font-bold">Speaker:</span> {metaData.speaker}</p>
 	{/if}
