@@ -2,17 +2,21 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
+    "dev": "dotenv -- turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write .",
-    "clean": "rm -rf node_modules pnpm-lock.yaml apps/*/node_modules apps/*/.svelte-kit apps/*/.turbo"
+    "clean": "rm -rf node_modules pnpm-lock.yaml apps/*/node_modules apps/*/.svelte-kit apps/*/.turbo",
+    "fresh": "pnpm clean && pnpm i",
+    "fresh:start": "pnpm fresh && pnpm dev"
   },
   "devDependencies": {
     "eslint": "^8.0.0",
-    "eslint-config-custom": "workspace:*",
     "prettier": "^2.7.1",
     "prettier-plugin-svelte": "^2.7.0",
     "turbo": "latest"
   },
-  "packageManager": "pnpm@8.6.10"
+  "packageManager": "pnpm@8.6.10",
+  "dependencies": {
+    "dotenv-cli": "^7.3.0"
+  }
 }
