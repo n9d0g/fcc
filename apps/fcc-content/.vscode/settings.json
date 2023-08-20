@@ -1,0 +1,3 @@
+{
+  "conventionalCommits.scopes": ["site", "schema", "versioning", "package"]
+}
