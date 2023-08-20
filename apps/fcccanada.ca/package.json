@@ -1,10 +1,9 @@
 {
-	"name": "fcc",
+	"name": "fcccanada.ca",
 	"version": "3.10.1",
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"preinstall": "npx only-allow pnpm",
 		"dev": "vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview",
