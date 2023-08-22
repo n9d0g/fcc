@@ -24,7 +24,7 @@
 			<hr class="my-4" />
 			<div class="gap:1 logo-cloud mx-auto my-4 flex max-w-[30rem] justify-center lg:gap-4">
 				<a
-					class="text-gray anchor logo-item p-4 transition hover:text-youtube"
+					class="text-gray anchor logo-item hover:text-youtube p-4 transition"
 					href={links.youtube}
 					target="_blank"
 					aria-label="YouTube Link"
@@ -32,7 +32,7 @@
 					<span class=" w-6"><FaYoutube /></span>
 				</a>
 				<a
-					class="text-gray anchor logo-item p-4 transition hover:text-instagram"
+					class="text-gray anchor logo-item hover:text-instagram p-4 transition"
 					href={links.ig}
 					target="_blank"
 					aria-label="Instagram Link"
@@ -40,7 +40,7 @@
 					<span class="w-6"><FaInstagram /></span>
 				</a>
 				<a
-					class="text-gray anchor logo-item p-4 transition hover:text-facebook"
+					class="text-gray anchor logo-item hover:text-facebook p-4 transition"
 					href={links.fb}
 					target="_blank"
 					aria-label="Facebook Link"
@@ -50,7 +50,7 @@
 			</div>
 			<a
 				href={links.ghReleases}
-				class="mx-auto my-4 flex w-fit items-center justify-center text-sm italic text-surface-400 hover:text-secondary-500"
+				class="text-surface-400 hover:text-secondary-500 mx-auto my-4 flex w-fit items-center justify-center text-sm italic"
 			>
 				v{version} (&nbsp;
 				<span class="flex h-4 w-4 items-center justify-center"><GoGitCommit /></span>

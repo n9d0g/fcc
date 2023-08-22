@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { modalStore } from '@skeletonlabs/skeleton'
-	import { sermonModalSettings } from '$lib/utils'
+	import { getMonthDayFull, sermonModalSettings } from '$lib/utils'
 
 	export let title: string
 	export let date: string
@@ -21,5 +21,5 @@
 	<section class="flex flex-col items-start justify-start gap-4 px-4 pb-1 pt-3">
 		<p class="text-start text-sm">{speaker}</p>
 	</section>
-	<footer class="card-footer text-start text-sm">{date}</footer>
+	<footer class="card-footer text-start text-sm">{getMonthDayFull(date)}</footer>
 </button>
