@@ -49,7 +49,7 @@
 			</button>
 			<a
 				href="/"
-				class="btn variant-filled-tertiary hidden md:block"
+				class="btn variant-filled-tertiary hidden lg:block"
 				data-sveltekit-preload-data="hover"
 				use:popup={popupHover}
 			>
