@@ -16,8 +16,8 @@
     "@semantic-release/github": "^9.0.4",
     "@semantic-release/npm": "^10.0.5",
     "eslint": "^8.0.0",
-    "prettier": "^2.7.1",
-    "prettier-plugin-svelte": "^2.7.0",
+    "prettier": "^3.0.2",
+    "prettier-plugin-svelte": "^3.0.3",
     "semantic-release": "^21.0.9",
     "turbo": "latest"
   },
