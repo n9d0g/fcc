@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { getMonthDayFull } from '$lib/utils'
-	import { modalStore } from '@skeletonlabs/skeleton'
+	import { getModalStore } from '@skeletonlabs/skeleton'
 
 	export let parent: any
+
+	const modalStore = getModalStore()
 
 	const metaData = {
 		date: $modalStore[0]?.meta.date,

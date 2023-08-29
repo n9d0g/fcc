@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { modalStore } from '@skeletonlabs/skeleton'
+	import { getModalStore } from '@skeletonlabs/skeleton'
 	import { getMonthDayFull, sermonModalSettings } from '$lib/utils'
 
 	export let title: string
@@ -8,6 +8,8 @@
 	export let scripture: string
 	export let youtube: string
 	export let thumb: string
+
+	const modalStore = getModalStore()
 
 	const handleSermonClick = () => {
 		const setting = sermonModalSettings(title, date, speaker, scripture, youtube)
