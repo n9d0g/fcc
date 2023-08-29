@@ -6,7 +6,6 @@
 	import HomeWelcome from '$lib/components/home/HomeWelcome.svelte'
 	import HomeNextEvent from '$lib/components/home/HomeNextEvent.svelte'
 	import HomeSermons from '$lib/components/home/HomeSermons.svelte'
-	import { fade } from 'svelte/transition'
 	import { headData } from '$lib/constants'
 
 	// props
@@ -43,19 +42,9 @@
 	`}
 </svelte:head>
 
-<div transition:fade={{ duration: 150 }}>
+<div>
 	<Hero />
 	<HomeWelcome {links} />
 	<HomeNextEvent pageInfo={data.pages} />
 	<HomeSermons {sermons} />
 </div>
-
-<style lang="postcss">
-	:global(html) {
-		@apply h-full overflow-hidden;
-	}
-
-	:global(body) {
-		@apply h-full overflow-hidden;
-	}
-</style>

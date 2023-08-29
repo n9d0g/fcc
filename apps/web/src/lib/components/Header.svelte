@@ -32,7 +32,7 @@
 			</a>
 		</svelte:fragment>
 
-		<nav class="z-10 hidden items-center justify-center lg:flex lg:gap-4" data-sveltekit-preload-data="hover">
+		<nav class="z-10 hidden w-full items-center justify-center gap-4 lg:flex" data-sveltekit-preload-data="hover">
 			{#key activeNavValue}
 				{#each navOptions as option}
 					{#if option.title !== 'Login'}
@@ -49,7 +49,7 @@
 			</button>
 			<a
 				href="/"
-				class="btn variant-filled-tertiary hidden md:block"
+				class="btn variant-filled-tertiary hidden lg:block"
 				data-sveltekit-preload-data="hover"
 				use:popup={popupHover}
 			>

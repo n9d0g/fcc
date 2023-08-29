@@ -2,7 +2,7 @@
 	// imports
 	import { popup } from '@skeletonlabs/skeleton'
 	import { Autocomplete } from '@skeletonlabs/skeleton'
-	import { modalStore } from '@skeletonlabs/skeleton'
+	import { getModalStore } from '@skeletonlabs/skeleton'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import DetailsTooltip from '$lib/components/ministries/praise/DetailsTooltip.svelte'
 	import { updatedDataFiltered, praiseModalSettings, searchFilter, getMonthDay } from '$lib/utils'
@@ -18,6 +18,7 @@
 	let tBody: any = data.tableBody
 	let schedTable: any
 	let leader = ''
+	const modalStore = getModalStore()
 	const upToDatePraiseData = updatedDataFiltered(data.praise, 'date')
 	const title = data.title
 	const breadcrumb = data.breadcrumb

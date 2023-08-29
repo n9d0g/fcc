@@ -1,11 +1,13 @@
 <script lang="ts">
-	import { modalStore } from '@skeletonlabs/skeleton'
+	import { getModalStore } from '@skeletonlabs/skeleton'
 	import Youtube from 'svelte-youtube-embed'
 
 	// props
 	export let parent: any
 
 	// variables
+	const modalStore = getModalStore()
+
 	const metaData = {
 		title: $modalStore[0]?.meta.title,
 		speaker: $modalStore[0]?.meta.speaker,

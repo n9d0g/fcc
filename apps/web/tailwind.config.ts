@@ -1,10 +1,17 @@
+import { join } from 'path';
 import type { Config } from 'tailwindcss'
+import { skeleton } from '@skeletonlabs/tw-plugin';
+import { FccTheme } from './fcc-theme';
 
 export default {
 	darkMode: 'class',
 	content: [
 		'./src/**/*.{html,js,svelte,ts}',
-		require('path').join(require.resolve('@skeletonlabs/skeleton'), '../**/*.{html,js,svelte,ts}'),
+		// 3. Append the path to the Skeleton package
+		join(require.resolve(
+			'@skeletonlabs/skeleton'),
+			'../**/*.{html,js,svelte,ts}'
+		)
 	],
 	theme: {
 		extend: {
@@ -20,9 +27,13 @@ export default {
 	},
 	plugins: [
 		require('@tailwindcss/forms'),
-		...require('@skeletonlabs/skeleton/tailwind/skeleton.cjs')(),
 		require('tailwindcss/plugin')(({ addVariant }) => {
 			addVariant('search-cancel', '&::-webkit-search-cancel-button')
 		}),
+		skeleton({
+			themes: {
+				custom: [FccTheme]
+			}
+		})
 	],
 } satisfies Config
