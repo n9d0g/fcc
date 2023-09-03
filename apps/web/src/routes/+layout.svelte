@@ -3,7 +3,7 @@
 	import '../app.postcss'
 
 	// skeleton imports
-	import { AppShell, Modal, storePopup, Toast, initializeStores } from '@skeletonlabs/skeleton'
+	import { AppShell, Modal, storePopup, Toast, initializeStores, getDrawerStore } from '@skeletonlabs/skeleton'
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom'
 
 	// regular imports
@@ -15,12 +15,13 @@
 	import { afterNavigate } from '$app/navigation'
 
 	initializeStores()
-
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow })
 
 	// variables
 	let activePathValue: string = ''
 	activePath.subscribe((value) => (activePathValue = value))
+
+	const drawerStore = getDrawerStore()
 
 	// scroll to top on every navigate
 	afterNavigate((nav) => {
@@ -29,12 +30,12 @@
 </script>
 
 <!-- singleton skeleton components -->
-<SideNav />
+<SideNav {drawerStore} />
 <Toast position="b" />
 <Modal components={modalComponentRegistry} />
 
 <AppShell>
-	<svelte:fragment slot="header"><Header /></svelte:fragment>
+	<svelte:fragment slot="header"><Header {drawerStore} /></svelte:fragment>
 	<slot />
 	<svelte:fragment slot="pageFooter"><Footer /></svelte:fragment>
 </AppShell>

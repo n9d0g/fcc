@@ -17,11 +17,13 @@
 	}
 </script>
 
-<button on:click={handleSermonClick} class="card card-hover flex flex-col items-start justify-start">
-	<img src={thumb} alt="{title} Image" class="w-full rounded-t-lg" />
-	<header class="card-header text-start text-2xl font-bold">{title}</header>
-	<section class="flex flex-col items-start justify-start gap-4 px-4 pb-1 pt-3">
-		<p class="text-start text-sm">{speaker}</p>
-	</section>
+<button on:click={handleSermonClick} class="card card-hover flex flex-col items-start justify-between">
+	<div>
+		<img src={thumb} alt="{title} Image" class="w-full rounded-t-lg" />
+		<header class="card-header text-start text-2xl font-bold">{title}</header>
+		<section class="flex flex-col items-start justify-start gap-4 px-4 pb-1 pt-3">
+			<p class="text-start text-sm">{speaker}</p>
+		</section>
+	</div>
 	<footer class="card-footer text-start text-sm">{getMonthDayFull(date)}</footer>
 </button>

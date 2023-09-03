@@ -1,6 +1,6 @@
 import { activeNav, activePath } from '$lib/stores/store.js'
 import { Temporal } from '@js-temporal/polyfill'
-import { getDrawerStore, type ModalSettings } from '@skeletonlabs/skeleton'
+import type { ModalSettings } from '@skeletonlabs/skeleton'
 
 // exported functions
 export const setNavActiveState = (path: any) => {
@@ -121,14 +121,4 @@ export const praiseModalSettings = (meta: any) => {
 	}
 
 	return settings
-}
-
-export const closeSideNav = () => {
-	const drawerStore = getDrawerStore()
-	return drawerStore.close()
-}
-
-export const openSideNav = (settings: any) => {
-	const drawerStore = getDrawerStore()
-	return drawerStore.open(settings)
 }

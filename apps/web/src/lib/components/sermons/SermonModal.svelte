@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { getModalStore } from '@skeletonlabs/skeleton'
+	import { getMonthDayFull } from '$lib/utils'
 	import Youtube from 'svelte-youtube-embed'
 
 	// props
@@ -26,7 +27,7 @@
 
 	<p><span class="font-bold">Speaker:</span> {metaData.speaker}</p>
 	<p><span class="font-bold">Scripture:</span> {metaData.scripture}</p>
-	<p class="pb-8"><span class="font-bold">Date:</span> {metaData.date}</p>
+	<p class="pb-8"><span class="font-bold">Date:</span>{' '}{getMonthDayFull(metaData.date)}</p>
 	<Youtube id={metaData.youtube} --title-color="transparent" --title-shadow-color="transparent" />
 
 	<footer class="modal-footer {parent.regionFooter}">

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Paginator } from '@skeletonlabs/skeleton'
+	import { Paginator, type PaginationSettings } from '@skeletonlabs/skeleton'
 	import SermonCard from '$lib/components/sermons/SermonCard.svelte'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import { searchFilter } from '$lib/utils'
@@ -24,6 +24,7 @@
 	// pagination
 	const source = Object.keys(sortedSermons())
 	let page = {
+		page: 0,
 		offset: 0,
 		limit: 4,
 		size: source.length,

@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { Avatar, LightSwitch, popup, type PopupSettings } from '@skeletonlabs/skeleton'
+	import { Avatar, LightSwitch, popup, type PopupSettings, type DrawerStore } from '@skeletonlabs/skeleton'
 	import { AppBar } from '@skeletonlabs/skeleton'
 	import Icon from '@iconify/svelte'
 	import NavButton from '$lib/components/NavButton.svelte'
 	import { activeNav } from '$lib/stores/store.js'
-	import { openSideNav } from '$lib/utils'
 	import { navOptions, drawerSettings } from '$lib/constants'
+
+	export let drawerStore: DrawerStore
 
 	// variables
 	let activeNavValue: string
@@ -15,6 +16,10 @@
 		event: 'hover',
 		target: 'popupHover',
 		placement: 'bottom',
+	}
+
+	const openSideNav = () => {
+		drawerStore.open(drawerSettings)
 	}
 </script>
 
@@ -44,7 +49,7 @@
 
 		<svelte:fragment slot="trail">
 			<LightSwitch class="z-0" />
-			<button on:click={() => openSideNav(drawerSettings)} class="z-0" aria-label="Mobile Nav Button">
+			<button on:click={openSideNav} class="z-0" aria-label="Mobile Nav Button">
 				<Icon class="flex h-8 w-8 cursor-pointer lg:hidden" icon="cil:hamburger-menu" />
 			</button>
 			<a
