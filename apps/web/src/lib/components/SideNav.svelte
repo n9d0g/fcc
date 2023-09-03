@@ -1,7 +1,12 @@
 <script lang="ts">
-	import { Drawer } from '@skeletonlabs/skeleton'
-	import { closeSideNav } from '$lib/utils'
+	import { Drawer, type DrawerStore } from '@skeletonlabs/skeleton'
 	import { navOptions } from '$lib/constants'
+
+	export let drawerStore: DrawerStore
+
+	const closeSideNav = () => {
+		drawerStore.close()
+	}
 </script>
 
 <Drawer>
