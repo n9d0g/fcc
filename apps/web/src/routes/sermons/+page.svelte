@@ -3,61 +3,50 @@
 	import SermonCard from '$lib/components/sermons/SermonCard.svelte'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import { searchFilter } from '$lib/utils'
-	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
 	import { fade } from 'svelte/transition'
+	import FilterBy from '$lib/components/FilterBy.svelte'
 
 	// props
 	export let data
 
 	// variables
-	let speaker = ''
-	const title = data.title
-	const breadcrumb = data.breadcrumb
-	const headData = data.headData
+	let bindVal = ''
+	const { title, breadcrumb, headData } = data
 
 	// functions
 	const sortedSermons = () => {
-		if (speaker.length === 0) return data.sermons
-		else return searchFilter(data.sermons, 'speaker', speaker)
+		if (bindVal.length === 0) return data.sermons
+		else return searchFilter(data.sermons, 'speaker', bindVal)
 	}
 
 	// pagination
 	const source = Object.keys(sortedSermons())
-	let page = {
+	let paginationSettings = {
 		page: 0,
-		offset: 0,
 		limit: 4,
 		size: source.length,
 		amounts: [1, 2, 4, 8, 16],
-	}
+	} satisfies PaginationSettings
+
+	$: paginatedSource = sortedSermons().slice(
+		paginationSettings.page * paginationSettings.limit,
+		paginationSettings.page * paginationSettings.limit + paginationSettings.limit
+	)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<!-- search input -->
-	<label class="items-left label relative my-4 flex max-w-fit flex-col gap-2">
-		<span>Filter by speaker:</span>
-		<input class="input w-64" type="text" placeholder="Filter by speaker" bind:value={speaker} />
-		{#if speaker !== ''}
-			<button
-				transition:fade={{ duration: 150 }}
-				on:click={() => (speaker = '')}
-				class="absolute right-2 top-10 h-7 w-7 cursor-pointer rounded-xl"
-			>
-				<IoIosClose />
-			</button>
-		{/if}
-	</label>
+	<FilterBy label="Filter by speaker" bind:bindVal />
 
 	<!-- sermon paginator -->
-	{#key speaker}
-		{#if speaker !== ''}
+	{#key bindVal}
+		{#if bindVal !== ''}
 			<p transition:fade={{ duration: 150 }} class="mx-auto flex justify-center">
 				{sortedSermons().length} result{#if sortedSermons().length !== 1}s{/if} found:
 			</p>
 		{/if}
-		<Paginator bind:settings={page} class="my-8" />
+		<Paginator bind:settings={paginationSettings} showFirstLastButtons={true} class="my-8" />
 		<div class="xs:grid-cols-1 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-			{#each sortedSermons().slice(page.offset * page.limit, page.offset * page.limit + page.limit) as sermon}
+			{#each paginatedSource as sermon}
 				<SermonCard
 					title={sermon.title}
 					date={sermon.date}
@@ -68,6 +57,6 @@
 				/>
 			{/each}
 		</div>
-		<Paginator bind:settings={page} class="my-8 md:hidden" />
+		<Paginator bind:settings={paginationSettings} class="my-8 md:hidden" />
 	{/key}
 </FccLayout>
