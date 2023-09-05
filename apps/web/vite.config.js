@@ -6,8 +6,8 @@ export default defineConfig({
 	server: {
 		port: 42069,
 		fs: {
-			allow: ['../../']
-		}
+			allow: ['../../'],
+		},
 	},
 	plugins: [sveltekit()],
 	define: {

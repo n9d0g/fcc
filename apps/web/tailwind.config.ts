@@ -1,17 +1,14 @@
-import { join } from 'path';
+import { join } from 'path'
 import type { Config } from 'tailwindcss'
-import { skeleton } from '@skeletonlabs/tw-plugin';
-import { FccTheme } from './fcc-theme';
+import { skeleton } from '@skeletonlabs/tw-plugin'
+import { FccTheme } from './fcc-theme'
 
 export default {
 	darkMode: 'class',
 	content: [
 		'./src/**/*.{html,js,svelte,ts}',
 		// 3. Append the path to the Skeleton package
-		join(require.resolve(
-			'@skeletonlabs/skeleton'),
-			'../**/*.{html,js,svelte,ts}'
-		)
+		join(require.resolve('@skeletonlabs/skeleton'), '../**/*.{html,js,svelte,ts}'),
 	],
 	theme: {
 		extend: {
@@ -32,8 +29,8 @@ export default {
 		}),
 		skeleton({
 			themes: {
-				custom: [FccTheme]
-			}
-		})
+				custom: [FccTheme],
+			},
+		}),
 	],
 } satisfies Config
