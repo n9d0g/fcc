@@ -45,7 +45,10 @@ export const breadcrumbs = {
 			href: '/ministries/praise',
 			schedule: { title: 'Schedule', href: '/ministries/praise/schedule' },
 		},
-		sundayMinistries: { title: 'Sunday Ministries', href: '/sunday-ministries' },
+		sundayMinistries: {
+			title: 'Sunday Ministries',
+			href: '/sunday-ministries',
+		},
 	},
 	smallgroups: {
 		title: 'Small Groups',
@@ -133,16 +136,20 @@ export const links = {
 	googleMaps:
 		'https://www.google.ca/maps/place/5225+Orbitor+Dr,+Mississauga,+ON+L4W+4Y8/@43.6598788,-79.6065117,17z/data=!3m1!4b1!4m6!3m5!1s0x882b38554ef96393:0x5a2b697b840d7a7d!8m2!3d43.6598749!4d-79.604323!16s%2Fg%2F11b8v4jvnm',
 	zoom: 'https://us04web.zoom.us/j/3926981154?pwd=d1BHRTB3eStxZFZIS3lyWHBieENvZz09&fbclid=IwAR1N4y1LI5zX5bPnAABrXd_8ICuFko9Hw_5HV2P4wWj7U6JmALskzjO3H_U',
-	wcgZoom: 'https://us02web.zoom.us/j/84949409295?fbclid=IwAR1XvSL40DFoW08G9r1BQiZbUjPVqt9sjF8wvn8dLt-keLxCJ-8Kfrmv0ys',
-	giveVerse1: 'https://www.biblegateway.com/passage/?search=2%20Corinthians%209%3A7&version=NIV',
-	giveVerse2: 'https://www.biblegateway.com/passage/?search=2+Corinthians+9%3A8&version=NIV',
+	wcgZoom:
+		'https://us02web.zoom.us/j/84949409295?fbclid=IwAR1XvSL40DFoW08G9r1BQiZbUjPVqt9sjF8wvn8dLt-keLxCJ-8Kfrmv0ys',
+	giveVerse1:
+		'https://www.biblegateway.com/passage/?search=2%20Corinthians%209%3A7&version=NIV',
+	giveVerse2:
+		'https://www.biblegateway.com/passage/?search=2+Corinthians+9%3A8&version=NIV',
 	etransfer: 'emailto:fcc.fcac@gmail.com',
 	excel:
 		'https://docs.google.com/spreadsheets/d/1gv-DJ-_FxW-Fuxn4-XR-Fn3QKZ2moV4mrHC2ZMK8MVg/edit?fbclid=IwAR3r7tba-AQl-KZ6BQAFm0lIICqMMKIF-2y7qySr9DfwFl9Xbib4DDD1JrQ#gid=496042209',
 }
 
 export const missionVision = {
-	mission: 'To introduce and represent Christ through our nurturing, small group-driven ministries in the community.',
+	mission:
+		'To introduce and represent Christ through our nurturing, small group-driven ministries in the community.',
 	vision:
 		'A Christ-centred, Holy Spirit-led community committed to the building of strong relationships and planting of healthy reproducing churches.',
 }
@@ -196,7 +203,8 @@ export const praiseFilterPopupSettings: PopupSettings = {
 export const headData = {
 	home: {
 		title: 'Freedom in Christ Church.',
-		description: 'Official website for the Freedom in Christ Church located in Mississauga, ON.',
+		description:
+			'Official website for the Freedom in Christ Church located in Mississauga, ON.',
 	},
 	about: {
 		title: 'FCC | About',
@@ -228,15 +236,18 @@ export const headData = {
 	},
 	schedule: {
 		title: 'FCC | Praise Schedule',
-		description: 'Praise & Worship Schedule page for the Freedom in Christ Church.',
+		description:
+			'Praise & Worship Schedule page for the Freedom in Christ Church.',
 	},
 	give: {
 		title: 'FCC | Give',
-		description: 'Give / Offering page for the Freedom in Christ Church. Generosity is a form of Worship.',
+		description:
+			'Give / Offering page for the Freedom in Christ Church. Generosity is a form of Worship.',
 	},
 	sundayMinistries: {
 		title: 'FCC | Sunday Ministries',
-		description: 'Sunday Ministries page for the Freedom in Christ Church. Generosity is a form of Worship.',
+		description:
+			'Sunday Ministries page for the Freedom in Christ Church. Generosity is a form of Worship.',
 	},
 	ministriesMen: {
 		title: 'FCC | Ministries - Men',
@@ -253,7 +264,8 @@ export const headData = {
 	},
 	ministriesYA: {
 		title: 'FCC | Ministries - YA',
-		description: "Young Adults' Ministry page for the Freedom in Christ Church.",
+		description:
+			"Young Adults' Ministry page for the Freedom in Christ Church.",
 	},
 	ministriesYouth: {
 		title: 'FCC | Ministries - Youth',
@@ -269,35 +281,43 @@ export const headData = {
 	},
 	smallgroupsMacasaquit: {
 		title: 'FCC | Macasaquit Small Group',
-		description: 'Macasaquit Small Group page for the Freedom in Christ Church.',
+		description:
+			'Macasaquit Small Group page for the Freedom in Christ Church.',
 	},
 	smallgroupsYumul: {
 		title: 'FCC | Partners in Prayer Bible Study',
-		description: 'Partners in Prayer Bible Study Small Group page for the Freedom in Christ Church.',
+		description:
+			'Partners in Prayer Bible Study Small Group page for the Freedom in Christ Church.',
 	},
 	smallgroupsSouthMississauga: {
 		title: 'FCC | South Mississauga Small Group',
-		description: 'South Mississauga Small Group page for the Freedom in Christ Church.',
+		description:
+			'South Mississauga Small Group page for the Freedom in Christ Church.',
 	},
 	smallgroupsUBS: {
 		title: 'FCC | University Bible Study Small Group',
-		description: 'University Bible Study Small Group page for the Freedom in Christ Church.',
+		description:
+			'University Bible Study Small Group page for the Freedom in Christ Church.',
 	},
 	smallgroupsWCG: {
 		title: 'FCC | Women Chasing God Small Group',
-		description: 'Women Chasing God Small Group page for the Freedom in Christ Church.',
+		description:
+			'Women Chasing God Small Group page for the Freedom in Christ Church.',
 	},
 	smallgroupsYA: {
 		title: "FCC | Young Adults' Small Group",
-		description: "Young Adults' Small Group page for the Freedom in Christ Church.",
+		description:
+			"Young Adults' Small Group page for the Freedom in Christ Church.",
 	},
 	smallgroupsYAMen: {
 		title: "FCC | Men's YA Small Group",
-		description: "Men's Young Adults' Small Group page for the Freedom in Christ Church.",
+		description:
+			"Men's Young Adults' Small Group page for the Freedom in Christ Church.",
 	},
 	smallgroupsYAWomen: {
 		title: "FCC | Women's YA Small Group",
-		description: "Women's Young Adults' Small Group page for the Freedom in Christ Church.",
+		description:
+			"Women's Young Adults' Small Group page for the Freedom in Christ Church.",
 	},
 	events: {
 		title: 'FCC | Events',

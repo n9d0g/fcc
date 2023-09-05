@@ -1,7 +1,11 @@
 import { headData, breadcrumbs } from '$lib/constants'
 
 export const load = async () => {
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.smallgroups, breadcrumbs.smallgroups.ya]
+	const breadcrumb = [
+		breadcrumbs.home,
+		breadcrumbs.smallgroups,
+		breadcrumbs.smallgroups.ya,
+	]
 
 	return {
 		title: 'FCC Young Adults Small Group.',
