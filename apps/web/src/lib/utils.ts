@@ -17,13 +17,21 @@ export const setActivePath = (path: any) => {
 	activePath.set(path)
 }
 
-export const searchFilter = (array: any, arrayField: any, searchTerm: string) => {
-	return array.filter((item: any) => item[arrayField].toLowerCase().includes(searchTerm.toLowerCase()))
+export const searchFilter = (
+	array: any,
+	arrayField: any,
+	searchTerm: string
+) => {
+	return array.filter((item: any) =>
+		item[arrayField].toLowerCase().includes(searchTerm.toLowerCase())
+	)
 }
 
 export const updatedDataFiltered = (array: any, field: string) => {
 	return array
-		.filter((item: any) => item[field] >= Temporal.Now.plainDateISO().toString())
+		.filter(
+			(item: any) => item[field] >= Temporal.Now.plainDateISO().toString()
+		)
 		.sort((a: any, b: any) => (a[field] > b[field] ? 1 : -1))
 }
 

@@ -1,7 +1,11 @@
 import { headData, breadcrumbs } from '$lib/constants'
 
 export const load = () => {
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.about, breadcrumbs.about.beliefs]
+	const breadcrumb = [
+		breadcrumbs.home,
+		breadcrumbs.about,
+		breadcrumbs.about.beliefs,
+	]
 
 	return {
 		title: 'Our Beliefs.',

@@ -3,7 +3,11 @@ import { updatedDataFiltered } from '$lib/utils'
 
 export const load = async () => {
 	const data = await client.fetch(`*[_type == "sunday-ministries"]`)
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries, breadcrumbs.ministries.sundayMinistries]
+	const breadcrumb = [
+		breadcrumbs.home,
+		breadcrumbs.ministries,
+		breadcrumbs.ministries.sundayMinistries,
+	]
 
 	return {
 		title: 'Sunday Ministries.',

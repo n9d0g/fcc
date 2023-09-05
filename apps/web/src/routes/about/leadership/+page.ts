@@ -8,7 +8,11 @@ export const load = async () => {
     }
   `)
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.about, breadcrumbs.about.leadership]
+	const breadcrumb = [
+		breadcrumbs.home,
+		breadcrumbs.about,
+		breadcrumbs.about.leadership,
+	]
 
 	if (data) {
 		return {

@@ -1,11 +1,9 @@
 <script lang="ts">
-	import { version } from '$app/environment'
 	import { links } from '$lib/constants'
 	import { AppBar, Avatar, LightSwitch } from '@skeletonlabs/skeleton'
 	import FaFacebook from 'svelte-icons/fa/FaFacebook.svelte'
 	import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
 	import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte'
-	import GoGitCommit from 'svelte-icons/go/GoGitCommit.svelte'
 </script>
 
 <div class="bg-surface-100-800-token">
@@ -22,7 +20,9 @@
 		</svelte:fragment>
 		<svelte:fragment slot="headline">
 			<hr class="my-4" />
-			<div class="gap:1 logo-cloud mx-auto my-4 flex max-w-[30rem] justify-center lg:gap-4">
+			<div
+				class="gap:1 logo-cloud mx-auto my-4 flex max-w-[30rem] justify-center lg:gap-4"
+			>
 				<a
 					class="text-gray anchor logo-item hover:text-youtube p-4 transition"
 					href={links.youtube}
@@ -48,17 +48,9 @@
 					<span class="w-6"><FaFacebook /></span>
 				</a>
 			</div>
-			<a
-				href={links.ghReleases}
-				class="text-surface-400 hover:text-secondary-500 mx-auto my-4 flex w-fit items-center justify-center text-sm italic"
-			>
-				v{version} (&nbsp;
-				<span class="flex h-4 w-4 items-center justify-center"><GoGitCommit /></span>
-
-				<!-- svelte-ignore missing-declaration -->
-				&nbsp;{__LAST_COMMIT__.slice(0, 7)})
-			</a>
-			<p class="text-center">© Copyright by Freedom in Christ Church Canada. All Rights Reserved.</p>
+			<p class="text-center">
+				© Copyright by Freedom in Christ Church Canada. All Rights Reserved.
+			</p>
 		</svelte:fragment>
 		<svelte:fragment slot="trail"><LightSwitch /></svelte:fragment>
 	</AppBar>
