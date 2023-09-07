@@ -22,10 +22,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - name: install deps
-        run: npm install
+        run: npm ci
       - name: build
-        run: npm build
+        run: npm run build
       - name: run semantic-release
-        run: npm exec semantic-release
+        run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
