@@ -4,25 +4,26 @@
 	"private": true,
 	"scripts": {
 		"build": "turbo run build",
-		"dev": "dotenv -- turbo run dev",
+		"dev": "turbo run dev",
 		"lint": "turbo run lint",
 		"format": "prettier --write .",
-		"clean": "rm -rf node_modules pnpm-lock.yaml apps/*/node_modules apps/*/.svelte-kit apps/*/.turbo",
-		"fresh": "pnpm clean && pnpm i && pnpm format",
-		"fresh:start": "pnpm fresh && pnpm dev"
+		"clean": "rm -rf node_modules package-lock.json apps/*/node_modules apps/*/package-lock.json apps/*/.svelte-kit apps/*/.turbo",
+		"fresh": "npm run clean && npm i --legacy-peer-deps && npm run format",
+		"fresh:start": "npm run fresh && npm run dev"
 	},
 	"devDependencies": {
 		"@semantic-release/git": "^10.0.1",
 		"@semantic-release/github": "^9.0.4",
 		"@semantic-release/npm": "^10.0.5",
-		"eslint": "^8.0.0",
+		"eslint": "^8.48.0",
 		"prettier": "^3.0.3",
 		"prettier-plugin-svelte": "^3.0.3",
 		"semantic-release": "^21.0.9",
+		"tsconfig": "*",
 		"turbo": "latest"
 	},
-	"packageManager": "pnpm@8.6.10",
-	"dependencies": {
-		"dotenv-cli": "^7.3.0"
-	}
+	"packageManager": "npm@9.5.0",
+	"workspaces": [
+		"apps/*"
+	]
 }

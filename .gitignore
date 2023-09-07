@@ -14,6 +14,8 @@ coverage
 # misc
 .DS_Store
 *.pem
+apps/*/dist
+apps/*/.sanity
 
 # debug
 npm-debug.log*
