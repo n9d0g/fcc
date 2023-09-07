@@ -15,13 +15,13 @@
 		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"fresh": "rm -rf node_modules .svelte-kit playwright-report test-results pnpm-lock.yaml .unlighthouse && pnpm install && pnpm format",
-		"fresh:start": "pnpm fresh && pnpm dev",
+		"fresh": "rm -rf node_modules .svelte-kit playwright-report test-results .unlighthouse && npm i && npm run format",
+		"fresh:start": "npm run fresh && npm run dev",
 		"unlighthouse": "npx unlighthouse --site fcccanada.ca",
 		"unlighthouse:dev": "npx unlighthouse --site dev.fcccanada.ca"
 	},
 	"dependencies": {
-		"ui": "workspace:*",
+		"ui": "*",
 		"vite-plugin-tailwind-purgecss": "^0.1.3"
 	},
 	"devDependencies": {

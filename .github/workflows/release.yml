@@ -16,19 +16,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 7
       - name: use node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
+          cache: 'npm'
       - name: install deps
-        run: pnpm install
+        run: npm install
       - name: build
-        run: pnpm build
+        run: npm build
       - name: run semantic-release
-        run: pnpm exec semantic-release
+        run: npm exec semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,8 +1,8 @@
-import { defineConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
-import { visionTool } from '@sanity/vision'
-import { schemaTypes } from './schemas'
-import { scheduledPublishing } from '@sanity/scheduled-publishing'
+import {defineConfig} from 'sanity'
+import {deskTool} from 'sanity/desk'
+import {visionTool} from '@sanity/vision'
+import {schemaTypes} from './schemas'
+import {scheduledPublishing} from '@sanity/scheduled-publishing'
 
 export default defineConfig({
   name: 'default',

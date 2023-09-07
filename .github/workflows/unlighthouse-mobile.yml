@@ -9,16 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 7
       - name: use node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
+          cache: 'npm'
       - name: install unlighthouse and puppeteer
-        run: pnpm install -g @unlighthouse/cli puppeteer
+        run: npm install -g @unlighthouse/cli puppeteer
       - name: mobile prod site workflow
         if: contains(github.ref, 'main')
         run: unlighthouse-ci --site fcccanada.ca --reporter jsonExpanded --budget 90

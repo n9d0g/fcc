@@ -5,14 +5,13 @@
   "main": "package.json",
   "license": "UNLICENSED",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "dev": "sanity dev --port 6969",
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy",
-    "fresh": "rm -rf node_modules dist && pnpm i && pnpm build",
-    "fresh:start": "pnpm fresh && pnpm dev"
+    "fresh": "rm -rf node_modules dist && npm i && npm run build",
+    "fresh:start": "npm run fresh && npm run dev"
   },
   "keywords": [
     "sanity"
@@ -24,7 +23,7 @@
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
     "sanity": "^3.14.1",
-    "styled-components": "^6.0.2"
+    "styled-components": "6.0.2"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^2.0.1",
