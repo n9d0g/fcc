@@ -57,5 +57,8 @@
 	},
 	"lint-staged": {
 		"**/*": "prettier --write --ignore-unknown"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.38.0"
 	}
 }
