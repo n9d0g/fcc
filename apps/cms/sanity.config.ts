@@ -2,7 +2,6 @@ import {defineConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
-import {scheduledPublishing} from '@sanity/scheduled-publishing'
 
 export default defineConfig({
   name: 'default',
@@ -11,7 +10,7 @@ export default defineConfig({
   projectId: 'ygo45klz',
   dataset: 'production',
 
-  plugins: [deskTool(), visionTool(), scheduledPublishing()],
+  plugins: [deskTool(), visionTool()],
 
   schema: {
     types: schemaTypes,
