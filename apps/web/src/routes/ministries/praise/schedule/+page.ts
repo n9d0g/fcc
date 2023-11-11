@@ -55,6 +55,65 @@ export const load = async () => {
 				'pdfURL',
 			],
 			headData: headData.schedule,
+			worshipAssignments: [
+				{
+					leader: 'James',
+					acousticGuitar: 'Ian',
+					keys: 'Ally (late 2024 👀)',
+					bass: 'Ian',
+					drums: 'James',
+					electric: 'Nathan',
+					backup: 'Frances',
+				},
+				{
+					leader: 'John',
+					acousticGuitar: 'John',
+					keys: 'Joi',
+					bass: 'John',
+					drums: 'Miguel',
+					backup: 'Ian',
+				},
+				{
+					leader: 'Joi',
+					acousticGuitar: 'Nathan',
+					keys: 'Nathan',
+					bass: 'Nathan',
+					drums: 'Nathan',
+					backup: 'James',
+				},
+				{
+					leader: 'Nathan',
+					acousticGuitar: 'Rommel',
+					keys: 'Noreen',
+					bass: 'Noreen',
+					backup: 'John',
+				},
+				{
+					leader: 'Raquel',
+					keys: 'Rommel',
+					bass: 'Rommel',
+					backup: 'Joi',
+				},
+				{
+					leader: 'Rommel',
+					backup: 'Nathan',
+				},
+				{
+					backup: 'Noreen',
+				},
+				{
+					backup: 'Raquel',
+				},
+				{
+					backup: 'Rommel',
+				},
+				{
+					backup: 'Ymuz',
+				},
+				{
+					backup: 'Yana',
+				},
+			],
 		}
 
 	return {
