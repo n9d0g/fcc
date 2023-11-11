@@ -5,10 +5,20 @@
 	import { getModalStore } from '@skeletonlabs/skeleton'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import DetailsTooltip from '$lib/components/ministries/praise/DetailsTooltip.svelte'
-	import { updatedDataFiltered, praiseModalSettings, searchFilter, getMonthDay } from '$lib/utils'
-	import { praiseLeaderOptions, praiseFilterPopupSettings, links } from '$lib/constants'
+	import {
+		updatedDataFiltered,
+		praiseModalSettings,
+		searchFilter,
+		getMonthDay,
+	} from '$lib/utils'
+	import {
+		praiseLeaderOptions,
+		praiseFilterPopupSettings,
+		links,
+	} from '$lib/constants'
 	import { fade } from 'svelte/transition'
 	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
+	import WorshipAssignments from '$lib/components/ministries/praise/WorshipAssignments.svelte'
 
 	// server fetching
 	export let data
@@ -18,6 +28,8 @@
 	let tBody: any = data.tableBody
 	let schedTable: any
 	let leader = ''
+	let worshipAssignments: any = data.worshipAssignments
+
 	const modalStore = getModalStore()
 	const upToDatePraiseData = updatedDataFiltered(data.praise, 'date')
 	const title = data.title
@@ -71,7 +83,10 @@
 	</div>
 
 	<!-- autocomplete modal -->
-	<div data-popup="praiseAutocomplete" class="bg-surface-100-800-token z-30 w-64 rounded-md p-4 text-left">
+	<div
+		data-popup="praiseAutocomplete"
+		class="bg-surface-100-800-token z-30 w-64 rounded-md p-4 text-left"
+	>
 		<Autocomplete
 			bind:input={leader}
 			options={praiseLeaderOptions}
@@ -86,12 +101,17 @@
 	<!-- schedule table -->
 	<div bind:this={schedTable}>
 		<div class="table-container relative h-[60vh] w-full">
-			<table class="table-hover table-compact relative table overflow-scroll" data-testid="schedule-table">
+			<table
+				class="table-hover table-compact relative table overflow-scroll"
+				data-testid="schedule-table"
+			>
 				<thead>
 					<tr class="variant-filled-secondary sticky top-0 z-10">
 						{#each tHead as header, index}
 							{#if index === 0}
-								<th class="table-cell-fit variant-filled-secondary sticky left-0 z-30 p-3 text-left font-bold">
+								<th
+									class="table-cell-fit variant-filled-secondary sticky left-0 z-30 p-3 text-left font-bold"
+								>
 									{header}
 								</th>
 							{:else}
@@ -107,11 +127,15 @@
 								{#each tBody as col}
 									{#if week[col]}
 										{#if col === 'date'}
-											<td class="table-cell-fit bg-surface-100-800-token sticky left-0 pl-3 text-left">
+											<td
+												class="table-cell-fit bg-surface-100-800-token sticky left-0 pl-3 text-left"
+											>
 												{getMonthDay(week[col])}
 											</td>
 										{:else}
-											<td class="whitespace-nowrap pl-3 text-left">{week[col]}</td>
+											<td class="whitespace-nowrap pl-3 text-left"
+												>{week[col]}</td
+											>
 										{/if}
 									{:else}
 										<td class="text-left" />
@@ -127,6 +151,12 @@
 
 	<!-- link to excel sheet -->
 	<div class="my-8 flex w-full justify-center">
-		<a href={links.excel} target="_blank" class="btn variant-filled"> Excel Data Sheet </a>
+		<a href={links.excel} target="_blank" class="btn variant-filled">
+			Excel Data Sheet
+		</a>
 	</div>
+
+	<hr />
+
+	<WorshipAssignments worshipAssignmentsData={worshipAssignments} />
 </FccLayout>
