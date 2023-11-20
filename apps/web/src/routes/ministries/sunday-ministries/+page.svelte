@@ -23,7 +23,9 @@
 				<tr class="variant-filled-secondary sticky top-0 z-10">
 					{#each tHeaders as header, index}
 						{#if index === 0}
-							<th class="table-cell-fit variant-filled-secondary sticky left-0 z-30 p-3 text-left font-bold">
+							<th
+								class="variant-filled-secondary table-cell-fit sticky left-0 z-30 p-3 text-left font-bold"
+							>
 								{header}
 							</th>
 						{:else}
@@ -35,22 +37,37 @@
 			<tbody>
 				{#each tBody as month}
 					<tr class="text-center">
-						<td class="table-cell-fit bg-surface-100-800-token sticky left-0 pl-3 text-left font-bold">
+						<td
+							class="bg-surface-100-800-token table-cell-fit sticky left-0 pl-3 text-left font-bold"
+						>
 							{getMonth(month.date)}
 						</td>
 						<td class="whitespace-nowrap pl-3 text-left">{month.presider}</td>
 						<td class="whitespace-nowrap pl-3 text-left">{month.invites}</td>
-						<td class="whitespace-nowrap pl-3 text-left">{month.openingPrayer}</td>
-						<td class="whitespace-nowrap pl-3 text-left">{month.closingPrayer}</td>
-						<td class="whitespace-nowrap pl-3 text-left">{month.offeringUshers}</td>
+						<td class="whitespace-nowrap pl-3 text-left"
+							>{month.openingPrayer}</td
+						>
+						<td class="whitespace-nowrap pl-3 text-left"
+							>{month.closingPrayer}</td
+						>
+						<td class="whitespace-nowrap pl-3 text-left"
+							>{month.offeringUshers}</td
+						>
 						<td class="whitespace-nowrap pl-3 text-left">{month.powerpoint}</td>
-						<td class="whitespace-nowrap pl-3 text-left">{month.crawlersToddlers}</td>
+						<td class="whitespace-nowrap pl-3 text-left"
+							>{month.crawlersToddlers}</td
+						>
 						<td class="whitespace-nowrap pl-3 text-left">{month.ssYoung}</td>
 						<td class="whitespace-nowrap pl-3 text-left">{month.ssOld}</td>
-						<td class="whitespace-nowrap pl-3 text-left">{month.communionPresider}</td>
-						<td class="whitespace-nowrap pl-3 text-left">{month.coffeeBreakfast}</td>
+						<td class="whitespace-nowrap pl-3 text-left"
+							>{month.communionPresider}</td
+						>
+						<td class="whitespace-nowrap pl-3 text-left"
+							>{month.coffeeBreakfast}</td
+						>
 						<td class="whitespace-nowrap pl-3 text-left">{month.counters}</td>
-						<td class="whitespace-nowrap pl-3 text-left">{month.setupUshers}</td>
+						<td class="whitespace-nowrap pl-3 text-left">{month.setupUshers}</td
+						>
 					</tr>
 				{/each}
 			</tbody>
@@ -59,6 +76,8 @@
 
 	<!-- link to excel sheet -->
 	<div class="my-8 flex w-full justify-center">
-		<a href={links.excel} target="_blank" class="btn variant-filled"> Excel Data Sheet </a>
+		<a href={links.excel} target="_blank" class="variant-filled btn">
+			Excel Data Sheet
+		</a>
 	</div>
 </FccLayout>

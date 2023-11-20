@@ -17,16 +17,19 @@
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<p class="my-8 text-xl leading-relaxed lg:w-10/12">
-		Our various activities, events and meetings are all geared towards helping MEN of all ages come together for times
-		of fun, fellowship and teaching with the goals of becoming the spiritual leaders God has designed them to be.
+		Our various activities, events and meetings are all geared towards helping
+		MEN of all ages come together for times of fun, fellowship and teaching with
+		the goals of becoming the spiritual leaders God has designed them to be.
 		<br />
 		<br />
-		For more information of these and other upcoming events with the Men's Ministry at the Church, please contact Bro June
-		Bermudo!
+		For more information of these and other upcoming events with the Men's Ministry
+		at the Church, please contact Bro June Bermudo!
 	</p>
 	<!-- svelte-ignore a11y-img-redundant-alt -->
 	<img src={cover} alt="Men's Ministry Cover Photo" class="h-auto w-full" />
-	<div class="my-8 grid grid-cols-1 justify-center gap-8 align-middle md:grid-cols-3">
+	<div
+		class="my-8 grid grid-cols-1 justify-center gap-8 align-middle md:grid-cols-3"
+	>
 		<div class="flex justify-center">
 			<!-- svelte-ignore a11y-media-has-caption -->
 			<video controls class="flex align-middle">

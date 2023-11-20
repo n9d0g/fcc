@@ -41,7 +41,9 @@
 	<ol class="breadcrumb flex justify-end">
 		{#each breadcrumb as link, index}
 			{#if index !== breadcrumb.length - 1}
-				<li class="crumb capitalize"><a class="anchor" href={link.href}>{link.title}</a></li>
+				<li class="crumb capitalize">
+					<a class="anchor" href={link.href}>{link.title}</a>
+				</li>
 				<li class="crumb-separator" aria-hidden="true">&rsaquo;</li>
 			{/if}
 		{/each}

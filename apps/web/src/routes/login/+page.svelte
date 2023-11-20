@@ -26,11 +26,13 @@
 
 			<!-- forgot pw -->
 			<div class="flex w-full justify-end">
-				<a href="/" class="w-fit italic text-gray-600 hover:underline">Forgot your password?</a>
+				<a href="/" class="w-fit italic text-gray-600 hover:underline"
+					>Forgot your password?</a
+				>
 			</div>
 
 			<!-- login button -->
-			<button class="btn variant-filled"> Continue </button>
+			<button class="variant-filled btn"> Continue </button>
 		</form>
 	</section>
 </FccLayout>

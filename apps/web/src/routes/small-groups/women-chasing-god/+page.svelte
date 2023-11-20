@@ -12,7 +12,9 @@
 <FccLayout {title} {breadcrumb} {headData}>
 	<div class="flex flex-col gap-4">
 		<div class="w-fit">
-			<a href={links.wcgZoom} target="_blank" class="btn variant-filled"> Join Zoom Meeting </a>
+			<a href={links.wcgZoom} target="_blank" class="variant-filled btn">
+				Join Zoom Meeting
+			</a>
 		</div>
 		<p>Meeting ID: <span class="font-bold"> 849 4940 9295 </span></p>
 	</div>

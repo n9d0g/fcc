@@ -30,7 +30,8 @@
 
 	$: paginatedSource = sortedSermons().slice(
 		paginationSettings.page * paginationSettings.limit,
-		paginationSettings.page * paginationSettings.limit + paginationSettings.limit
+		paginationSettings.page * paginationSettings.limit +
+			paginationSettings.limit
 	)
 </script>
 
@@ -40,12 +41,21 @@
 	<!-- sermon paginator -->
 	{#key bindVal}
 		{#if bindVal !== ''}
-			<p transition:fade={{ duration: 150 }} class="mx-auto flex justify-center">
+			<p
+				transition:fade={{ duration: 150 }}
+				class="mx-auto flex justify-center"
+			>
 				{sortedSermons().length} result{#if sortedSermons().length !== 1}s{/if} found:
 			</p>
 		{/if}
-		<Paginator bind:settings={paginationSettings} showFirstLastButtons={true} class="my-8" />
-		<div class="xs:grid-cols-1 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+		<Paginator
+			bind:settings={paginationSettings}
+			showFirstLastButtons={true}
+			class="my-8"
+		/>
+		<div
+			class="xs:grid-cols-1 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+		>
 			{#each paginatedSource as sermon}
 				<SermonCard
 					title={sermon.title}

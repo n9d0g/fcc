@@ -102,7 +102,7 @@
 	<div bind:this={schedTable}>
 		<div class="table-container relative h-[60vh] w-full">
 			<table
-				class="table-hover table-compact relative table overflow-scroll"
+				class="table table-hover table-compact relative overflow-scroll"
 				data-testid="schedule-table"
 			>
 				<thead>
@@ -110,7 +110,7 @@
 						{#each tHead as header, index}
 							{#if index === 0}
 								<th
-									class="table-cell-fit variant-filled-secondary sticky left-0 z-30 p-3 text-left font-bold"
+									class="variant-filled-secondary table-cell-fit sticky left-0 z-30 p-3 text-left font-bold"
 								>
 									{header}
 								</th>
@@ -128,7 +128,7 @@
 									{#if week[col]}
 										{#if col === 'date'}
 											<td
-												class="table-cell-fit bg-surface-100-800-token sticky left-0 pl-3 text-left"
+												class="bg-surface-100-800-token table-cell-fit sticky left-0 pl-3 text-left"
 											>
 												{getMonthDay(week[col])}
 											</td>
@@ -151,7 +151,7 @@
 
 	<!-- link to excel sheet -->
 	<div class="my-8 flex w-full justify-center">
-		<a href={links.excel} target="_blank" class="btn variant-filled">
+		<a href={links.excel} target="_blank" class="variant-filled btn">
 			Excel Data Sheet
 		</a>
 	</div>

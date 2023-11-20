@@ -3,8 +3,22 @@
 	import '../app.postcss'
 
 	// skeleton imports
-	import { AppShell, Modal, storePopup, Toast, initializeStores, getDrawerStore } from '@skeletonlabs/skeleton'
-	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom'
+	import {
+		AppShell,
+		Modal,
+		storePopup,
+		Toast,
+		initializeStores,
+		getDrawerStore,
+	} from '@skeletonlabs/skeleton'
+	import {
+		computePosition,
+		autoUpdate,
+		flip,
+		shift,
+		offset,
+		arrow,
+	} from '@floating-ui/dom'
 
 	// regular imports
 	import Footer from '$lib/components/Footer.svelte'

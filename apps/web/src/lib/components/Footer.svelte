@@ -24,7 +24,7 @@
 				class="gap:1 logo-cloud mx-auto my-4 flex max-w-[30rem] justify-center lg:gap-4"
 			>
 				<a
-					class="text-gray anchor logo-item hover:text-youtube p-4 transition"
+					class="text-gray anchor logo-item p-4 transition hover:text-youtube"
 					href={links.youtube}
 					target="_blank"
 					aria-label="YouTube Link"
@@ -32,7 +32,7 @@
 					<span class=" w-6"><FaYoutube /></span>
 				</a>
 				<a
-					class="text-gray anchor logo-item hover:text-instagram p-4 transition"
+					class="text-gray anchor logo-item p-4 transition hover:text-instagram"
 					href={links.ig}
 					target="_blank"
 					aria-label="Instagram Link"
@@ -40,7 +40,7 @@
 					<span class="w-6"><FaInstagram /></span>
 				</a>
 				<a
-					class="text-gray anchor logo-item hover:text-facebook p-4 transition"
+					class="text-gray anchor logo-item p-4 transition hover:text-facebook"
 					href={links.fb}
 					target="_blank"
 					aria-label="Facebook Link"
