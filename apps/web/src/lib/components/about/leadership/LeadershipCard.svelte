@@ -37,6 +37,6 @@
 				<p>{subministry.ministry}</p>
 			</article>
 		{/each}
-		<span class="arrow variant-filled-surface" />
+		<span class="variant-filled-surface arrow" />
 	</div>
 {/if}

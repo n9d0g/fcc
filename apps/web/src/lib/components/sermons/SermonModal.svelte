@@ -13,7 +13,10 @@
 		title: $modalStore[0]?.meta.title,
 		speaker: $modalStore[0]?.meta.speaker,
 		scripture: $modalStore[0]?.meta.scripture,
-		youtube: $modalStore[0]?.meta.youtube.replace('https://www.youtube.com/watch?v=', ''),
+		youtube: $modalStore[0]?.meta.youtube.replace(
+			'https://www.youtube.com/watch?v=',
+			''
+		),
 		date: $modalStore[0]?.meta.date,
 	}
 
@@ -27,10 +30,18 @@
 
 	<p><span class="font-bold">Speaker:</span> {metaData.speaker}</p>
 	<p><span class="font-bold">Scripture:</span> {metaData.scripture}</p>
-	<p class="pb-8"><span class="font-bold">Date:</span>{' '}{getMonthDayFull(metaData.date)}</p>
-	<Youtube id={metaData.youtube} --title-color="transparent" --title-shadow-color="transparent" />
+	<p class="pb-8">
+		<span class="font-bold">Date:</span>{' '}{getMonthDayFull(metaData.date)}
+	</p>
+	<Youtube
+		id={metaData.youtube}
+		--title-color="transparent"
+		--title-shadow-color="transparent"
+	/>
 
 	<footer class="modal-footer {parent.regionFooter}">
-		<button class="btn variant-filled-error" on:click={parent.onClose}> Close </button>
+		<button class="variant-filled-error btn" on:click={parent.onClose}>
+			Close
+		</button>
 	</footer>
 </section>

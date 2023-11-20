@@ -6,7 +6,7 @@
 	<h2 class="h2 my-4 font-bold">2024 Worship Assignments</h2>
 
 	<div class="table-container">
-		<table class="table-compact table">
+		<table class="table table-compact">
 			<thead>
 				<tr>
 					<th class="table-cell-fit">Leaders</th>
