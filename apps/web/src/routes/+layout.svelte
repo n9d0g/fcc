@@ -28,6 +28,19 @@
 	import { modalComponentRegistry } from '$lib/constants'
 	import { afterNavigate } from '$app/navigation'
 
+	import { onNavigate } from '$app/navigation'
+
+	onNavigate((navigation) => {
+		if (!document.startViewTransition) return
+
+		return new Promise((resolve) => {
+			document.startViewTransition(async () => {
+				resolve()
+				await navigation.complete
+			})
+		})
+	})
+
 	initializeStores()
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow })
 
