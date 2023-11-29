@@ -45,6 +45,6 @@
 <div>
 	<Hero />
 	<HomeWelcome {links} />
-	<HomeNextEvent pageInfo={data.pages} />
 	<HomeSermons {sermons} />
+	<HomeNextEvent pageInfo={data.pages} />
 </div>

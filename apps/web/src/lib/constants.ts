@@ -49,6 +49,14 @@ export const breadcrumbs = {
 			title: 'Sunday Ministries',
 			href: '/sunday-ministries',
 		},
+		programming: {
+			title: 'Programming',
+			href: '/programming',
+			details: {
+				title: 'Programming Details',
+				href: '/programming/details',
+			},
+		},
 	},
 	smallgroups: {
 		title: 'Small Groups',
@@ -145,6 +153,8 @@ export const links = {
 	etransfer: 'emailto:fcc.fcac@gmail.com',
 	excel:
 		'https://docs.google.com/spreadsheets/d/1-wwTym8TqkicbAW9Eb42kdy0Qtp0HneuseVycepJ-OE/edit?usp=sharing',
+	programmingDetails:
+		'https://docs.google.com/spreadsheets/d/1iFB5tAo-S7RFSaUZrl9PH33X-fjfAbozwBunRYdqrsc/edit#gid=0',
 }
 
 export const missionVision = {
@@ -326,5 +336,9 @@ export const headData = {
 	login: {
 		title: 'FCC | Login',
 		description: 'FCC Login page for the Freedom in Christ Church.',
+	},
+	programming: {
+		title: 'FCC | Programming',
+		description: 'FCC Programming page for the Freedom in Christ Church.',
 	},
 }
