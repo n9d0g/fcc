@@ -144,7 +144,7 @@ export const links = {
 		'https://www.biblegateway.com/passage/?search=2+Corinthians+9%3A8&version=NIV',
 	etransfer: 'emailto:fcc.fcac@gmail.com',
 	excel:
-		'https://docs.google.com/spreadsheets/d/1gv-DJ-_FxW-Fuxn4-XR-Fn3QKZ2moV4mrHC2ZMK8MVg/edit?fbclid=IwAR3r7tba-AQl-KZ6BQAFm0lIICqMMKIF-2y7qySr9DfwFl9Xbib4DDD1JrQ#gid=496042209',
+		'https://docs.google.com/spreadsheets/d/1-wwTym8TqkicbAW9Eb42kdy0Qtp0HneuseVycepJ-OE/edit?usp=sharing',
 }
 
 export const missionVision = {
