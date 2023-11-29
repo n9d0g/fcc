@@ -12,7 +12,7 @@
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<section>
-		<a href={excel} target="_blank" class="btn variant-filled my-4">
+		<a href={excel} target="_blank" class="variant-filled btn my-4">
 			Details Spreadsheet
 		</a>
 	</section>

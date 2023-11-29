@@ -10,7 +10,7 @@
 </script>
 
 <Drawer>
-	<section class="flex flex-col gap-8 overflow-hidden p-8 lg:hidden">
+	<section class="flex flex-col gap-8 overflow-hidden p-8 xl:hidden">
 		{#each navOptions as option}
 			<a
 				on:click={closeSideNav}
