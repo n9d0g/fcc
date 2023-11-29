@@ -1,6 +1,5 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import LandingPageGrid from '$lib/components/LandingPageGrid.svelte'
 
 	// server fetching
 	export let data
@@ -8,8 +7,13 @@
 	const title = data.title
 	const breadcrumb = data.breadcrumb
 	const headData = data.headData
+	const excel = data.excelSheet
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<LandingPageGrid items={data.landingPageItems} />
+	<section>
+		<a href={excel} target="_blank" class="btn variant-filled my-4">
+			Details Spreadsheet
+		</a>
+	</section>
 </FccLayout>

@@ -7,5 +7,11 @@ export const load = async () => {
 		title: 'Programming Ministry.',
 		breadcrumb: breadcrumb,
 		headData: headData.programming,
+		landingPageItems: [
+			{
+				title: 'Details',
+				link: '/programming/details',
+			},
+		],
 	}
 }
