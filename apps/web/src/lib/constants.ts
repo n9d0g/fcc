@@ -49,6 +49,10 @@ export const breadcrumbs = {
 			title: 'Sunday Ministries',
 			href: '/sunday-ministries',
 		},
+		programming: {
+			title: 'Programming',
+			href: '/programming',
+		},
 	},
 	smallgroups: {
 		title: 'Small Groups',
@@ -326,5 +330,9 @@ export const headData = {
 	login: {
 		title: 'FCC | Login',
 		description: 'FCC Login page for the Freedom in Christ Church.',
+	},
+	programming: {
+		title: 'FCC | Programming',
+		description: 'FCC Programming page for the Freedom in Christ Church.',
 	},
 }
