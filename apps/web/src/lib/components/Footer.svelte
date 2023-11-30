@@ -4,6 +4,7 @@
 	import FaFacebook from 'svelte-icons/fa/FaFacebook.svelte'
 	import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
 	import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte'
+	import pkgJsonInfo from '../../../../../package.json'
 </script>
 
 <div class="bg-surface-100-800-token">
@@ -24,24 +25,24 @@
 				class="gap:1 logo-cloud mx-auto my-4 flex max-w-[30rem] justify-center lg:gap-4"
 			>
 				<a
-					class="text-gray anchor logo-item p-4 transition hover:text-youtube"
-					href={links.youtube}
+					class="text-gray anchor logo-item hover:text-youtube p-4 transition"
+					href={links.socials.youtube}
 					target="_blank"
 					aria-label="YouTube Link"
 				>
 					<span class=" w-6"><FaYoutube /></span>
 				</a>
 				<a
-					class="text-gray anchor logo-item p-4 transition hover:text-instagram"
-					href={links.ig}
+					class="text-gray anchor logo-item hover:text-instagram p-4 transition"
+					href={links.socials.ig}
 					target="_blank"
 					aria-label="Instagram Link"
 				>
 					<span class="w-6"><FaInstagram /></span>
 				</a>
 				<a
-					class="text-gray anchor logo-item p-4 transition hover:text-facebook"
-					href={links.fb}
+					class="text-gray anchor logo-item hover:text-facebook p-4 transition"
+					href={links.socials.fb}
 					target="_blank"
 					aria-label="Facebook Link"
 				>
@@ -50,6 +51,13 @@
 			</div>
 			<p class="text-center">
 				© Copyright by Freedom in Christ Church Canada. All Rights Reserved.
+				<br />
+				<a
+					href={links.ghReleases}
+					class="anchor text-center text-xs no-underline"
+				>
+					v{pkgJsonInfo.version}
+				</a>
 			</p>
 		</svelte:fragment>
 		<svelte:fragment slot="trail"><LightSwitch /></svelte:fragment>
