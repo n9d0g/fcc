@@ -1,11 +1,4 @@
 import { createClient } from '@sanity/client'
-import type {
-	AutocompleteOption,
-	DrawerSettings,
-	ModalComponent,
-	PopupSettings,
-	ToastSettings,
-} from '@skeletonlabs/skeleton'
 import SermonModal from './components/sermons/SermonModal.svelte'
 import PraiseModal from './components/ministries/praise/PraiseModal.svelte'
 import { Temporal } from '@js-temporal/polyfill'
@@ -17,6 +10,13 @@ import FaMoneyCheckAlt from 'svelte-icons/fa/FaMoneyCheckAlt.svelte'
 import FaRegCalendar from 'svelte-icons/fa/FaRegCalendar.svelte'
 import IoMdLogIn from 'svelte-icons/io/IoMdLogIn.svelte'
 import IoIosCafe from 'svelte-icons/io/IoIosCafe.svelte'
+import type {
+	AutocompleteOption,
+	DrawerSettings,
+	ModalComponent,
+	PopupSettings,
+	ToastSettings,
+} from '@skeletonlabs/skeleton'
 
 export const breadcrumbs = {
 	home: { title: 'Home', href: '/' },
@@ -165,6 +165,12 @@ export const links = {
 		'https://docs.google.com/spreadsheets/d/1-wwTym8TqkicbAW9Eb42kdy0Qtp0HneuseVycepJ-OE/edit#gid=595486822',
 	calendar:
 		'https://calendar.google.com/calendar/embed?height=900&wkst=1&bgcolor=%230ea5e9&ctz=America%2FToronto&showTitle=1&showNav=1&showDate=1&showPrint=0&showCalendars=0&src=MDMwNDY4NmZmODhhNzNlMmJjMzRmNmMxOTI4YjU4NzAxZjE0M2Y1NjVjM2Q5M2Q2MDlhZDZkZDAyZjUwOTliM0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23009688',
+	wcg: {
+		zoom: 'https://us02web.zoom.us/j/8781264602?pwd=dHkwcytVdXdYWXVOdk82Smk4WS9UZz09',
+		core52: 'https://core52.org/',
+		doctrines: 'https://www.minibiblelessons.com/doctrine/',
+		teenTopics: 'https://www.minibiblelessons.com/teen-topics/',
+	},
 }
 
 export const missionVision = {
