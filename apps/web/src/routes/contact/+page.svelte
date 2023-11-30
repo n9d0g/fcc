@@ -3,6 +3,7 @@
 
 	// server fetching
 	export let data
+	export let form
 
 	const title = data.title
 	const breadcrumb = data.breadcrumb
@@ -11,31 +12,43 @@
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<section class="flex items-center justify-center">
-		<form
-			method="POST"
-			class="border-surface-500 mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border p-4 sm:p-10"
-		>
-			<div class="flex flex-col gap-4">
-				<label for="name" class="label flex flex-col gap-2">
-					<span>Name</span>
-					<input
-						name="name"
-						type="text"
-						placeholder="Name"
-						class="input rounded-md"
-					/>
-				</label>
-				<label for="message" class="label flex flex-col gap-2">
-					<span>Message</span>
-					<textarea
-						name="message"
-						placeholder="Message"
-						class="textarea rounded-md"
-						rows="6"
-					/>
-				</label>
+		{#if form?.success}
+			<div
+				class="border-surface-500 mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border p-4 sm:p-24"
+			>
+				<p class="mx-auto max-w-sm text-center">
+					Thank you for contacting us! An FCC representative will be in contact
+					with you soon.
+				</p>
+				<a href="/" class="btn variant-filled-surface">Back to Homepage</a>
 			</div>
-			<button type="submit" class="btn variant-filled">Send</button>
-		</form>
+		{:else}
+			<form
+				method="POST"
+				class="border-surface-500 mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border p-4 sm:p-10"
+			>
+				<div class="flex flex-col gap-4">
+					<label for="name" class="label flex flex-col gap-2">
+						<span>Name</span>
+						<input
+							name="name"
+							type="text"
+							placeholder="Name"
+							class="input rounded-md"
+						/>
+					</label>
+					<label for="message" class="label flex flex-col gap-2">
+						<span>Message</span>
+						<textarea
+							name="message"
+							placeholder="Message"
+							class="textarea rounded-md"
+							rows="6"
+						/>
+					</label>
+				</div>
+				<button type="submit" class="btn variant-filled">Send</button>
+			</form>
+		{/if}
 	</section>
 </FccLayout>

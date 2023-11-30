@@ -260,6 +260,11 @@ export const headData = {
 		description:
 			'Give / Offering page for the Freedom in Christ Church. Generosity is a form of Worship.',
 	},
+	contact: {
+		title: 'FCC | Contact',
+		description:
+			'Contact page for the Freedom in Christ Church. Generosity is a form of Worship.',
+	},
 	sundayMinistries: {
 		title: 'FCC | Sunday Ministries',
 		description:

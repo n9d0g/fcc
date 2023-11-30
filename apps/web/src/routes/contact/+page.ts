@@ -6,6 +6,6 @@ export const load = async () => {
 	return {
 		title: 'Contact FCC.',
 		breadcrumb: breadcrumb,
-		headData: headData.programming,
+		headData: headData.contact,
 	}
 }
