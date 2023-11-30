@@ -18,7 +18,7 @@ export const actions = {
 
 			const data = {
 				from: `"Freedom in Christ Church" <${GOOGLE_EMAIL}>`,
-				to: 'nathanjlardizabal@gmail.com',
+				to: 'nate@fcccanada.ca',
 				bcc: '',
 				subject: `FCC Contact Submission: ${name}`,
 				text: message,
