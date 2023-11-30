@@ -9,10 +9,7 @@
 	import vid3 from '$lib/assets/ministries/men/men-vid3.mp4'
 
 	export let data
-
-	const title = data.title
-	const breadcrumb = data.breadcrumb
-	const headData = data.headData
+	const { title, breadcrumb, headData } = data
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>

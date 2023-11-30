@@ -3,10 +3,7 @@
 	import LandingPageGrid from '$lib/components/LandingPageGrid.svelte'
 
 	export let data
-
-	const title = data.title
-	const headData = data.headData
-	const breadcrumb = data.breadcrumb
+	const { title, headData, breadcrumb } = data
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>

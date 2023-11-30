@@ -4,21 +4,14 @@
 	import { getMonth } from '$lib/utils.js'
 
 	export let data
-
-	// variables
-	let tHeaders: any = data.tableHeaders
-	let tBody: any = data.tableBody
-
-	const title = data.title
-	const breadcrumb = data.breadcrumb
-	const headData = data.headData
+	const { tHeaders, tBody, title, breadcrumb, headData } = data
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<!-- responsive container -->
 	<div class="table-container relative">
 		<!-- skeleton table -->
-		<table class="table relative overflow-scroll">
+		<table class="relative table overflow-scroll">
 			<thead>
 				<tr class="variant-filled-secondary sticky top-0 z-10">
 					{#each tHeaders as header, index}

@@ -1,12 +1,8 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
 
-	// server fetching
 	export let data
-
-	const title = data.title
-	const breadcrumb = data.breadcrumb
-	const headData = data.headData
+	const { title, breadcrumb, headData, calendarLink } = data
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
@@ -14,7 +10,7 @@
 		<p class="mb-4">Calendar view of the events at FCC.</p>
 		<iframe
 			title="FCC Calendar"
-			src="https://calendar.google.com/calendar/embed?height=900&wkst=1&bgcolor=%230ea5e9&ctz=America%2FToronto&showTitle=1&showNav=1&showDate=1&showPrint=0&showCalendars=0&src=MDMwNDY4NmZmODhhNzNlMmJjMzRmNmMxOTI4YjU4NzAxZjE0M2Y1NjVjM2Q5M2Q2MDlhZDZkZDAyZjUwOTliM0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23009688"
+			src={calendarLink}
 			frameborder="0"
 			scrolling="no"
 			width="100%"

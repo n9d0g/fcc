@@ -22,19 +22,13 @@
 
 	// server fetching
 	export let data
+	const { title, breadcrumb, headData, worshipAssignments, tHead, tBody } = data
 
-	// variables
-	let tHead: any = data.tableHeader
-	let tBody: any = data.tableBody
 	let schedTable: any
 	let leader = ''
-	let worshipAssignments: any = data.worshipAssignments
 
 	const modalStore = getModalStore()
 	const upToDatePraiseData = updatedDataFiltered(data.praise, 'date')
-	const title = data.title
-	const breadcrumb = data.breadcrumb
-	const headData = data.headData
 
 	// functions
 	const openDetails = (e: any) => {
@@ -105,7 +99,7 @@
 		<div bind:this={schedTable}>
 			<div class="table-container relative h-[60vh] w-full">
 				<table
-					class="table table-hover table-compact relative overflow-scroll"
+					class="table-hover table-compact relative table overflow-scroll"
 					data-testid="schedule-table"
 				>
 					<thead>
