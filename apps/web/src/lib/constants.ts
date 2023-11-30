@@ -16,6 +16,7 @@ import IoMdPeople from 'svelte-icons/io/IoMdPeople.svelte'
 import FaMoneyCheckAlt from 'svelte-icons/fa/FaMoneyCheckAlt.svelte'
 import FaRegCalendar from 'svelte-icons/fa/FaRegCalendar.svelte'
 import IoMdLogIn from 'svelte-icons/io/IoMdLogIn.svelte'
+import IoIosCafe from 'svelte-icons/io/IoIosCafe.svelte'
 
 export const breadcrumbs = {
 	home: { title: 'Home', href: '/' },
@@ -24,6 +25,7 @@ export const breadcrumbs = {
 	error: { title: 'Error', href: '/error' },
 	events: { title: 'Events', href: '/events' },
 	login: { title: 'Login', href: '/login' },
+	contact: { title: 'Contact', href: '/contact' },
 	about: {
 		title: 'About',
 		href: '/about',
@@ -129,10 +131,14 @@ export const navOptions = [
 		icon: FaMoneyCheckAlt,
 	},
 	{
-		// href: '/login',
 		href: '/',
 		title: 'Login',
 		icon: IoMdLogIn,
+	},
+	{
+		href: '/contact',
+		title: 'Contact',
+		icon: IoIosCafe,
 	},
 ]
 
@@ -253,6 +259,11 @@ export const headData = {
 		title: 'FCC | Give',
 		description:
 			'Give / Offering page for the Freedom in Christ Church. Generosity is a form of Worship.',
+	},
+	contact: {
+		title: 'FCC | Contact',
+		description:
+			'Contact page for the Freedom in Christ Church. Generosity is a form of Worship.',
 	},
 	sundayMinistries: {
 		title: 'FCC | Sunday Ministries',

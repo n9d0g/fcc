@@ -49,12 +49,12 @@
 		</svelte:fragment>
 
 		<nav
-			class="z-10 hidden w-full items-center justify-center gap-4 lg:flex"
+			class="z-10 hidden w-full items-center justify-center gap-4 xl:flex"
 			data-sveltekit-preload-data="hover"
 		>
 			{#key activeNavValue}
 				{#each navOptions as option}
-					{#if option.title !== 'Login'}
+					{#if !option.title.includes('Login') && !option.title.includes('Contact')}
 						<NavButton
 							text={option.title}
 							link={option.href}
@@ -69,13 +69,13 @@
 			<LightSwitch class="z-0" />
 			<button on:click={openSideNav} class="z-0" aria-label="Mobile Nav Button">
 				<Icon
-					class="flex h-8 w-8 cursor-pointer lg:hidden"
+					class="flex h-8 w-8 cursor-pointer xl:hidden"
 					icon="cil:hamburger-menu"
 				/>
 			</button>
 			<a
 				href="/"
-				class="variant-filled-tertiary btn hidden lg:block"
+				class="variant-filled-tertiary btn hidden xl:block"
 				data-sveltekit-preload-data="hover"
 				use:popup={popupHover}
 			>
@@ -85,6 +85,13 @@
 				<p>🚧 Login WIP 🚧</p>
 				<div class="variant-filled-tertiary arrow" />
 			</div>
+			<a
+				href="/contact"
+				class="variant-ghost-primary btn hidden xl:block"
+				data-sveltekit-preload-data="hover"
+			>
+				Contact
+			</a>
 		</svelte:fragment>
 	</AppBar>
 </div>
