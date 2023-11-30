@@ -23,7 +23,7 @@
 	const source = Object.keys(sortedSermons())
 	let paginationSettings = {
 		page: 0,
-		limit: 4,
+		limit: 16,
 		size: source.length,
 		amounts: [1, 2, 4, 8, 16],
 	} satisfies PaginationSettings
@@ -54,7 +54,7 @@
 			class="my-8"
 		/>
 		<div
-			class="xs:grid-cols-1 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+			class="xs:grid-cols-1 grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
 		>
 			{#each paginatedSource as sermon}
 				<SermonCard
