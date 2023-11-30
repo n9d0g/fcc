@@ -11,6 +11,6 @@ export const load = async () => {
 		title: 'FCC Women Chasing God Small Group.',
 		breadcrumb: breadcrumb,
 		headData: headData.smallgroupsWCG,
-		links: links,
+		links: links.wcg,
 	}
 }

@@ -1,11 +1,4 @@
 import { createClient } from '@sanity/client'
-import type {
-	AutocompleteOption,
-	DrawerSettings,
-	ModalComponent,
-	PopupSettings,
-	ToastSettings,
-} from '@skeletonlabs/skeleton'
 import SermonModal from './components/sermons/SermonModal.svelte'
 import PraiseModal from './components/ministries/praise/PraiseModal.svelte'
 import { Temporal } from '@js-temporal/polyfill'
@@ -17,6 +10,13 @@ import FaMoneyCheckAlt from 'svelte-icons/fa/FaMoneyCheckAlt.svelte'
 import FaRegCalendar from 'svelte-icons/fa/FaRegCalendar.svelte'
 import IoMdLogIn from 'svelte-icons/io/IoMdLogIn.svelte'
 import IoIosCafe from 'svelte-icons/io/IoIosCafe.svelte'
+import type {
+	AutocompleteOption,
+	DrawerSettings,
+	ModalComponent,
+	PopupSettings,
+	ToastSettings,
+} from '@skeletonlabs/skeleton'
 
 export const breadcrumbs = {
 	home: { title: 'Home', href: '/' },
@@ -143,15 +143,10 @@ export const navOptions = [
 ]
 
 export const links = {
-	youtube: 'https://www.youtube.com/@freedominchristchurchcanada',
-	ig: 'https://www.instagram.com/fcc.canada/',
-	fb: 'https://www.facebook.com/groups/1667915316820460',
 	ghReleases: 'https://github.com/n9d0g/fcc/releases',
 	googleMaps:
 		'https://www.google.ca/maps/place/5225+Orbitor+Dr,+Mississauga,+ON+L4W+4Y8/@43.6598788,-79.6065117,17z/data=!3m1!4b1!4m6!3m5!1s0x882b38554ef96393:0x5a2b697b840d7a7d!8m2!3d43.6598749!4d-79.604323!16s%2Fg%2F11b8v4jvnm',
 	zoom: 'https://us04web.zoom.us/j/3926981154?pwd=d1BHRTB3eStxZFZIS3lyWHBieENvZz09&fbclid=IwAR1N4y1LI5zX5bPnAABrXd_8ICuFko9Hw_5HV2P4wWj7U6JmALskzjO3H_U',
-	wcgZoom:
-		'https://us02web.zoom.us/j/84949409295?fbclid=IwAR1XvSL40DFoW08G9r1BQiZbUjPVqt9sjF8wvn8dLt-keLxCJ-8Kfrmv0ys',
 	giveVerse1:
 		'https://www.biblegateway.com/passage/?search=2%20Corinthians%209%3A7&version=NIV',
 	giveVerse2:
@@ -159,12 +154,25 @@ export const links = {
 	etransfer: 'emailto:fcc.fcac@gmail.com',
 	excel:
 		'https://docs.google.com/spreadsheets/d/1-wwTym8TqkicbAW9Eb42kdy0Qtp0HneuseVycepJ-OE/edit?usp=sharing',
-	programmingDetails:
-		'https://docs.google.com/spreadsheets/d/1iFB5tAo-S7RFSaUZrl9PH33X-fjfAbozwBunRYdqrsc/edit#gid=0',
-	attendance:
-		'https://docs.google.com/spreadsheets/d/1-wwTym8TqkicbAW9Eb42kdy0Qtp0HneuseVycepJ-OE/edit#gid=595486822',
 	calendar:
 		'https://calendar.google.com/calendar/embed?height=900&wkst=1&bgcolor=%230ea5e9&ctz=America%2FToronto&showTitle=1&showNav=1&showDate=1&showPrint=0&showCalendars=0&src=MDMwNDY4NmZmODhhNzNlMmJjMzRmNmMxOTI4YjU4NzAxZjE0M2Y1NjVjM2Q5M2Q2MDlhZDZkZDAyZjUwOTliM0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23009688',
+	programming: {
+		details:
+			'https://docs.google.com/spreadsheets/d/1iFB5tAo-S7RFSaUZrl9PH33X-fjfAbozwBunRYdqrsc/edit#gid=0',
+		attendance:
+			'https://docs.google.com/spreadsheets/d/1-wwTym8TqkicbAW9Eb42kdy0Qtp0HneuseVycepJ-OE/edit#gid=595486822',
+	},
+	wcg: {
+		zoom: 'https://us02web.zoom.us/j/8781264602?pwd=dHkwcytVdXdYWXVOdk82Smk4WS9UZz09',
+		core52: 'https://core52.org/',
+		doctrines: 'https://www.minibiblelessons.com/doctrine/',
+		teenTopics: 'https://www.minibiblelessons.com/teen-topics/',
+	},
+	socials: {
+		youtube: 'https://www.youtube.com/@freedominchristchurchcanada',
+		ig: 'https://www.instagram.com/fcc.canada/',
+		fb: 'https://www.facebook.com/groups/1667915316820460',
+	},
 }
 
 export const missionVision = {
