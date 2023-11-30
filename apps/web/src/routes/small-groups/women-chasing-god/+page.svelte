@@ -2,11 +2,7 @@
 	import FccLayout from '$lib/components/FccLayout.svelte'
 
 	export let data
-
-	const title = data.title
-	const breadcrumb = data.breadcrumb
-	const headData = data.headData
-	const links = data.links
+	const { title, breadcrumb, headData, links } = data
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>

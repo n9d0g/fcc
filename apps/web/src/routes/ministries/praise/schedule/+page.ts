@@ -20,7 +20,7 @@ export const load = async () => {
 			title: 'Praise Schedule.',
 			breadcrumb: breadcrumb,
 			praise: data,
-			tableHeader: [
+			tHead: [
 				'Date 📅',
 				'Lead 🎤',
 				'Guitar 🎸',
@@ -32,7 +32,7 @@ export const load = async () => {
 				'AV 🔊',
 				'Unavailable 🙅‍♂️',
 			],
-			tableBody: [
+			tBody: [
 				'date',
 				'lead',
 				'guitar',

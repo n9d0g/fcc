@@ -12,5 +12,6 @@ export const load = async () => {
 		breadcrumb: breadcrumb,
 		headData: headData.programming,
 		excelSheet: links.programmingDetails,
+		attendance: links.attendance,
 	}
 }

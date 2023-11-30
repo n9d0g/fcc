@@ -3,10 +3,7 @@
 	import { Stepper, Step } from '@skeletonlabs/skeleton'
 
 	export let data
-
-	const title = data.title
-	const breadcrumb = data.breadcrumb
-	const headData = data.headData
+	const { title, headData, breadcrumb } = data
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>

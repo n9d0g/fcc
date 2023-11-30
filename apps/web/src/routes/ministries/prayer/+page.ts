@@ -18,7 +18,7 @@ export const load = async () => {
 		return {
 			title: 'FCC Prayer Ministry.',
 			breadcrumb: breadcrumb,
-			data: updatedDataFiltered(data, 'date'),
+			prayerData: updatedDataFiltered(data, 'date'),
 			headData: headData.ministriesPrayer,
 		}
 	}

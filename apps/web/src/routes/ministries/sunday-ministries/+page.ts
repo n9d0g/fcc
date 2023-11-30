@@ -13,8 +13,8 @@ export const load = async () => {
 		title: 'Sunday Ministries.',
 		breadcrumb: breadcrumb,
 		headData: headData.sundayMinistries,
-		tableBody: updatedDataFiltered(data, 'date'),
-		tableHeaders: [
+		tBody: updatedDataFiltered(data, 'date'),
+		tHeaders: [
 			'Month',
 			'Presider',
 			'Worship Service Invites',
