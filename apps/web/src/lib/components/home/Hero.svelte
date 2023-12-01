@@ -1,4 +1,4 @@
-<section class="bg-hero h-[80vh] bg-cover bg-center bg-no-repeat px-4">
+<section class="h-[80vh] bg-hero bg-cover bg-center bg-no-repeat px-4">
 	<div
 		class="container mx-auto flex h-full flex-col items-center justify-center"
 	>
@@ -12,12 +12,12 @@
 		<div class="my-8 flex gap-8">
 			<a
 				href="/about"
-				class="bg-surface-200-700-token btn-xl btn text-token"
+				class="bg-surface-200-700-token text-token btn btn-xl"
 				data-sveltekit-preload-data="hover">I'm new</a
 			>
 			<a
 				href="/sermons"
-				class="bg-surface-200-700-token btn-xl btn text-token"
+				class="bg-surface-200-700-token text-token btn btn-xl"
 				data-sveltekit-preload-data="hover">Sermons</a
 			>
 		</div>

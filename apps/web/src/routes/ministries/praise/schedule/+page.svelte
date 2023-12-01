@@ -5,6 +5,9 @@
 	import { getModalStore } from '@skeletonlabs/skeleton'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import DetailsTooltip from '$lib/components/ministries/praise/DetailsTooltip.svelte'
+	import { fade } from 'svelte/transition'
+	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
+	import WorshipAssignments from '$lib/components/ministries/praise/WorshipAssignments.svelte'
 	import {
 		updatedDataFiltered,
 		praiseModalSettings,
@@ -16,13 +19,11 @@
 		praiseFilterPopupSettings,
 		links,
 	} from '$lib/constants'
-	import { fade } from 'svelte/transition'
-	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
-	import WorshipAssignments from '$lib/components/ministries/praise/WorshipAssignments.svelte'
 
 	// server fetching
 	export let data
-	const { title, breadcrumb, headData, worshipAssignments, tHead, tBody } = data
+	const { title, breadcrumb, headData, worshipAssignments, tHead, tBody }: any =
+		data
 
 	let schedTable: any
 	let leader = ''
