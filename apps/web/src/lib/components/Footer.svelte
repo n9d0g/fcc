@@ -17,7 +17,10 @@
 	>
 		<svelte:fragment slot="lead">
 			<a class="anchor" href="/" aria-label="Home Logo Button">
-				<Avatar src="/apple-touch-icon.png" class="h-8 w-8 cursor-pointer" />
+				<Avatar
+					src="/apple-touch-icon.png"
+					class="h-20 w-auto cursor-pointer"
+				/>
 			</a>
 		</svelte:fragment>
 		<svelte:fragment slot="headline">
@@ -55,7 +58,7 @@
 				<br />
 				<a
 					href={links.ghReleases}
-					class="anchor text-center text-xs no-underline"
+					class="anchor text-primary-200 text-center text-xs no-underline"
 				>
 					v{pkgJsonInfo.version}
 				</a>

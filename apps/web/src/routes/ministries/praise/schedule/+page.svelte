@@ -103,11 +103,11 @@
 					data-testid="schedule-table"
 				>
 					<thead>
-						<tr class="variant-filled-secondary sticky top-0 z-10">
+						<tr class="bg-surface-200-700-token sticky top-0 z-10">
 							{#each tHead as header, index}
 								{#if index === 0}
 									<th
-										class="variant-filled-secondary table-cell-fit sticky left-0 z-30 p-3 text-left font-bold"
+										class="bg-surface-200-700-token table-cell-fit sticky left-0 z-30 p-3 text-left font-bold"
 									>
 										{header}
 									</th>

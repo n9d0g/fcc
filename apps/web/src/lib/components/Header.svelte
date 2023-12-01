@@ -1,4 +1,9 @@
 <script lang="ts">
+	import { AppBar } from '@skeletonlabs/skeleton'
+	import Icon from '@iconify/svelte'
+	import NavButton from '$lib/components/NavButton.svelte'
+	import { activeNav } from '$lib/stores/store.js'
+	import { navOptions, drawerSettings } from '$lib/constants'
 	import {
 		Avatar,
 		LightSwitch,
@@ -6,11 +11,6 @@
 		type PopupSettings,
 		type DrawerStore,
 	} from '@skeletonlabs/skeleton'
-	import { AppBar } from '@skeletonlabs/skeleton'
-	import Icon from '@iconify/svelte'
-	import NavButton from '$lib/components/NavButton.svelte'
-	import { activeNav } from '$lib/stores/store.js'
-	import { navOptions, drawerSettings } from '$lib/constants'
 
 	export let drawerStore: DrawerStore
 
@@ -45,7 +45,10 @@
 				aria-label="Home Logo Button"
 				data-sveltekit-preload-data="hover"
 			>
-				<Avatar src="/apple-touch-icon.png" class="h-8 w-8 cursor-pointer" />
+				<Avatar
+					src="/apple-touch-icon.png"
+					class="h-20 w-auto cursor-pointer"
+				/>
 			</a>
 		</svelte:fragment>
 
@@ -75,8 +78,15 @@
 				/>
 			</button>
 			<a
+				href="/contact"
+				class="variant-ghost-primary btn hidden text-white xl:block"
+				data-sveltekit-preload-data="hover"
+			>
+				Contact
+			</a>
+			<a
 				href="/"
-				class="variant-filled-tertiary btn hidden xl:block"
+				class="variant-filled-secondary btn hidden text-white xl:block"
 				data-sveltekit-preload-data="hover"
 				use:popup={popupHover}
 			>
@@ -86,13 +96,6 @@
 				<p>🚧 Login WIP 🚧</p>
 				<div class="variant-filled-tertiary arrow" />
 			</div>
-			<a
-				href="/contact"
-				class="variant-ghost-primary btn hidden xl:block"
-				data-sveltekit-preload-data="hover"
-			>
-				Contact
-			</a>
 		</svelte:fragment>
 	</AppBar>
 </div>
