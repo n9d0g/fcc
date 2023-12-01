@@ -63,6 +63,8 @@
 
 <AppShell>
 	<svelte:fragment slot="header"><Header {drawerStore} /></svelte:fragment>
-	<slot />
+	<main class="bg-surface-300-600-token">
+		<slot />
+	</main>
 	<svelte:fragment slot="pageFooter"><Footer /></svelte:fragment>
 </AppShell>

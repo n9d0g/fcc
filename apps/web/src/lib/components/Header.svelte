@@ -29,8 +29,9 @@
 	}
 </script>
 
-<div class="bg-surface-100-800-token">
+<div class="bg-surface-400-500-token">
 	<AppBar
+		background="bg-surface-400-500-token"
 		id="top"
 		gridColumns="grid-cols-3"
 		slotDefault="place-self-center"

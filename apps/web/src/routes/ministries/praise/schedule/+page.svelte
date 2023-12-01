@@ -82,7 +82,7 @@
 		<!-- autocomplete modal -->
 		<div
 			data-popup="praiseAutocomplete"
-			class="bg-surface-100-800-token z-30 w-64 rounded-md p-4 text-left"
+			class="bg-surface-400-500-token z-30 w-64 rounded-md p-4 text-left"
 		>
 			<Autocomplete
 				bind:input={leader}
@@ -99,7 +99,7 @@
 		<div bind:this={schedTable}>
 			<div class="table-container relative h-[60vh] w-full">
 				<table
-					class="table table-hover table-compact relative overflow-scroll"
+					class="table-hover table-compact relative table overflow-scroll"
 					data-testid="schedule-table"
 				>
 					<thead>
@@ -127,7 +127,7 @@
 										{#if week[col]}
 											{#if col === 'date'}
 												<td
-													class="bg-surface-100-800-token table-cell-fit sticky left-0 pl-3 text-left"
+													class="bg-surface-200-700-token table-cell-fit sticky left-0 pl-3 text-left"
 												>
 													{getMonthDay(week[col])}
 												</td>

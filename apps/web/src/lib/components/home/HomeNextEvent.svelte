@@ -5,7 +5,7 @@
 </script>
 
 <section
-	class="container mx-auto my-32 flex flex-col items-center justify-center gap-16"
+	class="container mx-auto flex flex-col items-center justify-center gap-16 py-32"
 >
 	<!-- header -->
 	<h2 class="h2 text-center text-4xl font-bold" data-testid="nextevent-header">

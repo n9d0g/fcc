@@ -12,12 +12,12 @@
 		<div class="my-8 flex gap-8">
 			<a
 				href="/about"
-				class="variant-filled btn-xl btn"
+				class="bg-surface-200-700-token btn-xl btn text-token"
 				data-sveltekit-preload-data="hover">I'm new</a
 			>
 			<a
 				href="/sermons"
-				class="variant-filled btn-xl btn"
+				class="bg-surface-200-700-token btn-xl btn text-token"
 				data-sveltekit-preload-data="hover">Sermons</a
 			>
 		</div>

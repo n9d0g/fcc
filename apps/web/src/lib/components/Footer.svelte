@@ -7,8 +7,9 @@
 	import pkgJsonInfo from '../../../../../package.json'
 </script>
 
-<div class="bg-surface-100-800-token">
+<div class="bg-surface-400-500-token">
 	<AppBar
+		background="bg-surface-400-500-token"
 		gridColumns="grid-cols-3"
 		slotDefault="place-self-center"
 		slotTrail="place-content-end"
@@ -22,7 +23,7 @@
 		<svelte:fragment slot="headline">
 			<hr class="my-4" />
 			<div
-				class="gap:1 logo-cloud mx-auto my-4 flex max-w-[30rem] justify-center lg:gap-4"
+				class="logo-cloud mx-auto my-4 flex max-w-[30rem] justify-center gap-1"
 			>
 				<a
 					class="text-gray anchor logo-item hover:text-youtube p-4 transition"
