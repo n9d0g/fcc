@@ -49,7 +49,7 @@
 		</svelte:fragment>
 
 		<nav
-			class="z-10 hidden w-full items-center justify-center gap-4 xl:flex"
+			class="z-10 hidden h-10 w-full items-center justify-center gap-5 xl:flex"
 			data-sveltekit-preload-data="hover"
 		>
 			{#key activeNavValue}
