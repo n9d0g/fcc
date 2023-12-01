@@ -9,7 +9,7 @@
 	<div class="flex flex-col gap-4">
 		<p>
 			Zoom Meeting LINK:
-			<a href={links.zoom} class="btn variant-filled anchor ml-2">
+			<a href={links.zoom} class="anchor variant-filled btn ml-2">
 				Click Here
 			</a>
 		</p>

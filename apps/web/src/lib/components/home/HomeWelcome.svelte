@@ -21,7 +21,7 @@
 	</p>
 	<div class="flex justify-center">
 		<a
-			class="variant-filled btn"
+			class="variant-filled btn btn-lg"
 			href={links.zoom}
 			target="_blank"
 			data-testid="welcome-zoom">Zoom Link</a

@@ -23,7 +23,7 @@
 	</div>
 	<div class="flex justify-center">
 		<a
-			class="variant-filled btn"
+			class="variant-filled btn btn-lg"
 			href="/sermons"
 			data-sveltekit-preload-data="hover">View All Sermons</a
 		>
