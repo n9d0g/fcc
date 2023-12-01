@@ -23,7 +23,7 @@
 			</span> — “Koinonia” (Greek word) meaning holding something in common.
 		</li>
 	</ul>
-	<blockquote class="blockquote border-primary-500 my-4 border-l-4">
+	<blockquote class="blockquote my-4 border-l-4 border-primary-500">
 		“And they devoted themselves to the apostles’ teaching and the fellowship,
 		to the breaking of bread and the prayers.“
 	</blockquote>
@@ -78,7 +78,7 @@
 
 	<!-- schedule table -->
 	<div class="table-container">
-		<table class="table-hover table">
+		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th>Date</th>

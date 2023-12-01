@@ -28,6 +28,6 @@
 
 	<!-- view event calendar -->
 	<div class="flex justify-center">
-		<a class="variant-filled btn" href="/events">View Event Calendar</a>
+		<a class="variant-filled btn btn-lg" href="/events">View Event Calendar</a>
 	</div>
 </section>
