@@ -40,15 +40,12 @@
 	>
 		<svelte:fragment slot="lead">
 			<a
-				class="anchor"
+				class="anchor rounded-none transition-all"
 				href="/"
 				aria-label="Home Logo Button"
 				data-sveltekit-preload-data="hover"
 			>
-				<Avatar
-					src="/apple-touch-icon.png"
-					class="h-20 w-auto cursor-pointer"
-				/>
+				<Avatar src="/apple-touch-icon.png" class="h-20 w-auto rounded-sm" />
 			</a>
 		</svelte:fragment>
 
