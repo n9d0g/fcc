@@ -114,6 +114,44 @@ export const load = async () => {
 					backup: 'Yana',
 				},
 			],
+			filterData: [
+				{
+					label: 'Lead 🎤',
+					value: 'lead',
+				},
+				{
+					label: 'Guitar 🎸',
+					value: 'guitar',
+				},
+				{
+					label: 'Keys 🎹',
+					value: 'keys',
+				},
+				{
+					label: 'Bass 🎸',
+					value: 'bass',
+				},
+				{
+					label: 'Drums 🥁',
+					value: 'drums',
+				},
+				{
+					label: 'Electric 🎸',
+					value: 'electric',
+				},
+				{
+					label: 'Backup 🗣️',
+					value: 'backup',
+				},
+				{
+					label: 'AV 🔊',
+					value: 'av',
+				},
+				{
+					label: 'Unavailable 🙅‍♂️',
+					value: 'unavailable',
+				},
+			],
 		}
 
 	return {

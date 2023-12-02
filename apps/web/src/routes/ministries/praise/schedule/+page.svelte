@@ -1,7 +1,5 @@
 <script lang="ts">
-	// imports
 	import { popup } from '@skeletonlabs/skeleton'
-	import { Autocomplete } from '@skeletonlabs/skeleton'
 	import { getModalStore } from '@skeletonlabs/skeleton'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import DetailsTooltip from '$lib/components/ministries/praise/DetailsTooltip.svelte'
@@ -14,19 +12,23 @@
 		searchFilter,
 		getMonthDay,
 	} from '$lib/utils'
-	import {
-		praiseLeaderOptions,
-		praiseFilterPopupSettings,
-		links,
-	} from '$lib/constants'
+	import { praiseFilterPopupSettings, links } from '$lib/constants'
 
 	// server fetching
 	export let data
-	const { title, breadcrumb, headData, worshipAssignments, tHead, tBody }: any =
-		data
+	const {
+		title,
+		breadcrumb,
+		headData,
+		worshipAssignments,
+		tHead,
+		tBody,
+		filterData,
+	}: any = data
 
 	let schedTable: any
-	let leader = ''
+	let filterTerm = 'lead'
+	let searchTerm = ''
 
 	const modalStore = getModalStore()
 	const upToDatePraiseData = updatedDataFiltered(data.praise, 'date')
@@ -47,51 +49,58 @@
 		const settings = praiseModalSettings(meta)
 		modalStore.trigger(settings)
 	}
-
-	const onFilterSelection = (e: any) => {
-		leader = e.detail.label
-	}
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
 	{#await data}
 		<div>awaiting data...</div>
 	{:then data}
-		<div class="relative my-8 flex max-w-fit flex-col gap-4">
+		<div class="relative my-8 flex w-full flex-col gap-4 sm:max-w-fit">
 			<!-- filter searching -->
-			<label class="label" for="autocomplete">Filter by leader:</label>
+			<label class="label flex items-center gap-2">
+				<span class="w-fit sm:w-1/6"> Filter by: </span>
+				<!-- filter term -->
+				<select class="select w-auto flex-1 sm:w-5/6" bind:value={filterTerm}>
+					{#each filterData as role}
+						<option value={role.value}>{role.label}</option>
+					{/each}
+				</select>
+			</label>
+
 			<input
-				id="autocomplete"
-				class="autocomplete input w-64 max-w-full"
+				class="input relative w-full max-w-full sm:w-96"
 				type="text"
-				placeholder="Filter by leader"
-				bind:value={leader}
+				placeholder={`Filter by ${filterTerm}`}
+				bind:value={searchTerm}
 				use:popup={praiseFilterPopupSettings}
 				data-testid="schedule-search"
 			/>
-			{#if leader.length > 0}
+			<!-- clear search button -->
+			{#if searchTerm.length > 0}
 				<button
 					transition:fade={{ duration: 150 }}
-					on:click={() => (leader = '')}
-					class="absolute right-2 top-[47px] h-7 w-7 cursor-pointer rounded-xl"
+					on:click={() => (searchTerm = '')}
+					class="absolute right-2 top-[69px] h-7 w-7 cursor-pointer rounded-xl"
 				>
 					<IoIosClose />
 				</button>
 			{/if}
-		</div>
 
-		<!-- autocomplete modal -->
-		<div
-			data-popup="praiseAutocomplete"
-			class="bg-surface-400-500-token z-30 w-64 rounded-md p-4 text-left"
-		>
-			<Autocomplete
-				bind:input={leader}
-				options={praiseLeaderOptions}
-				on:selection={onFilterSelection}
-				emptyState="No results found 🙈"
-				class=""
-			/>
+			<!-- # of results  -->
+			{#if searchTerm.length !== 0}
+				<div class="absolute top-[98px] w-full transition-all">
+					<h6 class="h6 mt-4 text-center transition-all sm:text-left">
+						{searchFilter(upToDatePraiseData, filterTerm, searchTerm).length} week{searchFilter(
+							upToDatePraiseData,
+							filterTerm,
+							searchTerm
+						).length === 1
+							? ''
+							: 's'}
+						found.
+					</h6>
+				</div>
+			{/if}
 		</div>
 
 		<DetailsTooltip />
@@ -120,9 +129,9 @@
 							{/each}
 						</tr>
 					</thead>
-					{#key leader}
+					{#key searchTerm}
 						<tbody>
-							{#each searchFilter(upToDatePraiseData, 'lead', leader) as week}
+							{#each searchFilter(upToDatePraiseData, filterTerm, searchTerm) as week}
 								<tr on:click={() => openDetails(week)} class="cursor-pointer">
 									{#each tBody as col}
 										{#if week[col]}

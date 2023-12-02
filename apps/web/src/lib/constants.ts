@@ -204,22 +204,6 @@ export const devToastSettings: ToastSettings = {
 	background: 'variant-filled-error',
 }
 
-export const praiseLeaderOptions: AutocompleteOption[] = [
-	{ label: 'FCC Men', value: 'men', keywords: '' },
-	{
-		label: 'FCC Pre-teens',
-		value: 'preteens',
-		keywords: 'preteens, youth, kids',
-	},
-	{ label: 'FCC Women', value: 'women', keywords: '' },
-	{ label: 'James', value: 'james', keywords: '' },
-	{ label: 'John', value: 'john', keywords: '' },
-	{ label: 'Joi', value: 'joi', keywords: '' },
-	{ label: 'Nathan', value: 'nathan', keywords: '' },
-	{ label: 'Raquel', value: 'raquel', keywords: '' },
-	{ label: 'Rommel', value: 'rommel', keywords: '' },
-]
-
 export const praiseFilterPopupSettings: PopupSettings = {
 	event: 'focus-blur',
 	target: 'praiseAutocomplete',

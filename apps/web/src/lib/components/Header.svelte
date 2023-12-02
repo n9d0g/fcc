@@ -45,7 +45,10 @@
 				aria-label="Home Logo Button"
 				data-sveltekit-preload-data="hover"
 			>
-				<Avatar src="/apple-touch-icon.png" class="h-20 w-auto rounded-sm" />
+				<Avatar
+					src="/apple-touch-icon.png"
+					class="h-10 w-auto rounded-sm lg:h-20"
+				/>
 			</a>
 		</svelte:fragment>
 
