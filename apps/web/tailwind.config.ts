@@ -2,6 +2,7 @@ import { join } from 'path'
 import type { Config } from 'tailwindcss'
 import { skeleton } from '@skeletonlabs/tw-plugin'
 import { FccTheme } from './fcc-theme'
+import forms from '@tailwindcss/forms'
 
 export default {
 	darkMode: 'class',
@@ -26,7 +27,7 @@ export default {
 		},
 	},
 	plugins: [
-		require('@tailwindcss/forms'),
+		forms,
 		require('tailwindcss/plugin')(({ addVariant }) => {
 			addVariant('search-cancel', '&::-webkit-search-cancel-button')
 		}),

@@ -7,8 +7,9 @@
 	import pkgJsonInfo from '../../../../../package.json'
 </script>
 
-<div class="bg-surface-100-800-token">
+<div class="bg-surface-400-500-token">
 	<AppBar
+		background="bg-surface-400-500-token"
 		gridColumns="grid-cols-3"
 		slotDefault="place-self-center"
 		slotTrail="place-content-end"
@@ -16,16 +17,19 @@
 	>
 		<svelte:fragment slot="lead">
 			<a class="anchor" href="/" aria-label="Home Logo Button">
-				<Avatar src="/apple-touch-icon.png" class="h-8 w-8 cursor-pointer" />
+				<Avatar
+					src="/apple-touch-icon.png"
+					class="h-20 w-auto cursor-pointer"
+				/>
 			</a>
 		</svelte:fragment>
 		<svelte:fragment slot="headline">
 			<hr class="my-4" />
 			<div
-				class="gap:1 logo-cloud mx-auto my-4 flex max-w-[30rem] justify-center lg:gap-4"
+				class="logo-cloud mx-auto my-4 flex max-w-[30rem] justify-center gap-1"
 			>
 				<a
-					class="text-gray anchor logo-item hover:text-youtube p-4 transition"
+					class="text-gray anchor logo-item p-4 transition hover:text-youtube"
 					href={links.socials.youtube}
 					target="_blank"
 					aria-label="YouTube Link"
@@ -33,7 +37,7 @@
 					<span class=" w-6"><FaYoutube /></span>
 				</a>
 				<a
-					class="text-gray anchor logo-item hover:text-instagram p-4 transition"
+					class="text-gray anchor logo-item p-4 transition hover:text-instagram"
 					href={links.socials.ig}
 					target="_blank"
 					aria-label="Instagram Link"
@@ -41,7 +45,7 @@
 					<span class="w-6"><FaInstagram /></span>
 				</a>
 				<a
-					class="text-gray anchor logo-item hover:text-facebook p-4 transition"
+					class="text-gray anchor logo-item p-4 transition hover:text-facebook"
 					href={links.socials.fb}
 					target="_blank"
 					aria-label="Facebook Link"
@@ -54,7 +58,7 @@
 				<br />
 				<a
 					href={links.ghReleases}
-					class="anchor text-center text-xs no-underline"
+					class="anchor text-center text-xs text-primary-200 no-underline"
 				>
 					v{pkgJsonInfo.version}
 				</a>

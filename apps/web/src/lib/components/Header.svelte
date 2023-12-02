@@ -1,4 +1,9 @@
 <script lang="ts">
+	import { AppBar } from '@skeletonlabs/skeleton'
+	import Icon from '@iconify/svelte'
+	import NavButton from '$lib/components/NavButton.svelte'
+	import { activeNav } from '$lib/stores/store.js'
+	import { navOptions, drawerSettings } from '$lib/constants'
 	import {
 		Avatar,
 		LightSwitch,
@@ -6,11 +11,6 @@
 		type PopupSettings,
 		type DrawerStore,
 	} from '@skeletonlabs/skeleton'
-	import { AppBar } from '@skeletonlabs/skeleton'
-	import Icon from '@iconify/svelte'
-	import NavButton from '$lib/components/NavButton.svelte'
-	import { activeNav } from '$lib/stores/store.js'
-	import { navOptions, drawerSettings } from '$lib/constants'
 
 	export let drawerStore: DrawerStore
 
@@ -29,8 +29,9 @@
 	}
 </script>
 
-<div class="bg-surface-100-800-token">
+<div class="bg-surface-400-500-token">
 	<AppBar
+		background="bg-surface-400-500-token"
 		id="top"
 		gridColumns="grid-cols-3"
 		slotDefault="place-self-center"
@@ -39,17 +40,20 @@
 	>
 		<svelte:fragment slot="lead">
 			<a
-				class="anchor"
+				class="anchor rounded-none transition-all"
 				href="/"
 				aria-label="Home Logo Button"
 				data-sveltekit-preload-data="hover"
 			>
-				<Avatar src="/apple-touch-icon.png" class="h-8 w-8 cursor-pointer" />
+				<Avatar
+					src="/apple-touch-icon.png"
+					class="h-10 w-auto rounded-sm lg:h-20"
+				/>
 			</a>
 		</svelte:fragment>
 
 		<nav
-			class="z-10 hidden w-full items-center justify-center gap-4 xl:flex"
+			class="z-10 hidden h-10 w-full items-center justify-center gap-5 xl:flex"
 			data-sveltekit-preload-data="hover"
 		>
 			{#key activeNavValue}
@@ -74,8 +78,15 @@
 				/>
 			</button>
 			<a
+				href="/contact"
+				class="variant-ghost-primary btn hidden text-white xl:block"
+				data-sveltekit-preload-data="hover"
+			>
+				Contact
+			</a>
+			<a
 				href="/"
-				class="variant-filled-tertiary btn hidden xl:block"
+				class="variant-filled-secondary btn hidden text-white xl:block"
 				data-sveltekit-preload-data="hover"
 				use:popup={popupHover}
 			>
@@ -85,13 +96,6 @@
 				<p>🚧 Login WIP 🚧</p>
 				<div class="variant-filled-tertiary arrow" />
 			</div>
-			<a
-				href="/contact"
-				class="variant-ghost-primary btn hidden xl:block"
-				data-sveltekit-preload-data="hover"
-			>
-				Contact
-			</a>
 		</svelte:fragment>
 	</AppBar>
 </div>

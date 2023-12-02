@@ -36,7 +36,7 @@
 	`}
 </svelte:head>
 
-<section class="container mx-auto my-8 flex flex-col px-4 lg:my-16">
+<section class="container mx-auto flex flex-col px-4 py-8 lg:py-16">
 	<!-- breadcrumb -->
 	<ol class="breadcrumb flex justify-end">
 		{#each breadcrumb as link, index}
