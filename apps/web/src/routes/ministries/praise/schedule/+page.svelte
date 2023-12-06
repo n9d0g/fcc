@@ -109,7 +109,7 @@
 		<div bind:this={schedTable}>
 			<div class="table-container relative h-[60vh] w-full">
 				<table
-					class="table-hover table-compact relative table overflow-scroll"
+					class="table table-hover table-compact relative overflow-scroll"
 					data-testid="schedule-table"
 				>
 					<thead>
