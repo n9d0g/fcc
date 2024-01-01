@@ -90,6 +90,22 @@ export const breadcrumbs = {
 			href: '/small-groups/partners-in-prayer',
 		},
 	},
+	sundaySchool: {
+		title: 'Sunday School',
+		href: '/sunday-school',
+		toddler: {
+			title: 'Toddler Class',
+			href: '/sunday-school/toddler',
+		},
+		junior: {
+			title: 'Junior Class',
+			href: '/sunday-school/junior',
+		},
+		primary: {
+			title: 'Primary Class',
+			href: '/sunday-school/primary',
+		},
+	},
 }
 
 export const client = createClient({
