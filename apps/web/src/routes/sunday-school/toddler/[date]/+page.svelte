@@ -13,7 +13,7 @@
 	<p>Memory Verse: {lesson.memoryVerse}</p>
 	<a href={lesson.biblePassage} class="anchor w-fit">Bible Passage Link</a>
 	<h3 class="h3 font-bold">Lesson Plan</h3>
-	<div class="grid grid-cols-2">
+	<div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
 		<p class="flex flex-col">
 			<span class="font-bold">Introduction:</span>
 			{lesson.introduction}
