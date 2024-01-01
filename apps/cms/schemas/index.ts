@@ -9,13 +9,13 @@ import sundayMinistries from './sunday-ministries'
 import sundaySchool from './sunday-school'
 
 export const schemaTypes = [
-	pages,
-	sermons,
-	praise,
-	youngAdults,
-	birthdays,
-	prayer,
-	leadership,
-	sundayMinistries,
-	sundaySchool,
+  pages,
+  sermons,
+  praise,
+  youngAdults,
+  birthdays,
+  prayer,
+  leadership,
+  sundayMinistries,
+  sundaySchool,
 ]

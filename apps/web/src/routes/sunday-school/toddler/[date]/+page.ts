@@ -1,22 +1,31 @@
 import { client, headData, breadcrumbs } from '$lib/constants'
 
-export const load = async () => {
+export const load = async ({ params }) => {
+	const { date } = params
+
 	const data = await client.fetch(`
 		*[_type == "sunday-school" && class == 'Toddler'] {
 			class, lessons
 		}
   `)
 
+	const lesson = data[0].lessons.filter(
+		(lesson: any) => lesson.date === date
+	)[0]
+
 	const breadcrumb = [
 		breadcrumbs.home,
 		breadcrumbs.sundaySchool,
 		breadcrumbs.sundaySchool.toddler,
+		{
+			title: lesson.date,
+		},
 	]
 
 	return {
-		title: 'Toddler Class.',
+		title: `${lesson.date} Lesson.`,
 		breadcrumb: breadcrumb,
 		headData: headData.sundaySchool.toddler,
-		lessons: data[0].lessons,
+		lesson: lesson,
 	}
 }
