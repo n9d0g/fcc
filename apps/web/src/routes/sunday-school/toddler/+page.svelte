@@ -7,7 +7,7 @@
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<div class="table-container">
-		<table class="table-compact table-interactive table">
+		<table class="table table-interactive table-compact">
 			<thead>
 				<tr>
 					<th>date</th>
