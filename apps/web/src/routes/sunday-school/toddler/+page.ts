@@ -14,7 +14,7 @@ export const load = async () => {
 	]
 
 	return {
-		title: 'Toddler Class.',
+		title: 'Toddler Class',
 		breadcrumb: breadcrumb,
 		headData: headData.sundaySchool.toddler,
 		lessons: data[0].lessons,
