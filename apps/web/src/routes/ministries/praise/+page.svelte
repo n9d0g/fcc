@@ -77,9 +77,11 @@
 				</p>
 			</div>
 		</div>
+
 		<hr />
+
 		<div>
-			<h3 class="h3 font-bold">Video links:</h3>
+			<h3 class="h3 mb-4 font-bold">Video links:</h3>
 			<div class="flex flex-col gap-2">
 				<a href="https://www.youtube.com/watch?v=SoUvmaQCzZk" class="anchor"
 					>September 25th, 2022</a

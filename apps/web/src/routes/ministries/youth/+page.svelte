@@ -6,16 +6,16 @@
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<div class="mb-8 flex flex-col gap-2">
-		<h2 class="h2 font-bold">Welcome to Our Youth Ministry!</h2>
-		<p>
-			At Freedom in Christ Church, we believe in investing in the vibrant and
-			dynamic potential of our youth. Our Youth Ministry provides a space where
-			teenagers aged 13-19 can gather, connect, and grow in their faith. Join us
-			each month for an exciting blend of spiritual development, community
-			engagement, and lots of fun!
-		</p>
+	<h2 class="h2 mb-4 font-bold">Welcome to Our Youth Ministry!</h2>
+	<p class="mb-8">
+		At Freedom in Christ Church, we believe in investing in the vibrant and
+		dynamic potential of our youth. Our Youth Ministry provides a space where
+		teenagers aged 13-19 can gather, connect, and grow in their faith. Join us
+		each month for an exciting blend of spiritual development, community
+		engagement, and lots of fun!
+	</p>
 
+	<div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
 		<div class="flex flex-col gap-1">
 			<h3 class="h3 font-bold">Mission:</h3>
 			<p>
@@ -49,7 +49,7 @@
 
 		<div class="flex flex-col gap-1">
 			<h3 class="h3 font-bold">What to Expect:</h3>
-			<ul class="list-outside list-disc pl-3">
+			<ul class="list-outside list-disc pl-4">
 				<li>
 					<span class="font-bold">Bible Studies:</span>
 					Regular and engaging Bible studies tailored to the unique needs and questions
@@ -76,22 +76,22 @@
 				</li>
 			</ul>
 		</div>
+	</div>
 
-		<div class="flex flex-col gap-1">
-			<h3 class="h3 font-bold">How to Join:</h3>
-			<p class="mb-2">
-				Whether you're a regular attendee or a newcomer, your presence is
-				eagerly anticipated, and we look forward to welcoming you. Contact Sis
-				<a href="https://www.facebook.com/raquel.quiambao.1" class="anchor"
-					>Raquel Quiambao</a
-				> for more details.
-			</p>
-			<p>
-				Come and be a part of a community where the energy and passion of youth
-				are celebrated, and where faith becomes a vibrant and transformative
-				journey. Join us at our next Youth Ministry for an inspiring time of
-				growth, connection, and fun.
-			</p>
-		</div>
+	<div class="flex flex-col gap-1">
+		<h3 class="h3 font-bold">How to Join:</h3>
+		<p class="mb-2">
+			Whether you're a regular attendee or a newcomer, your presence is eagerly
+			anticipated, and we look forward to welcoming you. Contact Sis
+			<a href="https://www.facebook.com/raquel.quiambao.1" class="anchor"
+				>Raquel Quiambao</a
+			> for more details.
+		</p>
+		<p>
+			Come and be a part of a community where the energy and passion of youth
+			are celebrated, and where faith becomes a vibrant and transformative
+			journey. Join us at our next Youth Ministry for an inspiring time of
+			growth, connection, and fun.
+		</p>
 	</div>
 </FccLayout>
