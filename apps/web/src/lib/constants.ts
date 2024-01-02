@@ -169,7 +169,7 @@ export const links = {
 		'https://www.biblegateway.com/passage/?search=2+Corinthians+9%3A8&version=NIV',
 	etransfer: 'emailto:fcc.fcac@gmail.com',
 	excel:
-		'https://docs.google.com/spreadsheets/d/1-wwTym8TqkicbAW9Eb42kdy0Qtp0HneuseVycepJ-OE/edit?usp=sharing',
+		'https://docs.google.com/spreadsheets/d/1SuzguOJzxilcX1COZMnvoqOl0MWD8xlGJVsVLLwJGlo/edit#gid=0',
 	calendar:
 		'https://calendar.google.com/calendar/embed?height=900&wkst=1&bgcolor=%230ea5e9&ctz=America%2FToronto&showTitle=1&showNav=1&showDate=1&showPrint=0&showCalendars=0&src=nate%40fcccanada.ca&ctz=America%2FToronto&color=%23009688',
 	programming: {

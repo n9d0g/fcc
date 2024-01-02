@@ -1,6 +1,7 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import { getMonth } from '$lib/utils.js'
+	import { links } from '$lib/constants.js'
 	import sundayMinistriesImg from '$lib/assets/fcc-2024-sunday-ministries.png'
 
 	export let data
@@ -68,7 +69,12 @@
 	</div>
 
 	<!-- image of ministries -->
-	<div class="my-8 flex w-full justify-center">
+	<div class="my-8 flex w-full flex-col justify-center gap-8">
 		<img src={sundayMinistriesImg} alt="Sunday Ministries" />
+		<div class="flex justify-center">
+			<a href={links.excel} target="_blank" class="variant-filled btn">
+				2024 Excel Data Sheet
+			</a>
+		</div>
 	</div>
 </FccLayout>
