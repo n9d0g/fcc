@@ -36,10 +36,10 @@
 	</div>
 
 	<div class="flex flex-col gap-2">
-		<a href={lesson.worksheet} class="anchor">Suggested Worksheet</a>
-		<a href={lesson.craft} class="anchor">Suggested Activity</a>
-		<a href={lesson.video} class="anchor">Suggested Video</a>
-		<a href={lesson.song} class="anchor mb-8">Suggested Action Song</a>
+		<a href={lesson.worksheet} class="anchor w-fit">Suggested Worksheet</a>
+		<a href={lesson.craft} class="anchor w-fit">Suggested Activity</a>
+		<a href={lesson.video} class="anchor w-fit">Suggested Video</a>
+		<a href={lesson.song} class="anchor mb-8 w-fit">Suggested Action Song</a>
 		<p><span class="font-bold">Homework:</span> {lesson.homework}</p>
 	</div>
 </FccLayout>

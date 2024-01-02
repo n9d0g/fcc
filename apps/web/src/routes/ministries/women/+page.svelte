@@ -6,16 +6,16 @@
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<div class="mb-8 flex flex-col gap-2">
-		<h2 class="h2 font-bold">Welcome to Our Women's Ministry Gathering!</h2>
-		<p>
-			At Freedom in Christ Church, we celebrate the strength, wisdom, and beauty
-			that women bring to our community. Our Women's Ministry Gathering is a
-			monthly opportunity for women to come together, share life's journey, and
-			grow in faith and friendship. Join us each month for a warm and inviting
-			time of connection and sisterhood.
-		</p>
+	<h2 class="h2 mb-4 font-bold">Welcome to Our Women's Ministry Gathering!</h2>
+	<p class="mb-8">
+		At Freedom in Christ Church, we celebrate the strength, wisdom, and beauty
+		that women bring to our community. Our Women's Ministry Gathering is a
+		monthly opportunity for women to come together, share life's journey, and
+		grow in faith and friendship. Join us each month for a warm and inviting
+		time of connection and sisterhood.
+	</p>
 
+	<div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
 		<div class="flex flex-col gap-1">
 			<h3 class="h3 font-bold">Mission:</h3>
 			<p>
@@ -49,7 +49,7 @@
 
 		<div class="flex flex-col gap-1">
 			<h3 class="h3 font-bold">What to Expect:</h3>
-			<ul class="list-outside list-disc pl-3">
+			<ul class="list-outside list-disc pl-4">
 				<li>
 					<span class="font-bold">Fellowship:</span>
 					Building meaningful connections with fellow women in the church.
@@ -74,23 +74,23 @@
 				</li>
 			</ul>
 		</div>
+	</div>
 
-		<div class="flex flex-col gap-1">
-			<h3 class="h3 font-bold">How to Join:</h3>
-			<p class="mb-2">
-				Whether you're a regular attendee or a first-timer, your presence is
-				cherished, and we look forward to welcoming you. For more details,
-				please feel free to contact Sis
-				<a href="https://www.facebook.com/omarcelinozarate" class="anchor"
-					>Olive Zarate</a
-				>.
-			</p>
-			<p>
-				Come and be a part of a community where women are empowered to embrace
-				their identity, grow in faith, and support one another through life's
-				journey. Join us at our next Women's Ministry Gathering for a delightful
-				time of fellowship, growth, and encouragement.
-			</p>
-		</div>
+	<div class="flex flex-col gap-1">
+		<h3 class="h3 font-bold">How to Join:</h3>
+		<p class="mb-2">
+			Whether you're a regular attendee or a first-timer, your presence is
+			cherished, and we look forward to welcoming you. For more details, please
+			feel free to contact Sis
+			<a href="https://www.facebook.com/omarcelinozarate" class="anchor"
+				>Olive Zarate</a
+			>.
+		</p>
+		<p>
+			Come and be a part of a community where women are empowered to embrace
+			their identity, grow in faith, and support one another through life's
+			journey. Join us at our next Women's Ministry Gathering for a delightful
+			time of fellowship, growth, and encouragement.
+		</p>
 	</div>
 </FccLayout>

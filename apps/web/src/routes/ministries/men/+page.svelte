@@ -13,17 +13,17 @@
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<div class="mb-8 flex flex-col gap-2">
-		<h2 class="h2 font-bold">Welcome to Our Men's Ministry Gathering!</h2>
-		<p>
-			At Freedom in Christ Church, we believe in the strength and impact of a
-			united community of men dedicated to growing in faith, supporting one
-			another, and making a positive difference. Our Men's Ministry Gathering is
-			a monthly opportunity for fellowship, spiritual growth, and mutual
-			encouragement. Join us every month for an empowering time of connection
-			and camaraderie.
-		</p>
+	<h2 class="h2 mb-4 font-bold">Welcome to Our Men's Ministry Gathering!</h2>
+	<p class="mb-8">
+		At Freedom in Christ Church, we believe in the strength and impact of a
+		united community of men dedicated to growing in faith, supporting one
+		another, and making a positive difference. Our Men's Ministry Gathering is a
+		monthly opportunity for fellowship, spiritual growth, and mutual
+		encouragement. Join us every month for an empowering time of connection and
+		camaraderie.
+	</p>
 
+	<div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
 		<div class="flex flex-col gap-1">
 			<h3 class="h3 font-bold">Mission:</h3>
 			<p>
@@ -57,7 +57,7 @@
 
 		<div class="flex flex-col gap-1">
 			<h3 class="h3 font-bold">What to Expect:</h3>
-			<ul class="list-outside list-disc pl-3">
+			<ul class="list-outside list-disc pl-4">
 				<li>
 					<span class="font-bold">Fellowship:</span>
 					Building meaningful connections with fellow men in the church.
@@ -83,23 +83,23 @@
 				</li>
 			</ul>
 		</div>
+	</div>
 
-		<div class="flex flex-col gap-1">
-			<h3 class="h3 font-bold">How to Join:</h3>
-			<p class="mb-2">
-				Whether you're a regular attendee or a first-timer, your presence is
-				valued, and we look forward to welcoming you. Feel free to message bro
-				<a href="https://www.facebook.com/june.bermudo" class="anchor"
-					>June Bermudo</a
-				> for more details.
-			</p>
-			<p>
-				Come and be a part of a community where men are empowered to live out
-				their faith authentically and purposefully. Join us at our next Men's
-				Ministry Gathering and be ready for an enriching time of fellowship,
-				growth, and encouragement.
-			</p>
-		</div>
+	<div class="mb-8 flex flex-col gap-1">
+		<h3 class="h3 font-bold">How to Join:</h3>
+		<p class="mb-2">
+			Whether you're a regular attendee or a first-timer, your presence is
+			valued, and we look forward to welcoming you. Feel free to message bro
+			<a href="https://www.facebook.com/june.bermudo" class="anchor"
+				>June Bermudo</a
+			> for more details.
+		</p>
+		<p>
+			Come and be a part of a community where men are empowered to live out
+			their faith authentically and purposefully. Join us at our next Men's
+			Ministry Gathering and be ready for an enriching time of fellowship,
+			growth, and encouragement.
+		</p>
 	</div>
 
 	<!-- svelte-ignore a11y-img-redundant-alt -->

@@ -6,16 +6,16 @@
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<div class="mb-8 flex flex-col gap-2">
-		<h2 class="h2 font-bold">Welcome to Our Women's Ministry Gathering!</h2>
-		<p>
-			Welcome to our vibrant and engaging Sunday School program, where children
-			of all ages are invited to embark on an exciting journey of faith, fun,
-			and friendship. Our program is designed to cater to the unique needs and
-			developmental stages of three distinct age groups: Crawlers/Toddlers (ages
-			1-5), Primary (grades 1-3), and Junior (grades 4-6).
-		</p>
+	<h2 class="h2 mb-4 font-bold">Welcome to Our Women's Ministry Gathering!</h2>
+	<p class="mb-8">
+		Welcome to our vibrant and engaging Sunday School program, where children of
+		all ages are invited to embark on an exciting journey of faith, fun, and
+		friendship. Our program is designed to cater to the unique needs and
+		developmental stages of three distinct age groups: Crawlers/Toddlers (ages
+		1-5), Primary (grades 1-3), and Junior (grades 4-6).
+	</p>
 
+	<div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
 		<div class="flex flex-col gap-1">
 			<h3 class="h3 font-bold">Interactive Bible Lessons:</h3>
 			<p>
@@ -74,12 +74,13 @@
 				believe in providing a space for your child to connect with God while
 				you engage in the main worship service.
 			</p>
-			<p>
-				Come be a part of our Sunday School family, where we're not just shaping
-				minds, but also touching hearts and souls. We look forward to the
-				opportunity to guide your child on this exciting journey of faith and
-				discovery.
-			</p>
 		</div>
 	</div>
+
+	<p>
+		Come be a part of our Sunday School family, where we're not just shaping
+		minds, but also touching hearts and souls. We look forward to the
+		opportunity to guide your child on this exciting journey of faith and
+		discovery.
+	</p>
 </FccLayout>

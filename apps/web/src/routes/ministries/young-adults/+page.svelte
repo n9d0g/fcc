@@ -6,17 +6,16 @@
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<div class="mb-8 flex flex-col gap-2">
-		<h2 class="h2 font-bold">Welcome to our Young Adults Community!</h2>
-		<p>
-			At Freedom in Christ Church, we recognize the unique journey and
-			aspirations of young adults aged 20-35. Our Young Adults Community is a
-			place where individuals in this age group can connect, grow spiritually,
-			and navigate life's challenges together. Join us regularly for engaging
-			gatherings that blend faith, community involvement, and meaningful
-			connections.
-		</p>
+	<h2 class="h2 mb-4 font-bold">Welcome to our Young Adults Community!</h2>
+	<p class="mb-8">
+		At Freedom in Christ Church, we recognize the unique journey and aspirations
+		of young adults aged 20-35. Our Young Adults Community is a place where
+		individuals in this age group can connect, grow spiritually, and navigate
+		life's challenges together. Join us regularly for engaging gatherings that
+		blend faith, community involvement, and meaningful connections.
+	</p>
 
+	<div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
 		<div class="flex flex-col gap-1">
 			<h3 class="h3 font-bold">Mission:</h3>
 			<p>
@@ -51,7 +50,7 @@
 
 		<div class="flex flex-col gap-1">
 			<h3 class="h3 font-bold">What to Expect:</h3>
-			<ul class="list-outside list-disc pl-3">
+			<ul class="list-outside list-disc pl-4">
 				<li>
 					<span class="font-bold">Bible Studies and Discussions:</span>
 					Thought-provoking studies and discussions on relevant topics that resonate
@@ -79,24 +78,24 @@
 				</li>
 			</ul>
 		</div>
+	</div>
 
-		<div class="flex flex-col gap-1">
-			<h3 class="h3 font-bold">How to Join:</h3>
-			<p class="mb-2">
-				To be part of our Young Adults Community, check the church calendar or
-				announcements for the specific date and time of our regular gatherings.
-				Whether you're a consistent participant or considering joining for the
-				first time, your presence is valued, and we look forward to welcoming
-				you. Contact sis
-				<a href="https://www.facebook.com/lardinore" class="anchor">Noreen</a> for
-				more details.
-			</p>
-			<p>
-				Come and be a part of a community where the energy, questions, and
-				dreams of young adulthood are celebrated. Join us at our next gathering
-				for a time of meaningful connection, spiritual exploration, and the
-				support you need on your journey.
-			</p>
-		</div>
+	<div class="flex flex-col gap-1">
+		<h3 class="h3 font-bold">How to Join:</h3>
+		<p class="mb-2">
+			To be part of our Young Adults Community, check the church calendar or
+			announcements for the specific date and time of our regular gatherings.
+			Whether you're a consistent participant or considering joining for the
+			first time, your presence is valued, and we look forward to welcoming you.
+			Contact sis
+			<a href="https://www.facebook.com/lardinore" class="anchor">Noreen</a> for
+			more details.
+		</p>
+		<p>
+			Come and be a part of a community where the energy, questions, and dreams
+			of young adulthood are celebrated. Join us at our next gathering for a
+			time of meaningful connection, spiritual exploration, and the support you
+			need on your journey.
+		</p>
 	</div>
 </FccLayout>
