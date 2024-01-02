@@ -29,10 +29,6 @@ export const load = async () => {
 				link: '/ministries/women',
 			},
 			{
-				title: 'Pre-teens',
-				link: '/ministries/preteens',
-			},
-			{
 				title: 'Youth',
 				link: '/ministries/youth',
 			},

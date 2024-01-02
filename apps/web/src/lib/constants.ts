@@ -40,7 +40,6 @@ export const breadcrumbs = {
 		women: { title: 'Women', href: '/ministries/women' },
 		ya: { title: 'Young Adults', href: '/ministies/young-adults' },
 		prayer: { title: 'Prayer', href: '/ministries/prayer' },
-		preteens: { title: 'Preteens', href: '/ministries/preteens' },
 		youth: { title: 'Youth', href: '/ministries/youth' },
 		praise: {
 			title: 'Praise & Worship',
@@ -290,10 +289,6 @@ export const headData = {
 	ministriesWomen: {
 		title: 'FCC | Ministries - Women',
 		description: "Women's Ministry page for the Freedom in Christ Church.",
-	},
-	ministriesPreteens: {
-		title: 'FCC | Ministries - Preteens',
-		description: "Preteen's Ministry page for the Freedom in Christ Church.",
 	},
 	ministriesYA: {
 		title: 'FCC | Ministries - YA',
