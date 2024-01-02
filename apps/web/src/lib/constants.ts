@@ -362,6 +362,11 @@ export const headData = {
 	sundaySchool: {
 		title: 'FCC | Sunday School',
 		description: 'FCC Sunday School page for the Freedom in Christ Church.',
+		teachers: {
+			title: 'FCC | SS Teachers',
+			description:
+				"FCC Sunday School Teachers' page for the Freedom in Christ Church.",
+		},
 		toddler: {
 			title: 'FCC | Toddler Class',
 			description:

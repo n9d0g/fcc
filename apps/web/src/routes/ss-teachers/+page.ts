@@ -4,21 +4,21 @@ export const load = async () => {
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.sundaySchool]
 
 	return {
-		title: 'Sunday School Ministry.',
+		title: 'Sunday School Teachers Page',
 		breadcrumb: breadcrumb,
 		headData: headData.programming,
 		landingPageItems: [
 			{
 				title: 'Toddler Class (ages 0-5)',
-				link: '/sunday-school/toddler',
+				link: '/ss-teachers/toddler',
 			},
 			{
 				title: 'Primary Class (ages 6-8)',
-				link: '/sunday-school/primary',
+				link: '/ss-teachers/primary',
 			},
 			{
 				title: 'Junior Class (ages 9-12)',
-				link: '/sunday-school/junior',
+				link: '/ss-teachers/junior',
 			},
 		],
 	}
