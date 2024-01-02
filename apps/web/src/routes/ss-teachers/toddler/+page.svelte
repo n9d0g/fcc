@@ -12,7 +12,7 @@
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<div class="table-container relative h-[60vh]">
-		<table class="table-interactive table-compact table overflow-scroll">
+		<table class="table table-interactive table-compact overflow-scroll">
 			<thead>
 				<tr class="bg-surface-200-700-token sticky top-0 z-10">
 					<th>Date</th>
