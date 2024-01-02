@@ -6,7 +6,7 @@ export const load = async () => {
 	return {
 		title: 'Sunday School Teachers Page',
 		breadcrumb: breadcrumb,
-		headData: headData.programming,
+		headData: headData.sundaySchool.teachers,
 		landingPageItems: [
 			{
 				title: 'Toddler Class (ages 0-5)',
