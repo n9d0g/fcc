@@ -130,7 +130,7 @@
 
 	<!-- schedule table -->
 	<div class="table-container">
-		<table class="table-hover table">
+		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th>Date</th>
