@@ -15,7 +15,7 @@ export const load = async ({ params }) => {
 
 	const breadcrumb = [
 		breadcrumbs.home,
-		breadcrumbs.sundaySchool,
+		breadcrumbs.sundaySchool.teachers,
 		breadcrumbs.sundaySchool.toddler,
 		{
 			title: lesson.date,
