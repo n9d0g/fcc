@@ -4,12 +4,12 @@ export const load = async () => {
 	const breadcrumb = [
 		breadcrumbs.home,
 		breadcrumbs.ministries,
-		breadcrumbs.ministries.preteens,
+		breadcrumbs.ministries.sundaySchool,
 	]
 
 	return {
-		title: "FCC Pre-teen's Ministry.",
+		title: 'FCC Sunday School Ministry.',
 		breadcrumb: breadcrumb,
-		headData: headData.ministriesPreteens,
+		headData: headData.sundaySchool,
 	}
 }

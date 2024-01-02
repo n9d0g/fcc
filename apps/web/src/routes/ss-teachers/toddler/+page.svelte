@@ -6,7 +6,7 @@
 	const { title, breadcrumb, headData, lessons } = data
 
 	const handleLessonClick = (date: string) => {
-		goto(`/sunday-school/toddler/${date}`)
+		goto(`/ss-teachers/toddler/${date}`)
 	}
 </script>
 

@@ -9,7 +9,7 @@ export const load = async () => {
 
 	const breadcrumb = [
 		breadcrumbs.home,
-		breadcrumbs.sundaySchool,
+		breadcrumbs.sundaySchool.teachers,
 		breadcrumbs.sundaySchool.toddler,
 	]
 

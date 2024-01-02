@@ -40,8 +40,8 @@ export const breadcrumbs = {
 		women: { title: 'Women', href: '/ministries/women' },
 		ya: { title: 'Young Adults', href: '/ministies/young-adults' },
 		prayer: { title: 'Prayer', href: '/ministries/prayer' },
-		preteens: { title: 'Preteens', href: '/ministries/preteens' },
 		youth: { title: 'Youth', href: '/ministries/youth' },
+		sundaySchool: { title: 'Sunday School', href: '/ministries/sunday-school' },
 		praise: {
 			title: 'Praise & Worship',
 			href: '/ministries/praise',
@@ -93,17 +93,21 @@ export const breadcrumbs = {
 	sundaySchool: {
 		title: 'Sunday School',
 		href: '/sunday-school',
+		teachers: {
+			title: 'SS Teachers',
+			href: '/ss-teachers',
+		},
 		toddler: {
 			title: 'Toddler Class',
-			href: '/sunday-school/toddler',
+			href: '/ss-teachers/toddler',
 		},
 		junior: {
 			title: 'Junior Class',
-			href: '/sunday-school/junior',
+			href: '/ss-teachers/junior',
 		},
 		primary: {
 			title: 'Primary Class',
-			href: '/sunday-school/primary',
+			href: '/ss-teachers/primary',
 		},
 	},
 }
@@ -169,7 +173,7 @@ export const links = {
 		'https://www.biblegateway.com/passage/?search=2+Corinthians+9%3A8&version=NIV',
 	etransfer: 'emailto:fcc.fcac@gmail.com',
 	excel:
-		'https://docs.google.com/spreadsheets/d/1-wwTym8TqkicbAW9Eb42kdy0Qtp0HneuseVycepJ-OE/edit?usp=sharing',
+		'https://docs.google.com/spreadsheets/d/1SuzguOJzxilcX1COZMnvoqOl0MWD8xlGJVsVLLwJGlo/edit#gid=0',
 	calendar:
 		'https://calendar.google.com/calendar/embed?height=900&wkst=1&bgcolor=%230ea5e9&ctz=America%2FToronto&showTitle=1&showNav=1&showDate=1&showPrint=0&showCalendars=0&src=nate%40fcccanada.ca&ctz=America%2FToronto&color=%23009688',
 	programming: {
@@ -291,10 +295,6 @@ export const headData = {
 		title: 'FCC | Ministries - Women',
 		description: "Women's Ministry page for the Freedom in Christ Church.",
 	},
-	ministriesPreteens: {
-		title: 'FCC | Ministries - Preteens',
-		description: "Preteen's Ministry page for the Freedom in Christ Church.",
-	},
 	ministriesYA: {
 		title: 'FCC | Ministries - YA',
 		description:
@@ -367,6 +367,11 @@ export const headData = {
 	sundaySchool: {
 		title: 'FCC | Sunday School',
 		description: 'FCC Sunday School page for the Freedom in Christ Church.',
+		teachers: {
+			title: 'FCC | SS Teachers',
+			description:
+				"FCC Sunday School Teachers' page for the Freedom in Christ Church.",
+		},
 		toddler: {
 			title: 'FCC | Toddler Class',
 			description:

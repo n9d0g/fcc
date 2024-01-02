@@ -1,7 +1,8 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import { links } from '$lib/constants'
 	import { getMonth } from '$lib/utils.js'
+	import { links } from '$lib/constants.js'
+	import sundayMinistriesImg from '$lib/assets/fcc-2024-sunday-ministries.png'
 
 	export let data
 	const { tHeaders, tBody, title, breadcrumb, headData } = data
@@ -11,7 +12,7 @@
 	<!-- responsive container -->
 	<div class="table-container relative">
 		<!-- skeleton table -->
-		<table class="table relative overflow-scroll">
+		<table class="relative table overflow-scroll">
 			<thead>
 				<tr class="variant-filled-secondary sticky top-0 z-10">
 					{#each tHeaders as header, index}
@@ -67,10 +68,13 @@
 		</table>
 	</div>
 
-	<!-- link to excel sheet -->
-	<div class="my-8 flex w-full justify-center">
-		<a href={links.excel} target="_blank" class="variant-filled btn">
-			Excel Data Sheet
-		</a>
+	<!-- image of ministries -->
+	<div class="my-8 flex w-full flex-col justify-center gap-8">
+		<img src={sundayMinistriesImg} alt="Sunday Ministries" />
+		<div class="flex justify-center">
+			<a href={links.excel} target="_blank" class="variant-filled btn">
+				2024 Excel Data Sheet
+			</a>
+		</div>
 	</div>
 </FccLayout>

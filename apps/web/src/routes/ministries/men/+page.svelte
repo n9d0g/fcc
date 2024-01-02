@@ -13,15 +13,95 @@
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<p class="my-8 text-xl leading-relaxed lg:w-10/12">
-		Our various activities, events and meetings are all geared towards helping
-		MEN of all ages come together for times of fun, fellowship and teaching with
-		the goals of becoming the spiritual leaders God has designed them to be.
-		<br />
-		<br />
-		For more information of these and other upcoming events with the Men's Ministry
-		at the Church, please contact Bro June Bermudo!
-	</p>
+	<div class="mb-8 flex flex-col gap-2">
+		<h2 class="h2 font-bold">Welcome to Our Men's Ministry Gathering!</h2>
+		<p>
+			At Freedom in Christ Church, we believe in the strength and impact of a
+			united community of men dedicated to growing in faith, supporting one
+			another, and making a positive difference. Our Men's Ministry Gathering is
+			a monthly opportunity for fellowship, spiritual growth, and mutual
+			encouragement. Join us every month for an empowering time of connection
+			and camaraderie.
+		</p>
+
+		<div class="flex flex-col gap-1">
+			<h3 class="h3 font-bold">Mission:</h3>
+			<p>
+				Our mission is to cultivate a community of men who are committed to
+				living out their faith in all aspects of life. Through our monthly
+				gatherings, we aim to strengthen bonds, foster spiritual growth, and
+				empower men to be influential leaders in their families, workplaces, and
+				communities.
+			</p>
+		</div>
+
+		<div class="flex flex-col gap-1">
+			<h3 class="h3 font-bold">Vision:</h3>
+			<p>
+				We envision a Men's Ministry that empowers men to be godly leaders,
+				husbands, fathers, and friends. Our vision is to create a space where
+				men can share their journeys, learn from one another, and be equipped to
+				navigate the challenges of life with faith and resilience.
+			</p>
+		</div>
+
+		<div class="flex flex-col gap-1">
+			<h3 class="h3 font-bold">Join Us Every Month:</h3>
+			<p>
+				We invite you to be a part of our Men's Ministry Gathering, held every
+				month at a specified date and time. It's an opportunity to connect with
+				other men in the church, share experiences, and grow in your faith
+				journey together.
+			</p>
+		</div>
+
+		<div class="flex flex-col gap-1">
+			<h3 class="h3 font-bold">What to Expect:</h3>
+			<ul class="list-outside list-disc pl-3">
+				<li>
+					<span class="font-bold">Fellowship:</span>
+					Building meaningful connections with fellow men in the church.
+				</li>
+				<li>
+					<span class="font-bold">Spiritual Growth:</span>
+					Engaging in discussions and activities that encourage personal and collective
+					spiritual growth.
+				</li>
+				<li>
+					<span class="font-bold">Support and Encouragement:</span>
+					Providing a supportive environment to share joys, challenges, and prayer
+					requests.
+				</li>
+				<li>
+					<span class="font-bold">Practical Teaching:</span>
+					Receiving practical teachings and insights relevant to the unique challenges
+					faced by men.
+				</li>
+				<li>
+					<span class="font-bold">Service Opportunities:</span>
+					Exploring ways to serve and make a positive impact in the church and community.
+				</li>
+			</ul>
+		</div>
+
+		<div class="flex flex-col gap-1">
+			<h3 class="h3 font-bold">How to Join:</h3>
+			<p class="mb-2">
+				Whether you're a regular attendee or a first-timer, your presence is
+				valued, and we look forward to welcoming you. Feel free to message bro
+				<a href="https://www.facebook.com/june.bermudo" class="anchor"
+					>June Bermudo</a
+				> for more details.
+			</p>
+			<p>
+				Come and be a part of a community where men are empowered to live out
+				their faith authentically and purposefully. Join us at our next Men's
+				Ministry Gathering and be ready for an enriching time of fellowship,
+				growth, and encouragement.
+			</p>
+		</div>
+	</div>
+
 	<!-- svelte-ignore a11y-img-redundant-alt -->
 	<img src={cover} alt="Men's Ministry Cover Photo" class="h-auto w-full" />
 	<div

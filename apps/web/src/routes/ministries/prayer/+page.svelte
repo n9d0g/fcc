@@ -12,45 +12,97 @@
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<!-- copy -->
-	<h2 class="h2 font-bold text-red-500">Please take note of the following:</h2>
-	<ul class="my-2 list-outside list-disc pl-4">
-		<li>FCC’s Bible Verse this year 2023 is: Acts 2:42.</li>
-		<li>
-			The text you’re assigned to prepare for should have the underpinnings of <span
-				class="font-bold text-red-500"
-			>
-				Acts 2:42
-			</span> — “Koinonia” (Greek word) meaning holding something in common.
-		</li>
-	</ul>
-	<blockquote class="blockquote my-4 border-l-4 border-primary-500">
-		“And they devoted themselves to the apostles’ teaching and the fellowship,
-		to the breaking of bread and the prayers.“
-	</blockquote>
-	<div class="my-4">
-		<p class="font-bold">
-			Koinonia — is the unity of the Spirit that comes from Christians shared
-			belief, convictions, and behavior.
+	<h2 class="h2 mb-2 font-bold">Welcome to Our Weekly Prayer Meeting!</h2>
+	<p class="mb-4">
+		At Freedom in Christ Church, we believe in the transformative power of
+		prayer and the strength that comes from a community united in seeking God's
+		guidance, mercy, and blessing. Our Weekly Prayer Meeting is a sacred space
+		where we gather to lift our voices in intercession, express gratitude, and
+		draw near to the heart of God. Join us every Wednesday at 7 PM via Zoom for
+		a time of meaningful connection and powerful prayer.
+	</p>
+
+	<div class="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
+		<div>
+			<h3 class="h3 font-bold">Mission:</h3>
+			<p>
+				Our mission is to create a dynamic and fervent community of prayer
+				warriors who are committed to seeking God's will for the world, our
+				nation, our church, and individual lives. Through our collective
+				prayers, we aim to impact not only our immediate community but also
+				extend God's love and grace to the broader global context.
+			</p>
+		</div>
+
+		<div>
+			<h3 class="h3 font-bold">Vision:</h3>
+			<p>
+				We envision a prayerful congregation, passionately engaging with God
+				through weekly gatherings, where hearts are stirred, burdens are shared,
+				and lives are transformed. Our vision is to be a community that
+				fervently intercedes for the world's needs, stands in the gap for
+				current events, and supports one another in our personal journeys of
+				faith.
+			</p>
+		</div>
+
+		<div>
+			<h3 class="h3 font-bold">Join Us Every Wednesday at 7 PM (via Zoom):</h3>
+			<p>
+				We invite you to be a part of our Weekly Prayer Meeting, held every
+				Wednesday at 7 PM via Zoom. It's an opportunity to join your faith with
+				others as we pray for the world, our beloved Canada, missions across the
+				globe, our church family, and our individual prayer requests.
+			</p>
+		</div>
+
+		<div>
+			<h3 class="h3 font-bold">What to Expect:</h3>
+			<ul class="list-outside list-disc pl-4">
+				<li>
+					<span class="font-bold">Devotional Time:</span>
+					Starting with a short devotional to center our hearts on God's Word before
+					we pray.
+				</li>
+				<li>
+					<span class="font-bold">Global Intercession:</span>
+					Praying for the pressing needs of the world and current events.
+				</li>
+				<li>
+					<span class="font-bold">National Focus:</span>
+					Lifting up Canada in prayer for its well-being and prosperity.
+				</li>
+				<li>
+					<span class="font-bold">Missions Support:</span>
+					Interceding for missions around the world and supporting the spread of
+					the Gospel.
+				</li>
+				<li>
+					<span class="font-bold">Church Community:</span>
+					Praying for the growth, unity, and spiritual health of our church family.
+				</li>
+				<li>
+					<span class="font-bold">Personal Prayer Requests:</span>
+					Creating a space to share and pray for individual needs.
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div>
+		<h3 class="h3 font-bold">How to Join:</h3>
+		<p class="mb-2">
+			To join our Weekly Prayer Meeting on Zoom, simply click the provided link
+			at 7 PM every Wednesday. If you have specific prayer requests or topics
+			you'd like us to pray for, feel free to share them during the meeting.
+			Your presence and prayers are a valuable addition to our community.
 		</p>
-		<p class="font-bold">
-			Koinonia — is the mutual cooperation in God’s worship, God’s work, and
-			God’s will being done in our midst.
+		<p>
+			Come be a part of this transformative time of seeking God's face, sharing
+			burdens, and lifting one another up in prayer. We look forward to
+			connecting with you every Wednesday at 7 PM.
 		</p>
 	</div>
-	<p>
-		For BS group coordinators, you can assign a member of your group to do the
-		devotional (10-15 minutes).
-	</p>
-	<ul class="list-outside list-disc pl-4">
-		<li>
-			You will be provided a copy of the steps on how to prepare or do a
-			devotional.
-		</li>
-		<li>
-			Lastly, you will be provided a copy of an article on how to understand
-			biblical koinonia to help you in your preparation.
-		</li>
-	</ul>
 
 	<hr class="my-8" />
 
@@ -78,7 +130,7 @@
 
 	<!-- schedule table -->
 	<div class="table-container">
-		<table class="table table-hover">
+		<table class="table-hover table">
 			<thead>
 				<tr>
 					<th>Date</th>
