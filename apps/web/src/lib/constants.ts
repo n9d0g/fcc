@@ -377,5 +377,15 @@ export const headData = {
 			description:
 				'FCC Toddler Sunday School page for the Freedom in Christ Church.',
 		},
+		primary: {
+			title: 'FCC | Primary Class',
+			description:
+				'FCC Primary Sunday School page for the Freedom in Christ Church.',
+		},
+		junior: {
+			title: 'FCC | Junior Class',
+			description:
+				'FCC Junior Sunday School page for the Freedom in Christ Church.',
+		},
 	},
 }

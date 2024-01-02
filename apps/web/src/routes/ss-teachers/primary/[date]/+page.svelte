@@ -7,7 +7,7 @@
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<p>Teacher: {lesson.teacher}</p>
-	<p>Assistant: {lesson.assistant}</p>
+	<!-- <p>Assistant: {lesson.assistant}</p> -->
 	<p>Title: {lesson.title}</p>
 	<p>Objective: {lesson.objective}</p>
 	<p>Memory Verse: {lesson.memoryVerse}</p>
