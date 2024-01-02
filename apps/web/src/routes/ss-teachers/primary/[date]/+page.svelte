@@ -6,14 +6,17 @@
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<p>Teacher: {lesson.teacher}</p>
-	<!-- <p>Assistant: {lesson.assistant}</p> -->
-	<p>Title: {lesson.title}</p>
-	<p>Objective: {lesson.objective}</p>
-	<p>Memory Verse: {lesson.memoryVerse}</p>
-	<a href={lesson.biblePassage} class="anchor w-fit">Bible Passage Link</a>
-	<h3 class="h3 font-bold">Lesson Plan</h3>
-	<div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+	<div class="mb-8 flex flex-col gap-2">
+		<p><span class="font-bold">Teacher:</span> {lesson.teacher}</p>
+		<!-- <p><span class="font-bold">Assistant:</span> {lesson.assistant}</p> -->
+		<p><span class="font-bold">Title:</span> {lesson.title}</p>
+		<p><span class="font-bold">Objective:</span> {lesson.objective}</p>
+		<p><span class="font-bold">Memory Verse:</span> {lesson.memoryVerse}</p>
+		<a href={lesson.biblePassage} class="anchor w-fit">Bible Passage Link</a>
+	</div>
+
+	<h3 class="h3 mb-2 font-bold">Lesson Plan</h3>
+	<div class="mb-8 grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8">
 		<p class="flex flex-col">
 			<span class="font-bold">Introduction:</span>
 			{lesson.introduction}
@@ -32,9 +35,11 @@
 		</p>
 	</div>
 
-	<a href={lesson.worksheet} class="anchor">Suggested Worksheet</a>
-	<a href={lesson.craft} class="anchor">Suggested Activity</a>
-	<a href={lesson.video} class="anchor">Suggested Video</a>
-	<a href={lesson.song} class="anchor">Suggested Action Song</a>
-	<p>Homework: {lesson.homework}</p>
+	<div class="flex flex-col gap-2">
+		<a href={lesson.worksheet} class="anchor">Suggested Worksheet</a>
+		<a href={lesson.craft} class="anchor">Suggested Activity</a>
+		<a href={lesson.video} class="anchor">Suggested Video</a>
+		<a href={lesson.song} class="anchor mb-8">Suggested Action Song</a>
+		<p><span class="font-bold">Homework:</span> {lesson.homework}</p>
+	</div>
 </FccLayout>
