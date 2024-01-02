@@ -1,7 +1,7 @@
 import { headData, breadcrumbs } from '$lib/constants'
 
 export const load = async () => {
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.sundaySchool]
+	const breadcrumb = [breadcrumbs.home, breadcrumbs.sundaySchool.teachers]
 
 	return {
 		title: 'Sunday School Teachers Page',

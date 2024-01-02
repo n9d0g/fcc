@@ -41,6 +41,7 @@ export const breadcrumbs = {
 		ya: { title: 'Young Adults', href: '/ministies/young-adults' },
 		prayer: { title: 'Prayer', href: '/ministries/prayer' },
 		youth: { title: 'Youth', href: '/ministries/youth' },
+		sundaySchool: { title: 'Sunday School', href: '/ministries/sunday-school' },
 		praise: {
 			title: 'Praise & Worship',
 			href: '/ministries/praise',
@@ -92,17 +93,21 @@ export const breadcrumbs = {
 	sundaySchool: {
 		title: 'Sunday School',
 		href: '/sunday-school',
+		teachers: {
+			title: 'SS Teachers',
+			href: '/ss-teachers',
+		},
 		toddler: {
 			title: 'Toddler Class',
-			href: '/sunday-school/toddler',
+			href: '/ss-teachers/toddler',
 		},
 		junior: {
 			title: 'Junior Class',
-			href: '/sunday-school/junior',
+			href: '/ss-teachers/junior',
 		},
 		primary: {
 			title: 'Primary Class',
-			href: '/sunday-school/primary',
+			href: '/ss-teachers/primary',
 		},
 	},
 }

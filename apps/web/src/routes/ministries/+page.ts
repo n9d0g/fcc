@@ -21,6 +21,10 @@ export const load = async () => {
 				link: '/ministries/sunday-ministries',
 			},
 			{
+				title: 'Sunday School',
+				link: '/ministries/sunday-school',
+			},
+			{
 				title: 'Men',
 				link: '/ministries/men',
 			},
