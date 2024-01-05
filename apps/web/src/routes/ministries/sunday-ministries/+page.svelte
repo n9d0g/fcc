@@ -12,7 +12,7 @@
 	<!-- responsive container -->
 	<div class="table-container relative">
 		<!-- skeleton table -->
-		<table class="table relative overflow-scroll">
+		<table class="relative table overflow-scroll">
 			<thead>
 				<tr class="variant-filled-secondary sticky top-0 z-10">
 					{#each tHeaders as header, index}
@@ -43,9 +43,6 @@
 						>
 						<td class="whitespace-nowrap pl-3 text-left"
 							>{month.closingPrayer}</td
-						>
-						<td class="whitespace-nowrap pl-3 text-left"
-							>{month.offeringUshers}</td
 						>
 						<td class="whitespace-nowrap pl-3 text-left">{month.powerpoint}</td>
 						<td class="whitespace-nowrap pl-3 text-left"
