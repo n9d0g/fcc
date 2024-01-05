@@ -34,12 +34,6 @@ export default {
       title: 'Closing Prayer',
     },
     {
-      name: 'offeringUshers',
-      type: 'string',
-      description: 'Assigned offering usher(s) of given worship service.',
-      title: 'Offering Ushers',
-    },
-    {
       name: 'powerpoint',
       type: 'string',
       description: 'Assigned PowerPoint person of given worship service.',
@@ -84,8 +78,8 @@ export default {
     {
       name: 'setupUshers',
       type: 'string',
-      description: 'Assigned setup and ushers of given worship service.',
-      title: 'Set Up / Ushers',
+      description: 'Assigned setup, ushers, and greeters of given worship service.',
+      title: 'Set Up / Ushers / Greeters',
     },
   ],
 }

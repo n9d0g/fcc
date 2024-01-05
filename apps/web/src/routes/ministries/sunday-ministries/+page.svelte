@@ -44,9 +44,6 @@
 						<td class="whitespace-nowrap pl-3 text-left"
 							>{month.closingPrayer}</td
 						>
-						<td class="whitespace-nowrap pl-3 text-left"
-							>{month.offeringUshers}</td
-						>
 						<td class="whitespace-nowrap pl-3 text-left">{month.powerpoint}</td>
 						<td class="whitespace-nowrap pl-3 text-left"
 							>{month.crawlersToddlers}</td
