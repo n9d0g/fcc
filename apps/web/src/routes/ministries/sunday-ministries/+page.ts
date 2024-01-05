@@ -20,7 +20,6 @@ export const load = async () => {
 			'Worship Service Invites',
 			'Opening Prayer',
 			'Closing Prayer',
-			'Offering Ushers',
 			'PowerPoint',
 			'Crawlers & Toddlers',
 			'SS Young Kids Grades 1-3',
