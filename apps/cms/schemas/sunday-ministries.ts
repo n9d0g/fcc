@@ -10,12 +10,6 @@ export default {
       title: 'Date',
     },
     {
-      name: 'dateLabel',
-      type: 'date',
-      description: 'Date label of given worship service.',
-      title: 'Date',
-    },
-    {
       name: 'presider',
       type: 'string',
       description: 'Presider of given worship service.',
