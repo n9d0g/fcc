@@ -7,7 +7,9 @@
 	export let speaker: string
 	export let scripture: string
 	export let youtube: string
-	export let thumb: string
+
+	const youtubeId = youtube.replace('https://www.youtube.com/watch?v=', '')
+	const thumbImg = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`
 
 	const modalStore = getModalStore()
 
@@ -19,6 +21,7 @@
 			scripture,
 			youtube
 		)
+
 		modalStore.trigger(setting)
 	}
 </script>
@@ -28,7 +31,7 @@
 	class="card card-hover flex flex-col items-start justify-between"
 >
 	<div>
-		<img src={thumb} alt="{title} Image" class="w-full rounded-t-lg" />
+		<img src={thumbImg} alt="{title} Image" class="w-full rounded-t-lg" />
 		<header class="card-header text-start text-2xl font-bold">{title}</header>
 		<section
 			class="flex flex-col items-start justify-start gap-4 px-4 pb-1 pt-3"
