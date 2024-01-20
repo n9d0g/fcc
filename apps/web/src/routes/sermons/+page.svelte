@@ -63,7 +63,6 @@
 					speaker={sermon.speaker}
 					scripture={sermon.scripture}
 					youtube={sermon.youtube}
-					thumb={sermon.thumb}
 				/>
 			{/each}
 		</div>
