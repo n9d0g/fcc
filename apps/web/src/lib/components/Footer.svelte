@@ -4,7 +4,7 @@
 	import FaFacebook from 'svelte-icons/fa/FaFacebook.svelte'
 	import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
 	import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte'
-	import pkgJsonInfo from '../../../../../package.json'
+	import pkgJsonInfo from '../../../package.json'
 </script>
 
 <div class="bg-surface-400-500-token">
@@ -29,7 +29,7 @@
 				class="logo-cloud mx-auto my-4 flex max-w-[30rem] justify-center gap-1"
 			>
 				<a
-					class="text-gray anchor logo-item p-4 transition hover:text-youtube"
+					class="text-gray anchor logo-item hover:text-youtube p-4 transition"
 					href={links.socials.youtube}
 					target="_blank"
 					aria-label="YouTube Link"
@@ -37,7 +37,7 @@
 					<span class=" w-6"><FaYoutube /></span>
 				</a>
 				<a
-					class="text-gray anchor logo-item p-4 transition hover:text-instagram"
+					class="text-gray anchor logo-item hover:text-instagram p-4 transition"
 					href={links.socials.ig}
 					target="_blank"
 					aria-label="Instagram Link"
@@ -45,7 +45,7 @@
 					<span class="w-6"><FaInstagram /></span>
 				</a>
 				<a
-					class="text-gray anchor logo-item p-4 transition hover:text-facebook"
+					class="text-gray anchor logo-item hover:text-facebook p-4 transition"
 					href={links.socials.fb}
 					target="_blank"
 					aria-label="Facebook Link"
@@ -58,7 +58,7 @@
 				<br />
 				<a
 					href={links.ghReleases}
-					class="anchor text-center text-xs text-primary-200 no-underline"
+					class="anchor text-primary-200 text-center text-xs no-underline"
 				>
 					v{pkgJsonInfo.version}
 				</a>
