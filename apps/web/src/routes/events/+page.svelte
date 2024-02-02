@@ -1,13 +1,14 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
-
+	import Holidays from '$lib/components/holidays/holidays.svelte'
 	export let data
 	const { title, breadcrumb, headData, calendarLink } = data
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<div class="container mx-auto">
-		<p class="mb-4">Calendar view of the events at FCC.</p>
+		<Holidays />
+		<p class="mt-10">Calendar view of the events at FCC.</p>
 		<iframe
 			title="FCC Calendar"
 			src={calendarLink}

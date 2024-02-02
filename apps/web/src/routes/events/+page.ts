@@ -4,7 +4,7 @@ export const load = async () => {
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.events]
 
 	return {
-		title: 'FCC Events.',
+		title: '',
 		breadcrumb: breadcrumb,
 		headData: headData.events,
 		calendarLink: links.calendar,

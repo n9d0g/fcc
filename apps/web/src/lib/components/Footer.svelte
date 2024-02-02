@@ -4,7 +4,7 @@
 	import FaFacebook from 'svelte-icons/fa/FaFacebook.svelte'
 	import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
 	import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte'
-	import pkgJsonInfo from '../../../package.json'
+	import pkgJsonInfo from '../../../../../package.json'
 </script>
 
 <div class="bg-surface-400-500-token">

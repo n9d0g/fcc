@@ -29,9 +29,18 @@ export const breadcrumbs = {
 	about: {
 		title: 'About',
 		href: '/about',
-		beliefs: { title: 'Beliefs', href: '/about/beliefs' },
-		missionVision: { title: 'Mission & Vision', href: '/about/mission-vision' },
-		leadership: { title: 'Leadership', href: '/about/leadership' },
+		beliefs: {
+			title: 'Beliefs',
+			href: '/about/beliefs',
+		},
+		missionVision: {
+			title: 'Mission & Vision',
+			href: '/about/mission-vision',
+		},
+		leadership: {
+			title: 'Leadership',
+			href: '/about/leadership',
+		},
 	},
 	ministries: {
 		title: 'Ministries',
