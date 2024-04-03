@@ -72,15 +72,7 @@
 						{/if}
 					</label>
 				</div>
-				<button
-					type="submit"
-					class="g-recaptcha variant-filled btn"
-					data-sitekey={PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY}
-					data-callback="onSubmit"
-					data-action="submit"
-				>
-					Send
-				</button>
+				<button type="submit" class="variant-filled btn"> Send </button>
 			</form>
 		{/if}
 	</section>
