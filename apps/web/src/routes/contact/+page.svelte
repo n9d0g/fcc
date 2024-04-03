@@ -1,16 +1,17 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
+	import { PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY } from '$env/static/public'
 
 	// server fetching
 	export let data
 	export let form
 	const { title, breadcrumb, headData } = data
-
-	$: console.log(form)
 </script>
 
 <svelte:head>
-	<script src="https://www.google.com/recaptcha/api.js"></script>
+	<script
+		src={`https://www.google.com/recaptcha/api.js?render=${PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY}`}
+	></script>
 </svelte:head>
 
 <FccLayout {title} {breadcrumb} {headData}>
@@ -71,7 +72,15 @@
 						{/if}
 					</label>
 				</div>
-				<button type="submit" class="variant-filled btn">Send</button>
+				<button
+					type="submit"
+					class="g-recaptcha variant-filled btn"
+					data-sitekey={PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY}
+					data-callback="onSubmit"
+					data-action="submit"
+				>
+					Send
+				</button>
 			</form>
 		{/if}
 	</section>

@@ -1,6 +1,7 @@
 import { GOOGLE_EMAIL } from '$env/static/private'
 import transporter from '$lib/emailSetup.server.js'
 import { z } from 'zod'
+import { GOOGLE_RECAPTCHA_SECRET_KEY } from '$env/static/private'
 
 const emailSchema = z.object({
 	name: z.string().trim().min(1, { message: 'Name is required' }),
@@ -17,13 +18,24 @@ export const actions = {
 			// validate contact fields
 			if (emailData.success === false) {
 				const errors = emailData.error.flatten().fieldErrors
-				console.log(errors)
 
 				return {
 					status: 400,
 					errors: errors,
 				}
 			}
+
+			// TODO: add recaptcha
+			// const res = await fetch(
+			// 	'https://www.google.com/recaptcha/api/siteverify',
+			// 	{
+			// 		method: 'POST',
+			// 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			// 		body: `secret=${GOOGLE_RECAPTCHA_SECRET_KEY}&response=${formData['g-recaptcha-response']}`,
+			// 	}
+			// )
+
+			// const recaptchaRes = await res.json()
 
 			const name = formData.get('name')
 			const email = formData.get('email')
