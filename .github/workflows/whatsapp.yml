@@ -1,6 +1,8 @@
-name: whatsapp notification
+name: whatsapp
 
-on: [push, pull_request, issues, fork, watch]
+on:
+  pull_request:
+    branches: [main, dev-web, dev-cms]
 
 jobs:
   build:
