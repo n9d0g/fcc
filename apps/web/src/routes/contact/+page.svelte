@@ -38,6 +38,7 @@
 							name="name"
 							type="text"
 							placeholder="Name"
+							value={form?.name ?? ''}
 							class={`${form?.errors?.name && '!border-red-500'} input rounded-md`}
 						/>
 						{#if form?.errors?.name}
@@ -50,6 +51,7 @@
 							name="email"
 							type="text"
 							placeholder="Email"
+							value={form?.email ?? ''}
 							class={`${form?.errors?.email && '!border-red-500'} input rounded-md`}
 						/>
 						{#if form?.errors?.email}
@@ -64,6 +66,7 @@
 						<textarea
 							name="message"
 							placeholder="Message"
+							value={form?.message ?? ''}
 							class={`${form?.errors?.message && '!border-red-500'} textarea rounded-md`}
 							rows="6"
 						/>

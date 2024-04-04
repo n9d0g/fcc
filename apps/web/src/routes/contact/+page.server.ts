@@ -2,6 +2,7 @@ import { GOOGLE_EMAIL } from '$env/static/private'
 import transporter from '$lib/emailSetup.server.js'
 import { z } from 'zod'
 import { GOOGLE_RECAPTCHA_SECRET_KEY } from '$env/static/private'
+import { fail } from '@sveltejs/kit'
 
 const emailSchema = z.object({
 	name: z.string().trim().min(1, { message: 'Name is required' }),
@@ -14,15 +15,18 @@ export const actions = {
 		try {
 			const formData = Object.fromEntries(await request.formData())
 			const emailData = emailSchema.safeParse(formData)
+			const { name, email, message } = formData
 
 			// validate contact fields
 			if (emailData.success === false) {
 				const errors = emailData.error.flatten().fieldErrors
 
-				return {
-					status: 400,
+				return fail(400, {
 					errors: errors,
-				}
+					name: name,
+					email: email,
+					message: message,
+				})
 			}
 
 			// TODO: add recaptcha
@@ -36,10 +40,6 @@ export const actions = {
 			// )
 
 			// const recaptchaRes = await res.json()
-
-			const name = formData.get('name')
-			const email = formData.get('email')
-			const message = formData.get('message')
 
 			let html = `
 			<section>
@@ -74,6 +74,7 @@ export const actions = {
 			await sendEmail(data)
 
 			return {
+				status: 200,
 				success: 'Email has been sent!',
 			}
 		} catch (e) {
