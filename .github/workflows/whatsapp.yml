@@ -1,0 +1,16 @@
+name: whatsapp
+
+on:
+  pull_request:
+    branches: [main, dev-web, dev-cms]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: whatsapp-notify
+        uses: kaviadigdarshan/whatsapp-actions@main
+        env:
+          ACCOUNT_SID: ${{ secrets.ACCOUNT_SID }}
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+          TO_WHATSAPP_NUMBER: ${{ secrets.TO_WHATSAPP_NUMBER }}
