@@ -15,7 +15,7 @@ export const actions = {
 		try {
 			const formData = Object.fromEntries(await request.formData())
 			const emailData = emailSchema.safeParse(formData)
-			const { name, email, message } = formData
+			const { name, email, message, grecaptcha } = formData
 
 			// validate contact fields
 			if (emailData.success === false) {
@@ -29,17 +29,39 @@ export const actions = {
 				})
 			}
 
-			// TODO: add recaptcha
-			// const res = await fetch(
-			// 	'https://www.google.com/recaptcha/api/siteverify',
-			// 	{
-			// 		method: 'POST',
-			// 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-			// 		body: `secret=${GOOGLE_RECAPTCHA_SECRET_KEY}&response=${formData['g-recaptcha-response']}`,
-			// 	}
-			// )
+			const res = await fetch(
+				'https://www.google.com/recaptcha/api/siteverify',
+				{
+					method: 'POST',
+					headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+					body: `secret=${GOOGLE_RECAPTCHA_SECRET_KEY}&response=${grecaptcha}`,
+				}
+			)
 
-			// const recaptchaRes = await res.json()
+			const recaptchaRes = await res.json()
+			if (recaptchaRes.success === false) {
+				return fail(400, {
+					errors: {
+						grecaptcha: 'ReCaptcha failed. Please try again.',
+					},
+					name: name,
+					email: email,
+					message: message,
+				})
+			}
+
+			if (recaptchaRes.success === true) {
+				if (recaptchaRes.score < 0.6) {
+					return fail(400, {
+						errors: {
+							grecaptcha: 'ReCaptcha failed. Please try again.',
+						},
+						name: name,
+						email: email,
+						message: message,
+					})
+				}
+			}
 
 			let html = `
 			<section>

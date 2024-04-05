@@ -1,11 +1,41 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import { PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY } from '$env/static/public'
+	import type { ActionData } from './$types.js'
+	import type { ActionResult } from '@sveltejs/kit'
+	import { applyAction, deserialize } from '$app/forms'
 
 	// server fetching
 	export let data
-	export let form
+	export let form: ActionData
+
 	const { title, breadcrumb, headData } = data
+	let formPending = false
+
+	const handleSubmit = async (e: any) => {
+		formPending = true
+
+		const formData = new FormData(e.target)
+		const grecaptchaRes: any = await window.grecaptcha.execute(
+			PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY,
+			{ action: 'submit' }
+		)
+
+		formData.append('grecaptcha', grecaptchaRes)
+
+		const res = await fetch(e.target.action, {
+			method: 'POST',
+			body: formData,
+			headers: {
+				'x-sveltekit-action': 'true',
+			},
+		})
+
+		const result: ActionResult = deserialize(await res.text())
+
+		formPending = false
+		applyAction(result)
+	}
 </script>
 
 <svelte:head>
@@ -29,6 +59,7 @@
 		{:else}
 			<form
 				method="POST"
+				on:submit|preventDefault={handleSubmit}
 				class="border-surface-500 mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border p-4 sm:p-10"
 			>
 				<div class="flex flex-col gap-4">
@@ -74,8 +105,21 @@
 							<p class="text-error-500 text-sm">{form?.errors?.message}</p>
 						{/if}
 					</label>
+
+					<p class="text-tertiary-400 text-xs">
+						This site is protected by reCAPTCHA and the Google
+						<a href="https://policies.google.com/privacy" class="anchor">
+							Privacy Policy
+						</a>
+						and
+						<a href="https://policies.google.com/terms" class="anchor">
+							Terms of Service
+						</a> apply.
+					</p>
 				</div>
-				<button type="submit" class="variant-filled btn"> Send </button>
+				<button type="submit" class="variant-filled btn" disabled={formPending}>
+					{formPending ? 'Sending...' : 'Send'}
+				</button>
 			</form>
 		{/if}
 	</section>
