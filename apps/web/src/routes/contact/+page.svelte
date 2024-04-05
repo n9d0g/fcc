@@ -48,7 +48,7 @@
 	<section class="flex items-center justify-center">
 		{#if form?.success}
 			<div
-				class="border-surface-500 mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border p-4 sm:p-24"
+				class="mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border border-surface-500 p-4 sm:p-24"
 			>
 				<p class="mx-auto max-w-sm text-center">
 					Thank you for contacting us! An FCC representative will be in contact
@@ -60,7 +60,7 @@
 			<form
 				method="POST"
 				on:submit|preventDefault={handleSubmit}
-				class="border-surface-500 mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border p-4 sm:p-10"
+				class="mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border border-surface-500 p-4 sm:p-10"
 			>
 				<div class="flex flex-col gap-4">
 					<label for="name" class="label flex flex-col gap-2">
@@ -73,7 +73,7 @@
 							class={`${form?.errors?.name && '!border-red-500'} input rounded-md`}
 						/>
 						{#if form?.errors?.name}
-							<p class="text-error-500 text-sm">{form?.errors?.name}</p>
+							<p class="text-sm text-error-500">{form?.errors?.name}</p>
 						{/if}
 					</label>
 					<label for="email" class="label flex flex-col gap-2">
@@ -87,7 +87,7 @@
 						/>
 						{#if form?.errors?.email}
 							{#each form?.errors?.email as error}
-								<p class="text-error-500 text-sm">{error}</p>
+								<p class="text-sm text-error-500">{error}</p>
 							{/each}
 						{/if}
 					</label>
@@ -102,11 +102,11 @@
 							rows="6"
 						/>
 						{#if form?.errors?.message}
-							<p class="text-error-500 text-sm">{form?.errors?.message}</p>
+							<p class="text-sm text-error-500">{form?.errors?.message}</p>
 						{/if}
 					</label>
 
-					<p class="text-tertiary-400 text-xs">
+					<p class="text-xs text-tertiary-400">
 						This site is protected by reCAPTCHA and the Google
 						<a href="https://policies.google.com/privacy" class="anchor">
 							Privacy Policy

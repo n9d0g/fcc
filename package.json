@@ -10,7 +10,8 @@
 		"clean": "rm -rf node_modules package-lock.json apps/*/node_modules apps/*/package-lock.json apps/*/.svelte-kit apps/*/.turbo",
 		"fresh": "npm run format && npm run clean && npm i --legacy-peer-deps",
 		"fresh:start": "npm run fresh && npm run dev",
-		"cms:deploy": "cd apps/cms && sanity deploy"
+		"cms:deploy": "cd apps/cms && sanity deploy",
+		"changeset": "npx changeset && npx changeset status --verbose && npx changeset version"
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.27.1",
