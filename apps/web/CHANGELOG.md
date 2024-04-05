@@ -1,5 +1,11 @@
 # web
 
+## 3.16.1
+
+### Patch Changes
+
+- recaptcha added for contact form
+
 ## 3.16.0
 
 ### Minor Changes
