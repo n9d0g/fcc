@@ -1,5 +1,11 @@
 # web
 
+## 3.16.2
+
+### Patch Changes
+
+- bb2bb3e: update contact recipient email
+
 ## 3.16.1
 
 ### Patch Changes
