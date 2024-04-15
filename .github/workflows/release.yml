@@ -1,9 +1,8 @@
-name: release
+name: release-pr
 
 on:
   push:
-    branches:
-      - main
+    branches: ['dev-cms', 'dev-web']
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
