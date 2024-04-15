@@ -8,18 +8,21 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
-    name: release
+    name: release-pr
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
-      - name: Setup Node.js 20
+
+      - name: setup node.js 20
         uses: actions/setup-node@v3
         with:
           node-version: 20
+
       - name: install dependencies
         run: npm ci
-      - name: create release pull request
+
+      - name: create release PR
         uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
