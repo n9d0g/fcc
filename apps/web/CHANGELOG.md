@@ -1,5 +1,11 @@
 # web
 
+## 3.16.3
+
+### Patch Changes
+
+- add `/prayer` redirect to `/ministries/prayer`
+
 ## 3.16.2
 
 ### Patch Changes
