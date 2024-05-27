@@ -1,6 +1,10 @@
 {
 	"name": "fcc",
 	"private": true,
+	"author": "Nathan Lardizabal <nate@njil.dev>",
+	"maintainers": [
+		"Nathan Lardizabal <nate@njil.dev>"
+	],
 	"type": "module",
 	"scripts": {
 		"build": "turbo run build",
