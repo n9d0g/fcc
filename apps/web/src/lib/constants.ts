@@ -11,7 +11,6 @@ import FaRegCalendar from 'svelte-icons/fa/FaRegCalendar.svelte'
 import IoMdLogIn from 'svelte-icons/io/IoMdLogIn.svelte'
 import IoIosCafe from 'svelte-icons/io/IoIosCafe.svelte'
 import type {
-	AutocompleteOption,
 	DrawerSettings,
 	ModalComponent,
 	PopupSettings,
@@ -163,6 +162,7 @@ export const navOptions = [
 ]
 
 export const links = {
+	njil: 'https://njil.dev',
 	ghReleases: 'https://github.com/n9d0g/fcc/releases',
 	googleMaps:
 		'https://www.google.ca/maps/place/5225+Orbitor+Dr,+Mississauga,+ON+L4W+4Y8/@43.6598788,-79.6065117,17z/data=!3m1!4b1!4m6!3m5!1s0x882b38554ef96393:0x5a2b697b840d7a7d!8m2!3d43.6598749!4d-79.604323!16s%2Fg%2F11b8v4jvnm',

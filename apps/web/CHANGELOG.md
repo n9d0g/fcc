@@ -1,5 +1,11 @@
 # web
 
+## 3.16.4
+
+### Patch Changes
+
+- update footer
+
 ## 3.16.3
 
 ### Patch Changes
