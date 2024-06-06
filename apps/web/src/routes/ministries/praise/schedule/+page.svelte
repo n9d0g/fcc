@@ -10,9 +10,9 @@
 		updatedDataFiltered,
 		praiseModalSettings,
 		searchFilter,
-		getMonthDay,
 	} from '$lib/utils'
 	import { praiseFilterPopupSettings, links } from '$lib/constants'
+	import { format } from 'date-fns'
 
 	// server fetching
 	export let data
@@ -109,7 +109,7 @@
 		<div bind:this={schedTable}>
 			<div class="table-container relative h-[60vh] w-full">
 				<table
-					class="table table-hover table-compact relative overflow-scroll"
+					class="table-hover table-compact relative table overflow-scroll"
 					data-testid="schedule-table"
 				>
 					<thead>
@@ -139,7 +139,7 @@
 												<td
 													class="bg-surface-200-700-token table-cell-fit sticky left-0 pl-3 text-left"
 												>
-													{getMonthDay(week[col])}
+													{format(new Date(week[col]), 'MMM do')}
 												</td>
 											{:else}
 												<td class="whitespace-nowrap pl-3 text-left"

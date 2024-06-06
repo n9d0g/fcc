@@ -1,7 +1,6 @@
 import { createClient } from '@sanity/client'
 import SermonModal from './components/sermons/SermonModal.svelte'
 import PraiseModal from './components/ministries/praise/PraiseModal.svelte'
-import { Temporal } from '@js-temporal/polyfill'
 import MdLocalFlorist from 'svelte-icons/md/MdLocalFlorist.svelte'
 import IoMdBook from 'svelte-icons/io/IoMdBook.svelte'
 import MdLightbulbOutline from 'svelte-icons/md/MdLightbulbOutline.svelte'
@@ -201,8 +200,6 @@ export const missionVision = {
 	vision:
 		'A Christ-centred, Holy Spirit-led community committed to the building of strong relationships and planting of healthy reproducing churches.',
 }
-
-export const dateToday = Temporal.Now.plainDateISO().toString()
 
 // skeleton constants
 export const drawerSettings: DrawerSettings = {

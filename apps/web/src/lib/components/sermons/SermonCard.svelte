@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { format } from 'date-fns'
 	import { getModalStore } from '@skeletonlabs/skeleton'
-	import { getMonthDayFull, sermonModalSettings } from '$lib/utils'
+	import { sermonModalSettings } from '$lib/utils'
 
 	export let title: string
 	export let date: string
@@ -10,6 +11,7 @@
 
 	const youtubeId = youtube.replace('https://www.youtube.com/watch?v=', '')
 	const thumbImg = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`
+	const formattedDate = format(new Date(date), 'MMMM do, yyyy')
 
 	const modalStore = getModalStore()
 
@@ -40,6 +42,6 @@
 		</section>
 	</div>
 	<footer class="card-footer text-start text-sm">
-		{getMonthDayFull(date)}
+		{formattedDate}
 	</footer>
 </button>
