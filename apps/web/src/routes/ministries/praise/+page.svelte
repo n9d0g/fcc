@@ -77,26 +77,6 @@
 				</p>
 			</div>
 		</div>
-
-		<hr />
-
-		<div>
-			<h3 class="h3 mb-4 font-bold">Video links:</h3>
-			<div class="flex flex-col gap-2">
-				<a href="https://www.youtube.com/watch?v=SoUvmaQCzZk" class="anchor"
-					>September 25th, 2022</a
-				>
-				<a href="https://www.youtube.com/watch?v=fZkakq-GoQk" class="anchor"
-					>Thanksgiving 2022</a
-				>
-				<a href="https://www.youtube.com/watch?v=DiSggV9FXgY" class="anchor"
-					>April 9th, 2023</a
-				>
-				<a href="https://www.youtube.com/watch?v=ySM1UftVWiQ" class="anchor"
-					>November 12th, 2023</a
-				>
-			</div>
-		</div>
 	</section>
 	<LandingPageGrid items={data.landingPageItems} />
 </FccLayout>
