@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { searchFilter, getMonthDay } from '$lib/utils'
+	import { format } from 'date-fns'
+	import { searchFilter } from '$lib/utils'
 	import { fade } from 'svelte/transition'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
@@ -130,7 +131,7 @@
 
 	<!-- schedule table -->
 	<div class="table-container">
-		<table class="table table-hover">
+		<table class="table-hover table">
 			<thead>
 				<tr>
 					<th>Date</th>
@@ -141,7 +142,7 @@
 			<tbody>
 				{#each searchFilter(prayerData, 'name', filterQuery) as row}
 					<tr>
-						<td>{getMonthDay(row.date)}</td>
+						<td>{format(new Date(row.date), 'MMMM do')}</td>
 						<td>{row.name}</td>
 						<td>{row.scripture}</td>
 					</tr>

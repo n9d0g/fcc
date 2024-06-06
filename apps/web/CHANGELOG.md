@@ -1,5 +1,11 @@
 # web
 
+## 3.16.5
+
+### Patch Changes
+
+- date fixes; remove AV from praise schedule
+
 ## 3.16.4
 
 ### Patch Changes

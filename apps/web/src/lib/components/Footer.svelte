@@ -5,6 +5,9 @@
 	import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
 	import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte'
 	import pkgJsonInfo from '../../../package.json'
+	import { format } from 'date-fns'
+
+	const year = format(new Date(), 'yyyy')
 </script>
 
 <div class="bg-surface-400-500-token">
@@ -54,7 +57,8 @@
 				</a>
 			</div>
 			<p class="text-center">
-				© Copyright by <a
+				© 2022-{year}, Copyright by
+				<a
 					class="hover:text-primary-400 font-bold transition-all"
 					href={links.njil}
 				>

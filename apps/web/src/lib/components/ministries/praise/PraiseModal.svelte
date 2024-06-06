@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { getMonthDayFull } from '$lib/utils'
 	import { getModalStore } from '@skeletonlabs/skeleton'
+	import { format } from 'date-fns'
 
 	export let parent: any
 
@@ -17,6 +17,8 @@
 		pdf: $modalStore[0]?.meta.pdf,
 	}
 
+	const date = format(new Date(metaData.date), 'MMMM do, yyyy')
+
 	// base classes
 	const cCard = 'flex flex-col card p-4 w-modal shadow-xl space-y-4 min-h-fit'
 	const cHeader = 'text-2xl font-bold'
@@ -24,7 +26,7 @@
 </script>
 
 <section class={cCard}>
-	<header class={cHeader}>{getMonthDayFull(metaData.date)}</header>
+	<header class={cHeader}>{date}</header>
 	{#if metaData.speaker}
 		<p><span class="font-bold">Speaker:</span> {metaData.speaker}</p>
 	{/if}
