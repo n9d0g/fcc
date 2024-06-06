@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { format } from 'date-fns'
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import { getMonth } from '$lib/utils.js'
 	import { links } from '$lib/constants.js'
 
 	export let data
@@ -11,20 +11,20 @@
 	<!-- responsive container -->
 	<div class="table-container relative">
 		<!-- skeleton table -->
-		<table class="table relative overflow-scroll">
+		<table class="relative table overflow-scroll">
 			<thead>
 				<tr class="variant-filled-secondary sticky top-0 z-10">
 					{#each tHeaders as header, index}
 						{#if index === 0}
 							<th
-								class="variant-filled-secondary sticky left-0 z-30 w-6 p-3 text-left font-bold max-lg:table-cell-fit"
+								class="variant-filled-secondary max-lg:table-cell-fit sticky left-0 z-30 w-6 p-3 text-left font-bold"
 							>
 								{header}
 							</th>
 						{:else}
-							<th class="w-6 p-3 text-left font-bold max-lg:table-cell-fit"
-								>{header}</th
-							>
+							<th class="max-lg:table-cell-fit w-6 p-3 text-left font-bold">
+								{header}
+							</th>
 						{/if}
 					{/each}
 				</tr>
@@ -33,56 +33,56 @@
 				{#each tBody as month}
 					<tr class="text-center">
 						<td
-							class="bg-surface-200-700-token sticky left-0 w-6 pl-3 text-left font-bold max-lg:table-cell-fit"
+							class="bg-surface-200-700-token max-lg:table-cell-fit sticky left-0 w-6 pl-3 text-left font-bold"
 						>
-							{getMonth(month.date)}
+							{format(new Date(month.date), 'MMMM')}
 						</td>
 						<td
-							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
+							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 							>{month.presider}</td
 						>
 						<td
-							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
+							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 							>{month.invites}</td
 						>
 						<td
-							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
+							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 							>{month.openingPrayer}</td
 						>
 						<td
-							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
+							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 							>{month.closingPrayer}</td
 						>
 						<td
-							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
+							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 							>{month.powerpoint}</td
 						>
 						<td
-							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
+							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 							>{month.crawlersToddlers}</td
 						>
 						<td
-							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
+							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 							>{month.ssYoung}</td
 						>
 						<td
-							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
+							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 							>{month.ssOld}</td
 						>
 						<td
-							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
+							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 							>{month.communionPresider}</td
 						>
 						<td
-							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
+							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 							>{month.coffeeBreakfast}</td
 						>
 						<td
-							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
+							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 							>{month.counters}</td
 						>
 						<td
-							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
+							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 							>{month.setupUshers}</td
 						>
 					</tr>
