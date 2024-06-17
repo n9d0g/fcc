@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { format } from 'date-fns'
+	import { format, addDays } from 'date-fns'
 	import { getModalStore } from '@skeletonlabs/skeleton'
 	import { sermonModalSettings } from '$lib/utils'
 
@@ -11,7 +11,7 @@
 
 	const youtubeId = youtube.replace('https://www.youtube.com/watch?v=', '')
 	const thumbImg = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`
-	const formattedDate = format(new Date(date), 'MMMM do, yyyy')
+	const formattedDate = format(addDays(new Date(date), 1), 'MMMM do, yyyy')
 
 	const modalStore = getModalStore()
 

@@ -12,7 +12,7 @@
 		searchFilter,
 	} from '$lib/utils'
 	import { praiseFilterPopupSettings, links } from '$lib/constants'
-	import { format } from 'date-fns'
+	import { format, addDays } from 'date-fns'
 
 	// server fetching
 	export let data
@@ -139,7 +139,7 @@
 												<td
 													class="bg-surface-200-700-token table-cell-fit sticky left-0 pl-3 text-left"
 												>
-													{format(new Date(week[col]), 'MMM do')}
+													{format(addDays(new Date(week[col]), 1), 'MMM do')}
 												</td>
 											{:else}
 												<td class="whitespace-nowrap pl-3 text-left"

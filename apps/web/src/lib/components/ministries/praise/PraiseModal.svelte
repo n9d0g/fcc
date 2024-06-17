@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getModalStore } from '@skeletonlabs/skeleton'
-	import { format } from 'date-fns'
+	import { format, addDays } from 'date-fns'
 
 	export let parent: any
 
@@ -17,7 +17,8 @@
 		pdf: $modalStore[0]?.meta.pdf,
 	}
 
-	const date = format(new Date(metaData.date), 'MMMM do, yyyy')
+	const estDate = addDays(new Date(metaData.date), 1)
+	const date = format(estDate, 'MMMM do, yyyy')
 
 	// base classes
 	const cCard = 'flex flex-col card p-4 w-modal shadow-xl space-y-4 min-h-fit'
