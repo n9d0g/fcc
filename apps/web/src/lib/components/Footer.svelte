@@ -5,9 +5,9 @@
 	import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
 	import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte'
 	import pkgJsonInfo from '../../../package.json'
-	import { format } from 'date-fns'
+	import { format, addDays } from 'date-fns'
 
-	const year = format(new Date(), 'yyyy')
+	const year = format(addDays(new Date(), 1), 'yyyy')
 </script>
 
 <div class="bg-surface-400-500-token">

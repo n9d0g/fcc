@@ -1,5 +1,11 @@
 # web
 
+## 3.16.6
+
+### Patch Changes
+
+- date format fix
+
 ## 3.16.5
 
 ### Patch Changes

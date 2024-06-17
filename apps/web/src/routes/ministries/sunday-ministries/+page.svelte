@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { format } from 'date-fns'
+	import { format, addDays } from 'date-fns'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import { links } from '$lib/constants.js'
 
@@ -35,7 +35,7 @@
 						<td
 							class="bg-surface-200-700-token max-lg:table-cell-fit sticky left-0 w-6 pl-3 text-left font-bold"
 						>
-							{format(new Date(month.date), 'MMMM')}
+							{format(addDays(new Date(month.date), 1), 'MMMM')}
 						</td>
 						<td
 							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"

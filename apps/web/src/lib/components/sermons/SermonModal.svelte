@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getModalStore } from '@skeletonlabs/skeleton'
 	import Youtube from 'svelte-youtube-embed'
-	import { format } from 'date-fns'
+	import { format, addDays } from 'date-fns'
 
 	// props
 	export let parent: any
@@ -18,7 +18,10 @@
 		),
 		date: $modalStore[0]?.meta.date,
 	}
-	const formattedDate = format(new Date(metaData.date), 'MMMM do, yyyy')
+	const formattedDate = format(
+		addDays(new Date(metaData.date), 1),
+		'MMMM do, yyyy'
+	)
 
 	// base classes
 	const cCard = 'card p-4 w-modal shadow-xl space-y-4 min-h-fit'
