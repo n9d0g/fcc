@@ -57,7 +57,7 @@ export const load = async () => {
 				{
 					leader: 'James',
 					acousticGuitar: 'Ian',
-					keys: 'Ally (late 2024 👀)',
+					keys: 'Joi',
 					bass: 'Ian',
 					drums: 'James',
 					electric: 'Nathan',
@@ -66,7 +66,7 @@ export const load = async () => {
 				{
 					leader: 'John',
 					acousticGuitar: 'John',
-					keys: 'Joi',
+					keys: 'Nathan',
 					bass: 'John',
 					drums: 'Miguel',
 					backup: 'Ian',
@@ -74,7 +74,7 @@ export const load = async () => {
 				{
 					leader: 'Joi',
 					acousticGuitar: 'Nathan',
-					keys: 'Nathan',
+					keys: 'Noreen',
 					bass: 'Nathan',
 					drums: 'Nathan',
 					backup: 'James',
@@ -82,13 +82,12 @@ export const load = async () => {
 				{
 					leader: 'Nathan',
 					acousticGuitar: 'Rommel',
-					keys: 'Noreen',
+					keys: 'Rommel',
 					bass: 'Noreen',
 					backup: 'John',
 				},
 				{
 					leader: 'Raquel',
-					keys: 'Rommel',
 					bass: 'Rommel',
 					backup: 'Joi',
 				},

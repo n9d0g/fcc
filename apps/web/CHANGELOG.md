@@ -1,5 +1,11 @@
 # web
 
+## 3.16.7
+
+### Patch Changes
+
+- remove ally from worship assignments
+
 ## 3.16.6
 
 ### Patch Changes
