@@ -158,15 +158,16 @@
 			</div>
 		</div>
 
+		<WorshipAssignments worshipAssignmentsData={worshipAssignments} />
+
 		<!-- link to excel sheet -->
-		<div class="my-8 flex w-full justify-center">
+		<div class="my-4 flex flex-col sm:flex-row w-full justify-center gap-4">
 			<a href={links.excel} target="_blank" class="variant-filled btn">
 				Excel Data Sheet
 			</a>
+			<a href={links.avSetup} target="_blank" class="variant-filled btn">
+				AV Setup Document
+			</a>
 		</div>
-
-		<hr />
-
-		<WorshipAssignments worshipAssignmentsData={worshipAssignments} />
 	{/await}
 </FccLayout>
