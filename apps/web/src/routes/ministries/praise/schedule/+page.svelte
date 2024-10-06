@@ -142,9 +142,9 @@
 													{format(addDays(new Date(week[col]), 1), 'MMM do')}
 												</td>
 											{:else}
-												<td class="whitespace-nowrap pl-3 text-left"
-													>{week[col]}</td
-												>
+												<td class="whitespace-nowrap pl-3 text-left">
+													{week[col]}
+												</td>
 											{/if}
 										{:else}
 											<td class="text-left" />
@@ -161,7 +161,7 @@
 		<WorshipAssignments worshipAssignmentsData={worshipAssignments} />
 
 		<!-- link to excel sheet -->
-		<div class="my-4 flex flex-col sm:flex-row w-full justify-center gap-4">
+		<div class="my-4 flex w-full flex-col justify-center gap-4 sm:flex-row">
 			<a href={links.excel} target="_blank" class="variant-filled btn">
 				Excel Data Sheet
 			</a>
