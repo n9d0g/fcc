@@ -3,7 +3,7 @@ import { client, headData, breadcrumbs } from '$lib/constants'
 export const load = async () => {
 	const data = await client.fetch(`
     *[_type == "praise"] {
-      backup, bass, date, drums, electric, guitar, keys, lead, objective, scripture, series, speaker, summary, topic, unavailable,
+      backup, bass, date, drums, electric, guitar, keys, lead, md, objective, scripture, series, speaker, summary, topic, unavailable,
       'pdfURL': pdf.asset->url
     }
   `)
@@ -28,6 +28,7 @@ export const load = async () => {
 				'Bass 🎸',
 				'Drums 🥁',
 				'Electric 🎸',
+				'MD 🧠',
 				'Backup 🗣️',
 				'Unavailable 🙅‍♂️',
 			],
@@ -39,6 +40,7 @@ export const load = async () => {
 				'bass',
 				'drums',
 				'electric',
+				'md',
 				'backup',
 				'unavailable',
 			],
