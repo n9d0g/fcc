@@ -9,8 +9,17 @@ declare global {
 		// interface Platform {}
 
 		interface Banner {
+			body: {
+				children: {
+					marks: string[]
+					text: string
+				}[]
+				markDefs: {
+					href: string
+				}[]
+				style: string
+			}[]
 			title: string
-			bannerText: string
 			date: string
 		}
 	}

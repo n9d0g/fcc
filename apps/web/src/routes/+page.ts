@@ -2,7 +2,6 @@ import { client, links } from '$lib/constants'
 
 export const load = async () => {
 	const sermons = await client.fetch(`*[_type == "sermons"]`)
-	const banner = await client.fetch(`*[_type == "banner"]`)
 	const pages = await client.fetch(`*[_type == "pages"] {
 		page,
 		'invite': weeklyInvite.asset->url 
@@ -13,7 +12,6 @@ export const load = async () => {
 			sermons: sermons.sort((a: any, b: any) => (a.date < b.date ? 1 : -1)),
 			pages: pages[0],
 			links: { googleMaps: links.googleMaps, zoom: links.zoom },
-			banner: banner[0],
 		}
 
 	return {

@@ -7,7 +7,6 @@
 	import HomeNextEvent from '$lib/components/home/HomeNextEvent.svelte'
 	import HomeSermons from '$lib/components/home/HomeSermons.svelte'
 	import { headData } from '$lib/constants'
-	import Banner from '$lib/components/Banner.svelte'
 
 	// props
 	export let data
@@ -19,7 +18,6 @@
 
 	let links: any = data.links
 	let sermons: any = data.sermons
-	let banner: any = data.banner
 
 	onMount(() => {
 		setActivePath(url)
@@ -45,7 +43,6 @@
 </svelte:head>
 
 <div>
-	<Banner {banner} />
 	<Hero />
 	<HomeWelcome {links} />
 	<HomeSermons {sermons} />
