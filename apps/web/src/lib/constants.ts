@@ -162,7 +162,8 @@ export const navOptions = [
 
 export const links = {
 	njil: 'https://njil.dev',
-	avSetup: 'https://n9d0g.notion.site/AV-setup-10949c91f89280c8b319c20ecec69bef',
+	avSetup:
+		'https://n9d0g.notion.site/AV-setup-10949c91f89280c8b319c20ecec69bef',
 	ghReleases: 'https://github.com/n9d0g/fcc/releases',
 	googleMaps:
 		'https://www.google.ca/maps/place/5225+Orbitor+Dr,+Mississauga,+ON+L4W+4Y8/@43.6598788,-79.6065117,17z/data=!3m1!4b1!4m6!3m5!1s0x882b38554ef96393:0x5a2b697b840d7a7d!8m2!3d43.6598749!4d-79.604323!16s%2Fg%2F11b8v4jvnm',
@@ -175,7 +176,7 @@ export const links = {
 	excel:
 		'https://docs.google.com/spreadsheets/d/1SuzguOJzxilcX1COZMnvoqOl0MWD8xlGJVsVLLwJGlo/edit#gid=0',
 	calendar:
-		'https://calendar.google.com/calendar/embed?height=900&wkst=1&bgcolor=%230ea5e9&ctz=America%2FToronto&showTitle=1&showNav=1&showDate=1&showPrint=0&showCalendars=0&src=nate%40fcccanada.ca&ctz=America%2FToronto&color=%23009688',
+		'https://calendar.google.com/calendar/embed?src=56d34192c2a222f8cb5a5ffdf378d8064c98d35408cc4659688b6d23f51219f5%40group.calendar.google.com&ctz=America%2FToronto',
 	programming: {
 		details:
 			'https://docs.google.com/spreadsheets/d/1iFB5tAo-S7RFSaUZrl9PH33X-fjfAbozwBunRYdqrsc/edit#gid=0',
