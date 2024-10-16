@@ -29,6 +29,7 @@
 	import { afterNavigate } from '$app/navigation'
 
 	import { onNavigate } from '$app/navigation'
+	import Banner from '$lib/components/Banner.svelte'
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return
@@ -45,8 +46,11 @@
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow })
 
 	// variables
+	export let data
 	let activePathValue: string = ''
 	activePath.subscribe((value) => (activePathValue = value))
+
+	let banner: App.Banner = data.banner
 
 	const drawerStore = getDrawerStore()
 
@@ -61,6 +65,7 @@
 <Toast position="b" />
 <Modal components={modalComponentRegistry} />
 
+<Banner {banner} />
 <AppShell>
 	<svelte:fragment slot="header"><Header {drawerStore} /></svelte:fragment>
 	<main class="bg-surface-300-600-token">

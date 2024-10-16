@@ -7,15 +7,17 @@ import prayer from './prayer'
 import leadership from './leadership'
 import sundayMinistries from './sunday-ministries'
 import sundaySchool from './sunday-school'
+import banner from './banner'
 
 export const schemaTypes = [
-  pages,
-  sermons,
-  praise,
-  youngAdults,
-  birthdays,
-  prayer,
-  leadership,
-  sundayMinistries,
-  sundaySchool,
+	pages,
+	sermons,
+	praise,
+	youngAdults,
+	birthdays,
+	prayer,
+	leadership,
+	sundayMinistries,
+	sundaySchool,
+	banner,
 ]
