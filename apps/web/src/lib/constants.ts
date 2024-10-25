@@ -21,7 +21,15 @@ export const breadcrumbs = {
 	sermons: { title: 'Sermons', href: '/sermons' },
 	give: { title: 'Give', href: '/give' },
 	error: { title: 'Error', href: '/error' },
-	events: { title: 'Events', href: '/events' },
+	events: {
+		title: 'Events',
+		href: '/events',
+		'2024': {
+			title: '2024',
+			href: '/events/2024',
+			fallRetreat: { title: 'Fall Retreat', href: '/events/2024/fall-retreat' },
+		},
+	},
 	login: { title: 'Login', href: '/login' },
 	contact: { title: 'Contact', href: '/contact' },
 	about: {
