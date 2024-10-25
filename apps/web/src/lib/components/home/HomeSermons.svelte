@@ -24,7 +24,9 @@
 		<a
 			class="bg-surface-200-700-token btn btn-lg text-black dark:text-white"
 			href="/sermons"
-			data-sveltekit-preload-data="hover">View All Sermons</a
+			data-sveltekit-preload-data="hover"
 		>
+			View All Sermons
+		</a>
 	</div>
 </section>
