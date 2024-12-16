@@ -3,10 +3,10 @@
 </script>
 
 <div class="my-16">
-	<h2 class="h2 my-4 font-bold">2024 Worship Assignments</h2>
+	<h2 class="h2 my-4 font-bold">2025 Worship Assignments</h2>
 
 	<div class="table-container">
-		<table class="table table-compact">
+		<table class="table-compact table">
 			<thead>
 				<tr>
 					<th class="table-cell-fit">Leaders</th>
