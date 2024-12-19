@@ -168,6 +168,9 @@
 			<a href={links.avSetup} target="_blank" class="variant-filled btn">
 				AV Setup Document
 			</a>
+			<a href="/pdf/x18-manual.pdf" target="_blank" class="variant-filled btn">
+				Mixer Manual
+			</a>
 		</div>
 	{/await}
 </FccLayout>

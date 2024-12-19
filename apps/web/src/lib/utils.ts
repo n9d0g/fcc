@@ -1,6 +1,6 @@
 import { activeNav, activePath } from '$lib/stores/store.js'
-import { Temporal } from '@js-temporal/polyfill'
 import type { ModalSettings } from '@skeletonlabs/skeleton'
+import { formatISO } from 'date-fns'
 
 // exported functions
 export const setNavActiveState = (path: any) => {
@@ -28,10 +28,10 @@ export const searchFilter = (
 }
 
 export const updatedDataFiltered = (array: any, field: string) => {
+	const dateToday = formatISO(new Date(), { representation: 'date' })
+
 	return array
-		.filter(
-			(item: any) => item[field] >= Temporal.Now.plainDateISO().toString()
-		)
+		.filter((item: any) => item[field] >= dateToday)
 		.sort((a: any, b: any) => (a[field] > b[field] ? 1 : -1))
 }
 

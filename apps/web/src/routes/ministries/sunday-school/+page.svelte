@@ -6,7 +6,7 @@
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<h2 class="h2 mb-4 font-bold">Welcome to Our Women's Ministry Gathering!</h2>
+	<h2 class="h2 mb-4 font-bold">Welcome to Our Sunday School Ministry!</h2>
 	<p class="mb-8">
 		Welcome to our vibrant and engaging Sunday School program, where children of
 		all ages are invited to embark on an exciting journey of faith, fun, and
@@ -77,10 +77,36 @@
 		</div>
 	</div>
 
-	<p>
-		Come be a part of our Sunday School family, where we're not just shaping
-		minds, but also touching hearts and souls. We look forward to the
-		opportunity to guide your child on this exciting journey of faith and
-		discovery.
-	</p>
+	<div class="mb-8">
+		<p>
+			Come be a part of our Sunday School family, where we're not just shaping
+			minds, but also touching hearts and souls. We look forward to the
+			opportunity to guide your child on this exciting journey of faith and
+			discovery.
+		</p>
+	</div>
+
+	<div class="flex flex-col gap-4 lg:flex-row">
+		<a
+			href="https://youtu.be/uzr1XAhw2TY"
+			target="_blank"
+			class="variant-filled btn"
+		>
+			Sunday School Orientation Video
+		</a>
+		<a
+			href="https://www.youtube.com/watch?v=ONs-2yg76kM"
+			target="_blank"
+			class="variant-filled btn"
+		>
+			Sunday School Teacher Training Session 1
+		</a>
+		<a
+			href="http://tinyurl.com/SStraining1feedbackform"
+			target="_blank"
+			class="variant-filled btn"
+		>
+			SS Video Training Session 1 Feedback Form
+		</a>
+	</div>
 </FccLayout>
