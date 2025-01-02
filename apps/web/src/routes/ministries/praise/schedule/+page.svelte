@@ -162,9 +162,6 @@
 
 		<!-- link to excel sheet -->
 		<div class="my-4 flex w-full flex-col justify-center gap-4 sm:flex-row">
-			<a href={links.excel} target="_blank" class="variant-filled btn">
-				Excel Data Sheet
-			</a>
 			<a href={links.avSetup} target="_blank" class="variant-filled btn">
 				AV Setup Document
 			</a>
