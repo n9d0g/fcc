@@ -1,6 +1,8 @@
 import { client, headData, breadcrumbs } from '$lib/constants'
+import { supabase } from '$lib/supabaseClient'
 
 export const load = async () => {
+	const { data: songs } = await supabase.from('songs').select()
 	const data = await client.fetch(`
     *[_type == "praise"] {
       backup, bass, date, drums, electric, guitar, keys, lead, md, objective, scripture, series, speaker, summary, topic, unavailable,
@@ -20,6 +22,7 @@ export const load = async () => {
 			title: 'Praise Schedule.',
 			breadcrumb: breadcrumb,
 			praise: data,
+			songs: songs ?? [],
 			tHead: [
 				'Date 📅',
 				'Lead 🎤',
