@@ -87,35 +87,76 @@
 		</p>
 	</div>
 
-	<div class="mb-8 flex flex-col gap-4 lg:flex-row">
-		<a
-			href="https://youtu.be/uzr1XAhw2TY"
-			target="_blank"
-			class="variant-filled btn"
-		>
-			Sunday School Orientation Video
-		</a>
-		<a
-			href="https://www.youtube.com/watch?v=ONs-2yg76kM"
-			target="_blank"
-			class="variant-filled btn"
-		>
-			Sunday School Teacher Training Session 1
-		</a>
-		<a
-			href="http://tinyurl.com/SStraining1feedbackform"
-			target="_blank"
-			class="variant-filled btn"
-		>
-			SS Video Training Session 1 Feedback Form
-		</a>
-		<a
-			href="/pdf/ss-primary-worksheets-p1.pdf"
-			target="_blank"
-			class="variant-filled btn"
-		>
-			Primary Worksheets
-		</a>
+	<div class="mb-8">
+		<h3 class="h3 my-4 font-bold">January PDFs</h3>
+
+		<div class="mb-8">
+			<h5 class="h5 mb-4 font-bold">Junior Material</h5>
+			<div class="flex flex-col gap-4 lg:flex-row">
+				<a
+					href="/pdf/2025/sunday-school/jan-lesson-plan.pdf"
+					target="_blank"
+					class="variant-filled btn"
+				>
+					Junior Lesson Plans
+				</a>
+				<a
+					href="/pdf/2025/sunday-school/jan-junior-worksheets.pdf"
+					target="_blank"
+					class="variant-filled btn"
+				>
+					Junior Worksheets
+				</a>
+			</div>
+		</div>
+
+		<div>
+			<h5 class="h5 mb-4 font-bold">Primary Material</h5>
+			<div class="flex flex-col gap-4 lg:flex-row">
+				<a
+					href="/pdf/ss-primary-worksheets-p1.pdf"
+					target="_blank"
+					class="variant-filled btn"
+				>
+					Primary Worksheets
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<h3 class="h3 mb-4 font-bold">Additional Links</h3>
+
+		<div class="mb-8 flex flex-col gap-4 lg:flex-row lg:flex-wrap">
+			<a
+				href="/pdf/2025/sunday-school/sunday-school-lessons.pdf"
+				target="_blank"
+				class="variant-filled btn"
+			>
+				2025 Sunday School Lessons
+			</a>
+			<a
+				href="https://youtu.be/uzr1XAhw2TY"
+				target="_blank"
+				class="variant-filled btn"
+			>
+				Sunday School Orientation Video
+			</a>
+			<a
+				href="https://www.youtube.com/watch?v=ONs-2yg76kM"
+				target="_blank"
+				class="variant-filled btn"
+			>
+				Sunday School Teacher Training Session 1
+			</a>
+			<a
+				href="http://tinyurl.com/SStraining1feedbackform"
+				target="_blank"
+				class="variant-filled btn"
+			>
+				SS Video Training Session 1 Feedback Form
+			</a>
+		</div>
 	</div>
 
 	<div class="table-container relative">
