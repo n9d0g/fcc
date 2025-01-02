@@ -59,18 +59,6 @@
 						>
 						<td
 							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
-							>{month.crawlersToddlers}</td
-						>
-						<td
-							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
-							>{month.ssYoung}</td
-						>
-						<td
-							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
-							>{month.ssOld}</td
-						>
-						<td
-							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 							>{month.communionPresider}</td
 						>
 						<td
@@ -89,14 +77,5 @@
 				{/each}
 			</tbody>
 		</table>
-	</div>
-
-	<!-- image of ministries -->
-	<div class="my-8 flex w-full flex-col justify-center gap-8">
-		<div class="flex justify-center">
-			<a href={links.excel} target="_blank" class="variant-filled btn">
-				2024 Excel Data Sheet
-			</a>
-		</div>
 	</div>
 </FccLayout>
