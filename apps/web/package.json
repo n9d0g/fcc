@@ -1,7 +1,7 @@
 {
 	"name": "web",
 	"private": true,
-	"version": "3.17.6",
+	"version": "3.18.0",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev --host --open",
@@ -26,6 +26,7 @@
 		"@sanity/client": "^6.24.1",
 		"@skeletonlabs/skeleton": "^2.10.4",
 		"@skeletonlabs/tw-plugin": "^0.4.0",
+		"@supabase/supabase-js": "^2.47.10",
 		"@sveltejs/adapter-auto": "^3.3.1",
 		"@sveltejs/adapter-vercel": "^5.5.2",
 		"@sveltejs/kit": "^2.12.1",

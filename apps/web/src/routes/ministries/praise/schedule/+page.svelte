@@ -21,6 +21,7 @@
 		breadcrumb,
 		headData,
 		worshipAssignments,
+		songs,
 		tHead,
 		tBody,
 		filterData,
