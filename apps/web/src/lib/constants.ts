@@ -52,6 +52,7 @@ export const breadcrumbs = {
 			title: 'Praise & Worship',
 			href: '/ministries/praise',
 			schedule: { title: 'Schedule', href: '/ministries/praise/schedule' },
+			songUsage: { title: 'Song Usage', href: '/ministries/praise/song-usage' },
 		},
 		sundayMinistries: {
 			title: 'Sunday Ministries',
@@ -275,6 +276,11 @@ export const headData = {
 		title: 'FCC | Praise Schedule',
 		description:
 			'Praise & Worship Schedule page for the Freedom in Christ Church.',
+	},
+	songUsage: {
+		title: 'FCC | Praise Song Usage',
+		description:
+			'Praise & Worship Song Usage page for the Freedom in Christ Church.',
 	},
 	give: {
 		title: 'FCC | Give',

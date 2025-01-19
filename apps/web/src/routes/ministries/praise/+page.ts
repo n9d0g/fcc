@@ -16,6 +16,10 @@ export const load = async () => {
 				title: 'Schedule',
 				link: '/ministries/praise/schedule',
 			},
+			{
+				title: 'Song Usage',
+				link: '/ministries/praise/song-usage',
+			},
 		],
 	}
 }
