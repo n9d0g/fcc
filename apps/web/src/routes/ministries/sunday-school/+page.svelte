@@ -120,6 +120,13 @@
 				>
 					Primary Worksheets
 				</a>
+				<a
+					href="https://docs.google.com/spreadsheets/d/1sFFHBndR5dGhDqULYEd5zVGivtSkCt8yZlPdqwGCYQw/edit?usp=sharing"
+					target="_blank"
+					class="variant-filled btn"
+				>
+					Primary/Toddler Lesson Plans
+				</a>
 			</div>
 		</div>
 	</div>
