@@ -6,7 +6,7 @@
 	"main": "package.json",
 	"license": "UNLICENSED",
 	"scripts": {
-		"dev": "sanity dev",
+		"dev": "sanity dev --open --port 6969",
 		"start": "sanity start",
 		"build": "sanity build",
 		"deploy": "sanity deploy",
