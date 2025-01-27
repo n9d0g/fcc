@@ -41,7 +41,7 @@
 </script>
 
 <div class="my-16">
-	<h2 class="h2 my-4 font-bold">2025 Worship Assignments</h2>
+	<h2 class="h2 my-4 font-bold">2025 Praise Assignments</h2>
 
 	<div class="table-container">
 		<table class="table-compact table">
