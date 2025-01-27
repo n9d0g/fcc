@@ -1,11 +1,12 @@
 {
 	"name": "cms",
 	"private": true,
-	"version": "1.2.0",
+	"version": "1.2.1",
+	"type": "module",
 	"main": "package.json",
 	"license": "UNLICENSED",
 	"scripts": {
-		"dev": "sanity dev --port 6969",
+		"dev": "sanity dev",
 		"start": "sanity start",
 		"build": "sanity build",
 		"deploy": "sanity deploy",
