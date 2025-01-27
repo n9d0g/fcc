@@ -84,7 +84,7 @@ export const actions = {
 				await new Promise((resolve, reject) => {
 					transporter.sendMail(data, (err: any, info: any) => {
 						if (err) {
-							console.log(err)
+							console.error(err)
 							reject(err)
 						} else {
 							resolve(info)
@@ -100,7 +100,7 @@ export const actions = {
 				success: 'Email has been sent!',
 			}
 		} catch (e) {
-			console.log(e)
+			console.error(e)
 		}
 	},
 }

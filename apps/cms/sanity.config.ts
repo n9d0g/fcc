@@ -1,18 +1,18 @@
-import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemas'
+import { defineConfig } from 'sanity'
+import { structureTool } from 'sanity/structure'
+import { visionTool } from '@sanity/vision'
+import { schemaTypes } from './schemas/index.js'
 
 export default defineConfig({
-  name: 'default',
-  title: 'fcc-content',
+	name: 'default',
+	title: 'fcc-content',
 
-  projectId: 'ygo45klz',
-  dataset: 'production',
+	projectId: 'ygo45klz',
+	dataset: 'production',
 
-  plugins: [deskTool(), visionTool()],
+	plugins: [structureTool(), visionTool()],
 
-  schema: {
-    types: schemaTypes,
-  },
+	schema: {
+		types: schemaTypes,
+	},
 })

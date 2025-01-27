@@ -7,6 +7,11 @@ export const load = async () => {
       'pdfURL': pdf.asset->url
     }
   `)
+	const praiseAssignments = await client.fetch(`
+    *[_type == "praise-assignments"] {
+      role, names
+    }
+  `)
 
 	const breadcrumb = [
 		breadcrumbs.home,
@@ -20,6 +25,7 @@ export const load = async () => {
 			title: 'Praise Schedule.',
 			breadcrumb: breadcrumb,
 			praise: data,
+			praiseAssignments: praiseAssignments,
 			tHead: [
 				'Date 📅',
 				'Lead 🎤',
@@ -55,66 +61,6 @@ export const load = async () => {
 				'pdfURL',
 			],
 			headData: headData.schedule,
-			worshipAssignments: [
-				{
-					leader: 'James',
-					acousticGuitar: 'Ian',
-					keys: 'Joi',
-					bass: 'Ian',
-					drums: 'James',
-					electric: 'Nathan',
-					backup: 'Frances',
-				},
-				{
-					leader: 'Frances',
-					acousticGuitar: 'Travis',
-					keys: 'Nathan',
-					bass: 'Nathan',
-					drums: 'Miguel',
-					backup: 'Ian',
-				},
-				{
-					leader: 'Joi',
-					acousticGuitar: 'Nathan',
-					keys: 'Noreen',
-					bass: 'Noreen',
-					drums: 'Nathan',
-					backup: 'James',
-				},
-				{
-					leader: 'Nathan',
-					acousticGuitar: 'Rommel',
-					keys: 'Rommel',
-					bass: 'Rommel',
-					backup: 'Lexie',
-				},
-				{
-					leader: 'Raquel',
-					acousticGuitar: 'James',
-					bass: 'Noreen',
-					backup: 'Joi',
-				},
-				{
-					leader: 'Rommel',
-					backup: 'Nathan',
-					bass: 'Miguel (2nd half of 2025)',
-				},
-				{
-					backup: 'Noreen',
-				},
-				{
-					backup: 'Raquel',
-				},
-				{
-					backup: 'Rommel',
-				},
-				{
-					backup: 'Ymuz',
-				},
-				{
-					backup: 'Yanna',
-				},
-			],
 			filterData: [
 				{
 					label: 'Lead 🎤',

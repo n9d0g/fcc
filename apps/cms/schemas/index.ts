@@ -8,11 +8,13 @@ import leadership from './leadership'
 import sundayMinistries from './sunday-ministries'
 import sundaySchool from './sunday-school'
 import banner from './banner'
+import praiseAssignments from './praise-assignments'
 
 export const schemaTypes = [
 	pages,
 	sermons,
 	praise,
+	praiseAssignments,
 	youngAdults,
 	birthdays,
 	prayer,

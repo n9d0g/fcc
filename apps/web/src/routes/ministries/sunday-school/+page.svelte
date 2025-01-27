@@ -1,9 +1,17 @@
 <script lang="ts">
-	import { format, addDays } from 'date-fns'
+	import { format, addDays, startOfDay } from 'date-fns'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 
 	export let data
-	const { tHeaders, tBody, title, breadcrumb, headData } = data
+	const { tHeaders, tBody, title, breadcrumb, headData, sundaySchoolData } =
+		data
+
+	const jrSundaySchoolData = sundaySchoolData.filter(
+		(item: any) => item.class === 'Junior'
+	)
+	const primarySundaySchoolData = sundaySchoolData.filter(
+		(item: any) => item.class === 'Primary'
+	)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
@@ -88,46 +96,64 @@
 	</div>
 
 	<div class="mb-8">
-		<h3 class="h3 my-4 font-bold">January PDFs</h3>
+		<h3 class="h3 my-4 font-bold">PDFs</h3>
 
 		<div class="mb-8">
 			<h5 class="h5 mb-4 font-bold">Junior Material</h5>
-			<div class="flex flex-col gap-4 lg:flex-row">
-				<a
-					href="/pdf/2025/sunday-school/jan-lesson-plan.pdf"
-					target="_blank"
-					class="variant-filled btn"
-				>
-					Junior Lesson Plans
-				</a>
-				<a
-					href="/pdf/2025/sunday-school/jan-junior-worksheets.pdf"
-					target="_blank"
-					class="variant-filled btn"
-				>
-					Junior Worksheets
-				</a>
-			</div>
+			{#if jrSundaySchoolData.length > 0}
+				<div class="flex flex-col gap-4 lg:flex-row">
+					{#each jrSundaySchoolData as item}
+						<a
+							href={item.lessonPlanPdf}
+							target="_blank"
+							class="variant-filled btn"
+						>
+							Junior Lesson Plans ({format(new Date(item.date), 'MMM')})
+						</a>
+						<a
+							href={item.worksheetPdf}
+							target="_blank"
+							class="variant-filled btn"
+						>
+							Junior Worksheets ({format(new Date(item.date), 'MMM')})
+						</a>
+					{/each}
+				</div>
+			{:else}
+				<p>
+					No Junior Sunday School data available yet! Please check back later
+					(or contact Sis. Joi).
+				</p>
+			{/if}
 		</div>
 
-		<div>
+		<div class="mb-8">
 			<h5 class="h5 mb-4 font-bold">Primary Material</h5>
-			<div class="flex flex-col gap-4 lg:flex-row">
-				<a
-					href="/pdf/ss-primary-worksheets-p1.pdf"
-					target="_blank"
-					class="variant-filled btn"
-				>
-					Primary Worksheets
-				</a>
-				<a
-					href="https://docs.google.com/spreadsheets/d/1sFFHBndR5dGhDqULYEd5zVGivtSkCt8yZlPdqwGCYQw/edit?usp=sharing"
-					target="_blank"
-					class="variant-filled btn"
-				>
-					Primary/Toddler Lesson Plans
-				</a>
-			</div>
+			{#if primarySundaySchoolData.length > 0}
+				<div class="flex flex-col gap-4 lg:flex-row">
+					{#each primarySundaySchoolData as item}
+						<a
+							href={item.lessonPlanPdf}
+							target="_blank"
+							class="variant-filled btn"
+						>
+							Primary Lesson Plans
+						</a>
+						<a
+							href={item.worksheetPdf}
+							target="_blank"
+							class="variant-filled btn"
+						>
+							Primary Worksheets
+						</a>
+					{/each}
+				</div>
+			{:else}
+				<p>
+					No Primary Sunday School data available yet! Please check back later
+					(or contact Sis. Joi).
+				</p>
+			{/if}
 		</div>
 	</div>
 
@@ -196,16 +222,19 @@
 						</td>
 						<td
 							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
-							>{month.crawlersToddlers}</td
 						>
+							{month.crawlersToddlers}
+						</td>
 						<td
 							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
-							>{month.ssYoung}</td
 						>
+							{month.ssYoung}
+						</td>
 						<td
 							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
-							>{month.ssOld}</td
 						>
+							{month.ssOld}
+						</td>
 					</tr>
 				{/each}
 			</tbody>
