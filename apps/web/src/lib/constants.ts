@@ -100,22 +100,6 @@ export const breadcrumbs = {
 	sundaySchool: {
 		title: 'Sunday School',
 		href: '/sunday-school',
-		teachers: {
-			title: 'SS Teachers',
-			href: '/ss-teachers',
-		},
-		toddler: {
-			title: 'Toddler Class',
-			href: '/ss-teachers/toddler',
-		},
-		junior: {
-			title: 'Junior Class',
-			href: '/ss-teachers/junior',
-		},
-		primary: {
-			title: 'Primary Class',
-			href: '/ss-teachers/primary',
-		},
 	},
 }
 
