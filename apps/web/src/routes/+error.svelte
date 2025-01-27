@@ -1,35 +1,55 @@
 <script lang="ts">
 	import { page } from '$app/stores'
 	import FccLayout from '$lib/components/FccLayout.svelte'
+	import LandingPageGrid from '$lib/components/LandingPageGrid.svelte'
 	import { breadcrumbs } from '$lib/constants'
 
-	const title = 'FCC | 404'
+	const title = `FCC | ${$page.status}`
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.error]
 	const headData = {
-		title: 'FCC | 404',
+		title: `FCC | ${$page.status}`,
 		description: 'This page does not exist.',
 	}
+	const landingPageItems = [
+		{
+			title: 'Home',
+			link: '/',
+		},
+		{
+			title: 'About',
+			link: '/about',
+		},
+		{
+			title: 'Sermons',
+			link: '/sermons',
+		},
+		{
+			title: 'Ministries',
+			link: '/ministries',
+		},
+		{
+			title: 'Small Groups',
+			link: '/small-groups',
+		},
+		{
+			title: 'Give',
+			link: '/give',
+		},
+	]
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<section
 		class="my-4 flex min-h-[50vh] flex-col items-center justify-center gap-8 text-center"
 	>
-		<h1 class="h1 text-4xl md:text-6xl lg:text-9xl">
-			{$page.status}: {$page.error?.message}
-		</h1>
-		<h2 class="h2">Whoops! Looks like this page doesn't exist.</h2>
+		<h1 class="h1 text-4xl font-bold md:text-6xl lg:text-9xl">Oops!</h1>
+		<h2 class="h2">{$page.error?.message}</h2>
+		<p class="p">
+			({$page.status} Error)
+		</p>
 		<h3 class="h3">Try one of these pages instead:</h3>
-		<div
-			class="flex flex-col gap-4 lg:flex-row"
-			data-sveltekit-preload-data="hover"
-		>
-			<a href="/" class="anchor">Home</a>
-			<a href="/about" class="anchor">About</a>
-			<a href="/sermons" class="anchor">Sermons</a>
-			<a href="/ministries" class="anchor">Ministries</a>
-			<a href="/small-groups" class="anchor">Small Groups</a>
-			<a href="/give" class="anchor">Give</a>
+		<div class="w-full">
+			<LandingPageGrid items={landingPageItems} />
 		</div>
 	</section>
 </FccLayout>
