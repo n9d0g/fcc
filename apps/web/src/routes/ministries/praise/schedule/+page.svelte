@@ -5,7 +5,7 @@
 	import DetailsTooltip from '$lib/components/ministries/praise/DetailsTooltip.svelte'
 	import { fade } from 'svelte/transition'
 	import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
-	import WorshipAssignments from '$lib/components/ministries/praise/WorshipAssignments.svelte'
+	import PraiseAssignments from '$lib/components/ministries/praise/PraiseAssignments.svelte'
 	import {
 		updatedDataFiltered,
 		praiseModalSettings,
@@ -20,11 +20,10 @@
 		title,
 		breadcrumb,
 		headData,
-		worshipAssignments,
-		songs,
 		tHead,
 		tBody,
 		filterData,
+		praiseAssignments,
 	}: any = data
 
 	let schedTable: any
@@ -159,7 +158,7 @@
 			</div>
 		</div>
 
-		<WorshipAssignments worshipAssignmentsData={worshipAssignments} />
+		<PraiseAssignments {praiseAssignments} />
 
 		<!-- link to excel sheet -->
 		<div class="my-4 flex w-full flex-col justify-center gap-4 sm:flex-row">
