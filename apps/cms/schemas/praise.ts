@@ -19,7 +19,13 @@ export default {
 			name: 'guitar',
 			type: 'string',
 			description: 'Guitar player for respective service.',
-			title: 'Guitar',
+			title: 'Acoustic Guitar',
+		},
+		{
+			name: 'backup_guitar',
+			type: 'string',
+			description: 'Backup guitar player for respective service.',
+			title: 'Backup Acoustic Guitar',
 		},
 		{
 			name: 'keys',
