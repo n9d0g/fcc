@@ -1,6 +1,5 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import { page } from '$app/stores'
 
 	type ActionData = {
 		username?: string
@@ -18,16 +17,9 @@
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<section class="flex items-center justify-center">
-		{#if $page.url.searchParams.get('registered')}
-			<div class="alert variant-filled-success mb-4">
-				Registration successful! Please check your email to verify your account
-				before logging in.
-			</div>
-		{/if}
-
 		<form
 			method="post"
-			action="?/login"
+			action="?/register"
 			class="card mx-auto flex h-fit w-full max-w-lg flex-col gap-6 p-8"
 		>
 			<!-- username -->

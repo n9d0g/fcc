@@ -31,6 +31,7 @@ export const breadcrumbs = {
 		},
 	},
 	login: { title: 'Login', href: '/login' },
+	register: { title: 'Register', href: '/register' },
 	contact: { title: 'Contact', href: '/contact' },
 	about: {
 		title: 'About',

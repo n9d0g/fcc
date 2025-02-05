@@ -44,6 +44,7 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.49.1",
+		"@supabase/auth-helpers-sveltekit": "^0.13.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.2",
 		"@types/node": "^22.10.2",
 		"@types/nodemailer": "^6.4.17",

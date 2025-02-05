@@ -86,17 +86,12 @@
 				Contact
 			</a>
 			<a
-				href="/"
+				href="/login"
 				class="variant-filled-secondary btn hidden text-white xl:block"
 				data-sveltekit-preload-data="hover"
-				use:popup={popupHover}
 			>
 				Log In
 			</a>
-			<div class="card variant-filled-tertiary p-4" data-popup="popupHover">
-				<p>🚧 Login WIP 🚧</p>
-				<div class="variant-filled-tertiary arrow" />
-			</div>
 		</svelte:fragment>
 	</AppBar>
 </div>
