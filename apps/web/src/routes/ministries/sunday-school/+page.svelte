@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { format, addDays, startOfDay } from 'date-fns'
+	import { format, addDays } from 'date-fns'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 
 	export let data
@@ -101,8 +101,8 @@
 		<div class="mb-8">
 			<h5 class="h5 mb-4 font-bold">Junior Material</h5>
 			{#if jrSundaySchoolData.length > 0}
-				<div class="flex flex-col gap-4 lg:flex-row">
-					{#each jrSundaySchoolData as item}
+				{#each jrSundaySchoolData as item}
+					<div class="flex flex-col gap-4 lg:mb-4 lg:flex-row">
 						<a
 							href={item.lessonPlanPdf}
 							target="_blank"
@@ -117,8 +117,8 @@
 						>
 							Junior Worksheets ({format(new Date(item.date), 'MMM')})
 						</a>
-					{/each}
-				</div>
+					</div>
+				{/each}
 			{:else}
 				<p>
 					No Junior Sunday School data available yet! Please check back later
