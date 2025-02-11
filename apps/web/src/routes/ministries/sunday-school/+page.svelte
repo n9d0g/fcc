@@ -189,6 +189,13 @@
 			>
 				SS Video Training Session 1 Feedback Form
 			</a>
+			<a
+				href="https://docs.google.com/spreadsheets/d/1sFFHBndR5dGhDqULYEd5zVGivtSkCt8yZlPdqwGCYQw/edit?usp=sharing"
+				target="_blank"
+				class="variant-filled btn"
+			>
+				Sunday School Lesson Plans - Primary/Toddlers
+			</a>
 		</div>
 	</div>
 
