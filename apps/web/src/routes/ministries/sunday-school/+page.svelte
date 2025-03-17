@@ -103,20 +103,24 @@
 			{#if jrSundaySchoolData.length > 0}
 				{#each jrSundaySchoolData as item}
 					<div class="flex flex-col gap-4 lg:mb-4 lg:flex-row">
-						<a
-							href={item.lessonPlanPdf}
-							target="_blank"
-							class="variant-filled btn"
-						>
-							Junior Lesson Plans ({format(new Date(item.date), 'MMM')})
-						</a>
-						<a
-							href={item.worksheetPdf}
-							target="_blank"
-							class="variant-filled btn"
-						>
-							Junior Worksheets ({format(new Date(item.date), 'MMM')})
-						</a>
+						{#if item.lessonPlanPdf}
+							<a
+								href={item.lessonPlanPdf}
+								target="_blank"
+								class="variant-filled btn"
+							>
+								Junior Lesson Plans ({format(new Date(item.date), 'MMM')})
+							</a>
+						{/if}
+						{#if item.worksheetPdf}
+							<a
+								href={item.worksheetPdf}
+								target="_blank"
+								class="variant-filled btn"
+							>
+								Junior Worksheets ({format(new Date(item.date), 'MMM')})
+							</a>
+						{/if}
 					</div>
 				{/each}
 			{:else}
@@ -132,20 +136,24 @@
 			{#if primarySundaySchoolData.length > 0}
 				<div class="flex flex-col gap-4 lg:flex-row">
 					{#each primarySundaySchoolData as item}
-						<a
-							href={item.lessonPlanPdf}
-							target="_blank"
-							class="variant-filled btn"
-						>
-							Primary Lesson Plans
-						</a>
-						<a
-							href={item.worksheetPdf}
-							target="_blank"
-							class="variant-filled btn"
-						>
-							Primary Worksheets
-						</a>
+						{#if item.lessonPlanPdf}
+							<a
+								href={item.lessonPlanPdf}
+								target="_blank"
+								class="variant-filled btn"
+							>
+								Primary Lesson Plans
+							</a>
+						{/if}
+						{#if item.worksheetPdf}
+							<a
+								href={item.worksheetPdf}
+								target="_blank"
+								class="variant-filled btn"
+							>
+								Primary Worksheets
+							</a>
+						{/if}
 					{/each}
 				</div>
 			{:else}
@@ -201,18 +209,18 @@
 
 	<div class="table-container relative">
 		<!-- skeleton table -->
-		<table class="relative table overflow-scroll">
+		<table class="table relative overflow-scroll">
 			<thead>
 				<tr class="variant-filled-secondary sticky top-0 z-10">
 					{#each tHeaders as header, index}
 						{#if index === 0}
 							<th
-								class="variant-filled-secondary max-lg:table-cell-fit sticky left-0 z-30 w-6 p-3 text-left font-bold"
+								class="variant-filled-secondary sticky left-0 z-30 w-6 p-3 text-left font-bold max-lg:table-cell-fit"
 							>
 								{header}
 							</th>
 						{:else}
-							<th class="max-lg:table-cell-fit w-6 p-3 text-left font-bold">
+							<th class="w-6 p-3 text-left font-bold max-lg:table-cell-fit">
 								{header}
 							</th>
 						{/if}
@@ -223,22 +231,22 @@
 				{#each tBody as month}
 					<tr class="text-center">
 						<td
-							class="bg-surface-200-700-token max-lg:table-cell-fit sticky left-0 w-6 pl-3 text-left font-bold"
+							class="bg-surface-200-700-token sticky left-0 w-6 pl-3 text-left font-bold max-lg:table-cell-fit"
 						>
 							{format(addDays(new Date(month.date), 1), 'MMMM')}
 						</td>
 						<td
-							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
+							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
 						>
 							{month.crawlersToddlers}
 						</td>
 						<td
-							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
+							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
 						>
 							{month.ssYoung}
 						</td>
 						<td
-							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
+							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
 						>
 							{month.ssOld}
 						</td>
