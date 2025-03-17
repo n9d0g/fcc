@@ -46,5 +46,8 @@
 	<Hero />
 	<HomeWelcome {links} />
 	<HomeSermons {sermons} />
-	<HomeNextEvent pageInfo={data.pages} />
+
+	{#if data.pages.length > 0}
+		<HomeNextEvent pageInfo={data.pages} />
+	{/if}
 </div>
