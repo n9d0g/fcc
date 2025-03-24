@@ -50,7 +50,7 @@ export const load = async () => {
 				'electric',
 				'md',
 				'backup',
-				'unavailable',
+				'unavailableList',
 			],
 			tableMeta: [
 				'series',

@@ -70,12 +70,6 @@ export default {
 			title: 'Sound/AV',
 		},
 		{
-			name: 'unavailable',
-			type: 'string',
-			description: 'Unavailable worship members for respective service.',
-			title: 'Unavailable',
-		},
-		{
 			name: 'unavailableList',
 			type: 'array',
 			title: 'Unavailable Members',
