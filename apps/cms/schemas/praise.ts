@@ -76,6 +76,29 @@ export default {
 			title: 'Unavailable',
 		},
 		{
+			name: 'unavailableList',
+			type: 'array',
+			title: 'Unavailable Members',
+			description: 'Unavailable worship members for respective service.',
+			of: [
+				{
+					type: 'object',
+					fields: [
+						{
+							name: 'name',
+							type: 'string',
+							title: 'Name',
+						},
+						{
+							name: 'reason',
+							type: 'string',
+							title: 'Reason',
+						},
+					],
+				},
+			],
+		},
+		{
 			name: 'pdf',
 			type: 'file',
 			description: 'PDF chords for respective service.',
@@ -116,6 +139,29 @@ export default {
 			type: 'string',
 			description: 'Sermon sunmary for respective service.',
 			title: 'Summary',
+		},
+		{
+			name: 'songs',
+			type: 'array',
+			title: 'Songs',
+			description: 'Songs for the service.',
+			of: [
+				{
+					type: 'object',
+					fields: [
+						{
+							name: 'title',
+							type: 'string',
+							title: 'Song Title',
+						},
+						{
+							name: 'artist',
+							type: 'string',
+							title: 'Artist',
+						},
+					],
+				},
+			],
 		},
 	],
 }

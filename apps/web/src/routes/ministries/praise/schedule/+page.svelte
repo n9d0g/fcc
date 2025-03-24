@@ -42,6 +42,8 @@
 			scripture: e.scripture,
 			objective: e.objective,
 			summary: e.summary,
+			songs: e.songs,
+			unavailableList: e.unavailableList,
 			date: e.date,
 			pdf: e.pdfURL,
 		}
