@@ -14,8 +14,12 @@
 		scripture: $modalStore[0]?.meta.scripture,
 		objective: $modalStore[0]?.meta.objective,
 		summary: $modalStore[0]?.meta.summary,
+		songs: $modalStore[0]?.meta.songs,
 		pdf: $modalStore[0]?.meta.pdf,
+		unavailableList: $modalStore[0]?.meta.unavailableList,
 	}
+
+	console.log(metaData.unavailableList)
 
 	const estDate = addDays(new Date(metaData.date), 1)
 	const date = format(estDate, 'MMMM do, yyyy')
@@ -50,6 +54,35 @@
 
 	{#if metaData.summary}
 		<p><span class="font-bold">Summary:</span><br /> {metaData.summary}</p>
+	{/if}
+
+	{#if metaData.songs}
+		<div>
+			<p class="font-bold">Songs:</p>
+			<ol class="my-0 list-inside list-decimal">
+				{#each metaData.songs as song}
+					<li>{song.title} - {song.artist}</li>
+				{/each}
+			</ol>
+		</div>
+	{/if}
+
+	{#if metaData.unavailableList}
+		<div>
+			<p class="font-bold">Unavailable:</p>
+			<div class="table-container">
+				<table class="table-compact table">
+					<tbody>
+						{#each metaData.unavailableList as unavailable}
+							<tr>
+								<td class="table-cell-fit">{unavailable.name}</td>
+								<td class="table-cell-fit">{unavailable.reason}</td>
+							</tr>
+						{/each}
+					</tbody>
+				</table>
+			</div>
+		</div>
 	{/if}
 
 	{#if metaData.pdf}

@@ -42,6 +42,8 @@
 			scripture: e.scripture,
 			objective: e.objective,
 			summary: e.summary,
+			songs: e.songs,
+			unavailableList: e.unavailableList,
 			date: e.date,
 			pdf: e.pdfURL,
 		}
@@ -140,6 +142,17 @@
 													class="bg-surface-200-700-token table-cell-fit sticky left-0 pl-3 text-left"
 												>
 													{format(addDays(new Date(week[col]), 1), 'MMM do')}
+												</td>
+											{:else if col === 'unavailableList'}
+												<td class="whitespace-nowrap pl-3 text-left">
+													<p>
+														{#each week[col] as unavailable}
+															{unavailable.name}{unavailable !==
+															week[col][week[col].length - 1]
+																? '; '
+																: ''}
+														{/each}
+													</p>
 												</td>
 											{:else}
 												<td class="whitespace-nowrap pl-3 text-left">
