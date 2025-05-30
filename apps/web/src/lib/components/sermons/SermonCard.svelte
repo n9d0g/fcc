@@ -11,7 +11,11 @@
 
 	const youtubeId = youtube.replace('https://www.youtube.com/watch?v=', '')
 	const thumbImg = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`
-	const formattedDate = format(addDays(new Date(date), 1), 'MMMM do, yyyy')
+
+	// Add date validation
+	const formattedDate = date
+		? format(addDays(new Date(date), 1), 'MMMM do, yyyy')
+		: 'Date not available'
 
 	const modalStore = getModalStore()
 
