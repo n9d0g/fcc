@@ -1,0 +1,225 @@
+name: Notify Discord on Deploy
+
+on:
+  push:
+    branches: ["nate", "dev-web", "main"]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Wait for Vercel deployment
+        id: deploy-check
+        continue-on-error: true
+        run: |
+          # Set up variables
+          COMMIT_SHA=$(git rev-parse --short HEAD)
+          FULL_COMMIT_SHA=$(git rev-parse HEAD)
+          BRANCH=${GITHUB_REF#refs/heads/}
+
+          # Determine project name based on branch
+          if [ "$BRANCH" == "main" ]; then
+            PROJECT_NAME="fcc-web"
+            DEPLOY_URL="https://fcccanada.ca"
+            SITE_NAME="fcccanada.ca"
+          elif [ "$BRANCH" == "dev-web" ]; then
+            PROJECT_NAME="fcc-web-dev"
+            DEPLOY_URL="https://dev.fcccanada.ca"
+            SITE_NAME="dev.fcccanada.ca"
+          elif [ "$BRANCH" == "nate" ]; then
+            PROJECT_NAME="nate-fcc-web"
+            DEPLOY_URL="https://nate.fcccanada.ca"
+            SITE_NAME="nate.fcccanada.ca"
+          else
+            PROJECT_NAME="fcc-web-dev"
+            DEPLOY_URL="https://dev.fcccanada.ca"
+            SITE_NAME="dev.fcccanada.ca"
+          fi
+
+          echo "Checking deployment status for commit: $COMMIT_SHA (full: $FULL_COMMIT_SHA)"
+          echo "Project: $PROJECT_NAME"
+          echo "Branch: $BRANCH"
+
+          # Initialize deployment status variables
+          DEPLOY_STATUS="UNKNOWN"
+          DEPLOYMENT_URL=""
+          ERROR_MESSAGE=""
+
+          # Wait for deployment to start (initial delay)
+          echo "Waiting for deployment to start..."
+          sleep 10
+
+          # Poll Vercel API for deployment status
+          MAX_ATTEMPTS=60  # 10 minutes max (60 * 10 seconds)
+          ATTEMPT=0
+
+          while [ $ATTEMPT -lt $MAX_ATTEMPTS ]; do
+            ATTEMPT=$((ATTEMPT + 1))
+            echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking deployment status..."
+            
+            # Get deployments for this project
+            DEPLOYMENTS=$(curl -s -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+              "https://api.vercel.com/v6/deployments?projectId=${{ secrets.VERCEL_PROJECT_ID }}&limit=10")
+            
+            # Try to find deployment by different methods
+            echo "Looking for deployment with commit SHA: $COMMIT_SHA"
+            echo "Looking for deployment with full commit SHA: $FULL_COMMIT_SHA"
+            echo "Looking for deployment with branch: $BRANCH"
+            
+            # Method 1: Try with short commit SHA
+            DEPLOYMENT=$(echo "$DEPLOYMENTS" | jq -r --arg sha "$COMMIT_SHA" --arg branch "$BRANCH" '.deployments[] | select(.meta.githubCommitSha == $sha) | select(.meta.githubCommitRef == $branch)')
+            
+            # Method 2: Try with full commit SHA if short doesn't work
+            if [ "$DEPLOYMENT" == "" ]; then
+              echo "Trying with full commit SHA..."
+              DEPLOYMENT=$(echo "$DEPLOYMENTS" | jq -r --arg sha "$FULL_COMMIT_SHA" --arg branch "$BRANCH" '.deployments[] | select(.meta.githubCommitSha == $sha) | select(.meta.githubCommitRef == $branch)')
+            fi
+            
+            # Method 3: Try without branch filter
+            if [ "$DEPLOYMENT" == "" ]; then
+              echo "Trying without branch filter..."
+              DEPLOYMENT=$(echo "$DEPLOYMENTS" | jq -r --arg sha "$COMMIT_SHA" '.deployments[] | select(.meta.githubCommitSha == $sha)')
+            fi
+            
+            # Method 4: Try with full commit SHA and no branch filter
+            if [ "$DEPLOYMENT" == "" ]; then
+              echo "Trying with full commit SHA and no branch filter..."
+              DEPLOYMENT=$(echo "$DEPLOYMENTS" | jq -r --arg sha "$FULL_COMMIT_SHA" '.deployments[] | select(.meta.githubCommitSha == $sha)')
+            fi
+            
+            # Method 5: Just get the most recent deployment
+            if [ "$DEPLOYMENT" == "" ]; then
+              echo "Trying to get most recent deployment..."
+              DEPLOYMENT=$(echo "$DEPLOYMENTS" | jq -r '.deployments[0]')
+            fi
+            
+            if [ "$DEPLOYMENT" != "" ] && [ "$DEPLOYMENT" != "null" ]; then
+              # Extract deployment status
+              STATUS=$(echo "$DEPLOYMENT" | jq -r '.state')
+              DEPLOYMENT_URL=$(echo "$DEPLOYMENT" | jq -r '.url')
+              DEPLOYMENT_COMMIT=$(echo "$DEPLOYMENT" | jq -r '.meta.githubCommitSha // "unknown"')
+              DEPLOYMENT_BRANCH=$(echo "$DEPLOYMENT" | jq -r '.meta.githubCommitRef // "unknown"')
+              
+              echo "Found deployment:"
+              echo "  Status: $STATUS"
+              echo "  URL: $DEPLOYMENT_URL"
+              echo "  Commit: $DEPLOYMENT_COMMIT"
+              echo "  Branch: $DEPLOYMENT_BRANCH"
+              
+              case "$STATUS" in
+                "READY")
+                  echo "✅ Deployment completed successfully!"
+                  DEPLOY_STATUS="SUCCESS"
+                  DEPLOYMENT_URL="$DEPLOYMENT_URL"
+                  break
+                  ;;
+                "ERROR"|"CANCELED")
+                  echo "❌ Deployment failed with status: $STATUS"
+                  DEPLOY_STATUS="FAILED"
+                  ERROR_MESSAGE="Deployment failed with status: $STATUS"
+                  break
+                  ;;
+                "BUILDING"|"QUEUED")
+                  echo "⏳ Deployment still in progress... (status: $STATUS)"
+                  ;;
+                *)
+                  echo "⚠️ Unknown status: $STATUS"
+                  ;;
+              esac
+            else
+              echo "Deployment not found yet, waiting..."
+            fi
+            
+            # Wait 10 seconds before next attempt
+            sleep 10
+          done
+
+          if [ $ATTEMPT -eq $MAX_ATTEMPTS ]; then
+            echo "❌ Timeout: Deployment did not complete within 10 minutes"
+            DEPLOY_STATUS="TIMEOUT"
+            ERROR_MESSAGE="Deployment did not complete within 10 minutes"
+          fi
+
+          # Set outputs for next step
+          echo "deploy_status=$DEPLOY_STATUS" >> $GITHUB_OUTPUT
+          echo "deployment_url=$DEPLOYMENT_URL" >> $GITHUB_OUTPUT
+          echo "error_message=$ERROR_MESSAGE" >> $GITHUB_OUTPUT
+
+      - name: Notify Discord
+        run: |
+          # Debug: Check if webhook secret exists
+          if [ -z "${{ secrets.DISCORD_WEBHOOK_URL }}" ]; then
+            echo "❌ DISCORD_WEBHOOK_URL secret is not set!"
+            exit 1
+          fi
+
+          echo "Discord webhook URL found, proceeding with notification..."
+
+          # Get the commit info
+          COMMIT_SHA=$(git rev-parse --short HEAD)
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          BRANCH=${GITHUB_REF#refs/heads/}
+          DEPLOY_TIME=$(TZ='America/New_York' date '+%Y-%m-%d %H:%M:%S %Z')
+
+          # Clean up commit message (remove newlines and limit length)
+          COMMIT_MSG=$(echo "$COMMIT_MSG" | tr '\n' ' ' | cut -c1-100)
+
+          # Determine the deployment URL and site name based on branch
+          if [ "$BRANCH" == "main" ]; then
+            DEFAULT_URL="https://fcccanada.ca"
+            SITE_NAME="fcccanada.ca"
+          elif [ "$BRANCH" == "dev-web" ]; then
+            DEFAULT_URL="https://dev.fcccanada.ca"
+            SITE_NAME="dev.fcccanada.ca"
+          elif [ "$BRANCH" == "nate" ]; then
+            DEFAULT_URL="https://nate.fcccanada.ca"
+            SITE_NAME="nate.fcccanada.ca"
+          else
+            DEFAULT_URL="https://dev.fcccanada.ca"
+            SITE_NAME="dev.fcccanada.ca"
+          fi
+
+          # Get deployment status from previous step
+          DEPLOY_STATUS="${{ steps.deploy-check.outputs.deploy_status }}"
+          DEPLOYMENT_URL="${{ steps.deploy-check.outputs.deployment_url }}"
+          ERROR_MESSAGE="${{ steps.deploy-check.outputs.error_message }}"
+
+          # Use deployment URL for failures, default URL for successes
+          if [ "$DEPLOY_STATUS" == "SUCCESS" ]; then
+            FINAL_URL="$DEFAULT_URL"
+          else
+            # For failures, use the actual deployment URL if available, otherwise default
+            if [ -n "$DEPLOYMENT_URL" ] && [ "$DEPLOYMENT_URL" != "" ]; then
+              FINAL_URL="https://$DEPLOYMENT_URL"
+            else
+              FINAL_URL="$DEFAULT_URL"
+            fi
+          fi
+
+          # Create notification message based on deployment status
+          case "$DEPLOY_STATUS" in
+            "SUCCESS")
+              MSG="🚀 **$SITE_NAME** deployed successfully!\n\n\`\`\`Branch: $BRANCH\nCommit: $COMMIT_SHA\nDetails: $COMMIT_MSG\nTime: $DEPLOY_TIME\n\`\`\`\n\n🔗 **Live URL:** $FINAL_URL"
+              ;;
+            "FAILED")
+              MSG="❌ **$SITE_NAME** deployment failed!\n\n\`\`\`Branch: $BRANCH\nCommit: $COMMIT_SHA\nDetails: $COMMIT_MSG\nTime: $DEPLOY_TIME\nError: $ERROR_MESSAGE\n\`\`\`\n\n🔗 **Check logs:** $FINAL_URL"
+              ;;
+            "TIMEOUT")
+              MSG="⏰ **$SITE_NAME** deployment timed out!\n\n\`\`\`Branch: $BRANCH\nCommit: $COMMIT_SHA\nDetails: $COMMIT_MSG\nTime: $DEPLOY_TIME\nError: $ERROR_MESSAGE\n\`\`\`\n\n🔗 **Check logs:** $FINAL_URL"
+              ;;
+            *)
+              MSG="⚠️ **$SITE_NAME** deployment status unknown!\n\n\`\`\`Branch: $BRANCH\nCommit: $COMMIT_SHA\nDetails: $COMMIT_MSG\nTime: $DEPLOY_TIME\nStatus: $DEPLOY_STATUS\n\`\`\`\n\n🔗 **Check logs:** $FINAL_URL"
+              ;;
+          esac
+
+          echo "Sending Discord notification..."
+          echo "Deployment Status: $DEPLOY_STATUS"
+          echo "Message: $MSG"
+
+          curl -H "Content-Type: application/json" \
+            -X POST \
+            -d "{\"content\": \"$MSG\"}" \
+            "${{ secrets.DISCORD_WEBHOOK_URL }}"
