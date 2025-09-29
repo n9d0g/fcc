@@ -208,12 +208,6 @@ export const modalComponentRegistry: Record<string, ModalComponent> = {
 	},
 }
 
-export const devToastSettings: ToastSettings = {
-	message: `📣 DEV SITE 📣`,
-	autohide: false,
-	background: 'variant-filled-error',
-}
-
 export const praiseFilterPopupSettings: PopupSettings = {
 	event: 'focus-blur',
 	target: 'praiseAutocomplete',
