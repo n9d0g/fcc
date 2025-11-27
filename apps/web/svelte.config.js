@@ -1,5 +1,5 @@
 import preprocess from 'svelte-preprocess'
-import adapter from '@sveltejs/adapter-auto'
+import adapter from '@sveltejs/adapter-vercel'
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 import seqPreprocessor from 'svelte-sequential-preprocessor'
 import { readFileSync } from 'fs'
@@ -17,13 +17,12 @@ const config = {
 			name: pkg.version,
 		},
 	},
-	preprocess: [
+	preprocess: seqPreprocessor([
 		vitePreprocess(),
 		preprocess({
 			postcss: true,
 		}),
-		seqPreprocessor([preprocess()]),
-	],
+	]),
 }
 
 export default config
