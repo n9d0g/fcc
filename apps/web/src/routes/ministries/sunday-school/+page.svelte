@@ -170,11 +170,11 @@
 
 		<div class="mb-8 flex flex-col gap-4 lg:flex-row lg:flex-wrap">
 			<a
-				href="/pdf/2025/sunday-school/sunday-school-lessons.pdf"
+				href="https://docs.google.com/spreadsheets/d/11ElQIFV6lJgosymTorQNkjCkGwk4gyKG-z_BYdesecQ/edit?gid=0#gid=0"
 				target="_blank"
 				class="variant-filled btn"
 			>
-				2025 Sunday School Lessons
+				Sunday School Lessons 2026
 			</a>
 			<a
 				href="https://youtu.be/uzr1XAhw2TY"
@@ -209,18 +209,18 @@
 
 	<div class="table-container relative">
 		<!-- skeleton table -->
-		<table class="table relative overflow-scroll">
+		<table class="relative table overflow-scroll">
 			<thead>
 				<tr class="variant-filled-secondary sticky top-0 z-10">
 					{#each tHeaders as header, index}
 						{#if index === 0}
 							<th
-								class="variant-filled-secondary sticky left-0 z-30 w-6 p-3 text-left font-bold max-lg:table-cell-fit"
+								class="variant-filled-secondary max-lg:table-cell-fit sticky left-0 z-30 w-6 p-3 text-left font-bold"
 							>
 								{header}
 							</th>
 						{:else}
-							<th class="w-6 p-3 text-left font-bold max-lg:table-cell-fit">
+							<th class="max-lg:table-cell-fit w-6 p-3 text-left font-bold">
 								{header}
 							</th>
 						{/if}
@@ -231,22 +231,22 @@
 				{#each tBody as month}
 					<tr class="text-center">
 						<td
-							class="bg-surface-200-700-token sticky left-0 w-6 pl-3 text-left font-bold max-lg:table-cell-fit"
+							class="bg-surface-200-700-token max-lg:table-cell-fit sticky left-0 w-6 pl-3 text-left font-bold"
 						>
 							{format(addDays(new Date(month.date), 1), 'MMMM')}
 						</td>
 						<td
-							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
+							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 						>
 							{month.crawlersToddlers}
 						</td>
 						<td
-							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
+							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 						>
 							{month.ssYoung}
 						</td>
 						<td
-							class="w-6 whitespace-nowrap pl-3 text-left max-lg:table-cell-fit"
+							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
 						>
 							{month.ssOld}
 						</td>
