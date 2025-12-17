@@ -155,6 +155,20 @@
 							</a>
 						{/if}
 					{/each}
+					<a
+						href="/pdf/2026/primary/worksheets-jan-june.pdf"
+						target="_blank"
+						class="variant-filled btn"
+					>
+						Primary Worksheets Jan-June 2026
+					</a>
+					<a
+						href="/pdf/2026/primary/worksheets-july-dec.pdf"
+						target="_blank"
+						class="variant-filled btn"
+					>
+						Primary Worksheets July-Dec 2026
+					</a>
 				</div>
 			{:else}
 				<p>
@@ -170,7 +184,7 @@
 
 		<div class="mb-8 flex flex-col gap-4 lg:flex-row lg:flex-wrap">
 			<a
-				href="https://docs.google.com/spreadsheets/d/11ElQIFV6lJgosymTorQNkjCkGwk4gyKG-z_BYdesecQ/edit?gid=0#gid=0"
+				href="https://docs.google.com/spreadsheets/d/1jmTqn9kxFWK3M0eSMrUV2Wkn-E5WAInM1GOLBvmTLRg/edit?usp=sharing"
 				target="_blank"
 				class="variant-filled btn"
 			>
