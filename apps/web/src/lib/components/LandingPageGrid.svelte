@@ -7,7 +7,8 @@
 >
 	{#each items as card}
 		<a
-			href={card.link}
+			href={card.external ? card.link : card.link}
+			target={card.external ? '_blank' : '_self'}
 			class="logo-item flex items-center justify-center rounded-sm p-4 text-center md:h-64"
 			data-sveltekit-preload-data="hover"
 		>
