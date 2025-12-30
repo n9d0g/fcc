@@ -184,7 +184,7 @@
 
 		<div class="mb-8 flex flex-col gap-4 lg:flex-row lg:flex-wrap">
 			<a
-				href="https://docs.google.com/spreadsheets/d/1jmTqn9kxFWK3M0eSMrUV2Wkn-E5WAInM1GOLBvmTLRg/edit?usp=sharing"
+				href="https://docs.google.com/spreadsheets/d/11ElQIFV6lJgosymTorQNkjCkGwk4gyKG-z_BYdesecQ/edit?usp=sharing"
 				target="_blank"
 				class="variant-filled btn"
 			>
