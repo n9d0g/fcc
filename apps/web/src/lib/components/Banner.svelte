@@ -2,19 +2,23 @@
 	import { addDays } from 'date-fns'
 	import { fly } from 'svelte/transition'
 
-	export let banner: App.Banner
+	export let banner: App.Banner | undefined
 
-	const eventDate = addDays(new Date(banner.date), 1)
-	const datePassed = eventDate > new Date()
-
+	let datePassed = false
 	let dismissed = false
+
+	// Only calculate if banner exists
+	if (banner?.date) {
+		const eventDate = addDays(new Date(banner.date), 1)
+		datePassed = eventDate > new Date()
+	}
 
 	const dismiss = () => {
 		dismissed = true
 	}
 </script>
 
-{#if datePassed && !dismissed}
+{#if banner && datePassed && !dismissed}
 	<div
 		transition:fly={{ y: 100, duration: 300 }}
 		class="from-primary-600 to-primary-500 fixed bottom-4 left-4 right-4 z-[999] mx-auto max-w-2xl rounded-xl bg-gradient-to-r shadow-2xl md:bottom-6 md:left-6 md:right-6"
