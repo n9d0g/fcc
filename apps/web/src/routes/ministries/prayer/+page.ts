@@ -8,6 +8,15 @@ export const load = async () => {
     }
   `)
 
+	const gallery = await client.fetch(`*[_type == "page-gallery" && pageUrl == "/ministries/prayer"][0]{
+		title,
+		photos[]{
+			"url": asset->url,
+			alt,
+			caption
+		}
+	}`)
+
 	const breadcrumb = [
 		breadcrumbs.home,
 		breadcrumbs.ministries,
@@ -20,6 +29,7 @@ export const load = async () => {
 			breadcrumb: breadcrumb,
 			prayerData: updatedDataFiltered(data, 'date'),
 			headData: headData.ministriesPrayer,
+			gallery,
 		}
 	}
 	return {

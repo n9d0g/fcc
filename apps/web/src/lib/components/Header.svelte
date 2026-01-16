@@ -11,7 +11,6 @@
 		type PopupSettings,
 		type DrawerStore,
 	} from '@skeletonlabs/skeleton'
-	import Banner from './Banner.svelte'
 
 	export let drawerStore: DrawerStore
 

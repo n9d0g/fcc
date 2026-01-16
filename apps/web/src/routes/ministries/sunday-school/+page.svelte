@@ -3,31 +3,73 @@
 	import FccLayout from '$lib/components/FccLayout.svelte'
 
 	export let data
-	const { tHeaders, tBody, title, breadcrumb, headData, sundaySchoolData } =
-		data
+	const {
+		tHeaders,
+		tBody,
+		title,
+		breadcrumb,
+		headData,
+		sundaySchoolData,
+		sundaySchoolLinks,
+		gallery,
+	} = data
 
-	const jrSundaySchoolData = sundaySchoolData.filter(
-		(item: any) => item.class === 'Junior'
-	)
-	const primarySundaySchoolData = sundaySchoolData.filter(
-		(item: any) => item.class === 'Primary'
-	)
+	const juniorLinks =
+		sundaySchoolLinks?.filter((link: any) => link.section === 'junior') || []
+	const primaryLinks =
+		sundaySchoolLinks?.filter((link: any) => link.section === 'primary') || []
+	const additionalLinks =
+		sundaySchoolLinks?.filter((link: any) => link.section === 'additional') ||
+		[]
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<h2 class="h2 mb-4 font-bold">Welcome to Our Sunday School Ministry!</h2>
-	<p class="mb-8">
-		Welcome to our vibrant and engaging Sunday School program, where children of
-		all ages are invited to embark on an exciting journey of faith, fun, and
-		friendship. Our program is designed to cater to the unique needs and
-		developmental stages of three distinct age groups: Crawlers/Toddlers (ages
-		1-5), Primary (grades 1-3), and Junior (grades 4-6).
-	</p>
+	<!-- Welcome Hero Section -->
+	<div class="mb-10">
+		<h2 class="h2 mb-4 font-bold">Welcome to Our Sunday School Ministry!</h2>
+		<p class="mb-6 text-lg">
+			Welcome to our vibrant and engaging Sunday School program, where children
+			of all ages are invited to embark on an exciting journey of faith, fun,
+			and friendship. Our program is designed to cater to the unique needs and
+			developmental stages of three distinct age groups:
+		</p>
+		<div class="grid gap-3 sm:grid-cols-3">
+			<div class="flex items-center gap-3">
+				<span class="text-primary-400 text-2xl">●</span>
+				<div>
+					<p class="font-semibold">Crawlers/Toddlers</p>
+					<p class="text-sm opacity-70">Ages 1-5</p>
+				</div>
+			</div>
+			<div class="flex items-center gap-3">
+				<span class="text-primary-400 text-2xl">●</span>
+				<div>
+					<p class="font-semibold">Primary</p>
+					<p class="text-sm opacity-70">Grades 1-3</p>
+				</div>
+			</div>
+			<div class="flex items-center gap-3">
+				<span class="text-primary-400 text-2xl">●</span>
+				<div>
+					<p class="font-semibold">Junior</p>
+					<p class="text-sm opacity-70">Grades 4-6</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-		<div class="flex flex-col gap-1">
-			<h3 class="h3 font-bold">Interactive Bible Lessons:</h3>
-			<p>
+	<!-- Features Grid -->
+	<div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+		<div class="card variant-ghost-surface p-5">
+			<div class="mb-3 flex items-center gap-3">
+				<span
+					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+				>
+					📖
+				</span>
+				<h3 class="h4 font-bold">Interactive Bible Lessons</h3>
+			</div>
+			<p class="opacity-80">
 				Our Sunday School prides itself on providing interactive and
 				age-appropriate Bible lessons that captivate young hearts and minds.
 				From the earliest stages of development to the pre-adolescent years, we
@@ -35,40 +77,65 @@
 			</p>
 		</div>
 
-		<div class="flex flex-col gap-1">
-			<h3 class="h3 font-bold">Multifaceted Activities:</h3>
-			<p>
+		<div class="card variant-ghost-surface p-5">
+			<div class="mb-3 flex items-center gap-3">
+				<span
+					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+				>
+					🎨
+				</span>
+				<h3 class="h4 font-bold">Multifaceted Activities</h3>
+			</div>
+			<p class="opacity-80">
 				At our Sunday School, it's not just about reading and listening; it's
 				about experiencing the joy of worship and learning in a variety of ways.
 				We sing uplifting songs, play engaging games, and unleash creativity
-				through exciting crafts. Our goal is to make every Sunday a memorable
-				and enriching experience for your child.
+				through exciting crafts.
 			</p>
 		</div>
 
-		<div class="flex flex-col gap-1">
-			<h3 class="h3 font-bold">Empowering Worship:</h3>
-			<p>
+		<div class="card variant-ghost-surface p-5">
+			<div class="mb-3 flex items-center gap-3">
+				<span
+					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+				>
+					🙏
+				</span>
+				<h3 class="h4 font-bold">Empowering Worship</h3>
+			</div>
+			<p class="opacity-80">
 				We understand the importance of nurturing a spirit of worship from a
 				young age. Through age-appropriate activities, we aim to instill a deep
-				sense of reverence and love for God in our young learners, fostering a
-				foundation for a lifelong relationship with Him.
+				sense of reverence and love for God in our young learners.
 			</p>
 		</div>
 
-		<div class="flex flex-col gap-1">
-			<h3 class="h3 font-bold">Building a Foundation of Love:</h3>
-			<p>
+		<div class="card variant-ghost-surface p-5">
+			<div class="mb-3 flex items-center gap-3">
+				<span
+					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+				>
+					💛
+				</span>
+				<h3 class="h4 font-bold">Building a Foundation of Love</h3>
+			</div>
+			<p class="opacity-80">
 				Our Sunday School is not just a place for learning; it's a community
 				where children are encouraged to love and support one another. We teach
-				essential values such as kindness, compassion, and friendship, creating
-				a positive environment for spiritual growth.
+				essential values such as kindness, compassion, and friendship.
 			</p>
 		</div>
 
-		<div class="flex flex-col gap-1">
-			<h3 class="h3 font-bold">Passionate Teacher Volunteers:</h3>
-			<p>
+		<div class="card variant-ghost-surface p-5">
+			<div class="mb-3 flex items-center gap-3">
+				<span
+					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+				>
+					👨‍🏫
+				</span>
+				<h3 class="h4 font-bold">Passionate Teacher Volunteers</h3>
+			</div>
+			<p class="opacity-80">
 				Our team of dedicated teacher volunteers is passionate about creating a
 				nurturing and educational environment for your children. Each member is
 				committed to helping your child grow spiritually, emotionally, and
@@ -76,9 +143,16 @@
 			</p>
 		</div>
 
-		<div class="flex flex-col gap-1">
-			<h3 class="h3 font-bold">Convenient Timing:</h3>
-			<p class="mb-2">
+		<div class="card variant-ghost-surface p-5">
+			<div class="mb-3 flex items-center gap-3">
+				<span
+					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+				>
+					🕐
+				</span>
+				<h3 class="h4 font-bold">Convenient Timing</h3>
+			</div>
+			<p class="opacity-80">
 				Join us every Sunday during the sermon time from 11 am to 12 noon. We
 				believe in providing a space for your child to connect with God while
 				you engage in the main worship service.
@@ -86,8 +160,11 @@
 		</div>
 	</div>
 
-	<div class="mb-8">
-		<p>
+	<!-- Call to Action -->
+	<div
+		class="card variant-soft-secondary mx-auto mb-8 max-w-2xl p-6 text-center"
+	>
+		<p class=" text-lg">
 			Come be a part of our Sunday School family, where we're not just shaping
 			minds, but also touching hearts and souls. We look forward to the
 			opportunity to guide your child on this exciting journey of faith and
@@ -99,30 +176,19 @@
 		<h3 class="h3 my-4 font-bold">PDFs</h3>
 
 		<div class="mb-8">
-			<h5 class="h5 mb-4 font-bold">Junior Material</h5>
-			{#if jrSundaySchoolData.length > 0}
-				{#each jrSundaySchoolData as item}
-					<div class="flex flex-col gap-4 lg:mb-4 lg:flex-row">
-						{#if item.lessonPlanPdf}
-							<a
-								href={item.lessonPlanPdf}
-								target="_blank"
-								class="variant-filled btn"
-							>
-								Junior Lesson Plans ({format(new Date(item.date), 'MMM')})
-							</a>
-						{/if}
-						{#if item.worksheetPdf}
-							<a
-								href={item.worksheetPdf}
-								target="_blank"
-								class="variant-filled btn"
-							>
-								Junior Worksheets ({format(new Date(item.date), 'MMM')})
-							</a>
-						{/if}
-					</div>
-				{/each}
+			<h5 class="h5 mb-4 font-bold">Junior Worksheets</h5>
+			{#if juniorLinks.length > 0}
+				<div class="flex flex-col gap-4 lg:flex-row lg:flex-wrap">
+					{#each juniorLinks as link}
+						<a
+							href={link.pdfUrl || link.url}
+							target={link.openInNewTab ? '_blank' : '_self'}
+							class="variant-filled btn"
+						>
+							{link.title}
+						</a>
+					{/each}
+				</div>
 			{:else}
 				<p>
 					No Junior Sunday School data available yet! Please check back later
@@ -132,43 +198,18 @@
 		</div>
 
 		<div class="mb-8">
-			<h5 class="h5 mb-4 font-bold">Primary Material</h5>
-			{#if primarySundaySchoolData.length > 0}
-				<div class="flex flex-col gap-4 lg:flex-row">
-					{#each primarySundaySchoolData as item}
-						{#if item.lessonPlanPdf}
-							<a
-								href={item.lessonPlanPdf}
-								target="_blank"
-								class="variant-filled btn"
-							>
-								Primary Lesson Plans
-							</a>
-						{/if}
-						{#if item.worksheetPdf}
-							<a
-								href={item.worksheetPdf}
-								target="_blank"
-								class="variant-filled btn"
-							>
-								Primary Worksheets
-							</a>
-						{/if}
+			<h5 class="h5 mb-4 font-bold">Primary Worksheets</h5>
+			{#if primaryLinks.length > 0}
+				<div class="flex flex-col gap-4 lg:flex-row lg:flex-wrap">
+					{#each primaryLinks as link}
+						<a
+							href={link.pdfUrl || link.url}
+							target={link.openInNewTab ? '_blank' : '_self'}
+							class="variant-filled btn"
+						>
+							{link.title}
+						</a>
 					{/each}
-					<a
-						href="/pdf/2026/primary/worksheets-jan-june.pdf"
-						target="_blank"
-						class="variant-filled btn"
-					>
-						Primary Worksheets Jan-June 2026
-					</a>
-					<a
-						href="/pdf/2026/primary/worksheets-july-dec.pdf"
-						target="_blank"
-						class="variant-filled btn"
-					>
-						Primary Worksheets July-Dec 2026
-					</a>
 				</div>
 			{:else}
 				<p>
@@ -179,49 +220,25 @@
 		</div>
 	</div>
 
-	<div>
-		<h3 class="h3 mb-4 font-bold">Additional Links</h3>
+	{#if additionalLinks.length > 0}
+		<div>
+			<h3 class="h3 mb-4 font-bold">Additional Links</h3>
 
-		<div class="mb-8 flex flex-col gap-4 lg:flex-row lg:flex-wrap">
-			<a
-				href="https://docs.google.com/spreadsheets/d/11ElQIFV6lJgosymTorQNkjCkGwk4gyKG-z_BYdesecQ/edit?usp=sharing"
-				target="_blank"
-				class="variant-filled btn"
-			>
-				Sunday School Lessons 2026
-			</a>
-			<a
-				href="https://youtu.be/uzr1XAhw2TY"
-				target="_blank"
-				class="variant-filled btn"
-			>
-				Sunday School Orientation Video
-			</a>
-			<a
-				href="https://www.youtube.com/watch?v=ONs-2yg76kM"
-				target="_blank"
-				class="variant-filled btn"
-			>
-				Sunday School Teacher Training Session 1
-			</a>
-			<a
-				href="http://tinyurl.com/SStraining1feedbackform"
-				target="_blank"
-				class="variant-filled btn"
-			>
-				SS Video Training Session 1 Feedback Form
-			</a>
-			<a
-				href="https://docs.google.com/spreadsheets/d/1sFFHBndR5dGhDqULYEd5zVGivtSkCt8yZlPdqwGCYQw/edit?usp=sharing"
-				target="_blank"
-				class="variant-filled btn"
-			>
-				Sunday School Lesson Plans - Primary/Toddlers
-			</a>
+			<div class="mb-8 flex flex-col gap-4 lg:flex-row lg:flex-wrap">
+				{#each additionalLinks as link}
+					<a
+						href={link.pdfUrl || link.url}
+						target={link.openInNewTab ? '_blank' : '_self'}
+						class="variant-filled btn"
+					>
+						{link.title}
+					</a>
+				{/each}
+			</div>
 		</div>
-	</div>
+	{/if}
 
-	<div class="table-container relative">
+	<div class="table-container relative mb-8">
 		<!-- skeleton table -->
 		<table class="relative table overflow-scroll">
 			<thead>
@@ -269,4 +286,32 @@
 			</tbody>
 		</table>
 	</div>
+
+	<!-- Photo Gallery -->
+	{#if gallery?.photos && gallery.photos.length > 0}
+		<div>
+			<h3 class="h3 mb-4 font-bold">Photo Gallery</h3>
+			<div
+				class="grid auto-rows-[200px] grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
+			>
+				{#each gallery.photos as photo, index}
+					<div
+						class="overflow-hidden rounded-lg {index === 0
+							? 'col-span-2 row-span-2'
+							: index === 3
+								? 'col-span-2'
+								: index === 6
+									? 'row-span-2'
+									: ''}"
+					>
+						<img
+							src={photo.url}
+							alt={photo.alt || 'Gallery photo'}
+							class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+						/>
+					</div>
+				{/each}
+			</div>
+		</div>
+	{/if}
 </FccLayout>

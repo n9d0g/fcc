@@ -1,4 +1,4 @@
-import { headData, breadcrumbs, links } from '$lib/constants'
+import { client, headData, breadcrumbs } from '$lib/constants'
 
 export const load = async () => {
 	const breadcrumb = [
@@ -7,10 +7,19 @@ export const load = async () => {
 		breadcrumbs.smallgroups.womenChasingGod,
 	]
 
+	const gallery = await client.fetch(`*[_type == "page-gallery" && pageUrl == "/small-groups/women-chasing-god"][0]{
+		title,
+		photos[]{
+			"url": asset->url,
+			alt,
+			caption
+		}
+	}`)
+
 	return {
 		title: 'FCC Women Chasing God Small Group.',
 		breadcrumb: breadcrumb,
 		headData: headData.smallgroupsWCG,
-		links: links.wcg,
+		gallery,
 	}
 }

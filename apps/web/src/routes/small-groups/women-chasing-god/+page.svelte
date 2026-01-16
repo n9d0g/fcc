@@ -2,140 +2,227 @@
 	import FccLayout from '$lib/components/FccLayout.svelte'
 
 	export let data
-	const { title, breadcrumb, headData, links } = data
+	const { title, breadcrumb, headData, gallery } = data
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<div class="flex flex-col gap-4">
-		<p>
-			Zoom Meeting LINK:
-			<a href={links.zoom} class="anchor variant-filled btn ml-2">
-				Click Here
+	<!-- Zoom Link Section -->
+	<div class="card variant-ghost-surface mb-8 p-5">
+		<div class="flex flex-wrap items-center gap-4">
+			<div class="flex items-center gap-3">
+				<span
+					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+				>
+					💻
+				</span>
+				<div>
+					<p class="font-semibold">Zoom Meeting</p>
+					<p class="text-sm opacity-70">
+						Meeting ID: 480 798 2806 | Passcode: FCC2025
+					</p>
+				</div>
+			</div>
+			<a
+				href="https://tinyurl.com/fcczoom2"
+				target="_blank"
+				class="variant-filled btn"
+			>
+				Join Zoom Meeting
 			</a>
-		</p>
-		<p>Meeting ID: <span class="font-bold"> 878 126 4602 </span></p>
-	</div>
-
-	<hr class="mt-8" />
-
-	<div
-		class="my-8 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 xl:gap-8"
-	>
-		<div class="flex flex-col gap-1">
-			<h2 class="h2 mb-3 text-2xl font-bold">
-				Women Chasing God (Europe/US/Canada)
-			</h2>
-			<p>Every 1st Saturday (monthly)</p>
-			<p>Toronto/Connecticut: 9:30AM</p>
-			<p>UK: 2:30PM</p>
-			<p>Manila: 9:30PM</p>
-			<p>
-				Study Material: <a
-					href="https://www.easyenglish.bible/psalms/"
-					class="anchor"
-					target="_blank"
-				>
-					Book of Psalms
-				</a>
-			</p>
-		</div>
-
-		<div class="flex flex-col gap-1">
-			<h2 class="h2 mb-3 text-2xl font-bold">Women Chasing God (US/Canada)</h2>
-			<p>Every 1st Saturday (monthly)</p>
-			<p>LA: 8:00AM</p>
-			<p>AZ: 9:00AM</p>
-			<p>Toronto: 11:00PM</p>
-			<p>
-				Study Material: <a
-					href="https://www.biblestudytools.com/acts/"
-					class="anchor"
-					target="_blank"
-				>
-					Book of Acts
-				</a>
-			</p>
-		</div>
-
-		<div class="flex flex-col gap-1">
-			<h2 class="h2 mb-3 text-2xl font-bold">Women Chasing God (FCC Canada)</h2>
-			<p>Every last Saturday (monthly)</p>
-			<p>Toronto: 9:00AM</p>
-			<p>
-				Study Material: <a
-					href="https://www.studylight.org/commentary/james.html"
-					class="anchor"
-					target="_blank"
-				>
-					Book of James
-				</a>
-			</p>
-		</div>
-
-		<div class="flex flex-col gap-1">
-			<h2 class="h2 mb-3 text-2xl font-bold">
-				Girls Chasing God (Philippines)
-			</h2>
-			<p>Every last Saturday (monthly)</p>
-			<p>Manila: 8:00PM</p>
-			<p>Toronto: 8:00AM</p>
-			<p>
-				Study Material: <a
-					href="https://www.studylight.org/commentary/mark.html"
-					class="anchor"
-					target="_blank"
-				>
-					Book of Mark
-				</a>
-			</p>
-		</div>
-
-		<div class="flex flex-col gap-1">
-			<h2 class="h2 mb-3 text-2xl font-bold">
-				Women Chasing God (Philippines/US/Canada)
-			</h2>
-			<p>Every 4th Thursday (monthly)</p>
-			<p>Toronto: 8:00AM</p>
-			<p>Manila: 8:00PM</p>
-			<p>
-				Study Material: <a
-					href="http://www.biblestorytelling.org/devotions/List%20Women%20Bible%20Stories%20PDF%202-9-15.pdf"
-					class="anchor"
-					target="_blank"
-				>
-					Women in the Bible
-				</a>
-			</p>
 		</div>
 	</div>
 
+	<!-- Study Groups Grid -->
+	<h3 class="h3 mb-4 font-bold">Our Study Groups</h3>
+	<div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+		<div class="card variant-ghost-surface p-5">
+			<div class="mb-3 flex items-center gap-3">
+				<span
+					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+				>
+					🌍
+				</span>
+				<h4 class="h4 font-bold">Europe/US/Canada</h4>
+			</div>
+			<div class="flex flex-col gap-1 opacity-80">
+				<p class="font-semibold">Every 1st Saturday (monthly)</p>
+				<p>Toronto/Connecticut: 9:30AM</p>
+				<p>UK: 2:30PM</p>
+				<p>Manila: 9:30PM</p>
+				<p class="mt-2">
+					Study: <a
+						href="https://www.easyenglish.bible/psalms/"
+						class="anchor"
+						target="_blank"
+					>
+						Book of Psalms
+					</a>
+				</p>
+			</div>
+		</div>
+
+		<div class="card variant-ghost-surface p-5">
+			<div class="mb-3 flex items-center gap-3">
+				<span
+					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+				>
+					🇺🇸
+				</span>
+				<h4 class="h4 font-bold">US/Canada</h4>
+			</div>
+			<div class="flex flex-col gap-1 opacity-80">
+				<p class="font-semibold">Every 1st Saturday (monthly)</p>
+				<p>LA: 8:00AM</p>
+				<p>AZ: 9:00AM</p>
+				<p>Toronto: 11:00PM</p>
+				<p class="mt-2">
+					Study: <a
+						href="https://www.biblestudytools.com/acts/"
+						class="anchor"
+						target="_blank"
+					>
+						Book of Acts
+					</a>
+				</p>
+			</div>
+		</div>
+
+		<div class="card variant-ghost-surface p-5">
+			<div class="mb-3 flex items-center gap-3">
+				<span
+					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+				>
+					🇨🇦
+				</span>
+				<h4 class="h4 font-bold">FCC Canada</h4>
+			</div>
+			<div class="flex flex-col gap-1 opacity-80">
+				<p class="font-semibold">Every last Saturday (monthly)</p>
+				<p>Toronto: 9:00AM</p>
+				<p class="mt-2">
+					Study: <a
+						href="https://www.studylight.org/commentary/james.html"
+						class="anchor"
+						target="_blank"
+					>
+						Book of James
+					</a>
+				</p>
+			</div>
+		</div>
+
+		<div class="card variant-ghost-surface p-5">
+			<div class="mb-3 flex items-center gap-3">
+				<span
+					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+				>
+					🇵🇭
+				</span>
+				<h4 class="h4 font-bold">Girls Chasing God (Philippines)</h4>
+			</div>
+			<div class="flex flex-col gap-1 opacity-80">
+				<p class="font-semibold">Every last Saturday (monthly)</p>
+				<p>Manila: 8:00PM</p>
+				<p>Toronto: 8:00AM</p>
+				<p class="mt-2">
+					Study: <a
+						href="https://www.studylight.org/commentary/mark.html"
+						class="anchor"
+						target="_blank"
+					>
+						Book of Mark
+					</a>
+				</p>
+			</div>
+		</div>
+
+		<div class="card variant-ghost-surface p-5">
+			<div class="mb-3 flex items-center gap-3">
+				<span
+					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+				>
+					🌏
+				</span>
+				<h4 class="h4 font-bold">Philippines/US/Canada</h4>
+			</div>
+			<div class="flex flex-col gap-1 opacity-80">
+				<p class="font-semibold">Every 4th Thursday (monthly)</p>
+				<p>Toronto: 8:00AM</p>
+				<p>Manila: 8:00PM</p>
+				<p class="mt-2">
+					Study: <a
+						href="http://www.biblestorytelling.org/devotions/List%20Women%20Bible%20Stories%20PDF%202-9-15.pdf"
+						class="anchor"
+						target="_blank"
+					>
+						Women in the Bible
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- About & Contact Section -->
 	<div
-		class="mx-auto my-8 flex max-w-3xl flex-col justify-center gap-4 text-center"
+		class="card variant-soft-secondary mx-auto mb-8 max-w-3xl p-6 text-center"
 	>
-		<p>
+		<p class="mb-4">
 			These bible study groups meet only once a month with the purpose of using
 			the other weeks for discipling their own small groups in their local
 			churches or neighborhoods. Study materials are sent out in advance, then
 			we gather to discuss, to dig deeper, to fellowship, and to pray for one
 			another.
 		</p>
-		<p>
-			If you’d like to join any of our small groups, please contact sis Joi.
-			<br />
-			<br />
-			Email:
-			<a href="mailto:irenejoi@fcccanada.ca" class="anchor" target="_blank">
-				irenejoi@fcccanada.ca
-			</a>
-			<br />
-			<a
-				href="https://www.instagram.com/joifulworld/"
-				class="anchor"
-				target="_blank"
-			>
-				@joifulworld
-			</a>
-			on Threads and IG
-		</p>
+		<div>
+			<p class="mb-2 font-semibold">
+				If you'd like to join any of our small groups, please contact sis Joi:
+			</p>
+			<p>
+				<a
+					href="mailto:irenejocelyn127@gmail.com"
+					class="anchor"
+					target="_blank"
+				>
+					irenejocelyn127@gmail.com
+				</a>
+				<span class="mx-2">|</span>
+				<a
+					href="https://www.instagram.com/joifulworld/"
+					class="anchor"
+					target="_blank"
+				>
+					@joifulworld
+				</a>
+				on Threads and IG
+			</p>
+		</div>
 	</div>
+
+	<!-- Photo Gallery -->
+	{#if gallery?.photos && gallery.photos.length > 0}
+		<div>
+			<h3 class="h3 mb-4 font-bold">Photo Gallery</h3>
+			<div
+				class="grid auto-rows-[200px] grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
+			>
+				{#each gallery.photos as photo, index}
+					<div
+						class="overflow-hidden rounded-lg {index === 0
+							? 'col-span-2 row-span-2'
+							: index === 3
+								? 'col-span-2'
+								: index === 6
+									? 'row-span-2'
+									: ''}"
+					>
+						<img
+							src={photo.url}
+							alt={photo.alt || 'Gallery photo'}
+							class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+						/>
+					</div>
+				{/each}
+			</div>
+		</div>
+	{/if}
 </FccLayout>

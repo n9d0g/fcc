@@ -10,6 +10,21 @@ export const load = async () => {
 		'lessonPlanPdf': lesson_plan.asset->url,
 		'worksheetPdf': worksheet.asset->url
 	}`)
+	const sundaySchoolLinks = await client.fetch(`*[_type == "sunday-school-links"] | order(order asc) {
+		title,
+		url,
+		'pdfUrl': pdf.asset->url,
+		section,
+		openInNewTab
+	}`)
+	const gallery = await client.fetch(`*[_type == "page-gallery" && pageUrl == "/ministries/sunday-school"][0]{
+		title,
+		photos[]{
+			"url": asset->url,
+			alt,
+			caption
+		}
+	}`)
 	const breadcrumb = [
 		breadcrumbs.home,
 		breadcrumbs.ministries,
@@ -26,6 +41,8 @@ export const load = async () => {
 		breadcrumb: breadcrumb,
 		headData: headData.sundaySchool,
 		sundaySchoolData: filteredSundaySchoolData,
+		sundaySchoolLinks,
+		gallery,
 		tBody: updatedDataFiltered(data, 'date'),
 		tHeaders: [
 			'Month',
