@@ -6,9 +6,10 @@ import pages from './pages'
 import prayer from './prayer'
 import leadership from './leadership'
 import sundayMinistries from './sunday-ministries'
-import sundaySchool from './sunday-school'
+import sundaySchoolLinks from './sunday-school-links'
 import banner from './banner'
 import praiseAssignments from './praise-assignments'
+import pageGallery from './page-gallery'
 
 export const schemaTypes = [
 	pages,
@@ -20,6 +21,7 @@ export const schemaTypes = [
 	prayer,
 	leadership,
 	sundayMinistries,
-	sundaySchool,
+	sundaySchoolLinks,
 	banner,
+	pageGallery,
 ]

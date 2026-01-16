@@ -7,26 +7,42 @@
 
 	// server fetching
 	export let data
-	const { title, breadcrumb, headData, prayerData } = data
+	const { title, breadcrumb, headData, prayerData, gallery } = data
 	let filterQuery = ''
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<!-- copy -->
-	<h2 class="h2 mb-2 font-bold">Welcome to Our Weekly Prayer Meeting!</h2>
-	<p class="mb-4">
-		At Freedom in Christ Church, we believe in the transformative power of
-		prayer and the strength that comes from a community united in seeking God's
-		guidance, mercy, and blessing. Our Weekly Prayer Meeting is a sacred space
-		where we gather to lift our voices in intercession, express gratitude, and
-		draw near to the heart of God. Join us every Wednesday at 7 PM via Zoom for
-		a time of meaningful connection and powerful prayer.
-	</p>
+	<!-- Welcome Section -->
+	<div class="mb-10">
+		<h2 class="h2 mb-4 font-bold">Welcome to Our Weekly Prayer Meeting!</h2>
+		<p class="mb-4 text-lg">
+			At Freedom in Christ Church, we believe in the transformative power of
+			prayer and the strength that comes from a community united in seeking
+			God's guidance, mercy, and blessing. Our Weekly Prayer Meeting is a sacred
+			space where we gather to lift our voices in intercession, express
+			gratitude, and draw near to the heart of God.
+		</p>
+		<div class="flex items-center gap-3">
+			<span class="text-primary-400 text-2xl">●</span>
+			<div>
+				<p class="font-semibold">Every Wednesday at 7 PM</p>
+				<p class="text-sm opacity-70">Via Zoom</p>
+			</div>
+		</div>
+	</div>
 
-	<div class="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
-		<div>
-			<h3 class="h3 font-bold">Mission:</h3>
-			<p>
+	<!-- Mission & Vision Cards -->
+	<div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+		<div class="card variant-ghost-surface p-5">
+			<div class="mb-3 flex items-center gap-3">
+				<span
+					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+				>
+					🎯
+				</span>
+				<h3 class="h4 font-bold">Mission</h3>
+			</div>
+			<p class="opacity-80">
 				Our mission is to create a dynamic and fervent community of prayer
 				warriors who are committed to seeking God's will for the world, our
 				nation, our church, and individual lives. Through our collective
@@ -35,9 +51,16 @@
 			</p>
 		</div>
 
-		<div>
-			<h3 class="h3 font-bold">Vision:</h3>
-			<p>
+		<div class="card variant-ghost-surface p-5">
+			<div class="mb-3 flex items-center gap-3">
+				<span
+					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+				>
+					👁️
+				</span>
+				<h3 class="h4 font-bold">Vision</h3>
+			</div>
+			<p class="opacity-80">
 				We envision a prayerful congregation, passionately engaging with God
 				through weekly gatherings, where hearts are stirred, burdens are shared,
 				and lives are transformed. Our vision is to be a community that
@@ -46,52 +69,104 @@
 				faith.
 			</p>
 		</div>
+	</div>
 
-		<div>
-			<h3 class="h3 font-bold">Join Us Every Wednesday at 7 PM (via Zoom):</h3>
-			<p>
-				We invite you to be a part of our Weekly Prayer Meeting, held every
-				Wednesday at 7 PM via Zoom. It's an opportunity to join your faith with
-				others as we pray for the world, our beloved Canada, missions across the
-				globe, our church family, and our individual prayer requests.
-			</p>
-		</div>
+	<!-- What to Expect -->
+	<div class="mb-8">
+		<h3 class="h3 mb-4 font-bold">What to Expect</h3>
+		<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+			<div class="card variant-ghost-surface p-5">
+				<div class="mb-3 flex items-center gap-3">
+					<span
+						class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					>
+						📖
+					</span>
+					<h4 class="h4 font-bold">Devotional Time</h4>
+				</div>
+				<p class="opacity-80">
+					Starting with a short devotional to center our hearts on God's Word
+					before we pray.
+				</p>
+			</div>
 
-		<div>
-			<h3 class="h3 font-bold">What to Expect:</h3>
-			<ul class="list-outside list-disc pl-4">
-				<li>
-					<span class="font-bold">Devotional Time:</span>
-					Starting with a short devotional to center our hearts on God's Word before
-					we pray.
-				</li>
-				<li>
-					<span class="font-bold">Global Intercession:</span>
+			<div class="card variant-ghost-surface p-5">
+				<div class="mb-3 flex items-center gap-3">
+					<span
+						class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					>
+						🌍
+					</span>
+					<h4 class="h4 font-bold">Global Intercession</h4>
+				</div>
+				<p class="opacity-80">
 					Praying for the pressing needs of the world and current events.
-				</li>
-				<li>
-					<span class="font-bold">National Focus:</span>
+				</p>
+			</div>
+
+			<div class="card variant-ghost-surface p-5">
+				<div class="mb-3 flex items-center gap-3">
+					<span
+						class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					>
+						🍁
+					</span>
+					<h4 class="h4 font-bold">National Focus</h4>
+				</div>
+				<p class="opacity-80">
 					Lifting up Canada in prayer for its well-being and prosperity.
-				</li>
-				<li>
-					<span class="font-bold">Missions Support:</span>
+				</p>
+			</div>
+
+			<div class="card variant-ghost-surface p-5">
+				<div class="mb-3 flex items-center gap-3">
+					<span
+						class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					>
+						✈️
+					</span>
+					<h4 class="h4 font-bold">Missions Support</h4>
+				</div>
+				<p class="opacity-80">
 					Interceding for missions around the world and supporting the spread of
 					the Gospel.
-				</li>
-				<li>
-					<span class="font-bold">Church Community:</span>
-					Praying for the growth, unity, and spiritual health of our church family.
-				</li>
-				<li>
-					<span class="font-bold">Personal Prayer Requests:</span>
+				</p>
+			</div>
+
+			<div class="card variant-ghost-surface p-5">
+				<div class="mb-3 flex items-center gap-3">
+					<span
+						class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					>
+						⛪
+					</span>
+					<h4 class="h4 font-bold">Church Community</h4>
+				</div>
+				<p class="opacity-80">
+					Praying for the growth, unity, and spiritual health of our church
+					family.
+				</p>
+			</div>
+
+			<div class="card variant-ghost-surface p-5">
+				<div class="mb-3 flex items-center gap-3">
+					<span
+						class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					>
+						🙏
+					</span>
+					<h4 class="h4 font-bold">Personal Requests</h4>
+				</div>
+				<p class="opacity-80">
 					Creating a space to share and pray for individual needs.
-				</li>
-			</ul>
+				</p>
+			</div>
 		</div>
 	</div>
 
-	<div>
-		<h3 class="h3 font-bold">How to Join:</h3>
+	<!-- How to Join -->
+	<div class="card variant-soft-secondary mb-8 p-6">
+		<h3 class="h3 mb-3 font-bold">How to Join</h3>
 		<p class="mb-2">
 			To join our Weekly Prayer Meeting on Zoom, simply click the provided link
 			at 7 PM every Wednesday. If you have specific prayer requests or topics
@@ -105,7 +180,7 @@
 		</p>
 	</div>
 
-	<hr class="my-8" />
+	<hr class="mb-8" />
 
 	<h2 class="h2 my-4 text-3xl font-bold">Prayer Meeting Schedule</h2>
 
@@ -130,7 +205,7 @@
 	</label>
 
 	<!-- schedule table -->
-	<div class="table-container">
+	<div class="table-container mb-8">
 		<table class="table-hover table">
 			<thead>
 				<tr>
@@ -150,4 +225,32 @@
 			</tbody>
 		</table>
 	</div>
+
+	<!-- Photo Gallery -->
+	{#if gallery?.photos && gallery.photos.length > 0}
+		<div>
+			<h3 class="h3 mb-4 font-bold">Photo Gallery</h3>
+			<div
+				class="grid auto-rows-[200px] grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
+			>
+				{#each gallery.photos as photo, index}
+					<div
+						class="overflow-hidden rounded-lg {index === 0
+							? 'col-span-2 row-span-2'
+							: index === 3
+								? 'col-span-2'
+								: index === 6
+									? 'row-span-2'
+									: ''}"
+					>
+						<img
+							src={photo.url}
+							alt={photo.alt || 'Gallery photo'}
+							class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+						/>
+					</div>
+				{/each}
+			</div>
+		</div>
+	{/if}
 </FccLayout>
