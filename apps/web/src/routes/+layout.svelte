@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '../app.postcss'
+	import '../app.css'
 	import type { Snippet } from 'svelte'
 
 	// regular imports
