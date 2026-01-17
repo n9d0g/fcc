@@ -32,7 +32,7 @@
 
 	<!-- Mission & Vision Cards -->
 	<div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-		<div class="card preset-tonal-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -50,7 +50,7 @@
 			</p>
 		</div>
 
-		<div class="card preset-tonal-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -72,7 +72,7 @@
 	<div class="mb-8">
 		<h3 class="h3 mb-4 font-bold">What to Expect</h3>
 		<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-			<div class="card preset-tonal-surface p-5">
+			<div class="card dark:bg-surface-800 bg-white p-5">
 				<div class="mb-3 flex items-center gap-3">
 					<span
 						class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -86,7 +86,7 @@
 				</p>
 			</div>
 
-			<div class="card preset-tonal-surface p-5">
+			<div class="card dark:bg-surface-800 bg-white p-5">
 				<div class="mb-3 flex items-center gap-3">
 					<span
 						class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -101,7 +101,7 @@
 				</p>
 			</div>
 
-			<div class="card preset-tonal-surface p-5">
+			<div class="card dark:bg-surface-800 bg-white p-5">
 				<div class="mb-3 flex items-center gap-3">
 					<span
 						class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -116,7 +116,7 @@
 				</p>
 			</div>
 
-			<div class="card preset-tonal-surface p-5">
+			<div class="card dark:bg-surface-800 bg-white p-5">
 				<div class="mb-3 flex items-center gap-3">
 					<span
 						class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -131,7 +131,7 @@
 				</p>
 			</div>
 
-			<div class="card preset-tonal-surface p-5">
+			<div class="card dark:bg-surface-800 bg-white p-5">
 				<div class="mb-3 flex items-center gap-3">
 					<span
 						class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -146,7 +146,7 @@
 				</p>
 			</div>
 
-			<div class="card preset-tonal-surface p-5">
+			<div class="card dark:bg-surface-800 bg-white p-5">
 				<div class="mb-3 flex items-center gap-3">
 					<span
 						class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -164,7 +164,7 @@
 	</div>
 
 	<!-- How to Join -->
-	<div class="card preset-tonal-secondary mb-8 p-6">
+	<div class="card dark:bg-surface-800 mb-8 bg-white p-6">
 		<h3 class="h3 mb-3 font-bold">How to Join</h3>
 		<p class="mb-2">
 			Whether you're a regular attendee or a first-timer, your presence is

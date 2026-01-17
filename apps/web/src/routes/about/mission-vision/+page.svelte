@@ -12,7 +12,7 @@
 <FccLayout {title} {breadcrumb} {headData}>
 	<div class="grid gap-6 md:grid-cols-2">
 		<!-- mission -->
-		<div class="card preset-tonal-surface p-6">
+		<div class="card dark:bg-surface-800 bg-white p-6">
 			<div class="mb-4 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-12 w-12 items-center justify-center rounded-full text-2xl"
@@ -24,7 +24,7 @@
 			<p class="text-xl leading-relaxed opacity-90">{missionVision.mission}</p>
 		</div>
 		<!-- vision -->
-		<div class="card preset-tonal-surface p-6">
+		<div class="card dark:bg-surface-800 bg-white p-6">
 			<div class="mb-4 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-12 w-12 items-center justify-center rounded-full text-2xl"

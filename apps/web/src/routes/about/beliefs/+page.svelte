@@ -37,7 +37,7 @@
 				<div class="card overflow-hidden">
 					<button
 						onclick={() => toggleCoreValue(index)}
-						class="hover:bg-surface-200-800 flex w-full items-center justify-between p-4 text-left transition-colors"
+						class="hover:bg-gray-100 dark:hover:bg-surface-800 flex w-full items-center justify-between p-4 text-left transition-colors"
 					>
 						<span class="font-semibold">{value.title}</span>
 						<Icon
@@ -48,7 +48,7 @@
 						/>
 					</button>
 					{#if openCoreValue === index}
-						<div class="border-surface-300-700 bg-surface-100-900 border-t p-4">
+						<div class="border-gray-200 dark:border-surface-700 bg-white dark:bg-surface-900 border-t p-4">
 							<p class="text-lg">{value.text}</p>
 						</div>
 					{/if}
@@ -65,7 +65,7 @@
 				<div class="card overflow-hidden">
 					<button
 						onclick={() => toggleStatement(index)}
-						class="hover:bg-surface-200-800 flex w-full items-center justify-between p-4 text-left transition-colors"
+						class="hover:bg-gray-100 dark:hover:bg-surface-800 flex w-full items-center justify-between p-4 text-left transition-colors"
 					>
 						<span class="font-semibold">{statement.title}</span>
 						<Icon
@@ -76,7 +76,7 @@
 						/>
 					</button>
 					{#if openStatement === index}
-						<div class="border-surface-300-700 bg-surface-100-900 border-t p-4">
+						<div class="border-gray-200 dark:border-surface-700 bg-white dark:bg-surface-900 border-t p-4">
 							<p class="text-lg">{statement.text}</p>
 						</div>
 					{/if}

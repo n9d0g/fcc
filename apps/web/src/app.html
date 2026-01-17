@@ -7,15 +7,6 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
 		/>
-		<!-- Prevent dark mode flash by setting theme before page renders -->
-		<script>
-			(function() {
-				const stored = localStorage.getItem('theme');
-				if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-					document.documentElement.classList.add('dark');
-				}
-			})();
-		</script>
 		%sveltekit.head%
 	</head>
 

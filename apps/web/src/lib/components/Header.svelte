@@ -21,7 +21,7 @@
 	})
 </script>
 
-<header class="bg-surface-300-700">
+<header class="bg-gray-100 dark:bg-surface-700">
 	<div
 		class="container mx-auto grid grid-cols-2 items-center px-4 py-2 xl:grid-cols-12"
 	>
@@ -72,7 +72,7 @@
 			</button>
 			<a
 				href="/contact"
-				class="btn preset-tonal-primary hidden xl:block"
+				class="btn dark:bg-surface-700 hidden bg-white xl:block"
 				data-sveltekit-preload-data="hover"
 			>
 				Contact
@@ -87,9 +87,9 @@
 				</button>
 				{#if showLoginTooltip}
 					<div
-						class="card preset-filled-surface-500 absolute left-1/2 top-full z-50 mt-2 -translate-x-1/2 p-3 shadow-lg"
+						class="card preset-filled-surface-500 absolute top-full left-1/2 z-50 mt-2 -translate-x-1/2 p-3 shadow-lg"
 					>
-						<p class="whitespace-nowrap text-sm">🚧 Login WIP 🚧</p>
+						<p class="text-sm whitespace-nowrap">🚧 Login WIP 🚧</p>
 					</div>
 				{/if}
 			</div>

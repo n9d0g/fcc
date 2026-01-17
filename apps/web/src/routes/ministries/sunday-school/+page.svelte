@@ -61,7 +61,7 @@
 
 	<!-- Features Grid -->
 	<div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-		<div class="card preset-tonal-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -78,7 +78,7 @@
 			</p>
 		</div>
 
-		<div class="card preset-tonal-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -95,7 +95,7 @@
 			</p>
 		</div>
 
-		<div class="card preset-tonal-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -111,7 +111,7 @@
 			</p>
 		</div>
 
-		<div class="card preset-tonal-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -127,7 +127,7 @@
 			</p>
 		</div>
 
-		<div class="card preset-tonal-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -144,7 +144,7 @@
 			</p>
 		</div>
 
-		<div class="card preset-tonal-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -163,7 +163,7 @@
 
 	<!-- Call to Action -->
 	<div
-		class="card preset-tonal-secondary mx-auto mb-8 max-w-2xl p-6 text-center"
+		class="card dark:bg-surface-800 mx-auto mb-8 max-w-2xl bg-white p-6 text-center"
 	>
 		<p class=" text-lg">
 			Come be a part of our Sunday School family, where we're not just shaping
@@ -263,22 +263,22 @@
 				{#each tBody as month}
 					<tr class="text-center">
 						<td
-							class="bg-surface-200-800 max-lg:table-cell-fit sticky left-0 w-6 pl-3 text-left font-bold"
+							class="bg-gray-50 dark:bg-surface-800 max-lg:table-cell-fit sticky left-0 w-6 pl-3 text-left font-bold"
 						>
 							{format(addDays(new Date(month.date), 1), 'MMMM')}
 						</td>
 						<td
-							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
+							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
 						>
 							{month.crawlersToddlers}
 						</td>
 						<td
-							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
+							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
 						>
 							{month.ssYoung}
 						</td>
 						<td
-							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
+							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
 						>
 							{month.ssOld}
 						</td>

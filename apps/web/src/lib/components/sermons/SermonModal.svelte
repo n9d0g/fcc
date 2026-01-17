@@ -17,7 +17,7 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <section
-	class="card w-full max-w-2xl space-y-4 bg-surface-100-900 p-6 shadow-xl"
+	class="card w-full max-w-2xl space-y-4 bg-white dark:bg-surface-900 p-6 shadow-xl"
 	onclick={(e) => e.stopPropagation()}
 >
 	<header class="flex items-start justify-between">
