@@ -2,15 +2,326 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@tailwind variants;
+
+/* FCC Theme CSS Custom Properties */
+:root {
+	/* Theme Properties */
+	--theme-font-family-base: system-ui;
+	--theme-font-family-heading: system-ui;
+	--theme-rounded-base: 9999px;
+	--theme-rounded-container: 8px;
+	--theme-border-base: 1px;
+
+	/* Primary | #0ea5e9 */
+	--color-primary-50: 219 242 252;
+	--color-primary-100: 207 237 251;
+	--color-primary-200: 195 233 250;
+	--color-primary-300: 159 219 246;
+	--color-primary-400: 86 192 240;
+	--color-primary-500: 14 165 233;
+	--color-primary-600: 13 149 210;
+	--color-primary-700: 11 124 175;
+	--color-primary-800: 8 99 140;
+	--color-primary-900: 7 81 114;
+
+	/* Secondary | #7cac6c */
+	--color-secondary-50: 235 243 233;
+	--color-secondary-100: 229 238 226;
+	--color-secondary-200: 222 234 218;
+	--color-secondary-300: 203 222 196;
+	--color-secondary-400: 163 197 152;
+	--color-secondary-500: 124 172 108;
+	--color-secondary-600: 112 155 97;
+	--color-secondary-700: 93 129 81;
+	--color-secondary-800: 74 103 65;
+	--color-secondary-900: 61 84 53;
+
+	/* Tertiary | #1f4c49 */
+	--color-tertiary-50: 221 228 228;
+	--color-tertiary-100: 210 219 219;
+	--color-tertiary-200: 199 210 210;
+	--color-tertiary-300: 165 183 182;
+	--color-tertiary-400: 98 130 128;
+	--color-tertiary-500: 31 76 73;
+	--color-tertiary-600: 28 68 66;
+	--color-tertiary-700: 23 57 55;
+	--color-tertiary-800: 19 46 44;
+	--color-tertiary-900: 15 37 36;
+
+	/* Success | #05c21b */
+	--color-success-50: 218 246 221;
+	--color-success-100: 205 243 209;
+	--color-success-200: 193 240 198;
+	--color-success-300: 155 231 164;
+	--color-success-400: 80 212 95;
+	--color-success-500: 5 194 27;
+	--color-success-600: 5 175 24;
+	--color-success-700: 4 146 20;
+	--color-success-800: 3 116 16;
+	--color-success-900: 2 95 13;
+
+	/* Warning | #e7c208 */
+	--color-warning-50: 251 246 218;
+	--color-warning-100: 250 243 206;
+	--color-warning-200: 249 240 193;
+	--color-warning-300: 245 231 156;
+	--color-warning-400: 238 212 82;
+	--color-warning-500: 231 194 8;
+	--color-warning-600: 208 175 7;
+	--color-warning-700: 173 146 6;
+	--color-warning-800: 139 116 5;
+	--color-warning-900: 113 95 4;
+
+	/* Error | #e11414 */
+	--color-error-50: 251 220 220;
+	--color-error-100: 249 208 208;
+	--color-error-200: 248 196 196;
+	--color-error-300: 243 161 161;
+	--color-error-400: 234 91 91;
+	--color-error-500: 225 20 20;
+	--color-error-600: 203 18 18;
+	--color-error-700: 169 15 15;
+	--color-error-800: 135 12 12;
+	--color-error-900: 110 10 10;
+
+	/* Surface | #1a454d */
+	--color-surface-50: 221 227 228;
+	--color-surface-100: 209 218 219;
+	--color-surface-200: 198 209 211;
+	--color-surface-300: 163 181 184;
+	--color-surface-400: 95 125 130;
+	--color-surface-500: 26 69 77;
+	--color-surface-600: 23 62 69;
+	--color-surface-700: 20 52 58;
+	--color-surface-800: 16 41 46;
+	--color-surface-900: 13 34 38;
+}
 
 @layer base {
 	html,
 	body {
-		@apply bg-surface-300-600-token h-full overflow-hidden;
+		@apply min-h-full bg-white text-surface-900 dark:bg-surface-800 dark:text-surface-50;
 
 		.grecaptcha-badge {
 			visibility: hidden !important;
 		}
+	}
+
+	/* Ensure all text elements inherit proper dark mode colors */
+	h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
+		@apply text-surface-900 dark:text-surface-50;
+	}
+
+	/* Links should use primary color */
+	a.anchor {
+		@apply text-primary-500 dark:text-primary-400;
+	}
+}
+
+/* Skeleton v3 utility classes */
+@layer components {
+	/* Button styles */
+	.btn {
+		@apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium transition-all;
+	}
+
+	.btn-icon {
+		@apply inline-flex items-center justify-center rounded-lg p-2 transition-all;
+	}
+
+	.btn-lg {
+		@apply px-6 py-3 text-lg;
+	}
+
+	.btn-sm {
+		@apply px-3 py-1.5 text-sm;
+	}
+
+	.btn-xl {
+		@apply px-8 py-4 text-xl;
+	}
+
+	/* Preset styles */
+	.preset-filled {
+		@apply bg-gray-900 text-white hover:bg-gray-800 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-200;
+	}
+
+	.preset-filled-primary-500 {
+		@apply bg-primary-500 text-white hover:bg-primary-600;
+	}
+
+	.preset-filled-secondary-500 {
+		@apply bg-secondary-500 text-white hover:bg-secondary-600;
+	}
+
+	.preset-filled-tertiary-500 {
+		@apply bg-tertiary-500 text-white hover:bg-tertiary-600;
+	}
+
+	.preset-filled-error-500 {
+		@apply bg-error-500 text-white hover:bg-error-600;
+	}
+
+	.preset-filled-surface-500 {
+		@apply bg-surface-500 text-white hover:bg-surface-600;
+	}
+
+	.preset-tonal {
+		@apply bg-gray-100 text-gray-900 hover:bg-gray-200 dark:bg-surface-700 dark:text-surface-50 dark:hover:bg-surface-600;
+	}
+
+	.preset-tonal-primary {
+		@apply bg-primary-100 text-primary-900 hover:bg-primary-200 dark:bg-primary-900 dark:text-primary-100 dark:hover:bg-primary-800;
+	}
+
+	.preset-tonal-secondary {
+		@apply bg-secondary-100 text-secondary-900 hover:bg-secondary-200 dark:bg-secondary-900 dark:text-secondary-100 dark:hover:bg-secondary-800;
+	}
+
+	.preset-tonal-surface {
+		@apply bg-gray-100 text-gray-900 hover:bg-gray-200 dark:bg-surface-800 dark:text-surface-100 dark:hover:bg-surface-700;
+	}
+
+	/* Card styles */
+	.card {
+		@apply rounded-lg bg-white shadow dark:bg-surface-800;
+	}
+
+	.card-header {
+		@apply p-4;
+	}
+
+	.card-footer {
+		@apply p-4;
+	}
+
+	/* Form styles */
+	.input,
+	.textarea,
+	.select {
+		@apply rounded-lg border border-gray-300 bg-white px-4 py-2 dark:border-surface-600 dark:bg-surface-900;
+	}
+
+	.label {
+		@apply text-sm font-medium text-gray-700 dark:text-surface-300;
+	}
+
+	/* Table styles */
+	.table {
+		@apply w-full border-collapse text-left;
+	}
+
+	.table th {
+		@apply border-b-2 border-gray-300 bg-gray-100 px-4 py-3 font-semibold dark:border-surface-600 dark:bg-surface-700;
+	}
+
+	.table td {
+		@apply border-b border-gray-200 px-4 py-3 dark:border-surface-700;
+	}
+
+	.table tbody tr {
+		@apply bg-white dark:bg-surface-800;
+	}
+
+	.table tbody tr:nth-child(even) {
+		@apply bg-gray-50 dark:bg-surface-900;
+	}
+
+	.table-hover tbody tr:hover {
+		@apply bg-gray-100 dark:bg-surface-600;
+	}
+
+	.table-compact th,
+	.table-compact td {
+		@apply px-3 py-2;
+	}
+
+	.table-container {
+		@apply overflow-x-auto rounded-lg border border-gray-200 dark:border-surface-700;
+	}
+
+	.table-cell-fit {
+		@apply w-px whitespace-nowrap;
+	}
+
+	/* Typography */
+	.h1 {
+		@apply text-4xl font-bold;
+	}
+
+	.h2 {
+		@apply text-3xl font-bold;
+	}
+
+	.h3 {
+		@apply text-2xl font-bold;
+	}
+
+	.h4 {
+		@apply text-xl font-bold;
+	}
+
+	.h5 {
+		@apply text-lg font-bold;
+	}
+
+	.h6 {
+		@apply text-base font-bold;
+	}
+
+	/* Anchor styles */
+	.anchor {
+		@apply text-primary-500 underline hover:text-primary-600;
+	}
+
+	/* Breadcrumb styles */
+	.breadcrumb {
+		@apply flex items-center gap-2 text-sm;
+	}
+
+	.crumb a {
+		@apply text-primary-500 hover:underline;
+	}
+
+	.crumb-separator {
+		@apply text-surface-400;
+	}
+
+	/* Logo cloud styles */
+	.logo-cloud {
+		@apply grid;
+	}
+
+	.logo-item {
+		@apply rounded-lg bg-gray-100 transition-all hover:bg-gray-200 dark:bg-surface-700 dark:hover:bg-surface-600;
+	}
+
+	/* Background utilities for light/dark mode */
+	.bg-surface-200-800 {
+		@apply bg-gray-50 dark:bg-surface-800;
+	}
+
+	.bg-surface-300-700 {
+		@apply bg-gray-100 dark:bg-surface-700;
+	}
+
+	.bg-surface-100-900 {
+		@apply bg-white dark:bg-surface-900;
+	}
+
+	.bg-surface-50-950 {
+		@apply bg-white dark:bg-surface-900;
+	}
+
+	.border-surface-300-700 {
+		@apply border-gray-300 dark:border-surface-700;
+	}
+
+	.border-surface-400-600 {
+		@apply border-gray-400 dark:border-surface-600;
+	}
+
+	.text-surface-600-400 {
+		@apply text-gray-600 dark:text-surface-400;
 	}
 }

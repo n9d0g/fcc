@@ -8,16 +8,12 @@
 	import HomeSermons from '$lib/components/home/HomeSermons.svelte'
 	import { headData } from '$lib/constants'
 
-	// props
-	export let data
+	// Svelte 5 props
+	let { data }: { data: any } = $props()
 
-	// variables
-	let path: string
-	$: path = $page.url.pathname
-	let url: string = $page.url.href
-
-	let links: any = data.links
-	let sermons: any = data.sermons
+	// Derived values from page store
+	let path = $derived($page.url.pathname)
+	let url = $derived($page.url.href)
 
 	onMount(() => {
 		setActivePath(url)
@@ -44,8 +40,8 @@
 
 <div>
 	<Hero />
-	<HomeWelcome {links} />
-	<HomeSermons {sermons} />
+	<HomeWelcome links={data.links} />
+	<HomeSermons sermons={data.sermons} />
 
 	{#if data.pages.length > 0}
 		<HomeNextEvent pageInfo={data.pages} />

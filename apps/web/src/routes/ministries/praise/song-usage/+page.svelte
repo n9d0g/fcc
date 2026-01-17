@@ -1,9 +1,9 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
 
-	// server fetching
-	export let data
-	const { title, breadcrumb, headData, songs, tHead }: any = data
+	// Svelte 5 props
+	let { data }: { data: any } = $props()
+	const { title, breadcrumb, headData, songs, tHead } = data
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
