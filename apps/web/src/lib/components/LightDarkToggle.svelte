@@ -38,7 +38,7 @@
 
 <button
 	onclick={toggleTheme}
-	class="btn-icon text-gray-700 hover:preset-tonal dark:text-white"
+	class="btn-icon hover:preset-tonal cursor-pointer text-gray-700 dark:text-white"
 	aria-label="Toggle dark mode"
 	title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
 >
