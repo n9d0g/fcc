@@ -9,9 +9,8 @@
 	},
 	"scripts": {
 		"dev": "vite dev --host --open",
-		"build": "vite build",
+		"build": "svelte-kit sync && vite build",
 		"preview": "vite preview",
-		"prepare": "svelte-kit sync",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
 		"test": "npx playwright test tests",
