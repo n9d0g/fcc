@@ -263,7 +263,7 @@
 				{#each tBody as month}
 					<tr class="text-center">
 						<td
-							class="bg-surface-200-700-token max-lg:table-cell-fit sticky left-0 w-6 pl-3 text-left font-bold"
+							class="bg-surface-200-800 max-lg:table-cell-fit sticky left-0 w-6 pl-3 text-left font-bold"
 						>
 							{format(addDays(new Date(month.date), 1), 'MMMM')}
 						</td>

@@ -5,7 +5,11 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	const { title, headData, breadcrumb, coreValues, statementsOfFaith } = data
+	let title = $derived(data.title)
+	let headData = $derived(data.headData)
+	let breadcrumb = $derived(data.breadcrumb)
+	let coreValues = $derived(data.coreValues)
+	let statementsOfFaith = $derived(data.statementsOfFaith)
 
 	// Accordion state
 	let openCoreValue = $state<number | null>(0)
@@ -33,7 +37,7 @@
 				<div class="card overflow-hidden">
 					<button
 						onclick={() => toggleCoreValue(index)}
-						class="flex w-full items-center justify-between p-4 text-left transition-colors hover:bg-surface-200-800"
+						class="hover:bg-surface-200-800 flex w-full items-center justify-between p-4 text-left transition-colors"
 					>
 						<span class="font-semibold">{value.title}</span>
 						<Icon
@@ -44,7 +48,7 @@
 						/>
 					</button>
 					{#if openCoreValue === index}
-						<div class="border-t border-surface-300-700 bg-surface-100-900 p-4">
+						<div class="border-surface-300-700 bg-surface-100-900 border-t p-4">
 							<p class="text-lg">{value.text}</p>
 						</div>
 					{/if}
@@ -61,7 +65,7 @@
 				<div class="card overflow-hidden">
 					<button
 						onclick={() => toggleStatement(index)}
-						class="flex w-full items-center justify-between p-4 text-left transition-colors hover:bg-surface-200-800"
+						class="hover:bg-surface-200-800 flex w-full items-center justify-between p-4 text-left transition-colors"
 					>
 						<span class="font-semibold">{statement.title}</span>
 						<Icon
@@ -72,7 +76,7 @@
 						/>
 					</button>
 					{#if openStatement === index}
-						<div class="border-t border-surface-300-700 bg-surface-100-900 p-4">
+						<div class="border-surface-300-700 bg-surface-100-900 border-t p-4">
 							<p class="text-lg">{statement.text}</p>
 						</div>
 					{/if}

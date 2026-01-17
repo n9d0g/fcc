@@ -12,7 +12,13 @@
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
 
-	const { title, breadcrumb, headData, tHead, tBody, filterData, praiseAssignments } = data
+	let title = $derived(data.title)
+	let breadcrumb = $derived(data.breadcrumb)
+	let headData = $derived(data.headData)
+	let tHead = $derived(data.tHead)
+	let tBody = $derived(data.tBody)
+	let filterData = $derived(data.filterData)
+	let praiseAssignments = $derived(data.praiseAssignments)
 
 	// State
 	let filterTerm = $state('lead')
@@ -21,7 +27,9 @@
 	const upToDatePraiseData = updatedDataFiltered(data.praise, 'date')
 
 	// Derived values
-	let filteredData = $derived(searchFilter(upToDatePraiseData, filterTerm, searchTerm))
+	let filteredData = $derived(
+		searchFilter(upToDatePraiseData, filterTerm, searchTerm)
+	)
 
 	// functions
 	const openDetails = (week: any) => {
@@ -62,13 +70,13 @@
 			/>
 			<!-- clear search button -->
 			{#if searchTerm.length > 0}
-			<button
-				transition:fade={{ duration: 150 }}
-				onclick={() => (searchTerm = '')}
-				class="absolute right-2 top-1/2 h-7 w-7 -translate-y-1/2 cursor-pointer rounded-xl text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white"
-			>
-				<Icon icon="lucide:x" class="h-full w-full" />
-			</button>
+				<button
+					transition:fade={{ duration: 150 }}
+					onclick={() => (searchTerm = '')}
+					class="absolute top-1/2 right-2 h-7 w-7 -translate-y-1/2 cursor-pointer rounded-xl text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white"
+				>
+					<Icon icon="lucide:x" class="h-full w-full" />
+				</button>
 			{/if}
 		</div>
 
@@ -86,12 +94,12 @@
 
 	<!-- schedule table -->
 	<div class="table-container relative h-[60vh] w-full overflow-auto">
-		<table class="table-hover table-compact table" data-testid="schedule-table">
+		<table class=" table-compact table" data-testid="schedule-table">
 			<thead>
 				<tr class="sticky top-0 z-10">
 					{#each tHead as header, index}
 						{#if index === 0}
-							<th class="sticky left-0 z-30 bg-gray-100 dark:bg-surface-700">
+							<th class="dark:bg-surface-700 sticky left-0 z-30 bg-gray-100">
 								{header}
 							</th>
 						{:else}
@@ -106,7 +114,11 @@
 						{#each tBody as col}
 							{#if week[col]}
 								{#if col === 'date'}
-									<td class="sticky left-0 z-20 {rowIndex % 2 === 0 ? 'bg-white dark:bg-surface-800' : 'bg-gray-50 dark:bg-surface-900'}">
+									<td
+										class="sticky left-0 z-20 {rowIndex % 2 === 0
+											? 'dark:bg-surface-800 bg-white'
+											: 'dark:bg-surface-900 bg-gray-50'}"
+									>
 										{format(addDays(new Date(week[col]), 1), 'MMM do')}
 									</td>
 								{:else if col === 'unavailableList'}
@@ -134,7 +146,11 @@
 
 	<!-- link to excel sheet -->
 	<div class="my-4 flex w-full flex-col justify-center gap-4 sm:flex-row">
-		<a href={links.avSetup} target="_blank" class="btn preset-filled">AV Setup Document</a>
-		<a href="/pdf/x18-manual.pdf" target="_blank" class="btn preset-filled">Mixer Manual</a>
+		<a href={links.avSetup} target="_blank" class="btn preset-filled"
+			>AV Setup Document</a
+		>
+		<a href="/pdf/x18-manual.pdf" target="_blank" class="btn preset-filled"
+			>Mixer Manual</a
+		>
 	</div>
 </FccLayout>

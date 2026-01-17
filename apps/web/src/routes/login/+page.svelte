@@ -3,7 +3,9 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	const { title, breadcrumb, headData } = data
+	let title = $derived(data.title)
+	let breadcrumb = $derived(data.breadcrumb)
+	let headData = $derived(data.headData)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
@@ -23,7 +25,9 @@
 
 			<!-- forgot pw -->
 			<div class="flex w-full justify-end">
-				<a href="/" class="w-fit italic text-gray-600 hover:underline">Forgot your password?</a>
+				<a href="/" class="w-fit text-gray-600 italic hover:underline"
+					>Forgot your password?</a
+				>
 			</div>
 
 			<!-- login button -->

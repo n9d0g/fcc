@@ -52,8 +52,8 @@
 		sideNavOpen = false
 	}
 
-	// Banner data
-	let banner: App.Banner | undefined = data.banner
+	// Banner data (derived to stay reactive when data changes)
+	let banner = $derived(data.banner as App.Banner | undefined)
 </script>
 
 <!-- Side Navigation Drawer -->

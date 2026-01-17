@@ -7,7 +7,11 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	const { title, breadcrumb, headData, prayerData, gallery } = data
+	let title = $derived(data.title)
+	let breadcrumb = $derived(data.breadcrumb)
+	let headData = $derived(data.headData)
+	let prayerData = $derived(data.prayerData)
+	let gallery = $derived(data.gallery)
 	let filterQuery = $state('')
 </script>
 
@@ -197,7 +201,7 @@
 			<button
 				transition:fade={{ duration: 150 }}
 				onclick={() => (filterQuery = '')}
-				class="absolute right-2 top-[39px] h-7 w-7 cursor-pointer rounded-xl"
+				class="absolute top-[39px] right-2 h-7 w-7 cursor-pointer rounded-xl"
 			>
 				<IoIosClose />
 			</button>
@@ -206,7 +210,7 @@
 
 	<!-- schedule table -->
 	<div class="table-container mb-8">
-		<table class="table-hover table">
+		<table class=" table">
 			<thead>
 				<tr>
 					<th>Date</th>

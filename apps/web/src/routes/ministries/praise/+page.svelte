@@ -4,19 +4,25 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	const { title, breadcrumb, headData, gallery } = data
+	let title = $derived(data.title)
+	let breadcrumb = $derived(data.breadcrumb)
+	let headData = $derived(data.headData)
+	let gallery = $derived(data.gallery)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<!-- Welcome Section -->
 	<div class="mb-10">
-		<h2 class="h2 mb-4 font-bold">Welcome to Our Praise and Worship Ministry!</h2>
+		<h2 class="h2 mb-4 font-bold">
+			Welcome to Our Praise and Worship Ministry!
+		</h2>
 		<p class="text-lg">
-			At Freedom in Christ Church, we believe that worship is a powerful expression of our love and
-			gratitude to God. Our Praise and Worship Ministry is at the heart of our community, dedicated
-			to creating an atmosphere where individuals can encounter God through music. Whether you're an
-			experienced musician or a passionate beginner, we invite you to be a part of something truly
-			special.
+			At Freedom in Christ Church, we believe that worship is a powerful
+			expression of our love and gratitude to God. Our Praise and Worship
+			Ministry is at the heart of our community, dedicated to creating an
+			atmosphere where individuals can encounter God through music. Whether
+			you're an experienced musician or a passionate beginner, we invite you to
+			be a part of something truly special.
 		</p>
 	</div>
 
@@ -32,9 +38,10 @@
 				<h3 class="h4 font-bold">Mission</h3>
 			</div>
 			<p class="opacity-80">
-				Our mission is to lead the congregation into the presence of God through vibrant and
-				authentic worship. We strive to create an environment where people can connect with God on a
-				deep and personal level, experiencing the transformative power of His love.
+				Our mission is to lead the congregation into the presence of God through
+				vibrant and authentic worship. We strive to create an environment where
+				people can connect with God on a deep and personal level, experiencing
+				the transformative power of His love.
 			</p>
 		</div>
 
@@ -48,10 +55,11 @@
 				<h3 class="h4 font-bold">Vision</h3>
 			</div>
 			<p class="opacity-80">
-				We envision a community of worshippers who are not only skilled musicians but also
-				individuals deeply committed to a lifestyle of worship. Through our music, we aim to
-				inspire, encourage, and uplift the spirits of those who gather for worship, fostering a
-				sense of unity and connection with God.
+				We envision a community of worshippers who are not only skilled
+				musicians but also individuals deeply committed to a lifestyle of
+				worship. Through our music, we aim to inspire, encourage, and uplift the
+				spirits of those who gather for worship, fostering a sense of unity and
+				connection with God.
 			</p>
 		</div>
 	</div>
@@ -109,8 +117,9 @@
 			</div>
 		</div>
 		<p class="mt-4 opacity-80">
-			No matter your skill level, we believe that worship is a collective effort, and every
-			contribution is valuable. If you play another instrument, bring it and let's jam together!
+			No matter your skill level, we believe that worship is a collective
+			effort, and every contribution is valuable. If you play another
+			instrument, bring it and let's jam together!
 		</p>
 	</div>
 
@@ -125,14 +134,15 @@
 			or
 			<a href="https://www.instagram.com/fcc.canada/" class="anchor"
 				>message us on our Instagram account</a
-			>, expressing your interest. Let us know which instrument you play or if you're interested in
-			vocals. We'll be happy to connect with you, provide more information, and discuss how you can
-			become a vital part of our worship team.
+			>, expressing your interest. Let us know which instrument you play or if
+			you're interested in vocals. We'll be happy to connect with you, provide
+			more information, and discuss how you can become a vital part of our
+			worship team.
 		</p>
 		<p>
-			Join us as we lift our voices and instruments in harmony, creating an atmosphere where God's
-			presence is not only felt but celebrated. We look forward to welcoming you into our Praise and
-			Worship family at FCC!
+			Join us as we lift our voices and instruments in harmony, creating an
+			atmosphere where God's presence is not only felt but celebrated. We look
+			forward to welcoming you into our Praise and Worship family at FCC!
 		</p>
 	</div>
 
@@ -140,7 +150,9 @@
 	{#if gallery?.photos && gallery.photos.length > 0}
 		<div class="mb-8">
 			<h3 class="h3 mb-4 font-bold">Photo Gallery</h3>
-			<div class="grid auto-rows-[200px] grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+			<div
+				class="grid auto-rows-[200px] grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
+			>
 				{#each gallery.photos as photo, index}
 					<div
 						class="overflow-hidden rounded-lg {index === 0

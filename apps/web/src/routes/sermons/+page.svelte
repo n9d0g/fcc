@@ -14,7 +14,10 @@
 	let currentPage = $state(0)
 	const pageSize = 16
 
-	const { title, breadcrumb, headData } = data
+	// Derived values from data (reactive when data changes)
+	let title = $derived(data.title)
+	let breadcrumb = $derived(data.breadcrumb)
+	let headData = $derived(data.headData)
 
 	// Derived values
 	let sortedSermons = $derived.by(() => {

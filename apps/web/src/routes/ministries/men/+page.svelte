@@ -10,7 +10,10 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	const { title, breadcrumb, headData, gallery } = data
+	let title = $derived(data.title)
+	let breadcrumb = $derived(data.breadcrumb)
+	let headData = $derived(data.headData)
+	let gallery = $derived(data.gallery)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>

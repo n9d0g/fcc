@@ -52,7 +52,7 @@
 				<li class="crumb capitalize">
 					<a class="anchor" href={link.href}>{link.title}</a>
 				</li>
-				<li class="crumb-separator" aria-hidden="true">&rsaquo;</li>
+				<li class="crumb-separator" aria-hidden="true">›</li>
 			{/if}
 		{/each}
 		<li class="capitalize">{breadcrumb.slice(-1)[0].title}</li>
