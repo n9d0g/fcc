@@ -2,16 +2,20 @@
 	import { addDays } from 'date-fns'
 	import { fly } from 'svelte/transition'
 
-	export let banner: App.Banner | undefined
+	// Svelte 5 props
+	let { banner }: { banner: App.Banner | undefined } = $props()
 
-	let datePassed = false
-	let dismissed = false
+	// Reactive state
+	let dismissed = $state(false)
 
-	// Only calculate if banner exists
-	if (banner?.date) {
-		const eventDate = addDays(new Date(banner.date), 1)
-		datePassed = eventDate > new Date()
-	}
+	// Derived state
+	let datePassed = $derived.by(() => {
+		if (banner?.date) {
+			const eventDate = addDays(new Date(banner.date), 1)
+			return eventDate > new Date()
+		}
+		return false
+	})
 
 	const dismiss = () => {
 		dismissed = true
@@ -21,7 +25,7 @@
 {#if banner && datePassed && !dismissed}
 	<div
 		transition:fly={{ y: 100, duration: 300 }}
-		class="from-primary-600 to-primary-500 fixed bottom-4 left-4 right-4 z-[999] mx-auto max-w-2xl rounded-xl bg-gradient-to-r shadow-2xl md:bottom-6 md:left-6 md:right-6"
+		class="fixed bottom-4 left-4 right-4 z-[999] mx-auto max-w-2xl rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 shadow-2xl md:bottom-6 md:left-6 md:right-6"
 	>
 		<div class="flex items-center gap-3 px-4 py-3 md:px-5 md:py-4">
 			<p class="flex-1 text-xs font-semibold text-white md:text-sm">
@@ -39,7 +43,7 @@
 				{/each}
 			</p>
 			<button
-				on:click={dismiss}
+				onclick={dismiss}
 				class="shrink-0 rounded-full p-1.5 text-white/80 transition-colors hover:bg-white/20 hover:text-white"
 				aria-label="Dismiss banner"
 			>

@@ -1,9 +1,8 @@
 import { activeNav, activePath } from '$lib/stores/store.js'
-import type { ModalSettings } from '@skeletonlabs/skeleton'
 import { formatISO } from 'date-fns'
 
 // exported functions
-export const setNavActiveState = (path: any) => {
+export const setNavActiveState = (path: string) => {
 	if (path.includes('about')) activeNav.set('about')
 	else if (path.includes('sermons')) activeNav.set('sermons')
 	else if (path.includes('ministries')) activeNav.set('ministries')
@@ -13,13 +12,13 @@ export const setNavActiveState = (path: any) => {
 	else activeNav.set('home')
 }
 
-export const setActivePath = (path: any) => {
+export const setActivePath = (path: string) => {
 	activePath.set(path)
 }
 
 export const searchFilter = (
-	array: any,
-	arrayField: any,
+	array: any[],
+	arrayField: string,
 	searchTerm: string
 ) => {
 	return array.filter((item: any) =>
@@ -27,43 +26,10 @@ export const searchFilter = (
 	)
 }
 
-export const updatedDataFiltered = (array: any, field: string) => {
+export const updatedDataFiltered = (array: any[], field: string) => {
 	const dateToday = formatISO(new Date(), { representation: 'date' })
 
 	return array
 		.filter((item: any) => item[field] >= dateToday)
 		.sort((a: any, b: any) => (a[field] > b[field] ? 1 : -1))
-}
-
-// skeleton utils
-export const sermonModalSettings = (
-	title: string,
-	date: string,
-	speaker: string,
-	scripture: string,
-	youtube: string
-) => {
-	const settings: ModalSettings = {
-		type: 'component',
-		component: 'SermonModalComponent',
-		meta: {
-			title: title,
-			date: date,
-			speaker: speaker,
-			scripture: scripture,
-			youtube: youtube,
-		},
-	}
-
-	return settings
-}
-
-export const praiseModalSettings = (meta: any) => {
-	const settings: ModalSettings = {
-		type: 'component',
-		component: 'PraiseModalComponent',
-		meta: { ...meta },
-	}
-
-	return settings
 }

@@ -1,17 +1,18 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
 
-	export let data
+	// Svelte 5 props
+	let { data }: { data: any } = $props()
 	const { title, breadcrumb, headData, gallery } = data
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<!-- Zoom Link Section -->
-	<div class="card variant-ghost-surface mb-8 p-5">
+	<div class="card preset-tonal-surface mb-8 p-5">
 		<div class="flex flex-wrap items-center gap-4">
 			<div class="flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
 					💻
 				</span>
@@ -25,7 +26,7 @@
 			<a
 				href="https://tinyurl.com/fcczoom2"
 				target="_blank"
-				class="variant-filled btn"
+				class="preset-filled btn"
 			>
 				Join Zoom Meeting
 			</a>
@@ -35,10 +36,10 @@
 	<!-- Study Groups Grid -->
 	<h3 class="h3 mb-4 font-bold">Our Study Groups</h3>
 	<div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-		<div class="card variant-ghost-surface p-5">
+		<div class="card preset-tonal-surface p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
 					🌍
 				</span>
@@ -61,10 +62,10 @@
 			</div>
 		</div>
 
-		<div class="card variant-ghost-surface p-5">
+		<div class="card preset-tonal-surface p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
 					🇺🇸
 				</span>
@@ -87,10 +88,10 @@
 			</div>
 		</div>
 
-		<div class="card variant-ghost-surface p-5">
+		<div class="card preset-tonal-surface p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
 					🇨🇦
 				</span>
@@ -111,10 +112,10 @@
 			</div>
 		</div>
 
-		<div class="card variant-ghost-surface p-5">
+		<div class="card preset-tonal-surface p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
 					🇵🇭
 				</span>
@@ -136,10 +137,10 @@
 			</div>
 		</div>
 
-		<div class="card variant-ghost-surface p-5">
+		<div class="card preset-tonal-surface p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
 					🌏
 				</span>
@@ -164,7 +165,7 @@
 
 	<!-- About & Contact Section -->
 	<div
-		class="card variant-soft-secondary mx-auto mb-8 max-w-3xl p-6 text-center"
+		class="card preset-tonal-secondary mx-auto mb-8 max-w-3xl p-6 text-center"
 	>
 		<p class="mb-4">
 			These bible study groups meet only once a month with the purpose of using

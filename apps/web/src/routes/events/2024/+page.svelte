@@ -1,7 +1,8 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
 
-	export let data
+	// Svelte 5 props
+	let { data }: { data: any } = $props()
 	const { title, breadcrumb, headData } = data
 </script>
 

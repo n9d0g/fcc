@@ -10,6 +10,7 @@ vite.config.js.timestamp-*
 /playwright-report
 .unlighthouse
 .turbo
+.vercel
 /test-results/
 /playwright-report/
 /playwright/.cache/

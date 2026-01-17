@@ -1,7 +1,5 @@
-import preprocess from 'svelte-preprocess'
 import adapter from '@sveltejs/adapter-vercel'
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
-import seqPreprocessor from 'svelte-sequential-preprocessor'
 import { readFileSync } from 'fs'
 import { fileURLToPath } from 'url'
 
@@ -12,17 +10,14 @@ const pkg = JSON.parse(json)
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			runtime: 'nodejs24.x',
+		}),
 		version: {
 			name: pkg.version,
 		},
 	},
-	preprocess: seqPreprocessor([
-		vitePreprocess(),
-		preprocess({
-			postcss: true,
-		}),
-	]),
+	preprocess: vitePreprocess(),
 }
 
 export default config

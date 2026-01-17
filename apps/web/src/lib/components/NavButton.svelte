@@ -1,22 +1,22 @@
 <script lang="ts">
-	// props
-	export let text: string
-	export let link: string
-	export let nav: string
+	// Svelte 5 props
+	let { text, link, nav }: { text: string; link: string; nav: string } = $props()
 
-	let activeNav: boolean = false
+	// Derived state
+	let activeNav = $derived.by(() => {
+		if (link === '/' && nav === 'home') return true
+		return link.includes(nav)
+	})
 
-	if (link === '/' && nav === 'home') activeNav = true
-	else if (link.includes(nav)) activeNav = true
-
-	const nonActiveClass = 'hover:font-bold text-white'
-	const activeClass = 'font-bold text-primary-400 dark:text-primary-600'
+	const nonActiveClass = 'hover:font-bold text-gray-700 dark:text-white'
+	const activeClass = 'font-bold text-primary-600 dark:text-primary-400'
 </script>
 
 <a
 	href={link}
-	class={`btn btn-icon z-20 w-fit rounded-lg px-1 text-sm md:text-base 
-	${!activeNav ? nonActiveClass : activeClass}`}
+	class="btn btn-icon z-20 w-fit whitespace-nowrap rounded-lg px-2 text-sm {!activeNav
+		? nonActiveClass
+		: activeClass}"
 >
 	{text}
 </a>

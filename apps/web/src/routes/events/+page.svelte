@@ -1,7 +1,8 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
 
-	export let data
+	// Svelte 5 props
+	let { data }: { data: any } = $props()
 	const { title, breadcrumb, headData, calendarLink } = data
 </script>
 
@@ -17,12 +18,11 @@
 				width="100%"
 				height="900px"
 				class="rounded"
-			/>
+			></iframe>
 		</div>
 
 		<div>
 			<h2 class="h2 mb-3 font-bold">Past Events</h2>
-
 			<div>
 				<a href="/events/2024/fall-retreat" class="anchor">2024 Fall Retreat</a>
 			</div>

@@ -3,7 +3,8 @@
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import { links } from '$lib/constants.js'
 
-	export let data
+	// Svelte 5 props
+	let { data }: { data: any } = $props()
 	const { tHeaders, tBody, title, breadcrumb, headData } = data
 </script>
 
@@ -13,11 +14,11 @@
 		<!-- skeleton table -->
 		<table class="relative table overflow-scroll">
 			<thead>
-				<tr class="variant-filled-secondary sticky top-0 z-10">
+				<tr class="preset-filled-secondary-500 sticky top-0 z-10">
 					{#each tHeaders as header, index}
 						{#if index === 0}
 							<th
-								class="variant-filled-secondary max-lg:table-cell-fit sticky left-0 z-30 w-6 p-3 text-left font-bold"
+								class="preset-filled-secondary-500 max-lg:table-cell-fit sticky left-0 z-30 w-6 p-3 text-left font-bold"
 							>
 								{header}
 							</th>

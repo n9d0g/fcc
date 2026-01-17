@@ -1,42 +1,50 @@
 <script lang="ts">
-	// imports
-	import { Avatar, popup, type PopupSettings } from '@skeletonlabs/skeleton'
+	// Svelte 5 props
+	let {
+		name,
+		title,
+		img,
+		sort,
+		subministries,
+	}: {
+		name: string
+		title: string
+		img: string
+		sort: number
+		subministries: Array<{ name: string; ministry: string }> | null
+	} = $props()
 
-	// props
-	export let name: string
-	export let title: string
-	export let img: string
-	export let sort: number
-	export let subministries: any
-
-	let cardTarget = `leaderDeatils-${sort}`
-
-	let popupSettings: PopupSettings = {
-		event: 'click',
-		target: cardTarget,
-		placement: 'top',
-	}
+	// State for popup
+	let showPopup = $state(false)
 </script>
 
-<div class="card card-hover flex h-64 items-center px-4 py-8">
-	<Avatar src={img} width="w-32" height="h-32" rounded="rounded-full" />
-	<div class="flex flex-col">
-		<h4 class="h4 card-header font-bold">{name}</h4>
-		<p class="card-footer italic">{title}</p>
-		<!-- {#if subministries !== null}
-			<button use:popup={popupSettings} type="button" class="btn variant-filled cursor-pointer">Sub-Ministries</button>
-		{/if} -->
+<div class="card flex h-64 items-center px-4 py-8 transition-shadow hover:shadow-lg">
+	<img src={img} alt={name} class="h-32 w-32 rounded-full object-cover" />
+	<div class="ml-4 flex flex-col">
+		<h4 class="h4 font-bold">{name}</h4>
+		<p class="italic text-surface-600 dark:text-surface-400">{title}</p>
+		{#if subministries !== null && subministries.length > 0}
+			<div class="relative mt-2">
+				<button
+					type="button"
+					class="btn btn-sm preset-tonal cursor-pointer"
+					onclick={() => (showPopup = !showPopup)}
+				>
+					Sub-Ministries
+				</button>
+				{#if showPopup}
+					<div
+						class="card preset-filled-surface-500 absolute bottom-full left-0 z-40 mb-2 p-4 shadow-lg"
+					>
+						{#each subministries as subministry}
+							<article class="flex gap-2">
+								<h6 class="h6 font-bold">{subministry.name}:</h6>
+								<p>{subministry.ministry}</p>
+							</article>
+						{/each}
+					</div>
+				{/if}
+			</div>
+		{/if}
 	</div>
 </div>
-
-{#if subministries !== null}
-	<div class="card variant-filled-surface z-40 p-4" data-popup={cardTarget}>
-		{#each subministries as subministry}
-			<article class="flex gap-2">
-				<h6 class="h6 font-bold">{subministry.name}:</h6>
-				<p>{subministry.ministry}</p>
-			</article>
-		{/each}
-		<span class="variant-filled-surface arrow" />
-	</div>
-{/if}

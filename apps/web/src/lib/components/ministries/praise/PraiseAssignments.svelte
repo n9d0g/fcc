@@ -9,7 +9,8 @@
 		| 'BACKUP'
 	type Assignment = { role: string; names: string[] }
 
-	export let praiseAssignments: Assignment[]
+	// Svelte 5 props
+	let { praiseAssignments }: { praiseAssignments: Assignment[] } = $props()
 
 	const transformedAssignments: Record<Role, string[]> = {
 		LEADER: [],
@@ -25,10 +26,8 @@
 	const normalizeRole = (role: string): Role => {
 		const normalized = role.toUpperCase().replace(/[-\s]/g, '_')
 		if (normalized === 'LEADER' || normalized === 'LEADERS') return 'LEADER'
-		if (normalized === 'ACOUSTIC' || normalized === 'ACOUSTIC_GUITAR')
-			return 'ACOUSTIC_GUITAR'
-		if (normalized === 'ELECTRIC' || normalized === 'ELECTRIC_GUITAR')
-			return 'ELECTRIC_GUITAR'
+		if (normalized === 'ACOUSTIC' || normalized === 'ACOUSTIC_GUITAR') return 'ACOUSTIC_GUITAR'
+		if (normalized === 'ELECTRIC' || normalized === 'ELECTRIC_GUITAR') return 'ELECTRIC_GUITAR'
 		return normalized as Role
 	}
 

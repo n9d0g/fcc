@@ -2,16 +2,24 @@
 	import { onMount } from 'svelte'
 	import { page } from '$app/stores'
 	import { setNavActiveState, setActivePath } from '$lib/utils'
+	import type { Snippet } from 'svelte'
 
-	// props
-	export let title: any
-	export let headData: any
-	export let breadcrumb: any
+	// Svelte 5 props
+	let {
+		title,
+		headData,
+		breadcrumb,
+		children,
+	}: {
+		title: string
+		headData: { title: string; description: string }
+		breadcrumb: Array<{ title: string; href: string }>
+		children: Snippet
+	} = $props()
 
-	// variables
-	let path: string
-	$: path = $page.url.pathname
-	let url: string = $page.url.href
+	// Reactive state from store
+	let path = $derived($page.url.pathname)
+	let url = $derived($page.url.href)
 
 	onMount(() => {
 		setNavActiveState(path)
@@ -55,5 +63,5 @@
 		<h1 class="h1 font-bold">{title}</h1>
 	</div>
 
-	<slot />
+	{@render children?.()}
 </section>
