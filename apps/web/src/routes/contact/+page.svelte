@@ -8,7 +8,9 @@
 	// Svelte 5 props
 	let { data, form }: { data: any; form: ActionData } = $props()
 
-	const { title, breadcrumb, headData } = data
+	let title = $derived(data.title)
+	let breadcrumb = $derived(data.breadcrumb)
+	let headData = $derived(data.headData)
 	let formPending = $state(false)
 
 	const handleSubmit = async (e: SubmitEvent) => {
@@ -48,10 +50,11 @@
 	<section class="flex items-center justify-center">
 		{#if form?.success}
 			<div
-				class="mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border border-surface-500 p-4 sm:p-24"
+				class="border-surface-500 mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border p-4 sm:p-24"
 			>
 				<p class="mx-auto max-w-sm text-center">
-					Thank you for contacting us! An FCC representative will be in contact with you soon.
+					Thank you for contacting us! An FCC representative will be in contact
+					with you soon.
 				</p>
 				<a href="/" class="btn preset-filled-surface">Back to Homepage</a>
 			</div>
@@ -62,7 +65,7 @@
 					e.preventDefault()
 					handleSubmit(e)
 				}}
-				class="mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border border-surface-500 p-4 sm:p-10"
+				class="border-surface-500 mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border p-4 sm:p-10"
 			>
 				<div class="flex flex-col gap-4">
 					<label for="name" class="label flex flex-col gap-2">
@@ -75,7 +78,7 @@
 							class={`${form?.errors?.name && '!border-red-500'} input rounded-md`}
 						/>
 						{#if form?.errors?.name}
-							<p class="text-sm text-error-500">{form?.errors?.name}</p>
+							<p class="text-error-500 text-sm">{form?.errors?.name}</p>
 						{/if}
 					</label>
 					<label for="email" class="label flex flex-col gap-2">
@@ -89,7 +92,7 @@
 						/>
 						{#if form?.errors?.email}
 							{#each form?.errors?.email as error}
-								<p class="text-sm text-error-500">{error}</p>
+								<p class="text-error-500 text-sm">{error}</p>
 							{/each}
 						{/if}
 					</label>
@@ -104,15 +107,19 @@
 							rows="6"
 						></textarea>
 						{#if form?.errors?.message}
-							<p class="text-sm text-error-500">{form?.errors?.message}</p>
+							<p class="text-error-500 text-sm">{form?.errors?.message}</p>
 						{/if}
 					</label>
 
-					<p class="text-xs text-tertiary-400">
+					<p class="text-tertiary-400 text-xs">
 						This site is protected by reCAPTCHA and the Google
-						<a href="https://policies.google.com/privacy" class="anchor">Privacy Policy</a>
+						<a href="https://policies.google.com/privacy" class="anchor"
+							>Privacy Policy</a
+						>
 						and
-						<a href="https://policies.google.com/terms" class="anchor">Terms of Service</a> apply.
+						<a href="https://policies.google.com/terms" class="anchor"
+							>Terms of Service</a
+						> apply.
 					</p>
 				</div>
 				<button type="submit" class="btn preset-filled" disabled={formPending}>

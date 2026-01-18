@@ -7,7 +7,7 @@
 	import Header from '$lib/components/Header.svelte'
 	import SideNav from '$lib/components/SideNav.svelte'
 	import Banner from '$lib/components/Banner.svelte'
-	import Modal from '$lib/components/Modal.svelte'
+	import Dialog from '$lib/components/Modal.svelte'
 	import { activePath } from '$lib/stores/store.js'
 	import { afterNavigate, onNavigate } from '$app/navigation'
 
@@ -52,15 +52,15 @@
 		sideNavOpen = false
 	}
 
-	// Banner data
-	let banner: App.Banner | undefined = data.banner
+	// Banner data (derived to stay reactive when data changes)
+	let banner = $derived(data.banner as App.Banner | undefined)
 </script>
 
 <!-- Side Navigation Drawer -->
 <SideNav open={sideNavOpen} onclose={closeSideNav} />
 
 <!-- Global Modal -->
-<Modal />
+<Dialog />
 
 <!-- Banner -->
 <Banner {banner} />

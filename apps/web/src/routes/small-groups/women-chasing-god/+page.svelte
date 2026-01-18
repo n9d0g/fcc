@@ -3,12 +3,15 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	const { title, breadcrumb, headData, gallery } = data
+	let title = $derived(data.title)
+	let breadcrumb = $derived(data.breadcrumb)
+	let headData = $derived(data.headData)
+	let gallery = $derived(data.gallery)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<!-- Zoom Link Section -->
-	<div class="card preset-tonal-surface mb-8 p-5">
+	<div class="card dark:bg-surface-800 mb-8 bg-white p-5">
 		<div class="flex flex-wrap items-center gap-4">
 			<div class="flex items-center gap-3">
 				<span
@@ -36,7 +39,7 @@
 	<!-- Study Groups Grid -->
 	<h3 class="h3 mb-4 font-bold">Our Study Groups</h3>
 	<div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-		<div class="card preset-tonal-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -62,7 +65,7 @@
 			</div>
 		</div>
 
-		<div class="card preset-tonal-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -88,7 +91,7 @@
 			</div>
 		</div>
 
-		<div class="card preset-tonal-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -112,7 +115,7 @@
 			</div>
 		</div>
 
-		<div class="card preset-tonal-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -137,7 +140,7 @@
 			</div>
 		</div>
 
-		<div class="card preset-tonal-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
@@ -165,7 +168,7 @@
 
 	<!-- About & Contact Section -->
 	<div
-		class="card preset-tonal-secondary mx-auto mb-8 max-w-3xl p-6 text-center"
+		class="card dark:bg-surface-800 mx-auto mb-8 max-w-3xl bg-white p-6 text-center"
 	>
 		<p class="mb-4">
 			These bible study groups meet only once a month with the purpose of using

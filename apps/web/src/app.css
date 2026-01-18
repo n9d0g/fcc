@@ -1,11 +1,16 @@
 @import "tailwindcss";
+
+/* Skeleton v4 imports - order matters */
+@import "@skeletonlabs/skeleton";
+@import "@skeletonlabs/skeleton/themes/cerberus";
+
 @plugin "@tailwindcss/forms";
 
 /* Enable class-based dark mode (instead of prefers-color-scheme) */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Source paths for Tailwind to scan */
-@source "../node_modules/@skeletonlabs/skeleton-svelte";
+/* Source Skeleton Svelte components for Tailwind to scan */
+@import '@skeletonlabs/skeleton-svelte';
 
 /* FCC Theme - Custom Colors */
 @theme {
@@ -99,6 +104,14 @@
 
 /* Base styles */
 @layer base {
+	/* Set color-scheme based on .dark class for light-dark() CSS function */
+	:root {
+		color-scheme: light;
+	}
+	:root.dark {
+		color-scheme: dark;
+	}
+
 	html,
 	body {
 		@apply min-h-full bg-white text-surface-900 dark:bg-surface-800 dark:text-surface-50;
@@ -142,51 +155,11 @@
 		@apply px-8 py-4 text-xl;
 	}
 
-	/* Preset styles */
-	.preset-filled {
-		@apply bg-gray-900 text-white hover:bg-gray-800 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-200;
-	}
-
-	.preset-filled-primary-500 {
-		@apply bg-primary-500 text-white hover:bg-primary-600;
-	}
-
-	.preset-filled-secondary-500 {
-		@apply bg-secondary-500 text-white hover:bg-secondary-600;
-	}
-
-	.preset-filled-tertiary-500 {
-		@apply bg-tertiary-500 text-white hover:bg-tertiary-600;
-	}
-
-	.preset-filled-error-500 {
-		@apply bg-error-500 text-white hover:bg-error-600;
-	}
-
-	.preset-filled-surface-500 {
-		@apply bg-surface-500 text-white hover:bg-surface-600;
-	}
-
-	.preset-tonal {
-		@apply bg-gray-100 text-gray-900 hover:bg-gray-200 dark:bg-surface-700 dark:text-surface-50 dark:hover:bg-surface-600;
-	}
-
-	.preset-tonal-primary {
-		@apply bg-primary-100 text-primary-900 hover:bg-primary-200 dark:bg-primary-900 dark:text-primary-100 dark:hover:bg-primary-800;
-	}
-
-	.preset-tonal-secondary {
-		@apply bg-secondary-100 text-secondary-900 hover:bg-secondary-200 dark:bg-secondary-900 dark:text-secondary-100 dark:hover:bg-secondary-800;
-	}
-
-	.preset-tonal-surface {
-		@apply bg-gray-100 text-gray-900 hover:bg-gray-200 dark:bg-surface-800 dark:text-surface-100 dark:hover:bg-surface-700;
-	}
-
 	/* Card styles */
 	.card {
 		@apply rounded-lg border border-gray-200 bg-white shadow-sm dark:border-surface-600 dark:bg-surface-800 dark:shadow-md dark:shadow-black/20;
 	}
+
 
 	.card-header {
 		@apply p-4;
@@ -329,3 +302,4 @@
 
 /* Custom variant for search cancel button */
 @custom-variant search-cancel (&::-webkit-search-cancel-button);
+

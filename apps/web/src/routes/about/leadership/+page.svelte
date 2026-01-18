@@ -4,11 +4,15 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	const { title, headData, breadcrumb } = data
+	let title = $derived(data.title)
+	let headData = $derived(data.headData)
+	let breadcrumb = $derived(data.breadcrumb)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<div class="my-16 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+	<div
+		class="my-16 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+	>
 		{#each data.leaders as leader}
 			<LeadershipCard
 				img={leader.img}
