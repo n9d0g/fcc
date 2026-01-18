@@ -49,98 +49,111 @@
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<div class="relative my-8 flex w-full flex-col gap-4 sm:max-w-fit">
-		<!-- filter searching -->
-		<label class="label flex items-center gap-2">
-			<span class="w-fit sm:w-1/6">Filter by:</span>
-			<select class="select w-auto flex-1 sm:w-5/6" bind:value={filterTerm}>
-				{#each filterData as role}
-					<option value={role.value}>{role.label}</option>
-				{/each}
-			</select>
-		</label>
-
-		<div class="relative">
-			<input
-				class="input relative w-full max-w-full sm:w-96"
-				type="text"
-				placeholder={`Filter by ${filterTerm}`}
-				bind:value={searchTerm}
-				data-testid="schedule-search"
-			/>
-			<!-- clear search button -->
-			{#if searchTerm.length > 0}
-				<button
-					transition:fade={{ duration: 150 }}
-					onclick={() => (searchTerm = '')}
-					class="absolute top-1/2 right-2 h-7 w-7 -translate-y-1/2 cursor-pointer rounded-xl text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white"
+	{#if upToDatePraiseData && upToDatePraiseData.length > 0}
+		<div class="relative my-8 flex w-full flex-col gap-4 sm:max-w-fit">
+			<!-- filter searching -->
+			<label class="label flex items-center gap-2">
+				<span class="w-fit sm:w-1/6">Filter by:</span>
+				<select
+					class="select w-auto flex-1 cursor-pointer border sm:w-5/6"
+					bind:value={filterTerm}
 				>
-					<Icon icon="lucide:x" class="h-full w-full" />
-				</button>
+					{#each filterData as role}
+						<option value={role.value}>{role.label}</option>
+					{/each}
+				</select>
+			</label>
+
+			<div class="relative">
+				<input
+					class="input relative w-full max-w-full border p-2 sm:w-96"
+					type="text"
+					placeholder={`Filter by ${filterTerm}`}
+					bind:value={searchTerm}
+					data-testid="schedule-search"
+				/>
+				<!-- clear search button -->
+				{#if searchTerm.length > 0}
+					<button
+						transition:fade={{ duration: 150 }}
+						onclick={() => (searchTerm = '')}
+						class="absolute top-1/2 right-2 h-7 w-7 -translate-y-1/2 cursor-pointer rounded-xl text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white"
+					>
+						<Icon icon="lucide:x" class="h-full w-full" />
+					</button>
+				{/if}
+			</div>
+
+			<!-- # of results  -->
+			{#if searchTerm.length !== 0}
+				<div class="transition-all">
+					<h6 class="h6 text-center transition-all sm:text-left">
+						{filteredData.length} week{filteredData.length === 1 ? '' : 's'} found.
+					</h6>
+				</div>
 			{/if}
 		</div>
 
-		<!-- # of results  -->
-		{#if searchTerm.length !== 0}
-			<div class="transition-all">
-				<h6 class="h6 text-center transition-all sm:text-left">
-					{filteredData.length} week{filteredData.length === 1 ? '' : 's'} found.
-				</h6>
-			</div>
-		{/if}
-	</div>
+		<DetailsTooltip />
 
-	<DetailsTooltip />
-
-	<!-- schedule table -->
-	<div class="table-container relative h-[60vh] w-full overflow-auto">
-		<table class=" table-compact table" data-testid="schedule-table">
-			<thead>
-				<tr class="sticky top-0 z-10">
-					{#each tHead as header, index}
-						{#if index === 0}
-							<th class="dark:bg-surface-700 sticky left-0 z-30 bg-gray-100">
-								{header}
-							</th>
-						{:else}
-							<th>{header}</th>
-						{/if}
-					{/each}
-				</tr>
-			</thead>
-			<tbody>
-				{#each filteredData as week, rowIndex}
-					<tr onclick={() => openDetails(week)} class="cursor-pointer">
-						{#each tBody as col}
-							{#if week[col]}
-								{#if col === 'date'}
-									<td
-										class="sticky left-0 z-20 {rowIndex % 2 === 0
-											? 'dark:bg-surface-800 bg-white'
-											: 'dark:bg-surface-900 bg-gray-50'}"
-									>
-										{format(addDays(new Date(week[col]), 1), 'MMM do')}
-									</td>
-								{:else if col === 'unavailableList'}
-									<td>
-										{#each week[col] as unavailable, i}
-											{unavailable.name}{i !== week[col].length - 1 ? '; ' : ''}
-										{/each}
-									</td>
-								{:else}
-									<td>
-										{week[col]}
-									</td>
-								{/if}
+		<!-- schedule table -->
+		<div class="table-container relative h-[60vh] w-full overflow-auto">
+			<table class=" table-compact table" data-testid="schedule-table">
+				<thead>
+					<tr class="sticky top-0 z-10">
+						{#each tHead as header, index}
+							{#if index === 0}
+								<th class="dark:bg-surface-700 sticky left-0 z-30 bg-gray-100">
+									{header}
+								</th>
 							{:else}
-								<td></td>
+								<th>{header}</th>
 							{/if}
 						{/each}
 					</tr>
-				{/each}
-			</tbody>
-		</table>
-	</div>
+				</thead>
+				<tbody>
+					{#each filteredData as week, rowIndex}
+						<tr onclick={() => openDetails(week)} class="cursor-pointer">
+							{#each tBody as col}
+								{#if week[col]}
+									{#if col === 'date'}
+										<td
+											class="sticky left-0 z-20 {rowIndex % 2 === 0
+												? 'dark:bg-surface-800 bg-white'
+												: 'dark:bg-surface-900 bg-gray-50'}"
+										>
+											{format(addDays(new Date(week[col]), 1), 'MMM do')}
+										</td>
+									{:else if col === 'unavailableList'}
+										<td>
+											{#each week[col] as unavailable, i}
+												{unavailable.name}{i !== week[col].length - 1 ? '; ' : ''}
+											{/each}
+										</td>
+									{:else}
+										<td>
+											{week[col]}
+										</td>
+									{/if}
+								{:else}
+									<td></td>
+								{/if}
+							{/each}
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
+	{:else}
+		<div class="card my-8 bg-white p-8 text-center dark:bg-surface-800">
+			<Icon icon="lucide:calendar-x" class="mx-auto mb-4 h-16 w-16 text-gray-400" />
+			<h3 class="h3 mb-2 font-bold">No Schedule Available</h3>
+			<p class="text-gray-600 dark:text-gray-400">
+				A schedule hasn't been created yet. Please check back later.
+			</p>
+		</div>
+	{/if}
 
 	<PraiseAssignments {praiseAssignments} />
 

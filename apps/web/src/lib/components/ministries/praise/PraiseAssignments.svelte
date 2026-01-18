@@ -26,8 +26,10 @@
 	const normalizeRole = (role: string): Role => {
 		const normalized = role.toUpperCase().replace(/[-\s]/g, '_')
 		if (normalized === 'LEADER' || normalized === 'LEADERS') return 'LEADER'
-		if (normalized === 'ACOUSTIC' || normalized === 'ACOUSTIC_GUITAR') return 'ACOUSTIC_GUITAR'
-		if (normalized === 'ELECTRIC' || normalized === 'ELECTRIC_GUITAR') return 'ELECTRIC_GUITAR'
+		if (normalized === 'ACOUSTIC' || normalized === 'ACOUSTIC_GUITAR')
+			return 'ACOUSTIC_GUITAR'
+		if (normalized === 'ELECTRIC' || normalized === 'ELECTRIC_GUITAR')
+			return 'ELECTRIC_GUITAR'
 		return normalized as Role
 	}
 
@@ -40,7 +42,7 @@
 </script>
 
 <div class="my-16">
-	<h2 class="h2 my-4 font-bold">2025 Praise Assignments</h2>
+	<h2 class="h2 my-4 font-bold">Praise Team Assignments</h2>
 
 	<div class="table-container">
 		<table class="table-compact table">
