@@ -1,0 +1,305 @@
+@import "tailwindcss";
+
+/* Skeleton v4 imports - order matters */
+@import "@skeletonlabs/skeleton";
+@import "@skeletonlabs/skeleton/themes/cerberus";
+
+@plugin "@tailwindcss/forms";
+
+/* Enable class-based dark mode (instead of prefers-color-scheme) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Source Skeleton Svelte components for Tailwind to scan */
+@import '@skeletonlabs/skeleton-svelte';
+
+/* FCC Theme - Custom Colors */
+@theme {
+	/* Primary | #0ea5e9 */
+	--color-primary-50: #dbf2fc;
+	--color-primary-100: #cfedfb;
+	--color-primary-200: #c3e9fa;
+	--color-primary-300: #9fdbf6;
+	--color-primary-400: #56c0f0;
+	--color-primary-500: #0ea5e9;
+	--color-primary-600: #0d95d2;
+	--color-primary-700: #0b7caf;
+	--color-primary-800: #08638c;
+	--color-primary-900: #075172;
+
+	/* Secondary | #7cac6c */
+	--color-secondary-50: #ebf3e9;
+	--color-secondary-100: #e5eee2;
+	--color-secondary-200: #deeada;
+	--color-secondary-300: #cbdec4;
+	--color-secondary-400: #a3c598;
+	--color-secondary-500: #7cac6c;
+	--color-secondary-600: #709b61;
+	--color-secondary-700: #5d8151;
+	--color-secondary-800: #4a6741;
+	--color-secondary-900: #3d5435;
+
+	/* Tertiary | #1f4c49 */
+	--color-tertiary-50: #dde4e4;
+	--color-tertiary-100: #d2dbdb;
+	--color-tertiary-200: #c7d2d2;
+	--color-tertiary-300: #a5b7b6;
+	--color-tertiary-400: #628280;
+	--color-tertiary-500: #1f4c49;
+	--color-tertiary-600: #1c4442;
+	--color-tertiary-700: #173937;
+	--color-tertiary-800: #132e2c;
+	--color-tertiary-900: #0f2524;
+
+	/* Success | #05c21b */
+	--color-success-50: #daf6dd;
+	--color-success-100: #cdf3d1;
+	--color-success-200: #c1f0c6;
+	--color-success-300: #9be7a4;
+	--color-success-400: #50d45f;
+	--color-success-500: #05c21b;
+	--color-success-600: #05af18;
+	--color-success-700: #049214;
+	--color-success-800: #037410;
+	--color-success-900: #025f0d;
+
+	/* Warning | #e7c208 */
+	--color-warning-50: #fbf6da;
+	--color-warning-100: #faf3ce;
+	--color-warning-200: #f9f0c1;
+	--color-warning-300: #f5e79c;
+	--color-warning-400: #eed452;
+	--color-warning-500: #e7c208;
+	--color-warning-600: #d0af07;
+	--color-warning-700: #ad9206;
+	--color-warning-800: #8b7405;
+	--color-warning-900: #715f04;
+
+	/* Error | #e11414 */
+	--color-error-50: #fbdcdc;
+	--color-error-100: #f9d0d0;
+	--color-error-200: #f8c4c4;
+	--color-error-300: #f3a1a1;
+	--color-error-400: #ea5b5b;
+	--color-error-500: #e11414;
+	--color-error-600: #cb1212;
+	--color-error-700: #a90f0f;
+	--color-error-800: #870c0c;
+	--color-error-900: #6e0a0a;
+
+	/* Surface | #1a454d */
+	--color-surface-50: #dde3e4;
+	--color-surface-100: #d1dadb;
+	--color-surface-200: #c6d1d3;
+	--color-surface-300: #a3b5b8;
+	--color-surface-400: #5f7d82;
+	--color-surface-500: #1a454d;
+	--color-surface-600: #173e45;
+	--color-surface-700: #14343a;
+	--color-surface-800: #10292e;
+	--color-surface-900: #0d2226;
+
+	/* Custom background image */
+	--background-image-hero: url('/hero.avif');
+}
+
+/* Base styles */
+@layer base {
+	/* Set color-scheme based on .dark class for light-dark() CSS function */
+	:root {
+		color-scheme: light;
+	}
+	:root.dark {
+		color-scheme: dark;
+	}
+
+	html,
+	body {
+		@apply min-h-full bg-white text-surface-900 dark:bg-surface-800 dark:text-surface-50;
+	}
+
+	.grecaptcha-badge {
+		visibility: hidden !important;
+	}
+
+	/* Ensure all text elements inherit proper dark mode colors */
+	h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
+		@apply text-surface-900 dark:text-surface-50;
+	}
+
+	/* Links should use primary color */
+	a.anchor {
+		@apply text-primary-500 dark:text-primary-400;
+	}
+}
+
+/* Component styles */
+@layer components {
+	/* Button styles */
+	.btn {
+		@apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium transition-all;
+	}
+
+	.btn-icon {
+		@apply inline-flex items-center justify-center rounded-lg p-2 transition-all;
+	}
+
+	.btn-lg {
+		@apply px-6 py-3 text-lg;
+	}
+
+	.btn-sm {
+		@apply px-3 py-1.5 text-sm;
+	}
+
+	.btn-xl {
+		@apply px-8 py-4 text-xl;
+	}
+
+	/* Card styles */
+	.card {
+		@apply rounded-lg border border-gray-200 bg-white shadow-sm dark:border-surface-600 dark:bg-surface-800 dark:shadow-md dark:shadow-black/20;
+	}
+
+
+	.card-header {
+		@apply p-4;
+	}
+
+	.card-footer {
+		@apply p-4;
+	}
+
+	/* Form styles */
+	.input,
+	.textarea,
+	.select {
+		@apply rounded-lg border border-gray-300 bg-white px-4 py-2 dark:border-surface-600 dark:bg-surface-900;
+	}
+
+	.label {
+		@apply text-sm font-medium text-gray-700 dark:text-surface-300;
+	}
+
+	/* Table styles */
+	.table {
+		@apply w-full border-collapse text-left;
+	}
+
+	.table th {
+		@apply border-b-2 border-gray-300 bg-gray-100 px-4 py-3 font-semibold dark:border-surface-600 dark:bg-surface-700;
+	}
+
+	.table td {
+		@apply border-b border-gray-200 px-4 py-3 dark:border-surface-700;
+	}
+
+	.table tbody tr {
+		@apply bg-white dark:bg-surface-800;
+	}
+
+	.table tbody tr:nth-child(even) {
+		@apply bg-gray-50 dark:bg-surface-900;
+	}
+
+	.table-hover tbody tr:hover {
+		@apply bg-gray-100 dark:bg-surface-600;
+	}
+
+	.table-compact th,
+	.table-compact td {
+		@apply px-3 py-2;
+	}
+
+	.table-container {
+		@apply overflow-x-auto rounded-lg border border-gray-200 dark:border-surface-700;
+	}
+
+	.table-cell-fit {
+		@apply w-px whitespace-nowrap;
+	}
+
+	/* Typography */
+	.h1 {
+		@apply text-4xl font-bold;
+	}
+
+	.h2 {
+		@apply text-3xl font-bold;
+	}
+
+	.h3 {
+		@apply text-2xl font-bold;
+	}
+
+	.h4 {
+		@apply text-xl font-bold;
+	}
+
+	.h5 {
+		@apply text-lg font-bold;
+	}
+
+	.h6 {
+		@apply text-base font-bold;
+	}
+
+	/* Anchor styles */
+	.anchor {
+		@apply text-primary-500 underline hover:text-primary-600;
+	}
+
+	/* Breadcrumb styles */
+	.breadcrumb {
+		@apply flex items-center gap-2 text-sm;
+	}
+
+	.crumb a {
+		@apply text-primary-500 hover:underline;
+	}
+
+	.crumb-separator {
+		@apply text-surface-400;
+	}
+
+	/* Logo cloud styles */
+	.logo-cloud {
+		@apply grid;
+	}
+
+	.logo-item {
+		@apply rounded-lg bg-gray-100 transition-all hover:bg-gray-200 dark:bg-surface-700 dark:hover:bg-surface-600;
+	}
+
+	/* Background utilities for light/dark mode */
+	.bg-surface-200-800 {
+		@apply bg-gray-50 dark:bg-surface-800;
+	}
+
+	.bg-surface-300-700 {
+		@apply bg-gray-100 dark:bg-surface-700;
+	}
+
+	.bg-surface-100-900 {
+		@apply bg-white dark:bg-surface-900;
+	}
+
+	.bg-surface-50-950 {
+		@apply bg-white dark:bg-surface-900;
+	}
+
+	.border-surface-300-700 {
+		@apply border-gray-300 dark:border-surface-700;
+	}
+
+	.border-surface-400-600 {
+		@apply border-gray-400 dark:border-surface-600;
+	}
+
+	.text-surface-600-400 {
+		@apply text-gray-600 dark:text-surface-400;
+	}
+}
+
+/* Custom variant for search cancel button */
+@custom-variant search-cancel (&::-webkit-search-cancel-button);
+

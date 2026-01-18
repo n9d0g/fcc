@@ -1,77 +1,70 @@
 <script lang="ts">
-	import { AppBar } from '@skeletonlabs/skeleton'
 	import Icon from '@iconify/svelte'
 	import NavButton from '$lib/components/NavButton.svelte'
 	import { activeNav } from '$lib/stores/store.js'
-	import { navOptions, drawerSettings } from '$lib/constants'
-	import {
-		Avatar,
-		LightSwitch,
-		popup,
-		type PopupSettings,
-		type DrawerStore,
-	} from '@skeletonlabs/skeleton'
+	import { navOptions } from '$lib/constants'
+	import LightDarkToggle from '$lib/components/LightDarkToggle.svelte'
 
-	export let drawerStore: DrawerStore
+	// Svelte 5 props
+	let { onMenuClick }: { onMenuClick: () => void } = $props()
 
-	// variables
-	let activeNavValue: string
-	activeNav.subscribe((value) => (activeNavValue = value))
+	// Reactive state
+	let activeNavValue = $state('')
+	let showLoginTooltip = $state(false)
 
-	const popupHover: PopupSettings = {
-		event: 'hover',
-		target: 'popupHover',
-		placement: 'bottom',
-	}
-
-	const openSideNav = () => {
-		drawerStore.open(drawerSettings)
-	}
+	// Subscribe to store
+	$effect(() => {
+		const unsubscribe = activeNav.subscribe((value) => {
+			activeNavValue = value
+		})
+		return unsubscribe
+	})
 </script>
 
-<div class="bg-surface-400-500-token">
-	<AppBar
-		background="bg-surface-400-500-token"
-		id="top"
-		gridColumns="grid-cols-3"
-		slotDefault="place-self-center"
-		slotTrail="place-content-end"
-		class="container mx-auto"
+<header class="bg-gray-100 dark:bg-surface-700">
+	<div
+		class="container mx-auto grid grid-cols-2 items-center px-4 py-2 xl:grid-cols-12"
 	>
-		<svelte:fragment slot="lead">
+		<!-- Lead: Logo -->
+		<div class="flex items-center xl:col-span-3">
 			<a
-				class="anchor rounded-none transition-all"
+				class="transition-all"
 				href="/"
 				aria-label="Home Logo Button"
 				data-sveltekit-preload-data="hover"
 			>
-				<Avatar
+				<img
 					src="/apple-touch-icon.png"
-					class="h-10 w-auto rounded-sm lg:h-20"
+					alt="FCC Logo"
+					class="h-10 w-auto rounded-sm lg:h-16"
 				/>
 			</a>
-		</svelte:fragment>
+		</div>
 
+		<!-- Center: Navigation -->
 		<nav
-			class="z-10 hidden h-10 w-full items-center justify-center gap-5 xl:flex"
+			class="z-10 hidden h-10 w-full items-center justify-center gap-1 xl:col-span-6 xl:flex"
 			data-sveltekit-preload-data="hover"
 		>
-			{#key activeNavValue}
-				{#each navOptions as option}
-					{#if !option.title.includes('Login') && !option.title.includes('Contact')}
-						<NavButton
-							text={option.title}
-							link={option.href}
-							nav={activeNavValue}
-						/>
-					{/if}
-				{/each}
-			{/key}
+			{#each navOptions as option}
+				{#if !option.title.includes('Login') && !option.title.includes('Contact')}
+					<NavButton
+						text={option.title}
+						link={option.href}
+						nav={activeNavValue}
+					/>
+				{/if}
+			{/each}
 		</nav>
 
-		<svelte:fragment slot="trail">
-			<LightSwitch class="z-0" />
-			<button on:click={openSideNav} class="z-0" aria-label="Mobile Nav Button">
+		<!-- Trail: Actions -->
+		<div class="flex items-center justify-end gap-2 xl:col-span-3">
+			<LightDarkToggle />
+			<button
+				onclick={onMenuClick}
+				class="z-0 text-gray-700 dark:text-white"
+				aria-label="Mobile Nav Button"
+			>
 				<Icon
 					class="flex h-8 w-8 cursor-pointer xl:hidden"
 					icon="cil:hamburger-menu"
@@ -79,23 +72,27 @@
 			</button>
 			<a
 				href="/contact"
-				class="variant-ghost-primary btn hidden text-white xl:block"
+				class="btn dark:bg-surface-700 hidden bg-white xl:block"
 				data-sveltekit-preload-data="hover"
 			>
 				Contact
 			</a>
-			<a
-				href="/"
-				class="variant-filled-secondary btn hidden text-white xl:block"
-				data-sveltekit-preload-data="hover"
-				use:popup={popupHover}
-			>
-				Log In
-			</a>
-			<div class="card variant-filled-tertiary p-4" data-popup="popupHover">
-				<p>🚧 Login WIP 🚧</p>
-				<div class="variant-filled-tertiary arrow" />
+			<div class="relative">
+				<button
+					class="btn preset-filled-secondary-500 hidden xl:block"
+					onmouseenter={() => (showLoginTooltip = true)}
+					onmouseleave={() => (showLoginTooltip = false)}
+				>
+					Log In
+				</button>
+				{#if showLoginTooltip}
+					<div
+						class="card preset-filled-surface-500 absolute top-full left-1/2 z-50 mt-2 -translate-x-1/2 p-3 shadow-lg"
+					>
+						<p class="text-sm whitespace-nowrap">🚧 Login WIP 🚧</p>
+					</div>
+				{/if}
 			</div>
-		</svelte:fragment>
-	</AppBar>
-</div>
+		</div>
+	</div>
+</header>

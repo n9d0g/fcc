@@ -2,14 +2,20 @@
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import LandingPageGrid from '$lib/components/LandingPageGrid.svelte'
 
-	export let data
-	const { title, breadcrumb, headData, gallery } = data
+	// Svelte 5 props
+	let { data }: { data: any } = $props()
+	let title = $derived(data.title)
+	let breadcrumb = $derived(data.breadcrumb)
+	let headData = $derived(data.headData)
+	let gallery = $derived(data.gallery)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<!-- Welcome Section -->
 	<div class="mb-10">
-		<h2 class="h2 mb-4 font-bold">Welcome to Our Praise and Worship Ministry!</h2>
+		<h2 class="h2 mb-4 font-bold">
+			Welcome to Our Praise and Worship Ministry!
+		</h2>
 		<p class="text-lg">
 			At Freedom in Christ Church, we believe that worship is a powerful
 			expression of our love and gratitude to God. Our Praise and Worship
@@ -22,10 +28,10 @@
 
 	<!-- Mission & Vision Cards -->
 	<div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-		<div class="card variant-ghost-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
 					🎯
 				</span>
@@ -39,10 +45,10 @@
 			</p>
 		</div>
 
-		<div class="card variant-ghost-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
 					👁️
 				</span>
@@ -62,10 +68,10 @@
 	<div class="mb-8">
 		<h3 class="h3 mb-4 font-bold">Join the Band</h3>
 		<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-			<div class="card variant-ghost-surface p-5">
+			<div class="card dark:bg-surface-800 bg-white p-5">
 				<div class="mb-3 flex items-center gap-3">
 					<span
-						class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+						class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 					>
 						🎸
 					</span>
@@ -74,10 +80,10 @@
 				<p class="opacity-80">Electric & Acoustic</p>
 			</div>
 
-			<div class="card variant-ghost-surface p-5">
+			<div class="card dark:bg-surface-800 bg-white p-5">
 				<div class="mb-3 flex items-center gap-3">
 					<span
-						class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+						class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 					>
 						🥁
 					</span>
@@ -86,10 +92,10 @@
 				<p class="opacity-80">Electric Drums & Cajon</p>
 			</div>
 
-			<div class="card variant-ghost-surface p-5">
+			<div class="card dark:bg-surface-800 bg-white p-5">
 				<div class="mb-3 flex items-center gap-3">
 					<span
-						class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+						class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 					>
 						🎹
 					</span>
@@ -98,10 +104,10 @@
 				<p class="opacity-80">Electric Keyboard</p>
 			</div>
 
-			<div class="card variant-ghost-surface p-5">
+			<div class="card dark:bg-surface-800 bg-white p-5">
 				<div class="mb-3 flex items-center gap-3">
 					<span
-						class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+						class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 					>
 						🎤
 					</span>
@@ -118,7 +124,7 @@
 	</div>
 
 	<!-- How to Join -->
-	<div class="card variant-soft-secondary mb-8 p-6">
+	<div class="card dark:bg-surface-800 mb-8 bg-white p-6">
 		<h3 class="h3 mb-3 font-bold">How to Join</h3>
 		<p class="mb-2">
 			To join our Praise and Worship Ministry, simply <a

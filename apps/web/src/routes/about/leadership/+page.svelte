@@ -2,8 +2,11 @@
 	import LeadershipCard from '$lib/components/about/leadership/LeadershipCard.svelte'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 
-	export let data
-	const { title, headData, breadcrumb } = data
+	// Svelte 5 props
+	let { data }: { data: any } = $props()
+	let title = $derived(data.title)
+	let headData = $derived(data.headData)
+	let breadcrumb = $derived(data.breadcrumb)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>

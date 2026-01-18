@@ -1,17 +1,21 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
 
-	export let data
-	const { title, headData, breadcrumb, missionVision } = data
+	// Svelte 5 props
+	let { data }: { data: any } = $props()
+	let title = $derived(data.title)
+	let headData = $derived(data.headData)
+	let breadcrumb = $derived(data.breadcrumb)
+	let missionVision = $derived(data.missionVision)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<div class="grid gap-6 md:grid-cols-2">
 		<!-- mission -->
-		<div class="card variant-ghost-surface p-6">
+		<div class="card dark:bg-surface-800 bg-white p-6">
 			<div class="mb-4 flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-12 w-12 items-center justify-center rounded-full text-2xl"
+					class="preset-filled-primary-500 flex h-12 w-12 items-center justify-center rounded-full text-2xl"
 				>
 					🎯
 				</span>
@@ -20,10 +24,10 @@
 			<p class="text-xl leading-relaxed opacity-90">{missionVision.mission}</p>
 		</div>
 		<!-- vision -->
-		<div class="card variant-ghost-surface p-6">
+		<div class="card dark:bg-surface-800 bg-white p-6">
 			<div class="mb-4 flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-12 w-12 items-center justify-center rounded-full text-2xl"
+					class="preset-filled-primary-500 flex h-12 w-12 items-center justify-center rounded-full text-2xl"
 				>
 					👁️
 				</span>

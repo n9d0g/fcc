@@ -5,25 +5,27 @@
 	import type { ActionResult } from '@sveltejs/kit'
 	import { applyAction, deserialize } from '$app/forms'
 
-	// server fetching
-	export let data
-	export let form: ActionData
+	// Svelte 5 props
+	let { data, form }: { data: any; form: ActionData } = $props()
 
-	const { title, breadcrumb, headData } = data
-	let formPending = false
+	let title = $derived(data.title)
+	let breadcrumb = $derived(data.breadcrumb)
+	let headData = $derived(data.headData)
+	let formPending = $state(false)
 
-	const handleSubmit = async (e: any) => {
+	const handleSubmit = async (e: SubmitEvent) => {
 		formPending = true
 
-		const formData = new FormData(e.target)
-		const grecaptchaRes: any = await window.grecaptcha.execute(
+		const target = e.target as HTMLFormElement
+		const formData = new FormData(target)
+		const grecaptchaRes: string = await (window as any).grecaptcha.execute(
 			PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY,
 			{ action: 'submit' }
 		)
 
 		formData.append('grecaptcha', grecaptchaRes)
 
-		const res = await fetch(e.target.action, {
+		const res = await fetch(target.action, {
 			method: 'POST',
 			body: formData,
 			headers: {
@@ -48,19 +50,22 @@
 	<section class="flex items-center justify-center">
 		{#if form?.success}
 			<div
-				class="mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border border-surface-500 p-4 sm:p-24"
+				class="border-surface-500 mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border p-4 sm:p-24"
 			>
 				<p class="mx-auto max-w-sm text-center">
 					Thank you for contacting us! An FCC representative will be in contact
 					with you soon.
 				</p>
-				<a href="/" class="variant-filled-surface btn">Back to Homepage</a>
+				<a href="/" class="btn preset-filled-surface">Back to Homepage</a>
 			</div>
 		{:else}
 			<form
 				method="POST"
-				on:submit|preventDefault={handleSubmit}
-				class="mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border border-surface-500 p-4 sm:p-10"
+				onsubmit={(e) => {
+					e.preventDefault()
+					handleSubmit(e)
+				}}
+				class="border-surface-500 mx-auto my-4 flex w-full max-w-2xl flex-col gap-4 rounded border p-4 sm:p-10"
 			>
 				<div class="flex flex-col gap-4">
 					<label for="name" class="label flex flex-col gap-2">
@@ -73,7 +78,7 @@
 							class={`${form?.errors?.name && '!border-red-500'} input rounded-md`}
 						/>
 						{#if form?.errors?.name}
-							<p class="text-sm text-error-500">{form?.errors?.name}</p>
+							<p class="text-error-500 text-sm">{form?.errors?.name}</p>
 						{/if}
 					</label>
 					<label for="email" class="label flex flex-col gap-2">
@@ -87,7 +92,7 @@
 						/>
 						{#if form?.errors?.email}
 							{#each form?.errors?.email as error}
-								<p class="text-sm text-error-500">{error}</p>
+								<p class="text-error-500 text-sm">{error}</p>
 							{/each}
 						{/if}
 					</label>
@@ -100,24 +105,24 @@
 							value={form?.message ?? ''}
 							class={`${form?.errors?.message && '!border-red-500'} textarea rounded-md`}
 							rows="6"
-						/>
+						></textarea>
 						{#if form?.errors?.message}
-							<p class="text-sm text-error-500">{form?.errors?.message}</p>
+							<p class="text-error-500 text-sm">{form?.errors?.message}</p>
 						{/if}
 					</label>
 
-					<p class="text-xs text-tertiary-400">
+					<p class="text-tertiary-400 text-xs">
 						This site is protected by reCAPTCHA and the Google
-						<a href="https://policies.google.com/privacy" class="anchor">
-							Privacy Policy
-						</a>
+						<a href="https://policies.google.com/privacy" class="anchor"
+							>Privacy Policy</a
+						>
 						and
-						<a href="https://policies.google.com/terms" class="anchor">
-							Terms of Service
-						</a> apply.
+						<a href="https://policies.google.com/terms" class="anchor"
+							>Terms of Service</a
+						> apply.
 					</p>
 				</div>
-				<button type="submit" class="variant-filled btn" disabled={formPending}>
+				<button type="submit" class="btn preset-filled" disabled={formPending}>
 					{formPending ? 'Sending...' : 'Send'}
 				</button>
 			</form>

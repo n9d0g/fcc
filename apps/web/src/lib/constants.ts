@@ -1,6 +1,4 @@
 import { createClient } from '@sanity/client'
-import SermonModal from './components/sermons/SermonModal.svelte'
-import PraiseModal from './components/ministries/praise/PraiseModal.svelte'
 import MdLocalFlorist from 'svelte-icons/md/MdLocalFlorist.svelte'
 import IoMdBook from 'svelte-icons/io/IoMdBook.svelte'
 import MdLightbulbOutline from 'svelte-icons/md/MdLightbulbOutline.svelte'
@@ -9,11 +7,6 @@ import FaMoneyCheckAlt from 'svelte-icons/fa/FaMoneyCheckAlt.svelte'
 import FaRegCalendar from 'svelte-icons/fa/FaRegCalendar.svelte'
 import IoMdLogIn from 'svelte-icons/io/IoMdLogIn.svelte'
 import IoIosCafe from 'svelte-icons/io/IoIosCafe.svelte'
-import type {
-	DrawerSettings,
-	ModalComponent,
-	PopupSettings,
-} from '@skeletonlabs/skeleton'
 
 export const breadcrumbs = {
 	home: { title: 'Home', href: '/' },
@@ -195,27 +188,6 @@ export const missionVision = {
 		'To introduce and represent Christ through our nurturing, small group-driven ministries in the community.',
 	vision:
 		'A Christ-centred, Holy Spirit-led community committed to the building of strong relationships and planting of healthy reproducing churches.',
-}
-
-// skeleton constants
-export const drawerSettings: DrawerSettings = {
-	position: 'right',
-}
-
-export const modalComponentRegistry: Record<string, ModalComponent> = {
-	SermonModalComponent: {
-		ref: SermonModal,
-	},
-	PraiseModalComponent: {
-		ref: PraiseModal,
-	},
-}
-
-export const praiseFilterPopupSettings: PopupSettings = {
-	event: 'focus-blur',
-	target: 'praiseAutocomplete',
-	placement: 'bottom',
-	closeQuery: '.autocomplete-list, .list-nav, ul, li, .autocomplete-item',
 }
 
 // SEO constants

@@ -2,8 +2,11 @@
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import SermonCard from '$lib/components/sermons/SermonCard.svelte'
 
-	export let data
-	const { title, breadcrumb, headData } = data
+	// Svelte 5 props
+	let { data }: { data: any } = $props()
+	let title = $derived(data.title)
+	let breadcrumb = $derived(data.breadcrumb)
+	let headData = $derived(data.headData)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>

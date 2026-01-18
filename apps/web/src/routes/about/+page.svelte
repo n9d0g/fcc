@@ -2,8 +2,13 @@
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import LandingPageGrid from '$lib/components/LandingPageGrid.svelte'
 
-	export let data
-	const { title, headData, breadcrumb } = data
+	// Svelte 5 props
+	let { data }: { data: any } = $props()
+
+	// Derived values from data (reactive when data changes)
+	let title = $derived(data.title)
+	let headData = $derived(data.headData)
+	let breadcrumb = $derived(data.breadcrumb)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>

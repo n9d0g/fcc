@@ -1,8 +1,11 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
 
-	export let data
-	const { title, breadcrumb, headData } = data
+	// Svelte 5 props
+	let { data }: { data: any } = $props()
+	let title = $derived(data.title)
+	let breadcrumb = $derived(data.breadcrumb)
+	let headData = $derived(data.headData)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
@@ -22,13 +25,13 @@
 
 			<!-- forgot pw -->
 			<div class="flex w-full justify-end">
-				<a href="/" class="w-fit italic text-gray-600 hover:underline"
+				<a href="/" class="w-fit text-gray-600 italic hover:underline"
 					>Forgot your password?</a
 				>
 			</div>
 
 			<!-- login button -->
-			<button class="variant-filled btn"> Continue </button>
+			<button class="btn preset-filled">Continue</button>
 		</form>
 	</section>
 </FccLayout>

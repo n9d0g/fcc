@@ -1,36 +1,32 @@
 <script lang="ts">
-	// mandatory imports
-	import '../app.postcss'
-
-	// skeleton imports
-	import {
-		AppShell,
-		Modal,
-		storePopup,
-		Toast,
-		initializeStores,
-		getDrawerStore,
-	} from '@skeletonlabs/skeleton'
-	import {
-		computePosition,
-		autoUpdate,
-		flip,
-		shift,
-		offset,
-		arrow,
-	} from '@floating-ui/dom'
+	import '../app.css'
+	import type { Snippet } from 'svelte'
 
 	// regular imports
 	import Footer from '$lib/components/Footer.svelte'
 	import Header from '$lib/components/Header.svelte'
 	import SideNav from '$lib/components/SideNav.svelte'
-	import { activePath } from '$lib/stores/store.js'
-	import { modalComponentRegistry } from '$lib/constants'
-	import { afterNavigate } from '$app/navigation'
-
-	import { onNavigate } from '$app/navigation'
 	import Banner from '$lib/components/Banner.svelte'
+	import Dialog from '$lib/components/Modal.svelte'
+	import { activePath } from '$lib/stores/store.js'
+	import { afterNavigate, onNavigate } from '$app/navigation'
 
+	// Svelte 5 props
+	let { data, children }: { data: any; children: Snippet } = $props()
+
+	// Reactive state
+	let activePathValue = $state('')
+	let sideNavOpen = $state(false)
+
+	// Subscribe to store
+	$effect(() => {
+		const unsubscribe = activePath.subscribe((value) => {
+			activePathValue = value
+		})
+		return unsubscribe
+	})
+
+	// View transitions
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return
 
@@ -42,34 +38,38 @@
 		})
 	})
 
-	initializeStores()
-	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow })
-
-	// variables
-	export let data
-	let activePathValue: string = ''
-	activePath.subscribe((value) => (activePathValue = value))
-
-	let banner: App.Banner = data.banner
-
-	const drawerStore = getDrawerStore()
-
-	// scroll to top on every navigate
+	// Scroll to top on navigate
 	afterNavigate((nav) => {
-		if (nav.type === 'link') document.getElementById('page')?.scrollTo(0, 0)
+		if (nav.type === 'link') window.scrollTo(0, 0)
 	})
+
+	// Drawer controls
+	const openSideNav = () => {
+		sideNavOpen = true
+	}
+
+	const closeSideNav = () => {
+		sideNavOpen = false
+	}
+
+	// Banner data (derived to stay reactive when data changes)
+	let banner = $derived(data.banner as App.Banner | undefined)
 </script>
 
-<!-- singleton skeleton components -->
-<SideNav {drawerStore} />
-<Toast position="b" />
-<Modal components={modalComponentRegistry} />
+<!-- Side Navigation Drawer -->
+<SideNav open={sideNavOpen} onclose={closeSideNav} />
 
+<!-- Global Modal -->
+<Dialog />
+
+<!-- Banner -->
 <Banner {banner} />
-<AppShell>
-	<svelte:fragment slot="header"><Header {drawerStore} /></svelte:fragment>
-	<main class="bg-surface-300-600-token">
-		<slot />
+
+<!-- Main Layout -->
+<div class="flex min-h-screen flex-col overflow-y-auto">
+	<Header onMenuClick={openSideNav} />
+	<main class="flex-1 bg-gray-50 dark:bg-surface-800">
+		{@render children?.()}
 	</main>
-	<svelte:fragment slot="pageFooter"><Footer /></svelte:fragment>
-</AppShell>
+	<Footer />
+</div>

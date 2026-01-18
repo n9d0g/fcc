@@ -9,7 +9,8 @@
 		| 'BACKUP'
 	type Assignment = { role: string; names: string[] }
 
-	export let praiseAssignments: Assignment[]
+	// Svelte 5 props
+	let { praiseAssignments }: { praiseAssignments: Assignment[] } = $props()
 
 	const transformedAssignments: Record<Role, string[]> = {
 		LEADER: [],
@@ -41,7 +42,7 @@
 </script>
 
 <div class="my-16">
-	<h2 class="h2 my-4 font-bold">2025 Praise Assignments</h2>
+	<h2 class="h2 my-4 font-bold">Praise Team Assignments</h2>
 
 	<div class="table-container">
 		<table class="table-compact table">

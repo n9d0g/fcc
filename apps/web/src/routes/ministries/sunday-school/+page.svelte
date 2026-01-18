@@ -2,7 +2,8 @@
 	import { format, addDays } from 'date-fns'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 
-	export let data
+	// Svelte 5 props
+	let { data }: { data: any } = $props()
 	const {
 		tHeaders,
 		tBody,
@@ -60,10 +61,10 @@
 
 	<!-- Features Grid -->
 	<div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-		<div class="card variant-ghost-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
 					📖
 				</span>
@@ -77,10 +78,10 @@
 			</p>
 		</div>
 
-		<div class="card variant-ghost-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
 					🎨
 				</span>
@@ -94,10 +95,10 @@
 			</p>
 		</div>
 
-		<div class="card variant-ghost-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
 					🙏
 				</span>
@@ -110,10 +111,10 @@
 			</p>
 		</div>
 
-		<div class="card variant-ghost-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
 					💛
 				</span>
@@ -126,10 +127,10 @@
 			</p>
 		</div>
 
-		<div class="card variant-ghost-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
 					👨‍🏫
 				</span>
@@ -143,10 +144,10 @@
 			</p>
 		</div>
 
-		<div class="card variant-ghost-surface p-5">
+		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
-					class="variant-filled-primary flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
 					🕐
 				</span>
@@ -162,7 +163,7 @@
 
 	<!-- Call to Action -->
 	<div
-		class="card variant-soft-secondary mx-auto mb-8 max-w-2xl p-6 text-center"
+		class="card dark:bg-surface-800 mx-auto mb-8 max-w-2xl bg-white p-6 text-center"
 	>
 		<p class=" text-lg">
 			Come be a part of our Sunday School family, where we're not just shaping
@@ -183,7 +184,7 @@
 						<a
 							href={link.pdfUrl || link.url}
 							target={link.openInNewTab ? '_blank' : '_self'}
-							class="variant-filled btn"
+							class="preset-filled btn"
 						>
 							{link.title}
 						</a>
@@ -205,7 +206,7 @@
 						<a
 							href={link.pdfUrl || link.url}
 							target={link.openInNewTab ? '_blank' : '_self'}
-							class="variant-filled btn"
+							class="preset-filled btn"
 						>
 							{link.title}
 						</a>
@@ -229,7 +230,7 @@
 					<a
 						href={link.pdfUrl || link.url}
 						target={link.openInNewTab ? '_blank' : '_self'}
-						class="variant-filled btn"
+						class="preset-filled btn"
 					>
 						{link.title}
 					</a>
@@ -242,11 +243,11 @@
 		<!-- skeleton table -->
 		<table class="relative table overflow-scroll">
 			<thead>
-				<tr class="variant-filled-secondary sticky top-0 z-10">
+				<tr class="preset-filled-secondary-500 sticky top-0 z-10">
 					{#each tHeaders as header, index}
 						{#if index === 0}
 							<th
-								class="variant-filled-secondary max-lg:table-cell-fit sticky left-0 z-30 w-6 p-3 text-left font-bold"
+								class="preset-filled-secondary-500 max-lg:table-cell-fit sticky left-0 z-30 w-6 p-3 text-left font-bold"
 							>
 								{header}
 							</th>
@@ -262,22 +263,22 @@
 				{#each tBody as month}
 					<tr class="text-center">
 						<td
-							class="bg-surface-200-700-token max-lg:table-cell-fit sticky left-0 w-6 pl-3 text-left font-bold"
+							class="bg-gray-50 dark:bg-surface-800 max-lg:table-cell-fit sticky left-0 w-6 pl-3 text-left font-bold"
 						>
 							{format(addDays(new Date(month.date), 1), 'MMMM')}
 						</td>
 						<td
-							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
+							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
 						>
 							{month.crawlersToddlers}
 						</td>
 						<td
-							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
+							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
 						>
 							{month.ssYoung}
 						</td>
 						<td
-							class="max-lg:table-cell-fit w-6 whitespace-nowrap pl-3 text-left"
+							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
 						>
 							{month.ssOld}
 						</td>

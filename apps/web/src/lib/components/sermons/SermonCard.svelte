@@ -1,46 +1,49 @@
 <script lang="ts">
 	import { format, addDays } from 'date-fns'
-	import { getModalStore } from '@skeletonlabs/skeleton'
-	import { sermonModalSettings } from '$lib/utils'
+	import { openSermonModal } from '$lib/stores/modalStore.svelte'
 
-	export let title: string
-	export let date: string
-	export let speaker: string
-	export let scripture: string
-	export let youtube: string
+	// Svelte 5 props
+	let {
+		title,
+		date,
+		speaker,
+		scripture,
+		youtube,
+	}: {
+		title: string
+		date: string
+		speaker: string
+		scripture: string
+		youtube: string
+	} = $props()
 
-	const youtubeId = youtube.replace('https://www.youtube.com/watch?v=', '')
-	const thumbImg = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`
-
-	// Add date validation
-	const formattedDate = date
-		? format(addDays(new Date(date), 1), 'MMMM do, yyyy')
-		: 'Date not available'
-
-	const modalStore = getModalStore()
+	// Derived values
+	const youtubeId = $derived(
+		youtube.replace('https://www.youtube.com/watch?v=', '')
+	)
+	const thumbImg = $derived(
+		`https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`
+	)
+	const formattedDate = $derived(
+		date
+			? format(addDays(new Date(date), 1), 'MMMM do, yyyy')
+			: 'Date not available'
+	)
 
 	const handleSermonClick = () => {
-		const setting = sermonModalSettings(
-			title,
-			date,
-			speaker,
-			scripture,
-			youtube
-		)
-
-		modalStore.trigger(setting)
+		openSermonModal({ title, date, speaker, scripture, youtube })
 	}
 </script>
 
 <button
-	on:click={handleSermonClick}
-	class="card card-hover flex flex-col items-start justify-between"
+	onclick={handleSermonClick}
+	class="card flex cursor-pointer flex-col items-start justify-between transition-shadow hover:shadow-lg"
 >
 	<div>
 		<img src={thumbImg} alt="{title} Image" class="w-full rounded-t-lg" />
 		<header class="card-header text-start text-2xl font-bold">{title}</header>
 		<section
-			class="flex flex-col items-start justify-start gap-4 px-4 pb-1 pt-3"
+			class="flex flex-col items-start justify-start gap-4 px-4 pt-3 pb-1"
 		>
 			<p class="text-start text-sm">{speaker}</p>
 		</section>
