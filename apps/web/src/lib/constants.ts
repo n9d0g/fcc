@@ -1,12 +1,4 @@
 import { createClient } from '@sanity/client'
-import MdLocalFlorist from 'svelte-icons/md/MdLocalFlorist.svelte'
-import IoMdBook from 'svelte-icons/io/IoMdBook.svelte'
-import MdLightbulbOutline from 'svelte-icons/md/MdLightbulbOutline.svelte'
-import IoMdPeople from 'svelte-icons/io/IoMdPeople.svelte'
-import FaMoneyCheckAlt from 'svelte-icons/fa/FaMoneyCheckAlt.svelte'
-import FaRegCalendar from 'svelte-icons/fa/FaRegCalendar.svelte'
-import IoMdLogIn from 'svelte-icons/io/IoMdLogIn.svelte'
-import IoIosCafe from 'svelte-icons/io/IoIosCafe.svelte'
 
 export const breadcrumbs = {
 	home: { title: 'Home', href: '/' },
@@ -110,42 +102,42 @@ export const navOptions = [
 	{
 		href: '/about',
 		title: 'About',
-		icon: MdLightbulbOutline,
+		icon: 'mdi:lightbulb-outline',
 	},
 	{
 		href: '/sermons',
 		title: 'Sermons',
-		icon: IoMdBook,
+		icon: 'ion:book',
 	},
 	{
 		href: '/events',
 		title: 'Events',
-		icon: FaRegCalendar,
+		icon: 'mdi:calendar-outline',
 	},
 	{
 		href: '/ministries',
 		title: 'Ministries',
-		icon: MdLocalFlorist,
+		icon: 'mdi:flower-tulip-outline',
 	},
 	{
 		href: '/small-groups',
 		title: 'Small Groups',
-		icon: IoMdPeople,
+		icon: 'ion:people',
 	},
 	{
 		href: '/give',
 		title: 'Give',
-		icon: FaMoneyCheckAlt,
+		icon: 'mdi:cash-check',
 	},
 	{
 		href: '/',
 		title: 'Login',
-		icon: IoMdLogIn,
+		icon: 'ion:log-in',
 	},
 	{
 		href: '/contact',
 		title: 'Contact',
-		icon: IoIosCafe,
+		icon: 'ion:cafe',
 	},
 ]
 
