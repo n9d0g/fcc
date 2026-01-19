@@ -2,6 +2,27 @@ export default {
   name: 'prayer',
   type: 'document',
   title: 'Prayer',
+  preview: {
+    select: {
+      name: 'name',
+      date: 'date',
+    },
+    prepare({ name, date }: { name: string; date: string }) {
+      const formattedDate = date
+        ? new Date(date).toLocaleDateString('en-US', {
+            weekday: 'short',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            timeZone: 'UTC',
+          })
+        : 'No date'
+      return {
+        title: formattedDate,
+        subtitle: name || undefined,
+      }
+    },
+  },
   fields: [
     {
       name: 'name',

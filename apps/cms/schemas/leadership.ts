@@ -2,6 +2,19 @@ export default {
   name: 'leadership',
   type: 'document',
   title: 'Leadership',
+  preview: {
+    select: {
+      name: 'name',
+      title: 'title',
+      sort: 'sort',
+    },
+    prepare({ name, title, sort }: { name: string; title: string; sort: number }) {
+      return {
+        title: name || 'Unnamed',
+        subtitle: [title, sort !== undefined ? `#${sort}` : null].filter(Boolean).join(' - '),
+      }
+    },
+  },
   fields: [
     {
       name: 'name',

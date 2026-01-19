@@ -26,8 +26,8 @@ export const load = async ({ setHeaders, url }) => {
 			'PowerPoint',
 			'Communion Presider',
 			'Coffee/Breakfast',
-			'Counters',
-			'Set Up / Ushers',
+			'Hall Set Up',
+			'Ushers / Greeters',
 		],
 	}
 }

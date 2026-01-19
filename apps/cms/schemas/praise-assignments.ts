@@ -2,6 +2,19 @@ export default {
 	name: 'praise-assignments',
 	type: 'document',
 	title: 'Praise Assignments',
+	preview: {
+		select: {
+			role: 'role',
+			names: 'names',
+		},
+		prepare({ role, names }: { role: string; names: string[] }) {
+			const count = names?.length || 0
+			return {
+				title: role || 'No role',
+				subtitle: `${count} ${count === 1 ? 'person' : 'people'} assigned`,
+			}
+		},
+	},
 	fields: [
 		{
 			name: 'role',

@@ -1,27 +1,23 @@
-import sermons from './sermons'
-import praise from './praise'
-import youngAdults from './young-adults'
+import banner from './banner'
 import birthdays from './birthdays'
-import pages from './pages'
-import prayer from './prayer'
 import leadership from './leadership'
+import pageGallery from './page-gallery'
+import praise from './praise'
+import praiseAssignments from './praise-assignments'
+import prayer from './prayer'
+import sermons from './sermons'
 import sundayMinistries from './sunday-ministries'
 import sundaySchoolLinks from './sunday-school-links'
-import banner from './banner'
-import praiseAssignments from './praise-assignments'
-import pageGallery from './page-gallery'
 
 export const schemaTypes = [
-	pages,
-	sermons,
+	banner,
+	birthdays,
+	leadership,
+	pageGallery,
 	praise,
 	praiseAssignments,
-	youngAdults,
-	birthdays,
 	prayer,
-	leadership,
+	sermons,
 	sundayMinistries,
 	sundaySchoolLinks,
-	banner,
-	pageGallery,
 ]
