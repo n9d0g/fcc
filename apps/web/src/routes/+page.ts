@@ -1,13 +1,20 @@
 import { client, links } from '$lib/constants'
 import { supabase } from '$lib/supabaseClient'
 
-export const load = async () => {
-	const { data: songs } = await supabase.from('songs').select()
-	const sermons = await client.fetch(`*[_type == "sermons"]`)
-	const pages = await client.fetch(`*[_type == "pages"] {
-		page,
-		'invite': weeklyInvite.asset->url 
-	}`)
+export const load = async ({ setHeaders }) => {
+	// Cache home page for 5 minutes, allow stale for 1 hour while revalidating
+	setHeaders({
+		'cache-control': 'public, max-age=300, stale-while-revalidate=3600',
+	})
+
+	const [{ data: songs }, sermons, pages] = await Promise.all([
+		supabase.from('songs').select(),
+		client.fetch(`*[_type == "sermons"]`),
+		client.fetch(`*[_type == "pages"] {
+			page,
+			'invite': weeklyInvite.asset->url 
+		}`),
+	])
 
 	if (sermons && pages)
 		return {
