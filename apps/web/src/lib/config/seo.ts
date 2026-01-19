@@ -99,6 +99,21 @@ export const headData = {
 		description:
 			'Join a small group at Freedom in Christ Church in Mississauga for deeper Bible study, authentic relationships, and spiritual growth. Find your community within our larger church family.',
 	},
+	smallgroupsBramptonWomens1: {
+		title: "Brampton Women's Bible Study 1 | Freedom in Christ Church",
+		description:
+			"Join our Brampton Women's Bible Study Group 1 at Freedom in Christ Church. Connect with other women in faith through meaningful Bible study, prayer, and fellowship in a supportive community.",
+	},
+	smallgroupsBramptonWomens2: {
+		title: "Brampton Women's Bible Study 2 | Freedom in Christ Church",
+		description:
+			"Join our Brampton Women's Bible Study Group 2 at Freedom in Christ Church. Grow in faith alongside other women through engaging Bible study, heartfelt prayer, and authentic fellowship.",
+	},
+	smallgroupsGoldenGirls: {
+		title: 'Golden Girls | Freedom in Christ Church',
+		description:
+			'Join the Golden Girls small group at Freedom in Christ Church. A vibrant community of women growing together in faith through Bible study, prayer, and fellowship via Zoom.',
+	},
 	smallgroupsMacasaquit: {
 		title: 'Macasaquit Small Group | Bible Study in Mississauga',
 		description:
@@ -130,17 +145,6 @@ export const headData = {
 		title: 'Young Adults Small Group | Mississauga Christian Community',
 		description:
 			"Connect with other young adults at Freedom in Christ Church in Mississauga. Our Young Adults Small Group offers relevant Bible study, fellowship, and support during life's transition years.",
-	},
-	smallgroupsYAMen: {
-		title: "Men's Young Adults Group | Brotherhood at Freedom in Christ Church",
-		description:
-			"Join our Men's Young Adults Group at Freedom in Christ Church in Mississauga. Build authentic friendships, explore biblical manhood, and grow in faith with other young men.",
-	},
-	smallgroupsYAWomen: {
-		title:
-			"Women's Young Adults Group | Sisterhood at Freedom in Christ Church",
-		description:
-			"Connect with other young women at Freedom in Christ Church in Mississauga. Our Women's Young Adults Group provides biblical teaching, authentic community, and support for young women of faith.",
 	},
 	events: {
 		title: 'Church Events | Freedom in Christ Church Calendar',

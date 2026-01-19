@@ -1,6 +1,5 @@
 <script lang="ts">
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import Icon from '@iconify/svelte'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
@@ -8,60 +7,57 @@
 	let breadcrumb = $derived(data.breadcrumb)
 	let headData = $derived(data.headData)
 	let gallery = $derived(data.gallery)
+	let links = $derived(data.links)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<!-- Welcome Section -->
 	<div class="mb-8">
-		<h2 class="h2 mb-4 font-bold">Welcome to the Young Adults Small Group!</h2>
+		<h2 class="h2 mb-4 font-bold">Welcome to Golden Girls!</h2>
 		<p class="text-lg">
-			Join us for fellowship, prayer, and Bible study as we navigate life's
-			journey together. Our Young Adults Small Group provides a welcoming
-			environment for those in their 20s and 30s to connect, grow in faith, and
-			build meaningful relationships.
+			Join our vibrant community of women as we gather together in faith,
+			friendship, and fellowship. Our group provides a welcoming space where we
+			can encourage one another, share wisdom, and grow deeper in our walk with
+			the Lord through Bible study and prayer.
 		</p>
 	</div>
 
-	<!-- Connect With Us CTA -->
+	<!-- Zoom Link CTA -->
 	<div class="card dark:bg-surface-800 mb-8 bg-white p-5">
 		<div class="flex flex-wrap items-center gap-4">
 			<div class="flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
-					<Icon icon="fa6-brands:instagram" class="h-5 w-5" />
+					💻
 				</span>
 				<div>
-					<p class="font-semibold">Follow Us on Instagram</p>
+					<p class="font-semibold">Zoom Meeting</p>
 					<p class="text-sm opacity-70">
-						Stay updated on events and connect with us!
+						Meeting ID: {links.zoom.meetingId} | Passcode: {links.zoom.passcode}
 					</p>
 				</div>
 			</div>
-			<a
-				href="https://www.instagram.com/fyi.fcc/"
-				target="_blank"
-				class="preset-filled btn"
-			>
-				@fyi.fcc
+			<a href={links.zoom.link} target="_blank" class="preset-filled btn">
+				Join Zoom Meeting
 			</a>
 		</div>
 	</div>
 
-	<!-- Info Section -->
+	<!-- Meeting Info Section -->
 	<div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
 		<div class="card dark:bg-surface-800 bg-white p-5">
 			<div class="mb-3 flex items-center gap-3">
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
-					👥
+					📅
 				</span>
-				<h3 class="h4 font-bold">Who We Are</h3>
+				<h3 class="h4 font-bold">When We Meet</h3>
 			</div>
 			<div class="flex flex-col gap-1 opacity-80">
-				<p class="font-semibold">Ages 20-35</p>
-				<p>Young adults welcome!</p>
+				<p class="font-semibold">TBD</p>
+				<p>Online via Zoom</p>
 			</div>
 		</div>
 
@@ -70,16 +66,13 @@
 				<span
 					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
 				>
-					<Icon icon="fa6-brands:whatsapp" class="h-5 w-5" />
+					📖
 				</span>
-				<h3 class="h4 font-bold">WhatsApp Group</h3>
+				<h3 class="h4 font-bold">What We Study</h3>
 			</div>
 			<div class="flex flex-col gap-1 opacity-80">
-				<p class="font-semibold">Stay Connected</p>
-				<p>
-					Join our WhatsApp group for updates on upcoming events and Bible
-					studies. Ask Bro. Ymuz for details!
-				</p>
+				<p class="font-semibold">Bible Study & Discussion</p>
+				<p>Growing together in God's Word</p>
 			</div>
 		</div>
 	</div>
@@ -88,19 +81,12 @@
 	<div class="card dark:bg-surface-800 mb-8 bg-white p-6">
 		<h3 class="h3 mb-3 font-bold">How to Join</h3>
 		<p class="mb-2">
-			Whether you're a long-time member or new to the church, you're welcome to
-			join us! We'd love to have you be a part of our community.
+			Whether you're new to Bible study or have been studying for years, you're
+			welcome to join us! We'd love to have you be a part of our community.
 		</p>
 		<p>
-			Follow us on
-			<a
-				href="https://www.instagram.com/fyi.fcc/"
-				target="_blank"
-				class="anchor"
-			>
-				Instagram (@fyi.fcc)
-			</a>
-			for the latest updates, or reach out to Bro. Ymuz to join our WhatsApp group.
+			For more information, please reach out to Sister Ivy Metal or visit us on
+			a Sunday service.
 		</p>
 	</div>
 

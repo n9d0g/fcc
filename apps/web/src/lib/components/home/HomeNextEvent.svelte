@@ -12,7 +12,7 @@
 	<!-- hero picture -->
 	<a
 		class="anchor"
-		href={links.zoom}
+		href={links.zoom.link}
 		data-testid="nextevent-zoom"
 		aria-label="Zoom Banner Button"
 	>

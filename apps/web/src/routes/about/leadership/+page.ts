@@ -1,10 +1,9 @@
 import { client, headData, breadcrumbs } from '$lib/constants'
+import { setCacheHeaders } from '$lib/utils'
 
-export const load = async ({ setHeaders }) => {
-	// Cache leadership for 1 hour, allow stale for 24 hours while revalidating
-	setHeaders({
-		'cache-control': 'public, max-age=3600, stale-while-revalidate=86400',
-	})
+export const load = async ({ setHeaders, url }) => {
+	// Cache leadership for 1 hour, allow stale for 24 hours (bust=true to bypass)
+	setCacheHeaders(setHeaders, url, 3600, 86400)
 
 	const data = await client.fetch(`
     *[_type == "leadership"] {
