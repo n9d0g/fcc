@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { links } from '$lib/constants'
-	import FaFacebook from 'svelte-icons/fa/FaFacebook.svelte'
-	import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
-	import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte'
+	import Icon from '@iconify/svelte'
 	import pkgJsonInfo from '../../../package.json'
 	import { format, addDays } from 'date-fns'
 	import LightDarkToggle from '$lib/components/LightDarkToggle.svelte'
@@ -22,7 +20,7 @@
 				target="_blank"
 				aria-label="YouTube Link"
 			>
-				<span class="block w-6"><FaYoutube /></span>
+				<Icon icon="fa6-brands:youtube" class="h-6 w-6" />
 			</a>
 			<a
 				class="text-gray-600 dark:text-surface-400 p-4 transition hover:text-pink-500"
@@ -30,7 +28,7 @@
 				target="_blank"
 				aria-label="Instagram Link"
 			>
-				<span class="block w-6"><FaInstagram /></span>
+				<Icon icon="fa6-brands:instagram" class="h-6 w-6" />
 			</a>
 			<a
 				class="text-gray-600 dark:text-surface-400 p-4 transition hover:text-blue-600"
@@ -38,7 +36,7 @@
 				target="_blank"
 				aria-label="Facebook Link"
 			>
-				<span class="block w-6"><FaFacebook /></span>
+				<Icon icon="fa6-brands:facebook" class="h-6 w-6" />
 			</a>
 		</div>
 

@@ -1,20 +1,8 @@
-import { activeNav, activePath } from '$lib/stores/store.js'
 import { formatISO } from 'date-fns'
 
-// exported functions
-export const setNavActiveState = (path: string) => {
-	if (path.includes('about')) activeNav.set('about')
-	else if (path.includes('sermons')) activeNav.set('sermons')
-	else if (path.includes('ministries')) activeNav.set('ministries')
-	else if (path.includes('small-groups')) activeNav.set('small-groups')
-	else if (path.includes('give')) activeNav.set('give')
-	else if (path.includes('events')) activeNav.set('events')
-	else activeNav.set('home')
-}
-
-export const setActivePath = (path: string) => {
-	activePath.set(path)
-}
+// Navigation functions are now in $lib/stores/navigation.svelte.ts
+// Re-export them for backward compatibility
+export { setNavActiveState, setActivePath } from '$lib/stores/navigation.svelte'
 
 export const searchFilter = (
 	array: any[],

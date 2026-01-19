@@ -1,6 +1,11 @@
 import { client, headData, breadcrumbs } from '$lib/constants'
 
-export const load = async () => {
+export const load = async ({ setHeaders }) => {
+	// Cache leadership for 1 hour, allow stale for 24 hours while revalidating
+	setHeaders({
+		'cache-control': 'public, max-age=3600, stale-while-revalidate=86400',
+	})
+
 	const data = await client.fetch(`
     *[_type == "leadership"] {
 			name, title, subministries, sort,

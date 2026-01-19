@@ -1,6 +1,11 @@
 import { client, headData, breadcrumbs } from '$lib/constants'
 
-export const load = async () => {
+export const load = async ({ setHeaders }) => {
+	// Cache praise schedule for 10 minutes, allow stale for 1 hour while revalidating
+	setHeaders({
+		'cache-control': 'public, max-age=600, stale-while-revalidate=3600',
+	})
+
 	const data = await client.fetch(`
     *[_type == "praise"] {
       backup, bass, date, drums, electric, guitar, backup_guitar, keys, lead, md, objective, scripture, series, speaker, summary, topic, unavailable, songs, unavailableList,

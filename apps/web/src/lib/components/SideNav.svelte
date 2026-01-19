@@ -38,15 +38,12 @@
 		<!-- Navigation Links -->
 		<nav class="flex flex-1 flex-col gap-2 overflow-y-auto p-4">
 			{#each navOptions as option}
-				{@const IconComponent = option.icon}
 				<a
 					onclick={onclose}
 					href={option.href}
 					class="btn justify-start gap-3 hover:preset-tonal"
 				>
-					<span class="flex h-5 w-5 items-center justify-center">
-						<IconComponent />
-					</span>
+					<Icon icon={option.icon} class="h-5 w-5" />
 					{option.title}
 				</a>
 			{/each}
