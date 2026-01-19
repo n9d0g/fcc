@@ -1,19 +1,29 @@
-import { activeNav, activePath } from '$lib/stores/store.js'
 import { formatISO } from 'date-fns'
 
-// exported functions
-export const setNavActiveState = (path: string) => {
-	if (path.includes('about')) activeNav.set('about')
-	else if (path.includes('sermons')) activeNav.set('sermons')
-	else if (path.includes('ministries')) activeNav.set('ministries')
-	else if (path.includes('small-groups')) activeNav.set('small-groups')
-	else if (path.includes('give')) activeNav.set('give')
-	else if (path.includes('events')) activeNav.set('events')
-	else activeNav.set('home')
-}
+// Navigation functions are now in $lib/stores/navigation.svelte.ts
+// Re-export them for backward compatibility
+export { setNavActiveState, setActivePath } from '$lib/stores/navigation.svelte'
 
-export const setActivePath = (path: string) => {
-	activePath.set(path)
+/**
+ * Sets cache headers with bust=true query param support
+ * @param setHeaders - SvelteKit's setHeaders function
+ * @param url - The request URL
+ * @param maxAge - Cache max-age in seconds (default: 600 = 10 minutes)
+ * @param staleWhileRevalidate - Stale-while-revalidate in seconds (default: 3600 = 1 hour)
+ */
+export const setCacheHeaders = (
+	setHeaders: (headers: Record<string, string>) => void,
+	url: URL,
+	maxAge: number = 600,
+	staleWhileRevalidate: number = 3600
+) => {
+	const shouldBust = url.searchParams.get('bust') === 'true'
+
+	setHeaders({
+		'cache-control': shouldBust
+			? 'no-cache, no-store, must-revalidate'
+			: `public, max-age=${maxAge}, stale-while-revalidate=${staleWhileRevalidate}`,
+	})
 }
 
 export const searchFilter = (

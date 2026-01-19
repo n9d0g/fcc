@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte'
 	import NavButton from '$lib/components/NavButton.svelte'
-	import { activeNav } from '$lib/stores/store.js'
+	import { navigationState } from '$lib/stores/navigation.svelte'
 	import { navOptions } from '$lib/constants'
 	import LightDarkToggle from '$lib/components/LightDarkToggle.svelte'
 
@@ -9,16 +9,7 @@
 	let { onMenuClick }: { onMenuClick: () => void } = $props()
 
 	// Reactive state
-	let activeNavValue = $state('')
 	let showLoginTooltip = $state(false)
-
-	// Subscribe to store
-	$effect(() => {
-		const unsubscribe = activeNav.subscribe((value) => {
-			activeNavValue = value
-		})
-		return unsubscribe
-	})
 </script>
 
 <header class="bg-gray-100 dark:bg-surface-700">
@@ -51,7 +42,7 @@
 					<NavButton
 						text={option.title}
 						link={option.href}
-						nav={activeNavValue}
+						nav={navigationState.activeNav}
 					/>
 				{/if}
 			{/each}

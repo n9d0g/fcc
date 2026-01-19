@@ -8,23 +8,14 @@
 	import SideNav from '$lib/components/SideNav.svelte'
 	import Banner from '$lib/components/Banner.svelte'
 	import Dialog from '$lib/components/Modal.svelte'
-	import { activePath } from '$lib/stores/store.js'
+	import { navigationState } from '$lib/stores/navigation.svelte'
 	import { afterNavigate, onNavigate } from '$app/navigation'
 
 	// Svelte 5 props
 	let { data, children }: { data: any; children: Snippet } = $props()
 
 	// Reactive state
-	let activePathValue = $state('')
 	let sideNavOpen = $state(false)
-
-	// Subscribe to store
-	$effect(() => {
-		const unsubscribe = activePath.subscribe((value) => {
-			activePathValue = value
-		})
-		return unsubscribe
-	})
 
 	// View transitions
 	onNavigate((navigation) => {

@@ -8,10 +8,10 @@ export const load = async ({ setHeaders, url }) => {
 	const breadcrumb = [
 		breadcrumbs.home,
 		breadcrumbs.smallgroups,
-		breadcrumbs.smallgroups.womenChasingGod,
+		breadcrumbs.smallgroups.bramptonWomens1,
 	]
 
-	const gallery = await client.fetch(`*[_type == "page-gallery" && pageUrl == "/small-groups/women-chasing-god"][0]{
+	const gallery = await client.fetch(`*[_type == "page-gallery" && pageUrl == "/small-groups/brampton-womens-1"][0]{
 		title,
 		photos[]{
 			"url": asset->url,
@@ -21,9 +21,9 @@ export const load = async ({ setHeaders, url }) => {
 	}`)
 
 	return {
-		title: 'FCC Women Chasing God Small Group.',
+		title: "Brampton Women's Bible Study 1.",
 		breadcrumb: breadcrumb,
-		headData: headData.smallgroupsWCG,
+		headData: headData.smallgroupsBramptonWomens1,
 		gallery,
 		links,
 	}

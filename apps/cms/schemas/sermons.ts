@@ -2,6 +2,28 @@ export default {
   name: 'sermons',
   type: 'document',
   title: 'Sermons',
+  preview: {
+    select: {
+      date: 'date',
+      title: 'title',
+      speaker: 'speaker',
+    },
+    prepare({ date, title, speaker }: { date: string; title: string; speaker: string }) {
+      const formattedDate = date
+        ? new Date(date).toLocaleDateString('en-US', {
+            weekday: 'short',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            timeZone: 'UTC',
+          })
+        : 'No date'
+      return {
+        title: formattedDate,
+        subtitle: [title, speaker].filter(Boolean).join(' - '),
+      }
+    },
+  },
   fields: [
     {
       name: 'date',

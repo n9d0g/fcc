@@ -7,6 +7,7 @@
 	let breadcrumb = $derived(data.breadcrumb)
 	let headData = $derived(data.headData)
 	let gallery = $derived(data.gallery)
+	let links = $derived(data.links)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
@@ -22,12 +23,12 @@
 				<div>
 					<p class="font-semibold">Zoom Meeting</p>
 					<p class="text-sm opacity-70">
-						Meeting ID: 480 798 2806 | Passcode: FCC2025
+						Meeting ID: {links.zoom2.meetingId} | Passcode: {links.zoom2.passcode}
 					</p>
 				</div>
 			</div>
 			<a
-				href="https://tinyurl.com/fcczoom2"
+				href={links.zoom2.link}
 				target="_blank"
 				class="preset-filled btn"
 			>

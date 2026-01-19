@@ -1,21 +1,25 @@
 import { headData, client, breadcrumbs } from '$lib/constants'
-import { updatedDataFiltered } from '$lib/utils'
+import { updatedDataFiltered, setCacheHeaders } from '$lib/utils'
 
-export const load = async () => {
-	const data = await client.fetch(`
-    *[_type == "prayer"] {
-			name, date, scripture
-    }
-  `)
+export const load = async ({ setHeaders, url }) => {
+	// Cache prayer data for 10 minutes, allow stale for 1 hour (bust=true to bypass)
+	setCacheHeaders(setHeaders, url, 600, 3600)
 
-	const gallery = await client.fetch(`*[_type == "page-gallery" && pageUrl == "/ministries/prayer"][0]{
-		title,
-		photos[]{
-			"url": asset->url,
-			alt,
-			caption
-		}
-	}`)
+	const [data, gallery] = await Promise.all([
+		client.fetch(`
+			*[_type == "prayer"] {
+				name, date, scripture
+			}
+		`),
+		client.fetch(`*[_type == "page-gallery" && pageUrl == "/ministries/prayer"][0]{
+			title,
+			photos[]{
+				"url": asset->url,
+				alt,
+				caption
+			}
+		}`),
+	])
 
 	const breadcrumb = [
 		breadcrumbs.home,
