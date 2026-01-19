@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { format, addDays } from 'date-fns'
 	import FccLayout from '$lib/components/FccLayout.svelte'
-	import { links } from '$lib/constants.js'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
@@ -14,69 +13,71 @@
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<!-- responsive container -->
-	<div class="table-container relative">
-		<!-- skeleton table -->
-		<table class="relative table overflow-scroll">
+	<div
+		class="table-container dark:border-surface-600 relative overflow-x-auto rounded-lg border border-gray-200"
+	>
+		<table class="relative w-full text-sm">
 			<thead>
-				<tr class="preset-filled-secondary-500 sticky top-0 z-10">
+				<tr
+					class="bg-primary-600 dark:bg-primary-700 sticky top-0 z-10 text-white"
+				>
 					{#each tHeaders as header, index}
 						{#if index === 0}
 							<th
-								class="preset-filled-secondary-500 max-lg:table-cell-fit sticky left-0 z-30 w-6 p-3 text-left font-bold"
+								class="bg-primary-600 dark:bg-primary-700 sticky left-0 z-30 min-w-[100px] px-4 py-3 text-left font-semibold"
 							>
 								{header}
 							</th>
 						{:else}
-							<th class="max-lg:table-cell-fit w-6 p-3 text-left font-bold">
+							<th class="min-w-[120px] px-4 py-3 text-left font-semibold">
 								{header}
 							</th>
 						{/if}
 					{/each}
 				</tr>
 			</thead>
-			<tbody>
-				{#each tBody as month}
-					<tr class="text-center">
+			<tbody class="dark:divide-surface-600 divide-y divide-gray-200">
+				{#each tBody as month, rowIndex}
+					<tr
+						class="transition-colors {rowIndex % 2 === 0
+							? 'dark:bg-surface-800 bg-white'
+							: 'dark:bg-surface-700 bg-gray-50'} dark:hover:bg-surface-600 hover:bg-gray-100"
+					>
 						<td
-							class="bg-gray-50 dark:bg-surface-800 max-lg:table-cell-fit sticky left-0 w-6 pl-3 text-left font-bold"
+							class="sticky left-0 z-10 min-w-[100px] px-4 py-3 font-semibold {rowIndex %
+								2 ===
+							0
+								? 'dark:bg-surface-800 bg-white'
+								: 'dark:bg-surface-700 bg-gray-50'}"
 						>
 							{format(addDays(new Date(month.date), 1), 'MMMM')}
 						</td>
-						<td
-							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
+						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
 							>{month.presider}</td
 						>
-						<td
-							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
+						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
 							>{month.invites}</td
 						>
-						<td
-							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
+						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
 							>{month.openingPrayer}</td
 						>
-						<td
-							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
+						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
 							>{month.closingPrayer}</td
 						>
-						<td
-							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
+						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
 							>{month.powerpoint}</td
 						>
-						<td
-							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
+						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
 							>{month.communionPresider}</td
 						>
-						<td
-							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
+						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
 							>{month.coffeeBreakfast}</td
 						>
-						<td
-							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
-							>{month.counters}</td
+						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
+							>{month.hallSetup}</td
 						>
-						<td
-							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
-							>{month.setupUshers}</td
+						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
+							>{month.ushersGreeters}</td
 						>
 					</tr>
 				{/each}

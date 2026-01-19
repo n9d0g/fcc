@@ -2,6 +2,27 @@ export default {
   name: 'sunday-ministries',
   type: 'document',
   title: 'Sunday Ministries',
+  preview: {
+    select: {
+      date: 'date',
+      presider: 'presider',
+    },
+    prepare({ date, presider }: { date: string; presider: string }) {
+      const formattedDate = date
+        ? new Date(date).toLocaleDateString('en-US', {
+            weekday: 'short',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            timeZone: 'UTC',
+          })
+        : 'No date'
+      return {
+        title: formattedDate,
+        subtitle: presider ? `Presider: ${presider}` : undefined,
+      }
+    },
+  },
   fields: [
     {
       name: 'date',
@@ -22,6 +43,18 @@ export default {
       title: 'Worship Service Invites',
     },
     {
+      name: 'powerpoint',
+      type: 'string',
+      description: 'Assigned PowerPoint person of given worship service.',
+      title: 'PowerPoint',
+    },
+    {
+      name: 'communionPresider',
+      type: 'string',
+      description: 'Assigned communion presider of given worship service.',
+      title: 'Communion Presider',
+    },
+    {
       name: 'openingPrayer',
       type: 'string',
       description: 'Assigned person for opening prayer of given worship service.',
@@ -34,10 +67,10 @@ export default {
       title: 'Closing Prayer',
     },
     {
-      name: 'powerpoint',
+      name: 'coffeeBreakfast',
       type: 'string',
-      description: 'Assigned PowerPoint person of given worship service.',
-      title: 'PowerPoint',
+      description: 'Assigned coffee/breakfast person/family of given worship service.',
+      title: 'Coffee / Breakfast',
     },
     {
       name: 'crawlersToddlers',
@@ -58,28 +91,16 @@ export default {
       title: 'SS Older Kids Grades 4-6',
     },
     {
-      name: 'communionPresider',
+      name: 'hallSetup',
       type: 'string',
-      description: 'Assigned communion presider of given worship service.',
-      title: 'Communion Presider',
+      description: 'Assigned hall setup person(s) of given worship service.',
+      title: 'Hall Set Up',
     },
     {
-      name: 'coffeeBreakfast',
+      name: 'ushersGreeters',
       type: 'string',
-      description: 'Assigned coffee/breakfast person/family of given worship service.',
-      title: 'Coffee / Breakfast',
-    },
-    {
-      name: 'counters',
-      type: 'string',
-      description: 'Assigned counter of given worship service.',
-      title: 'Counters',
-    },
-    {
-      name: 'setupUshers',
-      type: 'string',
-      description: 'Assigned setup, ushers, and greeters of given worship service.',
-      title: 'Set Up / Ushers / Greeters',
+      description: 'Assigned ushers and greeters of given worship service.',
+      title: 'Ushers / Greeters',
     },
   ],
 }
