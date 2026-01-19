@@ -56,6 +56,18 @@ export const breadcrumbs = {
 	smallgroups: {
 		title: 'Small Groups',
 		href: '/small-groups',
+		bramptonWomens1: {
+			title: "Brampton Women's Bible Study 1",
+			href: '/small-groups/brampton-womens-1',
+		},
+		bramptonWomens2: {
+			title: "Brampton Women's Bible Study 2",
+			href: '/small-groups/brampton-womens-2',
+		},
+		goldenGirls: {
+			title: 'Golden Girls',
+			href: '/small-groups/golden-girls',
+		},
 		macasaquit: {
 			title: 'Macasaquit Bible Study',
 			href: '/small-groups/macasaquit-bible-study',
@@ -75,8 +87,6 @@ export const breadcrumbs = {
 		ya: {
 			title: 'Young Adults',
 			href: '/small-groups/young-adults',
-			men: { title: 'Men', href: '/small-groups/young-adults/men' },
-			women: { title: 'Women', href: '/small-groups/young-adults/women' },
 		},
 		yumul: {
 			title: 'Partners in Prayer',

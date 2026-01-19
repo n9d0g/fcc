@@ -1,11 +1,9 @@
 import { headData, client, breadcrumbs } from '$lib/constants'
-import { updatedDataFiltered } from '$lib/utils'
+import { updatedDataFiltered, setCacheHeaders } from '$lib/utils'
 
-export const load = async ({ setHeaders }) => {
-	// Cache prayer data for 10 minutes, allow stale for 1 hour while revalidating
-	setHeaders({
-		'cache-control': 'public, max-age=600, stale-while-revalidate=3600',
-	})
+export const load = async ({ setHeaders, url }) => {
+	// Cache prayer data for 10 minutes, allow stale for 1 hour (bust=true to bypass)
+	setCacheHeaders(setHeaders, url, 600, 3600)
 
 	const [data, gallery] = await Promise.all([
 		client.fetch(`

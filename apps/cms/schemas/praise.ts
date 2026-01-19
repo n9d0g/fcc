@@ -2,6 +2,27 @@ export default {
 	name: 'praise',
 	type: 'document',
 	title: 'Praise',
+	preview: {
+		select: {
+			date: 'date',
+			lead: 'lead',
+		},
+		prepare({ date, lead }: { date: string; lead: string }) {
+			const formattedDate = date
+				? new Date(date).toLocaleDateString('en-US', {
+						weekday: 'short',
+						year: 'numeric',
+						month: 'short',
+						day: 'numeric',
+						timeZone: 'UTC',
+					})
+				: 'No date'
+			return {
+				title: formattedDate,
+				subtitle: lead ? `Leader: ${lead}` : undefined,
+			}
+		},
+	},
 	fields: [
 		{
 			name: 'date',
