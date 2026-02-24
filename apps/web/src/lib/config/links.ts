@@ -14,7 +14,7 @@ export const links = {
 		link: 'https://tinyurl.com/fcczoom2',
 		meetingId: '480 798 2806',
 		passcode: 'FCC2025',
-	}, 
+	},
 	giveVerse1:
 		'https://www.biblegateway.com/passage/?search=2%20Corinthians%209%3A7&version=NIV',
 	giveVerse2:

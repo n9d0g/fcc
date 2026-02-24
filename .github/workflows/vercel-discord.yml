@@ -2,7 +2,7 @@ name: Notify Discord on Deploy
 
 on:
   push:
-    branches: ["nate", "dev-web", "main"]
+    branches: ['nate', 'dev-web', 'main']
 
 jobs:
   notify:

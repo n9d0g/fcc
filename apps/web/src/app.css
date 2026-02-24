@@ -1,8 +1,8 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Skeleton v4 imports - order matters */
-@import "@skeletonlabs/skeleton";
-@import "@skeletonlabs/skeleton/themes/cerberus";
+@import '@skeletonlabs/skeleton';
+@import '@skeletonlabs/skeleton/themes/cerberus';
 
 @plugin "@tailwindcss/forms";
 
@@ -122,7 +122,19 @@
 	}
 
 	/* Ensure all text elements inherit proper dark mode colors */
-	h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	span,
+	li,
+	td,
+	th,
+	label,
+	a {
 		@apply text-surface-900 dark:text-surface-50;
 	}
 
@@ -159,7 +171,6 @@
 	.card {
 		@apply rounded-lg border border-gray-200 bg-white shadow-sm dark:border-surface-600 dark:bg-surface-800 dark:shadow-md dark:shadow-black/20;
 	}
-
 
 	.card-header {
 		@apply p-4;
@@ -302,4 +313,3 @@
 
 /* Custom variant for search cancel button */
 @custom-variant search-cancel (&::-webkit-search-cancel-button);
-

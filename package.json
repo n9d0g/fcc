@@ -5,12 +5,15 @@
 	"maintainers": [
 		"Nathan Lardizabal <nate@njil.dev>"
 	],
+	"workspaces": [
+		"apps/*"
+	],
 	"type": "module",
 	"scripts": {
 		"build": "turbo run build",
 		"dev": "turbo run dev",
 		"lint": "turbo run lint",
-		"format": "prettier --write .",
+		"format": "oxfmt",
 		"clean": "rm -rf node_modules package-lock.json apps/*/node_modules apps/*/package-lock.json apps/*/.svelte-kit apps/*/.turbo",
 		"fresh": "npm run format && npm run clean && npm i --legacy-peer-deps",
 		"fresh:start": "npm run fresh && npm run dev",
@@ -28,13 +31,9 @@
 	"devDependencies": {
 		"@changesets/cli": "^2.27.1",
 		"eslint": "^8.48.0",
-		"prettier": "^3.0.3",
-		"prettier-plugin-svelte": "^3.0.3",
+		"oxfmt": "^0.35.0",
 		"tsconfig": "*",
 		"turbo": "latest"
 	},
-	"packageManager": "npm@9.5.0",
-	"workspaces": [
-		"apps/*"
-	]
+	"packageManager": "npm@9.5.0"
 }
