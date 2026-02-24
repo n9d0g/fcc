@@ -7,7 +7,8 @@ export const load = async () => {
 		breadcrumbs.ministries.praise,
 	]
 
-	const gallery = await client.fetch(`*[_type == "page-gallery" && pageUrl == "/ministries/praise"][0]{
+	const gallery =
+		await client.fetch(`*[_type == "page-gallery" && pageUrl == "/ministries/praise"][0]{
 		title,
 		photos[]{
 			"url": asset->url,

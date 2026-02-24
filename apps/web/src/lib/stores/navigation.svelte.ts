@@ -27,7 +27,8 @@ export function setNavActiveState(path: string) {
 	if (path.includes('about')) navigationState.activeNav = 'about'
 	else if (path.includes('sermons')) navigationState.activeNav = 'sermons'
 	else if (path.includes('ministries')) navigationState.activeNav = 'ministries'
-	else if (path.includes('small-groups')) navigationState.activeNav = 'small-groups'
+	else if (path.includes('small-groups'))
+		navigationState.activeNav = 'small-groups'
 	else if (path.includes('give')) navigationState.activeNav = 'give'
 	else if (path.includes('events')) navigationState.activeNav = 'events'
 	else navigationState.activeNav = 'home'

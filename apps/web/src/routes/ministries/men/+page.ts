@@ -11,7 +11,8 @@ export const load = async ({ setHeaders, url }) => {
 		breadcrumbs.ministries.men,
 	]
 
-	const gallery = await client.fetch(`*[_type == "page-gallery" && pageUrl == "/ministries/men"][0]{
+	const gallery =
+		await client.fetch(`*[_type == "page-gallery" && pageUrl == "/ministries/men"][0]{
 		title,
 		photos[]{
 			"url": asset->url,

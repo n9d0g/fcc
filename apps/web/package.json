@@ -1,7 +1,7 @@
 {
 	"name": "web",
+	"version": "3.20.3",
 	"private": true,
-	"version": "3.20.2",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev --host --open",
@@ -12,8 +12,8 @@
 		"test": "npx playwright test tests",
 		"test:ui": "playwright test --ui",
 		"test:unit": "vitest",
-		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write .",
+		"lint": "oxfmt --check && eslint .",
+		"format": "oxfmt",
 		"fresh": "rm -rf node_modules .svelte-kit playwright-report test-results .unlighthouse && npm i && npm run format",
 		"fresh:start": "npm run fresh && npm run dev",
 		"unlighthouse": "npx unlighthouse --site fcccanada.ca",
@@ -50,9 +50,6 @@
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.46.0",
 		"lint-staged": "^15.2.11",
-		"prettier": "^3.4.2",
-		"prettier-plugin-svelte": "^3.3.2",
-		"prettier-plugin-tailwindcss": "^0.6.9",
 		"vitest": "^2.1.8"
 	}
 }
