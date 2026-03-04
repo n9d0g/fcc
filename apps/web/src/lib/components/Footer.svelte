@@ -3,7 +3,6 @@
 	import Icon from '@iconify/svelte'
 	import pkgJsonInfo from '../../../package.json'
 	import { format, addDays } from 'date-fns'
-	import LightDarkToggle from '$lib/components/LightDarkToggle.svelte'
 
 	const year = format(addDays(new Date(), 1), 'yyyy')
 </script>
@@ -42,21 +41,11 @@
 
 		<!-- Copyright -->
 		<p class="text-center text-sm">
-			© 2022-{year}, Copyright by
-			<a
-				class="hover:text-primary-400 font-bold transition-all"
-				href={links.njil}
-			>
-				NJIL Development.
-			</a>
-			<br />
-			All Rights Reserved.
+			© 2022-{year}
+			<a class="hover:text-primary-400 font-bold transition-all" href={links.njil}> NJIL Development </a>
 		</p>
 		<p class="mt-2 text-center">
-			<a
-				href={links.ghReleases}
-				class="text-primary-600 dark:text-primary-400 text-xs no-underline hover:underline"
-			>
+			<a href={links.ghReleases} class="text-primary-600 dark:text-primary-400 text-xs no-underline hover:underline">
 				v{pkgJsonInfo.version}
 			</a>
 		</p>
