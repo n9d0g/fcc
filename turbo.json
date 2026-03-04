@@ -1,6 +1,18 @@
 {
 	"$schema": "https://turbo.build/schema.json",
 	"globalDependencies": ["**/.env.*local"],
+	"globalPassThroughEnv": [
+		"SANITY_API_PROJECT_ID",
+		"SANITY_STUDIO_PROJECT_ID",
+		"SANITY_API_DATASET",
+		"SANITY_STUDIO_DATASET",
+		"SANITY_API_READ_TOKEN",
+		"SANITY_API_WRITE_TOKEN",
+		"GOOGLE_EMAIL",
+		"GOOGLE_EMAIL_PASSWORD",
+		"GOOGLE_MAPS_API_KEY",
+		"GOOGLE_RECAPTCHA_SECRET_KEY"
+	],
 	"tasks": {
 		"build": {
 			"dependsOn": ["^build"],
