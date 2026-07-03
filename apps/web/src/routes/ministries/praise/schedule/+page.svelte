@@ -6,8 +6,8 @@
 	import PraiseAssignments from '$lib/components/ministries/praise/PraiseAssignments.svelte'
 	import { updatedDataFiltered, searchFilter } from '$lib/utils'
 	import { openPraiseModal } from '$lib/stores/modalStore.svelte'
-	import { links } from '$lib/constants'
-	import { format, addDays } from 'date-fns'
+	import { links } from '$lib/config'
+	import { formatCmsDate } from '$lib/utils'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
@@ -24,7 +24,7 @@
 	let filterTerm = $state('lead')
 	let searchTerm = $state('')
 
-	const upToDatePraiseData = updatedDataFiltered(data.praise, 'date')
+	let upToDatePraiseData = $derived(updatedDataFiltered(data.praise, 'date'))
 
 	// Derived values
 	let filteredData = $derived(
@@ -123,7 +123,7 @@
 												? 'dark:bg-surface-800 bg-white'
 												: 'dark:bg-surface-900 bg-gray-50'}"
 										>
-											{format(addDays(new Date(week[col]), 1), 'MMM do')}
+											{formatCmsDate(week[col], 'MMM do')}
 										</td>
 									{:else if col === 'unavailableList'}
 										<td>

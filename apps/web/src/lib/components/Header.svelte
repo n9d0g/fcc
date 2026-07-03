@@ -2,7 +2,7 @@
 	import Icon from '@iconify/svelte'
 	import NavButton from '$lib/components/NavButton.svelte'
 	import { navigationState } from '$lib/stores/navigation.svelte'
-	import { navOptions } from '$lib/constants'
+	import { navOptions } from '$lib/config'
 	import LightDarkToggle from '$lib/components/LightDarkToggle.svelte'
 
 	// Svelte 5 props

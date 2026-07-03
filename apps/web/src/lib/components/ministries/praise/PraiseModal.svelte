@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { format, addDays } from 'date-fns'
+	import { formatCmsDate } from '$lib/utils'
 	import type { PraiseModalData } from '$lib/stores/modalStore.svelte'
 	import Icon from '@iconify/svelte'
 
@@ -7,9 +7,7 @@
 	let { data, onclose }: { data: PraiseModalData; onclose: () => void } = $props()
 
 	// Derived values
-	const formattedDate = $derived(
-		data.date ? format(addDays(new Date(data.date), 1), 'MMMM do, yyyy') : 'Date not available'
-	)
+	const formattedDate = $derived(formatCmsDate(data.date))
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->

@@ -2,7 +2,7 @@
 	import { page } from '$app/stores'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 	import LandingPageGrid from '$lib/components/LandingPageGrid.svelte'
-	import { breadcrumbs } from '$lib/constants'
+	import { breadcrumbs } from '$lib/config'
 
 	const title = $derived(`FCC | ${$page.status}`)
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.error]

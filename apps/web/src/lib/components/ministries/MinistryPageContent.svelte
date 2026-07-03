@@ -12,11 +12,8 @@
 		description: string
 	}
 
-	export interface GalleryPhoto {
-		url: string
-		alt?: string
-		caption?: string
-	}
+	import PhotoGallery from '$lib/components/PhotoGallery.svelte'
+	import type { GalleryPhoto } from '$lib/types'
 
 	interface Props {
 		// Welcome section
@@ -139,28 +136,5 @@
 
 <!-- Photo Gallery from CMS -->
 {#if gallery?.photos && gallery.photos.length > 0}
-	<div>
-		<h3 class="h3 mb-4 font-bold">{galleryTitle}</h3>
-		<div
-			class="grid auto-rows-[200px] grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
-		>
-			{#each gallery.photos as photo, index}
-				<div
-					class="overflow-hidden rounded-lg {index === 0
-						? 'col-span-2 row-span-2'
-						: index === 3
-							? 'col-span-2'
-							: index === 6
-								? 'row-span-2'
-								: ''}"
-				>
-					<img
-						src={photo.url}
-						alt={photo.alt || 'Gallery photo'}
-						class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-					/>
-				</div>
-			{/each}
-		</div>
-	</div>
+	<PhotoGallery photos={gallery.photos} title={galleryTitle} />
 {/if}

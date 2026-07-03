@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Youtube from 'svelte-youtube-embed'
-	import { format, addDays } from 'date-fns'
+	import { formatCmsDate } from '$lib/utils'
 	import type { SermonModalData } from '$lib/stores/modalStore.svelte'
 	import Icon from '@iconify/svelte'
 
@@ -9,9 +9,7 @@
 
 	// Derived values
 	const youtubeId = $derived(data.youtube.replace('https://www.youtube.com/watch?v=', ''))
-	const formattedDate = $derived(
-		data.date ? format(addDays(new Date(data.date), 1), 'MMMM do, yyyy') : 'Date not available'
-	)
+	const formattedDate = $derived(formatCmsDate(data.date))
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->

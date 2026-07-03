@@ -4,7 +4,7 @@
  */
 
 // Re-export all config modules
-export { client } from './sanity'
+export { client, fetchPageGallery } from './sanity'
 export { navOptions } from './navigation'
 export { links, missionVision } from './links'
 export { breadcrumbs } from './breadcrumbs'

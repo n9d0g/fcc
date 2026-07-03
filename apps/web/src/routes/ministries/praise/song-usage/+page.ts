@@ -1,5 +1,7 @@
-import { headData, breadcrumbs } from '$lib/constants'
+import { headData, breadcrumbs } from '$lib/config'
 import { supabase } from '$lib/supabaseClient'
+import { error } from '@sveltejs/kit'
+import { sortByField } from '$lib/utils'
 
 export const load = async () => {
 	const { data: songs } = await supabase.from('songs').select()
@@ -14,15 +16,10 @@ export const load = async () => {
 		return {
 			title: 'Song Usage',
 			breadcrumb: breadcrumb,
-			songs:
-				songs.sort((a: any, b: any) => (a.song_name > b.song_name ? 1 : -1)) ??
-				[],
+			songs: sortByField(songs, 'song_name', 'asc'),
 			tHead: ['Song Name', 'Artist', 'Times Played', 'Spotify'],
 			headData: headData.songUsage,
 		}
 
-	return {
-		status: 500,
-		body: new Error('Internal Server Error'),
-	}
+	throw error(500, 'Internal Server Error')
 }

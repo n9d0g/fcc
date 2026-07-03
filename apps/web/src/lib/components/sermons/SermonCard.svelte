@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { format, addDays } from 'date-fns'
+	import { formatCmsDate } from '$lib/utils'
 	import { openSermonModal } from '$lib/stores/modalStore.svelte'
 
 	// Svelte 5 props
@@ -32,11 +32,7 @@
 	$effect(() => {
 		thumbImg = maxResUrl
 	})
-	const formattedDate = $derived(
-		date
-			? format(addDays(new Date(date), 1), 'MMMM do, yyyy')
-			: 'Date not available'
-	)
+	const formattedDate = $derived(formatCmsDate(date))
 
 	const handleSermonClick = () => {
 		openSermonModal({ title, date, speaker, scripture, youtube })

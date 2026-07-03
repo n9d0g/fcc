@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { links } from '$lib/constants'
+	import { links } from '$lib/config'
 
 	// Svelte 5 props
 	let { pageInfo }: { pageInfo: { invite: string } } = $props()

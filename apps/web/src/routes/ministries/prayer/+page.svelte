@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { format, addDays } from 'date-fns'
+	import { formatCmsDate } from '$lib/utils'
 	import { searchFilter } from '$lib/utils'
 	import { fade } from 'svelte/transition'
 	import FccLayout from '$lib/components/FccLayout.svelte'
@@ -114,7 +114,7 @@
 					<tbody>
 						{#each searchFilter(prayerData, 'name', filterQuery) as row}
 							<tr>
-								<td>{format(addDays(new Date(row.date), 1), 'MMMM do')}</td>
+								<td>{formatCmsDate(row.date, 'MMMM do')}</td>
 								<td>{row.name}</td>
 								<td>{row.scripture}</td>
 							</tr>

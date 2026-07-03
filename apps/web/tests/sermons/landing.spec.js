@@ -2,5 +2,7 @@ import { test, expect } from '@playwright/test'
 
 test('has title', async ({ page }) => {
 	await page.goto('https://fcccanada.ca/sermons')
-	await expect(page).toHaveTitle('FCC | Sermons')
+	await expect(page).toHaveTitle(
+		'Sermons & Messages | Freedom in Christ Church'
+	)
 })

@@ -1,9 +1,9 @@
-import { client, headData, breadcrumbs } from '$lib/constants'
-import { updatedDataFiltered, setCacheHeaders } from '$lib/utils'
+import { client, headData, breadcrumbs } from '$lib/config'
+import { updatedDataFiltered, setCacheHeaders, CACHE_PRESETS } from '$lib/utils'
 
 export const load = async ({ setHeaders, url }) => {
 	// Cache sunday ministries for 10 minutes, allow stale for 1 hour (bust=true to bypass)
-	setCacheHeaders(setHeaders, url, 600, 3600)
+	setCacheHeaders(setHeaders, url, ...CACHE_PRESETS.short)
 
 	const data = await client.fetch(`*[_type == "sunday-ministries"]`)
 	const breadcrumb = [

@@ -1,26 +1,28 @@
 <script lang="ts">
-	import { format, addDays } from 'date-fns'
+	import { formatCmsDate } from '$lib/utils'
 	import FccLayout from '$lib/components/FccLayout.svelte'
+	import PhotoGallery from '$lib/components/PhotoGallery.svelte'
+	import type { PageLayoutData } from '$lib/types'
 
-	// Svelte 5 props
-	let { data }: { data: any } = $props()
-	const {
-		tHeaders,
-		tBody,
-		title,
-		breadcrumb,
-		headData,
-		sundaySchoolLinks,
-		gallery,
-	} = data
+	let { data }: { data: PageLayoutData & { tHeaders: string[]; tBody: unknown[]; sundaySchoolLinks: Array<{ section: string }>; gallery: { photos: unknown[] } } } = $props()
 
-	const juniorLinks =
-		sundaySchoolLinks?.filter((link: any) => link.section === 'junior') || []
-	const primaryLinks =
-		sundaySchoolLinks?.filter((link: any) => link.section === 'primary') || []
-	const additionalLinks =
-		sundaySchoolLinks?.filter((link: any) => link.section === 'additional') ||
-		[]
+	let tHeaders = $derived(data.tHeaders)
+	let tBody = $derived(data.tBody)
+	let title = $derived(data.title)
+	let breadcrumb = $derived(data.breadcrumb)
+	let headData = $derived(data.headData)
+	let sundaySchoolLinks = $derived(data.sundaySchoolLinks)
+	let gallery = $derived(data.gallery)
+
+	let juniorLinks = $derived(
+		sundaySchoolLinks?.filter((link) => link.section === 'junior') || []
+	)
+	let primaryLinks = $derived(
+		sundaySchoolLinks?.filter((link) => link.section === 'primary') || []
+	)
+	let additionalLinks = $derived(
+		sundaySchoolLinks?.filter((link) => link.section === 'additional') || []
+	)
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
@@ -264,7 +266,7 @@
 						<td
 							class="bg-gray-50 dark:bg-surface-800 max-lg:table-cell-fit sticky left-0 w-6 pl-3 text-left font-bold"
 						>
-							{format(addDays(new Date(month.date), 1), 'MMMM')}
+							{formatCmsDate(month.date, 'MMMM')}
 						</td>
 						<td
 							class="max-lg:table-cell-fit w-6 pl-3 text-left whitespace-nowrap"
@@ -287,31 +289,7 @@
 		</table>
 	</div>
 
-	<!-- Photo Gallery -->
-	{#if gallery?.photos && gallery.photos.length > 0}
-		<div>
-			<h3 class="h3 mb-4 font-bold">Photo Gallery</h3>
-			<div
-				class="grid auto-rows-[200px] grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
-			>
-				{#each gallery.photos as photo, index}
-					<div
-						class="overflow-hidden rounded-lg {index === 0
-							? 'col-span-2 row-span-2'
-							: index === 3
-								? 'col-span-2'
-								: index === 6
-									? 'row-span-2'
-									: ''}"
-					>
-						<img
-							src={photo.url}
-							alt={photo.alt || 'Gallery photo'}
-							class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-						/>
-					</div>
-				{/each}
-			</div>
-		</div>
+	{#if gallery?.photos}
+		<PhotoGallery photos={gallery.photos} />
 	{/if}
 </FccLayout>

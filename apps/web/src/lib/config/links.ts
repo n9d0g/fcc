@@ -28,12 +28,6 @@ export const links = {
 		attendance:
 			'https://docs.google.com/spreadsheets/d/1-wwTym8TqkicbAW9Eb42kdy0Qtp0HneuseVycepJ-OE/edit#gid=595486822',
 	},
-	wcg: {
-		zoom: 'https://us02web.zoom.us/j/8781264602?pwd=dHkwcytVdXdYWXVOdk82Smk4WS9UZz09',
-		core52: 'https://core52.org/',
-		doctrines: 'https://www.minibiblelessons.com/doctrine/',
-		teenTopics: 'https://www.minibiblelessons.com/teen-topics/',
-	},
 	socials: {
 		youtube: 'https://www.youtube.com/@freedominchristchurchcanada',
 		ig: 'https://www.instagram.com/fcc.canada/',

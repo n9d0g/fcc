@@ -1,4 +1,4 @@
-import { client, headData, breadcrumbs } from '$lib/constants'
+import { headData, breadcrumbs, fetchPageGallery } from '$lib/config'
 
 export const load = async () => {
 	const breadcrumb = [
@@ -7,15 +7,7 @@ export const load = async () => {
 		breadcrumbs.ministries.praise,
 	]
 
-	const gallery =
-		await client.fetch(`*[_type == "page-gallery" && pageUrl == "/ministries/praise"][0]{
-		title,
-		photos[]{
-			"url": asset->url,
-			alt,
-			caption
-		}
-	}`)
+	const gallery = await fetchPageGallery('/ministries/praise')
 
 	return {
 		title: 'Praise & Worship Ministry.',
