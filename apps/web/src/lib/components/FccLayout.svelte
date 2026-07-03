@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 	import { page } from '$app/stores'
-	import { setNavActiveState, setActivePath } from '$lib/utils'
+	import { setNavActiveState, setActivePath, buildSeoHeadExtras } from '$lib/utils'
 	import type { Snippet } from 'svelte'
 
 	// Svelte 5 props
@@ -20,6 +20,9 @@
 	// Reactive state from store
 	let path = $derived($page.url.pathname)
 	let url = $derived($page.url.href)
+	let seoHeadExtras = $derived(
+		buildSeoHeadExtras(url, headData.title, headData.description)
+	)
 
 	onMount(() => {
 		setNavActiveState(path)
@@ -30,18 +33,7 @@
 <svelte:head>
 	<title>{headData.title}</title>
 	<meta name="description" content={headData.description} />
-	{@html `
-	<link rel="canonical" href="${url}"/>
-	<script type="application/ld+json">
-		{
-			"@context": "http://schema.org",
-			"@type": "website",
-			"name": "${headData.title}",
-			"description": "${headData.description}",
-			"url": "${url}"
-		}
-	</script>
-	`}
+	{@html seoHeadExtras}
 </svelte:head>
 
 <section class="container mx-auto flex flex-col px-4 py-8 lg:py-16">

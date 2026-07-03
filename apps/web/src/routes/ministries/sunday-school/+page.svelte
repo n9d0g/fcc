@@ -10,7 +10,6 @@
 		title,
 		breadcrumb,
 		headData,
-		sundaySchoolData,
 		sundaySchoolLinks,
 		gallery,
 	} = data

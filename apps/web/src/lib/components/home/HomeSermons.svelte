@@ -6,6 +6,7 @@
 		sermons,
 	}: {
 		sermons: Array<{
+			_id: string
 			title: string
 			date: string
 			speaker: string
@@ -18,7 +19,7 @@
 <section class="container mx-auto my-16 flex h-fit flex-col justify-center gap-8 px-4">
 	<h2 class="h2 text-center text-4xl font-bold">Recent Sermons</h2>
 	<div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-		{#each sermons.slice(0, 3) as sermon}
+		{#each sermons.slice(0, 3) as sermon (sermon._id)}
 			<SermonCard
 				title={sermon.title}
 				date={sermon.date}

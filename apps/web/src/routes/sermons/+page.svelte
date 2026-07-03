@@ -31,8 +31,15 @@
 
 	// Reset page when filter changes
 	$effect(() => {
-		if (bindVal) {
-			currentPage = 0
+		void bindVal
+		currentPage = 0
+	})
+
+	// Scroll to top when pagination changes (especially on mobile)
+	$effect(() => {
+		void currentPage
+		if (typeof window !== 'undefined') {
+			window.scrollTo({ top: 0, behavior: 'smooth' })
 		}
 	})
 </script>
@@ -50,7 +57,7 @@
 	<Paginator bind:page={currentPage} {pageSize} totalItems={sortedSermons.length} class="my-8" />
 
 	<div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-		{#each paginatedSource as sermon}
+		{#each paginatedSource as sermon (sermon._id)}
 			<SermonCard
 				title={sermon.title}
 				date={sermon.date}

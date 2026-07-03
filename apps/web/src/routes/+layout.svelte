@@ -8,7 +8,6 @@
 	import SideNav from '$lib/components/SideNav.svelte'
 	import Banner from '$lib/components/Banner.svelte'
 	import Dialog from '$lib/components/Modal.svelte'
-	import { navigationState } from '$lib/stores/navigation.svelte'
 	import { afterNavigate, onNavigate } from '$app/navigation'
 
 	// Svelte 5 props

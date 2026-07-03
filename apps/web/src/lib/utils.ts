@@ -12,7 +12,7 @@ export { setNavActiveState, setActivePath } from '$lib/stores/navigation.svelte'
  * @param staleWhileRevalidate - Stale-while-revalidate in seconds (default: 3600 = 1 hour)
  */
 export const setCacheHeaders = (
-	setHeaders: (headers: Record<string, string>) => void,
+	setHeaders: (_headers: Record<string, string>) => void,
 	url: URL,
 	maxAge: number = 600,
 	staleWhileRevalidate: number = 3600
@@ -42,4 +42,20 @@ export const updatedDataFiltered = (array: any[], field: string) => {
 	return array
 		.filter((item: any) => item[field] >= dateToday)
 		.sort((a: any, b: any) => (a[field] > b[field] ? 1 : -1))
+}
+
+export const buildSeoHeadExtras = (
+	url: string,
+	title: string,
+	description: string
+) => {
+	const schema = JSON.stringify({
+		'@context': 'http://schema.org',
+		'@type': 'website',
+		name: title,
+		description,
+		url,
+	})
+
+	return `<link rel="canonical" href="${url}"/><script type="application/ld+json">${schema}</script>`
 }

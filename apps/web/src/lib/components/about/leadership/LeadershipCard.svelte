@@ -4,7 +4,7 @@
 		name,
 		title,
 		img,
-		sort,
+		sort: _sort,
 		subministries,
 	}: {
 		name: string
