@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { format, addDays } from 'date-fns'
+	import { formatCmsDate } from '$lib/utils'
 	import FccLayout from '$lib/components/FccLayout.svelte'
 
 	// Svelte 5 props
@@ -50,7 +50,7 @@
 								? 'dark:bg-surface-800 bg-white'
 								: 'dark:bg-surface-700 bg-gray-50'}"
 						>
-							{format(addDays(new Date(month.date), 1), 'MMMM')}
+							{formatCmsDate(month.date, 'MMMM')}
 						</td>
 						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
 							>{month.presider}</td

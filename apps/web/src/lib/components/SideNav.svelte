@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { navOptions } from '$lib/constants'
+	import { navOptions } from '$lib/config'
 	import Icon from '@iconify/svelte'
 
 	// Svelte 5 props

@@ -1,18 +1,27 @@
-import { formatISO } from 'date-fns'
+import { addDays, format, formatISO } from 'date-fns'
 
-// Navigation functions are now in $lib/stores/navigation.svelte.ts
-// Re-export them for backward compatibility
-export { setNavActiveState, setActivePath } from '$lib/stores/navigation.svelte'
+// Re-export navigation helper for backward compatibility
+export { setNavActiveState } from '$lib/stores/navigation.svelte'
+
+export const CACHE_PRESETS = {
+	short: [600, 3600] as const,
+	long: [3600, 86400] as const,
+	home: [300, 3600] as const,
+}
 
 /**
- * Sets cache headers with bust=true query param support
- * @param setHeaders - SvelteKit's setHeaders function
- * @param url - The request URL
- * @param maxAge - Cache max-age in seconds (default: 600 = 10 minutes)
- * @param staleWhileRevalidate - Stale-while-revalidate in seconds (default: 3600 = 1 hour)
+ * Formats CMS date strings with +1 day offset for timezone alignment.
  */
+export const formatCmsDate = (
+	date: string,
+	pattern: string = 'MMMM do, yyyy'
+): string => {
+	if (!date) return 'Date not available'
+	return format(addDays(new Date(date), 1), pattern)
+}
+
 export const setCacheHeaders = (
-	setHeaders: (headers: Record<string, string>) => void,
+	setHeaders: (_headers: Record<string, string>) => void,
 	url: URL,
 	maxAge: number = 600,
 	staleWhileRevalidate: number = 3600
@@ -26,20 +35,57 @@ export const setCacheHeaders = (
 	})
 }
 
-export const searchFilter = (
-	array: any[],
-	arrayField: string,
+export const sortByField = <T extends Record<string, unknown>>(
+	array: T[],
+	field: keyof T & string,
+	direction: 'asc' | 'desc' = 'asc'
+) => {
+	return [...array].sort((a, b) => {
+		const aVal = String(a[field] ?? '')
+		const bVal = String(b[field] ?? '')
+		const comparison = aVal.localeCompare(bVal)
+		return direction === 'asc' ? comparison : -comparison
+	})
+}
+
+export const searchFilter = <T extends Record<string, unknown>>(
+	array: T[],
+	arrayField: keyof T & string,
 	searchTerm: string
 ) => {
-	return array.filter((item: any) =>
-		item[arrayField].toLowerCase().includes(searchTerm.toLowerCase())
+	return array.filter((item) => {
+		const value = item[arrayField]
+		return String(value ?? '')
+			.toLowerCase()
+			.includes(searchTerm.toLowerCase())
+	})
+}
+
+export const updatedDataFiltered = <T extends Record<string, unknown>>(
+	array: T[],
+	field: keyof T & string
+) => {
+	const dateToday = formatISO(new Date(), { representation: 'date' })
+
+	return sortByField(
+		array.filter((item) => String(item[field] ?? '') >= dateToday),
+		field,
+		'asc'
 	)
 }
 
-export const updatedDataFiltered = (array: any[], field: string) => {
-	const dateToday = formatISO(new Date(), { representation: 'date' })
+export const buildSeoHeadExtras = (
+	url: string,
+	title: string,
+	description: string
+) => {
+	const schema = JSON.stringify({
+		'@context': 'http://schema.org',
+		'@type': 'website',
+		name: title,
+		description,
+		url,
+	})
 
-	return array
-		.filter((item: any) => item[field] >= dateToday)
-		.sort((a: any, b: any) => (a[field] > b[field] ? 1 : -1))
+	return `<link rel="canonical" href="${url}"/><script type="application/ld+json">${schema}</script>`
 }

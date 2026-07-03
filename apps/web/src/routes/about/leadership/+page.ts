@@ -1,9 +1,9 @@
-import { client, headData, breadcrumbs } from '$lib/constants'
-import { setCacheHeaders } from '$lib/utils'
+import { client, headData, breadcrumbs } from '$lib/config'
+import { setCacheHeaders, CACHE_PRESETS } from '$lib/utils'
 
 export const load = async ({ setHeaders, url }) => {
 	// Cache leadership for 1 hour, allow stale for 24 hours (bust=true to bypass)
-	setCacheHeaders(setHeaders, url, 3600, 86400)
+	setCacheHeaders(setHeaders, url, ...CACHE_PRESETS.long)
 
 	const data = await client.fetch(`
     *[_type == "leadership"] {

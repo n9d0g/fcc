@@ -1,5 +1,5 @@
 import { redirect, error } from '@sveltejs/kit'
-import { client } from '$lib/constants'
+import { client } from '$lib/config'
 
 export const load = async () => {
 	// fetch praise data and sort by date

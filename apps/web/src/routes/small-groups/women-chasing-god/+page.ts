@@ -1,9 +1,9 @@
-import { client, headData, breadcrumbs, links } from '$lib/constants'
-import { setCacheHeaders } from '$lib/utils'
+import { headData, breadcrumbs, links, fetchPageGallery } from '$lib/config'
+import { setCacheHeaders, CACHE_PRESETS } from '$lib/utils'
 
 export const load = async ({ setHeaders, url }) => {
 	// Cache for 1 hour, allow stale for 24 hours (bust=true to bypass)
-	setCacheHeaders(setHeaders, url, 3600, 86400)
+	setCacheHeaders(setHeaders, url, ...CACHE_PRESETS.long)
 
 	const breadcrumb = [
 		breadcrumbs.home,
@@ -11,15 +11,7 @@ export const load = async ({ setHeaders, url }) => {
 		breadcrumbs.smallgroups.womenChasingGod,
 	]
 
-	const gallery =
-		await client.fetch(`*[_type == "page-gallery" && pageUrl == "/small-groups/women-chasing-god"][0]{
-		title,
-		photos[]{
-			"url": asset->url,
-			alt,
-			caption
-		}
-	}`)
+	const gallery = await fetchPageGallery('/small-groups/women-chasing-god')
 
 	return {
 		title: 'FCC Women Chasing God Small Group.',

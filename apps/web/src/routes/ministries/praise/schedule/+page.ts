@@ -1,9 +1,10 @@
-import { client, headData, breadcrumbs } from '$lib/constants'
-import { setCacheHeaders } from '$lib/utils'
+import { client, headData, breadcrumbs } from '$lib/config'
+import { setCacheHeaders, CACHE_PRESETS } from '$lib/utils'
+import { error } from '@sveltejs/kit'
 
 export const load = async ({ setHeaders, url }) => {
 	// Cache praise schedule for 10 minutes, allow stale for 1 hour (bust=true to bypass)
-	setCacheHeaders(setHeaders, url, 600, 3600)
+	setCacheHeaders(setHeaders, url, ...CACHE_PRESETS.short)
 
 	const data = await client.fetch(`
     *[_type == "praise"] {
@@ -103,8 +104,5 @@ export const load = async ({ setHeaders, url }) => {
 			],
 		}
 
-	return {
-		status: 500,
-		body: new Error('Internal Server Error'),
-	}
+	throw error(500, 'Internal Server Error')
 }

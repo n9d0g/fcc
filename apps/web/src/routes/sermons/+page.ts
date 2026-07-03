@@ -1,23 +1,21 @@
-import { client, headData, breadcrumbs } from '$lib/constants'
-import { setCacheHeaders } from '$lib/utils'
+import { client, headData, breadcrumbs } from '$lib/config'
+import { setCacheHeaders, CACHE_PRESETS, sortByField } from '$lib/utils'
+import { error } from '@sveltejs/kit'
 
 export const load = async ({ setHeaders, url }) => {
 	const data = await client.fetch(`*[_type == "sermons"]`)
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.sermons]
 
 	// Cache sermons for 10 minutes, allow stale for 1 hour (bust=true to bypass)
-	setCacheHeaders(setHeaders, url, 600, 3600)
+	setCacheHeaders(setHeaders, url, ...CACHE_PRESETS.short)
 
 	if (data)
 		return {
 			title: 'Sermons.',
 			breadcrumb: breadcrumb,
-			sermons: data.sort((a: any, b: any) => (a.date < b.date ? 1 : -1)),
+			sermons: sortByField(data, 'date', 'desc'),
 			headData: headData.sermons,
 		}
 
-	return {
-		status: 500,
-		body: new Error('Internal Server Error'),
-	}
+	throw error(500, 'Internal Server Error')
 }

@@ -1,4 +1,4 @@
-import { client } from '$lib/constants'
+import { client } from '$lib/config'
 
 export const load = async ({ url }) => {
 	const banner = await client.fetch(`*[_type == "banner"]`)

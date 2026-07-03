@@ -1,9 +1,9 @@
-import { headData, client, breadcrumbs } from '$lib/constants'
-import { updatedDataFiltered, setCacheHeaders } from '$lib/utils'
+import { headData, client, breadcrumbs, fetchPageGallery } from '$lib/config'
+import { updatedDataFiltered, setCacheHeaders, CACHE_PRESETS } from '$lib/utils'
+import { error } from '@sveltejs/kit'
 
 export const load = async ({ setHeaders, url }) => {
-	// Cache prayer data for 10 minutes, allow stale for 1 hour (bust=true to bypass)
-	setCacheHeaders(setHeaders, url, 600, 3600)
+	setCacheHeaders(setHeaders, url, ...CACHE_PRESETS.short)
 
 	const [data, gallery] = await Promise.all([
 		client.fetch(`
@@ -11,14 +11,7 @@ export const load = async ({ setHeaders, url }) => {
 				name, date, scripture
 			}
 		`),
-		client.fetch(`*[_type == "page-gallery" && pageUrl == "/ministries/prayer"][0]{
-			title,
-			photos[]{
-				"url": asset->url,
-				alt,
-				caption
-			}
-		}`),
+		fetchPageGallery('/ministries/prayer'),
 	])
 
 	const breadcrumb = [
@@ -36,8 +29,5 @@ export const load = async ({ setHeaders, url }) => {
 			gallery,
 		}
 	}
-	return {
-		status: 500,
-		body: new Error('Internal Server Error'),
-	}
+	throw error(500, 'Internal Server Error')
 }

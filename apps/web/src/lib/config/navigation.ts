@@ -30,7 +30,7 @@ export const navOptions = [
 		icon: 'mdi:cash-check',
 	},
 	{
-		href: '/',
+		href: '/login',
 		title: 'Login',
 		icon: 'ion:log-in',
 	},

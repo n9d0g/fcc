@@ -165,29 +165,5 @@ export const headData = {
 		title: "Sunday School | Children's Ministry at Freedom in Christ Church",
 		description:
 			"Nurture your child's faith at Freedom in Christ Church's Sunday School in Mississauga. Age-appropriate Bible teaching, fun activities, and spiritual growth for children of all ages.",
-		teachers: {
-			title:
-				"Sunday School Teachers | Children's Ministry Leaders at Freedom in Christ Church",
-			description:
-				"Meet our dedicated Sunday School teachers at Freedom in Christ Church in Mississauga. Our passionate educators are committed to nurturing children's faith through biblical teaching and love.",
-		},
-		toddler: {
-			title:
-				'Toddler Sunday School | Early Childhood Ministry at Freedom in Christ Church',
-			description:
-				"Introduce your toddler to God's love at Freedom in Christ Church's Toddler Sunday School in Mississauga. Safe, nurturing environment with age-appropriate Bible stories and activities.",
-		},
-		primary: {
-			title:
-				"Primary Sunday School | Elementary Children's Ministry at Freedom in Christ Church",
-			description:
-				"Engage your elementary-age child at Freedom in Christ Church's Primary Sunday School in Mississauga. Interactive Bible lessons, crafts, and foundational Christian education.",
-		},
-		junior: {
-			title:
-				'Junior Sunday School | Pre-Teen Ministry at Freedom in Christ Church',
-			description:
-				"Help your pre-teen grow in faith at Freedom in Christ Church's Junior Sunday School in Mississauga. Relevant Bible teaching and activities designed for older children.",
-		},
 	},
 }

@@ -26,7 +26,7 @@ export const breadcrumbs = {
 		href: '/ministries',
 		men: { title: 'Men', href: '/ministries/men' },
 		women: { title: 'Women', href: '/ministries/women' },
-		ya: { title: 'Young Adults', href: '/ministies/young-adults' },
+		ya: { title: 'Young Adults', href: '/ministries/young-adults' },
 		prayer: { title: 'Prayer', href: '/ministries/prayer' },
 		youth: { title: 'Youth', href: '/ministries/youth' },
 		sundaySchool: { title: 'Sunday School', href: '/ministries/sunday-school' },
@@ -42,7 +42,7 @@ export const breadcrumbs = {
 		},
 		sundayMinistries: {
 			title: 'Sunday Ministries',
-			href: '/sunday-ministries',
+			href: '/ministries/sunday-ministries',
 		},
 		programming: {
 			title: 'Programming',

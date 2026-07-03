@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { format, addDays } from 'date-fns'
+	import { formatCmsDate } from '$lib/utils'
 	import { openSermonModal } from '$lib/stores/modalStore.svelte'
 
 	// Svelte 5 props
@@ -21,14 +21,18 @@
 	const youtubeId = $derived(
 		youtube.replace('https://www.youtube.com/watch?v=', '')
 	)
-	const thumbImg = $derived(
+	const maxResUrl = $derived(
 		`https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`
 	)
-	const formattedDate = $derived(
-		date
-			? format(addDays(new Date(date), 1), 'MMMM do, yyyy')
-			: 'Date not available'
+	const fallbackUrl = $derived(
+		`https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`
 	)
+	let thumbImg = $state('')
+
+	$effect(() => {
+		thumbImg = maxResUrl
+	})
+	const formattedDate = $derived(formatCmsDate(date))
 
 	const handleSermonClick = () => {
 		openSermonModal({ title, date, speaker, scripture, youtube })
@@ -40,7 +44,18 @@
 	class="card flex cursor-pointer flex-col items-start justify-between transition-shadow hover:shadow-lg"
 >
 	<div>
-		<img src={thumbImg} alt="{title} Image" class="w-full rounded-t-lg" />
+		<img
+			src={thumbImg}
+			alt="{title} Image"
+			class="w-full rounded-t-lg"
+			onerror={() => {
+				thumbImg = fallbackUrl
+			}}
+			onload={(e) => {
+				const img = e.currentTarget
+				if (img.naturalWidth <= 120) thumbImg = fallbackUrl
+			}}
+		/>
 		<header class="card-header text-start text-2xl font-bold">{title}</header>
 		<section
 			class="flex flex-col items-start justify-start gap-4 px-4 pt-3 pb-1"

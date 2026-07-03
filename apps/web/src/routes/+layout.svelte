@@ -8,8 +8,9 @@
 	import SideNav from '$lib/components/SideNav.svelte'
 	import Banner from '$lib/components/Banner.svelte'
 	import Dialog from '$lib/components/Modal.svelte'
-	import { navigationState } from '$lib/stores/navigation.svelte'
 	import { afterNavigate, onNavigate } from '$app/navigation'
+	import { page } from '$app/stores'
+	import { setNavActiveState } from '$lib/stores/navigation.svelte'
 
 	// Svelte 5 props
 	let { data, children }: { data: any; children: Snippet } = $props()
@@ -45,6 +46,10 @@
 
 	// Banner data (derived to stay reactive when data changes)
 	let banner = $derived(data.banner as App.Banner | undefined)
+
+	$effect(() => {
+		setNavActiveState($page.url.pathname)
+	})
 </script>
 
 <!-- Side Navigation Drawer -->
