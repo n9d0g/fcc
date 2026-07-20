@@ -5,4 +5,7 @@ export default defineCliConfig({
 		projectId: 'ygo45klz',
 		dataset: 'production',
 	},
+	server: {
+		port: 6969,
+	},
 })
