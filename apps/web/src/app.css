@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-/* Skeleton v4 imports - order matters */
+/* Skeleton v5 imports - order matters */
 @import '@skeletonlabs/skeleton';
 @import '@skeletonlabs/skeleton/themes/cerberus';
 
@@ -12,8 +12,8 @@
 /* Source Skeleton Svelte components for Tailwind to scan */
 @import '@skeletonlabs/skeleton-svelte';
 
-/* FCC Theme - Custom Colors */
-@theme {
+/* FCC brand colors layered on Cerberus */
+[data-theme='cerberus'] {
 	/* Primary | #0ea5e9 */
 	--color-primary-50: #dbf2fc;
 	--color-primary-100: #cfedfb;
@@ -97,7 +97,9 @@
 	--color-surface-700: #14343a;
 	--color-surface-800: #10292e;
 	--color-surface-900: #0d2226;
+}
 
+@theme {
 	/* Custom background image */
 	--background-image-hero: url('/hero.avif');
 }

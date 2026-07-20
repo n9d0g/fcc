@@ -23,8 +23,6 @@
 		"@floating-ui/dom": "^1.7.6",
 		"@iconify/svelte": "^5.2.2",
 		"@sanity/client": "^7.23.0",
-		"@skeletonlabs/skeleton": "^4.15.2",
-		"@skeletonlabs/skeleton-svelte": "^4.15.2",
 		"@supabase/supabase-js": "^2.110.0",
 		"@sveltejs/adapter-auto": "^7.0.1",
 		"@sveltejs/adapter-vercel": "^6.3.4",
@@ -45,6 +43,8 @@
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
 		"@playwright/test": "^1.61.1",
+		"@skeletonlabs/skeleton": "^5.0.0",
+		"@skeletonlabs/skeleton-svelte": "^5.0.0",
 		"@types/node": "^26.1.0",
 		"@types/nodemailer": "^8.0.1",
 		"eslint": "^10.6.0",
