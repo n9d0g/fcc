@@ -4,15 +4,19 @@
 	import { navigationState } from '$lib/stores/navigation.svelte'
 	import { navOptions } from '$lib/config'
 	import LightDarkToggle from '$lib/components/LightDarkToggle.svelte'
+	import UserMenu from '$lib/components/UserMenu.svelte'
+	import type { User } from '@supabase/supabase-js'
 
-	// Svelte 5 props
-	let { onMenuClick }: { onMenuClick: () => void } = $props()
-
-	// Reactive state
-	let showLoginTooltip = $state(false)
+	let {
+		onMenuClick,
+		user = null,
+	}: {
+		onMenuClick: () => void
+		user?: User | null
+	} = $props()
 </script>
 
-<header class="bg-gray-100 dark:bg-surface-700">
+<header class="sticky top-0 z-50 bg-gray-100 dark:bg-surface-700">
 	<div
 		class="container mx-auto grid grid-cols-2 items-center px-4 py-2 xl:grid-cols-12"
 	>
@@ -68,22 +72,17 @@
 			>
 				Contact
 			</a>
-			<div class="relative">
-				<button
+			{#if user}
+				<UserMenu {user} />
+			{:else}
+				<a
+					href="/login"
 					class="btn preset-filled-secondary-500 hidden xl:block"
-					onmouseenter={() => (showLoginTooltip = true)}
-					onmouseleave={() => (showLoginTooltip = false)}
+					data-sveltekit-preload-data="hover"
 				>
-					Log In
-				</button>
-				{#if showLoginTooltip}
-					<div
-						class="card preset-filled-surface-500 absolute top-full left-1/2 z-50 mt-2 -translate-x-1/2 p-3 shadow-lg"
-					>
-						<p class="text-sm whitespace-nowrap">🚧 Login WIP 🚧</p>
-					</div>
-				{/if}
-			</div>
+					Log in
+				</a>
+			{/if}
 		</div>
 	</div>
 </header>
