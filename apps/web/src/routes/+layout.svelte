@@ -8,7 +8,7 @@
 	import SideNav from '$lib/components/SideNav.svelte'
 	import Banner from '$lib/components/Banner.svelte'
 	import Dialog from '$lib/components/Modal.svelte'
-	import { afterNavigate, onNavigate } from '$app/navigation'
+	import { afterNavigate, invalidate, onNavigate } from '$app/navigation'
 	import { page } from '$app/stores'
 	import { setNavActiveState } from '$lib/stores/navigation.svelte'
 
@@ -46,14 +46,35 @@
 
 	// Banner data (derived to stay reactive when data changes)
 	let banner = $derived(data.banner as App.Banner | undefined)
+	let user = $derived(data.user)
 
 	$effect(() => {
 		setNavActiveState($page.url.pathname)
 	})
+
+	$effect(() => {
+		const supabase = data.supabase
+		if (!supabase) return
+
+		const {
+			data: { subscription },
+		} = supabase.auth.onAuthStateChange((event) => {
+			if (
+				event === 'SIGNED_IN' ||
+				event === 'SIGNED_OUT' ||
+				event === 'TOKEN_REFRESHED' ||
+				event === 'USER_UPDATED'
+			) {
+				invalidate('supabase:auth')
+			}
+		})
+
+		return () => subscription.unsubscribe()
+	})
 </script>
 
 <!-- Side Navigation Drawer -->
-<SideNav open={sideNavOpen} onclose={closeSideNav} />
+<SideNav open={sideNavOpen} onclose={closeSideNav} {user} />
 
 <!-- Global Modal -->
 <Dialog />
@@ -62,8 +83,8 @@
 <Banner {banner} />
 
 <!-- Main Layout -->
-<div class="flex min-h-screen flex-col overflow-y-auto">
-	<Header onMenuClick={openSideNav} />
+<div class="flex min-h-screen flex-col">
+	<Header onMenuClick={openSideNav} {user} />
 	<main class="flex-1 bg-gray-50 dark:bg-surface-800">
 		{@render children?.()}
 	</main>

@@ -1,5 +1,4 @@
-import { GOOGLE_EMAIL } from '$env/static/private'
-import transporter from '$lib/emailSetup.server.js'
+import { RESEND_FROM_EMAIL, resend } from '$lib/resend.server'
 import { z } from 'zod'
 import { GOOGLE_RECAPTCHA_SECRET_KEY } from '$env/static/private'
 import { fail } from '@sveltejs/kit'
@@ -11,13 +10,12 @@ const emailSchema = z.object({
 })
 
 export const actions = {
-	default: async ({ request }: { request: any }) => {
+	default: async ({ request }: { request: Request }) => {
 		try {
 			const formData = Object.fromEntries(await request.formData())
 			const emailData = emailSchema.safeParse(formData)
 			const { name, email, message, grecaptcha } = formData
 
-			// validate contact fields
 			if (emailData.success === false) {
 				const errors = emailData.error.flatten().fieldErrors
 
@@ -63,7 +61,7 @@ export const actions = {
 				}
 			}
 
-			let html = `
+			const html = `
 			<section>
 				<h1>Name: ${name}</h1>
 				<h2>Email: ${email}</h2>
@@ -71,29 +69,26 @@ export const actions = {
 			</section>
 			`
 
-			const data = {
-				from: `"Freedom in Christ Church" <${GOOGLE_EMAIL}>`,
+			const { error } = await resend.emails.send({
+				from: `Freedom in Christ Church <${RESEND_FROM_EMAIL}>`,
 				to: 'nate@njil.dev',
-				bcc: '',
+				replyTo: String(email),
 				subject: `FCC Contact Submission: ${name}`,
-				text: message,
-				html: html,
-			}
+				text: String(message),
+				html,
+			})
 
-			const sendEmail = async (data: any) => {
-				await new Promise((resolve, reject) => {
-					transporter.sendMail(data, (err: any, info: any) => {
-						if (err) {
-							console.error(err)
-							reject(err)
-						} else {
-							resolve(info)
-						}
-					})
+			if (error) {
+				console.error(error)
+				return fail(500, {
+					errors: {
+						grecaptcha: 'Failed to send email. Please try again later.',
+					},
+					name: name,
+					email: email,
+					message: message,
 				})
 			}
-
-			await sendEmail(data)
 
 			return {
 				status: 200,
@@ -101,6 +96,11 @@ export const actions = {
 			}
 		} catch (e) {
 			console.error(e)
+			return fail(500, {
+				errors: {
+					grecaptcha: 'Failed to send email. Please try again later.',
+				},
+			})
 		}
 	},
 }

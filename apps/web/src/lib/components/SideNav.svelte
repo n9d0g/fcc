@@ -1,9 +1,25 @@
 <script lang="ts">
 	import { navOptions } from '$lib/config'
 	import Icon from '@iconify/svelte'
+	import UserMenu from '$lib/components/UserMenu.svelte'
+	import type { User } from '@supabase/supabase-js'
 
-	// Svelte 5 props
-	let { open, onclose }: { open: boolean; onclose: () => void } = $props()
+	let {
+		open,
+		onclose,
+		user = null,
+	}: {
+		open: boolean
+		onclose: () => void
+		user?: User | null
+	} = $props()
+
+	const visibleNavOptions = $derived(
+		navOptions.filter((option) => {
+			if (user && option.title === 'Login') return false
+			return true
+		})
+	)
 </script>
 
 <!-- Drawer Backdrop -->
@@ -18,26 +34,28 @@
 
 <!-- Drawer Panel -->
 <aside
-	class="fixed right-0 top-0 z-50 h-screen w-72 transform bg-white dark:bg-surface-900 shadow-xl transition-transform duration-300 ease-in-out xl:hidden {open
+	class="fixed right-0 top-0 z-50 h-screen w-72 transform bg-white shadow-xl transition-transform duration-300 ease-in-out dark:bg-surface-900 xl:hidden {open
 		? 'translate-x-0'
 		: 'translate-x-full'}"
 >
 	<div class="flex h-full flex-col">
 		<!-- Header -->
-		<header class="flex items-center justify-between border-b border-surface-300-700 p-4">
-			<span class="text-lg font-bold">Menu</span>
-		<button
-			onclick={onclose}
-			class="btn-icon text-gray-700 hover:preset-tonal dark:text-white"
-			aria-label="Close menu"
+		<header
+			class="flex items-center justify-between border-b border-surface-300-700 p-4"
 		>
-			<Icon icon="lucide:x" class="h-6 w-6" />
-		</button>
+			<span class="text-lg font-bold">Menu</span>
+			<button
+				onclick={onclose}
+				class="btn-icon text-gray-700 hover:preset-tonal dark:text-white"
+				aria-label="Close menu"
+			>
+				<Icon icon="lucide:x" class="h-6 w-6" />
+			</button>
 		</header>
 
 		<!-- Navigation Links -->
 		<nav class="flex flex-1 flex-col gap-2 overflow-y-auto p-4">
-			{#each navOptions as option}
+			{#each visibleNavOptions as option}
 				<a
 					onclick={onclose}
 					href={option.href}
@@ -48,5 +66,11 @@
 				</a>
 			{/each}
 		</nav>
+
+		{#if user}
+			<div class="border-t border-surface-300-700 p-4">
+				<UserMenu {user} variant="drawer" onaction={onclose} />
+			</div>
+		{/if}
 	</div>
 </aside>
