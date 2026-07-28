@@ -1,6 +1,6 @@
 {
 	"name": "cms",
-	"version": "1.4.0",
+	"version": "1.4.1",
 	"private": true,
 	"keywords": [
 		"sanity"
@@ -8,9 +8,6 @@
 	"license": "UNLICENSED",
 	"type": "module",
 	"main": "package.json",
-	"engines": {
-		"node": ">=22.12.0"
-	},
 	"scripts": {
 		"dev": "sanity dev",
 		"start": "sanity start",
@@ -32,5 +29,8 @@
 		"@types/react": "^19.2.17",
 		"eslint": "^9.39.5",
 		"typescript": "^6.0.3"
+	},
+	"engines": {
+		"node": ">=22.12.0"
 	}
 }
