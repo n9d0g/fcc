@@ -83,7 +83,7 @@
 <Banner {banner} />
 
 <!-- Main Layout -->
-<div class="flex min-h-screen flex-col">
+<div class="flex min-h-svh flex-col">
 	<Header onMenuClick={openSideNav} {user} />
 	<main class="flex-1 bg-gray-50 dark:bg-surface-800">
 		{@render children?.()}
