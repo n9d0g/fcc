@@ -1,6 +1,6 @@
 {
 	"name": "cms",
-	"version": "1.4.1",
+	"version": "1.5.0",
 	"private": true,
 	"keywords": [
 		"sanity"
@@ -25,7 +25,6 @@
 		"styled-components": "^6.4.4"
 	},
 	"devDependencies": {
-		"@sanity/eslint-config-studio": "^6.0.0",
 		"@types/react": "^19.2.17",
 		"eslint": "^9.39.5",
 		"typescript": "^6.0.3"

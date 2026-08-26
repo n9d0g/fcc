@@ -19,7 +19,6 @@
 				name={leader.name}
 				title={leader.title}
 				subministries={leader.subministries}
-				sort={leader.sort}
 			/>
 		{/each}
 	</div>

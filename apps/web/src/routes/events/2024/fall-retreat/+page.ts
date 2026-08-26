@@ -1,4 +1,4 @@
-import { headData, breadcrumbs, links } from '$lib/config'
+import { headData, breadcrumbs } from '$lib/config'
 
 export const load = async () => {
 	const breadcrumb = [
@@ -12,6 +12,5 @@ export const load = async () => {
 		title: 'FCC Fall Retreat 2024',
 		breadcrumb: breadcrumb,
 		headData: headData.events,
-		calendarLink: links.calendar,
 	}
 }
