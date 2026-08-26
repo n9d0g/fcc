@@ -1,5 +1,5 @@
 // Modal store using Svelte 5 runes
-export type ModalType = 'sermon' | 'praise' | null
+type ModalType = 'sermon' | 'praise' | null
 
 export interface SermonModalData {
 	title: string
@@ -22,7 +22,7 @@ export interface PraiseModalData {
 	unavailableList?: Array<{ name: string; reason: string }>
 }
 
-export type ModalData = SermonModalData | PraiseModalData | null
+type ModalData = SermonModalData | PraiseModalData | null
 
 // Create reactive state for modal
 let modalType = $state<ModalType>(null)

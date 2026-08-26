@@ -1,6 +1,6 @@
 {
 	"name": "web",
-	"version": "3.22.0",
+	"version": "3.23.0",
 	"private": true,
 	"type": "module",
 	"scripts": {
@@ -20,7 +20,6 @@
 		"unlighthouse:dev": "pnpm dlx unlighthouse --site dev.fcccanada.ca"
 	},
 	"dependencies": {
-		"@floating-ui/dom": "^1.7.6",
 		"@iconify/svelte": "^5.2.2",
 		"@sanity/client": "^7.23.0",
 		"@supabase/ssr": "^0.12.3",

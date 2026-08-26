@@ -4,13 +4,11 @@
 		name,
 		title,
 		img,
-		sort: _sort,
 		subministries,
 	}: {
 		name: string
 		title: string
 		img: string
-		sort: number
 		subministries: Array<{ name: string; ministry: string }> | null
 	} = $props()
 
