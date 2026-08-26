@@ -29,7 +29,6 @@
 		"@changesets/cli": "^2.27.1",
 		"eslint": "^8.48.0",
 		"oxfmt": "^0.35.0",
-		"tsconfig": "*",
 		"turbo": "latest"
 	},
 	"packageManager": "pnpm@10.30.3",

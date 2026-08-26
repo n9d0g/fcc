@@ -1,8 +1,5 @@
 import { addDays, format, formatISO } from 'date-fns'
 
-// Re-export navigation helper for backward compatibility
-export { setNavActiveState } from '$lib/stores/navigation.svelte'
-
 export const CACHE_PRESETS = {
 	short: [600, 3600] as const,
 	long: [3600, 86400] as const,
