@@ -31,8 +31,7 @@
 		{
 			emoji: '🤝',
 			title: 'Fellowship',
-			description:
-				'Building authentic friendships with other young adults who share similar values and beliefs.',
+			description: 'Building authentic friendships with other young adults who share similar values and beliefs.',
 		},
 		{
 			emoji: '🎉',
@@ -55,18 +54,14 @@
 	>
 		{#snippet howToJoinContent()}
 			<p class="mb-2">
-				Whether you're new to the church or looking for a community to connect
-				with, your presence is valued, and we look forward to welcoming you.
-				Contact Bro
-				<a href="https://www.facebook.com/josepaolo.delarosa" class="anchor"
-					>JP de la Rosa</a
-				> for more details.
+				Whether you're new to the church or looking for a community to connect with, your presence is valued, and we
+				look forward to welcoming you. Contact Sis
+				<a href="" class="anchor">Raquel Quiambao</a> for more details.
 			</p>
 			<p>
-				Come and be a part of a community where young adults are empowered to
-				live out their faith authentically, make meaningful connections, and
-				contribute to a greater purpose. Join us at our next Young Adults
-				gathering for an enriching time of fellowship, growth, and community.
+				Come and be a part of a community where young adults are empowered to live out their faith authentically, make
+				meaningful connections, and contribute to a greater purpose. Join us at our next Young Adults gathering for an
+				enriching time of fellowship, growth, and community.
 			</p>
 		{/snippet}
 	</MinistryPageContent>
