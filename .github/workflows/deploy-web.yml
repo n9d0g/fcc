@@ -97,30 +97,46 @@ jobs:
             exit 0
           fi
 
-          if [ -n "$WORKERS_URL" ]; then
-            FINAL_URL="$WORKERS_URL"
-          else
-            FINAL_URL="$DEPLOY_URL"
-          fi
-
-          COMMIT_SHA=$(git rev-parse --short HEAD)
-          COMMIT_MSG=$(git log -1 --pretty=%B | tr '\n' ' ' | cut -c1-100)
           BRANCH="${GITHUB_REF#refs/heads/}"
-          DEPLOY_TIME=$(TZ='America/New_York' date '+%Y-%m-%d %H:%M:%S %Z')
-
-          case "$DEPLOY_OUTCOME" in
-            success)
-              MSG="🚀 **${SITE_NAME}** deployed successfully!\n\n\`\`\`Branch: ${BRANCH}\nCommit: ${COMMIT_SHA}\nDetails: ${COMMIT_MSG}\nTime: ${DEPLOY_TIME}\n\`\`\`\n\n🔗 **Live URL:** ${FINAL_URL}"
-              ;;
-            failure)
-              MSG="❌ **${SITE_NAME}** deployment failed!\n\n\`\`\`Branch: ${BRANCH}\nCommit: ${COMMIT_SHA}\nDetails: ${COMMIT_MSG}\nTime: ${DEPLOY_TIME}\n\`\`\`\n\n🔗 **Check logs:** ${FINAL_URL}"
+          case "$BRANCH" in
+            main|dev)
+              FINAL_URL="$DEPLOY_URL"
               ;;
             *)
-              MSG="⚠️ **${SITE_NAME}** deployment status: ${DEPLOY_OUTCOME}\n\n\`\`\`Branch: ${BRANCH}\nCommit: ${COMMIT_SHA}\nDetails: ${COMMIT_MSG}\nTime: ${DEPLOY_TIME}\n\`\`\`\n\n🔗 **Check logs:** ${FINAL_URL}"
+              if [ -n "$WORKERS_URL" ]; then
+                FINAL_URL="$WORKERS_URL"
+              else
+                FINAL_URL="$DEPLOY_URL"
+              fi
               ;;
           esac
 
+          COMMIT_SHA=$(git rev-parse --short HEAD)
+          COMMIT_MSG=$(git log -1 --pretty=%B | tr '\n' ' ' | cut -c1-100)
+          DEPLOY_TIME=$(TZ='America/New_York' date '+%Y-%m-%d %H:%M:%S %Z')
+
+          case "$DEPLOY_OUTCOME" in
+            success) HEADING="🚀 **${SITE_NAME}** deployed successfully!" ;;
+            failure) HEADING="❌ **${SITE_NAME}** deployment failed!" ;;
+            *) HEADING="⚠️ **${SITE_NAME}** deployment status: ${DEPLOY_OUTCOME}" ;;
+          esac
+
+          case "$DEPLOY_OUTCOME" in
+            success) LINK_LABEL="🔗 **Live URL:**" ;;
+            *) LINK_LABEL="🔗 **Check logs:**" ;;
+          esac
+
+          PAYLOAD=$(jq -n \
+            --arg heading "$HEADING" \
+            --arg branch "$BRANCH" \
+            --arg sha "$COMMIT_SHA" \
+            --arg details "$COMMIT_MSG" \
+            --arg time "$DEPLOY_TIME" \
+            --arg link "$LINK_LABEL" \
+            --arg url "$FINAL_URL" \
+            '{content: ($heading + "\n\n```\nBranch: " + $branch + "\nCommit: " + $sha + "\nDetails: " + $details + "\nTime: " + $time + "\n```\n\n" + $link + " " + $url), flags: 4}')
+
           curl -fsS -H "Content-Type: application/json" \
             -X POST \
-            -d "$(jq -n --arg content "$MSG" '{content: $content}')" \
+            -d "$PAYLOAD" \
             "$DISCORD_WEBHOOK_URL"
