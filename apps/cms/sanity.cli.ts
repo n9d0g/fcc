@@ -8,4 +8,5 @@ export default defineCliConfig({
 	server: {
 		port: 6969,
 	},
+	studioHost: 'fcc',
 })
