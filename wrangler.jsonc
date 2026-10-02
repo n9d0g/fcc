@@ -16,6 +16,10 @@
 	"vars": {
 		"RESEND_FROM_EMAIL": "noreply@fcccanada.ca",
 	},
+	"routes": [
+		{ "pattern": "fcccanada.ca", "custom_domain": true },
+		{ "pattern": "www.fcccanada.ca", "custom_domain": true },
+	],
 	"env": {
 		"qa": {
 			"name": "fcc-qa",
@@ -26,6 +30,7 @@
 		},
 		"nate": {
 			"name": "fcc-nate",
+			"routes": [],
 			"vars": {
 				"RESEND_FROM_EMAIL": "noreply@fcccanada.ca",
 			},
