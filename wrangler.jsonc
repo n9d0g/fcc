@@ -19,6 +19,7 @@
 	"env": {
 		"qa": {
 			"name": "fcc-qa",
+			"routes": [{ "pattern": "dev.fcccanada.ca", "custom_domain": true }],
 			"vars": {
 				"RESEND_FROM_EMAIL": "noreply@fcccanada.ca",
 			},

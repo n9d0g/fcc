@@ -61,22 +61,22 @@ Ask a maintainer for secret values.
 
 Branches map to Workers environments:
 
-| Branch | Worker (workers.dev) | Wrangler |
-| --- | --- | --- |
-| `main` | `fcc-prod` | `wrangler deploy` |
-| `dev` | `fcc-qa` | `wrangler deploy --env qa` |
-| `nate` | `fcc-nate` | `wrangler deploy --env nate` |
+| Branch | Worker | Live URL | Wrangler |
+| --- | --- | --- | --- |
+| `main` | `fcc-prod` | `workers.dev` (production domain cutover pending) | `wrangler deploy` |
+| `dev` | `fcc-qa` | [dev.fcccanada.ca](https://dev.fcccanada.ca) (+ `workers.dev` fallback) | `wrangler deploy --env qa` |
+| `nate` | `fcc-nate` | `workers.dev` (custom domain cutover pending) | `wrangler deploy --env nate` |
 
-Until DNS cutover, each environment is served on `https://<worker-name>.<account-subdomain>.workers.dev` (see the deploy job log or Discord notification for the exact URL). Custom domains (`fcccanada.ca`, `dev.fcccanada.ca`, `nate.fcccanada.ca`) are not attached in `wrangler.jsonc` while the zone still has legacy Vercel DNS records.
+Before the first QA deploy with a custom domain, remove the legacy Vercel `dev` DNS record in Cloudflare so Wrangler can attach `dev.fcccanada.ca`. Set Worker secrets on `fcc-qa` (`wrangler secret put … --env qa`) and allowlist `dev.fcccanada.ca` in Supabase Auth and reCAPTCHA.
 
 Pushes to `main`, `dev`, and `nate` run [`.github/workflows/deploy-web.yml`](.github/workflows/deploy-web.yml). CMS-only changes under `apps/cms/` do not trigger a web deploy.
 
-### DNS cutover (after the domain transfer)
+### Production and nate cutover (later)
 
-1. In Cloudflare DNS, remove the old Vercel `A` / `CNAME` records for `fcccanada.ca`, `dev`, and `nate`.
-2. Restore `routes` in `wrangler.jsonc` with `custom_domain: true` for `fcccanada.ca`, `dev.fcccanada.ca`, and `nate.fcccanada.ca` (top-level for production, under `env.qa` and `env.nate`).
-3. Optionally set `workers_dev` to `false` if you no longer want the `workers.dev` URLs.
-4. Push to redeploy so Wrangler can attach the custom domains.
+1. Remove remaining Vercel `A` / `CNAME` records for the apex, `www`, and `nate` in Cloudflare DNS.
+2. Add `routes` with `custom_domain: true` for `fcccanada.ca` (top-level / `fcc-prod`) and `nate.fcccanada.ca` (`env.nate`).
+3. Set secrets on `fcc-prod` and `fcc-nate`, update Supabase and reCAPTCHA allowlists, then push to `main` / `nate`.
+4. Optionally set `workers_dev` to `false` when you no longer need `workers.dev` URLs.
 
 ### GitHub secrets
 
