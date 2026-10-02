@@ -1,6 +1,6 @@
-import { RESEND_FROM_EMAIL, resend } from '$lib/resend.server'
+import { getResend, getResendFromEmail } from '$lib/resend.server'
 import { z } from 'zod'
-import { GOOGLE_RECAPTCHA_SECRET_KEY } from '$env/static/private'
+import { env } from '$env/dynamic/private'
 import { fail } from '@sveltejs/kit'
 
 const emailSchema = z.object({
@@ -32,7 +32,7 @@ export const actions = {
 				{
 					method: 'POST',
 					headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-					body: `secret=${GOOGLE_RECAPTCHA_SECRET_KEY}&response=${grecaptcha}`,
+					body: `secret=${env.GOOGLE_RECAPTCHA_SECRET_KEY}&response=${grecaptcha}`,
 				}
 			)
 
@@ -69,8 +69,8 @@ export const actions = {
 			</section>
 			`
 
-			const { error } = await resend.emails.send({
-				from: `Freedom in Christ Church <${RESEND_FROM_EMAIL}>`,
+			const { error } = await getResend().emails.send({
+				from: `Freedom in Christ Church <${getResendFromEmail()}>`,
 				to: 'nate@njil.dev',
 				replyTo: String(email),
 				subject: `FCC Contact Submission: ${name}`,

@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@source not '../apps';
+
 /* Skeleton v5 imports - order matters */
 @import '@skeletonlabs/skeleton';
 @import '@skeletonlabs/skeleton/themes/cerberus';

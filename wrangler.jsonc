@@ -1,0 +1,33 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "fcc-web",
+	"main": ".svelte-kit/cloudflare/_worker.js",
+	"compatibility_date": "2026-10-02",
+	"compatibility_flags": ["nodejs_compat"],
+	"assets": {
+		"binding": "ASSETS",
+		"directory": ".svelte-kit/cloudflare",
+	},
+	"observability": {
+		"enabled": true,
+		"traces": { "enabled": true },
+	},
+	"vars": {
+		"RESEND_FROM_EMAIL": "noreply@fcccanada.ca",
+	},
+	"routes": [{ "pattern": "fcccanada.ca", "custom_domain": true }],
+	"env": {
+		"dev": {
+			"routes": [{ "pattern": "dev.fcccanada.ca", "custom_domain": true }],
+			"vars": {
+				"RESEND_FROM_EMAIL": "noreply@fcccanada.ca",
+			},
+		},
+		"nate": {
+			"routes": [{ "pattern": "nate.fcccanada.ca", "custom_domain": true }],
+			"vars": {
+				"RESEND_FROM_EMAIL": "noreply@fcccanada.ca",
+			},
+		},
+	},
+}

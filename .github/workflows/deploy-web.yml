@@ -1,0 +1,113 @@
+name: Deploy Web to Cloudflare
+
+on:
+  push:
+    branches: [main, dev, nate]
+    paths-ignore:
+      - 'apps/cms/**'
+
+concurrency:
+  group: deploy-web-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set deploy target
+        id: target
+        run: |
+          BRANCH="${GITHUB_REF#refs/heads/}"
+          case "$BRANCH" in
+            main)
+              WRANGLER_ENV=""
+              SITE_NAME="fcccanada.ca"
+              DEPLOY_URL="https://fcccanada.ca"
+              ;;
+            dev)
+              WRANGLER_ENV="dev"
+              SITE_NAME="dev.fcccanada.ca"
+              DEPLOY_URL="https://dev.fcccanada.ca"
+              ;;
+            nate)
+              WRANGLER_ENV="nate"
+              SITE_NAME="nate.fcccanada.ca"
+              DEPLOY_URL="https://nate.fcccanada.ca"
+              ;;
+            *)
+              WRANGLER_ENV="dev"
+              SITE_NAME="dev.fcccanada.ca"
+              DEPLOY_URL="https://dev.fcccanada.ca"
+              ;;
+          esac
+          echo "wrangler_env=${WRANGLER_ENV}" >> "$GITHUB_OUTPUT"
+          echo "site_name=${SITE_NAME}" >> "$GITHUB_OUTPUT"
+          echo "deploy_url=${DEPLOY_URL}" >> "$GITHUB_OUTPUT"
+
+      - uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        env:
+          PUBLIC_SUPABASE_URL: ${{ secrets.PUBLIC_SUPABASE_URL }}
+          PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.PUBLIC_SUPABASE_ANON_KEY }}
+          PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY: ${{ secrets.PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY }}
+        run: pnpm build
+
+      - name: Deploy to Cloudflare Workers
+        id: deploy
+        run: |
+          if [ -n "${{ steps.target.outputs.wrangler_env }}" ]; then
+            pnpm exec wrangler deploy --env "${{ steps.target.outputs.wrangler_env }}"
+          else
+            pnpm exec wrangler deploy
+          fi
+
+      - name: Notify Discord
+        if: always()
+        env:
+          DEPLOY_OUTCOME: ${{ steps.deploy.outcome }}
+          SITE_NAME: ${{ steps.target.outputs.site_name }}
+          DEPLOY_URL: ${{ steps.target.outputs.deploy_url }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "DISCORD_WEBHOOK_URL is not set, skipping notification."
+            exit 0
+          fi
+
+          COMMIT_SHA=$(git rev-parse --short HEAD)
+          COMMIT_MSG=$(git log -1 --pretty=%B | tr '\n' ' ' | cut -c1-100)
+          BRANCH="${GITHUB_REF#refs/heads/}"
+          DEPLOY_TIME=$(TZ='America/New_York' date '+%Y-%m-%d %H:%M:%S %Z')
+
+          case "$DEPLOY_OUTCOME" in
+            success)
+              MSG="🚀 **${SITE_NAME}** deployed successfully!\n\n\`\`\`Branch: ${BRANCH}\nCommit: ${COMMIT_SHA}\nDetails: ${COMMIT_MSG}\nTime: ${DEPLOY_TIME}\n\`\`\`\n\n🔗 **Live URL:** ${DEPLOY_URL}"
+              ;;
+            failure)
+              MSG="❌ **${SITE_NAME}** deployment failed!\n\n\`\`\`Branch: ${BRANCH}\nCommit: ${COMMIT_SHA}\nDetails: ${COMMIT_MSG}\nTime: ${DEPLOY_TIME}\n\`\`\`\n\n🔗 **Check logs:** ${DEPLOY_URL}"
+              ;;
+            *)
+              MSG="⚠️ **${SITE_NAME}** deployment status: ${DEPLOY_OUTCOME}\n\n\`\`\`Branch: ${BRANCH}\nCommit: ${COMMIT_SHA}\nDetails: ${COMMIT_MSG}\nTime: ${DEPLOY_TIME}\n\`\`\`\n\n🔗 **Check logs:** ${DEPLOY_URL}"
+              ;;
+          esac
+
+          curl -fsS -H "Content-Type: application/json" \
+            -X POST \
+            -d "$(jq -n --arg content "$MSG" '{content: $content}')" \
+            "$DISCORD_WEBHOOK_URL"
