@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-vercel'
+import adapter from '@sveltejs/adapter-cloudflare'
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 import { readFileSync } from 'fs'
 import { fileURLToPath } from 'url'
@@ -10,9 +10,7 @@ const pkg = JSON.parse(json)
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: adapter({
-			runtime: 'nodejs24.x',
-		}),
+		adapter: adapter(),
 		version: {
 			name: pkg.version,
 		},

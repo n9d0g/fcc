@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 node_modules
 .pnp
@@ -7,15 +5,23 @@ node_modules
 
 # testing
 coverage
+/playwright-report
+/test-results/
+/playwright/.cache/
 
-# svelte
+# svelte / web build
 .svelte-kit
+/build
+/package
+
+# cms
+apps/cms/dist
+apps/cms/.sanity
 
 # misc
 .DS_Store
 *.pem
-apps/*/dist
-apps/*/.sanity
+.unlighthouse
 
 # debug
 npm-debug.log*
@@ -23,10 +29,16 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
+.env.*
+!.env.example
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+.dev.vars*
 
-# turbo
-.turbo
+# cloudflare
+.wrangler
+
+vite.config.js.timestamp-*

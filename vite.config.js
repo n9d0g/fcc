@@ -5,8 +5,8 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
 	server: {
 		port: 42069,
-		fs: {
-			allow: ['../../'],
+		watch: {
+			ignored: ['**/apps/**'],
 		},
 	},
 	plugins: [tailwindcss(), sveltekit()],

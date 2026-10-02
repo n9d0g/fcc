@@ -1,4 +1,6 @@
 packages:
-  - apps/*
+  - apps/cms
 
-onlyBuiltDependencies: esbuild
+onlyBuiltDependencies:
+  - esbuild
+  - workerd
