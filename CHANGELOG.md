@@ -1,5 +1,12 @@
 # web
 
+## [3.24.0](https://github.com/n9d0g/fcc/compare/web@3.23.1...web-v3.24.0) (2026-10-02)
+
+
+### Features
+
+* **web:** migrate to cf ([d13c73b](https://github.com/n9d0g/fcc/commit/d13c73b61e12c6a080fe134f46ebb840d48c7427))
+
 ## 3.16.7
 
 ### Patch Changes
