@@ -52,18 +52,21 @@ jobs:
           DEPLOY_TIME=$(TZ='America/New_York' date '+%Y-%m-%d %H:%M:%S %Z')
 
           case "$DEPLOY_OUTCOME" in
-            success)
-              MSG="🚀 **Sanity Studio** deployed successfully!\n\n\`\`\`Branch: ${BRANCH}\nCommit: ${COMMIT_SHA}\nDetails: ${COMMIT_MSG}\nTime: ${DEPLOY_TIME}\n\`\`\`\n\n🔗 **Studio:** ${STUDIO_URL}"
-              ;;
-            failure)
-              MSG="❌ **Sanity Studio** deployment failed!\n\n\`\`\`Branch: ${BRANCH}\nCommit: ${COMMIT_SHA}\nDetails: ${COMMIT_MSG}\nTime: ${DEPLOY_TIME}\n\`\`\`\n\n🔗 **Studio:** ${STUDIO_URL}"
-              ;;
-            *)
-              MSG="⚠️ **Sanity Studio** deployment status: ${DEPLOY_OUTCOME}\n\n\`\`\`Branch: ${BRANCH}\nCommit: ${COMMIT_SHA}\nDetails: ${COMMIT_MSG}\nTime: ${DEPLOY_TIME}\n\`\`\`\n\n🔗 **Studio:** ${STUDIO_URL}"
-              ;;
+            success) HEADING="🚀 **Sanity Studio** deployed successfully!" ;;
+            failure) HEADING="❌ **Sanity Studio** deployment failed!" ;;
+            *) HEADING="⚠️ **Sanity Studio** deployment status: ${DEPLOY_OUTCOME}" ;;
           esac
+
+          PAYLOAD=$(jq -n \
+            --arg heading "$HEADING" \
+            --arg branch "$BRANCH" \
+            --arg sha "$COMMIT_SHA" \
+            --arg details "$COMMIT_MSG" \
+            --arg time "$DEPLOY_TIME" \
+            --arg url "$STUDIO_URL" \
+            '{content: ($heading + "\n\n```\nBranch: " + $branch + "\nCommit: " + $sha + "\nDetails: " + $details + "\nTime: " + $time + "\n```\n\n🔗 **Studio:** " + $url), flags: 4}')
 
           curl -fsS -H "Content-Type: application/json" \
             -X POST \
-            -d "$(jq -n --arg content "$MSG" '{content: $content}')" \
+            -d "$PAYLOAD" \
             "$DISCORD_WEBHOOK_URL"
