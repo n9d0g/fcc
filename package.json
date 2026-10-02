@@ -8,6 +8,7 @@
 	],
 	"type": "module",
 	"scripts": {
+		"prepare": "svelte-kit sync || echo ''",
 		"dev": "vite dev --host",
 		"dev:all": "pnpm -r --parallel --include-workspace-root dev",
 		"build": "svelte-kit sync && vite build",
