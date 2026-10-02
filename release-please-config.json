@@ -2,15 +2,9 @@
 	"$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
 	"packages": {
 		".": {
-			"component": "web",
 			"release-type": "node",
-			"exclude-paths": ["apps/cms"]
-		},
-		"apps/cms": {
-			"component": "cms",
-			"release-type": "node"
+			"package-name": "web"
 		}
 	},
-	"include-component-in-tag": true,
-	"separate-pull-requests": false
+	"include-component-in-tag": false
 }

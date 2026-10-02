@@ -61,11 +61,11 @@ Ask a maintainer for secret values.
 
 Branches map to Workers environments:
 
-| Branch | Worker | Live URL | Wrangler |
-| --- | --- | --- | --- |
-| `main` | `fcc-prod` | [fcccanada.ca](https://fcccanada.ca) (`www` → apex via Cloudflare redirect rule) | `wrangler deploy` |
-| `dev` | `fcc-qa` | [dev.fcccanada.ca](https://dev.fcccanada.ca) (+ `workers.dev` fallback) | `wrangler deploy --env qa` |
-| `nate` | `fcc-nate` | `workers.dev` until `nate.fcccanada.ca` cutover | `wrangler deploy --env nate` |
+| Branch | Worker     | Live URL                                                                         | Wrangler                     |
+| ------ | ---------- | -------------------------------------------------------------------------------- | ---------------------------- |
+| `main` | `fcc-prod` | [fcccanada.ca](https://fcccanada.ca) (`www` → apex via Cloudflare redirect rule) | `wrangler deploy`            |
+| `dev`  | `fcc-qa`   | [dev.fcccanada.ca](https://dev.fcccanada.ca) (+ `workers.dev` fallback)          | `wrangler deploy --env qa`   |
+| `nate` | `fcc-nate` | `workers.dev` until `nate.fcccanada.ca` cutover                                  | `wrangler deploy --env nate` |
 
 Before the first production deploy with custom domains, remove legacy Vercel DNS for the apex, `www`, and `*` wildcard (see cutover checklist below). Set Worker secrets on `fcc-prod` (`wrangler secret put …` without `--env`). Add a Cloudflare **Redirect Rule** so `www.fcccanada.ca` permanently redirects to `https://fcccanada.ca` with path and query preserved.
 
@@ -86,6 +86,7 @@ Delete in Cloudflare DNS: apex `A` (`76.76.21.21`), both `www` `A` records, both
 - `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
 - `PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_ANON_KEY`, `PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY`
 - `DISCORD_WEBHOOK_URL` (optional deploy notifications)
+- `SANITY_AUTH_TOKEN` (CMS Studio deploys on `main`)
 
 ### Dashboard setup
 
@@ -97,9 +98,15 @@ Delete in Cloudflare DNS: apex `A` (`76.76.21.21`), both `www` `A` records, both
 
 ## Releases
 
-On pushes to `main`, release-please opens or updates a release PR. Merging it bumps versions, updates `CHANGELOG.md` files, and creates GitHub releases with tags like `web-v3.24.0` and `cms-v1.6.0`.
+On pushes to `main`, release-please opens or updates a release PR. Merging it bumps the repo version in root `package.json`, updates root `CHANGELOG.md`, and creates a GitHub release with a tag like `v3.24.1`. CMS changes are included in that single version and changelog.
 
 Use [Conventional Commits](https://www.conventionalcommits.org/) with scopes, e.g. `feat(web): …` or `fix(cms): …`.
+
+## CMS deploys
+
+Pushes to `main` that change `apps/cms/**` run the **Deploy CMS to Sanity** workflow and publish Studio to [fcc.sanity.studio](https://fcc.sanity.studio). You can also trigger a deploy manually from the Actions tab.
+
+Set the `SANITY_AUTH_TOKEN` repository secret to a Sanity API token with **Deploy Studio** permission ([sanity.io/manage](https://www.sanity.io/manage) → API → Tokens).
 
 ## Contributing
 

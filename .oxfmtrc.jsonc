@@ -18,7 +18,6 @@
 		"pnpm-lock.yaml",
 		"pnpm-workspace.yaml",
 		"CHANGELOG.md",
-		"apps/cms/CHANGELOG.md",
 		".release-please-manifest.json",
 		"package-lock.json",
 		"yarn.lock",
