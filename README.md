@@ -52,7 +52,7 @@ See [`.env.example`](.env.example) for the full list.
 wrangler secret put RESEND_API_KEY
 wrangler secret put GOOGLE_RECAPTCHA_SECRET_KEY
 wrangler secret put GOOGLE_MAPS_API_KEY
-# repeat with --env dev or --env nate for preview environments
+# repeat with --env qa or --env nate for preview environments
 ```
 
 Ask a maintainer for secret values.
@@ -61,13 +61,22 @@ Ask a maintainer for secret values.
 
 Branches map to Workers environments:
 
-| Branch    | Hostname          | Wrangler                     |
-| --------- | ----------------- | ---------------------------- |
-| `main`    | fcccanada.ca      | `wrangler deploy`            |
-| `dev` | dev.fcccanada.ca  | `wrangler deploy --env dev`  |
-| `nate`    | nate.fcccanada.ca | `wrangler deploy --env nate` |
+| Branch | Worker (workers.dev) | Wrangler |
+| --- | --- | --- |
+| `main` | `fcc-prod` | `wrangler deploy` |
+| `dev` | `fcc-qa` | `wrangler deploy --env qa` |
+| `nate` | `fcc-nate` | `wrangler deploy --env nate` |
+
+Until DNS cutover, each environment is served on `https://<worker-name>.<account-subdomain>.workers.dev` (see the deploy job log or Discord notification for the exact URL). Custom domains (`fcccanada.ca`, `dev.fcccanada.ca`, `nate.fcccanada.ca`) are not attached in `wrangler.jsonc` while the zone still has legacy Vercel DNS records.
 
 Pushes to `main`, `dev`, and `nate` run [`.github/workflows/deploy-web.yml`](.github/workflows/deploy-web.yml). CMS-only changes under `apps/cms/` do not trigger a web deploy.
+
+### DNS cutover (after the domain transfer)
+
+1. In Cloudflare DNS, remove the old Vercel `A` / `CNAME` records for `fcccanada.ca`, `dev`, and `nate`.
+2. Restore `routes` in `wrangler.jsonc` with `custom_domain: true` for `fcccanada.ca`, `dev.fcccanada.ca`, and `nate.fcccanada.ca` (top-level for production, under `env.qa` and `env.nate`).
+3. Optionally set `workers_dev` to `false` if you no longer want the `workers.dev` URLs.
+4. Push to redeploy so Wrangler can attach the custom domains.
 
 ### GitHub secrets
 

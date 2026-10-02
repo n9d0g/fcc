@@ -31,7 +31,7 @@ jobs:
               DEPLOY_URL="https://fcccanada.ca"
               ;;
             dev)
-              WRANGLER_ENV="dev"
+              WRANGLER_ENV="qa"
               SITE_NAME="dev.fcccanada.ca"
               DEPLOY_URL="https://dev.fcccanada.ca"
               ;;
@@ -41,7 +41,7 @@ jobs:
               DEPLOY_URL="https://nate.fcccanada.ca"
               ;;
             *)
-              WRANGLER_ENV="dev"
+              WRANGLER_ENV="qa"
               SITE_NAME="dev.fcccanada.ca"
               DEPLOY_URL="https://dev.fcccanada.ca"
               ;;
@@ -71,10 +71,16 @@ jobs:
       - name: Deploy to Cloudflare Workers
         id: deploy
         run: |
+          set -o pipefail
+          LOG="$(mktemp)"
           if [ -n "${{ steps.target.outputs.wrangler_env }}" ]; then
-            pnpm exec wrangler deploy --env "${{ steps.target.outputs.wrangler_env }}"
+            pnpm exec wrangler deploy --env "${{ steps.target.outputs.wrangler_env }}" 2>&1 | tee "$LOG"
           else
-            pnpm exec wrangler deploy
+            pnpm exec wrangler deploy 2>&1 | tee "$LOG"
+          fi
+          WORKERS_URL=$(grep -oE 'https://[a-zA-Z0-9.-]+\.workers\.dev' "$LOG" | head -1 || true)
+          if [ -n "$WORKERS_URL" ]; then
+            echo "url=${WORKERS_URL}" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Notify Discord
@@ -83,11 +89,18 @@ jobs:
           DEPLOY_OUTCOME: ${{ steps.deploy.outcome }}
           SITE_NAME: ${{ steps.target.outputs.site_name }}
           DEPLOY_URL: ${{ steps.target.outputs.deploy_url }}
+          WORKERS_URL: ${{ steps.deploy.outputs.url }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           if [ -z "$DISCORD_WEBHOOK_URL" ]; then
             echo "DISCORD_WEBHOOK_URL is not set, skipping notification."
             exit 0
+          fi
+
+          if [ -n "$WORKERS_URL" ]; then
+            FINAL_URL="$WORKERS_URL"
+          else
+            FINAL_URL="$DEPLOY_URL"
           fi
 
           COMMIT_SHA=$(git rev-parse --short HEAD)
@@ -97,13 +110,13 @@ jobs:
 
           case "$DEPLOY_OUTCOME" in
             success)
-              MSG="🚀 **${SITE_NAME}** deployed successfully!\n\n\`\`\`Branch: ${BRANCH}\nCommit: ${COMMIT_SHA}\nDetails: ${COMMIT_MSG}\nTime: ${DEPLOY_TIME}\n\`\`\`\n\n🔗 **Live URL:** ${DEPLOY_URL}"
+              MSG="🚀 **${SITE_NAME}** deployed successfully!\n\n\`\`\`Branch: ${BRANCH}\nCommit: ${COMMIT_SHA}\nDetails: ${COMMIT_MSG}\nTime: ${DEPLOY_TIME}\n\`\`\`\n\n🔗 **Live URL:** ${FINAL_URL}"
               ;;
             failure)
-              MSG="❌ **${SITE_NAME}** deployment failed!\n\n\`\`\`Branch: ${BRANCH}\nCommit: ${COMMIT_SHA}\nDetails: ${COMMIT_MSG}\nTime: ${DEPLOY_TIME}\n\`\`\`\n\n🔗 **Check logs:** ${DEPLOY_URL}"
+              MSG="❌ **${SITE_NAME}** deployment failed!\n\n\`\`\`Branch: ${BRANCH}\nCommit: ${COMMIT_SHA}\nDetails: ${COMMIT_MSG}\nTime: ${DEPLOY_TIME}\n\`\`\`\n\n🔗 **Check logs:** ${FINAL_URL}"
               ;;
             *)
-              MSG="⚠️ **${SITE_NAME}** deployment status: ${DEPLOY_OUTCOME}\n\n\`\`\`Branch: ${BRANCH}\nCommit: ${COMMIT_SHA}\nDetails: ${COMMIT_MSG}\nTime: ${DEPLOY_TIME}\n\`\`\`\n\n🔗 **Check logs:** ${DEPLOY_URL}"
+              MSG="⚠️ **${SITE_NAME}** deployment status: ${DEPLOY_OUTCOME}\n\n\`\`\`Branch: ${BRANCH}\nCommit: ${COMMIT_SHA}\nDetails: ${COMMIT_MSG}\nTime: ${DEPLOY_TIME}\n\`\`\`\n\n🔗 **Check logs:** ${FINAL_URL}"
               ;;
           esac
 
