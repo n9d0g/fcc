@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { GalleryPhoto } from '$lib/types'
+	import type { GalleryPhoto } from '#lib/types.js'
 
 	let {
 		photos,

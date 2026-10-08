@@ -1,5 +1,5 @@
 import { redirect, error } from '@sveltejs/kit'
-import { client } from '$lib/config'
+import { client } from '#lib/config/index.js'
 
 export const load = async () => {
 	// fetch praise data and sort by date
@@ -14,7 +14,7 @@ export const load = async () => {
 	const firstPdfEntry = data.find((entry: any) => entry.pdfURL)
 
 	if (firstPdfEntry?.pdfURL) {
-		throw redirect(302, firstPdfEntry.pdfURL)
+		throw redirect(302, firstPdfEntry.pdfURL, { external: true })
 	} else {
 		// if no PDF found, throw 404 error
 		throw error(404, 'No chords yet! Check back soon 🥲')

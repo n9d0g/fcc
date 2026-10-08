@@ -1,6 +1,6 @@
 <script lang="ts">
-	import PhotoGallery from '$lib/components/PhotoGallery.svelte'
-	import type { GalleryPhoto } from '$lib/types'
+	import PhotoGallery from '#lib/components/PhotoGallery.svelte'
+	import type { GalleryPhoto } from '#lib/types.js'
 
 	let {
 		welcomeTitle,

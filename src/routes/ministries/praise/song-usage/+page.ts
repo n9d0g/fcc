@@ -1,7 +1,7 @@
-import { headData, breadcrumbs } from '$lib/config'
-import { supabase } from '$lib/supabaseClient'
+import { headData, breadcrumbs } from '#lib/config/index.js'
+import { supabase } from '#lib/supabaseClient.js'
 import { error } from '@sveltejs/kit'
-import { sortByField } from '$lib/utils'
+import { sortByField } from '#lib/utils.js'
 
 export const load = async () => {
 	const { data: songs } = await supabase.from('songs').select()

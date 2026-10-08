@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { getModalState, closeModal, type SermonModalData, type PraiseModalData } from '$lib/stores/modalStore.svelte'
-	import SermonModal from '$lib/components/sermons/SermonModal.svelte'
-	import PraiseModal from '$lib/components/ministries/praise/PraiseModal.svelte'
+	import { getModalState, closeModal, type SermonModalData, type PraiseModalData } from '#lib/stores/modalStore.svelte.js'
+	import SermonModal from '#lib/components/sermons/SermonModal.svelte'
+	import PraiseModal from '#lib/components/ministries/praise/PraiseModal.svelte'
 
 	const modal = getModalState()
 </script>

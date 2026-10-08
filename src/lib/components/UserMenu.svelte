@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { goto, invalidateAll } from '$app/navigation'
+	import { goto, refreshAll } from '$app/navigation'
 	import type { User } from '@supabase/supabase-js'
 
 	let {
@@ -39,7 +39,7 @@
 		closeMenu()
 		onaction?.()
 		await fetch('/logout', { method: 'POST', credentials: 'same-origin' })
-		await invalidateAll()
+		await refreshAll()
 		await goto('/')
 	}
 

@@ -1,5 +1,10 @@
-import { client, headData, breadcrumbs, fetchPageGallery } from '$lib/config'
-import { updatedDataFiltered } from '$lib/utils'
+import {
+	client,
+	headData,
+	breadcrumbs,
+	fetchPageGallery,
+} from '#lib/config/index.js'
+import { updatedDataFiltered } from '#lib/utils.js'
 
 export const load = async () => {
 	const data = await client.fetch(`*[_type == "sunday-ministries"]`)

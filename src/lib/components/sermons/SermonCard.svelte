@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { formatCmsDate } from '$lib/utils'
-	import { openSermonModal } from '$lib/stores/modalStore.svelte'
+	import { formatCmsDate } from '#lib/utils.js'
+	import { openSermonModal } from '#lib/stores/modalStore.svelte.js'
 
 	// Svelte 5 props
 	let {

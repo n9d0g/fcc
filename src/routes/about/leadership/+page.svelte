@@ -1,6 +1,6 @@
 <script lang="ts">
-	import LeadershipCard from '$lib/components/about/leadership/LeadershipCard.svelte'
-	import FccLayout from '$lib/components/FccLayout.svelte'
+	import LeadershipCard from '#lib/components/about/leadership/LeadershipCard.svelte'
+	import FccLayout from '#lib/components/FccLayout.svelte'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()

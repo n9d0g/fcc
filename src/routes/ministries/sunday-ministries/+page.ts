@@ -1,5 +1,9 @@
-import { client, headData, breadcrumbs } from '$lib/config'
-import { updatedDataFiltered, setCacheHeaders, CACHE_PRESETS } from '$lib/utils'
+import { client, headData, breadcrumbs } from '#lib/config/index.js'
+import {
+	updatedDataFiltered,
+	setCacheHeaders,
+	CACHE_PRESETS,
+} from '#lib/utils.js'
 
 export const load = async ({ setHeaders, url }) => {
 	// Cache sunday ministries for 10 minutes, allow stale for 1 hour (bust=true to bypass)

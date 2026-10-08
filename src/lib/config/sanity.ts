@@ -1,5 +1,5 @@
 import { createClient } from '@sanity/client'
-import type { PageGallery } from '$lib/types'
+import type { PageGallery } from '#lib/types.js'
 
 export const client = createClient({
 	projectId: 'ygo45klz',

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Youtube from 'svelte-youtube-embed'
-	import { formatCmsDate } from '$lib/utils'
-	import type { SermonModalData } from '$lib/stores/modalStore.svelte'
+	import { formatCmsDate } from '#lib/utils.js'
+	import type { SermonModalData } from '#lib/stores/modalStore.svelte.js'
 	import Icon from '@iconify/svelte'
 
 	// Svelte 5 props

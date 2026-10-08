@@ -1,6 +1,6 @@
 /**
  * Central configuration exports
- * Import from '$lib/config' for cleaner imports
+ * Import from '#lib/config/index.js' for cleaner imports
  */
 
 // Re-export all config modules

@@ -1,6 +1,6 @@
-import { getResend, getResendFromEmail } from '$lib/resend.server'
+import { getResend, getResendFromEmail } from '#lib/resend.server.js'
 import { z } from 'zod'
-import { env } from '$env/dynamic/private'
+import { GOOGLE_RECAPTCHA_SECRET_KEY } from '$app/env/private'
 import { fail } from '@sveltejs/kit'
 
 const emailSchema = z.object({
@@ -19,12 +19,7 @@ export const actions = {
 			if (emailData.success === false) {
 				const errors = emailData.error.flatten().fieldErrors
 
-				return fail(400, {
-					errors: errors,
-					name: name,
-					email: email,
-					message: message,
-				})
+				return fail(400, { errors, name, email, message })
 			}
 
 			const res = await fetch(
@@ -32,31 +27,27 @@ export const actions = {
 				{
 					method: 'POST',
 					headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-					body: `secret=${env.GOOGLE_RECAPTCHA_SECRET_KEY}&response=${grecaptcha}`,
+					body: `secret=${GOOGLE_RECAPTCHA_SECRET_KEY}&response=${grecaptcha}`,
 				}
 			)
 
 			const recaptchaRes = await res.json()
 			if (recaptchaRes.success === false) {
 				return fail(400, {
-					errors: {
-						grecaptcha: 'ReCaptcha failed. Please try again.',
-					},
-					name: name,
-					email: email,
-					message: message,
+					errors: { grecaptcha: 'ReCaptcha failed. Please try again.' },
+					name,
+					email,
+					message,
 				})
 			}
 
 			if (recaptchaRes.success === true) {
 				if (recaptchaRes.score < 0.6) {
 					return fail(400, {
-						errors: {
-							grecaptcha: 'ReCaptcha failed. Please try again.',
-						},
-						name: name,
-						email: email,
-						message: message,
+						errors: { grecaptcha: 'ReCaptcha failed. Please try again.' },
+						name,
+						email,
+						message,
 					})
 				}
 			}
@@ -84,9 +75,9 @@ export const actions = {
 					errors: {
 						grecaptcha: 'Failed to send email. Please try again later.',
 					},
-					name: name,
-					email: email,
-					message: message,
+					name,
+					email,
+					message,
 				})
 			}
 

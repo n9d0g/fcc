@@ -1,6 +1,6 @@
 <script lang="ts">
-	import FccLayout from '$lib/components/FccLayout.svelte'
-	import SermonCard from '$lib/components/sermons/SermonCard.svelte'
+	import FccLayout from '#lib/components/FccLayout.svelte'
+	import SermonCard from '#lib/components/sermons/SermonCard.svelte'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()

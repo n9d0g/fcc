@@ -1,9 +1,9 @@
 <script lang="ts">
-	import FccLayout from '$lib/components/FccLayout.svelte'
-	import SmallGroupPageContent from '$lib/components/small-groups/SmallGroupPageContent.svelte'
-	import type { PageGallery, PageLayoutData } from '$lib/types'
+	import FccLayout from '#lib/components/FccLayout.svelte'
+	import SmallGroupPageContent from '#lib/components/small-groups/SmallGroupPageContent.svelte'
+	import type { PageGallery, PageLayoutData } from '#lib/types.js'
 
-	let { data }: { data: PageLayoutData & { gallery: PageGallery | null; links: typeof import('$lib/config').links } } =
+	let { data }: { data: PageLayoutData & { gallery: PageGallery | null; links: typeof import('#lib/config/index.js').links } } =
 		$props()
 	let title = $derived(data.title)
 	let breadcrumb = $derived(data.breadcrumb)

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { page } from '$app/stores'
-	import { buildSeoHeadExtras } from '$lib/utils'
+	import { page } from '$app/state'
+	import { buildSeoHeadExtras } from '#lib/utils.js'
 	import type { Snippet } from 'svelte'
 
 	// Svelte 5 props
@@ -16,7 +16,7 @@
 		children: Snippet
 	} = $props()
 
-	let url = $derived($page.url.href)
+	let url = $derived(page.url.href)
 	let seoHeadExtras = $derived(
 		buildSeoHeadExtras(url, headData.title, headData.description)
 	)

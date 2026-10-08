@@ -1,5 +1,5 @@
-import { client, links } from '$lib/config'
-import { setCacheHeaders, CACHE_PRESETS, sortByField } from '$lib/utils'
+import { client, links } from '#lib/config/index.js'
+import { setCacheHeaders, CACHE_PRESETS, sortByField } from '#lib/utils.js'
 import { error } from '@sveltejs/kit'
 
 export const load = async ({ setHeaders, url }) => {
