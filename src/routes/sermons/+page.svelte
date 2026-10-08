@@ -1,10 +1,10 @@
 <script lang="ts">
-	import SermonCard from '$lib/components/sermons/SermonCard.svelte'
-	import FccLayout from '$lib/components/FccLayout.svelte'
-	import Paginator from '$lib/components/Paginator.svelte'
-	import { searchFilter } from '$lib/utils'
+	import SermonCard from '#lib/components/sermons/SermonCard.svelte'
+	import FccLayout from '#lib/components/FccLayout.svelte'
+	import Paginator from '#lib/components/Paginator.svelte'
+	import { searchFilter } from '#lib/utils.js'
 	import { fade } from 'svelte/transition'
-	import FilterBy from '$lib/components/FilterBy.svelte'
+	import FilterBy from '#lib/components/FilterBy.svelte'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()

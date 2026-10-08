@@ -1,5 +1,5 @@
-import { client, headData, breadcrumbs } from '$lib/config'
-import { setCacheHeaders, CACHE_PRESETS } from '$lib/utils'
+import { client, headData, breadcrumbs } from '#lib/config/index.js'
+import { setCacheHeaders, CACHE_PRESETS } from '#lib/utils.js'
 import { error } from '@sveltejs/kit'
 
 export const load = async ({ setHeaders, url }) => {

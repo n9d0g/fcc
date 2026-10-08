@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { links } from '$lib/config'
+	import { links } from '#lib/config/index.js'
 	import Icon from '@iconify/svelte'
 	import pkgJsonInfo from '../../../package.json'
 	import { format, addDays } from 'date-fns'

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import FccLayout from '$lib/components/FccLayout.svelte'
+	import FccLayout from '#lib/components/FccLayout.svelte'
 	import Icon from '@iconify/svelte'
 
 	// Svelte 5 props

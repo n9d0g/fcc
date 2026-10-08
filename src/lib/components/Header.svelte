@@ -1,10 +1,10 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte'
-	import NavButton from '$lib/components/NavButton.svelte'
-	import { navigationState } from '$lib/stores/navigation.svelte'
-	import { navOptions } from '$lib/config'
-	import LightDarkToggle from '$lib/components/LightDarkToggle.svelte'
-	import UserMenu from '$lib/components/UserMenu.svelte'
+	import NavButton from '#lib/components/NavButton.svelte'
+	import { navigationState } from '#lib/stores/navigation.svelte.js'
+	import { navOptions } from '#lib/config/index.js'
+	import LightDarkToggle from '#lib/components/LightDarkToggle.svelte'
+	import UserMenu from '#lib/components/UserMenu.svelte'
 	import type { User } from '@supabase/supabase-js'
 
 	let {

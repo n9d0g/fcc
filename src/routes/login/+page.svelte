@@ -1,5 +1,5 @@
 <script lang="ts">
-	import FccLayout from '$lib/components/FccLayout.svelte'
+	import FccLayout from '#lib/components/FccLayout.svelte'
 	import { enhance } from '$app/forms'
 	import type { ActionData, PageData } from './$types'
 

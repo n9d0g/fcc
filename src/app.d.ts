@@ -1,7 +1,12 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 
-import type { BreadcrumbItem, PageGallery, SeoData, Sermon } from '$lib/types'
+import type {
+	BreadcrumbItem,
+	PageGallery,
+	SeoData,
+	Sermon,
+} from '#lib/types.js'
 import type { Session, SupabaseClient, User } from '@supabase/supabase-js'
 
 declare global {

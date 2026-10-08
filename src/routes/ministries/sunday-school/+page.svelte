@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { formatCmsDate } from '$lib/utils'
-	import FccLayout from '$lib/components/FccLayout.svelte'
-	import PhotoGallery from '$lib/components/PhotoGallery.svelte'
-	import type { PageLayoutData } from '$lib/types'
+	import { formatCmsDate } from '#lib/utils.js'
+	import FccLayout from '#lib/components/FccLayout.svelte'
+	import PhotoGallery from '#lib/components/PhotoGallery.svelte'
+	import type { PageLayoutData } from '#lib/types.js'
 
 	let { data }: { data: PageLayoutData & { tHeaders: string[]; tBody: unknown[]; sundaySchoolLinks: Array<{ section: string }>; gallery: { photos: unknown[] } } } = $props()
 

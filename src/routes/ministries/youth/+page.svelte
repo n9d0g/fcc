@@ -1,6 +1,6 @@
 <script lang="ts">
-	import FccLayout from '$lib/components/FccLayout.svelte'
-	import MinistryPageContent from '$lib/components/ministries/MinistryPageContent.svelte'
+	import FccLayout from '#lib/components/FccLayout.svelte'
+	import MinistryPageContent from '#lib/components/ministries/MinistryPageContent.svelte'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
