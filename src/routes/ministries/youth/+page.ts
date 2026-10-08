@@ -1,4 +1,4 @@
-import { headData, breadcrumbs, fetchPageGallery } from '$lib/config'
+import { headData, breadcrumbs, fetchPageGallery } from '#lib/config/index.js'
 
 export const load = async () => {
 	const breadcrumb = [

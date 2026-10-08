@@ -1,11 +1,11 @@
 import { Resend } from 'resend'
-import { env } from '$env/dynamic/private'
+import { RESEND_API_KEY, RESEND_FROM_EMAIL } from '$app/env/private'
 
 let resend: Resend | undefined
 
 export function getResend() {
 	if (!resend) {
-		const apiKey = env.RESEND_API_KEY
+		const apiKey = RESEND_API_KEY
 		if (!apiKey) {
 			throw new Error('RESEND_API_KEY is not set')
 		}
@@ -15,7 +15,7 @@ export function getResend() {
 }
 
 export function getResendFromEmail() {
-	const from = env.RESEND_FROM_EMAIL
+	const from = RESEND_FROM_EMAIL
 	if (!from) {
 		throw new Error('RESEND_FROM_EMAIL is not set')
 	}

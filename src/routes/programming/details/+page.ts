@@ -1,4 +1,4 @@
-import { headData, breadcrumbs, links } from '$lib/config'
+import { headData, breadcrumbs, links } from '#lib/config/index.js'
 
 export const load = async () => {
 	const breadcrumb = [

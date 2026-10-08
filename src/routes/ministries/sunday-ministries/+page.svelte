@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { formatCmsDate } from '$lib/utils'
-	import FccLayout from '$lib/components/FccLayout.svelte'
+	import { formatCmsDate } from '#lib/utils.js'
+	import FccLayout from '#lib/components/FccLayout.svelte'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import FccLayout from '$lib/components/FccLayout.svelte'
-	import LandingPageGrid from '$lib/components/LandingPageGrid.svelte'
-	import MinistryPageContent from '$lib/components/ministries/MinistryPageContent.svelte'
-	import type { PageLayoutData } from '$lib/types'
+	import FccLayout from '#lib/components/FccLayout.svelte'
+	import LandingPageGrid from '#lib/components/LandingPageGrid.svelte'
+	import MinistryPageContent from '#lib/components/ministries/MinistryPageContent.svelte'
+	import type { PageLayoutData } from '#lib/types.js'
 
 	let {
 		data,

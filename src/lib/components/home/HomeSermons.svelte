@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SermonCard from '$lib/components/sermons/SermonCard.svelte'
+	import SermonCard from '#lib/components/sermons/SermonCard.svelte'
 
 	// Svelte 5 props
 	let {

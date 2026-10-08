@@ -1,5 +1,14 @@
-import { headData, client, breadcrumbs, fetchPageGallery } from '$lib/config'
-import { updatedDataFiltered, setCacheHeaders, CACHE_PRESETS } from '$lib/utils'
+import {
+	headData,
+	client,
+	breadcrumbs,
+	fetchPageGallery,
+} from '#lib/config/index.js'
+import {
+	updatedDataFiltered,
+	setCacheHeaders,
+	CACHE_PRESETS,
+} from '#lib/utils.js'
 import { error } from '@sveltejs/kit'
 
 export const load = async ({ setHeaders, url }) => {

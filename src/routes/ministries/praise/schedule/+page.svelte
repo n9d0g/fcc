@@ -1,13 +1,13 @@
 <script lang="ts">
-	import FccLayout from '$lib/components/FccLayout.svelte'
-	import DetailsTooltip from '$lib/components/ministries/praise/DetailsTooltip.svelte'
+	import FccLayout from '#lib/components/FccLayout.svelte'
+	import DetailsTooltip from '#lib/components/ministries/praise/DetailsTooltip.svelte'
 	import { fade } from 'svelte/transition'
 	import Icon from '@iconify/svelte'
-	import PraiseAssignments from '$lib/components/ministries/praise/PraiseAssignments.svelte'
-	import { updatedDataFiltered, searchFilter } from '$lib/utils'
-	import { openPraiseModal } from '$lib/stores/modalStore.svelte'
-	import { links } from '$lib/config'
-	import { formatCmsDate } from '$lib/utils'
+	import PraiseAssignments from '#lib/components/ministries/praise/PraiseAssignments.svelte'
+	import { updatedDataFiltered, searchFilter } from '#lib/utils.js'
+	import { openPraiseModal } from '#lib/stores/modalStore.svelte.js'
+	import { links } from '#lib/config/index.js'
+	import { formatCmsDate } from '#lib/utils.js'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()

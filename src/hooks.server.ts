@@ -1,5 +1,5 @@
-import { createSupabaseServerClient } from '$lib/supabase/server'
-import type { Handle } from '@sveltejs/kit'
+import type { Handle } from '@sveltejs/kit/hooks'
+import { createSupabaseServerClient } from '#lib/supabase/server.js'
 
 export const handle: Handle = async ({ event, resolve }) => {
 	event.locals.supabase = createSupabaseServerClient(event.cookies)

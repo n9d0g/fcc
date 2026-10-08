@@ -3,11 +3,8 @@ import {
 	createServerClient,
 	isBrowser,
 } from '@supabase/ssr'
-import {
-	PUBLIC_SUPABASE_ANON_KEY,
-	PUBLIC_SUPABASE_URL,
-} from '$env/static/public'
-import { client } from '$lib/config'
+import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$app/env/public'
+import { client } from '#lib/config/index.js'
 import type { LayoutLoad } from './$types'
 
 export const load: LayoutLoad = async ({ data, depends, fetch, url }) => {

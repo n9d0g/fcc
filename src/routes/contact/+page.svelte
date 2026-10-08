@@ -1,6 +1,6 @@
 <script lang="ts">
-	import FccLayout from '$lib/components/FccLayout.svelte'
-	import { PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY } from '$env/static/public'
+	import FccLayout from '#lib/components/FccLayout.svelte'
+	import { PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY } from '$app/env/public'
 	import type { ActionData } from './$types.js'
 	import type { ActionResult } from '@sveltejs/kit'
 	import { applyAction, deserialize } from '$app/forms'

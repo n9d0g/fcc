@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { formatCmsDate } from '$lib/utils'
-	import { searchFilter } from '$lib/utils'
+	import { formatCmsDate } from '#lib/utils.js'
+	import { searchFilter } from '#lib/utils.js'
 	import { fade } from 'svelte/transition'
-	import FccLayout from '$lib/components/FccLayout.svelte'
-	import MinistryPageContent from '$lib/components/ministries/MinistryPageContent.svelte'
+	import FccLayout from '#lib/components/FccLayout.svelte'
+	import MinistryPageContent from '#lib/components/ministries/MinistryPageContent.svelte'
 	import Icon from '@iconify/svelte'
 
 	// Svelte 5 props

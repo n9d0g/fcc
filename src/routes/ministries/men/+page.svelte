@@ -1,13 +1,13 @@
 <script lang="ts">
-	import FccLayout from '$lib/components/FccLayout.svelte'
-	import MinistryPageContent from '$lib/components/ministries/MinistryPageContent.svelte'
-	import cover from '$lib/assets/ministries/men/men-img1.avif'
-	import img2 from '$lib/assets/ministries/men/men-img2.jpg'
-	import img3 from '$lib/assets/ministries/men/men-img3.jpg'
-	import img4 from '$lib/assets/ministries/men/men-img4.jpg'
-	import vid1 from '$lib/assets/ministries/men/men-vid1.mp4'
-	import vid2 from '$lib/assets/ministries/men/men-vid2.mp4'
-	import vid3 from '$lib/assets/ministries/men/men-vid3.mp4'
+	import FccLayout from '#lib/components/FccLayout.svelte'
+	import MinistryPageContent from '#lib/components/ministries/MinistryPageContent.svelte'
+	import cover from '#lib/assets/ministries/men/men-img1.avif'
+	import img2 from '#lib/assets/ministries/men/men-img2.jpg'
+	import img3 from '#lib/assets/ministries/men/men-img3.jpg'
+	import img4 from '#lib/assets/ministries/men/men-img4.jpg'
+	import vid1 from '#lib/assets/ministries/men/men-vid1.mp4'
+	import vid2 from '#lib/assets/ministries/men/men-vid2.mp4'
+	import vid3 from '#lib/assets/ministries/men/men-vid3.mp4'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()

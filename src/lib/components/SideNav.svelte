@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { navOptions } from '$lib/config'
+	import { navOptions } from '#lib/config/index.js'
 	import Icon from '@iconify/svelte'
-	import UserMenu from '$lib/components/UserMenu.svelte'
+	import UserMenu from '#lib/components/UserMenu.svelte'
 	import type { User } from '@supabase/supabase-js'
 
 	let {

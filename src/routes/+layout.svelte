@@ -3,14 +3,14 @@
 	import type { Snippet } from 'svelte'
 
 	// regular imports
-	import Footer from '$lib/components/Footer.svelte'
-	import Header from '$lib/components/Header.svelte'
-	import SideNav from '$lib/components/SideNav.svelte'
-	import Banner from '$lib/components/Banner.svelte'
-	import Dialog from '$lib/components/Modal.svelte'
+	import Footer from '#lib/components/Footer.svelte'
+	import Header from '#lib/components/Header.svelte'
+	import SideNav from '#lib/components/SideNav.svelte'
+	import Banner from '#lib/components/Banner.svelte'
+	import Dialog from '#lib/components/Modal.svelte'
 	import { afterNavigate, invalidate, onNavigate } from '$app/navigation'
-	import { page } from '$app/stores'
-	import { setNavActiveState } from '$lib/stores/navigation.svelte'
+	import { page } from '$app/state'
+	import { setNavActiveState } from '#lib/stores/navigation.svelte.js'
 
 	// Svelte 5 props
 	let { data, children }: { data: any; children: Snippet } = $props()
@@ -49,7 +49,7 @@
 	let user = $derived(data.user)
 
 	$effect(() => {
-		setNavActiveState($page.url.pathname)
+		setNavActiveState(page.url.pathname)
 	})
 
 	$effect(() => {
