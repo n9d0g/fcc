@@ -97,8 +97,14 @@
 				10_000
 			)
 			grecaptcha.ready(() => {
-				grecaptcha
-					.execute(PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY, { action: 'contact' })
+				// execute() returns a Closure thenable without .finally, so adopt it
+				// into a native promise (this also catches synchronous throws)
+				Promise.resolve()
+					.then(() =>
+						grecaptcha.execute(PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY, {
+							action: 'contact',
+						})
+					)
 					.then(resolve, reject)
 					.finally(() => clearTimeout(timeout))
 			})
