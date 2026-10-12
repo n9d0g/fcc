@@ -35,6 +35,8 @@
 		"unlighthouse:dev": "pnpm dlx unlighthouse --site dev.fcccanada.ca"
 	},
 	"dependencies": {
+		"@better-svelte-email/components": "^2.3.0",
+		"@better-svelte-email/server": "^2.3.0",
 		"@iconify/svelte": "^5.2.2",
 		"@sanity/client": "^7.23.0",
 		"@supabase/ssr": "^0.12.3",

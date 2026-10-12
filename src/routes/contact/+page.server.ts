@@ -1,97 +1,121 @@
 import { getResend, getResendFromEmail } from '#lib/resend.server.js'
+import { renderEmail } from '#lib/emails/render.server.js'
+import ContactSubmission from '#lib/emails/ContactSubmission.svelte'
+import { contactSchema, type ContactField } from '#lib/schemas/contact.js'
 import { z } from 'zod'
 import { GOOGLE_RECAPTCHA_SECRET_KEY } from '$app/env/private'
 import { fail } from '@sveltejs/kit'
+import type { Actions } from './$types'
 
-const emailSchema = z.object({
-	name: z.string().trim().min(1, { message: 'Name is required' }),
-	email: z.string().trim().email().min(1, { message: 'Email is required' }),
-	message: z.string().trim().min(1, { message: 'Message is required' }),
-})
+const CONTACT_INBOX = 'nate@njil.dev'
+const RECAPTCHA_MIN_SCORE = 0.6
+
+type FieldErrors = Partial<Record<ContactField, string>>
+type ContactValues = Record<ContactField, string>
+
+const field = (formData: FormData, key: string) => {
+	const value = formData.get(key)
+	return typeof value === 'string' ? value : ''
+}
+
+const failure = (
+	status: number,
+	values: ContactValues,
+	errors: FieldErrors = {},
+	message?: string
+) => fail(status, { values, errors, message })
+
+async function verifyRecaptcha(token: string) {
+	if (!token) return false
+
+	const res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+		method: 'POST',
+		body: new URLSearchParams({
+			secret: GOOGLE_RECAPTCHA_SECRET_KEY,
+			response: token,
+		}),
+	})
+	if (!res.ok) return false
+
+	const result: { success: boolean; score?: number; action?: string } =
+		await res.json()
+
+	return (
+		result.success &&
+		result.action === 'contact' &&
+		(result.score ?? 0) >= RECAPTCHA_MIN_SCORE
+	)
+}
 
 export const actions = {
-	default: async ({ request }: { request: Request }) => {
+	default: async ({ request }) => {
+		const formData = await request.formData()
+		const values: ContactValues = {
+			name: field(formData, 'name'),
+			email: field(formData, 'email'),
+			message: field(formData, 'message'),
+		}
+
+		const parsed = contactSchema.safeParse(values)
+		if (!parsed.success) {
+			const { fieldErrors } = z.flattenError(parsed.error)
+			const errors: FieldErrors = {}
+			for (const key of Object.keys(fieldErrors) as ContactField[]) {
+				errors[key] = fieldErrors[key]?.[0]
+			}
+			return failure(400, values, errors)
+		}
+
 		try {
-			const formData = Object.fromEntries(await request.formData())
-			const emailData = emailSchema.safeParse(formData)
-			const { name, email, message, grecaptcha } = formData
-
-			if (emailData.success === false) {
-				const errors = emailData.error.flatten().fieldErrors
-
-				return fail(400, { errors, name, email, message })
+			if (!(await verifyRecaptcha(field(formData, 'grecaptcha')))) {
+				return failure(
+					400,
+					values,
+					{},
+					"We couldn't verify you're human. Please try again."
+				)
 			}
 
-			const res = await fetch(
-				'https://www.google.com/recaptcha/api/siteverify',
-				{
-					method: 'POST',
-					headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-					body: `secret=${GOOGLE_RECAPTCHA_SECRET_KEY}&response=${grecaptcha}`,
-				}
-			)
-
-			const recaptchaRes = await res.json()
-			if (recaptchaRes.success === false) {
-				return fail(400, {
-					errors: { grecaptcha: 'ReCaptcha failed. Please try again.' },
-					name,
-					email,
-					message,
-				})
-			}
-
-			if (recaptchaRes.success === true) {
-				if (recaptchaRes.score < 0.6) {
-					return fail(400, {
-						errors: { grecaptcha: 'ReCaptcha failed. Please try again.' },
-						name,
-						email,
-						message,
-					})
-				}
-			}
-
-			const html = `
-			<section>
-				<h1>Name: ${name}</h1>
-				<h2>Email: ${email}</h2>
-				<p>Message: <br /> ${message}</p>
-			</section>
-			`
+			const { name, email, message } = parsed.data
+			const { html, text } = await renderEmail(ContactSubmission, {
+				name,
+				email,
+				message,
+				submittedAt: new Date().toLocaleString('en-CA', {
+					timeZone: 'America/Toronto',
+					dateStyle: 'medium',
+					timeStyle: 'short',
+				}),
+			})
 
 			const { error } = await getResend().emails.send({
 				from: `Freedom in Christ Church <${getResendFromEmail()}>`,
-				to: 'nate@njil.dev',
-				replyTo: String(email),
+				to: CONTACT_INBOX,
+				replyTo: email,
 				subject: `FCC Contact Submission: ${name}`,
-				text: String(message),
 				html,
+				text,
 			})
 
 			if (error) {
-				console.error(error)
-				return fail(500, {
-					errors: {
-						grecaptcha: 'Failed to send email. Please try again later.',
-					},
-					name,
-					email,
-					message,
-				})
+				console.error('[contact] resend error', error)
+				return failure(
+					502,
+					values,
+					{},
+					"We couldn't send your message. Please try again later."
+				)
 			}
 
-			return {
-				status: 200,
-				success: 'Email has been sent!',
-			}
+			return { success: true as const }
 		} catch (e) {
-			console.error(e)
-			return fail(500, {
-				errors: {
-					grecaptcha: 'Failed to send email. Please try again later.',
-				},
-			})
+			console.error('[contact]', e)
+			return failure(
+				500,
+				values,
+				{},
+				'Something went wrong. Please try again later.'
+			)
 		}
 	},
-}
+} satisfies Actions
