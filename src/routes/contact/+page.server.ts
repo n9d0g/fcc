@@ -1,6 +1,7 @@
 import { getResend, getResendFromEmail } from '#lib/resend.server.js'
 import { renderEmail } from '#lib/emails/render.server.js'
 import ContactSubmission from '#lib/emails/ContactSubmission.svelte'
+import ContactAutoReply from '#lib/emails/ContactAutoReply.svelte'
 import { contactSchema, type ContactField } from '#lib/schemas/contact.js'
 import { z } from 'zod'
 import { GOOGLE_RECAPTCHA_SECRET_KEY } from '$app/env/private'
@@ -45,6 +46,25 @@ async function verifyRecaptcha(token: string) {
 		result.action === 'contact' &&
 		(result.score ?? 0) >= RECAPTCHA_MIN_SCORE
 	)
+}
+
+// Best effort: the visitor's message already reached us, so a failed
+// confirmation is logged rather than shown as an error.
+async function sendAutoReply(name: string, email: string) {
+	try {
+		const { html, text } = await renderEmail(ContactAutoReply, { name })
+		const { error } = await getResend().emails.send({
+			from: `Freedom in Christ Church <${getResendFromEmail()}>`,
+			to: email,
+			replyTo: CONTACT_INBOX,
+			subject: 'Thanks for contacting Freedom in Christ Church',
+			html,
+			text,
+		})
+		if (error) console.error('[contact] auto-reply resend error', error)
+	} catch (e) {
+		console.error('[contact] auto-reply', e)
+	}
 }
 
 export const actions = {
@@ -106,6 +126,8 @@ export const actions = {
 					"We couldn't send your message. Please try again later."
 				)
 			}
+
+			await sendAutoReply(name, email)
 
 			return { success: true as const }
 		} catch (e) {
