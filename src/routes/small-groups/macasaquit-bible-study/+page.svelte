@@ -9,11 +9,13 @@
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<div class="card p-8 text-center">
-		<h2 class="h2 mb-4 text-2xl font-bold">Coming Soon</h2>
-		<p class="text-surface-600 dark:text-surface-300">
+	<div class="card mx-auto max-w-2xl p-10 text-center md:p-14">
+		<span class="icon-chip mx-auto size-14 text-2xl">🌱</span>
+		<h2 class="h2 mt-6 mb-4">Coming soon</h2>
+		<p class="text-muted">
 			Details for this small group are being prepared. Check back soon or contact
 			the church office for more information.
 		</p>
+		<a href="/contact" class="btn btn-primary mt-8">Contact us</a>
 	</div>
 </FccLayout>

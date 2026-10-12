@@ -19,7 +19,7 @@ export const links = {
 		'https://www.biblegateway.com/passage/?search=2%20Corinthians%209%3A7&version=NIV',
 	giveVerse2:
 		'https://www.biblegateway.com/passage/?search=2+Corinthians+9%3A8&version=NIV',
-	etransfer: 'emailto:fcc.fcac@gmail.com',
+	etransfer: 'mailto:fcc.fcac@gmail.com',
 	calendar:
 		'https://calendar.google.com/calendar/embed?src=56d34192c2a222f8cb5a5ffdf378d8064c98d35408cc4659688b6d23f51219f5%40group.calendar.google.com&ctz=America%2FToronto',
 	programming: {

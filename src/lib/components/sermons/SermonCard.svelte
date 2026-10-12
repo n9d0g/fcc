@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '@iconify/svelte'
 	import { formatCmsDate } from '#lib/utils.js'
 	import { openSermonModal } from '#lib/stores/modalStore.svelte.js'
 
@@ -41,13 +42,14 @@
 
 <button
 	onclick={handleSermonClick}
-	class="card flex cursor-pointer flex-col items-start justify-between transition-shadow hover:shadow-lg"
+	class="group card card-hover flex cursor-pointer flex-col overflow-hidden text-left"
 >
-	<div>
+	<div class="relative aspect-video w-full overflow-hidden bg-surface-200">
 		<img
 			src={thumbImg}
-			alt="{title} Image"
-			class="w-full rounded-t-lg"
+			alt=""
+			loading="lazy"
+			class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
 			onerror={() => {
 				thumbImg = fallbackUrl
 			}}
@@ -56,14 +58,33 @@
 				if (img.naturalWidth <= 120) thumbImg = fallbackUrl
 			}}
 		/>
-		<header class="card-header text-start text-2xl font-bold">{title}</header>
-		<section
-			class="flex flex-col items-start justify-start gap-4 px-4 pt-3 pb-1"
+		<span
+			class="absolute inset-0 flex items-center justify-center bg-primary-950/0 transition-colors group-hover:bg-primary-950/30"
+			aria-hidden="true"
 		>
-			<p class="text-start text-sm">{speaker}</p>
-		</section>
+			<span
+				class="flex size-14 scale-90 items-center justify-center rounded-full bg-white/95 text-primary-800 opacity-0 shadow-lg transition-all group-hover:scale-100 group-hover:opacity-100"
+			>
+				<Icon icon="lucide:play" class="ml-0.5 size-6" />
+			</span>
+		</span>
 	</div>
-	<footer class="card-footer text-start text-sm">
-		{formattedDate}
-	</footer>
+	<div class="flex flex-1 flex-col gap-3 p-5">
+		<p class="text-xs font-semibold tracking-wider text-secondary-700 uppercase">
+			{formattedDate}
+		</p>
+		<h3 class="font-display text-xl leading-snug font-semibold">{title}</h3>
+		<div class="mt-auto flex flex-wrap items-center gap-x-4 gap-y-1 pt-1 text-sm text-muted">
+			<span class="inline-flex items-center gap-1.5">
+				<Icon icon="lucide:user-round" class="size-3.5" />
+				{speaker}
+			</span>
+			{#if scripture}
+				<span class="inline-flex items-center gap-1.5">
+					<Icon icon="lucide:book-open" class="size-3.5" />
+					{scripture}
+				</span>
+			{/if}
+		</div>
+	</div>
 </button>

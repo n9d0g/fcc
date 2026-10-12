@@ -15,27 +15,36 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <section
-	class="card w-full max-w-2xl space-y-4 bg-white dark:bg-surface-900 p-6 shadow-xl"
+	class="card w-full max-w-3xl space-y-5 p-6 shadow-2xl md:p-8"
 	onclick={(e) => e.stopPropagation()}
 >
 	<header class="flex items-start justify-between">
-		<h2 class="text-2xl font-bold">{data.title}</h2>
-		<button onclick={onclose} class="btn-icon text-gray-500 hover:preset-tonal hover:text-gray-700 dark:text-gray-400 dark:hover:text-white" aria-label="Close modal">
+		<h2 class="h3">{data.title}</h2>
+		<button onclick={onclose} class="btn-icon -mt-1 -mr-1 text-muted hover:bg-surface-100 hover:text-ink" aria-label="Close modal">
 			<Icon icon="lucide:x" class="h-5 w-5" />
 		</button>
 	</header>
 
-	<div class="space-y-2">
-		<p><span class="font-bold">Speaker:</span> {data.speaker}</p>
-		<p><span class="font-bold">Scripture:</span> {data.scripture}</p>
-		<p><span class="font-bold">Date:</span> {formattedDate}</p>
-	</div>
+	<dl class="flex flex-wrap gap-x-8 gap-y-3 text-sm">
+		<div>
+			<dt class="eyebrow">Speaker</dt>
+			<dd class="mt-1 font-medium">{data.speaker}</dd>
+		</div>
+		<div>
+			<dt class="eyebrow">Scripture</dt>
+			<dd class="mt-1 font-medium">{data.scripture}</dd>
+		</div>
+		<div>
+			<dt class="eyebrow">Date</dt>
+			<dd class="mt-1 font-medium">{formattedDate}</dd>
+		</div>
+	</dl>
 
-	<div class="pt-4">
+	<div class="overflow-hidden rounded-2xl">
 		<Youtube id={youtubeId} --title-color="transparent" --title-shadow-color="transparent" />
 	</div>
 
-	<footer class="flex justify-end pt-4">
-		<button class="btn preset-filled-error-500" onclick={onclose}>Close</button>
+	<footer class="flex justify-end">
+		<button class="btn btn-outline" onclick={onclose}>Close</button>
 	</footer>
 </section>

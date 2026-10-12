@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '@iconify/svelte'
 	import SermonCard from '#lib/components/sermons/SermonCard.svelte'
 
 	// Svelte 5 props
@@ -16,26 +17,32 @@
 	} = $props()
 </script>
 
-<section class="container mx-auto my-16 flex h-fit flex-col justify-center gap-8 px-4">
-	<h2 class="h2 text-center text-4xl font-bold">Recent Sermons</h2>
-	<div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-		{#each sermons.slice(0, 3) as sermon (sermon._id)}
-			<SermonCard
-				title={sermon.title}
-				date={sermon.date}
-				speaker={sermon.speaker}
-				scripture={sermon.scripture}
-				youtube={sermon.youtube}
-			/>
-		{/each}
-	</div>
-	<div class="flex justify-center">
-		<a
-			class="btn btn-lg bg-surface-200 text-surface-900 dark:bg-surface-700 dark:text-surface-50"
-			href="/sermons"
-			data-sveltekit-preload-data="hover"
-		>
-			View All Sermons
-		</a>
+<section class="section border-y border-line bg-surface-100/70">
+	<div class="wrap">
+		<div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+			<div>
+				<p class="eyebrow">Messages</p>
+				<h2 class="h2 mt-3">Recent sermons</h2>
+			</div>
+			<a
+				class="btn btn-outline shrink-0 self-start md:self-auto"
+				href="/sermons"
+				data-sveltekit-preload-data="hover"
+			>
+				View all sermons
+				<Icon icon="lucide:arrow-right" class="size-4" />
+			</a>
+		</div>
+		<div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+			{#each sermons.slice(0, 3) as sermon (sermon._id)}
+				<SermonCard
+					title={sermon.title}
+					date={sermon.date}
+					speaker={sermon.speaker}
+					scripture={sermon.scripture}
+					youtube={sermon.youtube}
+				/>
+			{/each}
+		</div>
 	</div>
 </section>

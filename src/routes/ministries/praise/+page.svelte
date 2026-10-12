@@ -38,7 +38,7 @@
 		{#snippet howToJoinContent()}
 			<p class="mb-2">
 				To join our Praise and Worship Ministry, simply <a
-					href="emailto:fcc.church.canada@gmail.com"
+					href="mailto:fcc.church.canada@gmail.com"
 					class="anchor">send an email</a
 				>
 				or
@@ -54,7 +54,7 @@
 				atmosphere where God's presence is not only felt but celebrated. We look
 				forward to welcoming you into our Praise and Worship family at FCC!
 			</p>
-			<p class="mt-4 opacity-80">
+			<p class="mt-4">
 				No matter your skill level, we believe that worship is a collective
 				effort, and every contribution is valuable. If you play another
 				instrument, bring it and let's jam together!
@@ -62,5 +62,9 @@
 		{/snippet}
 	</MinistryPageContent>
 
-	<LandingPageGrid items={data.landingPageItems} />
+	<div class="mt-16 md:mt-20">
+		<p class="eyebrow">For the team</p>
+		<h2 class="h2 mt-3 mb-8">Team resources</h2>
+		<LandingPageGrid items={data.landingPageItems} />
+	</div>
 </FccLayout>

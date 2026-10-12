@@ -1,4 +1,5 @@
 <script lang="ts">
+	import womenFellowship from '#lib/assets/community/women-fellowship.jpg'
 	import { formatCmsDate } from '#lib/utils.js'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 
@@ -11,74 +12,39 @@
 	let headData = $derived(data.headData)
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
-	<!-- responsive container -->
-	<div
-		class="table-container dark:border-surface-600 relative overflow-x-auto rounded-lg border border-gray-200"
-	>
-		<table class="relative w-full text-sm">
-			<thead>
-				<tr
-					class="bg-primary-600 dark:bg-primary-700 sticky top-0 z-10 text-white"
-				>
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	image={womenFellowship}
+	imageAlt="FCC members sharing a meal after service"
+	imagePosition="center 40%"
+	intro="Who is serving at our Sunday services each month."
+>
+	<div class="table-container">
+		<table class="table">
+			<thead class="sticky-head">
+				<tr>
 					{#each tHeaders as header, index}
-						{#if index === 0}
-							<th
-								class="bg-primary-600 dark:bg-primary-700 sticky left-0 z-30 min-w-[100px] px-4 py-3 text-left font-semibold"
-							>
-								{header}
-							</th>
-						{:else}
-							<th class="min-w-[120px] px-4 py-3 text-left font-semibold">
-								{header}
-							</th>
-						{/if}
+						<th class={index === 0 ? 'sticky-col min-w-28' : 'min-w-32'}>
+							{header}
+						</th>
 					{/each}
 				</tr>
 			</thead>
-			<tbody class="dark:divide-surface-600 divide-y divide-gray-200">
-				{#each tBody as month, rowIndex}
-					<tr
-						class="transition-colors {rowIndex % 2 === 0
-							? 'dark:bg-surface-800 bg-white'
-							: 'dark:bg-surface-700 bg-gray-50'} dark:hover:bg-surface-600 hover:bg-gray-100"
-					>
-						<td
-							class="sticky left-0 z-10 min-w-[100px] px-4 py-3 font-semibold {rowIndex %
-								2 ===
-							0
-								? 'dark:bg-surface-800 bg-white'
-								: 'dark:bg-surface-700 bg-gray-50'}"
-						>
-							{formatCmsDate(month.date, 'MMMM')}
-						</td>
-						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
-							>{month.presider}</td
-						>
-						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
-							>{month.invites}</td
-						>
-						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
-							>{month.openingPrayer}</td
-						>
-						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
-							>{month.closingPrayer}</td
-						>
-						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
-							>{month.powerpoint}</td
-						>
-						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
-							>{month.communionPresider}</td
-						>
-						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
-							>{month.coffeeBreakfast}</td
-						>
-						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
-							>{month.hallSetup}</td
-						>
-						<td class="min-w-[120px] px-4 py-3 whitespace-nowrap"
-							>{month.ushersGreeters}</td
-						>
+			<tbody>
+				{#each tBody as month}
+					<tr>
+						<td class="sticky-col">{formatCmsDate(month.date, 'MMMM')}</td>
+						<td class="whitespace-nowrap">{month.presider}</td>
+						<td class="whitespace-nowrap">{month.invites}</td>
+						<td class="whitespace-nowrap">{month.openingPrayer}</td>
+						<td class="whitespace-nowrap">{month.closingPrayer}</td>
+						<td class="whitespace-nowrap">{month.powerpoint}</td>
+						<td class="whitespace-nowrap">{month.communionPresider}</td>
+						<td class="whitespace-nowrap">{month.coffeeBreakfast}</td>
+						<td class="whitespace-nowrap">{month.hallSetup}</td>
+						<td class="whitespace-nowrap">{month.ushersGreeters}</td>
 					</tr>
 				{/each}
 			</tbody>

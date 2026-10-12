@@ -1,4 +1,5 @@
 <script lang="ts">
+	import womenMinistry from '#lib/assets/community/women-ministry.jpg'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import LandingPageGrid from '#lib/components/LandingPageGrid.svelte'
 
@@ -11,6 +12,14 @@
 	let breadcrumb = $derived(data.breadcrumb)
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	image={womenMinistry}
+	imageAlt="Women of FCC gathered around the church banner"
+	imagePosition="center 40%"
+	intro="Get to know the family at Freedom in Christ Church."
+>
 	<LandingPageGrid items={data.landingPageItems} />
 </FccLayout>

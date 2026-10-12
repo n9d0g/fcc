@@ -28,67 +28,70 @@
 	}
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
-	<!-- Core Values -->
-	<section class="mb-12">
-		<h2 class="h2 mb-6 font-bold">Our Core Values</h2>
-		<div class="space-y-2">
-			{#each coreValues as value, index}
-				<div class="card overflow-hidden">
-					<button
-						onclick={() => toggleCoreValue(index)}
-						class="hover:bg-gray-100 dark:hover:bg-surface-800 flex w-full items-center justify-between p-4 text-left transition-colors"
+{#snippet accordion(
+	items: Array<{ title: string; text: string }>,
+	open: number | null,
+	toggle: (_index: number) => void
+)}
+	<div class="card divide-y divide-line overflow-hidden">
+		{#each items as item, index}
+			<div>
+				<button
+					onclick={() => toggle(index)}
+					aria-expanded={open === index}
+					class="flex w-full cursor-pointer items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-paper"
+				>
+					<span class="font-semibold">{item.title}</span>
+					<span
+						class="flex size-8 shrink-0 items-center justify-center rounded-full transition {open ===
+						index
+							? 'rotate-180 bg-primary-700 text-white'
+							: 'bg-surface-100'}"
 					>
-						<span class="font-semibold">{value.title}</span>
-						<Icon
-							icon="lucide:chevron-down"
-							class="h-5 w-5 transition-transform {openCoreValue === index
-								? 'rotate-180'
-								: ''}"
-						/>
-					</button>
-					{#if openCoreValue === index}
-						<div class="border-gray-200 dark:border-surface-700 bg-white dark:bg-surface-900 border-t p-4">
-							<p class="text-lg">{value.text}</p>
-						</div>
-					{/if}
-				</div>
-			{/each}
-		</div>
-	</section>
+						<Icon icon="lucide:chevron-down" class="size-4" />
+					</span>
+				</button>
+				{#if open === index}
+					<div class="px-6 pb-6">
+						<p class="text-lg leading-relaxed text-muted">{item.text}</p>
+					</div>
+				{/if}
+			</div>
+		{/each}
+	</div>
+{/snippet}
 
-	<!-- Statement of Faith -->
-	<section class="mb-12">
-		<h2 class="h2 mb-6 font-bold">Statement of Faith</h2>
-		<div class="space-y-2">
-			{#each statementsOfFaith as statement, index}
-				<div class="card overflow-hidden">
-					<button
-						onclick={() => toggleStatement(index)}
-						class="hover:bg-gray-100 dark:hover:bg-surface-800 flex w-full items-center justify-between p-4 text-left transition-colors"
-					>
-						<span class="font-semibold">{statement.title}</span>
-						<Icon
-							icon="lucide:chevron-down"
-							class="h-5 w-5 transition-transform {openStatement === index
-								? 'rotate-180'
-								: ''}"
-						/>
-					</button>
-					{#if openStatement === index}
-						<div class="border-gray-200 dark:border-surface-700 bg-white dark:bg-surface-900 border-t p-4">
-							<p class="text-lg">{statement.text}</p>
-						</div>
-					{/if}
-				</div>
-			{/each}
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	intro="The convictions that shape how we worship, serve and live together."
+>
+	<div class="grid gap-14 lg:grid-cols-12">
+		<div class="lg:col-span-4">
+			<div class="lg:sticky lg:top-28">
+				<p class="eyebrow">What we believe</p>
+				<p class="lede mt-3">
+					Our core values describe the kind of church we want to be. Our statement
+					of faith summarizes the truths we hold in common.
+				</p>
+				<button onclick={handleComplete} class="btn btn-outline mt-6">
+					<Icon icon="lucide:arrow-left" class="size-4" />
+					Back to About
+				</button>
+			</div>
 		</div>
-	</section>
 
-	<!-- Back button -->
-	<div class="flex justify-center">
-		<button onclick={handleComplete} class="btn preset-filled-secondary-500">
-			Go back to About page
-		</button>
+		<div class="space-y-14 lg:col-span-8">
+			<section>
+				<h2 class="h2 mb-6">Our Core Values</h2>
+				{@render accordion(coreValues, openCoreValue, toggleCoreValue)}
+			</section>
+
+			<section>
+				<h2 class="h2 mb-6">Statement of Faith</h2>
+				{@render accordion(statementsOfFaith, openStatement, toggleStatement)}
+			</section>
+		</div>
 	</div>
 </FccLayout>

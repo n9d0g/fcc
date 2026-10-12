@@ -28,26 +28,26 @@
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<section class="flex items-center justify-center px-4 py-8">
-		<div class="card mx-auto w-full max-w-lg p-8">
-			<div class="mb-6 flex gap-2 border-b border-gray-200 pb-4 dark:border-surface-600">
+	<section class="flex items-center justify-center">
+		<div class="card mx-auto w-full max-w-lg p-6 sm:p-10">
+			<div class="mb-8 flex flex-wrap gap-2 rounded-full bg-surface-100 p-1">
 				<button
 					type="button"
-					class="btn btn-sm {mode === 'login' ? 'preset-filled' : 'preset-tonal'}"
+					class="btn btn-sm flex-1 {mode === 'login' ? 'bg-white text-ink shadow-sm' : 'text-muted hover:text-ink'}"
 					onclick={() => (mode = 'login')}
 				>
 					Log in
 				</button>
 				<button
 					type="button"
-					class="btn btn-sm {mode === 'signup' ? 'preset-filled' : 'preset-tonal'}"
+					class="btn btn-sm flex-1 {mode === 'signup' ? 'bg-white text-ink shadow-sm' : 'text-muted hover:text-ink'}"
 					onclick={() => (mode = 'signup')}
 				>
 					Sign up
 				</button>
 				<button
 					type="button"
-					class="btn btn-sm {mode === 'confirm' ? 'preset-filled' : 'preset-tonal'}"
+					class="btn btn-sm flex-1 {mode === 'confirm' ? 'bg-white text-ink shadow-sm' : 'text-muted hover:text-ink'}"
 					onclick={() => (mode = 'confirm')}
 				>
 					Confirm email
@@ -55,16 +55,16 @@
 			</div>
 
 			{#if errorMessage}
-				<p class="text-error-500 mb-4 text-sm">{errorMessage}</p>
+				<p class="mb-4 rounded-xl border border-error-200 bg-error-50 px-4 py-3 text-sm text-error-700">{errorMessage}</p>
 			{/if}
 
 			{#if form?.success}
-				<p class="text-success-600 mb-4 text-sm">{form.success}</p>
+				<p class="mb-4 rounded-xl border border-success-200 bg-success-50 px-4 py-3 text-sm text-success-700">{form.success}</p>
 			{/if}
 
 			{#if mode === 'login'}
 				<form method="POST" action="?/login" use:enhance class="flex flex-col gap-6">
-					<label class="label">
+					<label class="label flex flex-col gap-2">
 						<span>Email</span>
 						<input
 							class="input"
@@ -76,7 +76,7 @@
 						/>
 					</label>
 
-					<label class="label">
+					<label class="label flex flex-col gap-2">
 						<span>Password</span>
 						<input
 							class="input"
@@ -87,11 +87,11 @@
 						/>
 					</label>
 
-					<button class="btn preset-filled" type="submit">Log in</button>
+					<button class="btn btn-primary btn-lg" type="submit">Log in</button>
 				</form>
 			{:else if mode === 'signup'}
 				<form method="POST" action="?/signup" use:enhance class="flex flex-col gap-6">
-					<label class="label">
+					<label class="label flex flex-col gap-2">
 						<span>Email</span>
 						<input
 							class="input"
@@ -103,7 +103,7 @@
 						/>
 					</label>
 
-					<label class="label">
+					<label class="label flex flex-col gap-2">
 						<span>Password</span>
 						<input
 							class="input"
@@ -115,15 +115,15 @@
 						/>
 					</label>
 
-					<button class="btn preset-filled" type="submit">Create account</button>
+					<button class="btn btn-primary btn-lg" type="submit">Create account</button>
 				</form>
 			{:else}
 				<form method="POST" action="?/verifyOtp" use:enhance class="flex flex-col gap-6">
-					<p class="text-surface-600-400 text-sm">
+					<p class="text-muted text-sm">
 						Enter the 6-digit code sent to your email after signing up.
 					</p>
 
-					<label class="label">
+					<label class="label flex flex-col gap-2">
 						<span>Email</span>
 						<input
 							class="input"
@@ -135,7 +135,7 @@
 						/>
 					</label>
 
-					<label class="label">
+					<label class="label flex flex-col gap-2">
 						<span>Confirmation code</span>
 						<input
 							class="input"
@@ -148,7 +148,7 @@
 						/>
 					</label>
 
-					<button class="btn preset-filled" type="submit">Confirm email</button>
+					<button class="btn btn-primary btn-lg" type="submit">Confirm email</button>
 				</form>
 
 				<form
@@ -158,7 +158,7 @@
 					class="mt-4 flex flex-col gap-2"
 				>
 					<input type="hidden" name="email" value={form?.email ?? ''} />
-					<button class="btn btn-sm preset-tonal" type="submit">
+					<button class="btn btn-sm btn-outline" type="submit">
 						Resend confirmation code
 					</button>
 				</form>

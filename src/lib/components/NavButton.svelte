@@ -5,18 +5,22 @@
 	// Derived state
 	let activeNav = $derived.by(() => {
 		if (link === '/' && nav === 'home') return true
-		return link.includes(nav)
+		return nav !== '' && link.includes(nav)
 	})
-
-	const nonActiveClass = 'hover:font-bold text-gray-700 dark:text-white'
-	const activeClass = 'font-bold text-primary-600 dark:text-primary-400'
 </script>
 
 <a
 	href={link}
-	class="btn btn-icon z-20 w-fit whitespace-nowrap rounded-lg px-2 text-sm {!activeNav
-		? nonActiveClass
-		: activeClass}"
+	aria-current={activeNav ? 'page' : undefined}
+	class="relative rounded-full px-3.5 py-2 text-sm font-medium whitespace-nowrap transition-colors {activeNav
+		? 'text-primary-800'
+		: 'text-muted hover:bg-primary-50 hover:text-ink'}"
 >
 	{text}
+	{#if activeNav}
+		<span
+			class="absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-secondary-500"
+			aria-hidden="true"
+		></span>
+	{/if}
 </a>

@@ -56,7 +56,14 @@
 	]
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	image={cover}
+	imageAlt="FCC men's ministry sharing a meal outdoors"
+	imagePosition="center 40%"
+>
 	<MinistryPageContent
 		welcomeTitle="Welcome to Our Men's Ministry Gathering!"
 		welcomeDescription="At Freedom in Christ Church, we believe in the strength and impact of a united community of men dedicated to growing in faith, supporting one another, and making a positive difference. Our Men's Ministry Gathering is a monthly opportunity for fellowship, spiritual growth, and mutual encouragement. Join us every month for an empowering time of connection and camaraderie."
@@ -83,41 +90,39 @@
 		{/snippet}
 
 		{#snippet customContent()}
-			<!-- svelte-ignore a11y_img_redundant_alt -->
-			<img src={cover} alt="Men's Ministry Cover Photo" class="h-auto w-full" />
-			<div
-				class="my-8 grid grid-cols-1 justify-center gap-8 align-middle md:grid-cols-3"
-			>
-				<div class="flex justify-center">
-					<!-- svelte-ignore a11y_media_has_caption -->
-					<video controls class="flex align-middle">
-						<source src={vid1} />
-					</video>
-				</div>
-				<div class="flex justify-center align-middle md:col-span-2">
-					<!-- svelte-ignore a11y_media_has_caption -->
-					<video controls>
-						<source src={vid2} />
-					</video>
-				</div>
-				<div class="flex items-center md:col-span-2">
-					<!-- svelte-ignore a11y_img_redundant_alt -->
-					<img src={img2} alt="Men's Ministry Photo 2" class="w-full" />
-				</div>
-				<div class="flex justify-center align-middle">
-					<!-- svelte-ignore a11y_media_has_caption -->
-					<video controls>
-						<source src={vid3} />
-					</video>
-				</div>
-				<div class="flex items-center">
-					<!-- svelte-ignore a11y_img_redundant_alt -->
-					<img src={img3} alt="Men's Ministry Photo 3" class="w-full" />
-				</div>
-				<div class="flex items-center md:col-span-2">
-					<!-- svelte-ignore a11y_img_redundant_alt -->
-					<img src={img4} alt="Men's Ministry Photo 4" class="w-full" />
-				</div>
+			<p class="eyebrow">Moments</p>
+			<h3 class="h2 mt-3 mb-8">Life together</h3>
+			<div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+				<!-- svelte-ignore a11y_media_has_caption -->
+				<video controls preload="metadata" class="aspect-9/16 w-full rounded-2xl bg-primary-950 object-cover md:row-span-2 md:aspect-auto md:h-full">
+					<source src={vid1} />
+				</video>
+				<img
+					src={img2}
+					alt="Men of FCC gathered in a living room for a ministry meeting"
+					loading="lazy"
+					class="aspect-video w-full rounded-2xl object-cover md:col-span-2"
+				/>
+				<!-- svelte-ignore a11y_media_has_caption -->
+				<video controls preload="metadata" class="aspect-video w-full rounded-2xl bg-primary-950 object-cover md:col-span-2">
+					<source src={vid2} />
+				</video>
+				<img
+					src={img3}
+					alt="A brother leading worship during a men's gathering"
+					loading="lazy"
+					class="aspect-video w-full rounded-2xl object-cover md:col-span-2"
+				/>
+				<!-- svelte-ignore a11y_media_has_caption -->
+				<video controls preload="metadata" class="aspect-video w-full rounded-2xl bg-primary-950 object-cover">
+					<source src={vid3} />
+				</video>
+				<img
+					src={img4}
+					alt="Men of FCC sharing during a discussion"
+					loading="lazy"
+					class="aspect-video w-full rounded-2xl object-cover md:col-span-3"
+				/>
 			</div>
 		{/snippet}
 	</MinistryPageContent>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import womenMinistry from '#lib/assets/community/women-ministry.jpg'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import MinistryPageContent from '#lib/components/ministries/MinistryPageContent.svelte'
 
@@ -49,7 +50,14 @@
 	]
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	image={womenMinistry}
+	imageAlt="FCC women's ministry gathered around the church banner"
+	imagePosition="center 40%"
+>
 	<MinistryPageContent
 		welcomeTitle="Welcome to Our Women's Ministry Gathering!"
 		welcomeDescription="At Freedom in Christ Church, we celebrate the strength, wisdom, and beauty that women bring to our community. Our Women's Ministry Gathering is a monthly opportunity for women to come together, share life's journey, and grow in faith and friendship. Join us each month for a warm and inviting time of connection and sisterhood."

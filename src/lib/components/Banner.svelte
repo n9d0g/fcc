@@ -25,14 +25,14 @@
 {#if banner && datePassed && !dismissed}
 	<div
 		transition:fly={{ y: 100, duration: 300 }}
-		class="fixed bottom-4 left-4 right-4 z-[999] mx-auto max-w-2xl rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 shadow-2xl md:bottom-6 md:left-6 md:right-6"
+		class="fixed right-4 bottom-4 left-4 z-[999] mx-auto max-w-2xl rounded-2xl bg-primary-800 shadow-2xl ring-1 ring-white/10 md:right-6 md:bottom-6 md:left-6"
 	>
 		<div class="flex items-center gap-3 px-4 py-3 md:px-5 md:py-4">
 			<p class="flex-1 text-xs font-semibold text-white md:text-sm">
 				{#each banner.body[0].children as child}
 					{#if child.marks.length > 0}
 						<a
-							class="underline decoration-2 underline-offset-2 transition-opacity hover:opacity-80"
+							class="text-white underline decoration-secondary-300 decoration-2 underline-offset-2 transition-opacity hover:opacity-80"
 							href={banner.body[0].markDefs[0].href}
 						>
 							{child.text}

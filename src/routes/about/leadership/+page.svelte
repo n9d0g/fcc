@@ -9,10 +9,13 @@
 	let breadcrumb = $derived(data.breadcrumb)
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
-	<div
-		class="my-16 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
-	>
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	intro="The elders and ministry leaders who serve and shepherd our church family."
+>
+	<div class="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		{#each data.leaders as leader}
 			<LeadershipCard
 				img={leader.img}

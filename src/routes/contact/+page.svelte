@@ -1,5 +1,6 @@
 <script lang="ts">
 	import FccLayout from '#lib/components/FccLayout.svelte'
+	import Icon from '@iconify/svelte'
 	import {
 		CONTACT_LIMITS,
 		contactSchema,
@@ -22,7 +23,8 @@
 	let headData = $derived(data.headData)
 
 	// Skeleton draws field edges with a ring, so tint the ring for invalid fields
-	const fieldClass = 'w-full rounded-md aria-invalid:ring-error-500!'
+	const fieldClass =
+		'w-full aria-invalid:border-error-500! aria-invalid:ring-2! aria-invalid:ring-error-500/20!'
 
 	const fields: ContactField[] = ['name', 'email', 'message']
 
@@ -157,17 +159,46 @@
 </svelte:head>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<section class="flex w-full items-center justify-center px-4 py-6 sm:px-6">
+	<section class="grid gap-10 lg:grid-cols-12 lg:gap-14">
+		<aside class="space-y-6 lg:col-span-4">
+			<div>
+				<p class="eyebrow">Get in touch</p>
+				<p class="lede mt-3">
+					Have a question, a prayer request, or want to plan a visit? Send us a
+					note and someone from FCC will get back to you.
+				</p>
+			</div>
+			<ul class="space-y-4">
+				<li class="flex gap-4">
+					<span class="icon-chip"><Icon icon="lucide:clock" class="size-5" /></span>
+					<span>
+						<span class="block font-semibold">Sunday worship</span>
+						<span class="text-muted">10:30 AM, in person &amp; on Zoom</span>
+					</span>
+				</li>
+				<li class="flex gap-4">
+					<span class="icon-chip"><Icon icon="lucide:map-pin" class="size-5" /></span>
+					<span>
+						<span class="block font-semibold">Find us</span>
+						<span class="text-muted">5225 Orbitor Drive Unit 3, Mississauga, ON</span>
+					</span>
+				</li>
+			</ul>
+		</aside>
+		<div class="lg:col-span-8">
 		{#if form?.success}
 			<div
-				class="border-surface-500 mx-auto flex w-full max-w-2xl flex-col items-center gap-6 rounded-lg border p-6 text-center sm:p-12"
+				class="card flex w-full flex-col items-center gap-6 p-8 text-center sm:p-12"
 				role="status"
 			>
-				<p class="max-w-md">
+				<span class="icon-chip size-14 text-2xl">
+					<Icon icon="lucide:check" class="size-6" />
+				</span>
+				<p class="max-w-md text-lg">
 					Thank you for contacting us! An FCC representative will be in contact
 					with you soon.
 				</p>
-				<a href="/" class="btn preset-filled-surface w-full sm:w-auto">
+				<a href="/" class="btn btn-primary w-full sm:w-auto">
 					Back to Homepage
 				</a>
 			</div>
@@ -178,7 +209,7 @@
 				novalidate
 				use:enhance={submit}
 				aria-busy={pending}
-				class="border-surface-500 mx-auto flex w-full max-w-2xl flex-col gap-5 rounded-lg border p-4 sm:p-8 md:p-10"
+				class="card flex w-full flex-col gap-5 p-5 sm:p-8 md:p-10"
 			>
 				<div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
 					<label for="contact-name" class="label flex min-w-0 flex-col gap-2">
@@ -200,7 +231,7 @@
 							class="input {fieldClass}"
 						/>
 						{#if errors.name}
-							<p id="name-error" class="text-error-500 text-sm">
+							<p id="name-error" class="text-sm text-error-600">
 								{errors.name}
 							</p>
 						{/if}
@@ -228,7 +259,7 @@
 							class="input {fieldClass}"
 						/>
 						{#if errors.email}
-							<p id="email-error" class="text-error-500 text-sm">
+							<p id="email-error" class="text-sm text-error-600">
 								{errors.email}
 							</p>
 						{/if}
@@ -253,12 +284,12 @@
 						class="textarea min-h-36 resize-y {fieldClass}"
 					></textarea>
 					<div class="flex items-start justify-between gap-4 text-sm">
-						<p id="message-error" class="text-error-500 min-w-0">
+						<p id="message-error" class="min-w-0 text-error-600">
 							{errors.message ?? ''}
 						</p>
 						<p
 							id="message-count"
-							class="text-surface-600-400 shrink-0 tabular-nums"
+							class="text-muted shrink-0 tabular-nums"
 						>
 							{values.message.length}/{CONTACT_LIMITS.message}
 						</p>
@@ -268,7 +299,7 @@
 				<div aria-live="polite">
 					{#if formMessage}
 						<p
-							class="border-error-500 bg-error-50 text-error-700 dark:bg-error-950 dark:text-error-200 rounded-md border px-4 py-3 text-sm"
+							class="rounded-xl border border-error-200 bg-error-50 px-4 py-3 text-sm text-error-700"
 							role="alert"
 						>
 							{formMessage}
@@ -279,7 +310,7 @@
 				<div
 					class="flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between"
 				>
-					<p class="text-tertiary-400 text-xs">
+					<p class="text-muted text-xs">
 						This site is protected by reCAPTCHA and the Google
 						<a href="https://policies.google.com/privacy" class="anchor"
 							>Privacy Policy</a
@@ -291,7 +322,7 @@
 					</p>
 					<button
 						type="submit"
-						class="btn preset-filled w-full shrink-0 sm:w-auto sm:min-w-32"
+						class="btn btn-primary btn-lg w-full shrink-0 sm:w-auto sm:min-w-40"
 						disabled={pending}
 					>
 						{#if pending}
@@ -307,5 +338,6 @@
 				</div>
 			</form>
 		{/if}
+		</div>
 	</section>
 </FccLayout>

@@ -44,19 +44,30 @@
 	})
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
-	<FilterBy label="Filter by speaker" bind:bindVal />
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	intro="Catch up on recent messages from our Sunday services."
+>
+	<div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+		<FilterBy label="Filter by speaker" bind:bindVal />
+		<Paginator
+			bind:page={currentPage}
+			{pageSize}
+			totalItems={sortedSermons.length}
+			class="md:justify-end"
+		/>
+	</div>
 
 	<!-- sermon paginator -->
 	{#if bindVal !== ''}
-		<p transition:fade={{ duration: 150 }} class="mx-auto flex justify-center">
+		<p transition:fade={{ duration: 150 }} class="mt-4 text-sm text-muted">
 			{sortedSermons.length} result{sortedSermons.length !== 1 ? 's' : ''} found:
 		</p>
 	{/if}
 
-	<Paginator bind:page={currentPage} {pageSize} totalItems={sortedSermons.length} class="my-8" />
-
-	<div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+	<div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 		{#each paginatedSource as sermon (sermon._id)}
 			<SermonCard
 				title={sermon.title}
@@ -72,6 +83,6 @@
 		bind:page={currentPage}
 		{pageSize}
 		totalItems={sortedSermons.length}
-		class="my-8 md:hidden"
+		class="mt-12"
 	/>
 </FccLayout>
