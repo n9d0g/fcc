@@ -27,7 +27,14 @@ const failure = (
 ) => fail(status, { values, errors, message })
 
 async function verifyRecaptcha(token: string) {
-	if (!token) return false
+	if (!token) {
+		console.warn('[contact] recaptcha: no token submitted')
+		return false
+	}
+	if (!GOOGLE_RECAPTCHA_SECRET_KEY) {
+		console.error('[contact] recaptcha: GOOGLE_RECAPTCHA_SECRET_KEY is not set')
+		return false
+	}
 
 	const res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
 		method: 'POST',
@@ -36,16 +43,28 @@ async function verifyRecaptcha(token: string) {
 			response: token,
 		}),
 	})
-	if (!res.ok) return false
+	if (!res.ok) {
+		console.error('[contact] recaptcha: siteverify HTTP', res.status)
+		return false
+	}
 
-	const result: { success: boolean; score?: number; action?: string } =
-		await res.json()
+	const result: {
+		success: boolean
+		score?: number
+		action?: string
+		hostname?: string
+		'error-codes'?: string[]
+	} = await res.json()
 
-	return (
+	const passed =
 		result.success &&
 		result.action === 'contact' &&
 		(result.score ?? 0) >= RECAPTCHA_MIN_SCORE
-	)
+
+	// Log Google's verdict (never the token) so failures are diagnosable
+	if (!passed) console.warn('[contact] recaptcha rejected', result)
+
+	return passed
 }
 
 // Best effort: the visitor's message already reached us, so a failed
