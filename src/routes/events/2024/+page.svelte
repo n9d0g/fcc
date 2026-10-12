@@ -9,9 +9,14 @@
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<div class="container mx-auto">
-		<div>
-			<a href="/events/2024/fall-retreat" class="anchor">2024 Fall Retreat</a>
-		</div>
-	</div>
+	<a
+		href="/events/2024/fall-retreat"
+		class="card card-hover flex max-w-md items-center gap-4 p-5"
+	>
+		<span class="icon-chip">🍂</span>
+		<span>
+			<span class="block font-semibold">2024 Fall Retreat</span>
+			<span class="block text-sm text-muted">Sessions &amp; worksheets</span>
+		</span>
+	</a>
 </FccLayout>

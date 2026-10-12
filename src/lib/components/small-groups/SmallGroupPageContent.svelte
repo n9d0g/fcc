@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '@iconify/svelte'
 	import PhotoGallery from '#lib/components/PhotoGallery.svelte'
 	import type { GalleryPhoto } from '#lib/types.js'
 
@@ -31,70 +32,74 @@
 	} = $props()
 </script>
 
-<div class="mb-8">
-	<h2 class="h2 mb-4 font-bold">{welcomeTitle}</h2>
-	<p class="text-lg">{welcomeText}</p>
-</div>
+<div class="space-y-14">
+	<div class="grid gap-10 lg:grid-cols-12 lg:gap-14">
+		<!-- Welcome -->
+		<div class="lg:col-span-7">
+			<h2 class="h2">{welcomeTitle}</h2>
+			<p class="lede mt-5">{welcomeText}</p>
 
-<div class="card mb-8 bg-white p-5 dark:bg-surface-800">
-	<div class="flex flex-wrap items-center gap-4">
-		<div class="flex items-center gap-3">
-			<span
-				class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
-			>
-				💻
-			</span>
-			<div>
-				<p class="font-semibold">Zoom Meeting</p>
-				<p class="text-sm opacity-70">
-					Meeting ID: {zoomMeetingId} | Passcode: {zoomPasscode}
-				</p>
+			<div class="mt-8 grid gap-4 sm:grid-cols-2">
+				<div class="card p-6">
+					<span class="icon-chip">
+						<Icon icon="lucide:calendar-days" class="size-5" />
+					</span>
+					<p class="eyebrow mt-5">When we meet</p>
+					<p class="mt-2 font-semibold">{meetingSchedule}</p>
+					<p class="text-muted">{meetingLocation}</p>
+				</div>
+				<div class="card p-6">
+					<span class="icon-chip">
+						<Icon icon="lucide:book-open" class="size-5" />
+					</span>
+					<p class="eyebrow mt-5">What we study</p>
+					<p class="mt-2 font-semibold">{studyTitle}</p>
+					<p class="text-muted">{studyDescription}</p>
+				</div>
 			</div>
 		</div>
-		<a href={zoomLink} target="_blank" rel="noopener noreferrer" class="preset-filled btn">
-			Join Zoom Meeting
-		</a>
+
+		<!-- Zoom + join -->
+		<aside class="space-y-4 lg:col-span-5">
+			<div class="rounded-3xl bg-primary-800 p-7 text-primary-100">
+				<span
+					class="flex size-11 items-center justify-center rounded-xl bg-white/10 text-secondary-200"
+				>
+					<Icon icon="lucide:video" class="size-5" />
+				</span>
+				<p class="mt-5 font-display text-2xl font-semibold text-white">
+					Join on Zoom
+				</p>
+				<dl class="mt-4 space-y-1 text-sm">
+					<div class="flex gap-2">
+						<dt class="text-primary-300">Meeting ID</dt>
+						<dd class="font-semibold text-white">{zoomMeetingId}</dd>
+					</div>
+					<div class="flex gap-2">
+						<dt class="text-primary-300">Passcode</dt>
+						<dd class="font-semibold text-white">{zoomPasscode}</dd>
+					</div>
+				</dl>
+				<a
+					href={zoomLink}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="btn btn-light mt-6 w-full"
+				>
+					Open Zoom meeting
+					<Icon icon="lucide:arrow-up-right" class="size-4" />
+				</a>
+			</div>
+
+			<div class="card p-7">
+				<h3 class="h4">How to join</h3>
+				<p class="mt-3 text-muted">{howToJoinText}</p>
+				<p class="mt-3 text-muted">{contactInfo}</p>
+			</div>
+		</aside>
 	</div>
+
+	{#if gallery?.photos}
+		<PhotoGallery photos={gallery.photos} />
+	{/if}
 </div>
-
-<div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-	<div class="card bg-white p-5 dark:bg-surface-800">
-		<div class="mb-3 flex items-center gap-3">
-			<span
-				class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
-			>
-				📅
-			</span>
-			<h3 class="h4 font-bold">When We Meet</h3>
-		</div>
-		<div class="flex flex-col gap-1 opacity-80">
-			<p class="font-semibold">{meetingSchedule}</p>
-			<p>{meetingLocation}</p>
-		</div>
-	</div>
-
-	<div class="card bg-white p-5 dark:bg-surface-800">
-		<div class="mb-3 flex items-center gap-3">
-			<span
-				class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
-			>
-				📖
-			</span>
-			<h3 class="h4 font-bold">What We Study</h3>
-		</div>
-		<div class="flex flex-col gap-1 opacity-80">
-			<p class="font-semibold">{studyTitle}</p>
-			<p>{studyDescription}</p>
-		</div>
-	</div>
-</div>
-
-<div class="card mb-8 bg-white p-6 dark:bg-surface-800">
-	<h3 class="h3 mb-3 font-bold">How to Join</h3>
-	<p class="mb-2">{howToJoinText}</p>
-	<p>{contactInfo}</p>
-</div>
-
-{#if gallery?.photos}
-	<PhotoGallery photos={gallery.photos} />
-{/if}

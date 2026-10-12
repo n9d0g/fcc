@@ -1,10 +1,10 @@
 <script lang="ts">
+	import bibleStudy from '#lib/assets/community/bible-study.jpg'
 	import { formatCmsDate } from '#lib/utils.js'
 	import { searchFilter } from '#lib/utils.js'
-	import { fade } from 'svelte/transition'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import MinistryPageContent from '#lib/components/ministries/MinistryPageContent.svelte'
-	import Icon from '@iconify/svelte'
+	import FilterBy from '#lib/components/FilterBy.svelte'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
@@ -52,7 +52,14 @@
 	]
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	image={bibleStudy}
+	imageAlt="FCC members gathered for prayer and study"
+	imagePosition="center 40%"
+>
 	<MinistryPageContent
 		welcomeTitle="Welcome to Our Weekly Prayer Meeting!"
 		welcomeDescription="At Freedom in Christ Church, we believe in the transformative power of prayer and the strength that comes from a community united in seeking God's guidance, mercy, and blessing. Our Weekly Prayer Meeting is a sacred space where we gather to lift our voices in intercession, express gratitude, and draw near to the heart of God."
@@ -77,32 +84,15 @@
 		{/snippet}
 
 		{#snippet customContent()}
-			<hr class="mb-8" />
+			<p class="eyebrow">Who's leading</p>
+			<h2 class="h2 mt-3 mb-6">Prayer Meeting Schedule</h2>
 
-			<h2 class="h2 my-4 text-3xl font-bold">Prayer Meeting Schedule</h2>
-
-			<!-- search schedule -->
-			<label class="label relative mb-4 flex w-full flex-col gap-2 md:w-1/3">
-				<span>Filter by name:</span>
-				<input
-					class="input border p-2"
-					type="text"
-					placeholder="Filter by name"
-					bind:value={filterQuery}
-				/>
-				{#if filterQuery.length > 0}
-					<button
-						transition:fade={{ duration: 150 }}
-						onclick={() => (filterQuery = '')}
-						class="absolute top-[39px] right-2 h-7 w-7 cursor-pointer rounded-xl text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white"
-					>
-						<Icon icon="lucide:x" class="h-full w-full" />
-					</button>
-				{/if}
-			</label>
+			<div class="mb-6">
+				<FilterBy label="Filter by name" bind:bindVal={filterQuery} />
+			</div>
 
 			<!-- schedule table -->
-			<div class="table-container mb-8">
+			<div class="table-container">
 				<table class="table">
 					<thead>
 						<tr>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import youngAdults from '#lib/assets/community/young-adults.jpg'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import MinistryPageContent from '#lib/components/ministries/MinistryPageContent.svelte'
 
@@ -42,7 +43,14 @@
 	]
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	image={youngAdults}
+	imageAlt="FCC young adults at an evening hangout"
+	imagePosition="center 35%"
+>
 	<MinistryPageContent
 		welcomeTitle="Welcome to our Young Adults Community!"
 		welcomeDescription="At Freedom in Christ Church, we recognize the unique journey and aspirations of young adults aged 20-35. Our Young Adults Community is a place where individuals in this age group can connect, grow spiritually, and navigate life's challenges together. Join us regularly for engaging gatherings that blend faith, community involvement, and meaningful connections."

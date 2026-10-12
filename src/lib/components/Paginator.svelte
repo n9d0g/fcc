@@ -40,7 +40,7 @@
 	<button
 		onclick={goToFirst}
 		disabled={!canGoPrev}
-		class="btn-icon preset-tonal disabled:opacity-50"
+		class="btn-icon border border-line bg-white text-ink hover:bg-primary-50 disabled:cursor-not-allowed disabled:opacity-40"
 		aria-label="First page"
 	>
 		<Icon icon="lucide:chevrons-left" class="h-4 w-4" />
@@ -48,20 +48,20 @@
 	<button
 		onclick={goToPrev}
 		disabled={!canGoPrev}
-		class="btn-icon preset-tonal disabled:opacity-50"
+		class="btn-icon border border-line bg-white text-ink hover:bg-primary-50 disabled:cursor-not-allowed disabled:opacity-40"
 		aria-label="Previous page"
 	>
 		<Icon icon="lucide:chevron-left" class="h-4 w-4" />
 	</button>
 
-	<span class="px-4 text-sm">
+	<span class="px-3 text-sm text-muted tabular-nums">
 		Page {page + 1} of {totalPages}
 	</span>
 
 	<button
 		onclick={goToNext}
 		disabled={!canGoNext}
-		class="btn-icon preset-tonal disabled:opacity-50"
+		class="btn-icon border border-line bg-white text-ink hover:bg-primary-50 disabled:cursor-not-allowed disabled:opacity-40"
 		aria-label="Next page"
 	>
 		<Icon icon="lucide:chevron-right" class="h-4 w-4" />
@@ -69,7 +69,7 @@
 	<button
 		onclick={goToLast}
 		disabled={!canGoNext}
-		class="btn-icon preset-tonal disabled:opacity-50"
+		class="btn-icon border border-line bg-white text-ink hover:bg-primary-50 disabled:cursor-not-allowed disabled:opacity-40"
 		aria-label="Last page"
 	>
 		<Icon icon="lucide:chevrons-right" class="h-4 w-4" />

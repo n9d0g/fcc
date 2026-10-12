@@ -10,10 +10,10 @@
 	<!-- Backdrop -->
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
-	<div class="fixed inset-0 z-50 bg-surface-900/75" onclick={closeModal}></div>
+	<div class="fixed inset-0 z-[80] bg-ink/55 backdrop-blur-sm" onclick={closeModal}></div>
 
 	<!-- Modal Container -->
-	<div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+	<div class="pointer-events-none fixed inset-0 z-[80] flex items-center justify-center p-4 [&>*]:pointer-events-auto">
 		{#if modal.type === 'sermon'}
 			<SermonModal data={modal.data as SermonModalData} onclose={closeModal} />
 		{:else if modal.type === 'praise'}

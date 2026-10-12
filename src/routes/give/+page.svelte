@@ -1,6 +1,7 @@
 <script lang="ts">
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import Icon from '@iconify/svelte'
+	import community from '#lib/assets/community/men-ministry.jpg'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
@@ -11,115 +12,99 @@
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<!-- Hero Section -->
-	<section class="my-12">
-		<div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-			<div class="order-2 lg:order-1">
-				<p
-					class="dark:text-surface-300 mb-6 text-lg leading-relaxed text-gray-600"
-					data-testid="give-description"
+	<!-- Intro -->
+	<section class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+		<div class="order-2 space-y-5 lg:order-1">
+			<p class="lede" data-testid="give-description">
+				At Freedom in Christ Church, we believe in the joy of giving.
+				<a href={links.verse1} target="_blank" class="anchor whitespace-nowrap"
+					>(2 Corinthians 9:7)</a
 				>
-					At Freedom in Christ Church, we believe in the joy of giving.
-					<a href={links.verse1} target="_blank" class="anchor font-semibold"
-						>(2 Corinthians 9:7)</a
-					>
-				</p>
-				<p
-					class="dark:text-surface-300 mb-6 text-lg leading-relaxed text-gray-600"
+			</p>
+			<p class="lede">
+				More than being a rule to follow, we give because God is our ultimate
+				provider and gives us everything we need to live and do the good work He
+				has called us to do.
+				<a href={links.verse2} target="_blank" class="anchor whitespace-nowrap"
+					>(2 Corinthians 9:8)</a
 				>
-					More than being a rule to follow, we give because God is our ultimate
-					provider and gives us everything we need to live and do the good work
-					He has called us to do.
-					<a href={links.verse2} target="_blank" class="anchor font-semibold"
-						>(2 Corinthians 9:8)</a
-					>
-				</p>
-				<p class="dark:text-surface-300 text-lg leading-relaxed text-gray-600">
-					We value the discipline of giving our tithes and offerings because it
-					reflects the same faithful, generous and gracious heart of our Father.
-				</p>
-			</div>
-			<div class="order-1 lg:order-2">
-				<img
-					src={links.pic1}
-					alt="FCC Give"
-					class="h-auto w-full rounded-2xl shadow-lg"
-				/>
-			</div>
+			</p>
+			<p class="lede">
+				We value the discipline of giving our tithes and offerings because it
+				reflects the same faithful, generous and gracious heart of our Father.
+			</p>
 		</div>
+		<figure class="relative isolate order-1 lg:order-2">
+			<img
+				src={community}
+				alt="Members of FCC's men's ministry gathered together at a summer fellowship"
+				class="aspect-4/3 w-full rounded-3xl object-cover shadow-lift"
+			/>
+			<div
+				class="absolute -bottom-3 -left-3 -z-10 size-full rounded-3xl bg-secondary-100"
+				aria-hidden="true"
+			></div>
+		</figure>
 	</section>
 
 	<!-- Giving Options -->
-	<section class="my-16">
-		<h3 class="mb-8 text-center text-2xl font-bold">Ways to Give</h3>
-		<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-			<!-- E-Transfer Card -->
-			<div class="card p-8 transition-all hover:shadow-xl">
-				<div>
-					<div
-						class="bg-primary-100 text-primary-600 dark:bg-primary-900/50 dark:text-primary-400 mb-4 flex h-14 w-14 items-center justify-center rounded-full"
-					>
-						<Icon icon="lucide:smartphone" class="h-7 w-7" />
-					</div>
-					<h4 class="mb-2 text-xl font-bold">Online E-Transfer</h4>
-					<p class="dark:text-surface-300 mb-4 text-gray-600">
-						Send your offering directly through your bank's e-transfer service.
-					</p>
-					<a
-						href={links.etransfer}
-						class="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 inline-flex items-center gap-2 text-lg font-semibold transition-colors"
-					>
-						<Icon icon="lucide:mail" class="h-5 w-5" />
-						fcc.fcac@gmail.com
-					</a>
-				</div>
+	<section class="mt-20">
+		<p class="eyebrow">Ways to give</p>
+		<h2 class="h2 mt-3">Two simple ways to give</h2>
+		<div class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
+			<div class="card p-8">
+				<span class="icon-chip">
+					<Icon icon="lucide:smartphone" class="size-5" />
+				</span>
+				<h3 class="h3 mt-5">Online e-Transfer</h3>
+				<p class="mt-2 text-muted">
+					Send your offering directly through your bank's e-transfer service.
+				</p>
+				<a href={links.etransfer} class="btn btn-primary mt-6">
+					<Icon icon="lucide:mail" class="size-4" />
+					fcc.fcac@gmail.com
+				</a>
 			</div>
 
-			<!-- In-Person Card -->
-			<div class="card p-8 transition-all hover:shadow-xl">
-				<div>
-					<div
-						class="bg-secondary-100 text-secondary-600 dark:bg-secondary-900/50 dark:text-secondary-400 mb-4 flex h-14 w-14 items-center justify-center rounded-full"
-					>
-						<Icon icon="lucide:church" class="h-7 w-7" />
-					</div>
-					<h4 class="mb-2 text-xl font-bold">In-Person Offering</h4>
-					<p class="dark:text-surface-300 mb-4 text-gray-600">
-						Fill out an offering envelope at our weekly Sunday services.
-					</p>
-					<a
-						href={links.googleMaps}
-						target="_blank"
-						class="text-secondary-600 hover:text-secondary-700 dark:text-secondary-400 dark:hover:text-secondary-300 inline-flex items-center gap-2 text-lg font-semibold transition-colors"
-					>
-						<Icon icon="lucide:map-pin" class="h-5 w-5" />
-						5225 Orbitor Drive Unit 3, Mississauga
-					</a>
-				</div>
+			<div class="card p-8">
+				<span class="icon-chip">
+					<Icon icon="lucide:church" class="size-5" />
+				</span>
+				<h3 class="h3 mt-5">In-person offering</h3>
+				<p class="mt-2 text-muted">
+					Fill out an offering envelope at our weekly Sunday services.
+				</p>
+				<a
+					href={links.googleMaps}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="btn btn-outline mt-6 whitespace-normal"
+				>
+					<Icon icon="lucide:map-pin" class="size-4 shrink-0" />
+					5225 Orbitor Drive Unit 3, Mississauga
+				</a>
 			</div>
 		</div>
 	</section>
 
 	<!-- Scripture Quote -->
-	<section class="my-16">
-		<div
-			class="from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-2xl bg-gradient-to-br p-8 text-center md:p-12"
+	<section class="mt-20">
+		<figure
+			class="relative isolate overflow-hidden rounded-3xl bg-primary-800 px-8 py-14 text-center md:px-16 md:py-20"
 		>
 			<Icon
 				icon="lucide:quote"
-				class="text-primary-400 dark:text-primary-500 mx-auto mb-4 h-10 w-10"
+				class="absolute top-6 left-6 -z-10 size-28 text-primary-700"
 			/>
 			<blockquote
-				class="dark:text-surface-200 text-xl leading-relaxed text-gray-700 italic md:text-2xl"
+				class="mx-auto max-w-3xl font-display text-2xl leading-snug text-white md:text-3xl"
 			>
-				"Each of you should give what you have decided in your heart to give,
-				not reluctantly or under compulsion, for God loves a cheerful giver."
+				"Each of you should give what you have decided in your heart to give, not
+				reluctantly or under compulsion, for God loves a cheerful giver."
 			</blockquote>
-			<cite
-				class="text-primary-600 dark:text-primary-400 mt-4 block font-semibold"
-			>
-				— 2 Corinthians 9:7 (NIV)
-			</cite>
-		</div>
+			<figcaption class="eyebrow mt-6 text-secondary-300">
+				2 Corinthians 9:7 (NIV)
+			</figcaption>
+		</figure>
 	</section>
 </FccLayout>
