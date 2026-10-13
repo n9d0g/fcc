@@ -1,42 +1,17 @@
-import {
-	headData,
-	client,
-	breadcrumbs,
-	fetchPageGallery,
-} from '#lib/config/index.js'
-import {
-	updatedDataFiltered,
-	setCacheHeaders,
-	CACHE_PRESETS,
-} from '#lib/utils.js'
-import { error } from '@sveltejs/kit'
+import { headData, breadcrumbs, fetchPageGallery } from '#lib/config/index.js'
 
-export const load = async ({ setHeaders, url }) => {
-	setCacheHeaders(setHeaders, url, ...CACHE_PRESETS.short)
+export const load = async ({ data }) => {
+	const gallery = await fetchPageGallery('/ministries/prayer')
 
-	const [data, gallery] = await Promise.all([
-		client.fetch(`
-			*[_type == "prayer"] {
-				name, date, scripture
-			}
-		`),
-		fetchPageGallery('/ministries/prayer'),
-	])
-
-	const breadcrumb = [
-		breadcrumbs.home,
-		breadcrumbs.ministries,
-		breadcrumbs.ministries.prayer,
-	]
-
-	if (data) {
-		return {
-			title: 'FCC Prayer Ministry.',
-			breadcrumb: breadcrumb,
-			prayerData: updatedDataFiltered(data, 'date'),
-			headData: headData.ministriesPrayer,
-			gallery,
-		}
+	return {
+		...data,
+		title: 'FCC Prayer Ministry.',
+		breadcrumb: [
+			breadcrumbs.home,
+			breadcrumbs.ministries,
+			breadcrumbs.ministries.prayer,
+		],
+		headData: headData.ministriesPrayer,
+		gallery: gallery ?? undefined,
 	}
-	throw error(500, 'Internal Server Error')
 }

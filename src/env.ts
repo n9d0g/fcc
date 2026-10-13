@@ -11,4 +11,6 @@ export const variables = defineEnvVars({
 	SUPABASE_SERVICE_ROLE_KEY: { schema: (input) => input ?? '' },
 	// Shared secret Sanity sends with the new-event webhook
 	SANITY_WEBHOOK_SECRET: { schema: (input) => input ?? '' },
+	// Shared secret the daily GitHub Action sends to /api/cron/*
+	CRON_SECRET: { schema: (input) => input ?? '' },
 })

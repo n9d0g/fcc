@@ -225,6 +225,10 @@ export const headData = {
 		title: 'Blog Approvals | Freedom in Christ Church',
 		description: 'Review blog author requests and posts awaiting approval.',
 	},
+	prayerSchedule: {
+		title: 'Prayer Schedule | Freedom in Christ Church',
+		description: 'Manage the weekly prayer meeting devotional schedule.',
+	},
 	account: {
 		title: 'Edit Profile | Freedom in Christ Church',
 		description: 'Update your name, email address and password.',

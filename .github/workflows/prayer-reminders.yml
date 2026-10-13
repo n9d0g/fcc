@@ -1,0 +1,28 @@
+name: Prayer meeting reminders
+
+# Emails devotional leaders 2 weeks before, 1 week before and on the day of
+# their prayer meeting. The site decides who is due and never sends a reminder
+# twice, so re-running this (or a delayed run) is safe.
+on:
+  schedule:
+    # 13:00 UTC = 9 AM Toronto in summer, 8 AM in winter
+    - cron: '0 13 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: prayer-reminders
+  cancel-in-progress: false
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send due reminders
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          curl --fail-with-body --silent --show-error \
+            --retry 3 --retry-delay 30 \
+            -X POST \
+            -H "Authorization: Bearer $CRON_SECRET" \
+            https://fcccanada.ca/api/cron/prayer-reminders

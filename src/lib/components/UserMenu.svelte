@@ -87,6 +87,11 @@
 								icon: 'lucide:users',
 							},
 							{ href: '/admin/blog', label: 'Blog approvals', icon: 'lucide:file-check' },
+							{
+								href: '/admin/prayer',
+								label: 'Prayer schedule',
+								icon: 'lucide:hand-heart',
+							},
 						],
 					},
 				]

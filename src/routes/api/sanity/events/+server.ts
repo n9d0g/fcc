@@ -1,6 +1,7 @@
 import { SANITY_WEBHOOK_SECRET } from '$app/env/private'
 import type { FccEvent } from '#lib/events.js'
 import { announceEvent } from '#lib/server/event-subscribers.js'
+import { hasBearer } from '#lib/server/bearer.js'
 import { json } from '@sveltejs/kit'
 
 // Called by the "New event" Sanity webhook (sanity.io/manage → API →
@@ -8,21 +9,12 @@ import { json } from '@sveltejs/kit'
 // "Authorization: Bearer <SANITY_WEBHOOK_SECRET>" header. Subscribers are
 // emailed about upcoming events only, and only once per event.
 
-// Compares without short-circuiting, so response timing doesn't leak the secret
-const safeEqual = (a: string, b: string) => {
-	if (a.length !== b.length) return false
-	let diff = 0
-	for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i)
-	return diff === 0
-}
-
 export const POST = async ({ request }) => {
 	if (!SANITY_WEBHOOK_SECRET) {
 		console.error('[sanity webhook] SANITY_WEBHOOK_SECRET is not set')
 		return json({ error: 'Not configured' }, { status: 500 })
 	}
-	const auth = request.headers.get('authorization') ?? ''
-	if (!safeEqual(auth, `Bearer ${SANITY_WEBHOOK_SECRET}`)) {
+	if (!hasBearer(request, SANITY_WEBHOOK_SECRET)) {
 		return json({ error: 'Unauthorized' }, { status: 401 })
 	}
 
