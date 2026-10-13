@@ -179,9 +179,14 @@ export const headData = {
 			"Connect with other young adults at Freedom in Christ Church in Mississauga. Our Young Adults Small Group offers relevant Bible study, fellowship, and support during life's transition years.",
 	},
 	events: {
-		title: 'Church Events | Freedom in Christ Church Calendar',
+		title: 'Church Events in Mississauga | Freedom in Christ Church',
 		description:
-			'Stay updated on upcoming events at Freedom in Christ Church in Mississauga. Join us for worship services, community events, Bible studies, and special celebrations throughout the year.',
+			'Upcoming and past events at Freedom in Christ Church, a volunteer-led Alliance church in Mississauga. Add events to your calendar or get new ones by email.',
+	},
+	eventSubscription: {
+		title: 'Event Updates | Freedom in Christ Church',
+		description:
+			'Manage your email updates about Freedom in Christ Church events.',
 	},
 	thanksgiving2026: {
 		title: 'Thanksgiving 2026 | Freedom in Christ Church Mississauga',
