@@ -1,5 +1,25 @@
 # web
 
+## [3.26.0](https://github.com/n9d0g/fcc/compare/v3.25.0...v3.26.0) (2026-10-13)
+
+
+### Features
+
+* contact auto-reply ([ecac236](https://github.com/n9d0g/fcc/commit/ecac23672d2b5deb52c6dbeec52d1d3360b91e50))
+* **contact:** :sparkles: auto-reply to contact form submissions ([738880e](https://github.com/n9d0g/fcc/commit/738880e3366e3a7c7ff67272d5c71da9c06d44ce))
+* **contact:** :sparkles: branded email template and responsive conta… ([2d583a1](https://github.com/n9d0g/fcc/commit/2d583a13a6f2cb9a6a0edf6495201f7e944b60c1))
+* **contact:** :sparkles: branded email template and responsive contact form ([4009e93](https://github.com/n9d0g/fcc/commit/4009e93ee9f02aaf85b292f1e132b98e4fbef62b))
+* site redesign ([627b64b](https://github.com/n9d0g/fcc/commit/627b64b38d8b7c2a9631831fc8b70d34e526c8b1))
+* **web:** :sparkles: register -&gt; confirm email template update ([609f0f7](https://github.com/n9d0g/fcc/commit/609f0f7cb13fd1ec6fa98995d9a7cc5726f9cbea))
+* **web:** :sparkles: site redesign ([8ec3e77](https://github.com/n9d0g/fcc/commit/8ec3e773bed55b654b95d66c6a0968aa1322fb4b))
+* **web:** :sparkles: site redesign p2 ([a91f69c](https://github.com/n9d0g/fcc/commit/a91f69c0a21184bae46df2f5b39087c2eb8c4bdc))
+
+
+### Bug Fixes
+
+* **contact:** :bug: wrap grecaptcha.execute thenable in native promise ([411a729](https://github.com/n9d0g/fcc/commit/411a729d27fe3121f61c1e051aa7efd0fc8fa689))
+* **web:** :wrench: env example fix ([66872c8](https://github.com/n9d0g/fcc/commit/66872c8622f5e112194181e18406e479951347aa))
+
 ## [3.25.0](https://github.com/n9d0g/fcc/compare/v3.24.0...v3.25.0) (2026-10-02)
 
 
