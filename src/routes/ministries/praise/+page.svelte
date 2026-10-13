@@ -37,18 +37,20 @@
 	>
 		{#snippet howToJoinContent()}
 			<p class="mb-2">
-				To join our Praise and Worship Ministry, simply <a
-					href="mailto:fcc.church.canada@gmail.com"
-					class="anchor">send an email</a
+				To join our Praise and Worship Ministry, <a
+					href="/ministries/praise/join"
+					class="anchor">send us a request</a
 				>
-				or
+				letting us know which instrument you play or if you're interested in
+				vocals. You can also
 				<a href="https://www.instagram.com/fcc.canada/" class="anchor"
-					>message us on our Instagram account</a
-				>, expressing your interest. Let us know which instrument you play or if
-				you're interested in vocals. We'll be happy to connect with you, provide
-				more information, and discuss how you can become a vital part of our
-				worship team.
+					>message us on Instagram</a
+				>. We'll be happy to connect with you, provide more information, and
+				discuss how you can become a vital part of our worship team.
 			</p>
+			<a href="/ministries/praise/join" class="btn btn-primary mb-6">
+				Request to join the team
+			</a>
 			<p>
 				Join us as we lift our voices and instruments in harmony, creating an
 				atmosphere where God's presence is not only felt but celebrated. We look

@@ -7,7 +7,9 @@
 	// pasted into Authentication → Email Templates → Confirm signup. The
 	// {{ ... }} values are Supabase's Go template variables, filled at send time.
 	const TOKEN = '{{ .Token }}'
-	const CONFIRM_URL = '{{ .RedirectTo }}?mode=confirm&email={{ .Email | urlquery }}'
+	// The token rides along so the confirm page can prefill the code
+	const CONFIRM_URL =
+		'{{ .RedirectTo }}?mode=confirm&email={{ .Email | urlquery }}&token={{ .Token }}'
 	const SITE = 'https://fcccanada.ca'
 </script>
 
@@ -18,7 +20,8 @@
 	<Text class="m-0 text-base leading-6 text-slate-800">Hi there,</Text>
 	<Text class="m-0 mt-4 text-base leading-6 text-slate-800">
 		Thanks for creating an account with Freedom in Christ Church. Press the
-		button below and enter this code to confirm your email:
+		button below to confirm your email. Your code will be filled in for you,
+		or you can enter it yourself:
 	</Text>
 
 	<Section class="mt-6 rounded-md bg-brand-light px-6 py-4 text-center">

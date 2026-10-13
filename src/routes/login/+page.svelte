@@ -17,6 +17,8 @@
 		page.url.searchParams.get('mode') === 'confirm' ? 'confirm' : 'login'
 	)
 	const email = $derived(form?.email ?? page.url.searchParams.get('email') ?? '')
+	// Prefilled from the email's "Confirm email" button (?token=123456)
+	const token = $derived(page.url.searchParams.get('token') ?? '')
 
 	const errorMessage = $derived(
 		form?.error != null && typeof form.error === 'string'
@@ -146,6 +148,7 @@
 							placeholder="123456"
 							inputmode="numeric"
 							autocomplete="one-time-code"
+							value={token}
 							required
 						/>
 					</label>

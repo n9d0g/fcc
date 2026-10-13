@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto, refreshAll } from '$app/navigation'
 	import type { User } from '@supabase/supabase-js'
+	import { isAdmin } from '#lib/schemas/worship-team.js'
 
 	let {
 		user,
@@ -102,6 +103,20 @@
 					{email || displayName}
 				</p>
 			</div>
+
+			{#if isAdmin(user)}
+				<a
+					href="/admin/worship-requests"
+					role="menuitem"
+					class="flex w-full items-center px-4 py-3 text-left text-sm font-medium hover:bg-surface-100"
+					onclick={() => {
+						closeMenu()
+						onaction?.()
+					}}
+				>
+					Worship requests
+				</a>
+			{/if}
 
 			<button
 				type="button"

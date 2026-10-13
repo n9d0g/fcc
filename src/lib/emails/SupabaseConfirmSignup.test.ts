@@ -9,7 +9,7 @@ describe('SupabaseConfirmSignup email', () => {
 		expect(html).not.toContain('class="')
 		expect(html).toContain('{{ .Token }}')
 		expect(html).toMatch(
-			/href="\{\{ \.RedirectTo \}\}\?mode=confirm&(amp;)?email=\{\{ \.Email \| urlquery \}\}"/
+			/href="\{\{ \.RedirectTo \}\}\?mode=confirm&(amp;)?email=\{\{ \.Email \| urlquery \}\}&(amp;)?token=\{\{ \.Token \}\}"/
 		)
 
 		// Regenerate with `pnpm test:unit -u`, then paste into Supabase
