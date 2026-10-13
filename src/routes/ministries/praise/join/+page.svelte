@@ -87,9 +87,14 @@
 					Requested: {request.roles.map(roleLabel).join(', ')}
 				</p>
 				{#if request.status === 'approved'}
-					<a href="/ministries/praise/schedule" class="btn btn-primary">
-						View the schedule
-					</a>
+					<div class="flex flex-wrap justify-center gap-2">
+						<a href="/ministries/praise/schedule" class="btn btn-primary">
+							View the schedule
+						</a>
+						<a href="/ministries/praise/availability" class="btn btn-outline">
+							Block out Sundays
+						</a>
+					</div>
 				{:else if request.status === 'rejected'}
 					<a href="/contact" class="btn btn-primary">Contact us</a>
 				{:else}
@@ -119,7 +124,7 @@
 						autocomplete="name"
 						placeholder="First and last name"
 						maxlength={WORSHIP_REQUEST_LIMITS.fullName}
-						value={values?.fullName ?? ''}
+						value={values?.fullName ?? data.displayName}
 						aria-invalid={!!errors.fullName}
 						required
 					/>

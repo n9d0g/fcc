@@ -160,6 +160,15 @@ export const headData = {
 		title: 'Worship Team Requests | Freedom in Christ Church',
 		description: 'Review requests to join the Praise & Worship team.',
 	},
+	teamAvailability: {
+		title: 'Team Availability | Freedom in Christ Church',
+		description: 'Sundays worship team members are unavailable to serve.',
+	},
+	praiseAvailability: {
+		title: 'My Availability | Freedom in Christ Church',
+		description:
+			'Let the Praise & Worship leaders know which Sundays you are unable to serve.',
+	},
 	login: {
 		title: 'Member Login | Freedom in Christ Church Portal',
 		description:

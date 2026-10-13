@@ -17,7 +17,15 @@
 	let rootEl = $state<HTMLDivElement | null>(null)
 
 	const email = $derived(user.email ?? '')
-	const displayName = $derived(email ? email.split('@')[0] : 'User')
+	// Set at signup (user_metadata.display_name); older accounts fall back to email
+	const metadataName = $derived(
+		typeof user.user_metadata?.display_name === 'string'
+			? user.user_metadata.display_name.trim()
+			: ''
+	)
+	const displayName = $derived(
+		metadataName || (email ? email.split('@')[0] : 'User')
+	)
 	const initials = $derived(getInitials(displayName))
 
 	function getInitials(name: string) {
@@ -99,9 +107,14 @@
 		>
 			<div class="border-b border-line px-4 py-3">
 				<p class="text-xs text-muted">Signed in as</p>
-				<p class="truncate text-sm font-medium text-ink">
-					{email || displayName}
-				</p>
+				{#if metadataName}
+					<p class="truncate text-sm font-medium text-ink">{metadataName}</p>
+					<p class="truncate text-xs text-muted">{email}</p>
+				{:else}
+					<p class="truncate text-sm font-medium text-ink">
+						{email || displayName}
+					</p>
+				{/if}
 			</div>
 
 			{#if isAdmin(user)}
@@ -115,6 +128,17 @@
 					}}
 				>
 					Worship requests
+				</a>
+				<a
+					href="/admin/availability"
+					role="menuitem"
+					class="flex w-full items-center px-4 py-3 text-left text-sm font-medium hover:bg-surface-100"
+					onclick={() => {
+						closeMenu()
+						onaction?.()
+					}}
+				>
+					Team availability
 				</a>
 			{/if}
 

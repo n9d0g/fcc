@@ -20,6 +20,10 @@ export const breadcrumbs = {
 			title: 'Worship Requests',
 			href: '/admin/worship-requests',
 		},
+		availability: {
+			title: 'Team Availability',
+			href: '/admin/availability',
+		},
 	},
 	contact: { title: 'Contact', href: '/contact' },
 	about: {
@@ -44,6 +48,10 @@ export const breadcrumbs = {
 			schedule: { title: 'Schedule', href: '/ministries/praise/schedule' },
 			songUsage: { title: 'Song Usage', href: '/ministries/praise/song-usage' },
 			join: { title: 'Join the Team', href: '/ministries/praise/join' },
+			availability: {
+				title: 'My Availability',
+				href: '/ministries/praise/availability',
+			},
 			worshipDirectorNotes: {
 				title: 'Worship Director Notes',
 				href: 'https://n9d0g.notion.site/worship-director-notes-2cc49c91f89280d5b0a9f6ecd67ea167?source=copy_link',

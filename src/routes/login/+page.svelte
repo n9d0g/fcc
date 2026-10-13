@@ -17,6 +17,9 @@
 		page.url.searchParams.get('mode') === 'confirm' ? 'confirm' : 'login'
 	)
 	const email = $derived(form?.email ?? page.url.searchParams.get('email') ?? '')
+	const displayName = $derived(
+		form && 'displayName' in form ? (form.displayName ?? '') : ''
+	)
 	// Prefilled from the email's "Confirm email" button (?token=123456)
 	const token = $derived(page.url.searchParams.get('token') ?? '')
 	// Set by pages that require login (e.g. the worship request review link)
@@ -95,6 +98,20 @@
 				</form>
 			{:else if mode === 'signup'}
 				<form method="POST" action="?/signup" use:enhance class="flex flex-col gap-6">
+					<label class="label flex flex-col gap-2">
+						<span>Name</span>
+						<input
+							class="input"
+							type="text"
+							name="displayName"
+							autocomplete="name"
+							placeholder="First and last name"
+							maxlength="100"
+							value={displayName}
+							required
+						/>
+					</label>
+
 					<label class="label flex flex-col gap-2">
 						<span>Email</span>
 						<input

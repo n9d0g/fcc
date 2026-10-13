@@ -22,6 +22,12 @@ export const load = async () => {
 				icon: 'lucide:calendar-days',
 			},
 			{
+				title: 'My Availability',
+				link: '/ministries/praise/availability',
+				description: "Block out Sundays you can't serve.",
+				icon: 'lucide:calendar-x',
+			},
+			{
 				title: 'Song Usage',
 				link: '/ministries/praise/song-usage',
 				description: 'How often we sing each song.',
