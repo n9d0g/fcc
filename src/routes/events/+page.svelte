@@ -31,9 +31,27 @@
 		<div>
 			<p class="eyebrow">Archive</p>
 			<h2 class="h2 mt-3 mb-6">Past Events</h2>
+			<div class="grid gap-4 sm:grid-cols-2">
+			<a
+				href="/events/2026/thanksgiving"
+				class="card card-hover group flex items-center justify-between gap-4 p-5"
+			>
+				<span class="flex items-center gap-4">
+					<span class="icon-chip">🦃</span>
+					<span>
+						<span class="block font-semibold">2026 Thanksgiving</span>
+						<span class="block text-sm text-muted">Photos &amp; worship</span>
+					</span>
+				</span>
+				<span
+					class="flex size-9 items-center justify-center rounded-full bg-primary-50 text-primary-700 transition group-hover:bg-primary-700 group-hover:text-white"
+				>
+					→
+				</span>
+			</a>
 			<a
 				href="/events/2024/fall-retreat"
-				class="card card-hover group flex max-w-md items-center justify-between gap-4 p-5"
+				class="card card-hover group flex items-center justify-between gap-4 p-5"
 			>
 				<span class="flex items-center gap-4">
 					<span class="icon-chip">🍂</span>
@@ -48,6 +66,7 @@
 					→
 				</span>
 			</a>
+			</div>
 		</div>
 	</div>
 </FccLayout>

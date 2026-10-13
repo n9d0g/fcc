@@ -16,6 +16,10 @@ export const breadcrumbs = {
 			href: '/events/2024',
 			fallRetreat: { title: 'Fall Retreat', href: '/events/2024/fall-retreat' },
 		},
+		thanksgiving2026: {
+			title: 'Thanksgiving 2026',
+			href: '/events/2026/thanksgiving',
+		},
 	},
 	login: { title: 'Login', href: '/login' },
 	account: { title: 'Edit Profile', href: '/account' },

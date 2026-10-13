@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte'
-	import congregation from '#lib/assets/community/women-ministry.jpg'
+	import congregation from '#lib/assets/community/sunday-service.jpg'
 
 	// Svelte 5 props
 	let { links }: { links: { googleMaps: string; zoom: string } } = $props()
@@ -11,7 +11,7 @@
 		<figure class="relative isolate">
 			<img
 				src={congregation}
-				alt="Women of FCC gathered in front of the Freedom in Christ Church banner"
+				alt="The FCC congregation seated for a Sunday worship service"
 				class="aspect-4/3 w-full rounded-3xl object-cover shadow-lift"
 				loading="lazy"
 			/>

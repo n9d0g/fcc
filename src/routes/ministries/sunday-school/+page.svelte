@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { formatCmsDate } from '#lib/utils.js'
 	import FccLayout from '#lib/components/FccLayout.svelte'
+	import sundaySchool from '#lib/assets/ministries/sunday-school/sunday-school-class.jpg'
 	import Icon from '@iconify/svelte'
 	import PhotoGallery from '#lib/components/PhotoGallery.svelte'
 	import type { PageLayoutData } from '#lib/types.js'
@@ -71,7 +72,13 @@
 	)
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	image={sundaySchool}
+	imageAlt="Children gathered around a table in Sunday school with their teacher"
+>
 	<div class="space-y-16 md:space-y-20">
 		<!-- Welcome -->
 		<div class="max-w-3xl">

@@ -18,6 +18,9 @@ export const church = {
 		postalCode: 'L4W 4Y8',
 		country: 'CA',
 	},
+	// General contact address (on the church banner). E-transfers go to
+	// fcc.fcac@gmail.com instead; see links.etransfer.
+	email: 'fcc.church@gmail.com',
 	geo: { latitude: 43.6598749, longitude: -79.604323 },
 	serviceTime: { day: 'Sunday', opens: '10:30', closes: '12:30' },
 	areaServed: [
@@ -180,6 +183,11 @@ export const headData = {
 		description:
 			'Stay updated on upcoming events at Freedom in Christ Church in Mississauga. Join us for worship services, community events, Bible studies, and special celebrations throughout the year.',
 	},
+	thanksgiving2026: {
+		title: 'Thanksgiving 2026 | Freedom in Christ Church Mississauga',
+		description:
+			'Photos from the Thanksgiving 2026 celebration at Freedom in Christ Church, an Alliance church in Mississauga: worship, a shared meal and our church family giving thanks together.',
+	},
 	praiseJoin: {
 		title: 'Join the Worship Team | Freedom in Christ Church',
 		description:
@@ -248,7 +256,7 @@ export const siteSchema = {
 			url: `${SITE_URL}/`,
 			logo: `${SITE_URL}/apple-touch-icon.png`,
 			image: church.ogImage,
-			email: 'fcc.fcac@gmail.com',
+			email: church.email,
 			address: {
 				'@type': 'PostalAddress',
 				streetAddress: church.address.street,

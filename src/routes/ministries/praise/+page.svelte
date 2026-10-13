@@ -1,5 +1,6 @@
 <script lang="ts">
 	import FccLayout from '#lib/components/FccLayout.svelte'
+	import praiseTeam from '#lib/assets/ministries/praise/praise-team.jpg'
 	import LandingPageGrid from '#lib/components/LandingPageGrid.svelte'
 	import MinistryPageContent from '#lib/components/ministries/MinistryPageContent.svelte'
 	import type { PageLayoutData } from '#lib/types.js'
@@ -25,7 +26,13 @@
 	]
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	image={praiseTeam}
+	imageAlt="Young members of FCC leading worship on stage"
+>
 	<MinistryPageContent
 		welcomeTitle="Welcome to Our Praise and Worship Ministry!"
 		welcomeDescription="At Freedom in Christ Church, we believe that worship is a powerful expression of our love and gratitude to God. Our Praise and Worship Ministry is at the heart of our community, dedicated to creating an atmosphere where individuals can encounter God through music. Whether you're an experienced musician or a passionate beginner, we invite you to be a part of something truly special."

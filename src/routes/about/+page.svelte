@@ -1,5 +1,5 @@
 <script lang="ts">
-	import womenMinistry from '#lib/assets/community/women-ministry.jpg'
+	import churchFamily from '#lib/assets/community/church-family-2.jpg'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import LandingPageGrid from '#lib/components/LandingPageGrid.svelte'
 
@@ -16,8 +16,8 @@
 	{title}
 	{breadcrumb}
 	{headData}
-	image={womenMinistry}
-	imageAlt="Women of FCC gathered around the church banner"
+	image={churchFamily}
+	imageAlt="The Freedom in Christ Church family gathered outdoors"
 	imagePosition="center 40%"
 	intro="Get to know the family at Freedom in Christ Church, a volunteer-led Alliance church in Mississauga."
 >

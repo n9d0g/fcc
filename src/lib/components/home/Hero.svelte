@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte'
-	import fellowship from '#lib/assets/community/women-fellowship.jpg'
-	import youth from '#lib/assets/community/youth-retreat.jpg'
-	import men from '#lib/assets/community/men-ministry.jpg'
+	import churchFamily from '#lib/assets/community/church-family.jpg'
+	import praiseTeam from '#lib/assets/ministries/praise/praise-team.jpg'
+	import thanksgiving from '#lib/assets/events/2026/thanksgiving/dinner-table-2.jpg'
 </script>
 
 <section class="relative isolate overflow-hidden">
@@ -47,24 +47,24 @@
 			<div class="grid grid-cols-6 grid-rows-[auto_auto] gap-3 sm:gap-4">
 				<figure class="col-span-6 overflow-hidden rounded-3xl shadow-lift sm:col-span-4 sm:row-span-2">
 					<img
-						src={fellowship}
-						alt="Women of FCC sharing a meal together at a church fellowship"
+						src={churchFamily}
+						alt="The Freedom in Christ Church family gathered outdoors around the FCC banner"
 						class="aspect-4/3 size-full object-cover sm:aspect-auto"
 						fetchpriority="high"
 					/>
 				</figure>
 				<figure class="col-span-3 overflow-hidden rounded-3xl shadow-soft sm:col-span-2">
 					<img
-						src={youth}
-						alt="FCC youth waving by a lake on a fall outing"
+						src={praiseTeam}
+						alt="Young members of FCC leading worship on stage"
 						class="aspect-square size-full object-cover"
 					/>
 				</figure>
 				<figure class="col-span-3 overflow-hidden rounded-3xl shadow-soft sm:col-span-2">
 					<img
-						src={men}
-						alt="FCC men's ministry gathered outdoors for a summer get-together"
-						class="aspect-square size-full object-cover object-[35%_center]"
+						src={thanksgiving}
+						alt="FCC members smiling around a table at the Thanksgiving celebration"
+						class="aspect-square size-full object-cover"
 					/>
 				</figure>
 			</div>

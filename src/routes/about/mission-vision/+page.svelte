@@ -3,9 +3,9 @@
 	import Icon from '@iconify/svelte'
 	import { church } from '#lib/config/index.js'
 	import bibleStudy from '#lib/assets/community/bible-study.jpg'
-	import congregation from '#lib/assets/community/women-ministry.jpg'
-	import youth from '#lib/assets/community/youth-retreat.jpg'
-	import men from '#lib/assets/community/men-ministry.jpg'
+	import sundayService from '#lib/assets/community/sunday-service.jpg'
+	import sundaySchool from '#lib/assets/ministries/sunday-school/sunday-school-prayer.jpg'
+	import volunteers from '#lib/assets/events/2026/thanksgiving/dessert-hosts.jpg'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
@@ -95,24 +95,24 @@
 			text: 'We gather every Sunday at 10:30 AM, in person and on Zoom, to worship and hear God’s Word together.',
 			href: '/sermons',
 			cta: 'Watch a sermon',
-			img: congregation,
-			alt: 'Women of FCC gathered in front of the Freedom in Christ Church banner',
+			img: sundayService,
+			alt: 'The FCC congregation seated for a Sunday worship service',
 		},
 		{
 			title: 'Ministries for every age',
 			text: "From Sunday school and youth to young adults, men's and women's ministries, there's a place for everyone.",
 			href: '/ministries',
 			cta: 'Explore ministries',
-			img: youth,
-			alt: 'FCC youth on a fall outing',
+			img: sundaySchool,
+			alt: 'Children praying together with their teacher in Sunday school',
 		},
 		{
 			title: 'Serving together',
 			text: 'FCC is volunteer-led. Every Sunday is made possible by members using their gifts to serve one another.',
 			href: '/ministries/sunday-ministries',
 			cta: 'See how to serve',
-			img: men,
-			alt: "FCC men's ministry at a summer gathering",
+			img: volunteers,
+			alt: 'FCC volunteers behind the dessert table they prepared for Thanksgiving',
 		},
 	]
 </script>
