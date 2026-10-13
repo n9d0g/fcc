@@ -1,5 +1,13 @@
 # web
 
+## [3.27.0](https://github.com/n9d0g/fcc/compare/v3.26.0...v3.27.0) (2026-10-13)
+
+
+### Features
+
+* **web:** :sparkles: worship team requests; registration updates ([d15ac7c](https://github.com/n9d0g/fcc/commit/d15ac7c8cc3e59355e1b4f9d0619d0cdebc19f07))
+* **web:** :sparkles: worship team requests; registration updates ([8013778](https://github.com/n9d0g/fcc/commit/8013778d0a343e5105492145b56028dc4848ce55))
+
 ## [3.26.0](https://github.com/n9d0g/fcc/compare/v3.25.0...v3.26.0) (2026-10-13)
 
 
