@@ -102,6 +102,77 @@ export const load = () => {
 				text: "The second coming of the Lord Jesus Christ is imminent and will be personal and visible. As the believer’s blessed hope, this vital truth is an incentive for holy living and sacrificial service toward the completion of Christ's commission.",
 			},
 		],
+		// Jesus as Saviour, Sanctifier, Healer and Coming King: the Alliance's
+		// summary of the Gospel, each tied to an article of the statement above
+		fourfoldGospel: [
+			{
+				title: 'Saviour',
+				icon: 'lucide:cross',
+				text: 'Jesus died in our place and rose again. Everyone who turns to Him is forgiven, born again and given eternal life.',
+				reference: 'Statement of Faith 6',
+			},
+			{
+				title: 'Sanctifier',
+				icon: 'lucide:flame',
+				text: 'Jesus fills us with His Holy Spirit, setting us apart from sin and giving us power to live holy lives and serve Him well.',
+				reference: 'Statement of Faith 7',
+			},
+			{
+				title: 'Healer',
+				icon: 'lucide:hand-heart',
+				text: 'Jesus cares for the whole person. We pray for the sick and anoint with oil, trusting Him for healing of body and soul.',
+				reference: 'Statement of Faith 8',
+			},
+			{
+				title: 'Coming King',
+				icon: 'lucide:crown',
+				text: 'Jesus is coming back, personally and visibly. That hope moves us to live faithfully and to share the Gospel while there is time.',
+				reference: 'Statement of Faith 11',
+			},
+		],
+		// Roots of The Christian and Missionary Alliance
+		history: [
+			{
+				year: '1843',
+				title: 'A Canadian beginning',
+				text: 'Albert Benjamin (A. B.) Simpson is born on Prince Edward Island. His family later settles in Ontario, where he grows up in a devout Presbyterian home.',
+			},
+			{
+				year: '1865',
+				title: 'Called to ministry',
+				text: 'After studying at Knox College in Toronto, Simpson becomes pastor of Knox Presbyterian Church in Hamilton, Ontario. Later pastorates take him to Louisville and then New York City.',
+			},
+			{
+				year: '1881',
+				title: 'Reaching the overlooked',
+				text: "Burdened for the people his New York congregation wasn't reaching, including newcomers, the poor and the unchurched, Simpson steps out to start an independent gospel work that becomes the Gospel Tabernacle.",
+			},
+			{
+				year: '1882',
+				title: 'Training missionaries',
+				text: 'Simpson opens a missionary training school in New York to equip ordinary believers for service at home and abroad. It later becomes Nyack College.',
+			},
+			{
+				year: '1887',
+				title: 'Two alliances formed',
+				text: 'At a summer convention in Old Orchard Beach, Maine, two societies are formed: the Christian Alliance, for fellowship and the deeper Christian life, and the Evangelical Missionary Alliance, for sending missionaries overseas.',
+			},
+			{
+				year: '1897',
+				title: 'The Christian and Missionary Alliance',
+				text: 'The two societies unite as The Christian and Missionary Alliance, joining a passion for knowing Christ fully with a commitment to make Him known around the world.',
+			},
+			{
+				year: '1980',
+				title: 'The Alliance in Canada',
+				text: 'Alliance churches across Canada, with roots reaching back to Simpson himself, form their own national body: The Christian and Missionary Alliance in Canada.',
+			},
+			{
+				year: 'Today',
+				title: 'A worldwide family',
+				text: 'Alliance churches now worship in many languages on every inhabited continent. Freedom in Christ Church is proud to be part of that family here in Mississauga.',
+			},
+		],
 		headData: headData.beliefs,
 	}
 }

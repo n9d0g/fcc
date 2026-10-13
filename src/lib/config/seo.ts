@@ -44,7 +44,7 @@ export const headData = {
 	beliefs: {
 		title: 'What We Believe | Alliance Church in Mississauga | FCC',
 		description:
-			'The beliefs and core values of Freedom in Christ Church, an Alliance church in Mississauga, ON. Grounded in Scripture, centred on Christ and led by the Holy Spirit.',
+			'The beliefs, core values and Alliance roots of Freedom in Christ Church in Mississauga. Learn about the Fourfold Gospel and the history of The Christian and Missionary Alliance, founded by Canadian A. B. Simpson.',
 	},
 	missionVision: {
 		title: 'Our Mission & Vision | Freedom in Christ Church Mississauga',
