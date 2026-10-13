@@ -19,6 +19,8 @@
 	const email = $derived(form?.email ?? page.url.searchParams.get('email') ?? '')
 	// Prefilled from the email's "Confirm email" button (?token=123456)
 	const token = $derived(page.url.searchParams.get('token') ?? '')
+	// Set by pages that require login (e.g. the worship request review link)
+	const redirectTo = $derived(page.url.searchParams.get('redirectTo') ?? '/')
 
 	const errorMessage = $derived(
 		form?.error != null && typeof form.error === 'string'
@@ -65,6 +67,7 @@
 
 			{#if mode === 'login'}
 				<form method="POST" action="?/login" use:enhance class="flex flex-col gap-6">
+					<input type="hidden" name="redirectTo" value={redirectTo} />
 					<label class="label flex flex-col gap-2">
 						<span>Email</span>
 						<input

@@ -38,11 +38,20 @@ const authErrorMessage = (error: unknown) => {
 	return 'Something went wrong. Please try again.'
 }
 
-export const load: PageServerLoad = async ({ locals }) => {
+// Only same-site paths, so ?redirectTo can't bounce users to another domain
+const safeRedirect = (value: unknown) =>
+	typeof value === 'string' &&
+	value.startsWith('/') &&
+	!value.startsWith('//') &&
+	!value.startsWith('/\\')
+		? value
+		: '/'
+
+export const load: PageServerLoad = async ({ locals, url }) => {
 	const { session, user } = await locals.safeGetSession()
 
 	if (session && user) {
-		throw redirect(303, '/')
+		throw redirect(303, safeRedirect(url.searchParams.get('redirectTo')))
 	}
 
 	return {}
@@ -53,6 +62,7 @@ export const actions = {
 		const formData = await request.formData()
 		const email = String(formData.get('email') ?? '').trim()
 		const password = String(formData.get('password') ?? '')
+		const redirectTo = safeRedirect(formData.get('redirectTo'))
 
 		if (!email || !password) {
 			return fail(400, {
@@ -85,7 +95,7 @@ export const actions = {
 			})
 		}
 
-		throw redirect(303, '/')
+		throw redirect(303, redirectTo)
 	},
 
 	signup: async ({ request, locals, url }) => {

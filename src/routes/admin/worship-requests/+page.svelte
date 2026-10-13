@@ -52,7 +52,10 @@
 	<li class="card flex flex-col gap-4 p-5 sm:flex-row sm:items-start">
 		<div class="min-w-0 flex-1 space-y-1">
 			<div class="flex flex-wrap items-center gap-2">
-				<p class="font-semibold text-ink">{r.full_name}</p>
+				<a
+					href="/admin/worship-requests/{r.id}"
+					class="font-semibold text-ink hover:underline">{r.full_name}</a
+				>
 				<span
 					class="rounded-full px-2 py-0.5 text-xs font-medium capitalize {badge[
 						r.status
