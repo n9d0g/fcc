@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte'
 	import congregation from '#lib/assets/community/sunday-service.jpg'
+	import ChurchMap from '#lib/components/ChurchMap.svelte'
 
 	// Svelte 5 props
 	let { links }: { links: { googleMaps: string; zoom: string } } = $props()
@@ -72,5 +73,9 @@
 				</a>
 			</div>
 		</div>
+	</div>
+
+	<div class="wrap mt-12 md:mt-16">
+		<ChurchMap class="md:h-[26rem]" />
 	</div>
 </section>
