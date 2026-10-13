@@ -3,7 +3,7 @@
 	import Icon from '@iconify/svelte'
 	import { enhance, type SubmitFunction } from '$app/forms'
 	import { page } from '$app/state'
-	import { replaceState } from '$app/navigation'
+	import { afterNavigate, replaceState } from '$app/navigation'
 	import { toaster } from '#lib/stores/toaster.js'
 	import { BLOG_LIMITS, POST_STATUS_LABEL } from '#lib/schemas/blog.js'
 	import { format } from 'date-fns'
@@ -29,9 +29,11 @@
 		rejected: 'bg-error-100 text-error-800',
 	} as const
 
-	// The editor redirects here with ?saved=draft|submitted|deleted
-	$effect(() => {
-		const saved = page.url.searchParams.get('saved')
+	// The editor redirects here with ?saved=draft|submitted|deleted. afterNavigate
+	// (not $effect) so the shallow replaceState below can't re-trigger it.
+	afterNavigate(({ to }) => {
+		if (!to) return
+		const saved = to.url.searchParams.get('saved')
 		if (!saved) return
 		const toasts: Record<string, { title: string; description?: string }> = {
 			draft: { title: 'Draft saved' },
@@ -42,7 +44,7 @@
 			deleted: { title: 'Post deleted' },
 		}
 		if (toasts[saved]) toaster.success(toasts[saved])
-		const url = new URL(page.url.href)
+		const url = new URL(to.url)
 		url.searchParams.delete('saved')
 		replaceState(url, page.state)
 	})
