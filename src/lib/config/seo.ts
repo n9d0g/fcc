@@ -212,6 +212,10 @@ export const headData = {
 		title: 'Blog Approvals | Freedom in Christ Church',
 		description: 'Review blog author requests and posts awaiting approval.',
 	},
+	account: {
+		title: 'Edit Profile | Freedom in Christ Church',
+		description: 'Update your name, email address and password.',
+	},
 	login: {
 		title: 'Member Login | Freedom in Christ Church Portal',
 		description:

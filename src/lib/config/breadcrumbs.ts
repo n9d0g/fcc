@@ -18,6 +18,7 @@ export const breadcrumbs = {
 		},
 	},
 	login: { title: 'Login', href: '/login' },
+	account: { title: 'Edit Profile', href: '/account' },
 	admin: {
 		title: 'Admin',
 		href: '/admin/worship-requests',

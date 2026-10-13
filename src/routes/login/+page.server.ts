@@ -1,11 +1,12 @@
 import { getResend, getResendFromEmail } from '#lib/resend.server.js'
 import { renderEmail } from '#lib/emails/render.server.js'
 import NewAccountEmail from '#lib/emails/NewAccount.svelte'
+import { ACCOUNT_LIMITS } from '#lib/schemas/account.js'
 import { fail, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 
 const SIGNUP_INBOX = 'nate@njil.dev'
-const DISPLAY_NAME_MAX = 100
+const DISPLAY_NAME_MAX = ACCOUNT_LIMITS.displayName
 
 const logAuthError = (context: string, error: unknown) => {
 	if (typeof error === 'object' && error !== null) {

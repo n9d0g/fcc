@@ -13,7 +13,12 @@ const pages = Object.keys(import.meta.glob('/src/routes/**/+page.svelte'))
 			!path.includes('[') &&
 			!path.startsWith('/admin') &&
 			!path.startsWith('/blog/write') &&
-			!['/login', '/ministries/praise/availability'].includes(path)
+			![
+				'/login',
+				'/account',
+				'/ministries/praise/availability',
+				'/ministries/praise/song-usage',
+			].includes(path)
 	)
 	.sort()
 
