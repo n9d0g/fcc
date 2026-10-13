@@ -1,5 +1,29 @@
 # web
 
+## [3.29.0](https://github.com/n9d0g/fcc/compare/v3.28.0...v3.29.0) (2026-10-13)
+
+
+### Features
+
+* **web:** :bento: add more images ([fbf0331](https://github.com/n9d0g/fcc/commit/fbf0331abdf8a56aa63be32f82c89f0ee9d225bf))
+* **web:** :sparkles: beliefs page update ([3d68a6f](https://github.com/n9d0g/fcc/commit/3d68a6f2c5cbc28f21ee2a80b067715d293c9011))
+* **web:** :sparkles: blog functionality ([22abe18](https://github.com/n9d0g/fcc/commit/22abe18d2f364e57f24849584dede75fa94dd72f))
+* **web:** :sparkles: google maps embed on homepage + about page ([05b83c7](https://github.com/n9d0g/fcc/commit/05b83c791249984f79b80221e35d6d6943a205f5))
+* **web:** :sparkles: user dropdown updates ([d9206d2](https://github.com/n9d0g/fcc/commit/d9206d27abb5da10f86b604c6d494fc23e0a2735))
+* **web:** :sparkles: worship team availablity functionality ([e4c973e](https://github.com/n9d0g/fcc/commit/e4c973edf0b3648eceb2f4ecd98abd54f5193c38))
+* **web/cms:** :sparkles: events page update ([c274957](https://github.com/n9d0g/fcc/commit/c274957bc4de25738a73ae7e9858d3be3dafd1a4))
+
+
+### Bug Fixes
+
+* **web:** :adhesive_bandage: hero fix; sermon grid fix; mobile sidebar fix ([6eaa1f0](https://github.com/n9d0g/fcc/commit/6eaa1f06e7648c0be2f668b0ec81844325f1f626))
+
+
+### Performance Improvements
+
+* :mag: seo updates ([61656c0](https://github.com/n9d0g/fcc/commit/61656c0c5da173d86d6137995041f4ba24f3172a))
+* **web:** :mag: seo updates p2 ([7c5200f](https://github.com/n9d0g/fcc/commit/7c5200ff7bf98a64a8ad8e1c0f41fa52216a2ac0))
+
 ## [3.28.0](https://github.com/n9d0g/fcc/compare/v3.27.0...v3.28.0) (2026-10-13)
 
 
