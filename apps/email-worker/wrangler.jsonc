@@ -1,0 +1,11 @@
+{
+	"$schema": "../../node_modules/wrangler/config-schema.json",
+	// Handles mail for @fcccanada.ca. Deploy with `pnpm email:deploy`, then
+	// in Cloudflare: Email → Email Routing → Routing rules → Catch-all →
+	// "Send to a Worker" → fcc-email.
+	"name": "fcc-email",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-10-02",
+	"workers_dev": false,
+	"observability": { "enabled": true },
+}

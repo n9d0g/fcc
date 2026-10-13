@@ -31,6 +31,7 @@
 		"cms:dev": "pnpm --filter cms dev",
 		"cms:build": "pnpm --filter cms build",
 		"cms:deploy": "pnpm --filter cms run deploy",
+		"email:deploy": "wrangler deploy --config apps/email-worker/wrangler.jsonc",
 		"unlighthouse": "pnpm dlx unlighthouse --site fcccanada.ca",
 		"unlighthouse:dev": "pnpm dlx unlighthouse --site dev.fcccanada.ca"
 	},
