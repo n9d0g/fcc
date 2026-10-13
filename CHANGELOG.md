@@ -1,5 +1,20 @@
 # web
 
+## [3.30.0](https://github.com/n9d0g/fcc/compare/v3.29.0...v3.30.0) (2026-10-13)
+
+
+### Features
+
+* prayer notifs; email fixes; mobile fixes ([83d9315](https://github.com/n9d0g/fcc/commit/83d93152094bea8ab6b4abe84e30be106093cc67))
+* **web/cms:** :sparkles: email routing ([4a70026](https://github.com/n9d0g/fcc/commit/4a700265bac92854391d4c522655f5a7b4982430))
+* **web/cms:** :sparkles: prayer schedule + notifications for users ([2e48ad8](https://github.com/n9d0g/fcc/commit/2e48ad8b036bd6afe6d986b4137213fc5b305afc))
+
+
+### Bug Fixes
+
+* **web:** :bug: mobile user dropdown fix ([11ff835](https://github.com/n9d0g/fcc/commit/11ff8355fe3a689efd7840d70753a535c3577336))
+* **web:** :bug: replace fcc.church@gmail.com email ([f2fa023](https://github.com/n9d0g/fcc/commit/f2fa023dd188d275b0dc892b4087b4aff26be6da))
+
 ## [3.29.0](https://github.com/n9d0g/fcc/compare/v3.28.0...v3.29.0) (2026-10-13)
 
 
