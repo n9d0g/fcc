@@ -4,7 +4,7 @@
 	// Svelte 5 props
 	let {
 		page = $bindable(0),
-		pageSize = 16,
+		pageSize = 18,
 		totalItems,
 		class: className = '',
 	}: {

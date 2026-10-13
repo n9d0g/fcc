@@ -12,7 +12,8 @@
 	// State
 	let bindVal = $state('')
 	let currentPage = $state(0)
-	const pageSize = 16
+	// Multiple of 2 and 3 so the last row fills on tablet and desktop grids
+	const pageSize = 18
 
 	// Derived values from data (reactive when data changes)
 	let title = $derived(data.title)
@@ -67,7 +68,7 @@
 		</p>
 	{/if}
 
-	<div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+	<div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		{#each paginatedSource as sermon (sermon._id)}
 			<SermonCard
 				title={sermon.title}

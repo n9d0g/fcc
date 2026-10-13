@@ -33,9 +33,10 @@
 	></div>
 {/if}
 
-<!-- Drawer Panel -->
+<!-- Drawer Panel. Pinned to the top and bottom (not a fixed height like h-svh)
+     so it grows into the space when the mobile browser's toolbar hides -->
 <aside
-	class="fixed top-0 right-0 z-[70] h-svh w-80 max-w-[85vw] transform bg-paper shadow-2xl transition-transform duration-300 ease-out xl:hidden {open
+	class="fixed inset-y-0 right-0 z-[70] w-80 max-w-[85vw] transform bg-paper shadow-2xl transition-transform duration-300 ease-out xl:hidden {open
 		? 'translate-x-0'
 		: 'translate-x-full'}"
 	aria-hidden={!open}
