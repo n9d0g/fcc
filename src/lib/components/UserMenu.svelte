@@ -140,7 +140,30 @@
 				>
 					Team availability
 				</a>
+				<a
+					href="/admin/blog"
+					role="menuitem"
+					class="flex w-full items-center px-4 py-3 text-left text-sm font-medium hover:bg-surface-100"
+					onclick={() => {
+						closeMenu()
+						onaction?.()
+					}}
+				>
+					Blog approvals
+				</a>
 			{/if}
+
+			<a
+				href="/blog/write"
+				role="menuitem"
+				class="flex w-full items-center px-4 py-3 text-left text-sm font-medium hover:bg-surface-100"
+				onclick={() => {
+					closeMenu()
+					onaction?.()
+				}}
+			>
+				My blog posts
+			</a>
 
 			<button
 				type="button"

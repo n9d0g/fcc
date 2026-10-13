@@ -12,6 +12,7 @@ const pages = Object.keys(import.meta.glob('/src/routes/**/+page.svelte'))
 		(path) =>
 			!path.includes('[') &&
 			!path.startsWith('/admin') &&
+			!path.startsWith('/blog/write') &&
 			!['/login', '/ministries/praise/availability'].includes(path)
 	)
 	.sort()
@@ -30,13 +31,25 @@ const priority = (path: string) =>
 			? '0.8'
 			: '0.6'
 
-export const GET = () => {
-	const urls = pages
-		.map(
+export const GET = async ({ locals }) => {
+	// Published blog posts; the static pages still go out if this fails
+	const { data: posts, error } = await locals.supabase
+		.from('blog_posts')
+		.select('slug, updated_at')
+		.eq('status', 'published')
+		.returns<{ slug: string; updated_at: string }[]>()
+	if (error) console.error('[sitemap] load blog posts', error)
+
+	const urls = [
+		...pages.map(
 			(path) =>
 				`<url><loc>${SITE_URL}${path}</loc><priority>${priority(path)}</priority></url>`
-		)
-		.join('')
+		),
+		...(posts ?? []).map(
+			(post) =>
+				`<url><loc>${SITE_URL}/blog/${post.slug}</loc><lastmod>${post.updated_at.slice(0, 10)}</lastmod><priority>0.6</priority></url>`
+		),
+	].join('')
 
 	return new Response(
 		`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`,

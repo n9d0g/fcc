@@ -2,7 +2,7 @@ import { client, links } from '#lib/config/index.js'
 import { setCacheHeaders, CACHE_PRESETS, sortByField } from '#lib/utils.js'
 import { error } from '@sveltejs/kit'
 
-export const load = async ({ setHeaders, url }) => {
+export const load = async ({ data, setHeaders, url }) => {
 	// Cache home page for 5 minutes, allow stale for 1 hour (bust=true to bypass)
 	setCacheHeaders(setHeaders, url, ...CACHE_PRESETS.home)
 
@@ -16,6 +16,7 @@ export const load = async ({ setHeaders, url }) => {
 
 	if (sermons && pages)
 		return {
+			...data,
 			sermons: sortByField(sermons, 'date', 'desc'),
 			pages: pages[0],
 			links: { googleMaps: links.googleMaps, zoom: links.zoom.link },

@@ -10,6 +10,11 @@ export const navOptions = [
 		icon: 'ion:book',
 	},
 	{
+		href: '/blog',
+		title: 'Blog',
+		icon: 'lucide:notebook-pen',
+	},
+	{
 		href: '/events',
 		title: 'Events',
 		icon: 'mdi:calendar-outline',

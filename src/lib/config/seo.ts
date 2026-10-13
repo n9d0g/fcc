@@ -198,6 +198,20 @@ export const headData = {
 		description:
 			'Let the Praise & Worship leaders know which Sundays you are unable to serve.',
 	},
+	blog: {
+		title: 'Blog | Freedom in Christ Church Mississauga',
+		description:
+			'Stories, devotionals and testimonies written by the members of Freedom in Christ Church, a volunteer-led Alliance church in Mississauga, Ontario.',
+	},
+	blogWrite: {
+		title: 'Write for the Blog | Freedom in Christ Church',
+		description:
+			'Write and manage your posts for the Freedom in Christ Church blog.',
+	},
+	blogApprovals: {
+		title: 'Blog Approvals | Freedom in Christ Church',
+		description: 'Review blog author requests and posts awaiting approval.',
+	},
 	login: {
 		title: 'Member Login | Freedom in Christ Church Portal',
 		description:

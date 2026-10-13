@@ -13,6 +13,7 @@ export const GET = ({ url }) => {
 				'Disallow: /admin/',
 				'Disallow: /login',
 				'Disallow: /ministries/praise/availability',
+				'Disallow: /blog/write',
 				'',
 				`Sitemap: ${SITE_URL}/sitemap.xml`,
 			]

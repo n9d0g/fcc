@@ -1,6 +1,11 @@
 export const breadcrumbs = {
 	home: { title: 'Home', href: '/' },
 	sermons: { title: 'Sermons', href: '/sermons' },
+	blog: {
+		title: 'Blog',
+		href: '/blog',
+		write: { title: 'Write', href: '/blog/write' },
+	},
 	give: { title: 'Give', href: '/give' },
 	error: { title: 'Error', href: '/error' },
 	events: {
@@ -23,6 +28,10 @@ export const breadcrumbs = {
 		availability: {
 			title: 'Team Availability',
 			href: '/admin/availability',
+		},
+		blog: {
+			title: 'Blog Approvals',
+			href: '/admin/blog',
 		},
 	},
 	contact: { title: 'Contact', href: '/contact' },
