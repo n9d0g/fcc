@@ -1,6 +1,7 @@
 <script lang="ts">
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import { enhance } from '$app/forms'
+	import { page } from '$app/state'
 	import type { ActionData, PageData } from './$types'
 
 	let { data, form }: { data: PageData; form: ActionData } = $props()
@@ -10,7 +11,12 @@
 	let headData = $derived(data.headData)
 
 	type AuthMode = 'login' | 'signup' | 'confirm'
-	let mode = $state<AuthMode>('login')
+	// The confirm form has no tab; it's only reachable from the button in the
+	// signup confirmation email, which links to /login?mode=confirm&email=...
+	let mode = $state<AuthMode>(
+		page.url.searchParams.get('mode') === 'confirm' ? 'confirm' : 'login'
+	)
+	const email = $derived(form?.email ?? page.url.searchParams.get('email') ?? '')
 
 	const errorMessage = $derived(
 		form?.error != null && typeof form.error === 'string'
@@ -45,13 +51,6 @@
 				>
 					Sign up
 				</button>
-				<button
-					type="button"
-					class="btn btn-sm flex-1 {mode === 'confirm' ? 'bg-white text-ink shadow-sm' : 'text-muted hover:text-ink'}"
-					onclick={() => (mode = 'confirm')}
-				>
-					Confirm email
-				</button>
 			</div>
 
 			{#if errorMessage}
@@ -71,7 +70,7 @@
 							type="email"
 							name="email"
 							placeholder="you@example.com"
-							value={form?.email ?? ''}
+							value={email}
 							required
 						/>
 					</label>
@@ -98,7 +97,7 @@
 							type="email"
 							name="email"
 							placeholder="you@example.com"
-							value={form?.email ?? ''}
+							value={email}
 							required
 						/>
 					</label>
@@ -119,9 +118,12 @@
 				</form>
 			{:else}
 				<form method="POST" action="?/verifyOtp" use:enhance class="flex flex-col gap-6">
-					<p class="text-muted text-sm">
-						Enter the 6-digit code sent to your email after signing up.
-					</p>
+					<div class="space-y-1">
+						<h2 class="text-lg font-semibold">Confirm your email</h2>
+						<p class="text-muted text-sm">
+							Enter the 6-digit code from your confirmation email.
+						</p>
+					</div>
 
 					<label class="label flex flex-col gap-2">
 						<span>Email</span>
@@ -130,7 +132,7 @@
 							type="email"
 							name="email"
 							placeholder="you@example.com"
-							value={form?.email ?? ''}
+							value={email}
 							required
 						/>
 					</label>
@@ -157,7 +159,7 @@
 					use:enhance
 					class="mt-4 flex flex-col gap-2"
 				>
-					<input type="hidden" name="email" value={form?.email ?? ''} />
+					<input type="hidden" name="email" value={email} />
 					<button class="btn btn-sm btn-outline" type="submit">
 						Resend confirmation code
 					</button>
