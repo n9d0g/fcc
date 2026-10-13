@@ -38,6 +38,10 @@ export const breadcrumbs = {
 			title: 'Blog Approvals',
 			href: '/admin/blog',
 		},
+		prayer: {
+			title: 'Prayer Schedule',
+			href: '/admin/prayer',
+		},
 	},
 	contact: { title: 'Contact', href: '/contact' },
 	about: {

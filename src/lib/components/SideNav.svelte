@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { navOptions } from '#lib/config/index.js'
 	import Icon from '@iconify/svelte'
-	import UserMenu from '#lib/components/UserMenu.svelte'
 	import { navigationState } from '#lib/stores/navigation.svelte.js'
 	import type { User } from '@supabase/supabase-js'
 
@@ -74,12 +73,6 @@
 				</a>
 			{/each}
 		</nav>
-
-		{#if user}
-			<div class="border-t border-line p-4">
-				<UserMenu {user} variant="drawer" onaction={onclose} />
-			</div>
-		{/if}
 
 		<p class="border-t border-line px-5 py-4 text-sm text-muted">
 			Sundays at 10:30 AM · 5225 Orbitor Dr, Mississauga

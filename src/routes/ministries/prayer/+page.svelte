@@ -1,13 +1,14 @@
 <script lang="ts">
 	import bibleStudy from '#lib/assets/community/bible-study.jpg'
-	import { formatCmsDate } from '#lib/utils.js'
 	import { searchFilter } from '#lib/utils.js'
+	import { formatMeetingDate } from '#lib/schemas/prayer.js'
+	import Icon from '@iconify/svelte'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import MinistryPageContent from '#lib/components/ministries/MinistryPageContent.svelte'
 	import FilterBy from '#lib/components/FilterBy.svelte'
 
 	// Svelte 5 props
-	let { data }: { data: any } = $props()
+	let { data } = $props()
 	let title = $derived(data.title)
 	let breadcrumb = $derived(data.breadcrumb)
 	let headData = $derived(data.headData)
@@ -87,6 +88,20 @@
 			<p class="eyebrow">Who's leading</p>
 			<h2 class="h2 mt-3 mb-6">Prayer Meeting Schedule</h2>
 
+			{#if data.mine.length}
+				<p
+					class="mb-6 flex items-start gap-3 rounded-2xl border border-secondary-200 bg-secondary-50 p-4"
+					role="status"
+				>
+					<Icon icon="lucide:book-open" class="mt-0.5 size-5 shrink-0 text-secondary-700" />
+					<span>
+						You're leading the devotional on
+						<strong>{data.mine.map((d) => formatMeetingDate(d, 'short')).join(', ')}</strong>.
+						We'll email you a reminder two weeks before, one week before and on the day.
+					</span>
+				</p>
+			{/if}
+
 			<div class="mb-6">
 				<FilterBy label="Filter by name" bind:bindVal={filterQuery} />
 			</div>
@@ -102,11 +117,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						{#each searchFilter(prayerData, 'name', filterQuery) as row}
+						{#each searchFilter(prayerData, 'leader_name', filterQuery) as row (row.id)}
 							<tr>
-								<td>{formatCmsDate(row.date, 'MMMM do')}</td>
-								<td>{row.name}</td>
-								<td>{row.scripture}</td>
+								<td class="whitespace-nowrap">{formatMeetingDate(row.meeting_date, 'short')}</td>
+								<td>{row.leader_name ?? 'TBA'}</td>
+								<td>{row.scripture ?? ''}</td>
+							</tr>
+						{:else}
+							<tr>
+								<td colspan="3" class="text-muted">No upcoming meetings scheduled yet.</td>
 							</tr>
 						{/each}
 					</tbody>

@@ -20,7 +20,7 @@ export const church = {
 	},
 	// General contact address (on the church banner). E-transfers go to
 	// fcc.fcac@gmail.com instead; see links.etransfer.
-	email: 'fcc.church@gmail.com',
+	email: 'fcc.church.canada@gmail.com',
 	geo: { latitude: 43.6598749, longitude: -79.604323 },
 	serviceTime: { day: 'Sunday', opens: '10:30', closes: '12:30' },
 	areaServed: [
@@ -224,6 +224,10 @@ export const headData = {
 	blogApprovals: {
 		title: 'Blog Approvals | Freedom in Christ Church',
 		description: 'Review blog author requests and posts awaiting approval.',
+	},
+	prayerSchedule: {
+		title: 'Prayer Schedule | Freedom in Christ Church',
+		description: 'Manage the weekly prayer meeting devotional schedule.',
 	},
 	account: {
 		title: 'Edit Profile | Freedom in Christ Church',

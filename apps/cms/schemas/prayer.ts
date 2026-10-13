@@ -1,7 +1,9 @@
 export default {
 	name: 'prayer',
 	type: 'document',
-	title: 'Prayer',
+	// Replaced by the prayer schedule on the site (/admin/prayer). Kept so the
+	// old entries can be imported there; remove once that's done.
+	title: 'Prayer (old: now managed at fcccanada.ca/admin/prayer)',
 	preview: {
 		select: {
 			name: 'name',

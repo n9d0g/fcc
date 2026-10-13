@@ -5,15 +5,7 @@
 	import type { User } from '@supabase/supabase-js'
 	import { isAdmin } from '#lib/schemas/worship-team.js'
 
-	let {
-		user,
-		variant = 'header',
-		onaction,
-	}: {
-		user: User
-		variant?: 'header' | 'drawer'
-		onaction?: () => void
-	} = $props()
+	let { user }: { user: User } = $props()
 
 	let open = $state(false)
 	let rootEl = $state<HTMLDivElement | null>(null)
@@ -95,6 +87,11 @@
 								icon: 'lucide:users',
 							},
 							{ href: '/admin/blog', label: 'Blog approvals', icon: 'lucide:file-check' },
+							{
+								href: '/admin/prayer',
+								label: 'Prayer schedule',
+								icon: 'lucide:hand-heart',
+							},
 						],
 					},
 				]
@@ -119,7 +116,6 @@
 
 	async function handleLogout() {
 		closeMenu()
-		onaction?.()
 		await fetch('/logout', { method: 'POST', credentials: 'same-origin' })
 		await refreshAll()
 		await goto('/')
@@ -152,10 +148,7 @@
 	})
 </script>
 
-<div
-	bind:this={rootEl}
-	class="relative {variant === 'drawer' ? 'w-full' : ''}"
->
+<div bind:this={rootEl} class="relative">
 	<button
 		type="button"
 		class="flex size-10 cursor-pointer items-center justify-center rounded-full bg-secondary-600 text-sm font-semibold text-white uppercase ring-2 ring-white transition hover:bg-secondary-700"
@@ -173,10 +166,7 @@
 	{#if open}
 		<div
 			role="menu"
-			class="card absolute z-[60] min-w-60 overflow-hidden shadow-lift {variant ===
-			'drawer'
-				? 'left-0 right-auto top-full mt-2 w-full'
-				: 'right-0 top-full mt-2'}"
+			class="card absolute top-full right-0 z-[60] mt-2 min-w-60 overflow-hidden shadow-lift"
 		>
 			<div class="border-b border-line px-4 py-3">
 				<p class="text-xs text-muted">Signed in as</p>
@@ -216,10 +206,7 @@
 							href={item.href}
 							role="menuitem"
 							class="flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm font-medium hover:bg-surface-100"
-							onclick={() => {
-								closeMenu()
-								onaction?.()
-							}}
+							onclick={closeMenu}
 						>
 							<Icon icon={item.icon} class="size-4 shrink-0 text-muted" />
 							{item.label}
