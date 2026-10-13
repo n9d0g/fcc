@@ -37,12 +37,12 @@ export const load: PageServerLoad = async ({ locals }) => {
 	return { signedIn: true as const, request }
 }
 
-// Best effort: the request is already saved and visible on the admin page,
+// Best effort: the request is already saved and listed on the admin page,
 // so a failed notification is logged rather than shown to the requester.
 async function notifyAdmins(
 	values: z.infer<typeof worshipRequestSchema>,
 	email: string,
-	origin: string
+	reviewUrl: string
 ) {
 	try {
 		const { html, text } = await renderEmail(WorshipTeamRequestEmail, {
@@ -50,7 +50,7 @@ async function notifyAdmins(
 			email,
 			roles: values.roles.map(roleLabel),
 			message: values.message,
-			reviewUrl: `${origin}/admin/worship-requests`,
+			reviewUrl,
 			submittedAt: new Date().toLocaleString('en-CA', {
 				timeZone: 'America/Toronto',
 				dateStyle: 'medium',
@@ -95,7 +95,7 @@ export const actions = {
 			})
 		}
 
-		const { error } = await locals.supabase
+		const { data: created, error } = await locals.supabase
 			.from('worship_team_requests')
 			.insert({
 				user_id: user.id,
@@ -104,6 +104,8 @@ export const actions = {
 				roles: parsed.data.roles,
 				message: parsed.data.message || null,
 			})
+			.select('id')
+			.single()
 
 		if (error) {
 			// 23505: unique violation on user_id
@@ -119,7 +121,12 @@ export const actions = {
 			)
 		}
 
-		await notifyAdmins(parsed.data, user.email, url.origin)
+		// The email's "Review request" button opens this request for approval
+		await notifyAdmins(
+			parsed.data,
+			user.email,
+			`${url.origin}/admin/worship-requests/${created.id}`
+		)
 
 		return { success: true as const }
 	},
