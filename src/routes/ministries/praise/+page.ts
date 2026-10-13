@@ -1,13 +1,17 @@
 import { headData, breadcrumbs, fetchPageGallery } from '#lib/config/index.js'
+import { isAdmin } from '#lib/schemas/worship-team.js'
 
-export const load = async () => {
+export const load = async ({ parent }) => {
 	const breadcrumb = [
 		breadcrumbs.home,
 		breadcrumbs.ministries,
 		breadcrumbs.ministries.praise,
 	]
 
-	const gallery = await fetchPageGallery('/ministries/praise')
+	const [gallery, { user }] = await Promise.all([
+		fetchPageGallery('/ministries/praise'),
+		parent(),
+	])
 
 	return {
 		title: 'Praise & Worship Ministry.',
@@ -22,11 +26,22 @@ export const load = async () => {
 				icon: 'lucide:calendar-days',
 			},
 			{
-				title: 'Song Usage',
-				link: '/ministries/praise/song-usage',
-				description: 'How often we sing each song.',
-				icon: 'lucide:list-music',
+				title: 'My Availability',
+				link: '/ministries/praise/availability',
+				description: "Block out Sundays you can't serve.",
+				icon: 'lucide:calendar-x',
 			},
+			// Superusers only (see song-usage/+page.server.ts)
+			...(isAdmin(user)
+				? [
+						{
+							title: 'Song Usage',
+							link: '/ministries/praise/song-usage',
+							description: 'How often we sing each song.',
+							icon: 'lucide:list-music',
+						},
+					]
+				: []),
 			{
 				title: 'Worship Director Notes',
 				link: 'https://n9d0g.notion.site/worship-director-notes-2cc49c91f89280d5b0a9f6ecd67ea167?source=copy_link',

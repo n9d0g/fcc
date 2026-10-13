@@ -3,12 +3,16 @@ import { renderEmail } from '#lib/emails/render.server.js'
 import ContactSubmission from '#lib/emails/ContactSubmission.svelte'
 import ContactAutoReply from '#lib/emails/ContactAutoReply.svelte'
 import { contactSchema, type ContactField } from '#lib/schemas/contact.js'
+import { church } from '#lib/config/index.js'
 import { z } from 'zod'
 import { GOOGLE_RECAPTCHA_SECRET_KEY } from '$app/env/private'
 import { fail } from '@sveltejs/kit'
 import type { Actions } from './$types'
 
-const CONTACT_INBOX = 'nate@njil.dev'
+// Submissions go to the church inbox, with a silent copy to the site admin.
+// The auto-reply's Reply-To also points at the church inbox.
+const CONTACT_INBOX = church.email
+const CONTACT_BCC = 'nate@njil.dev'
 const RECAPTCHA_MIN_SCORE = 0.6
 
 type FieldErrors = Partial<Record<ContactField, string>>
@@ -130,6 +134,7 @@ export const actions = {
 			const { error } = await getResend().emails.send({
 				from: `Freedom in Christ Church <${getResendFromEmail()}>`,
 				to: CONTACT_INBOX,
+				bcc: CONTACT_BCC,
 				replyTo: email,
 				subject: `FCC Contact Submission: ${name}`,
 				html,

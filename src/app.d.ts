@@ -27,6 +27,7 @@ declare global {
 			gallery?: PageGallery | null
 			session?: Session | null
 			user?: User | null
+			isBlogAuthor?: boolean
 			supabase?: SupabaseClient
 			cookies?: { name: string; value: string }[]
 		}

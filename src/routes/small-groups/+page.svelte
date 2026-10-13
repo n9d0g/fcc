@@ -17,7 +17,7 @@
 	image={bibleStudy}
 	imageAlt="An FCC small group studying the Bible together in a home"
 	imagePosition="center 40%"
-	intro="Smaller circles for Bible study, prayer and friendship throughout the week."
+	intro="Smaller circles for Bible study, prayer and friendship throughout the week, across Mississauga, Brampton and online."
 >
 	<LandingPageGrid items={data.landingPageItems} />
 </FccLayout>

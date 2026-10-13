@@ -24,7 +24,7 @@ const failure = (
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const { user } = await locals.safeGetSession()
-	if (!user) return { signedIn: false as const, request: null }
+	if (!user) return { signedIn: false as const, request: null, displayName: '' }
 
 	const { data: request, error } = await locals.supabase
 		.from('worship_team_requests')
@@ -34,7 +34,12 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 	if (error) console.error('[worship-team] load request', error)
 
-	return { signedIn: true as const, request }
+	const displayName =
+		typeof user.user_metadata?.display_name === 'string'
+			? user.user_metadata.display_name
+			: ''
+
+	return { signedIn: true as const, request, displayName }
 }
 
 // Best effort: the request is already saved and listed on the admin page,

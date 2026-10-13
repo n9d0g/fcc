@@ -1,0 +1,36 @@
+import { isAdmin } from '#lib/schemas/worship-team.js'
+import type { BlogPost } from '#lib/schemas/blog.js'
+import { reviewPostAction } from '#lib/server/blog.js'
+import { error } from '@sveltejs/kit'
+import type { Actions, PageServerLoad } from './$types'
+
+// RLS shows published posts to everyone, and unpublished ones only to their
+// author and admins, so this doubles as the preview page linked from emails
+export const load: PageServerLoad = async ({ locals, params }) => {
+	const [{ data: post, error: err }, { user }] = await Promise.all([
+		locals.supabase
+			.from('blog_posts')
+			.select('*')
+			.eq('slug', params.slug)
+			.maybeSingle<BlogPost>(),
+		locals.safeGetSession(),
+	])
+
+	if (err) {
+		console.error('[blog] load post', err)
+		throw error(500, 'Could not load the post')
+	}
+	if (!post) throw error(404, 'Post not found')
+
+	return {
+		post,
+		isAuthor: post.author_id === user?.id,
+		canReview: isAdmin(user),
+	}
+}
+
+export const actions = {
+	publish: reviewPostAction('published'),
+	reject: reviewPostAction('rejected'),
+	unpublish: reviewPostAction('draft'),
+} satisfies Actions

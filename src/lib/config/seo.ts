@@ -1,29 +1,63 @@
+// Canonical production origin. Canonical URLs, Open Graph tags and the
+// sitemap always point here so dev.fcccanada.ca never competes in search.
+export const SITE_URL = 'https://fcccanada.ca'
+
+// Single source for the church's name, address and service time (NAP). Keep
+// it identical to the Google Business Profile listing — local search ranking
+// depends on these details matching everywhere they appear.
+export const church = {
+	name: 'Freedom in Christ Church',
+	shortName: 'FCC',
+	tagline: 'A volunteer-led Alliance church in Mississauga, Ontario',
+	description:
+		'Freedom in Christ Church (FCC) is a volunteer-led Alliance church in Mississauga, Ontario. We gather every Sunday at 10:30 AM in person and on Zoom for worship, Bible teaching and fellowship, with small groups across Mississauga, Brampton and the GTA.',
+	address: {
+		street: '5225 Orbitor Drive, Unit 3',
+		city: 'Mississauga',
+		region: 'ON',
+		postalCode: 'L4W 4Y8',
+		country: 'CA',
+	},
+	// General contact address (on the church banner). E-transfers go to
+	// fcc.fcac@gmail.com instead; see links.etransfer.
+	email: 'fcc.church@gmail.com',
+	geo: { latitude: 43.6598749, longitude: -79.604323 },
+	serviceTime: { day: 'Sunday', opens: '10:30', closes: '12:30' },
+	areaServed: [
+		'Mississauga',
+		'Brampton',
+		'Peel Region',
+		'Greater Toronto Area',
+	],
+	ogImage: `${SITE_URL}/og-image.jpg`,
+}
+
 // SEO metadata for all pages
 export const headData = {
 	home: {
-		title: 'Freedom in Christ Church | Welcome Home',
+		title: 'Freedom in Christ Church | Alliance Church in Mississauga',
 		description:
-			'Join our welcoming Christian community in Mississauga, ON. Experience meaningful worship, authentic fellowship, and spiritual growth at Freedom in Christ Church. Sunday services, ministries for all ages, and a place to call home.',
+			'Freedom in Christ Church is a welcoming, volunteer-led Alliance church in Mississauga, ON. Join us Sundays at 10:30 AM in person or on Zoom for worship, Bible teaching, small groups and ministries for every age.',
 	},
 	about: {
-		title: 'About Freedom in Christ Church | Mississauga Christian Community',
+		title: 'About FCC | Volunteer-Led Alliance Church, Mississauga',
 		description:
-			'Discover our story, values, and mission at Freedom in Christ Church. Learn how we serve the Mississauga community through faith, fellowship, and Christian love. Join our growing family.',
+			'Get to know Freedom in Christ Church, a volunteer-led Alliance church in Mississauga, Ontario. Learn our story, beliefs and mission, and how our members serve the Mississauga community together.',
 	},
 	beliefs: {
-		title: 'What We Believe | Freedom in Christ Church',
+		title: 'What We Believe | Alliance Church in Mississauga | FCC',
 		description:
-			'Explore our foundational Christian beliefs and biblical teachings. Freedom in Christ Church in Mississauga is grounded in Scripture, committed to authentic faith, and welcoming to all seeking truth.',
+			'The beliefs, core values and Alliance roots of Freedom in Christ Church in Mississauga. Learn about the Fourfold Gospel and the history of The Christian and Missionary Alliance, founded by Canadian A. B. Simpson.',
 	},
 	missionVision: {
-		title: 'Our Mission & Vision | Freedom in Christ Church',
+		title: 'Our Mission & Vision | Freedom in Christ Church Mississauga',
 		description:
-			"Discover our mission to spread God's love and our vision for the Mississauga community. Learn how Freedom in Christ Church is building a stronger, more faithful community through service and fellowship.",
+			'The mission and vision of Freedom in Christ Church, a volunteer-led Alliance church in Mississauga: introducing Christ through small group-driven ministries and planting healthy, reproducing churches.',
 	},
 	leadership: {
-		title: 'Church Leadership | Pastors & Staff at Freedom in Christ Church',
+		title: 'Church Leadership | Freedom in Christ Church Mississauga',
 		description:
-			'Meet our dedicated pastors and church leaders at Freedom in Christ Church in Mississauga. Our experienced team guides our community with wisdom, compassion, and biblical teaching.',
+			'Meet the pastors and volunteer leaders of Freedom in Christ Church, an Alliance church in Mississauga, Ontario, who serve our congregation with care and biblical teaching.',
 	},
 	sermons: {
 		title: 'Sermons & Messages | Freedom in Christ Church',
@@ -31,9 +65,9 @@ export const headData = {
 			'Watch and listen to inspiring sermons from Freedom in Christ Church. Access our latest messages, biblical teachings, and spiritual guidance from our Mississauga church community.',
 	},
 	ministries: {
-		title: 'Church Ministries | Get Involved at Freedom in Christ Church',
+		title: 'Church Ministries in Mississauga | Freedom in Christ Church',
 		description:
-			"Discover meaningful ways to serve and connect at Freedom in Christ Church in Mississauga. From children's programs to senior ministry, find your place in our Christian community.",
+			"Find your place to serve and connect at Freedom in Christ Church, a volunteer-led Alliance church in Mississauga. Worship, prayer, Sunday school, men's, women's, youth and young adults ministries.",
 	},
 	praise: {
 		title: 'Praise & Worship | Freedom in Christ Church',
@@ -56,15 +90,14 @@ export const headData = {
 			'Support our ministry and mission in Mississauga. Learn about giving opportunities, tithes, and offerings at Freedom in Christ Church. Your generosity helps us serve the community.',
 	},
 	contact: {
-		title: 'Contact Us | Freedom in Christ Church',
+		title: 'Contact & Directions | Alliance Church in Mississauga | FCC',
 		description:
-			"Get in touch with Freedom in Christ Church in Mississauga. Find our location, contact information, and ways to connect with our welcoming Christian community. We'd love to hear from you!",
+			'Visit Freedom in Christ Church at 5225 Orbitor Drive, Unit 3, Mississauga, ON. Sunday worship at 10:30 AM in person and on Zoom. Send us a message or plan your visit.',
 	},
 	sundayMinistries: {
-		title:
-			'Sunday Ministries | Volunteer Opportunities at Freedom in Christ Church',
+		title: 'Volunteer at Church in Mississauga | Sunday Ministries | FCC',
 		description:
-			"Discover volunteer opportunities and Sunday ministries at Freedom in Christ Church in Mississauga. From hospitality to children's ministry, find meaningful ways to serve our community.",
+			"Freedom in Christ Church is a volunteer-led Alliance church in Mississauga, and every Sunday is run by volunteers. Serve in hospitality, AV, children's ministry and more.",
 	},
 	ministriesMen: {
 		title:
@@ -94,10 +127,9 @@ export const headData = {
 			'Experience the power of prayer at Freedom in Christ Church in Mississauga. Join our Prayer Ministry for intercessory prayer, prayer meetings, and spiritual support for our community and beyond.',
 	},
 	smallgroups: {
-		title:
-			'Small Groups | Bible Study & Fellowship at Freedom in Christ Church',
+		title: 'Small Groups & Bible Studies in Mississauga | FCC',
 		description:
-			'Join a small group at Freedom in Christ Church in Mississauga for deeper Bible study, authentic relationships, and spiritual growth. Find your community within our larger church family.',
+			'Join a small group or Bible study with Freedom in Christ Church, a volunteer-led Alliance church in Mississauga. Groups meet across Mississauga, Brampton and online.',
 	},
 	smallgroupsBramptonWomens1: {
 		title: "Brampton Women's Bible Study 1 | Freedom in Christ Church",
@@ -147,9 +179,19 @@ export const headData = {
 			"Connect with other young adults at Freedom in Christ Church in Mississauga. Our Young Adults Small Group offers relevant Bible study, fellowship, and support during life's transition years.",
 	},
 	events: {
-		title: 'Church Events | Freedom in Christ Church Calendar',
+		title: 'Church Events in Mississauga | Freedom in Christ Church',
 		description:
-			'Stay updated on upcoming events at Freedom in Christ Church in Mississauga. Join us for worship services, community events, Bible studies, and special celebrations throughout the year.',
+			'Upcoming and past events at Freedom in Christ Church, a volunteer-led Alliance church in Mississauga. Add events to your calendar or get new ones by email.',
+	},
+	eventSubscription: {
+		title: 'Event Updates | Freedom in Christ Church',
+		description:
+			'Manage your email updates about Freedom in Christ Church events.',
+	},
+	thanksgiving2026: {
+		title: 'Thanksgiving 2026 | Freedom in Christ Church Mississauga',
+		description:
+			'Photos from the Thanksgiving 2026 celebration at Freedom in Christ Church, an Alliance church in Mississauga: worship, a shared meal and our church family giving thanks together.',
 	},
 	praiseJoin: {
 		title: 'Join the Worship Team | Freedom in Christ Church',
@@ -159,6 +201,33 @@ export const headData = {
 	worshipRequests: {
 		title: 'Worship Team Requests | Freedom in Christ Church',
 		description: 'Review requests to join the Praise & Worship team.',
+	},
+	teamAvailability: {
+		title: 'Team Availability | Freedom in Christ Church',
+		description: 'Sundays worship team members are unavailable to serve.',
+	},
+	praiseAvailability: {
+		title: 'My Availability | Freedom in Christ Church',
+		description:
+			'Let the Praise & Worship leaders know which Sundays you are unable to serve.',
+	},
+	blog: {
+		title: 'Blog | Freedom in Christ Church Mississauga',
+		description:
+			'Stories, devotionals and testimonies written by the members of Freedom in Christ Church, a volunteer-led Alliance church in Mississauga, Ontario.',
+	},
+	blogWrite: {
+		title: 'Write for the Blog | Freedom in Christ Church',
+		description:
+			'Write and manage your posts for the Freedom in Christ Church blog.',
+	},
+	blogApprovals: {
+		title: 'Blog Approvals | Freedom in Christ Church',
+		description: 'Review blog author requests and posts awaiting approval.',
+	},
+	account: {
+		title: 'Edit Profile | Freedom in Christ Church',
+		description: 'Update your name, email address and password.',
 	},
 	login: {
 		title: 'Member Login | Freedom in Christ Church Portal',
@@ -175,4 +244,62 @@ export const headData = {
 		description:
 			"Nurture your child's faith at Freedom in Christ Church's Sunday School in Mississauga. Age-appropriate Bible teaching, fun activities, and spiritual growth for children of all ages.",
 	},
+}
+
+// Sitewide schema.org records, rendered once in the root layout. Each page's
+// WebPage record (buildSeoHeadExtras) points back at these by @id.
+export const siteSchema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Church',
+			'@id': `${SITE_URL}/#church`,
+			name: church.name,
+			alternateName: church.shortName,
+			slogan: church.tagline,
+			description: church.description,
+			url: `${SITE_URL}/`,
+			logo: `${SITE_URL}/apple-touch-icon.png`,
+			image: church.ogImage,
+			email: church.email,
+			address: {
+				'@type': 'PostalAddress',
+				streetAddress: church.address.street,
+				addressLocality: church.address.city,
+				addressRegion: church.address.region,
+				postalCode: church.address.postalCode,
+				addressCountry: church.address.country,
+			},
+			geo: { '@type': 'GeoCoordinates', ...church.geo },
+			hasMap:
+				'https://www.google.com/maps/place/5225+Orbitor+Dr,+Mississauga,+ON+L4W+4Y8',
+			areaServed: church.areaServed.map((name) => ({ '@type': 'Place', name })),
+			openingHoursSpecification: {
+				'@type': 'OpeningHoursSpecification',
+				dayOfWeek: `https://schema.org/${church.serviceTime.day}`,
+				opens: church.serviceTime.opens,
+				closes: church.serviceTime.closes,
+			},
+			knowsAbout: [
+				'Alliance church',
+				'Christian worship',
+				'Bible study',
+				'Small groups',
+				'Volunteer-led ministry',
+			],
+			sameAs: [
+				'https://www.youtube.com/@freedominchristchurchcanada',
+				'https://www.instagram.com/fcc.canada/',
+				'https://www.facebook.com/groups/1667915316820460',
+			],
+		},
+		{
+			'@type': 'WebSite',
+			'@id': `${SITE_URL}/#website`,
+			url: `${SITE_URL}/`,
+			name: church.name,
+			inLanguage: 'en-CA',
+			publisher: { '@id': `${SITE_URL}/#church` },
+		},
+	],
 }

@@ -8,6 +8,11 @@
 	import vid1 from '#lib/assets/ministries/men/men-vid1.mp4'
 	import vid2 from '#lib/assets/ministries/men/men-vid2.mp4'
 	import vid3 from '#lib/assets/ministries/men/men-vid3.mp4'
+	import groupPhoto from '#lib/assets/ministries/men/men-group-photo.jpg'
+	import bibleStudy from '#lib/assets/ministries/men/men-bible-study.jpg'
+	import worship from '#lib/assets/ministries/men/men-worship.jpg'
+	import worshipGuitar from '#lib/assets/ministries/men/men-worship-guitar.jpg'
+	import vid4 from '#lib/assets/ministries/men/men-worship-thanksgiving.mp4'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
@@ -122,6 +127,38 @@
 					alt="Men of FCC sharing during a discussion"
 					loading="lazy"
 					class="aspect-video w-full rounded-2xl object-cover md:col-span-3"
+				/>
+				<img
+					src={groupPhoto}
+					alt="Men of FCC standing together at a ministry gathering"
+					loading="lazy"
+					class="aspect-video w-full rounded-2xl object-cover md:col-span-2"
+				/>
+				<!-- svelte-ignore a11y_media_has_caption -->
+				<video
+					controls
+					preload="metadata"
+					class="aspect-9/16 w-full rounded-2xl bg-primary-950 object-cover md:row-span-2 md:aspect-auto md:h-full"
+				>
+					<source src={vid4} />
+				</video>
+				<img
+					src={worship}
+					alt="The men's ministry singing together on stage at the Thanksgiving celebration"
+					loading="lazy"
+					class="aspect-video w-full rounded-2xl object-cover md:col-span-2"
+				/>
+				<img
+					src={bibleStudy}
+					alt="Men of FCC watching a teaching together in a living room"
+					loading="lazy"
+					class="aspect-video w-full rounded-2xl object-cover md:col-span-2"
+				/>
+				<img
+					src={worshipGuitar}
+					alt="Three men of FCC singing with a guitar"
+					loading="lazy"
+					class="aspect-4/5 w-full rounded-2xl object-cover object-[center_40%] md:aspect-auto md:h-0 md:min-h-full"
 				/>
 			</div>
 		{/snippet}

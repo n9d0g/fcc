@@ -1,5 +1,12 @@
+import { getResend, getResendFromEmail } from '#lib/resend.server.js'
+import { renderEmail } from '#lib/emails/render.server.js'
+import NewAccountEmail from '#lib/emails/NewAccount.svelte'
+import { ACCOUNT_LIMITS } from '#lib/schemas/account.js'
 import { fail, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
+
+const SIGNUP_INBOX = 'nate@njil.dev'
+const DISPLAY_NAME_MAX = ACCOUNT_LIMITS.displayName
 
 const logAuthError = (context: string, error: unknown) => {
 	if (typeof error === 'object' && error !== null) {
@@ -46,6 +53,32 @@ const safeRedirect = (value: unknown) =>
 	!value.startsWith('/\\')
 		? value
 		: '/'
+
+// Best effort: a failed notification shouldn't block the person signing up
+async function notifyNewAccount(displayName: string, email: string) {
+	try {
+		const { html, text } = await renderEmail(NewAccountEmail, {
+			displayName,
+			email,
+			registeredAt: new Date().toLocaleString('en-CA', {
+				timeZone: 'America/Toronto',
+				dateStyle: 'medium',
+				timeStyle: 'short',
+			}),
+		})
+		const { error } = await getResend().emails.send({
+			from: `Freedom in Christ Church <${getResendFromEmail()}>`,
+			to: SIGNUP_INBOX,
+			replyTo: email,
+			subject: `New account: ${displayName}`,
+			html,
+			text,
+		})
+		if (error) console.error('[auth signup] resend error', error)
+	} catch (e) {
+		console.error('[auth signup] notify', e)
+	}
+}
 
 export const load: PageServerLoad = async ({ locals, url }) => {
 	const { session, user } = await locals.safeGetSession()
@@ -100,13 +133,24 @@ export const actions = {
 
 	signup: async ({ request, locals, url }) => {
 		const formData = await request.formData()
+		const displayName = String(formData.get('displayName') ?? '').trim()
 		const email = String(formData.get('email') ?? '').trim()
 		const password = String(formData.get('password') ?? '')
 
-		if (!email || !password) {
+		if (!displayName || !email || !password) {
 			return fail(400, {
 				mode: 'signup',
-				error: 'Email and password are required.',
+				error: 'Name, email and password are required.',
+				displayName,
+				email,
+			})
+		}
+
+		if (displayName.length > DISPLAY_NAME_MAX) {
+			return fail(400, {
+				mode: 'signup',
+				error: `Name must be ${DISPLAY_NAME_MAX} characters or fewer.`,
+				displayName,
 				email,
 			})
 		}
@@ -115,16 +159,19 @@ export const actions = {
 			return fail(400, {
 				mode: 'signup',
 				error: 'Password must be at least 8 characters.',
+				displayName,
 				email,
 			})
 		}
 
 		try {
-			const { error } = await locals.supabase.auth.signUp({
+			const { data, error } = await locals.supabase.auth.signUp({
 				email,
 				password,
 				options: {
 					emailRedirectTo: `${url.origin}/login`,
+					// Shown as "Display name" in the Supabase dashboard
+					data: { display_name: displayName },
 				},
 			})
 
@@ -133,14 +180,22 @@ export const actions = {
 				return fail(400, {
 					mode: 'signup',
 					error: authErrorMessage(error),
+					displayName,
 					email,
 				})
+			}
+
+			// Supabase answers a signup for an existing email with a fake user
+			// that has no identities, so only notify for genuinely new accounts
+			if (data.user?.identities?.length) {
+				await notifyNewAccount(displayName, email)
 			}
 		} catch (error) {
 			logAuthError('signup', error)
 			return fail(500, {
 				mode: 'signup',
 				error: authErrorMessage(error),
+				displayName,
 				email,
 			})
 		}

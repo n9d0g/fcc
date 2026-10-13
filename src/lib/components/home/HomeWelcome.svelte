@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte'
-	import congregation from '#lib/assets/community/women-ministry.jpg'
+	import congregation from '#lib/assets/community/sunday-service.jpg'
+	import ChurchMap from '#lib/components/ChurchMap.svelte'
 
 	// Svelte 5 props
 	let { links }: { links: { googleMaps: string; zoom: string } } = $props()
@@ -11,7 +12,7 @@
 		<figure class="relative isolate">
 			<img
 				src={congregation}
-				alt="Women of FCC gathered in front of the Freedom in Christ Church banner"
+				alt="The FCC congregation seated for a Sunday worship service"
 				class="aspect-4/3 w-full rounded-3xl object-cover shadow-lift"
 				loading="lazy"
 			/>
@@ -25,8 +26,9 @@
 			<p class="eyebrow">Plan your visit</p>
 			<h2 class="h2 mt-3" data-testid="welcome-header">Come join us!</h2>
 			<p class="lede mt-5" data-testid="welcome-subheader">
-				We welcome you to our worship services every Sunday morning at 10:30am!
-				Services are both in person and online, so you can join us however suits
+				Freedom in Christ Church is a volunteer-led Alliance church in
+				Mississauga. We welcome you to our worship services every Sunday morning
+				at 10:30am, both in person and online, so you can join us however suits
 				you best.
 			</p>
 
@@ -42,7 +44,7 @@
 						rel="noopener noreferrer"
 						class="anchor mt-1 inline-block text-sm"
 					>
-						5225 Orbitor Drive Unit 3, Mississauga, ON
+						5225 Orbitor Drive, Unit 3, Mississauga, ON L4W 4Y8
 					</a>
 				</div>
 				<div class="rounded-2xl border border-line bg-paper p-5">
@@ -71,5 +73,9 @@
 				</a>
 			</div>
 		</div>
+	</div>
+
+	<div class="wrap mt-12 md:mt-16">
+		<ChurchMap class="md:h-[26rem]" />
 	</div>
 </section>

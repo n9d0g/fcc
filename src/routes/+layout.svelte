@@ -19,6 +19,8 @@
 	} from '$app/navigation'
 	import { page } from '$app/state'
 	import { setNavActiveState } from '#lib/stores/navigation.svelte.js'
+	import { siteSchema } from '#lib/config/index.js'
+	import { jsonLd } from '#lib/utils.js'
 
 	// Svelte 5 props
 	let { data, children }: { data: any; children: Snippet } = $props()
@@ -97,6 +99,10 @@
 		return () => subscription.unsubscribe()
 	})
 </script>
+
+<svelte:head>
+	{@html jsonLd(siteSchema)}
+</svelte:head>
 
 <!-- Side Navigation Drawer -->
 <SideNav open={sideNavOpen} onclose={closeSideNav} {user} />

@@ -1,6 +1,11 @@
 export const breadcrumbs = {
 	home: { title: 'Home', href: '/' },
 	sermons: { title: 'Sermons', href: '/sermons' },
+	blog: {
+		title: 'Blog',
+		href: '/blog',
+		write: { title: 'Write', href: '/blog/write' },
+	},
 	give: { title: 'Give', href: '/give' },
 	error: { title: 'Error', href: '/error' },
 	events: {
@@ -11,14 +16,27 @@ export const breadcrumbs = {
 			href: '/events/2024',
 			fallRetreat: { title: 'Fall Retreat', href: '/events/2024/fall-retreat' },
 		},
+		thanksgiving2026: {
+			title: 'Thanksgiving 2026',
+			href: '/events/2026/thanksgiving',
+		},
 	},
 	login: { title: 'Login', href: '/login' },
+	account: { title: 'Edit Profile', href: '/account' },
 	admin: {
 		title: 'Admin',
 		href: '/admin/worship-requests',
 		worshipRequests: {
 			title: 'Worship Requests',
 			href: '/admin/worship-requests',
+		},
+		availability: {
+			title: 'Team Availability',
+			href: '/admin/availability',
+		},
+		blog: {
+			title: 'Blog Approvals',
+			href: '/admin/blog',
 		},
 	},
 	contact: { title: 'Contact', href: '/contact' },
@@ -44,6 +62,10 @@ export const breadcrumbs = {
 			schedule: { title: 'Schedule', href: '/ministries/praise/schedule' },
 			songUsage: { title: 'Song Usage', href: '/ministries/praise/song-usage' },
 			join: { title: 'Join the Team', href: '/ministries/praise/join' },
+			availability: {
+				title: 'My Availability',
+				href: '/ministries/praise/availability',
+			},
 			worshipDirectorNotes: {
 				title: 'Worship Director Notes',
 				href: 'https://n9d0g.notion.site/worship-director-notes-2cc49c91f89280d5b0a9f6ecd67ea167?source=copy_link',

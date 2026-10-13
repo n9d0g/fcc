@@ -19,7 +19,7 @@
 	image={womenFellowship}
 	imageAlt="FCC members sharing a meal after service"
 	imagePosition="center 40%"
-	intro="Who is serving at our Sunday services each month."
+	intro="FCC is volunteer-led: every Sunday service is run by members of our church family. Here's who is serving each month."
 >
 	<div class="table-container">
 		<table class="table">

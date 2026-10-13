@@ -6,6 +6,7 @@
 	import HomeNextEvent from '#lib/components/home/HomeNextEvent.svelte'
 	import HomeSermons from '#lib/components/home/HomeSermons.svelte'
 	import HomeCommunity from '#lib/components/home/HomeCommunity.svelte'
+	import HomeBlog from '#lib/components/home/HomeBlog.svelte'
 	import { headData } from '#lib/config/index.js'
 
 	// Svelte 5 props
@@ -29,6 +30,10 @@
 	<HomeWelcome links={data.links} />
 	<HomeCommunity />
 	<HomeSermons sermons={data.sermons} />
+
+	{#if data.posts?.length}
+		<HomeBlog posts={data.posts} />
+	{/if}
 
 	{#if data.pages.length > 0}
 		<HomeNextEvent pageInfo={data.pages} />
