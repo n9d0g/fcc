@@ -1,4 +1,5 @@
 <script lang="ts">
+	import youthRetreat from '#lib/assets/community/youth-retreat.jpg'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import MinistryPageContent from '#lib/components/ministries/MinistryPageContent.svelte'
 
@@ -43,7 +44,14 @@
 	]
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	image={youthRetreat}
+	imageAlt="FCC youth waving by a lake on a fall outing"
+	imagePosition="center 30%"
+>
 	<MinistryPageContent
 		welcomeTitle="Welcome to Our Youth Ministry!"
 		welcomeDescription="At Freedom in Christ Church, we believe in investing in the vibrant and dynamic potential of our youth. Our Youth Ministry provides a space where teenagers aged 13-19 can gather, connect, and grow in their faith. Join us each month for an exciting blend of spiritual development, community engagement, and lots of fun!"

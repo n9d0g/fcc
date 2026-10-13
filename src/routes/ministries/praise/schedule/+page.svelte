@@ -55,7 +55,7 @@
 			<label class="label flex items-center gap-2">
 				<span class="w-fit sm:w-1/6">Filter by:</span>
 				<select
-					class="select w-auto flex-1 cursor-pointer border sm:w-5/6"
+					class="select w-auto flex-1 cursor-pointer sm:w-5/6"
 					bind:value={filterTerm}
 				>
 					{#each filterData as role}
@@ -66,7 +66,7 @@
 
 			<div class="relative">
 				<input
-					class="input relative w-full max-w-full border p-2 sm:w-96"
+					class="input w-full pr-10 sm:w-96"
 					type="text"
 					placeholder={`Filter by ${filterTerm}`}
 					bind:value={searchTerm}
@@ -77,9 +77,10 @@
 					<button
 						transition:fade={{ duration: 150 }}
 						onclick={() => (searchTerm = '')}
-						class="absolute top-1/2 right-2 h-7 w-7 -translate-y-1/2 cursor-pointer rounded-xl text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white"
+						class="btn-icon absolute top-1/2 right-1.5 -translate-y-1/2 text-muted hover:bg-surface-100 hover:text-ink"
+						aria-label="Clear search"
 					>
-						<Icon icon="lucide:x" class="h-full w-full" />
+						<Icon icon="lucide:x" class="size-4" />
 					</button>
 				{/if}
 			</div>
@@ -87,9 +88,9 @@
 			<!-- # of results  -->
 			{#if searchTerm.length !== 0}
 				<div class="transition-all">
-					<h6 class="h6 text-center transition-all sm:text-left">
+					<p class="text-center text-sm text-muted sm:text-left">
 						{filteredData.length} week{filteredData.length === 1 ? '' : 's'} found.
-					</h6>
+					</p>
 				</div>
 			{/if}
 		</div>
@@ -98,14 +99,12 @@
 
 		<!-- schedule table -->
 		<div class="table-container relative h-[60vh] w-full overflow-auto">
-			<table class=" table-compact table" data-testid="schedule-table">
-				<thead>
-					<tr class="sticky top-0 z-10">
+			<table class="table-compact table" data-testid="schedule-table">
+				<thead class="sticky-head">
+					<tr>
 						{#each tHead as header, index}
 							{#if index === 0}
-								<th class="dark:bg-surface-700 sticky left-0 z-30 bg-gray-100">
-									{header}
-								</th>
+								<th class="sticky-col">{header}</th>
 							{:else}
 								<th>{header}</th>
 							{/if}
@@ -113,16 +112,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each filteredData as week, rowIndex}
+					{#each filteredData as week}
 						<tr onclick={() => openDetails(week)} class="cursor-pointer">
 							{#each tBody as col}
 								{#if week[col]}
 									{#if col === 'date'}
-										<td
-											class="sticky left-0 z-20 {rowIndex % 2 === 0
-												? 'dark:bg-surface-800 bg-white'
-												: 'dark:bg-surface-900 bg-gray-50'}"
-										>
+										<td class="sticky-col whitespace-nowrap">
 											{formatCmsDate(week[col], 'MMM do')}
 										</td>
 									{:else if col === 'unavailableList'}
@@ -146,10 +141,10 @@
 			</table>
 		</div>
 	{:else}
-		<div class="card my-8 bg-white p-8 text-center dark:bg-surface-800">
-			<Icon icon="lucide:calendar-x" class="mx-auto mb-4 h-16 w-16 text-gray-400" />
-			<h3 class="h3 mb-2 font-bold">No Schedule Available</h3>
-			<p class="text-gray-600 dark:text-gray-400">
+		<div class="card my-8 p-8 text-center">
+			<Icon icon="lucide:calendar-x" class="mx-auto mb-4 h-16 w-16 text-surface-400" />
+			<h3 class="h3 mb-2">No Schedule Available</h3>
+			<p class="text-muted">
 				A schedule hasn't been created yet. Please check back later.
 			</p>
 		</div>
@@ -158,12 +153,14 @@
 	<PraiseAssignments {praiseAssignments} />
 
 	<!-- link to excel sheet -->
-	<div class="my-4 flex w-full flex-col justify-center gap-4 sm:flex-row">
-		<a href={links.avSetup} target="_blank" class="btn preset-filled"
-			>AV Setup Document</a
-		>
-		<a href="/pdf/x18-manual.pdf" target="_blank" class="btn preset-filled"
-			>Mixer Manual</a
-		>
+	<div class="my-4 flex w-full flex-col justify-center gap-3 sm:flex-row">
+		<a href={links.avSetup} target="_blank" class="btn btn-primary">
+			<Icon icon="lucide:monitor-speaker" class="size-4" />
+			AV Setup Document
+		</a>
+		<a href="/pdf/x18-manual.pdf" target="_blank" class="btn btn-outline">
+			<Icon icon="lucide:file-text" class="size-4" />
+			Mixer Manual
+		</a>
 	</div>
 </FccLayout>

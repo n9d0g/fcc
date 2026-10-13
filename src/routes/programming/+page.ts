@@ -11,6 +11,8 @@ export const load = async () => {
 			{
 				title: 'Details',
 				link: '/programming/details',
+				description: 'Programming spreadsheet and attendance.',
+				icon: 'lucide:sheet',
 			},
 		],
 	}

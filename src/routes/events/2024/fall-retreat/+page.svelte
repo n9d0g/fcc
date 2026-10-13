@@ -10,10 +10,10 @@
 </script>
 
 <FccLayout {title} {breadcrumb} {headData}>
-	<div class="container mx-auto">
-		<div class="mb-8">
-			<h2 class="h2 mb-3 font-bold">Sessions</h2>
-			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+	<div class="space-y-16">
+		<div>
+			<h2 class="h2 mb-8">Sessions</h2>
+			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
 				<SermonCard
 					title="Session #1"
 					date="2024-10-19"
@@ -46,36 +46,40 @@
 		</div>
 
 		<div>
-			<h2 class="h2 mb-3 font-bold">Worksheets</h2>
+			<h2 class="h2 mb-8">Worksheets</h2>
 
-			<div class="flex flex-col gap-2">
+			<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
 				<a
 					href="/pdf/2024/fall-retreat/session-1.pdf"
-					class="anchor w-fit"
+					class="card card-hover flex items-center gap-3 p-4 font-medium"
 					target="_blank"
 				>
-					Session #1
+					<span class="icon-chip size-9 text-base">📄</span>
+					Session #1 worksheet
 				</a>
 				<a
 					href="/pdf/2024/fall-retreat/session-2.pdf"
-					class="anchor w-fit"
+					class="card card-hover flex items-center gap-3 p-4 font-medium"
 					target="_blank"
 				>
-					Session #2
+					<span class="icon-chip size-9 text-base">📄</span>
+					Session #2 worksheet
 				</a>
 				<a
 					href="/pdf/2024/fall-retreat/session-3.pdf"
-					class="anchor w-fit"
+					class="card card-hover flex items-center gap-3 p-4 font-medium"
 					target="_blank"
 				>
-					Session #3
+					<span class="icon-chip size-9 text-base">📄</span>
+					Session #3 worksheet
 				</a>
 				<a
 					href="/pdf/2024/fall-retreat/session-4.pdf"
-					class="anchor w-fit"
+					class="card card-hover flex items-center gap-3 p-4 font-medium"
 					target="_blank"
 				>
-					Session #4
+					<span class="icon-chip size-9 text-base">📄</span>
+					Session #4 worksheet
 				</a>
 			</div>
 		</div>

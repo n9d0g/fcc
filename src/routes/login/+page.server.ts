@@ -136,9 +136,9 @@ export const actions = {
 		}
 
 		return {
-			mode: 'confirm',
+			mode: 'signup',
 			success:
-				'Account created. Check your email for a confirmation code, then enter it below.',
+				'Account created. Check your email and press the "Confirm email" button to finish signing up.',
 			email,
 		}
 	},

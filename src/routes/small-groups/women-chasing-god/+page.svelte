@@ -1,5 +1,6 @@
 <script lang="ts">
 	import FccLayout from '#lib/components/FccLayout.svelte'
+	import PhotoGallery from '#lib/components/PhotoGallery.svelte'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
@@ -12,17 +13,17 @@
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<!-- Zoom Link Section -->
-	<div class="card dark:bg-surface-800 mb-8 bg-white p-5">
+	<div class="card mb-10 p-6">
 		<div class="flex flex-wrap items-center gap-4">
 			<div class="flex items-center gap-3">
 				<span
-					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="icon-chip"
 				>
 					💻
 				</span>
 				<div>
 					<p class="font-semibold">Zoom Meeting</p>
-					<p class="text-sm opacity-70">
+					<p class="text-sm text-muted">
 						Meeting ID: {links.zoom2.meetingId} | Passcode: {links.zoom2.passcode}
 					</p>
 				</div>
@@ -30,7 +31,7 @@
 			<a
 				href={links.zoom2.link}
 				target="_blank"
-				class="preset-filled btn"
+				class="btn btn-primary"
 			>
 				Join Zoom Meeting
 			</a>
@@ -38,19 +39,19 @@
 	</div>
 
 	<!-- Study Groups Grid -->
-	<h3 class="h3 mb-4 font-bold">Our Study Groups</h3>
-	<div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-		<div class="card dark:bg-surface-800 bg-white p-5">
-			<div class="mb-3 flex items-center gap-3">
+	<h2 class="h2 mb-8">Our Study Groups</h2>
+	<div class="mb-12 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+		<div class="card p-6">
+			<div class="mb-4 flex items-center gap-3">
 				<span
-					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="icon-chip"
 				>
 					🌍
 				</span>
-				<h4 class="h4 font-bold">Europe/US/Canada</h4>
+				<h4 class="h4">Europe/US/Canada</h4>
 			</div>
-			<div class="flex flex-col gap-1 opacity-80">
-				<p class="font-semibold">Every 1st Saturday (monthly)</p>
+			<div class="flex flex-col gap-1 text-muted">
+				<p class="font-semibold text-ink">Every 1st Saturday (monthly)</p>
 				<p>Toronto/Connecticut: 9:30AM</p>
 				<p>UK: 2:30PM</p>
 				<p>Manila: 9:30PM</p>
@@ -66,17 +67,17 @@
 			</div>
 		</div>
 
-		<div class="card dark:bg-surface-800 bg-white p-5">
-			<div class="mb-3 flex items-center gap-3">
+		<div class="card p-6">
+			<div class="mb-4 flex items-center gap-3">
 				<span
-					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="icon-chip"
 				>
 					🇺🇸
 				</span>
-				<h4 class="h4 font-bold">US/Canada</h4>
+				<h4 class="h4">US/Canada</h4>
 			</div>
-			<div class="flex flex-col gap-1 opacity-80">
-				<p class="font-semibold">Every 1st Saturday (monthly)</p>
+			<div class="flex flex-col gap-1 text-muted">
+				<p class="font-semibold text-ink">Every 1st Saturday (monthly)</p>
 				<p>LA: 8:00AM</p>
 				<p>AZ: 9:00AM</p>
 				<p>Toronto: 11:00PM</p>
@@ -92,17 +93,17 @@
 			</div>
 		</div>
 
-		<div class="card dark:bg-surface-800 bg-white p-5">
-			<div class="mb-3 flex items-center gap-3">
+		<div class="card p-6">
+			<div class="mb-4 flex items-center gap-3">
 				<span
-					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="icon-chip"
 				>
 					🇨🇦
 				</span>
-				<h4 class="h4 font-bold">FCC Canada</h4>
+				<h4 class="h4">FCC Canada</h4>
 			</div>
-			<div class="flex flex-col gap-1 opacity-80">
-				<p class="font-semibold">Every last Saturday (monthly)</p>
+			<div class="flex flex-col gap-1 text-muted">
+				<p class="font-semibold text-ink">Every last Saturday (monthly)</p>
 				<p>Toronto: 9:00AM</p>
 				<p class="mt-2">
 					Study: <a
@@ -116,17 +117,17 @@
 			</div>
 		</div>
 
-		<div class="card dark:bg-surface-800 bg-white p-5">
-			<div class="mb-3 flex items-center gap-3">
+		<div class="card p-6">
+			<div class="mb-4 flex items-center gap-3">
 				<span
-					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="icon-chip"
 				>
 					🇵🇭
 				</span>
-				<h4 class="h4 font-bold">Girls Chasing God (Philippines)</h4>
+				<h4 class="h4">Girls Chasing God (Philippines)</h4>
 			</div>
-			<div class="flex flex-col gap-1 opacity-80">
-				<p class="font-semibold">Every last Saturday (monthly)</p>
+			<div class="flex flex-col gap-1 text-muted">
+				<p class="font-semibold text-ink">Every last Saturday (monthly)</p>
 				<p>Manila: 8:00PM</p>
 				<p>Toronto: 8:00AM</p>
 				<p class="mt-2">
@@ -141,17 +142,17 @@
 			</div>
 		</div>
 
-		<div class="card dark:bg-surface-800 bg-white p-5">
-			<div class="mb-3 flex items-center gap-3">
+		<div class="card p-6">
+			<div class="mb-4 flex items-center gap-3">
 				<span
-					class="preset-filled-primary-500 flex h-10 w-10 items-center justify-center rounded-full text-xl"
+					class="icon-chip"
 				>
 					🌏
 				</span>
-				<h4 class="h4 font-bold">Philippines/US/Canada</h4>
+				<h4 class="h4">Philippines/US/Canada</h4>
 			</div>
-			<div class="flex flex-col gap-1 opacity-80">
-				<p class="font-semibold">Every 4th Thursday (monthly)</p>
+			<div class="flex flex-col gap-1 text-muted">
+				<p class="font-semibold text-ink">Every 4th Thursday (monthly)</p>
 				<p>Toronto: 8:00AM</p>
 				<p>Manila: 8:00PM</p>
 				<p class="mt-2">
@@ -169,7 +170,7 @@
 
 	<!-- About & Contact Section -->
 	<div
-		class="card dark:bg-surface-800 mx-auto mb-8 max-w-3xl bg-white p-6 text-center"
+		class="card mx-auto mb-16 max-w-3xl p-8 text-center"
 	>
 		<p class="mb-4">
 			These bible study groups meet only once a month with the purpose of using
@@ -204,30 +205,7 @@
 	</div>
 
 	<!-- Photo Gallery -->
-	{#if gallery?.photos && gallery.photos.length > 0}
-		<div>
-			<h3 class="h3 mb-4 font-bold">Photo Gallery</h3>
-			<div
-				class="grid auto-rows-[200px] grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
-			>
-				{#each gallery.photos as photo, index}
-					<div
-						class="overflow-hidden rounded-lg {index === 0
-							? 'col-span-2 row-span-2'
-							: index === 3
-								? 'col-span-2'
-								: index === 6
-									? 'row-span-2'
-									: ''}"
-					>
-						<img
-							src={photo.url}
-							alt={photo.alt || 'Gallery photo'}
-							class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-						/>
-					</div>
-				{/each}
-			</div>
-		</div>
+	{#if gallery?.photos}
+		<PhotoGallery photos={gallery.photos} />
 	{/if}
 </FccLayout>

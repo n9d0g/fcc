@@ -5,6 +5,7 @@
 	import HomeWelcome from '#lib/components/home/HomeWelcome.svelte'
 	import HomeNextEvent from '#lib/components/home/HomeNextEvent.svelte'
 	import HomeSermons from '#lib/components/home/HomeSermons.svelte'
+	import HomeCommunity from '#lib/components/home/HomeCommunity.svelte'
 	import { headData } from '#lib/config/index.js'
 
 	// Svelte 5 props
@@ -26,6 +27,7 @@
 <div>
 	<Hero />
 	<HomeWelcome links={data.links} />
+	<HomeCommunity />
 	<HomeSermons sermons={data.sermons} />
 
 	{#if data.pages.length > 0}

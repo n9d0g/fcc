@@ -76,7 +76,7 @@
 >
 	<button
 		type="button"
-		class="flex size-10 cursor-pointer items-center justify-center rounded-full preset-filled-secondary-500 text-sm font-semibold uppercase text-white transition-opacity hover:opacity-90"
+		class="flex size-10 cursor-pointer items-center justify-center rounded-full bg-secondary-600 text-sm font-semibold text-white uppercase ring-2 ring-white transition hover:bg-secondary-700"
 		aria-label="Account menu"
 		aria-haspopup="menu"
 		aria-expanded={open}
@@ -91,14 +91,14 @@
 	{#if open}
 		<div
 			role="menu"
-			class="card absolute z-[60] min-w-[12rem] overflow-hidden border border-gray-200 bg-white shadow-lg dark:border-surface-600 dark:bg-surface-800 {variant ===
+			class="card absolute z-[60] min-w-48 overflow-hidden shadow-lift {variant ===
 			'drawer'
 				? 'left-0 right-auto top-full mt-2 w-full'
 				: 'right-0 top-full mt-2'}"
 		>
-			<div class="border-b border-gray-200 px-4 py-3 dark:border-surface-600">
-				<p class="text-xs text-gray-500 dark:text-surface-400">Signed in as</p>
-				<p class="truncate text-sm font-medium text-gray-900 dark:text-surface-50">
+			<div class="border-b border-line px-4 py-3">
+				<p class="text-xs text-muted">Signed in as</p>
+				<p class="truncate text-sm font-medium text-ink">
 					{email || displayName}
 				</p>
 			</div>
@@ -106,7 +106,7 @@
 			<button
 				type="button"
 				role="menuitem"
-				class="btn w-full cursor-pointer justify-start rounded-none border-0 bg-transparent px-4 py-3 text-left text-sm hover:bg-gray-100 dark:hover:bg-surface-700"
+				class="flex w-full cursor-pointer items-center px-4 py-3 text-left text-sm font-medium hover:bg-surface-100"
 				onclick={handleLogout}
 			>
 				Log out

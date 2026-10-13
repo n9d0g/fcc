@@ -12,7 +12,7 @@
 
 <FccLayout {title} {breadcrumb} {headData}>
 	{#await songs}
-		<div>awaiting data...</div>
+		<p class="text-muted">Loading songs…</p>
 	{:then songs}
 		<!-- schedule table -->
 		<div class="table-container">
@@ -29,16 +29,12 @@
 						<tr>
 							<td>{song.song_name}</td>
 							<td>{song.artist}</td>
-							<td class="flex items-center justify-center">
-								<p>
-									{song.times_played}
-								</p>
-							</td>
+							<td class="text-center font-semibold tabular-nums">{song.times_played}</td>
 							<td>
 								<a
 									href={song.spotify}
 									target="_blank"
-									class="btn btn-sm w-full bg-[#1ed760] px-8 font-bold text-black"
+									class="btn btn-sm w-full bg-[#1ed760] px-6 text-black hover:brightness-95"
 								>
 									Link
 								</a>

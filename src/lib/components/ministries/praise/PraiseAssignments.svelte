@@ -42,7 +42,7 @@
 </script>
 
 <div class="my-16">
-	<h2 class="h2 my-4 font-bold">Praise Team Assignments</h2>
+	<h2 class="h2 my-4">Praise Team Assignments</h2>
 
 	<div class="table-container">
 		<table class="table-compact table">

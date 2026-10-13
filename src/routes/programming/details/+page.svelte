@@ -12,11 +12,11 @@
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<section>
-		<div class="flex max-w-lg flex-col sm:flex-row sm:gap-4">
-			<a href={excelSheet} target="_blank" class="btn preset-filled my-4"
+		<div class="flex flex-col gap-3 sm:flex-row">
+			<a href={excelSheet} target="_blank" class="btn btn-primary btn-lg"
 				>Details Spreadsheet</a
 			>
-			<a href={attendance} target="_blank" class="btn preset-filled my-4"
+			<a href={attendance} target="_blank" class="btn btn-outline btn-lg"
 				>Attendance Update</a
 			>
 		</div>
