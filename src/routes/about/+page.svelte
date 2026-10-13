@@ -19,7 +19,7 @@
 	image={womenMinistry}
 	imageAlt="Women of FCC gathered around the church banner"
 	imagePosition="center 40%"
-	intro="Get to know the family at Freedom in Christ Church."
+	intro="Get to know the family at Freedom in Christ Church, a volunteer-led Alliance church in Mississauga."
 >
 	<LandingPageGrid items={data.landingPageItems} />
 </FccLayout>

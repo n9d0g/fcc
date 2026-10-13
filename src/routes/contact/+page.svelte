@@ -180,7 +180,7 @@
 					<span class="icon-chip"><Icon icon="lucide:map-pin" class="size-5" /></span>
 					<span>
 						<span class="block font-semibold">Find us</span>
-						<span class="text-muted">5225 Orbitor Drive Unit 3, Mississauga, ON</span>
+						<span class="text-muted">5225 Orbitor Drive, Unit 3, Mississauga, ON L4W 4Y8</span>
 					</span>
 				</li>
 			</ul>

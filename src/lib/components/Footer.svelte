@@ -30,8 +30,9 @@
 				</p>
 			</div>
 			<p class="mt-5 max-w-sm leading-relaxed text-primary-200">
-				A Christ-centred, Holy Spirit-led community committed to building strong
-				relationships and planting healthy, reproducing churches.
+				A volunteer-led Alliance church in Mississauga, Ontario. A Christ-centred,
+				Holy Spirit-led community committed to building strong relationships and
+				planting healthy, reproducing churches.
 			</p>
 			<div class="mt-6 flex gap-2">
 				{#each socials as social}
@@ -64,7 +65,7 @@
 						rel="noopener noreferrer"
 						class="hover:text-white hover:underline"
 					>
-						5225 Orbitor Drive, Unit 3<br />Mississauga, ON
+						5225 Orbitor Drive, Unit 3<br />Mississauga, ON L4W 4Y8
 					</a>
 				</li>
 			</ul>
