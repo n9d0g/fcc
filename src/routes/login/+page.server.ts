@@ -180,7 +180,8 @@ export const actions = {
 			})
 		}
 
-		throw redirect(303, '/')
+		// The root layout celebrates the new account when it sees ?welcome
+		throw redirect(303, '/?welcome')
 	},
 
 	resendOtp: async ({ request, locals }) => {

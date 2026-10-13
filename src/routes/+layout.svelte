@@ -8,7 +8,15 @@
 	import SideNav from '#lib/components/SideNav.svelte'
 	import Banner from '#lib/components/Banner.svelte'
 	import Dialog from '#lib/components/Modal.svelte'
-	import { afterNavigate, invalidate, onNavigate } from '$app/navigation'
+	import Toaster from '#lib/components/Toaster.svelte'
+	import Confetti from '#lib/components/Confetti.svelte'
+	import { toaster } from '#lib/stores/toaster.js'
+	import {
+		afterNavigate,
+		invalidate,
+		onNavigate,
+		replaceState,
+	} from '$app/navigation'
 	import { page } from '$app/state'
 	import { setNavActiveState } from '#lib/stores/navigation.svelte.js'
 
@@ -17,6 +25,7 @@
 
 	// Reactive state
 	let sideNavOpen = $state(false)
+	let celebrating = $state(false)
 
 	// View transitions
 	onNavigate((navigation) => {
@@ -33,6 +42,22 @@
 	// Scroll to top on navigate
 	afterNavigate((nav) => {
 		if (nav.type === 'link') window.scrollTo(0, 0)
+	})
+
+	// /login redirects to /?welcome once a new account's email is confirmed
+	afterNavigate(({ to }) => {
+		if (!to?.url.searchParams.has('welcome')) return
+
+		celebrating = true
+		toaster.success({
+			title: 'Welcome to FCC!',
+			description: 'Your account is all set up and you are now signed in.',
+			duration: 6000,
+		})
+
+		const url = new URL(to.url)
+		url.searchParams.delete('welcome')
+		replaceState(url, page.state)
 	})
 
 	// Drawer controls
@@ -78,6 +103,13 @@
 
 <!-- Global Modal -->
 <Dialog />
+
+<!-- Toasts -->
+<Toaster />
+
+{#if celebrating}
+	<Confetti onend={() => (celebrating = false)} />
+{/if}
 
 <!-- Banner -->
 <Banner {banner} />

@@ -151,6 +151,15 @@ export const headData = {
 		description:
 			'Stay updated on upcoming events at Freedom in Christ Church in Mississauga. Join us for worship services, community events, Bible studies, and special celebrations throughout the year.',
 	},
+	praiseJoin: {
+		title: 'Join the Worship Team | Freedom in Christ Church',
+		description:
+			'Request to join the Praise & Worship team at Freedom in Christ Church in Mississauga. Vocalists and musicians of every skill level are welcome.',
+	},
+	worshipRequests: {
+		title: 'Worship Team Requests | Freedom in Christ Church',
+		description: 'Review requests to join the Praise & Worship team.',
+	},
 	login: {
 		title: 'Member Login | Freedom in Christ Church Portal',
 		description:
