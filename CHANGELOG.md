@@ -1,5 +1,13 @@
 # web
 
+## [3.31.0](https://github.com/n9d0g/fcc/compare/v3.30.1...v3.31.0) (2026-10-14)
+
+
+### Features
+
+* **web:** :sparkles: worship + prayer leader authorization roles ([91a9602](https://github.com/n9d0g/fcc/commit/91a9602146ec7e083281fc982c177624569456a5))
+* **web:** :sparkles: worship + prayer leader authorization roles ([d68e192](https://github.com/n9d0g/fcc/commit/d68e19240d8bb92ad0d98daed14fa853c36872ad))
+
 ## [3.30.1](https://github.com/n9d0g/fcc/compare/v3.30.0...v3.30.1) (2026-10-13)
 
 
