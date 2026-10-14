@@ -1,5 +1,18 @@
 # web
 
+## [3.32.0](https://github.com/n9d0g/fcc/compare/v3.31.0...v3.32.0) (2026-10-14)
+
+
+### Features
+
+* 3js animation ([19b7303](https://github.com/n9d0g/fcc/commit/19b7303dd02810af22bda9a12beb3b2cef18a6a1))
+* **web:** :sparkles: threejs animation of church ([fb097e4](https://github.com/n9d0g/fcc/commit/fb097e46e8623664c03e9c6bfa7f07bc052299f1))
+
+
+### Bug Fixes
+
+* **web:** :adhesive_bandage: worship schedule admin fixes ([4e00afa](https://github.com/n9d0g/fcc/commit/4e00afade8b054bd216b6f1cf7295e43b52a8606))
+
 ## [3.31.0](https://github.com/n9d0g/fcc/compare/v3.30.1...v3.31.0) (2026-10-14)
 
 
