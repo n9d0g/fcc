@@ -23,7 +23,9 @@
 	// Editable lists, reset whenever a save brings back fresh data
 	let songs = $state<ServiceSong[]>([])
 	let unavailable = $state<Unavailable[]>([])
+	let backup = $state<string[]>([])
 	$effect.pre(() => {
+		backup = [...data.service.backup]
 		songs = data.service.songs.map((s) => ({ ...s }))
 		unavailable = data.service.unavailable.map((u) => ({ ...u }))
 	})
@@ -77,6 +79,9 @@
 		{#each namesFor(f.position) as name (name)}<option value={name}></option>{/each}
 	</datalist>
 {/each}
+<datalist id="names-backup">
+	{#each namesFor('backup') as name (name)}<option value={name}></option>{/each}
+</datalist>
 <datalist id="song-library">
 	{#each data.songLibrary as s (s.song_name)}<option value={s.song_name}>{s.artist ?? ''}</option
 		>{/each}
@@ -131,6 +136,33 @@
 						</label>
 					{/each}
 				</div>
+				<fieldset class="card mt-3 space-y-2 p-5 sm:p-6">
+					<legend class="sr-only">Backup vocals</legend>
+					<p class="text-sm font-medium" aria-hidden="true">Backup vocals</p>
+					{#each backup as _, i (i)}
+						<div class="flex items-center gap-2">
+							<label class="flex-1">
+								<span class="sr-only">Backup vocalist {i + 1}</span>
+								<input
+									class="input"
+									name="backup"
+									list="names-backup"
+									maxlength={SERVICE_LIMITS.short}
+									bind:value={backup[i]}
+								/>
+							</label>
+							<button type="button" class="btn-icon hover:text-error-700" aria-label="Remove backup vocalist {i + 1}" onclick={() => backup.splice(i, 1)}>
+								<Icon icon="lucide:x" class="size-4" />
+							</button>
+						</div>
+					{/each}
+					{#if backup.length < SERVICE_LIMITS.backup}
+						<button type="button" class="btn btn-sm btn-outline" onclick={() => backup.push('')}>
+							<Icon icon="lucide:plus" class="size-4" />
+							Add a backup vocalist
+						</button>
+					{/if}
+				</fieldset>
 			</section>
 
 			<section aria-labelledby="sermon">

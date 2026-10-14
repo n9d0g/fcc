@@ -98,7 +98,7 @@
 		<DetailsTooltip />
 
 		<!-- schedule table -->
-		<div class="table-container relative h-[60vh] w-full overflow-auto">
+		<div class="table-container relative max-h-[60vh] w-full overflow-auto">
 			<table class="table-compact table" data-testid="schedule-table">
 				<thead class="sticky-head">
 					<tr>

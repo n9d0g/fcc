@@ -2,6 +2,7 @@ import { client } from '#lib/config/index.js'
 import {
 	WORSHIP_POSITIONS,
 	isWorshipPosition,
+	splitNames,
 	type WorshipPosition,
 	type WorshipService,
 } from '#lib/schemas/worship-schedule.js'
@@ -10,11 +11,28 @@ import {
 	upcomingSundays,
 } from '#lib/schemas/worship-availability.js'
 import { requireRole } from '#lib/server/roles.js'
-import { error, fail, redirect } from '@sveltejs/kit'
+import { error, fail, redirect, type RequestEvent } from '@sveltejs/kit'
 import { z } from 'zod'
 import type { Actions, PageServerLoad } from './$types'
 
-type RosterEntry = { id: string; position: WorshipPosition; name: string }
+type RosterEntry = {
+	id: string
+	position: WorshipPosition
+	name: string
+	user_id: string | null
+}
+type SiteUser = { id: string; email: string; display_name: string | null }
+
+const listUsers = async ({ locals }: RequestEvent) => {
+	const { data, error: err } = await locals.supabase.rpc('admin_list_users')
+	if (err) throw err
+	return (data ?? []) as SiteUser[]
+}
+
+// The name a linked roster entry takes: the account's display name, or the
+// start of its email for older accounts without one
+const accountName = (user: SiteUser) =>
+	(user.display_name || user.email.split('@')[0]).slice(0, 100)
 
 export const load: PageServerLoad = async (event) => {
 	await requireRole(event, 'worship_leader')
@@ -26,7 +44,7 @@ export const load: PageServerLoad = async (event) => {
 		.toISOString()
 		.slice(0, 10)
 
-	const [services, roster] = await Promise.all([
+	const [services, roster, users] = await Promise.all([
 		event.locals.supabase
 			.from('worship_services')
 			.select('id, service_date, lead, topic, speaker, songs, chords_url')
@@ -46,9 +64,13 @@ export const load: PageServerLoad = async (event) => {
 			>(),
 		event.locals.supabase
 			.from('worship_roster')
-			.select('id, position, name')
+			.select('id, position, name, user_id')
 			.order('created_at')
 			.returns<RosterEntry[]>(),
+		listUsers(event).catch((e) => {
+			console.error('[admin] list users', e)
+			return [] as SiteUser[]
+		}),
 	])
 
 	if (services.error || roster.error) {
@@ -59,7 +81,12 @@ export const load: PageServerLoad = async (event) => {
 		throw error(500, 'Could not load the worship schedule')
 	}
 
-	return { services: services.data, roster: roster.data, today: torontoToday() }
+	return {
+		services: services.data,
+		roster: roster.data,
+		users,
+		today: torontoToday(),
+	}
 }
 
 export const actions = {
@@ -111,13 +138,23 @@ export const actions = {
 		await requireRole(event, 'worship_leader')
 		const formData = await event.request.formData()
 		const position = String(formData.get('position') ?? '')
-		const name = String(formData.get('name') ?? '').trim()
+		const userId = String(formData.get('userId') ?? '')
+		let name = String(formData.get('name') ?? '').trim()
+
+		// Picking an account names the entry after it
+		if (userId) {
+			const user = (await listUsers(event)).find((u) => u.id === userId)
+			if (!user) return fail(400, { message: 'That account no longer exists.' })
+			name = accountName(user)
+		}
 		if (!isWorshipPosition(position) || !name || name.length > 100) {
-			return fail(400, { message: 'Pick a position and enter a name.' })
+			return fail(400, {
+				message: 'Pick a position and enter a name or account.',
+			})
 		}
 		const { error: err } = await event.locals.supabase
 			.from('worship_roster')
-			.insert({ position, name })
+			.insert({ position, name, user_id: userId || null })
 		if (err) {
 			if (err.code === '23505') {
 				return fail(409, { message: `${name} is already listed there.` })
@@ -126,6 +163,41 @@ export const actions = {
 			return fail(500, { message: 'Could not update the roster.' })
 		}
 		return { rosterAdded: name }
+	},
+
+	// Links a roster entry to an account (taking its name), or unlinks it
+	// (keeping the name) when no account is posted
+	linkRoster: async (event) => {
+		await requireRole(event, 'worship_leader')
+		const formData = await event.request.formData()
+		const id = String(formData.get('id') ?? '')
+		const userId = String(formData.get('userId') ?? '')
+
+		let update: { user_id: string | null; name?: string } = { user_id: null }
+		if (userId) {
+			const user = (await listUsers(event)).find((u) => u.id === userId)
+			if (!user) return fail(400, { message: 'That account no longer exists.' })
+			update = { user_id: user.id, name: accountName(user) }
+		}
+
+		const { data, error: err } = await event.locals.supabase
+			.from('worship_roster')
+			.update(update)
+			.eq('id', id)
+			.select('name')
+		if (err) {
+			if (err.code === '23505') {
+				return fail(409, {
+					message: `${update.name} is already listed in that position.`,
+				})
+			}
+			console.error('[admin] link roster', err)
+			return fail(500, { message: 'Could not update the roster.' })
+		}
+		if (!data?.length) {
+			return fail(404, { message: 'That roster entry no longer exists.' })
+		}
+		return { rosterLinked: Boolean(userId), name: data[0].name as string }
 	},
 
 	removeFromRoster: async (event) => {
@@ -150,7 +222,7 @@ export const actions = {
 		const [docs, assignments] = await Promise.all([
 			client.fetch<Record<string, unknown>[]>(`
 				*[_type == "praise" && defined(date) && !(_id in path("drafts.**"))] {
-					date, lead, guitar, backup_guitar, keys, bass, drums, electric, md, backup, av,
+					date, lead, guitar, backup_guitar, keys, bass, drums, electric, backup,
 					series, topic, speaker, scripture, objective, summary,
 					songs[]{ title, artist }, unavailableList[]{ name, reason },
 					'pdfURL': pdf.asset->url
@@ -177,9 +249,7 @@ export const actions = {
 			bass: str(d.bass),
 			drums: str(d.drums),
 			electric: str(d.electric),
-			md: str(d.md),
-			backup: str(d.backup),
-			av: str(d.av),
+			backup: splitNames(str(d.backup) ?? '').slice(0, 10),
 			series: str(d.series),
 			topic: str(d.topic),
 			speaker: str(d.speaker),

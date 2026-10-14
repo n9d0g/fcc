@@ -72,6 +72,10 @@ export const actions = {
 			...Object.fromEntries(
 				[...TEAM_FIELDS, ...SERMON_FIELDS].map((f) => [f.name, field(f.name)])
 			),
+			backup: formData
+				.getAll('backup')
+				.map((name) => String(name).trim())
+				.filter(Boolean),
 			songs: formRows(
 				formData,
 				['songTitle', 'title'],
@@ -90,7 +94,7 @@ export const actions = {
 				'Please check the form.'
 			return fail(400, { message })
 		}
-		const { serviceDate, songs, unavailable, ...rest } = parsed.data
+		const { serviceDate, backup, songs, unavailable, ...rest } = parsed.data
 
 		const { error: err } = await event.locals.supabase
 			.from('worship_services')
@@ -99,6 +103,7 @@ export const actions = {
 				...Object.fromEntries(
 					Object.entries(rest).map(([k, v]) => [k, v || null])
 				),
+				backup,
 				songs,
 				unavailable,
 			})
