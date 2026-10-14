@@ -1,5 +1,13 @@
 # web
 
+## [3.32.2](https://github.com/n9d0g/fcc/compare/v3.32.1...v3.32.2) (2026-10-14)
+
+
+### Bug Fixes
+
+* **web:** :bug: hide worship pages reserved for worship team ([4371598](https://github.com/n9d0g/fcc/commit/4371598d9780a5f337143c51edfc33368f930aca))
+* **web:** :bug: hide worship pages reserved for worship team ([076a941](https://github.com/n9d0g/fcc/commit/076a94117735ff4ad476e0b35a7eef100486e97b))
+
 ## [3.32.1](https://github.com/n9d0g/fcc/compare/v3.32.0...v3.32.1) (2026-10-14)
 
 
