@@ -42,6 +42,14 @@ export const breadcrumbs = {
 			title: 'Prayer Schedule',
 			href: '/admin/prayer',
 		},
+		worship: {
+			title: 'Worship Schedule',
+			href: '/admin/worship',
+		},
+		users: {
+			title: 'Users & Roles',
+			href: '/admin/users',
+		},
 	},
 	contact: { title: 'Contact', href: '/contact' },
 	about: {

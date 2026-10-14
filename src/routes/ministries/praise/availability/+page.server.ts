@@ -63,6 +63,7 @@ export const load: PageServerLoad = async (event) => {
 
 // Best effort: the dates are saved and shown on the admin page either way,
 // so a failed notification is logged rather than shown to the member.
+// Goes to superusers and worship leaders.
 async function notifyAdmins(
 	event: RequestEvent,
 	request: WorshipRequest,
@@ -70,12 +71,13 @@ async function notifyAdmins(
 	removed: string[]
 ) {
 	try {
-		const { data, error: rpcError } =
-			await event.locals.supabase.rpc('admin_emails')
+		const { data, error: rpcError } = await event.locals.supabase.rpc(
+			'worship_leader_emails'
+		)
 		if (rpcError) throw rpcError
 		const admins = data as string[] | null
 		if (!admins?.length) {
-			console.warn('[availability] no admins to notify')
+			console.warn('[availability] no worship leaders to notify')
 			return
 		}
 

@@ -4,6 +4,7 @@
 	import Icon from '@iconify/svelte'
 	import type { User } from '@supabase/supabase-js'
 	import { isAdmin } from '#lib/schemas/worship-team.js'
+	import { hasRole } from '#lib/schemas/roles.js'
 
 	let { user }: { user: User } = $props()
 
@@ -21,12 +22,14 @@
 		metadataName || (email ? email.split('@')[0] : 'User')
 	)
 	const initials = $derived(getInitials(displayName))
+	const isPrayerLeader = $derived(hasRole(user, page.data.roles, 'prayer_leader'))
+	const isWorshipLeader = $derived(hasRole(user, page.data.roles, 'worship_leader'))
 
 	type MenuGroup = {
 		label?: string
-		/** Shown only to admins, and marked with a shield */
+		/** Shown only to admins or leaders, and marked with a shield */
 		admin?: boolean
-		/** `admin` items are only listed for admins, and marked with a shield */
+		/** `admin` items are restricted to admins or leaders, and marked with a shield */
 		items: { href: string; label: string; icon: string; admin?: boolean }[]
 	}
 
@@ -48,13 +51,40 @@
 					icon: 'lucide:calendar-x',
 				},
 				{
+					href: '/admin/worship',
+					label: 'Edit schedule',
+					icon: 'lucide:calendar-cog',
+					admin: true,
+				},
+				{
+					href: '/admin/availability',
+					label: 'Team availability',
+					icon: 'lucide:users',
+					admin: true,
+				},
+				{
 					href: '/ministries/praise/song-usage',
 					label: 'Song usage',
 					icon: 'lucide:list-music',
 					admin: true,
 				},
-			].filter((item) => !item.admin || isAdmin(user)),
+			].filter((item) => !item.admin || isWorshipLeader),
 		},
+		...(isPrayerLeader
+			? [
+					{
+						label: 'Prayer',
+						items: [
+							{
+								href: '/admin/prayer',
+								label: 'Prayer schedule',
+								icon: 'lucide:hand-heart',
+								admin: true,
+							},
+						],
+					},
+				]
+			: []),
 		// Only once they've been approved to write (from the root layout)
 		...(page.data.isBlogAuthor
 			? [
@@ -81,16 +111,11 @@
 								label: 'Worship requests',
 								icon: 'lucide:music',
 							},
-							{
-								href: '/admin/availability',
-								label: 'Team availability',
-								icon: 'lucide:users',
-							},
 							{ href: '/admin/blog', label: 'Blog approvals', icon: 'lucide:file-check' },
 							{
-								href: '/admin/prayer',
-								label: 'Prayer schedule',
-								icon: 'lucide:hand-heart',
+								href: '/admin/users',
+								label: 'Users & roles',
+								icon: 'lucide:user-cog',
 							},
 						],
 					},
@@ -211,9 +236,9 @@
 							<Icon icon={item.icon} class="size-4 shrink-0 text-muted" />
 							{item.label}
 							{#if item.admin}
-								<span class="ml-auto" title="Only admins can see this">
+								<span class="ml-auto" title="Only leaders and admins can see this">
 									<Icon icon="lucide:shield-check" class="size-3.5 text-secondary-600" />
-									<span class="sr-only">(only visible to admins)</span>
+									<span class="sr-only">(only visible to leaders and admins)</span>
 								</span>
 							{/if}
 						</a>
