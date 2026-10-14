@@ -18,8 +18,9 @@ export type WorshipPosition = (typeof WORSHIP_POSITIONS)[number]['value']
 export const isWorshipPosition = (value: string): value is WorshipPosition =>
 	WORSHIP_POSITIONS.some((p) => p.value === value)
 
-// Team columns on public.worship_services, in schedule order. `position` is
-// the roster list suggested while typing (md and av take anyone).
+// Single-person team columns on public.worship_services, in schedule order.
+// `position` is the roster list suggested while typing. Backup vocals can be
+// several people, so they're a separate list (`backup`).
 export const TEAM_FIELDS = [
 	{ name: 'lead', label: 'Leader', position: 'leader' },
 	{ name: 'guitar', label: 'Acoustic guitar', position: 'acoustic_guitar' },
@@ -32,9 +33,6 @@ export const TEAM_FIELDS = [
 	{ name: 'bass', label: 'Bass', position: 'bass' },
 	{ name: 'drums', label: 'Drums', position: 'drums' },
 	{ name: 'electric', label: 'Electric', position: 'electric_guitar' },
-	{ name: 'md', label: 'MD', position: null },
-	{ name: 'backup', label: 'Backup vocals', position: 'backup' },
-	{ name: 'av', label: 'Sound/AV', position: null },
 ] as const
 
 export const SERMON_FIELDS = [
@@ -46,7 +44,12 @@ export const SERMON_FIELDS = [
 	{ name: 'summary', label: 'Summary', long: true },
 ] as const
 
-export const SERVICE_LIMITS = { short: 200, long: 2000, songs: 20 } as const
+export const SERVICE_LIMITS = {
+	short: 200,
+	long: 2000,
+	songs: 20,
+	backup: 10,
+} as const
 
 export type ServiceSong = { title: string; artist: string }
 export type Unavailable = { name: string; reason: string }
@@ -58,6 +61,7 @@ type SermonField = (typeof SERMON_FIELDS)[number]['name']
 export type WorshipService = {
 	id: string
 	service_date: string
+	backup: string[]
 	songs: ServiceSong[]
 	unavailable: Unavailable[]
 	chords_url: string | null
@@ -90,11 +94,15 @@ export const worshipServiceSchema = z.object({
 			text(f.long ? SERVICE_LIMITS.long : SERVICE_LIMITS.short),
 		])
 	),
+	backup: z.array(text(SERVICE_LIMITS.short)).max(SERVICE_LIMITS.backup, {
+		error: `Up to ${SERVICE_LIMITS.backup} backup vocalists.`,
+	}),
 	songs: z.array(songRow).max(SERVICE_LIMITS.songs),
 	unavailable: z.array(unavailableRow).max(SERVICE_LIMITS.songs),
 }) as unknown as z.ZodType<
 	{
 		serviceDate: string
+		backup: string[]
 		songs: ServiceSong[]
 		unavailable: Unavailable[]
 	} & Record<TeamField | SermonField, string>
@@ -123,6 +131,15 @@ export const formRows = <A extends string, B extends string>(
 }
 
 /**
+ * Splits a Sanity "backup" string ("Ana, Ben & Cy") into names.
+ */
+export const splitNames = (value: string) =>
+	value
+		.split(/\s*(?:,|;|\/|&|\band\b)\s*/i)
+		.map((name) => name.trim())
+		.filter(Boolean)
+
+/**
  * Schedule row in the shape the schedule page and praise modal were built
  * around when the data came from Sanity.
  */
@@ -135,9 +152,7 @@ export const toScheduleRow = (s: WorshipService) => ({
 	bass: s.bass,
 	drums: s.drums,
 	electric: s.electric,
-	md: s.md,
-	backup: s.backup,
-	av: s.av,
+	backup: s.backup.join(', '),
 	series: s.series,
 	topic: s.topic,
 	speaker: s.speaker,

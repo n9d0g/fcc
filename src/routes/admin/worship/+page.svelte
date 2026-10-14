@@ -18,8 +18,21 @@
 
 	let busy = $state<string | null>(null)
 
+	// Kept between adds, so several people can go in the same position
+	let rosterPosition = $state<string>(WORSHIP_POSITIONS[0].value)
+	let rosterName = $state('')
+	let rosterUserId = $state('')
+
+	const userLabel = (u: PageData['users'][number]) =>
+		u.display_name ? `${u.display_name} (${u.email})` : u.email
+
 	const submit =
-		(key: string, success?: (_result: Record<string, unknown>) => string): SubmitFunction =>
+		(
+			key: string,
+			success?: (_result: Record<string, unknown>) => string,
+			// Leave the form's fields as they are rather than resetting them
+			keepFields = false
+		): SubmitFunction =>
 		({ action, cancel }) => {
 			if (action.search.includes('removeFromRoster') && !confirm('Remove from the roster?')) {
 				cancel()
@@ -28,7 +41,7 @@
 			busy = key
 			return async ({ result, update }) => {
 				busy = null
-				await update()
+				await update({ reset: !keepFields })
 				if (result.type === 'success' && success) {
 					toaster.success({ title: success(result.data ?? {}) })
 				} else if (result.type === 'failure') {
@@ -154,20 +167,45 @@
 			<form
 				method="POST"
 				action="?/addToRoster"
-				use:enhance={submit('roster', (d) => `Added ${d.rosterAdded}`)}
+				use:enhance={submit(
+					'roster',
+					(d) => {
+						rosterName = ''
+						rosterUserId = ''
+						return `Added ${d.rosterAdded}`
+					},
+					true
+				)}
 				class="card mb-4 flex flex-wrap items-end gap-2 p-5"
 			>
 				<label class="label flex flex-col gap-1 text-sm">
 					<span>Position</span>
-					<select class="select" name="position" required>
+					<select class="select" name="position" required bind:value={rosterPosition}>
 						{#each WORSHIP_POSITIONS as p (p.value)}
 							<option value={p.value}>{p.label}</option>
 						{/each}
 					</select>
 				</label>
 				<label class="label flex min-w-48 flex-1 flex-col gap-1 text-sm">
+					<span>Account <span class="text-muted">(optional)</span></span>
+					<select class="select" name="userId" bind:value={rosterUserId}>
+						<option value="">No account</option>
+						{#each data.users as u (u.id)}
+							<option value={u.id}>{userLabel(u)}</option>
+						{/each}
+					</select>
+				</label>
+				<label class="label flex min-w-48 flex-1 flex-col gap-1 text-sm">
 					<span>Name</span>
-					<input class="input" name="name" maxlength="100" required />
+					<input
+						class="input"
+						name="name"
+						maxlength="100"
+						placeholder={rosterUserId ? "Uses the account's name" : ''}
+						disabled={!!rosterUserId}
+						required={!rosterUserId}
+						bind:value={rosterName}
+					/>
 				</label>
 				<button class="btn btn-primary" disabled={busy === 'roster'}>Add</button>
 			</form>
@@ -179,8 +217,43 @@
 						{#if people.length}
 							<ul class="space-y-1">
 								{#each people as r (r.id)}
-									<li class="flex items-center justify-between gap-2 text-sm">
-										{r.name}
+									<li class="flex items-center gap-2 text-sm">
+										<span class="min-w-0 flex-1 truncate">
+											{r.name}
+											{#if r.user_id}
+												<Icon
+													icon="lucide:link"
+													class="inline size-3.5 text-success-700"
+													aria-label="Linked to an account"
+												/>
+											{/if}
+										</span>
+										<form
+											method="POST"
+											action="?/linkRoster"
+											use:enhance={submit(r.id, (d) =>
+												d.rosterLinked ? `Linked ${d.name}` : `Unlinked ${d.name}`
+											)}
+										>
+											<input type="hidden" name="id" value={r.id} />
+											<label>
+												<span class="sr-only">Account for {r.name}</span>
+												<select
+													class="select w-32 py-1 text-xs"
+													name="userId"
+													disabled={busy === r.id}
+													onchange={(e) => e.currentTarget.form?.requestSubmit()}
+												>
+													<!-- selected (not value) so a reset after a failed save goes back to the saved account -->
+													<option value="" selected={!r.user_id}>No account</option>
+													{#each data.users as u (u.id)}
+														<option value={u.id} selected={u.id === r.user_id}
+															>{userLabel(u)}</option
+														>
+													{/each}
+												</select>
+											</label>
+										</form>
 										<form
 											method="POST"
 											action="?/removeFromRoster"

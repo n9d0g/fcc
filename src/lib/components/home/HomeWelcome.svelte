@@ -2,6 +2,7 @@
 	import Icon from '@iconify/svelte'
 	import congregation from '#lib/assets/community/sunday-service.jpg'
 	import ChurchMap from '#lib/components/ChurchMap.svelte'
+	import ChurchBuilding3D from '#lib/components/ChurchBuilding3D.svelte'
 
 	// Svelte 5 props
 	let { links }: { links: { googleMaps: string; zoom: string } } = $props()
@@ -46,6 +47,10 @@
 					>
 						5225 Orbitor Drive, Unit 3, Mississauga, ON L4W 4Y8
 					</a>
+					<p class="mt-2 text-sm text-muted">
+						Unit 3 is at the far end of the lot. Come in beside the
+						<span class="font-medium text-ink">Kalayaan Community Centre</span> sign.
+					</p>
 				</div>
 				<div class="rounded-2xl border border-line bg-paper p-5">
 					<span class="icon-chip">
@@ -75,7 +80,8 @@
 		</div>
 	</div>
 
-	<div class="wrap mt-12 md:mt-16">
+	<div class="wrap mt-12 grid gap-6 md:mt-16">
 		<ChurchMap class="md:h-[26rem]" />
+		<ChurchBuilding3D class="md:h-[30rem]" />
 	</div>
 </section>
