@@ -505,15 +505,44 @@ export function createChurchScene(
 	ground.add(picnic)
 	grow(ground, 0, 0.7)
 
+	// --- Arches: openings cut into the front wall, flush with the red tile
+	// either side, with a porch set back into the building
+
+	const ARCH = { opening: 3.4, spring: 3.0, depth: 1.7 }
+	const ARCHES = [-14.2, UNIT3_X, 28.4]
+	type Doors = { left: THREE.Object3D; right: THREE.Object3D }
+
+	const archOpening = (r: number, cx = 0) => {
+		const path = new THREE.Shape()
+		path.moveTo(cx - r, 0)
+		path.lineTo(cx + r, 0)
+		path.lineTo(cx + r, ARCH.spring)
+		path.absarc(cx, ARCH.spring, r, 0, Math.PI, false)
+		path.lineTo(cx - r, 0)
+		return path
+	}
+
+	/** Never drawn: for faces that would cover an arch opening. */
+	const hidden = new THREE.MeshBasicMaterial({ visible: false })
+	// Extruded shapes get UVs in metres rather than 0..1, so the stucco
+	// texture is scaled to match the boxes (one repeat per 4.4 m x 2.6 m)
+	const stuccoFor = (side: THREE.Side) => {
+		const map = keep(stuccoMap.clone())
+		map.repeat.set(1 / 4.4, 1 / 2.6)
+		return new THREE.MeshStandardMaterial({ map, roughness: 0.95, side })
+	}
+	const FACADE_DEPTH = 0.25
+
 	// --- Building shell
 
 	const walls = piece('walls')
+	// The box's front face is left off; the front wall below has the holes
 	walls.add(
 		box(
 			width,
 			height,
 			depth,
-			mat.stucco,
+			[mat.stucco, mat.stucco, mat.stucco, mat.stucco, hidden, mat.stucco],
 			(left + right) / 2,
 			height / 2,
 			-depth / 2
@@ -537,6 +566,23 @@ export function createChurchScene(
 	walls.add(
 		box(0.4, 0.22, depth, mat.coping, right + 0.05, height + 0.06, -depth / 2)
 	)
+	const frontWall = new THREE.Shape()
+	frontWall.moveTo(left, 0)
+	frontWall.lineTo(right, 0)
+	frontWall.lineTo(right, height)
+	frontWall.lineTo(left, height)
+	frontWall.closePath()
+	for (const x of ARCHES) frontWall.holes.push(archOpening(ARCH.opening / 2, x))
+	const front = new THREE.Mesh(
+		new THREE.ExtrudeGeometry(frontWall, {
+			depth: FACADE_DEPTH,
+			bevelEnabled: false,
+			curveSegments: 32,
+		}),
+		stuccoFor(THREE.FrontSide)
+	)
+	front.position.z = -FACADE_DEPTH
+	walls.add(front)
 	grow(walls, 0.5, 0.9, 'y')
 
 	// The section before Unit 3 sits forward of the rest, a little taller
@@ -569,9 +615,61 @@ export function createChurchScene(
 			box(0.4, 0.22, P.depth, mat.coping, x, P.height + 0.06, P.depth / 2)
 		)
 	}
+	// Red tile and the yellow stripe carry on across its front and round
+	// both sides
+	const pWidth = P.right - P.left
+	const pMiddle = (P.left + P.right) / 2
+	protrusion.add(
+		box(
+			pWidth,
+			TILE_TOP,
+			0.12,
+			tileMaterial(pWidth, TILE_TOP),
+			pMiddle,
+			TILE_TOP / 2,
+			P.depth + 0.06
+		)
+	)
+	protrusion.add(
+		box(
+			pWidth,
+			STRIPE.height,
+			0.16,
+			mat.yellow,
+			pMiddle,
+			STRIPE.y + STRIPE.height / 2,
+			P.depth + 0.08
+		)
+	)
+	const sideTiles = tileMaterial(P.depth + 0.12, TILE_TOP)
+	for (const side of [-1, 1]) {
+		const x = side < 0 ? P.left : P.right
+		protrusion.add(
+			box(
+				0.12,
+				TILE_TOP,
+				P.depth + 0.12,
+				sideTiles,
+				x + side * 0.06,
+				TILE_TOP / 2,
+				(P.depth + 0.12) / 2
+			)
+		)
+		protrusion.add(
+			box(
+				0.16,
+				STRIPE.height,
+				P.depth + 0.16,
+				mat.yellow,
+				x + side * 0.08,
+				STRIPE.y + STRIPE.height / 2,
+				(P.depth + 0.16) / 2
+			)
+		)
+	}
 	// Utility box at the foot of its corner, as in the photos
 	protrusion.add(
-		box(0.5, 0.6, 0.06, mat.paint, P.right - 1.6, 0.6, P.depth + 0.03)
+		box(0.5, 0.6, 0.06, mat.paint, P.right - 1.6, 0.6, P.depth + 0.15)
 	)
 	grow(protrusion, 0.7, 0.9, 'y')
 
@@ -599,33 +697,46 @@ export function createChurchScene(
 	// Red tile band and the yellow stripe across the units
 	const tileLeft = left + 0.3
 	const tileRight = right - 0.3
-	const tileWidth = tileRight - tileLeft
+	// Spans of wall between the arch openings
+	const spans: [number, number][] = []
+	let spanStart = tileLeft
+	for (const x of ARCHES) {
+		spans.push([spanStart, x - ARCH.opening / 2])
+		spanStart = x + ARCH.opening / 2
+	}
+	spans.push([spanStart, tileRight])
+
 	const tiles = piece('tiles')
-	tiles.add(
-		box(
-			tileWidth,
-			TILE_TOP,
-			0.12,
-			tileMaterial(tileWidth, TILE_TOP),
-			tileLeft + tileWidth / 2,
-			TILE_TOP / 2,
-			0.06
+	for (const [x0, x1] of spans) {
+		tiles.add(
+			box(
+				x1 - x0,
+				TILE_TOP,
+				0.12,
+				tileMaterial(x1 - x0, TILE_TOP),
+				(x0 + x1) / 2,
+				TILE_TOP / 2,
+				0.06
+			)
 		)
-	)
+	}
 	grow(tiles, 1.25, 0.6, 'y')
 
+	// Grows from the left, so positions are relative to tileLeft
 	const stripe = piece('stripe', tileLeft, 0, 0)
-	stripe.add(
-		box(
-			tileWidth,
-			STRIPE.height,
-			0.16,
-			mat.yellow,
-			tileWidth / 2,
-			STRIPE.y + STRIPE.height / 2,
-			0.08
+	for (const [x0, x1] of spans) {
+		stripe.add(
+			box(
+				x1 - x0,
+				STRIPE.height,
+				0.16,
+				mat.yellow,
+				(x0 + x1) / 2 - tileLeft,
+				STRIPE.y + STRIPE.height / 2,
+				0.08
+			)
 		)
-	)
+	}
 	grow(stripe, 1.7, 0.6, 'x')
 
 	// Rooftop units
@@ -644,92 +755,67 @@ export function createChurchScene(
 	// --- Arched entrances: a recessed porch with fixed glass at the back
 	// and a door in each side wall, one for the unit on either side
 
-	const ARCH = { width: 4.4, opening: 3.4, spring: 3.0, top: 5.0, depth: 1.7 }
-	type Doors = { left: THREE.Object3D; right: THREE.Object3D }
-
-	const archOpening = (r: number) => {
-		const path = new THREE.Shape()
-		path.moveTo(-r, 0)
-		path.lineTo(r, 0)
-		path.lineTo(r, ARCH.spring)
-		path.absarc(0, ARCH.spring, r, 0, Math.PI, false)
-		path.lineTo(-r, 0)
-		return path
-	}
-
 	const makeArch = (x: number, at: number): Doors => {
 		const r = ARCH.opening / 2
 		const group = piece('arch', x, 0, 0)
 
-		// Stucco surround with the arched opening cut out
-		const outline = new THREE.Shape()
-		outline.moveTo(-ARCH.width / 2, 0)
-		outline.lineTo(ARCH.width / 2, 0)
-		outline.lineTo(ARCH.width / 2, ARCH.top)
-		outline.lineTo(-ARCH.width / 2, ARCH.top)
-		outline.closePath()
-		outline.holes.push(archOpening(r))
-		const surround = new THREE.Mesh(
-			new THREE.ExtrudeGeometry(outline, {
-				depth: ARCH.depth,
-				bevelEnabled: false,
-				curveSegments: 32,
-			}),
-			mat.stucco
-		)
-		surround.position.z = 0.12
-		group.add(surround)
-
-		// Raised moulding around the arch
+		// Raised moulding round the top of the arch, on the wall face
 		const ring = new THREE.Shape()
 		ring.absarc(0, ARCH.spring, r + 0.35, 0, Math.PI, false)
 		ring.lineTo(-r, ARCH.spring)
 		ring.absarc(0, ARCH.spring, r, Math.PI, 0, true)
 		ring.lineTo(r + 0.35, ARCH.spring)
-		const moulding = new THREE.Mesh(
-			new THREE.ExtrudeGeometry(ring, {
-				depth: 0.12,
+		group.add(
+			new THREE.Mesh(
+				new THREE.ExtrudeGeometry(ring, {
+					depth: 0.1,
+					bevelEnabled: false,
+					curveSegments: 32,
+				}),
+				mat.stucco
+			)
+		)
+
+		// The porch: walls and vaulted ceiling seen from inside (back faces of
+		// an extruded arch), carrying on from the hole in the front wall
+		const porchDepth = ARCH.depth - FACADE_DEPTH
+		const porch = new THREE.Mesh(
+			new THREE.ExtrudeGeometry(archOpening(r), {
+				depth: porchDepth,
 				bevelEnabled: false,
 				curveSegments: 32,
 			}),
-			mat.stucco
+			// Extrude groups: 0 = the end caps (left open), 1 = the sides
+			[hidden, stuccoFor(THREE.BackSide)]
 		)
-		moulding.position.z = 0.12 + ARCH.depth
-		group.add(moulding)
-
-		// Red tile and the yellow stripe carry on right up to the opening
-		const front = 0.12 + ARCH.depth + 0.01
-		const jamb = (ARCH.width - ARCH.opening) / 2
-		const jambTiles = tileMaterial(jamb, TILE_TOP)
-		for (const side of [-1, 1]) {
-			const jx = side * (r + jamb / 2)
-			group.add(box(jamb, TILE_TOP, 0.02, jambTiles, jx, TILE_TOP / 2, front))
-			group.add(
-				box(
-					jamb,
-					STRIPE.height,
-					0.04,
-					mat.yellow,
-					jx,
-					STRIPE.y + STRIPE.height / 2,
-					front + 0.01
-				)
+		porch.position.z = -ARCH.depth
+		group.add(porch)
+		// Floor, level with the sidewalk
+		group.add(
+			box(
+				ARCH.opening,
+				0.16,
+				ARCH.depth,
+				mat.concrete,
+				0,
+				0.08,
+				-ARCH.depth / 2
 			)
-		}
+		)
 
 		// Back of the porch: fixed storefront glass with a centre bar
-		const back = 0.16
+		const back = -ARCH.depth
 		const lobby = new THREE.Mesh(
 			new THREE.ShapeGeometry(archOpening(r), 32),
 			mat.interior
 		)
-		lobby.position.z = 0.14
+		lobby.position.z = back + 0.01
 		group.add(lobby)
 		const glass = new THREE.Mesh(
 			new THREE.ShapeGeometry(archOpening(r - 0.02), 32),
 			mat.glass
 		)
-		glass.position.z = back + 0.02
+		glass.position.z = back + 0.05
 		group.add(glass)
 		group.add(
 			box(
@@ -739,19 +825,21 @@ export function createChurchScene(
 				mat.mullion,
 				0,
 				(ARCH.spring + r) / 2,
-				back + 0.05
+				back + 0.09
 			)
 		)
-		group.add(box(ARCH.opening, 0.08, 0.08, mat.mullion, 0, 2.2, back + 0.05))
+		group.add(box(ARCH.opening, 0.08, 0.08, mat.mullion, 0, 2.2, back + 0.09))
 		group.add(
-			box(ARCH.opening, 0.08, 0.08, mat.mullion, 0, ARCH.spring, back + 0.05)
+			box(ARCH.opening, 0.08, 0.08, mat.mullion, 0, ARCH.spring, back + 0.09)
 		)
-		group.add(box(ARCH.opening, 0.12, 0.1, mat.mullion, 0, 0.06, back + 0.05))
+		group.add(box(ARCH.opening, 0.12, 0.1, mat.mullion, 0, 0.22, back + 0.09))
 
 		// A door in each side wall, hinged at the back and swinging out into
 		// the porch. Hinge is at the back corner; the leaf runs forward (+z).
 		const doorTop = 2.3
 		const doorLength = 1.0
+		// Hinged near the back of the porch; the leaf runs forward from there
+		const hingeZ = -ARCH.depth + 0.4
 		const makeDoor = (side: -1 | 1) => {
 			const wallX = side * (r - 0.02)
 			// Lit room behind the doorway
@@ -762,12 +850,12 @@ export function createChurchScene(
 					doorLength + 0.1,
 					mat.interior,
 					wallX + side * 0.01,
-					(doorTop + 0.1) / 2,
-					0.55 + doorLength / 2
+					0.16 + (doorTop + 0.1) / 2,
+					hingeZ + doorLength / 2
 				)
 			)
 			const hinge = named(new THREE.Group(), 'door')
-			hinge.position.set(wallX - side * 0.04, 0, 0.55)
+			hinge.position.set(wallX - side * 0.04, 0.16, hingeZ)
 			const leaf = new THREE.Group()
 			leaf.add(
 				box(
@@ -816,7 +904,7 @@ export function createChurchScene(
 		const doors = { left: makeDoor(-1), right: makeDoor(1) }
 
 		// Doormat
-		group.add(box(1.8, 0.03, 0.9, mat.tire, 0, 0.17, 1.2))
+		group.add(box(1.8, 0.03, 0.9, mat.tire, 0, 0.17, -0.55))
 
 		drop(group, at)
 		return doors
@@ -905,19 +993,12 @@ export function createChurchScene(
 
 	const lights: THREE.PointLight[] = []
 
-	/** A sign on the pier; blank (just the navy board) for other businesses. */
-	const makePlaque = (
-		x: number,
-		lines: Line[] | null,
-		at: number,
-		size = 1
-	) => {
-		const face = lines
-			? new THREE.MeshStandardMaterial({
-					map: keep(plaqueTexture(lines)),
-					roughness: 0.4,
-				})
-			: mat.plaqueEdge
+	/** The navy sign on a pier. Other units' piers are left as plain tile. */
+	const makePlaque = (x: number, lines: Line[], at: number, size = 1) => {
+		const face = new THREE.MeshStandardMaterial({
+			map: keep(plaqueTexture(lines)),
+			roughness: 0.4,
+		})
 		const group = piece('plaque', x, 1.75, 0.14)
 		const edge = mat.plaqueEdge
 		group.add(
@@ -1010,12 +1091,10 @@ export function createChurchScene(
 	makeLamp(left + 2.6, 3.55)
 	makeBed(left + 3.4, 1.4, 3.5, 'shrubs')
 
-	// A unit like Unit 3 on the way in, with blank signs
+	// A unit like Unit 3 on the way in
 	makeSunroom(-20.5, 5, next())
-	makePlaque(-17.2, null, 3.3)
 	makeLamp(-17.2, 3.6)
-	makeArch(-14.2, next())
-	makePlaque(-11.2, null, 3.35)
+	makeArch(ARCHES[0], next())
 	makeLamp(-11.2, 3.65)
 	makeBed(-11.2, 1.4, 3.5, 'shrubs')
 	makeSunroom(-8.4, 3.8, next())
@@ -1046,17 +1125,15 @@ export function createChurchScene(
 	)
 	makeLamp(13.7, 3.7)
 	makeBed(13.7, 1.6, 3.6, 'flowers')
-	const unit3Doors = makeArch(UNIT3_X, next())
-	makePlaque(19.9, null, 3.55)
+	const unit3Doors = makeArch(ARCHES[1], next())
 	makeLamp(19.9, 3.75)
 	makeBed(19.9, 1.6, 3.65, 'lime')
 
 	// Past Unit 3: a sunroom, one more arch, and the sunroom at the end
 	makeSunroom(22.8, 4, next())
-	makePlaque(25.5, null, 3.6)
 	makeLamp(25.5, 3.8)
 	makeBed(25.5, 1.2, 3.7, 'shrubs')
-	makeArch(28.4, next())
+	makeArch(ARCHES[2], next())
 	makeLamp(31.2, 3.85)
 	makeSunroom(33.7, 3.8, next())
 
