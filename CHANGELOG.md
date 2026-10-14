@@ -1,5 +1,13 @@
 # web
 
+## [3.32.1](https://github.com/n9d0g/fcc/compare/v3.32.0...v3.32.1) (2026-10-14)
+
+
+### Bug Fixes
+
+* **web:** :dizzy: church building animation fix ([814b54c](https://github.com/n9d0g/fcc/commit/814b54c3e244f7b0a8531633cf27ac9709091f85))
+* **web:** :dizzy: church building animation fix ([a7b0ecb](https://github.com/n9d0g/fcc/commit/a7b0ecb00be1645a11527b250571a82db22cd7b1))
+
 ## [3.32.0](https://github.com/n9d0g/fcc/compare/v3.31.0...v3.32.0) (2026-10-14)
 
 
