@@ -2,7 +2,6 @@
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import Icon from '@iconify/svelte'
 	import { enhance, type SubmitFunction } from '$app/forms'
-	import { page } from '$app/state'
 	import { toaster } from '#lib/stores/toaster.js'
 	import type { PageData } from './$types'
 
@@ -66,22 +65,7 @@
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<section class="mx-auto max-w-3xl">
-		{#if data.state === 'signedOut'}
-			<div class="card flex flex-col items-center gap-6 p-8 text-center sm:p-12">
-				<span class="icon-chip size-14">
-					<Icon icon="lucide:log-in" class="size-6" />
-				</span>
-				<p class="max-w-md text-lg">
-					Log in to let us know which Sundays you can't serve.
-				</p>
-				<a
-					href="/login?redirectTo={encodeURIComponent(page.url.pathname)}"
-					class="btn btn-primary w-full sm:w-auto"
-				>
-					Log in
-				</a>
-			</div>
-		{:else if data.state === 'notMember'}
+		{#if data.state === 'notMember'}
 			<div class="card flex flex-col items-center gap-6 p-8 text-center sm:p-12">
 				<span class="icon-chip size-14">
 					<Icon icon="lucide:music" class="size-6" />

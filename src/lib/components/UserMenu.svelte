@@ -37,39 +37,44 @@
 		{
 			items: [{ href: '/account', label: 'Edit profile', icon: 'lucide:user-pen' }],
 		},
-		{
-			label: 'Worship',
-			items: [
-				{
-					href: '/ministries/praise/schedule',
-					label: 'Schedule',
-					icon: 'lucide:calendar-days',
-				},
-				{
-					href: '/ministries/praise/availability',
-					label: 'My availability',
-					icon: 'lucide:calendar-x',
-				},
-				{
-					href: '/admin/worship',
-					label: 'Edit schedule',
-					icon: 'lucide:calendar-cog',
-					admin: true,
-				},
-				{
-					href: '/admin/availability',
-					label: 'Team availability',
-					icon: 'lucide:users',
-					admin: true,
-				},
-				{
-					href: '/ministries/praise/song-usage',
-					label: 'Song usage',
-					icon: 'lucide:list-music',
-					admin: true,
-				},
-			].filter((item) => !item.admin || isWorshipLeader),
-		},
+		// Approved team members, worship leaders and admins (from the root layout)
+		...(page.data.isWorshipMember || isWorshipLeader
+			? [
+					{
+						label: 'Worship',
+						items: [
+							{
+								href: '/ministries/praise/schedule',
+								label: 'Schedule',
+								icon: 'lucide:calendar-days',
+							},
+							{
+								href: '/ministries/praise/availability',
+								label: 'My availability',
+								icon: 'lucide:calendar-x',
+							},
+							{
+								href: '/admin/worship',
+								label: 'Edit schedule',
+								icon: 'lucide:calendar-cog',
+								admin: true,
+							},
+							{
+								href: '/admin/availability',
+								label: 'Team availability',
+								icon: 'lucide:users',
+								admin: true,
+							},
+							{
+								href: '/ministries/praise/song-usage',
+								label: 'Song usage',
+								icon: 'lucide:list-music',
+								admin: true,
+							},
+						].filter((item) => !item.admin || isWorshipLeader),
+					},
+				]
+			: []),
 		...(isPrayerLeader
 			? [
 					{

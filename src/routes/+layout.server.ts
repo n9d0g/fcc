@@ -1,4 +1,4 @@
-import { getRoles } from '#lib/server/roles.js'
+import { getRoles, isWorshipMember } from '#lib/server/roles.js'
 
 export const load = async ({ locals, cookies }) => {
 	const { user } = await locals.safeGetSession()
@@ -11,11 +11,15 @@ export const load = async ({ locals, cookies }) => {
 		isBlogAuthor = data === true
 	}
 
+	// Leader roles, for the account menu
+	const roles = await getRoles(locals, user)
+
 	return {
 		user,
 		isBlogAuthor,
-		// Leader roles, for the account menu
-		roles: await getRoles(locals, user),
+		// Shows the Worship group in the account menu and the team-only praise links
+		isWorshipMember: await isWorshipMember(locals, user, roles),
+		roles,
 		cookies: cookies.getAll(),
 	}
 }
