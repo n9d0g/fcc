@@ -7,6 +7,7 @@ import {
 	upcomingSundays,
 } from '#lib/schemas/worship-availability.js'
 import type { WorshipRequest } from '#lib/schemas/worship-team.js'
+import { requireWorshipMember } from '#lib/server/roles.js'
 import { fail, type RequestEvent } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 
@@ -42,13 +43,15 @@ const blockedSundays = async (
 	return data.map((r) => r.sunday)
 }
 
+// Worship team only: signed-out visitors are sent to log in and everyone else
+// gets a 404. Leaders who aren't on the team themselves see "notMember".
 export const load: PageServerLoad = async (event) => {
+	await requireWorshipMember(event)
 	const { user, request } = await loadMember(event)
 	const sundays = upcomingSundays(torontoToday())
 	const blocked: string[] = []
 
-	if (!user) return { state: 'signedOut' as const, sundays, blocked }
-	if (request?.status !== 'approved') {
+	if (!user || request?.status !== 'approved') {
 		return { state: 'notMember' as const, sundays, blocked }
 	}
 

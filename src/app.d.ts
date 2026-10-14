@@ -28,6 +28,7 @@ declare global {
 			session?: Session | null
 			user?: User | null
 			isBlogAuthor?: boolean
+			isWorshipMember?: boolean
 			roles?: string[]
 			supabase?: SupabaseClient
 			cookies?: { name: string; value: string }[]

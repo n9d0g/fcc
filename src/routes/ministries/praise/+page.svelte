@@ -71,9 +71,11 @@
 		{/snippet}
 	</MinistryPageContent>
 
-	<div class="mt-16 md:mt-20">
-		<p class="eyebrow">For the team</p>
-		<h2 class="h2 mt-3 mb-8">Team resources</h2>
-		<LandingPageGrid items={data.landingPageItems} />
-	</div>
+	{#if data.landingPageItems.length}
+		<div class="mt-16 md:mt-20">
+			<p class="eyebrow">For the team</p>
+			<h2 class="h2 mt-3 mb-8">Team resources</h2>
+			<LandingPageGrid items={data.landingPageItems} />
+		</div>
+	{/if}
 </FccLayout>

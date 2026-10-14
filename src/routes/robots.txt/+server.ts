@@ -18,6 +18,7 @@ export const GET = ({ url }) => {
 				'Disallow: /events/subscribe/',
 				'Disallow: /events/unsubscribe',
 				'Disallow: /ministries/praise/availability',
+				'Disallow: /ministries/praise/schedule',
 				'Disallow: /ministries/praise/song-usage',
 				'Disallow: /blog/write',
 				'',

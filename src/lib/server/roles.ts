@@ -38,3 +38,37 @@ export const requireRole = async (
 	}
 	return user
 }
+
+/**
+ * Approved worship team members, worship leaders and superusers. Mirrors
+ * public.is_worship_member(); RLS enforces it again on the schedule tables.
+ */
+export const isWorshipMember = async (
+	locals: RequestEvent['locals'],
+	user: User | null,
+	roles?: readonly Role[]
+) => {
+	if (!user) return false
+	if (
+		hasRole(user, roles ?? (await getRoles(locals, user)), 'worship_leader')
+	) {
+		return true
+	}
+	const { data, error: err } = await locals.supabase.rpc('is_worship_team')
+	if (err) console.error('[roles] is_worship_team', err)
+	return data === true
+}
+
+/**
+ * Worship team pages. Signed-out visitors are sent to log in; everyone else
+ * gets a 404.
+ */
+export const requireWorshipMember = async ({ locals, url }: RequestEvent) => {
+	const { user } = await locals.safeGetSession()
+	if (!user) {
+		const redirectTo = url.pathname + url.search
+		throw redirect(303, `/login?redirectTo=${encodeURIComponent(redirectTo)}`)
+	}
+	if (!(await isWorshipMember(locals, user))) throw error(404, 'Not found')
+	return user
+}

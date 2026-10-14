@@ -19,6 +19,7 @@ const pages = Object.keys(import.meta.glob('/src/routes/**/+page.svelte'))
 				'/login',
 				'/account',
 				'/ministries/praise/availability',
+				'/ministries/praise/schedule',
 				'/ministries/praise/song-usage',
 			].includes(path)
 	)
