@@ -1,4 +1,5 @@
 <script lang="ts">
+	import womenFellowship from '#lib/assets/community/women-fellowship.jpg'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import SmallGroupPageContent from '#lib/components/small-groups/SmallGroupPageContent.svelte'
 	import type { PageGallery, PageLayoutData } from '#lib/types.js'
@@ -12,7 +13,14 @@
 	let links = $derived(data.links)
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	image={womenFellowship}
+	imageAlt="Women of FCC sharing a meal together"
+	imagePosition="center 40%"
+>
 	<SmallGroupPageContent
 		welcomeTitle="Welcome to Golden Girls!"
 		welcomeText="Join our vibrant community of women as we gather together in faith, friendship, and fellowship. Our group provides a welcoming space where we can encourage one another, share wisdom, and grow deeper in our walk with the Lord through Bible study and prayer."
