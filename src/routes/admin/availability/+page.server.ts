@@ -1,5 +1,5 @@
 import { torontoToday } from '#lib/schemas/worship-availability.js'
-import { requireAdmin } from '#lib/server/worship-requests.js'
+import { requireRole } from '#lib/server/roles.js'
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
@@ -10,7 +10,7 @@ type Row = {
 
 // Linked from the "View team availability" button in the availability email
 export const load: PageServerLoad = async (event) => {
-	await requireAdmin(event)
+	await requireRole(event, 'worship_leader')
 
 	const { data: rows, error: err } = await event.locals.supabase
 		.from('worship_unavailability')

@@ -229,6 +229,14 @@ export const headData = {
 		title: 'Prayer Schedule | Freedom in Christ Church',
 		description: 'Manage the weekly prayer meeting devotional schedule.',
 	},
+	worshipSchedule: {
+		title: 'Worship Schedule | Freedom in Christ Church',
+		description: 'Manage the Sunday worship team, songs and chords.',
+	},
+	userRoles: {
+		title: 'Users & Roles | Freedom in Christ Church',
+		description: 'Choose which members lead prayer and worship.',
+	},
 	account: {
 		title: 'Edit Profile | Freedom in Christ Church',
 		description: 'Update your name, email address and password.',

@@ -1,3 +1,5 @@
+import { getRoles } from '#lib/server/roles.js'
+
 export const load = async ({ locals, cookies }) => {
 	const { user } = await locals.safeGetSession()
 
@@ -12,6 +14,8 @@ export const load = async ({ locals, cookies }) => {
 	return {
 		user,
 		isBlogAuthor,
+		// Leader roles, for the account menu
+		roles: await getRoles(locals, user),
 		cookies: cookies.getAll(),
 	}
 }
