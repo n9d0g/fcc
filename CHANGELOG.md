@@ -1,5 +1,13 @@
 # web
 
+## [3.32.3](https://github.com/n9d0g/fcc/compare/v3.32.2...v3.32.3) (2026-10-15)
+
+
+### Bug Fixes
+
+* **web:** :bento: more images ([05c7102](https://github.com/n9d0g/fcc/commit/05c7102d6e15f8f4bc1be10e12d2b0e06075091f))
+* **web:** :bento: more images ([9bcb6bd](https://github.com/n9d0g/fcc/commit/9bcb6bdb82ea63b2e3cf74ba9ad71e3c9b18de8d))
+
 ## [3.32.2](https://github.com/n9d0g/fcc/compare/v3.32.1...v3.32.2) (2026-10-14)
 
 
