@@ -1,5 +1,5 @@
 <script lang="ts">
-	import youthRetreat from '#lib/assets/community/youth-retreat.jpg'
+	import youthPicnic from '#lib/assets/ministries/youth/youth-picnic.jpg'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import MinistryPageContent from '#lib/components/ministries/MinistryPageContent.svelte'
 
@@ -48,9 +48,9 @@
 	{title}
 	{breadcrumb}
 	{headData}
-	image={youthRetreat}
-	imageAlt="FCC youth waving by a lake on a fall outing"
-	imagePosition="center 30%"
+	image={youthPicnic}
+	imageAlt="FCC youth gathered under a pavilion at a summer picnic"
+	imagePosition="center 60%"
 >
 	<MinistryPageContent
 		welcomeTitle="Welcome to Our Youth Ministry!"

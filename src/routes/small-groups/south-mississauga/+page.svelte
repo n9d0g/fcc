@@ -1,4 +1,5 @@
 <script lang="ts">
+	import classGraduation from '#lib/assets/community/class-graduation.jpg'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import SmallGroupPageContent from '#lib/components/small-groups/SmallGroupPageContent.svelte'
 	import type { PageGallery, PageLayoutData } from '#lib/types.js'
@@ -12,7 +13,14 @@
 	let links = $derived(data.links)
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	image={classGraduation}
+	imageAlt="FCC members gathered together in the church hall"
+	imagePosition="center 45%"
+>
 	<SmallGroupPageContent
 		welcomeTitle="Welcome to the South Mississauga Small Group!"
 		welcomeText="Join us for fellowship, prayer, and Bible study as we grow together in faith. Our small group provides a welcoming environment where we can connect with one another, study God's Word, and support each other through life's journey."

@@ -9,6 +9,7 @@
 	import vid2 from '#lib/assets/ministries/men/men-vid2.mp4'
 	import vid3 from '#lib/assets/ministries/men/men-vid3.mp4'
 	import groupPhoto from '#lib/assets/ministries/men/men-group-photo.jpg'
+	import groupPhotoMay2026 from '#lib/assets/ministries/men/men-group-photo-may-2026.jpg'
 	import bibleStudy from '#lib/assets/ministries/men/men-bible-study.jpg'
 	import worship from '#lib/assets/ministries/men/men-worship.jpg'
 	import worshipGuitar from '#lib/assets/ministries/men/men-worship-guitar.jpg'
@@ -159,6 +160,12 @@
 					alt="Three men of FCC singing with a guitar"
 					loading="lazy"
 					class="aspect-4/5 w-full rounded-2xl object-cover object-[center_40%] md:aspect-auto md:h-0 md:min-h-full"
+				/>
+				<img
+					src={groupPhotoMay2026}
+					alt="The men's ministry gathered in a living room in May 2026"
+					loading="lazy"
+					class="aspect-video w-full rounded-2xl object-cover object-[center_30%] md:col-span-3"
 				/>
 			</div>
 		{/snippet}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import womenMinistry from '#lib/assets/community/women-ministry.jpg'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import PhotoGallery from '#lib/components/PhotoGallery.svelte'
 
@@ -11,7 +12,14 @@
 	let links = $derived(data.links)
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	image={womenMinistry}
+	imageAlt="Women of FCC gathered around the church banner"
+	imagePosition="center 40%"
+>
 	<!-- Zoom Link Section -->
 	<div class="card mb-10 p-6">
 		<div class="flex flex-wrap items-center gap-4">

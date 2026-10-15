@@ -1,4 +1,5 @@
 <script lang="ts">
+	import bibleStudy from '#lib/assets/community/bible-study.jpg'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import SmallGroupPageContent from '#lib/components/small-groups/SmallGroupPageContent.svelte'
 	import type { PageGallery, PageLayoutData } from '#lib/types.js'
@@ -12,7 +13,14 @@
 	let links = $derived(data.links)
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout
+	{title}
+	{breadcrumb}
+	{headData}
+	image={bibleStudy}
+	imageAlt="An FCC small group studying the Bible together in a home"
+	imagePosition="center 40%"
+>
 	<SmallGroupPageContent
 		welcomeTitle="Welcome to Brampton Women's Bible Study 1!"
 		welcomeText="Join our community of women in Brampton as we grow together in faith through Bible study, prayer, and fellowship. Our group provides a warm and supportive environment where women can deepen their understanding of Scripture and build lasting friendships."

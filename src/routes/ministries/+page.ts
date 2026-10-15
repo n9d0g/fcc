@@ -3,8 +3,10 @@ import bibleStudy from '#lib/assets/community/bible-study.jpg'
 import womenFellowship from '#lib/assets/community/women-fellowship.jpg'
 import men from '#lib/assets/community/men-ministry.jpg'
 import women from '#lib/assets/community/women-ministry.jpg'
-import youth from '#lib/assets/community/youth-retreat.jpg'
-import youngAdults from '#lib/assets/community/young-adults.jpg'
+import youth from '#lib/assets/ministries/youth/youth-picnic.jpg'
+import youngAdults from '#lib/assets/ministries/young-adults/young-adults-picnic.jpg'
+import praiseTeam from '#lib/assets/ministries/praise/praise-team.jpg'
+import sundaySchool from '#lib/assets/ministries/sunday-school/sunday-school-class.jpg'
 
 export const load = async () => {
 	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries]
@@ -19,6 +21,7 @@ export const load = async () => {
 				link: '/ministries/praise',
 				description: 'Leading the church in song every Sunday.',
 				icon: 'lucide:music',
+				image: praiseTeam,
 			},
 			{
 				title: 'Prayer',
@@ -39,6 +42,7 @@ export const load = async () => {
 				link: '/ministries/sunday-school',
 				description: 'Bible lessons for kids, toddlers to grade 6.',
 				icon: 'lucide:backpack',
+				image: sundaySchool,
 			},
 			{
 				title: 'Men',
