@@ -1,3 +1,4 @@
+import { sentrySvelteKit } from '@sentry/sveltekit/vite'
 import adapter from '@sveltejs/adapter-cloudflare'
 import { sveltekit } from '@sveltejs/kit/vite'
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
@@ -42,6 +43,10 @@ export default defineConfig({
 	plugins: [
 		postcssWorkerShim(),
 		tailwindcss(),
+		// Uploads source maps when SENTRY_AUTH_TOKEN, SENTRY_ORG and SENTRY_PROJECT are set
+		sentrySvelteKit({
+			autoUploadSourceMaps: !!process.env.SENTRY_AUTH_TOKEN,
+		}),
 		sveltekit({
 			adapter: adapter(),
 			version: {
