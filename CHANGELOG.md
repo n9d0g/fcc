@@ -1,5 +1,18 @@
 # web
 
+## [3.32.5](https://github.com/n9d0g/fcc/compare/v3.32.4...v3.32.5) (2026-10-15)
+
+
+### Bug Fixes
+
+* prayer action + dev server fix ([edc769e](https://github.com/n9d0g/fcc/commit/edc769e1fae22491688e97d16fd06ec85520c925))
+* **web:** :bug: prayer gh action fix ([7eed946](https://github.com/n9d0g/fcc/commit/7eed946d4b56ba5dbaf461cc8dca5a7c36b6ec56))
+
+
+### Performance Improvements
+
+* :technologist: custom localhost domain fix ([b58604b](https://github.com/n9d0g/fcc/commit/b58604bbc8af650ac07878395914815b45a3db6e))
+
 ## [3.32.4](https://github.com/n9d0g/fcc/compare/v3.32.3...v3.32.4) (2026-10-15)
 
 
