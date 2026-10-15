@@ -17,10 +17,32 @@ Run `nvm use` in the project root if you use [nvm](https://github.com/nvm-sh/nvm
 git clone https://github.com/n9d0g/fcc.git
 cd fcc
 pnpm install
-pnpm dev          # web only (port 42069)
+pnpm dev          # web only (https://local.fcccanada.ca)
 pnpm cms:dev      # Sanity Studio (port 6969)
 pnpm dev:all      # web + CMS in parallel
 ```
+
+### Local HTTPS (required)
+
+The dev server runs over HTTPS on port 443 and is meant to be opened at **https://local.fcccanada.ca**. The old `http://localhost:42069` no longer works. One-time setup:
+
+1. Install [mkcert](https://github.com/FiloSottile/mkcert) and trust its CA with `mkcert -install`.
+2. Create a cert that covers `local.fcccanada.ca` in `~/Documents/dev/.certs`, which is where [`vite.config.js`](vite.config.js) reads it from:
+
+   ```bash
+   mkdir -p ~/Documents/dev/.certs && cd ~/Documents/dev/.certs
+   mkcert -cert-file cert.pem -key-file cert-key.pem localhost 127.0.0.1 ::1 local.fcccanada.ca
+   ```
+
+   If you already keep a shared cert there, regenerate it with all of its existing names plus `local.fcccanada.ca`.
+
+3. Point the hostname at your machine:
+
+   ```bash
+   printf '127.0.0.1 local.fcccanada.ca\n::1 local.fcccanada.ca\n' | sudo tee -a /etc/hosts
+   ```
+
+If the cert files are missing, Vite falls back to plain HTTP. Port 443 needs no `sudo` on macOS; on Linux, binding to it requires extra privileges.
 
 ## Scripts
 
