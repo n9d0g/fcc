@@ -23,6 +23,6 @@ jobs:
         run: |
           curl --fail-with-body --silent --show-error \
             --retry 3 --retry-delay 30 \
-            -X POST \
+            --json '{}' \
             -H "Authorization: Bearer $CRON_SECRET" \
             https://fcccanada.ca/api/cron/prayer-reminders
