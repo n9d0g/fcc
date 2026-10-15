@@ -1,5 +1,12 @@
 # web
 
+## [3.32.4](https://github.com/n9d0g/fcc/compare/v3.32.3...v3.32.4) (2026-10-15)
+
+
+### Performance Improvements
+
+* **web:** :zap: add sentry for monitoring ([cfa3194](https://github.com/n9d0g/fcc/commit/cfa3194c2b19f36753644784247ad079cea4b927))
+
 ## [3.32.3](https://github.com/n9d0g/fcc/compare/v3.32.2...v3.32.3) (2026-10-15)
 
 
