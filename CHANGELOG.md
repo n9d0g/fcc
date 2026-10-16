@@ -1,5 +1,13 @@
 # web
 
+## [3.32.7](https://github.com/n9d0g/fcc/compare/v3.32.6...v3.32.7) (2026-10-16)
+
+
+### Performance Improvements
+
+* :wrench: vite+ migration ([9a68cdd](https://github.com/n9d0g/fcc/commit/9a68cddafecaaeb1ad861bd901ce89bbe2fd96c7))
+* :wrench: vite+ migration ([a16723c](https://github.com/n9d0g/fcc/commit/a16723c5046e4b6e8f77198c9ca7b0a10e63d2d7))
+
 ## [3.32.6](https://github.com/n9d0g/fcc/compare/v3.32.5...v3.32.6) (2026-10-16)
 
 
