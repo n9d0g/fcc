@@ -22,6 +22,7 @@ export const breadcrumbs = {
 		},
 	},
 	login: { title: 'Login', href: '/login' },
+	signup: { title: 'Sign Up', href: '/signup' },
 	account: { title: 'Edit Profile', href: '/account' },
 	admin: {
 		title: 'Admin',

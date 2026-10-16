@@ -7,6 +7,7 @@
 	import HomeSermons from '#lib/components/home/HomeSermons.svelte'
 	import HomeCommunity from '#lib/components/home/HomeCommunity.svelte'
 	import HomeBlog from '#lib/components/home/HomeBlog.svelte'
+	import HomeMembers from '#lib/components/home/HomeMembers.svelte'
 	import { headData } from '#lib/config/index.js'
 
 	// Svelte 5 props
@@ -29,6 +30,11 @@
 	<Hero />
 	<HomeWelcome links={data.links} />
 	<HomeCommunity />
+
+	{#if !data.user}
+		<HomeMembers />
+	{/if}
+
 	<HomeSermons sermons={data.sermons} />
 
 	{#if data.posts?.length}
