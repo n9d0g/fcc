@@ -6,10 +6,10 @@ Managed with [pnpm](https://pnpm.io/) workspaces. Releases on `main` are handled
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) v24+ (see `.nvmrc`)
+- [Node.js](https://nodejs.org/) v24+ (see `.node-version`)
 - [pnpm](https://pnpm.io/) v10+
 
-Run `nvm use` in the project root if you use [nvm](https://github.com/nvm-sh/nvm).
+The [Vite+](https://viteplus.dev) global CLI, fnm and mise pick up `.node-version` automatically (nvm only reads `.nvmrc`, so run `nvm use 24` there).
 
 ## Getting started
 
@@ -53,9 +53,10 @@ If the cert files are missing, Vite falls back to plain HTTP. Port 443 needs no 
 | `pnpm build`                         | Production build for Cloudflare               |
 | `pnpm preview`                       | Build and run locally with Wrangler           |
 | `pnpm deploy`                        | Deploy to Cloudflare (requires Wrangler auth) |
-| `pnpm lint` / `pnpm format`          | Lint and format                               |
+| `pnpm lint` / `pnpm format`          | Format + lint check (`vp check`) / autofix    |
 | `pnpm check`                         | Svelte/TypeScript check                       |
 | `pnpm test`                          | Playwright tests                              |
+| `pnpm test:unit`                     | Unit tests (`vp test`)                        |
 | `pnpm cms:build` / `pnpm cms:deploy` | Build or deploy Sanity Studio                 |
 | `pnpm clean` / `pnpm fresh`          | Remove artifacts and reinstall                |
 
@@ -132,7 +133,7 @@ Set the `SANITY_AUTH_TOKEN` repository secret to a Sanity API token with **Deplo
 
 ## Contributing
 
-1. Branch from `dev`, make changes, then `pnpm build`, `pnpm lint`, and `pnpm format`.
+1. Branch from `dev`, make changes, then `pnpm build`, `pnpm lint`, and `pnpm format`. A pre-commit hook runs `vp check --fix` on staged files.
 2. Open a pull request against `dev`.
 
 ## Tech stack
@@ -141,4 +142,4 @@ Set the `SANITY_AUTH_TOKEN` repository secret to a Sanity API token with **Deplo
 - **CMS:** Sanity Studio (`apps/cms`)
 - **Auth:** Supabase
 - **Hosting:** Cloudflare Workers (`@sveltejs/adapter-cloudflare`)
-- **Formatter:** [Oxfmt](https://oxc.rs/docs/guide/usage/formatter)
+- **Toolchain:** [Vite+](https://viteplus.dev) (Vite, Vitest, Oxlint, Oxfmt), configured in `vite.config.js`

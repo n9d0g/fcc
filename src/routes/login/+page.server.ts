@@ -1,4 +1,8 @@
-import { authErrorMessage, logAuthError, safeRedirect } from '#lib/server/auth.js'
+import {
+	authErrorMessage,
+	logAuthError,
+	safeRedirect,
+} from '#lib/server/auth.js'
 import { fail, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 

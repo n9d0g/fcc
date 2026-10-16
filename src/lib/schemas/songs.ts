@@ -23,7 +23,7 @@ export const songSchema = z.object({
 	spotify: z
 		.string()
 		.trim()
-		.refine((v) => !v || /^https:\/\/open\.spotify\.com\//.test(v), {
+		.refine((v) => !v || v.startsWith('https://open.spotify.com/'), {
 			error: 'Spotify link should start with https://open.spotify.com/',
 		}),
 })

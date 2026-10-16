@@ -42,3 +42,4 @@ yarn-error.log*
 .wrangler
 
 vite.config.js.timestamp-*
+.vitest/
