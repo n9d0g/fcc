@@ -1,5 +1,12 @@
 # web
 
+## [3.32.6](https://github.com/n9d0g/fcc/compare/v3.32.5...v3.32.6) (2026-10-16)
+
+
+### Bug Fixes
+
+* **web:** :sparkles: signup page now separate; create user copy on homepage ([7df0023](https://github.com/n9d0g/fcc/commit/7df00233258ed353781566ca8236e790443f6d94))
+
 ## [3.32.5](https://github.com/n9d0g/fcc/compare/v3.32.4...v3.32.5) (2026-10-15)
 
 
