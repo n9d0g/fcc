@@ -12,6 +12,7 @@ export const GET = ({ url }) => {
 				'User-agent: *',
 				'Disallow: /admin/',
 				'Disallow: /login',
+				'Disallow: /signup',
 				'Disallow: /account',
 				'Disallow: /auth/',
 				'Disallow: /api/',

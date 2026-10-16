@@ -246,6 +246,11 @@ export const headData = {
 		description:
 			'Access your Freedom in Christ Church member portal. Login to view sermons, manage your profile, and stay connected with our Mississauga church community.',
 	},
+	signup: {
+		title: 'Create an Account | Freedom in Christ Church',
+		description:
+			'Create a free Freedom in Christ Church account to join the worship team, lead prayer meetings and write for the blog.',
+	},
 	programming: {
 		title: 'Church Programs | Freedom in Christ Church',
 		description:

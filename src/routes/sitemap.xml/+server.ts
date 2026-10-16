@@ -17,6 +17,7 @@ const pages = Object.keys(import.meta.glob('/src/routes/**/+page.svelte'))
 			!path.startsWith('/events/unsubscribe') &&
 			![
 				'/login',
+				'/signup',
 				'/account',
 				'/ministries/praise/availability',
 				'/ministries/praise/schedule',
