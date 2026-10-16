@@ -1434,7 +1434,7 @@ export function createChurchScene(
 	// without touching any animation.
 	const compact = (group: THREE.Object3D) => {
 		const byMaterial = new Map<THREE.Material, THREE.Mesh[]>()
-		for (const child of [...group.children]) {
+		for (const child of group.children) {
 			if (child instanceof THREE.Mesh && !Array.isArray(child.material)) {
 				byMaterial.set(child.material, [
 					...(byMaterial.get(child.material) ?? []),

@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'vite-plus/test'
 import { renderEmail } from './render.server.js'
 import EventSubscribeConfirm from './EventSubscribeConfirm.svelte'
 import NewEvent from './NewEvent.svelte'

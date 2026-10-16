@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'vite-plus/test'
 import type { User } from '@supabase/supabase-js'
 import { hasRole, isRole } from './roles.js'
 

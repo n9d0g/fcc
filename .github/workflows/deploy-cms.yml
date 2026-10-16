@@ -17,22 +17,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup Vite+
+        uses: voidzero-dev/setup-vp@v1.21.2
         with:
-          node-version-file: .nvmrc
-          cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+          node-version-file: .node-version
+          cache: true
 
       - name: Deploy Sanity Studio
         id: deploy
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
-        run: pnpm cms:deploy
+        run: vp run cms#deploy
 
       - name: Notify Discord
         if: always()

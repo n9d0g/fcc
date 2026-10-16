@@ -7,7 +7,7 @@ import { existsSync, readFileSync } from "fs";
 import { homedir } from "os";
 import { join } from "path";
 import { fileURLToPath } from "url";
-import { defineConfig } from "vitest/config";
+import { defineConfig, lazyPlugins } from "vite-plus";
 
 const file = fileURLToPath(new URL("package.json", import.meta.url));
 const json = readFileSync(file, "utf8");
@@ -69,7 +69,84 @@ const postcssWorkerShim = () => {
   };
 };
 
+const svelteRunes = Object.fromEntries(
+  ["$state", "$derived", "$effect", "$props", "$bindable", "$inspect", "$host"].map(
+    (name) => [name, "readonly"],
+  ),
+);
+
 export default defineConfig({
+  // The workspace root is the web app; bare `vp dev`/`vp build` target it
+  defaultPackage: ".",
+  fmt: {
+    useTabs: true,
+    singleQuote: true,
+    trailingComma: "es5",
+    printWidth: 80,
+    semi: false,
+    ignorePatterns: [
+      ".DS_Store",
+      ".svelte-kit",
+      "node_modules",
+      "/build",
+      "/package",
+      ".env",
+      ".env.*",
+      "!.env.example",
+      "vite.config.js*",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "CHANGELOG.md",
+      ".release-please-manifest.json",
+      // Generated: wrangler types / rendered email HTML
+      "worker-configuration.d.ts",
+      "supabase/templates",
+    ],
+  },
+  lint: {
+    categories: {
+      correctness: "error",
+    },
+    env: {
+      builtin: true,
+      browser: true,
+      node: true,
+    },
+    globals: {
+      ...svelteRunes,
+      AsyncDisposableStack: "readonly",
+      DisposableStack: "readonly",
+      SuppressedError: "readonly",
+    },
+    ignorePatterns: [
+      "build/**",
+      ".svelte-kit/**",
+      ".wrangler/**",
+      "apps/**",
+      "playwright-report/**",
+      "test-results/**",
+      "package/**",
+      "**/*.d.ts",
+    ],
+    rules: {
+      "no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
+      "vite-plus/prefer-vite-plus-imports": "error",
+    },
+    jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
+    // Type-aware linting is off: SvelteKit route modules rely on zero-config
+    // `$types` that only svelte-check injects, so tsgolint sees them as `any`.
+    // `pnpm check` (svelte-check) remains the type checker.
+  },
+  staged: {
+    "*": "vp check --fix",
+  },
+  test: {
+    // Playwright specs live in tests/ and run via `pnpm test`
+    include: ["src/**/*.test.ts", "apps/email-worker/**/*.test.ts"],
+  },
   server: {
     port: 443,
     https,
@@ -78,7 +155,7 @@ export default defineConfig({
       ignored: ["**/apps/**"],
     },
   },
-  plugins: [
+  plugins: lazyPlugins(() => [
     postcssWorkerShim(),
     trimCertUrls(),
     tailwindcss(),
@@ -93,5 +170,5 @@ export default defineConfig({
       },
       preprocess: vitePreprocess(),
     }),
-  ],
+  ]),
 });
