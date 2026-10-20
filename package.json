@@ -53,7 +53,6 @@
 		"resend": "^6.17.2",
 		"svelte": "^5.57.1",
 		"svelte-check": "^4.7.5",
-		"svelte-youtube-embed": "^0.4.6",
 		"tailwindcss": "^4.3.2",
 		"three": "^0.186.1",
 		"typescript": "^6.0.3",
@@ -69,5 +68,5 @@
 		"vite-plus": "catalog:",
 		"wrangler": "^4.148.0"
 	},
-	"packageManager": "pnpm@10.30.3"
+	"packageManager": "pnpm@12.14.0"
 }

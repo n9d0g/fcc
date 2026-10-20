@@ -18,6 +18,24 @@ export const formatCmsDate = (
 	return format(addDays(new Date(date), 1), pattern)
 }
 
+/**
+ * Extracts the video ID from youtube.com/watch, youtu.be, /embed, /shorts and /live links.
+ * Falls back to the raw value so a bare ID still works.
+ */
+export const getYoutubeId = (link: string): string => {
+	try {
+		const url = new URL(link)
+		if (url.hostname.endsWith('youtu.be')) return url.pathname.slice(1)
+		const v = url.searchParams.get('v')
+		if (v) return v
+		const match = url.pathname.match(/^\/(?:embed|shorts|live)\/([^/]+)/)
+		if (match) return match[1]
+	} catch {
+		// Not a URL; treat as a bare ID
+	}
+	return link.trim()
+}
+
 export const setCacheHeaders = (
 	setHeaders: (_headers: Record<string, string>) => void,
 	url: URL,

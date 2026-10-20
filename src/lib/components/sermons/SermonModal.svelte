@@ -1,6 +1,5 @@
 <script lang="ts">
-	import Youtube from 'svelte-youtube-embed'
-	import { formatCmsDate } from '#lib/utils.js'
+	import { formatCmsDate, getYoutubeId } from '#lib/utils.js'
 	import type { SermonModalData } from '#lib/stores/modalStore.svelte.js'
 	import Icon from '@iconify/svelte'
 
@@ -8,7 +7,7 @@
 	let { data, onclose }: { data: SermonModalData; onclose: () => void } = $props()
 
 	// Derived values
-	const youtubeId = $derived(data.youtube.replace('https://www.youtube.com/watch?v=', ''))
+	const youtubeId = $derived(getYoutubeId(data.youtube))
 	const formattedDate = $derived(formatCmsDate(data.date))
 </script>
 
@@ -41,7 +40,14 @@
 	</dl>
 
 	<div class="overflow-hidden rounded-2xl">
-		<Youtube id={youtubeId} --title-color="transparent" --title-shadow-color="transparent" />
+		<iframe
+			class="aspect-video w-full"
+			src="https://www.youtube-nocookie.com/embed/{youtubeId}?autoplay=1&rel=0"
+			title={data.title}
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			referrerpolicy="strict-origin-when-cross-origin"
+			allowfullscreen
+		></iframe>
 	</div>
 
 	<footer class="flex justify-end">
