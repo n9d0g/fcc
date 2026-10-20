@@ -1,65 +1,105 @@
 <script lang="ts">
-	import { addDays } from 'date-fns'
+	import Icon from '@iconify/svelte'
+	import { onMount } from 'svelte'
 	import { fly } from 'svelte/transition'
+	import { torontoToday } from '#lib/schemas/worship-availability.js'
 
-	// Svelte 5 props
 	let { banner }: { banner: App.Banner | undefined } = $props()
 
-	// Reactive state
-	let dismissed = $state(false)
+	// Remembered per banner version, so an edited banner shows again
+	let dismissKey = $derived(
+		banner ? `fcc-banner-dismissed:${banner._id}:${banner._updatedAt}` : ''
+	)
 
-	// Derived state
-	let datePassed = $derived.by(() => {
-		if (banner?.date) {
-			const eventDate = addDays(new Date(banner.date), 1)
-			return eventDate > new Date()
-		}
-		return false
+	let mounted = $state(false)
+	let dismissed = $state(false)
+	let reduceMotion = $state(false)
+
+	onMount(() => {
+		reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+		try {
+			dismissed = !!dismissKey && localStorage.getItem(dismissKey) === '1'
+		} catch {}
+		// Slide in just after the page settles so the motion catches the eye
+		const timer = setTimeout(() => (mounted = true), 600)
+		return () => clearTimeout(timer)
 	})
+
+	// The server already filters by date; this covers pages served from cache
+	let visible = $derived(
+		mounted && !!banner && !dismissed && torontoToday() <= banner.date
+	)
 
 	const dismiss = () => {
 		dismissed = true
+		try {
+			localStorage.setItem(dismissKey, '1')
+		} catch {}
 	}
+
+	const linkFor = (block: NonNullable<App.Banner['body']>[number], marks: string[]) =>
+		block.markDefs?.find((def) => marks.includes(def._key))?.href
 </script>
 
-{#if banner && datePassed && !dismissed}
-	<div
-		transition:fly={{ y: 100, duration: 300 }}
-		class="fixed right-4 bottom-4 left-4 z-[999] mx-auto max-w-2xl rounded-2xl bg-primary-800 shadow-2xl ring-1 ring-white/10 md:right-6 md:bottom-6 md:left-6"
+{#if visible && banner}
+	<aside
+		transition:fly={{ y: 80, duration: reduceMotion ? 0 : 400 }}
+		aria-labelledby="site-banner-title"
+		class="fixed inset-x-4 bottom-4 z-[999] mx-auto max-w-xl rounded-2xl bg-primary-900 text-white shadow-lift ring-1 ring-white/10 md:bottom-6"
 	>
-		<div class="flex items-center gap-3 px-4 py-3 md:px-5 md:py-4">
-			<p class="flex-1 text-xs font-semibold text-white md:text-sm">
-				{#each banner.body[0].children as child}
-					{#if child.marks.length > 0}
-						<a
-							class="text-white underline decoration-secondary-300 decoration-2 underline-offset-2 transition-opacity hover:opacity-80"
-							href={banner.body[0].markDefs[0].href}
-						>
-							{child.text}
-						</a>
-					{:else}
-						{child.text}
-					{/if}
+		<div class="flex items-start gap-3 p-4 md:gap-4 md:p-5">
+			<span
+				class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-secondary-300 text-primary-950"
+				aria-hidden="true"
+			>
+				<Icon icon="lucide:megaphone" class="size-5" />
+			</span>
+
+			<div class="min-w-0 flex-1">
+				<p class="text-[0.7rem] font-semibold tracking-[0.18em] text-secondary-300 uppercase">
+					Announcement
+				</p>
+				<h2
+					id="site-banner-title"
+					class="mt-0.5 font-display text-lg text-white leading-snug font-semibold text-balance md:text-xl"
+				>
+					{banner.title ?? 'Announcement'}
+				</h2>
+				{#each banner.body ?? [] as block (block._key)}
+					<p class="mt-1 text-sm leading-relaxed text-white/85 md:text-base">
+						{#each block.children as child (child._key)}
+							{@const href = linkFor(block, child.marks)}
+							{@const cls = [
+								child.marks.includes('strong') && 'font-semibold text-white',
+								child.marks.includes('em') && 'italic',
+							]}
+							{#if href}
+								<a
+									{href}
+									class={[
+										cls,
+										'font-semibold text-white underline decoration-secondary-300 decoration-2 underline-offset-2 hover:decoration-white',
+									]}
+								>
+									{child.text}
+								</a>
+							{:else if child.marks.length}
+								<span class={cls}>{child.text}</span>
+							{:else}
+								{child.text}
+							{/if}
+						{/each}
+					</p>
 				{/each}
-			</p>
+			</div>
+
 			<button
 				onclick={dismiss}
-				class="shrink-0 rounded-full p-1.5 text-white/80 transition-colors hover:bg-white/20 hover:text-white"
-				aria-label="Dismiss banner"
+				class="-m-1 shrink-0 cursor-pointer rounded-full p-2 text-white/70 transition-colors hover:bg-white/15 hover:text-white focus-visible:ring-2 focus-visible:ring-secondary-300 focus-visible:outline-none"
+				aria-label="Dismiss announcement"
 			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-5 w-5"
-					viewBox="0 0 20 20"
-					fill="currentColor"
-				>
-					<path
-						fill-rule="evenodd"
-						d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-						clip-rule="evenodd"
-					/>
-				</svg>
+				<Icon icon="lucide:x" class="size-5" />
 			</button>
 		</div>
-	</div>
+	</aside>
 {/if}
