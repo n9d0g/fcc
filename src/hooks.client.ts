@@ -6,6 +6,10 @@ Sentry.init({
 	enabled: !!PUBLIC_SENTRY_DSN,
 	environment: PUBLIC_SENTRY_ENVIRONMENT,
 	tracesSampleRate: PUBLIC_SENTRY_ENVIRONMENT === 'production' ? 0.1 : 1.0,
+	integrations: [Sentry.replayIntegration()],
+	replaysSessionSampleRate:
+		PUBLIC_SENTRY_ENVIRONMENT === 'production' ? 0.1 : 1.0,
+	replaysOnErrorSampleRate: 1.0,
 })
 
 export const handleError = Sentry.handleErrorWithSentry()
