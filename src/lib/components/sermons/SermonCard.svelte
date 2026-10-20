@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte'
-	import { formatCmsDate } from '#lib/utils.js'
+	import { formatCmsDate, getYoutubeId } from '#lib/utils.js'
 	import { openSermonModal } from '#lib/stores/modalStore.svelte.js'
 
 	// Svelte 5 props
@@ -19,9 +19,7 @@
 	} = $props()
 
 	// Derived values
-	const youtubeId = $derived(
-		youtube.replace('https://www.youtube.com/watch?v=', '')
-	)
+	const youtubeId = $derived(getYoutubeId(youtube))
 	const maxResUrl = $derived(
 		`https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`
 	)
