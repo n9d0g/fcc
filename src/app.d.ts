@@ -35,17 +35,23 @@ declare global {
 		}
 
 		interface Banner {
-			body: {
+			_id: string
+			_updatedAt: string
+			body?: {
+				_key: string
 				children: {
+					_key: string
 					marks: string[]
 					text: string
 				}[]
-				markDefs: {
+				markDefs?: {
+					_key: string
 					href: string
 				}[]
 				style: string
 			}[]
-			title: string
+			title?: string
+			/** Last day shown, yyyy-MM-dd */
 			date: string
 		}
 	}

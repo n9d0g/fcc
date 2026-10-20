@@ -4,7 +4,6 @@ import {
 	isBrowser,
 } from '@supabase/ssr'
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$app/env/public'
-import { client } from '#lib/config/index.js'
 import type { LayoutLoad } from './$types'
 
 export const load: LayoutLoad = async ({ data, depends, fetch, url }) => {
@@ -23,11 +22,9 @@ export const load: LayoutLoad = async ({ data, depends, fetch, url }) => {
 				},
 			})
 
-	const banner = await client.fetch(`*[_type == "banner"]`)
-
 	return {
 		url: url.pathname,
-		banner: banner[0],
+		banner: data.banner,
 		supabase,
 		user: data.user,
 		isBlogAuthor: data.isBlogAuthor,

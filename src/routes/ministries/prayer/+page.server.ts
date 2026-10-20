@@ -1,9 +1,10 @@
+import { headData, breadcrumbs, fetchPageGallery } from '#lib/config/index.js'
 import type { PrayerMeeting } from '#lib/schemas/prayer.js'
 import { torontoToday } from '#lib/schemas/worship-availability.js'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async ({ locals }) => {
-	const [{ data: meetings, error }, { user }] = await Promise.all([
+	const [{ data: meetings, error }, { user }, gallery] = await Promise.all([
 		locals.supabase
 			.from('prayer_meetings')
 			.select('id, meeting_date, leader_name, scripture')
@@ -11,6 +12,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 			.order('meeting_date')
 			.returns<Omit<PrayerMeeting, 'leader_user_id'>[]>(),
 		locals.safeGetSession(),
+		fetchPageGallery('/ministries/prayer'),
 	])
 	if (error) console.error('[prayer] load schedule', error)
 
@@ -27,5 +29,16 @@ export const load: PageServerLoad = async ({ locals }) => {
 		mine = (data ?? []).map((m) => m.meeting_date)
 	}
 
-	return { prayerData: meetings ?? [], mine }
+	return {
+		title: 'FCC Prayer Ministry.',
+		breadcrumb: [
+			breadcrumbs.home,
+			breadcrumbs.ministries,
+			breadcrumbs.ministries.prayer,
+		],
+		headData: headData.ministriesPrayer,
+		gallery: gallery ?? undefined,
+		prayerData: meetings ?? [],
+		mine,
+	}
 }
