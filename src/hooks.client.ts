@@ -10,6 +10,13 @@ Sentry.init({
 	replaysSessionSampleRate:
 		PUBLIC_SENTRY_ENVIRONMENT === 'production' ? 0.1 : 1.0,
 	replaysOnErrorSampleRate: 1.0,
+	// client-side network failures (offline, aborted, blocked by extensions);
+	// real server errors still surface via the server hooks with a status code
+	ignoreErrors: [
+		/^Load failed/, // Safari / WebKit
+		/^Failed to fetch/, // Chromium
+		/^NetworkError when attempting to fetch resource/, // Firefox
+	],
 })
 
 export const handleError = Sentry.handleErrorWithSentry()
