@@ -9,10 +9,6 @@
 
 	let { data }: { data: PageData } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
-
 	const upcoming = $derived(data.services.filter((s) => s.service_date >= data.today))
 	const recent = $derived(data.services.filter((s) => s.service_date < data.today).reverse())
 
@@ -51,7 +47,7 @@
 		}
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Worship Schedule.">
 	<div class="space-y-12">
 		<section class="card space-y-4 p-5 sm:p-6">
 			<p class="text-sm text-muted">
@@ -70,20 +66,6 @@
 					<button class="btn btn-sm btn-outline" disabled={busy === 'sundays'}>
 						<Icon icon="lucide:calendar-plus" class="size-4" />
 						Add the next 8 Sundays
-					</button>
-				</form>
-				<form
-					method="POST"
-					action="?/importSanity"
-					use:enhance={submit(
-						'import',
-						(d) =>
-							`Imported ${d.imported ?? 0} services and ${d.rosterImported ?? 0} roster names from Sanity`
-					)}
-				>
-					<button class="btn btn-sm btn-outline" disabled={busy === 'import'}>
-						<Icon icon="lucide:download" class="size-4" />
-						Import from Sanity
 					</button>
 				</form>
 			</div>

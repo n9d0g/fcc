@@ -9,9 +9,6 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	let title = $derived(data.title)
-	let headData = $derived(data.headData)
-	let breadcrumb = $derived(data.breadcrumb)
 	let missionVision = $derived(data.missionVision)
 
 	// Each phrase of the mission and vision statements, unpacked. Verses are NIV.
@@ -130,9 +127,7 @@
 {/snippet}
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="Our Mission & Vision."
 	image={bibleStudy}
 	imageAlt="An FCC small group studying the Bible together in a home"
 	intro="Everything we do flows from two statements: why we exist, and where we believe God is leading us."

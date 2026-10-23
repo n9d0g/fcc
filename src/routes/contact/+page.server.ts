@@ -1,18 +1,16 @@
-import { getResend, getResendFromEmail } from '#lib/resend.server.js'
-import { renderEmail } from '#lib/emails/render.server.js'
 import ContactSubmission from '#lib/emails/ContactSubmission.svelte'
 import ContactAutoReply from '#lib/emails/ContactAutoReply.svelte'
 import { contactSchema, type ContactField } from '#lib/schemas/contact.js'
 import { church } from '#lib/config/index.js'
+import { torontoTimestamp } from '#lib/schemas/worship-availability.js'
+import { send, trySend } from '#lib/server/notifier.js'
 import { z } from 'zod'
 import { GOOGLE_RECAPTCHA_SECRET_KEY } from '$app/env/private'
 import { fail } from '@sveltejs/kit'
 import type { Actions } from './$types'
 
-// Submissions go to the church inbox, with a silent copy to the site admin.
-// The auto-reply's Reply-To also points at the church inbox.
-const CONTACT_INBOX = church.email
-const CONTACT_BCC = 'nate@njil.dev'
+// Submissions go to the contact inbox, with a silent copy to the requests
+// inbox. The auto-reply's Reply-To points at the church inbox.
 const RECAPTCHA_MIN_SCORE = 0.6
 
 type FieldErrors = Partial<Record<ContactField, string>>
@@ -73,22 +71,14 @@ async function verifyRecaptcha(token: string) {
 
 // Best effort: the visitor's message already reached us, so a failed
 // confirmation is logged rather than shown as an error.
-async function sendAutoReply(name: string, email: string) {
-	try {
-		const { html, text } = await renderEmail(ContactAutoReply, { name })
-		const { error } = await getResend().emails.send({
-			from: `Freedom in Christ Church <${getResendFromEmail()}>`,
-			to: email,
-			replyTo: CONTACT_INBOX,
-			subject: 'Thanks for contacting Freedom in Christ Church',
-			html,
-			text,
-		})
-		if (error) console.error('[contact] auto-reply resend error', error)
-	} catch (e) {
-		console.error('[contact] auto-reply', e)
-	}
-}
+const sendAutoReply = (name: string, email: string) =>
+	trySend({
+		to: email,
+		replyTo: church.email,
+		subject: 'Thanks for contacting Freedom in Christ Church',
+		template: ContactAutoReply,
+		props: { name },
+	})
 
 export const actions = {
 	default: async ({ request }) => {
@@ -120,29 +110,17 @@ export const actions = {
 			}
 
 			const { name, email, message } = parsed.data
-			const { html, text } = await renderEmail(ContactSubmission, {
-				name,
-				email,
-				message,
-				submittedAt: new Date().toLocaleString('en-CA', {
-					timeZone: 'America/Toronto',
-					dateStyle: 'medium',
-					timeStyle: 'short',
-				}),
-			})
-
-			const { error } = await getResend().emails.send({
-				from: `Freedom in Christ Church <${getResendFromEmail()}>`,
-				to: CONTACT_INBOX,
-				bcc: CONTACT_BCC,
-				replyTo: email,
-				subject: `FCC Contact Submission: ${name}`,
-				html,
-				text,
-			})
-
-			if (error) {
-				console.error('[contact] resend error', error)
+			try {
+				await send({
+					to: { inbox: 'contact' },
+					bcc: { inbox: 'requests' },
+					replyTo: email,
+					subject: `FCC Contact Submission: ${name}`,
+					template: ContactSubmission,
+					props: { name, email, message, submittedAt: torontoTimestamp() },
+				})
+			} catch (e) {
+				console.error('[contact] send submission', e)
 				return failure(
 					502,
 					values,

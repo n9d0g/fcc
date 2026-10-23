@@ -6,16 +6,11 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let gallery = $derived(data.gallery)
 </script>
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="FCC Young Adults Small Group."
 	image={youngAdults}
 	imageAlt="FCC young adults at an evening hangout"
 	imagePosition="center 35%"

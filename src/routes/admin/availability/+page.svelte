@@ -5,13 +5,9 @@
 	import type { PageData } from './$types'
 
 	let { data }: { data: PageData } = $props()
-
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Team Availability.">
 	<section>
 		<p class="eyebrow">Upcoming</p>
 		<h2 class="h2 mt-3 mb-6">Who can't serve</h2>

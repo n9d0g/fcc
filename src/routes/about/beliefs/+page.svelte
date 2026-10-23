@@ -5,9 +5,6 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	let title = $derived(data.title)
-	let headData = $derived(data.headData)
-	let breadcrumb = $derived(data.breadcrumb)
 	let coreValues = $derived(data.coreValues)
 	let statementsOfFaith = $derived(data.statementsOfFaith)
 	let fourfoldGospel = $derived(data.fourfoldGospel)
@@ -82,9 +79,7 @@
 {/snippet}
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="Our Beliefs."
 	intro="The convictions that shape how we worship, serve and live together."
 >
 	<div class="space-y-20 md:space-y-28">

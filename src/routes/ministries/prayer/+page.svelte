@@ -9,9 +9,6 @@
 
 	// Svelte 5 props
 	let { data } = $props()
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let prayerData = $derived(data.prayerData)
 	let gallery = $derived(data.gallery)
 	let filterQuery = $state('')
@@ -54,9 +51,7 @@
 </script>
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="FCC Prayer Ministry."
 	image={bibleStudy}
 	imageAlt="FCC members gathered for prayer and study"
 	imagePosition="center 40%"

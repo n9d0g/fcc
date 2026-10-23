@@ -15,11 +15,6 @@
 	// Multiple of 2 and 3 so the last row fills on tablet and desktop grids
 	const pageSize = 18
 
-	// Derived values from data (reactive when data changes)
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
-
 	// Derived values
 	let sortedSermons = $derived.by(() => {
 		if (bindVal.length === 0) return data.sermons
@@ -46,9 +41,7 @@
 </script>
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="Sermons."
 	intro="Catch up on recent messages from our Sunday services."
 >
 	<div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">

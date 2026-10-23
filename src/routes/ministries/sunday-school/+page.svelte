@@ -4,15 +4,12 @@
 	import sundaySchool from '#lib/assets/ministries/sunday-school/sunday-school-class.jpg'
 	import Icon from '@iconify/svelte'
 	import PhotoGallery from '#lib/components/PhotoGallery.svelte'
-	import type { PageLayoutData } from '#lib/types.js'
+	import type { PageData } from './$types'
 
-	let { data }: { data: PageLayoutData & { tHeaders: string[]; tBody: unknown[]; sundaySchoolLinks: Array<{ section: string }>; gallery: { photos: unknown[] } } } = $props()
+	let { data }: { data: PageData } = $props()
 
 	let tHeaders = $derived(data.tHeaders)
 	let tBody = $derived(data.tBody)
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let sundaySchoolLinks = $derived(data.sundaySchoolLinks)
 	let gallery = $derived(data.gallery)
 
@@ -73,9 +70,7 @@
 </script>
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="FCC Sunday School Ministry."
 	image={sundaySchool}
 	imageAlt="Children gathered around a table in Sunday school with their teacher"
 >

@@ -1,4 +1,3 @@
-import { renderEmail } from '#lib/emails/render.server.js'
 import BlogPostSubmittedEmail from '#lib/emails/BlogPostSubmitted.svelte'
 import {
 	blogPostSchema,
@@ -8,7 +7,9 @@ import {
 } from '#lib/schemas/blog.js'
 import { displayNameOf } from '#lib/schemas/account.js'
 import { signedInUser } from '#lib/server/access.js'
-import { emailAdmins, loadAuthor, timestamp } from '#lib/server/blog.js'
+import { torontoTimestamp } from '#lib/schemas/worship-availability.js'
+import { loadAuthor } from '#lib/server/blog.js'
+import { trySend } from '#lib/server/notifier.js'
 import { error, fail, redirect, type RequestEvent } from '@sveltejs/kit'
 import { z } from 'zod'
 import type { Actions, PageServerLoad } from './$types'
@@ -115,19 +116,20 @@ export const actions = {
 		if (submitting) {
 			const { request } = await loadAuthor(event)
 			const email = request?.email ?? user.email ?? ''
-			const { html, text } = await renderEmail(BlogPostSubmittedEmail, {
-				authorName: request?.full_name ?? displayNameOf(user),
-				email,
-				title: parsed.data.title,
-				excerpt: postExcerpt(parsed.data),
-				reviewUrl: `${event.url.origin}/blog/${saved.slug}`,
-				submittedAt: timestamp(),
-			})
-			await emailAdmins(event, {
-				subject: `Blog post for approval: ${parsed.data.title}`,
+			// Best effort: the post is saved and listed on /admin/blog either way
+			await trySend({
+				to: 'superusers',
 				replyTo: email,
-				html,
-				text,
+				subject: `Blog post for approval: ${parsed.data.title}`,
+				template: BlogPostSubmittedEmail,
+				props: {
+					authorName: request?.full_name ?? displayNameOf(user),
+					email,
+					title: parsed.data.title,
+					excerpt: postExcerpt(parsed.data),
+					reviewUrl: `${event.url.origin}/blog/${saved.slug}`,
+					submittedAt: torontoTimestamp(),
+				},
 			})
 		}
 

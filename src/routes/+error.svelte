@@ -2,13 +2,17 @@
 	import { page } from '$app/state'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import LandingPageGrid from '#lib/components/LandingPageGrid.svelte'
-	import { breadcrumbs } from '#lib/config/index.js'
+	import type { PageMeta } from '#lib/config/pages.js'
 
-	const title = $derived(`FCC | ${page.status}`)
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.error]
-	const headData = $derived({
+	// Errors have no route of their own, so no registry entry
+	const meta = $derived<PageMeta>({
 		title: `FCC | ${page.status}`,
 		description: 'This page does not exist.',
+		indexed: false,
+		crumbs: [
+			{ label: 'Home', href: '/' },
+			{ label: 'Error', href: page.url.pathname },
+		],
 	})
 	const landingPageItems = [
 		{ title: 'Home', link: '/', icon: 'lucide:home' },
@@ -20,7 +24,7 @@
 	]
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading={`FCC | ${page.status}`} {meta}>
 	<section class="flex flex-col items-center gap-6 py-6 text-center">
 		<p class="font-display text-8xl font-semibold text-secondary-300 md:text-9xl">
 			{page.status}

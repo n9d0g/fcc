@@ -1,8 +1,6 @@
 import { SITE_URL } from '#lib/config/seo.js'
-import { renderEmail } from '#lib/emails/render.server.js'
 import PrayerReminderEmail from '#lib/emails/PrayerReminder.svelte'
 import PrayerAssignmentEmail from '#lib/emails/PrayerAssignment.svelte'
-import { getResend, getResendFromEmail } from '#lib/resend.server.js'
 import {
 	daysBetween,
 	formatMeetingDate,
@@ -11,7 +9,31 @@ import {
 	type ReminderKind,
 } from '#lib/schemas/prayer.js'
 import { torontoToday } from '#lib/schemas/worship-availability.js'
+import { findMember, send, trySend } from '#lib/server/notifier.js'
+import { sendOnce, type Ledger } from '#lib/server/send-once.js'
 import { getSupabaseAdmin } from '#lib/supabase/admin.server.js'
+
+type Reminder = {
+	meeting_id: string
+	leader_user_id: string
+	kind: ReminderKind
+}
+
+// One row per reminder sent; the primary key rejects a second claim
+const reminderLedger = (
+	db: ReturnType<typeof getSupabaseAdmin>
+): Ledger<Reminder> => ({
+	async claim(reminder) {
+		const { error } = await db.from('prayer_reminders').insert(reminder)
+		// 23505: already claimed
+		if (error?.code === '23505') return false
+		if (error) throw error
+		return true
+	},
+	async release(reminder) {
+		await db.from('prayer_reminders').delete().match(reminder)
+	},
+})
 
 // Uses the real day count, since a late assignment or a missed run can send
 // the "two weeks" or "one week" reminder a few days later than its name says
@@ -48,11 +70,10 @@ export async function sendPrayerReminders(today = torontoToday()) {
 			'meeting_id',
 			meetings.map((m) => m.id)
 		)
-		.returns<
-			{ meeting_id: string; leader_user_id: string; kind: ReminderKind }[]
-		>()
+		.returns<Reminder[]>()
 	if (remindersError) throw remindersError
 
+	const ledger = reminderLedger(db)
 	const sent: string[] = []
 	for (const meeting of meetings) {
 		const leaderId = meeting.leader_user_id!
@@ -68,58 +89,38 @@ export async function sendPrayerReminders(today = torontoToday()) {
 		if (!kind) continue
 
 		try {
-			const { data: userData, error: userError } =
-				await db.auth.admin.getUserById(leaderId)
-			if (userError || !userData.user?.email) {
-				console.warn('[prayer] no email for leader', leaderId, userError)
-				continue
-			}
-			const user = userData.user
-			const displayName =
-				typeof user.user_metadata?.display_name === 'string'
-					? user.user_metadata.display_name.trim()
-					: ''
-
-			// Claim first so an overlapping run can't send the same reminder twice
-			const { error: claimError } = await db
-				.from('prayer_reminders')
-				.insert({ meeting_id: meeting.id, leader_user_id: leaderId, kind })
-			if (claimError) {
-				if (claimError.code === '23505') continue
-				throw claimError
-			}
-
-			const date = formatMeetingDate(meeting.meeting_date)
-			const { html, text } = await renderEmail(PrayerReminderEmail, {
-				name: displayName || meeting.leader_name || 'there',
-				kind,
-				date,
-				daysUntil,
-				scripture: meeting.scripture ?? '',
-				scheduleUrl: `${SITE_URL}/ministries/prayer`,
-			})
-			const { error: sendError } = await getResend().emails.send({
-				from: `Freedom in Christ Church <${getResendFromEmail()}>`,
-				to: user.email!,
-				subject: subject(
-					daysUntil,
-					formatMeetingDate(meeting.meeting_date, 'short')
-				),
-				html,
-				text,
-			})
-			if (sendError) {
-				// Release the claim so tomorrow's run tries again
-				await db
-					.from('prayer_reminders')
-					.delete()
-					.match({ meeting_id: meeting.id, leader_user_id: leaderId, kind })
-				console.error('[prayer] send reminder', sendError)
+			const leader = await findMember(leaderId)
+			if (!leader) {
+				console.warn('[prayer] no email for leader', leaderId)
 				continue
 			}
 
-			sent.push(`${meeting.meeting_date} ${kind}`)
+			const result = await sendOnce(
+				ledger,
+				{ meeting_id: meeting.id, leader_user_id: leaderId, kind },
+				async () => {
+					await send({
+						to: leader.email,
+						subject: subject(
+							daysUntil,
+							formatMeetingDate(meeting.meeting_date, 'short')
+						),
+						template: PrayerReminderEmail,
+						props: {
+							name: leader.displayName || meeting.leader_name || 'there',
+							kind,
+							date: formatMeetingDate(meeting.meeting_date),
+							daysUntil,
+							scripture: meeting.scripture ?? '',
+							scheduleUrl: `${SITE_URL}/ministries/prayer`,
+						},
+					})
+					return 1
+				}
+			)
+			if (result) sent.push(`${meeting.meeting_date} ${kind}`)
 		} catch (e) {
+			// The claim was released, so tomorrow's run tries again
 			console.error('[prayer] reminder for meeting', meeting.id, e)
 		}
 	}
@@ -141,45 +142,28 @@ export async function notifyPrayerAssignment(meeting: {
 	previousDate?: string
 }) {
 	try {
-		const db = getSupabaseAdmin()
-		const { data, error } = await db.auth.admin.getUserById(
-			meeting.leaderUserId
-		)
-		const user = data?.user
-		if (error || !user?.email) {
-			console.warn('[prayer] no email for leader', meeting.leaderUserId, error)
+		const leader = await findMember(meeting.leaderUserId)
+		if (!leader) {
+			console.warn('[prayer] no email for leader', meeting.leaderUserId)
 			return false
 		}
-		const displayName =
-			typeof user.user_metadata?.display_name === 'string'
-				? user.user_metadata.display_name.trim()
-				: ''
-
-		const date = formatMeetingDate(meeting.meetingDate)
-		const { html, text } = await renderEmail(PrayerAssignmentEmail, {
-			name: displayName || meeting.leaderName || 'there',
-			date,
-			previousDate: meeting.previousDate
-				? formatMeetingDate(meeting.previousDate)
-				: '',
-			scripture: meeting.scripture ?? '',
-			scheduleUrl: `${SITE_URL}/ministries/prayer`,
-		})
 		const short = formatMeetingDate(meeting.meetingDate, 'short')
-		const { error: sendError } = await getResend().emails.send({
-			from: `Freedom in Christ Church <${getResendFromEmail()}>`,
-			to: user.email,
+		return await trySend({
+			to: leader.email,
 			subject: meeting.previousDate
 				? `Your prayer meeting devotional moved to ${short}`
 				: `You're leading the prayer meeting devotional on ${short}`,
-			html,
-			text,
+			template: PrayerAssignmentEmail,
+			props: {
+				name: leader.displayName || meeting.leaderName || 'there',
+				date: formatMeetingDate(meeting.meetingDate),
+				previousDate: meeting.previousDate
+					? formatMeetingDate(meeting.previousDate)
+					: '',
+				scripture: meeting.scripture ?? '',
+				scheduleUrl: `${SITE_URL}/ministries/prayer`,
+			},
 		})
-		if (sendError) {
-			console.error('[prayer] send assignment', sendError)
-			return false
-		}
-		return true
 	} catch (e) {
 		console.error('[prayer] notify assignment', e)
 		return false

@@ -15,9 +15,6 @@
 
 	let { data }: { data: PageData } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	const service = $derived(data.service)
 
 	// Editable lists, reset whenever a save brings back fresh data
@@ -87,7 +84,7 @@
 		>{/each}
 </datalist>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading={`${formatSunday(data.service.service_date)}.`}>
 	<div class="space-y-10">
 		<a href="/admin/worship" class="anchor inline-flex items-center gap-1 text-sm">
 			<Icon icon="lucide:arrow-left" class="size-4" />

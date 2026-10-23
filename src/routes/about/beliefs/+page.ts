@@ -1,15 +1,5 @@
-import { headData, breadcrumbs } from '#lib/config/index.js'
-
 export const load = () => {
-	const breadcrumb = [
-		breadcrumbs.home,
-		breadcrumbs.about,
-		breadcrumbs.about.beliefs,
-	]
-
 	return {
-		title: 'Our Beliefs.',
-		breadcrumb: breadcrumb,
 		coreValues: [
 			{
 				title: '1. The Glory of the Triune God',
@@ -173,6 +163,5 @@ export const load = () => {
 				text: 'Alliance churches now worship in many languages on every inhabited continent. Freedom in Christ Church is proud to be part of that family here in Mississauga.',
 			},
 		],
-		headData: headData.beliefs,
 	}
 }

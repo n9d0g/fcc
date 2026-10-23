@@ -2,21 +2,16 @@
 	import womenFellowship from '#lib/assets/community/women-fellowship.jpg'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import SmallGroupPageContent from '#lib/components/small-groups/SmallGroupPageContent.svelte'
-	import type { PageGallery, PageLayoutData } from '#lib/types.js'
+	import type { PageGallery } from '#lib/types.js'
 
-	let { data }: { data: PageLayoutData & { gallery: PageGallery | null; links: typeof import('#lib/config/index.js').links } } =
+	let { data }: { data: { gallery: PageGallery | null; links: typeof import('#lib/config/index.js').links } } =
 		$props()
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let gallery = $derived(data.gallery)
 	let links = $derived(data.links)
 </script>
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="Golden Girls."
 	image={womenFellowship}
 	imageAlt="Women of FCC sharing a meal together"
 	imagePosition="center 40%"

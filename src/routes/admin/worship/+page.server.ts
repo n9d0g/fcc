@@ -1,8 +1,5 @@
-import { client } from '#lib/config/index.js'
 import {
-	WORSHIP_POSITIONS,
 	isWorshipPosition,
-	splitNames,
 	type WorshipPosition,
 	type WorshipService,
 } from '#lib/schemas/worship-schedule.js'
@@ -204,97 +201,5 @@ export const actions = {
 			return fail(500, { message: 'Could not update the roster.' })
 		}
 		return { rosterRemoved: true as const }
-	},
-
-	// One-time move off the Sanity "praise" and "praise-assignments"
-	// documents. Dates and roster names already here are left as they are.
-	// Chords PDFs stay on Sanity's CDN.
-	importSanity: async (event) => {
-		const [docs, assignments] = await Promise.all([
-			client.fetch<Record<string, unknown>[]>(`
-				*[_type == "praise" && defined(date) && !(_id in path("drafts.**"))] {
-					date, lead, guitar, backup_guitar, keys, bass, drums, electric, backup,
-					series, topic, speaker, scripture, objective, summary,
-					songs[]{ title, artist }, unavailableList[]{ name, reason },
-					'pdfURL': pdf.asset->url
-				}
-			`),
-			client.fetch<{ role?: string; names?: string[] }[]>(
-				`*[_type == "praise-assignments"]{ role, names }`
-			),
-		])
-
-		const str = (v: unknown, max = 200) =>
-			typeof v === 'string' && v.trim() ? v.trim().slice(0, max) : null
-		const pairs = (v: unknown, a: string, b: string) =>
-			(Array.isArray(v) ? v : [])
-				.map((x) => ({ [a]: str(x?.[a]) ?? '', [b]: str(x?.[b]) ?? '' }))
-				.filter((x) => x[a] || x[b])
-
-		const services = docs.map((d) => ({
-			service_date: String(d.date),
-			lead: str(d.lead),
-			guitar: str(d.guitar),
-			backup_guitar: str(d.backup_guitar),
-			keys: str(d.keys),
-			bass: str(d.bass),
-			drums: str(d.drums),
-			electric: str(d.electric),
-			backup: splitNames(str(d.backup) ?? '').slice(0, 10),
-			series: str(d.series),
-			topic: str(d.topic),
-			speaker: str(d.speaker),
-			scripture: str(d.scripture),
-			objective: str(d.objective, 2000),
-			summary: str(d.summary, 2000),
-			songs: pairs(d.songs, 'title', 'artist'),
-			unavailable: pairs(d.unavailableList, 'name', 'reason'),
-			chords_url: str(d.pdfURL, 2000),
-		}))
-
-		// Sanity role names ("Leaders", "Electric", ...) to roster positions
-		const positionFor = (role = '') =>
-			WORSHIP_POSITIONS.find(
-				(p) =>
-					p.label.toLowerCase() === role.trim().toLowerCase() ||
-					p.value === role.trim().toLowerCase().replace(/[-\s]/g, '_')
-			)?.value
-		const roster = assignments.flatMap(({ role, names }) => {
-			const position = positionFor(role)
-			if (!position) return []
-			return (names ?? [])
-				.map((n) => n?.trim().slice(0, 100))
-				.filter(Boolean)
-				.map((name) => ({ position, name }))
-		})
-
-		const [s, r] = await Promise.all([
-			services.length
-				? event.locals.supabase
-						.from('worship_services')
-						.upsert(services, {
-							onConflict: 'service_date',
-							ignoreDuplicates: true,
-						})
-						.select('id')
-				: { data: [], error: null },
-			roster.length
-				? event.locals.supabase
-						.from('worship_roster')
-						.upsert(roster, {
-							onConflict: 'position,name',
-							ignoreDuplicates: true,
-						})
-						.select('id')
-				: { data: [], error: null },
-		])
-		if (s.error || r.error) {
-			console.error('[admin] import worship from sanity', s.error ?? r.error)
-			return fail(500, { message: 'Could not import from Sanity.' })
-		}
-		return {
-			imported: s.data?.length ?? 0,
-			rosterImported: r.data?.length ?? 0,
-		}
 	},
 } satisfies Actions

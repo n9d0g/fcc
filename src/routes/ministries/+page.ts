@@ -1,4 +1,3 @@
-import { headData, breadcrumbs } from '#lib/config/index.js'
 import bibleStudy from '#lib/assets/community/bible-study.jpg'
 import womenFellowship from '#lib/assets/community/women-fellowship.jpg'
 import men from '#lib/assets/community/men-ministry.jpg'
@@ -9,12 +8,7 @@ import praiseTeam from '#lib/assets/ministries/praise/praise-team.jpg'
 import sundaySchool from '#lib/assets/ministries/sunday-school/sunday-school-class.jpg'
 
 export const load = async () => {
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.ministries]
-
 	return {
-		title: 'Ministries.',
-		breadcrumb: breadcrumb,
-		headData: headData.ministries,
 		landingPageItems: [
 			{
 				title: 'Praise & Worship',

@@ -6,16 +6,13 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let songs = $derived(data.songs)
 	let tHead = $derived(data.tHead)
 
 	let adding = $state(false)
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Song Usage">
 	<section aria-labelledby="add-song" class="mb-10">
 		<h2 id="add-song" class="h3 mb-4">Add a song</h2>
 		<form

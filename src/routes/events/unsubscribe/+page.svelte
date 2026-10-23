@@ -10,9 +10,7 @@
 	const done = $derived(!!form && 'unsubscribed' in form)
 </script>
 
-<svelte:head><meta name="robots" content="noindex" /></svelte:head>
-
-<FccLayout title={data.title} breadcrumb={data.breadcrumb} headData={data.headData}>
+<FccLayout heading="Unsubscribe.">
 	<div class="card mx-auto flex max-w-xl flex-col items-center gap-6 p-8 text-center sm:p-12">
 		<span class="icon-chip size-14">
 			<Icon icon={done || data.alreadyUnsubscribed ? 'lucide:bell-off' : 'lucide:bell'} class="size-6" />

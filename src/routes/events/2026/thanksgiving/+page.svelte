@@ -11,12 +11,6 @@
 	import worship from '#lib/assets/events/2026/thanksgiving/worship.jpg'
 	import menWorship from '#lib/assets/ministries/men/men-worship-thanksgiving.mp4'
 
-	// Svelte 5 props
-	let { data }: { data: any } = $props()
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
-
 	// `span` sizes the tile; the mix below fills 2 and 4 column grids exactly
 	const photos = [
 		{
@@ -39,9 +33,7 @@
 </script>
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="Thanksgiving 2026"
 	image={cover}
 	imageAlt="FCC members gathered around tables in the hall for the Thanksgiving celebration"
 	intro="“The Lord's name be praised forever.” Our church family gathered to worship, share a meal and give thanks together."

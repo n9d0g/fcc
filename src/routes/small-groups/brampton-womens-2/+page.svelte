@@ -2,21 +2,16 @@
 	import birthdayCelebration from '#lib/assets/community/birthday-celebration.jpg'
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import SmallGroupPageContent from '#lib/components/small-groups/SmallGroupPageContent.svelte'
-	import type { PageGallery, PageLayoutData } from '#lib/types.js'
+	import type { PageGallery } from '#lib/types.js'
 
-	let { data }: { data: PageLayoutData & { gallery: PageGallery | null; links: typeof import('#lib/config/index.js').links } } =
+	let { data }: { data: { gallery: PageGallery | null; links: typeof import('#lib/config/index.js').links } } =
 		$props()
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let gallery = $derived(data.gallery)
 	let links = $derived(data.links)
 </script>
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="Brampton Women's Bible Study 2."
 	image={birthdayCelebration}
 	imageAlt="FCC members celebrating together around a table of food"
 	imagePosition="center 35%"

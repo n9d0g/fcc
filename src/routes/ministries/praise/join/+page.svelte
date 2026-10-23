@@ -12,9 +12,6 @@
 
 	let { data, form }: { data: PageData; form: ActionData } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let request = $derived(data.request)
 
 	let pending = $state(false)
@@ -56,7 +53,7 @@
 	}
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Join the Worship Team.">
 	<section class="mx-auto max-w-2xl">
 		{#if !data.signedIn}
 			<div class="card flex flex-col items-center gap-6 p-8 text-center sm:p-12">

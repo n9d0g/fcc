@@ -1,19 +1,8 @@
-import { headData, breadcrumbs } from '#lib/config/index.js'
+import { pageFor } from '#lib/config/pages.js'
 
-export const load = async ({ data }) => {
-	const breadcrumb = [
-		breadcrumbs.home,
-		breadcrumbs.admin.worshipRequests,
-		{
-			title: data.request.full_name,
-			href: `/admin/worship-requests/${data.request.id}`,
-		},
-	]
-
-	return {
-		...data,
-		title: 'Review Request.',
-		breadcrumb,
-		headData: headData.worshipRequests,
-	}
-}
+export const load = async ({ data }) => ({
+	...data,
+	pageMeta: pageFor('/admin/worship-requests/[id]', {
+		label: data.request.full_name,
+	}),
+})

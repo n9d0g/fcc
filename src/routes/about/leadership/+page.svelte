@@ -4,15 +4,10 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	let title = $derived(data.title)
-	let headData = $derived(data.headData)
-	let breadcrumb = $derived(data.breadcrumb)
 </script>
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="Leadership."
 	intro="The elders and ministry leaders who serve and shepherd our church family."
 >
 	<div class="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

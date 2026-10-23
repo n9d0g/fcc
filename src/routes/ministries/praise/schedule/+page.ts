@@ -1,19 +1,8 @@
-import { headData, breadcrumbs } from '#lib/config/index.js'
-
 // Schedule and roster come from Supabase (+page.server.ts). Not cached, so
 // worship leaders' edits show up straight away.
 export const load = async ({ data }) => {
-	const breadcrumb = [
-		breadcrumbs.home,
-		breadcrumbs.ministries,
-		breadcrumbs.ministries.praise,
-		breadcrumbs.ministries.praise.schedule,
-	]
-
 	return {
 		...data,
-		title: 'Praise Schedule.',
-		breadcrumb: breadcrumb,
 		tHead: [
 			'Date 📅',
 			'Lead 🎤',
@@ -48,7 +37,6 @@ export const load = async ({ data }) => {
 			'date',
 			'pdfURL',
 		],
-		headData: headData.schedule,
 		filterData: [
 			{
 				label: 'Lead 🎤',

@@ -1,18 +1,9 @@
-import { headData, breadcrumbs, fetchPageGallery } from '#lib/config/index.js'
+import { gallery as pageGallery } from '#lib/server/content.js'
 
-export const load = async () => {
-	const breadcrumb = [
-		breadcrumbs.home,
-		breadcrumbs.ministries,
-		breadcrumbs.ministries.women,
-	]
-
-	const gallery = await fetchPageGallery('/ministries/women')
+export const load = async ({ url }) => {
+	const gallery = await pageGallery(url.pathname)
 
 	return {
-		title: "FCC Women's Ministry.",
-		breadcrumb: breadcrumb,
-		headData: headData.ministriesWomen,
 		gallery,
 	}
 }

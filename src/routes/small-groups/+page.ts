@@ -1,4 +1,3 @@
-import { headData, breadcrumbs } from '#lib/config/index.js'
 import youngAdults from '#lib/assets/community/young-adults.jpg'
 import womenMinistry from '#lib/assets/community/women-ministry.jpg'
 import womenFellowship from '#lib/assets/community/women-fellowship.jpg'
@@ -67,12 +66,7 @@ export const load = async () => {
 		},
 	]
 
-	const breadcrumb = [breadcrumbs.home, breadcrumbs.smallgroups]
-
 	return {
-		title: 'Our Small Groups.',
-		breadcrumb: breadcrumb,
-		headData: headData.smallgroups,
 		landingPageItems: gridData,
 	}
 }

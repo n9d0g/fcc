@@ -1,39 +1,22 @@
-import { getResend, getResendFromEmail } from '#lib/resend.server.js'
-import { renderEmail } from '#lib/emails/render.server.js'
 import NewAccountEmail from '#lib/emails/NewAccount.svelte'
 import { ACCOUNT_LIMITS } from '#lib/schemas/account.js'
+import { torontoTimestamp } from '#lib/schemas/worship-availability.js'
 import { authErrorMessage, logAuthError } from '#lib/server/auth.js'
+import { trySend } from '#lib/server/notifier.js'
 import { fail, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 
-const SIGNUP_INBOX = 'nate@njil.dev'
 const DISPLAY_NAME_MAX = ACCOUNT_LIMITS.displayName
 
 // Best effort: a failed notification shouldn't block the person signing up
-async function notifyNewAccount(displayName: string, email: string) {
-	try {
-		const { html, text } = await renderEmail(NewAccountEmail, {
-			displayName,
-			email,
-			registeredAt: new Date().toLocaleString('en-CA', {
-				timeZone: 'America/Toronto',
-				dateStyle: 'medium',
-				timeStyle: 'short',
-			}),
-		})
-		const { error } = await getResend().emails.send({
-			from: `Freedom in Christ Church <${getResendFromEmail()}>`,
-			to: SIGNUP_INBOX,
-			replyTo: email,
-			subject: `New account: ${displayName}`,
-			html,
-			text,
-		})
-		if (error) console.error('[auth signup] resend error', error)
-	} catch (e) {
-		console.error('[auth signup] notify', e)
-	}
-}
+const notifyNewAccount = (displayName: string, email: string) =>
+	trySend({
+		to: { inbox: 'requests' },
+		replyTo: email,
+		subject: `New account: ${displayName}`,
+		template: NewAccountEmail,
+		props: { displayName, email, registeredAt: torontoTimestamp() },
+	})
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const { session, user } = await locals.safeGetSession()

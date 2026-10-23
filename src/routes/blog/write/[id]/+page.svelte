@@ -7,9 +7,6 @@
 
 	let { data, form }: { data: PageData; form: ActionData } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let post = $derived(data.post)
 
 	let pending = $state<'draft' | 'submit' | 'delete' | null>(null)
@@ -42,7 +39,7 @@
 	}
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading={data.post ? 'Edit Post.' : 'New Post.'}>
 	<section class="mx-auto max-w-3xl">
 		{#if locked && post}
 			<div class="card flex flex-col items-center gap-6 p-8 text-center sm:p-12">

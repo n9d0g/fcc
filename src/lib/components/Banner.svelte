@@ -3,8 +3,9 @@
 	import { onMount } from 'svelte'
 	import { fly } from 'svelte/transition'
 	import { torontoToday } from '#lib/schemas/worship-availability.js'
+	import type { Banner } from '#lib/types.js'
 
-	let { banner }: { banner: App.Banner | undefined } = $props()
+	let { banner }: { banner: Banner | undefined } = $props()
 
 	// Remembered per banner version, so an edited banner shows again
 	let dismissKey = $derived(
@@ -37,7 +38,7 @@
 		} catch {}
 	}
 
-	const linkFor = (block: NonNullable<App.Banner['body']>[number], marks: string[]) =>
+	const linkFor = (block: NonNullable<Banner['body']>[number], marks: string[]) =>
 		block.markDefs?.find((def) => marks.includes(def._key))?.href
 </script>
 

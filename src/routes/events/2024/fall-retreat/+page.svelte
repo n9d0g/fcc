@@ -1,15 +1,9 @@
 <script lang="ts">
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import SermonCard from '#lib/components/sermons/SermonCard.svelte'
-
-	// Svelte 5 props
-	let { data }: { data: any } = $props()
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="FCC Fall Retreat 2024">
 	<div class="space-y-16">
 		<div>
 			<h2 class="h2 mb-8">Sessions</h2>

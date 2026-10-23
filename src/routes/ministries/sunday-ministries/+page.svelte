@@ -7,15 +7,10 @@
 	let { data }: { data: any } = $props()
 	let tHeaders = $derived(data.tHeaders)
 	let tBody = $derived(data.tBody)
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 </script>
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="Sunday Ministries."
 	image={womenFellowship}
 	imageAlt="FCC members sharing a meal after service"
 	imagePosition="center 40%"

@@ -1,4 +1,4 @@
-import { headData, breadcrumbs } from '#lib/config/index.js'
+import { PAGES, pageFor } from '#lib/config/pages.js'
 import { postExcerpt } from '#lib/schemas/blog.js'
 
 export const load = async ({ data }) => {
@@ -6,15 +6,10 @@ export const load = async ({ data }) => {
 
 	return {
 		...data,
-		title: post.title,
-		breadcrumb: [
-			breadcrumbs.home,
-			breadcrumbs.blog,
-			{ title: post.title, href: `/blog/${post.slug}` },
-		],
-		headData: {
-			title: `${post.title} | ${headData.blog.title}`,
+		pageMeta: pageFor('/blog/[slug]', {
+			label: post.title,
+			title: `${post.title} | ${PAGES['/blog'].title}`,
 			description: postExcerpt(post, 155),
-		},
+		}),
 	}
 }

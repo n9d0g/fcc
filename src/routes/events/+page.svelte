@@ -15,10 +15,6 @@
 
 	let { data, form }: { data: PageData; form: ActionData } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
-
 	const events = $derived(splitEvents(data.events))
 
 	// Recap pages built by hand, listed with past events
@@ -65,9 +61,7 @@
 {/snippet}
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="FCC Events."
 	intro="Services, gatherings and special events happening at FCC."
 >
 	<div class="space-y-20 md:space-y-24">

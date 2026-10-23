@@ -1,4 +1,4 @@
-import { client, headData, breadcrumbs } from '#lib/config/index.js'
+import { sundayMinistries } from '#lib/server/content.js'
 import {
 	updatedDataFiltered,
 	setCacheHeaders,
@@ -9,17 +9,8 @@ export const load = async ({ setHeaders, url }) => {
 	// Cache sunday ministries for 10 minutes, allow stale for 1 hour (bust=true to bypass)
 	setCacheHeaders(setHeaders, url, ...CACHE_PRESETS.short)
 
-	const data = await client.fetch(`*[_type == "sunday-ministries"]`)
-	const breadcrumb = [
-		breadcrumbs.home,
-		breadcrumbs.ministries,
-		breadcrumbs.ministries.sundayMinistries,
-	]
-
+	const data = await sundayMinistries()
 	return {
-		title: 'Sunday Ministries.',
-		breadcrumb: breadcrumb,
-		headData: headData.sundayMinistries,
 		tBody: updatedDataFiltered(data, 'date'),
 		tHeaders: [
 			'Month',

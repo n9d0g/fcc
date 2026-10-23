@@ -3,14 +3,11 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let excelSheet = $derived(data.excelSheet)
 	let attendance = $derived(data.attendance)
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Programming Details.">
 	<section>
 		<div class="flex flex-col gap-3 sm:flex-row">
 			<a href={excelSheet} target="_blank" class="btn btn-primary btn-lg"

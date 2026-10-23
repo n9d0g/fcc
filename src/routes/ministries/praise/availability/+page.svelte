@@ -6,10 +6,6 @@
 
 	let { data }: { data: PageData } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
-
 	let pending = $state(false)
 	let selected = $state<string[]>([])
 
@@ -62,7 +58,7 @@
 	}
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="My Availability.">
 	<section class="mx-auto max-w-3xl">
 		<p class="lede mb-8">
 			Select the Sundays you can't make it. The worship leaders are notified

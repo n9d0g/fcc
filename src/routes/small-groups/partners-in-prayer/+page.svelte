@@ -1,18 +1,10 @@
 <script lang="ts">
 	import sundayServicePrayer from '#lib/assets/community/sunday-service-prayer.jpg'
 	import FccLayout from '#lib/components/FccLayout.svelte'
-
-	// Svelte 5 props
-	let { data }: { data: any } = $props()
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 </script>
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="FCC Partners in Prayer Bible Study Group."
 	image={sundayServicePrayer}
 	imageAlt="FCC members praying together during a Sunday service"
 	imagePosition="center 55%"

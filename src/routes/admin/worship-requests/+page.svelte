@@ -8,10 +8,6 @@
 
 	let { data }: { data: PageData } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
-
 	let busyId = $state<string | null>(null)
 
 	const pendingRequests = $derived(
@@ -96,7 +92,7 @@
 	</li>
 {/snippet}
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Worship Team Requests.">
 	<section class="space-y-12">
 		<div>
 			<p class="eyebrow">Needs review</p>

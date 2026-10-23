@@ -12,9 +12,6 @@
 
 	let { data }: { data: PageData } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let post = $derived(data.post)
 
 	const blocks = $derived(parseBody(post.body))
@@ -26,7 +23,7 @@
 	{/if}
 </svelte:head>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading={data.post.title}>
 	<article class="mx-auto max-w-2xl">
 		{#if post.status !== 'published'}
 			<div

@@ -1,13 +1,9 @@
 <script lang="ts">
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import { enhance } from '$app/forms'
-	import type { ActionData, PageData } from './$types'
+	import type { ActionData } from './$types'
 
-	let { data, form }: { data: PageData; form: ActionData } = $props()
-
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
+	let { form }: { form: ActionData } = $props()
 
 	const email = $derived(form?.email ?? '')
 	const displayName = $derived(form?.displayName ?? '')
@@ -17,7 +13,7 @@
 	const success = $derived(form && 'success' in form ? form.success : '')
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Create an Account">
 	<section class="flex items-center justify-center">
 		<div class="card mx-auto w-full max-w-lg p-6 sm:p-10">
 			<nav class="mb-8 flex flex-wrap gap-2 rounded-full bg-surface-100 p-1">
