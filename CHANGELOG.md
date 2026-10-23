@@ -1,5 +1,12 @@
 # web
 
+## [3.32.8](https://github.com/n9d0g/fcc/compare/v3.32.7...v3.32.8) (2026-10-23)
+
+
+### Bug Fixes
+
+* **web:** :bug: drop dead next-event section; point playwright at tests/ ([8322d44](https://github.com/n9d0g/fcc/commit/8322d44d9ebb84fdc23756091b9a26afa5973403))
+
 ## [3.32.7](https://github.com/n9d0g/fcc/compare/v3.32.6...v3.32.7) (2026-10-16)
 
 
