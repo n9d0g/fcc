@@ -1,6 +1,5 @@
 import type { BlogAuthorRequest, BlogPost } from '#lib/schemas/blog.js'
 import { reviewAuthorAction, reviewPostAction } from '#lib/server/blog.js'
-import { requireAdmin } from '#lib/server/worship-requests.js'
 import { error } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 
@@ -18,7 +17,6 @@ type PostRow = Pick<
 >
 
 export const load: PageServerLoad = async (event) => {
-	await requireAdmin(event)
 	const { supabase } = event.locals
 
 	const [authors, posts] = await Promise.all([

@@ -3,8 +3,6 @@
 	import { page } from '$app/state'
 	import Icon from '@iconify/svelte'
 	import type { User } from '@supabase/supabase-js'
-	import { isAdmin } from '#lib/schemas/worship-team.js'
-	import { hasRole } from '#lib/schemas/roles.js'
 
 	let { user }: { user: User } = $props()
 
@@ -22,8 +20,9 @@
 		metadataName || (email ? email.split('@')[0] : 'User')
 	)
 	const initials = $derived(getInitials(displayName))
-	const isPrayerLeader = $derived(hasRole(user, page.data.roles, 'prayer_leader'))
-	const isWorshipLeader = $derived(hasRole(user, page.data.roles, 'worship_leader'))
+	// Effective roles from the root layout: superusers hold every role
+	const isPrayerLeader = $derived(!!page.data.roles?.includes('prayer_leader'))
+	const isWorshipLeader = $derived(!!page.data.roles?.includes('worship_leader'))
 
 	type MenuGroup = {
 		label?: string
@@ -37,8 +36,8 @@
 		{
 			items: [{ href: '/account', label: 'Edit profile', icon: 'lucide:user-pen' }],
 		},
-		// Approved team members, worship leaders and admins (from the root layout)
-		...(page.data.isWorshipMember || isWorshipLeader
+		// Approved team members, worship leaders and superusers (from the root layout)
+		...(page.data.isWorshipMember
 			? [
 					{
 						label: 'Worship',
@@ -105,7 +104,7 @@
 					},
 				]
 			: []),
-		...(isAdmin(user)
+		...(page.data.isSuperuser
 			? [
 					{
 						label: 'Admin',

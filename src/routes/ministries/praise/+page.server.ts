@@ -1,5 +1,4 @@
 import { headData, breadcrumbs, fetchPageGallery } from '#lib/config/index.js'
-import { hasRole } from '#lib/schemas/roles.js'
 
 export const load = async ({ parent }) => {
 	const breadcrumb = [
@@ -8,7 +7,7 @@ export const load = async ({ parent }) => {
 		breadcrumbs.ministries.praise,
 	]
 
-	const [gallery, { user, roles, isWorshipMember }] = await Promise.all([
+	const [gallery, { roles, isWorshipMember }] = await Promise.all([
 		fetchPageGallery('/ministries/praise'),
 		parent(),
 	])
@@ -34,7 +33,7 @@ export const load = async ({ parent }) => {
 						icon: 'lucide:calendar-x',
 					},
 					// Worship leaders only (see song-usage/+page.server.ts)
-					...(hasRole(user, roles, 'worship_leader')
+					...(roles?.includes('worship_leader')
 						? [
 								{
 									title: 'Song Usage',

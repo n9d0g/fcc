@@ -1,8 +1,9 @@
 import { renderEmail } from '#lib/emails/render.server.js'
 import BlogAuthorRequestEmail from '#lib/emails/BlogAuthorRequest.svelte'
 import { blogAuthorRequestSchema, type BlogPost } from '#lib/schemas/blog.js'
+import { signedInUser } from '#lib/server/access.js'
 import { emailAdmins, loadAuthor, timestamp } from '#lib/server/blog.js'
-import { fail, redirect } from '@sveltejs/kit'
+import { fail } from '@sveltejs/kit'
 import { z } from 'zod'
 import type { Actions, PageServerLoad } from './$types'
 
@@ -17,15 +18,18 @@ const failure = (
 ) => fail(status, { values, errors, message })
 
 export const load: PageServerLoad = async (event) => {
-	const { user, request } = await loadAuthor(event)
-	if (!user) throw redirect(303, '/login?redirectTo=%2Fblog%2Fwrite')
+	const user = await signedInUser(event.locals)
+	const [{ request }, { isBlogAuthor }] = await Promise.all([
+		loadAuthor(event),
+		event.locals.viewer(),
+	])
 
 	const displayName =
 		typeof user.user_metadata?.display_name === 'string'
 			? user.user_metadata.display_name
 			: ''
 
-	if (request?.status !== 'approved') return { request, displayName, posts: [] }
+	if (!isBlogAuthor) return { request, displayName, posts: [] }
 
 	const { data: posts, error } = await event.locals.supabase
 		.from('blog_posts')
@@ -58,8 +62,8 @@ export const actions = {
 			message: String(formData.get('message') ?? ''),
 		}
 
-		const { user } = await event.locals.safeGetSession()
-		if (!user?.email) {
+		const user = await signedInUser(event.locals)
+		if (!user.email) {
 			return failure(401, values, {}, 'Please log in first.')
 		}
 

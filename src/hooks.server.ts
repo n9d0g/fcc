@@ -5,6 +5,7 @@ import {
 	sentryHandle,
 } from '@sentry/sveltekit'
 import { type Handle, sequence } from '@sveltejs/kit/hooks'
+import { accessHandle } from '#lib/server/access.js'
 import { createSupabaseServerClient } from '#lib/supabase/server.js'
 
 const supabaseHandle: Handle = async ({ event, resolve }) => {
@@ -46,7 +47,8 @@ export const handle = sequence(
 		tracesSampleRate: PUBLIC_SENTRY_ENVIRONMENT === 'production' ? 0.1 : 1.0,
 	}),
 	sentryHandle(),
-	supabaseHandle
+	supabaseHandle,
+	accessHandle
 )
 
 export const handleError = handleErrorWithSentry()

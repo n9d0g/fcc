@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import type { User } from '@supabase/supabase-js'
 
 export const WORSHIP_ROLES = [
 	{ value: 'vocals', label: 'Vocals', emoji: '🎤' },
@@ -53,7 +52,3 @@ export type WorshipRequest = {
 	reviewed_at: string | null
 	reviewed_by: string | null
 }
-
-// Mirrors public.is_admin(); RLS enforces it again on every query
-export const isAdmin = (user: User | null | undefined) =>
-	user?.app_metadata?.role === 'admin'

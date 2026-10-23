@@ -1,13 +1,10 @@
 import { torontoToday } from '#lib/schemas/worship-availability.js'
-import { requireWorshipMember } from '#lib/server/roles.js'
 import { error, redirect } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
 // Short link to this week's chords: the next service with a PDF, or the most
 // recent one if nothing upcoming has chords yet. Worship team only.
-export const load: PageServerLoad = async (event) => {
-	await requireWorshipMember(event)
-	const { locals } = event
+export const load: PageServerLoad = async ({ locals }) => {
 	const today = torontoToday()
 	const withChords = () =>
 		locals.supabase

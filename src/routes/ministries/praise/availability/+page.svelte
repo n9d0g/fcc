@@ -1,6 +1,5 @@
 <script lang="ts">
 	import FccLayout from '#lib/components/FccLayout.svelte'
-	import Icon from '@iconify/svelte'
 	import { enhance, type SubmitFunction } from '$app/forms'
 	import { toaster } from '#lib/stores/toaster.js'
 	import type { PageData } from './$types'
@@ -65,81 +64,67 @@
 
 <FccLayout {title} {breadcrumb} {headData}>
 	<section class="mx-auto max-w-3xl">
-		{#if data.state === 'notMember'}
-			<div class="card flex flex-col items-center gap-6 p-8 text-center sm:p-12">
-				<span class="icon-chip size-14">
-					<Icon icon="lucide:music" class="size-6" />
-				</span>
-				<p class="max-w-md text-lg">
-					Blocking out Sundays is for worship team members.
-				</p>
-				<a href="/ministries/praise/join" class="btn btn-primary w-full sm:w-auto">
-					Join the worship team
-				</a>
-			</div>
-		{:else}
-			<p class="lede mb-8">
-				Select the Sundays you can't make it. The worship leaders are notified
-				whenever you save, so they can plan the schedule around you.
-			</p>
+		<p class="lede mb-8">
+			Select the Sundays you can't make it. The worship leaders are notified
+			whenever you save, so they can plan the schedule around you.
+		</p>
 
-			{#if data.loadError}
-				<p
-					class="mb-6 rounded-xl border border-error-200 bg-error-50 px-4 py-3 text-sm text-error-700"
-					role="alert"
-				>
-					We couldn't load your saved Sundays. Please refresh the page before
-					making changes.
-				</p>
-			{/if}
-
-			<form
-				method="POST"
-				use:enhance={submit}
-				aria-busy={pending}
-				class="flex flex-col gap-8"
+		{#if data.loadError}
+			<p
+				class="mb-6 rounded-xl border border-error-200 bg-error-50 px-4 py-3 text-sm text-error-700"
+				role="alert"
 			>
-				{#each months as [month, sundays] (month)}
-					<fieldset>
-						<legend class="label mb-3">{month}</legend>
-						<div class="flex flex-wrap gap-2">
-							{#each sundays as sunday (sunday)}
-								<label
-									class="flex min-w-16 cursor-pointer items-center justify-center gap-2 rounded-xl border border-line px-3 py-2.5 text-sm tabular-nums transition hover:bg-surface-100 has-checked:border-error-500 has-checked:bg-error-50 has-checked:text-error-700 has-checked:line-through has-focus-visible:ring-2 has-focus-visible:ring-primary-500"
-								>
-									<input
-										type="checkbox"
-										name="sundays"
-										value={sunday}
-										bind:group={selected}
-										class="sr-only"
-									/>
-									<span class="sr-only">Sunday,</span>
-									{month.split(' ')[0].slice(0, 3)}
-									{dayOfMonth(sunday)}
-								</label>
-							{/each}
-						</div>
-					</fieldset>
-				{/each}
-
-				<div
-					class="card sticky bottom-4 flex flex-col items-center justify-between gap-3 p-4 shadow-lift sm:flex-row"
-				>
-					<p class="text-muted text-sm">
-						{selected.length === 0
-							? "You're available every Sunday."
-							: `Unavailable ${selected.length} Sunday${selected.length === 1 ? '' : 's'}.`}
-					</p>
-					<button
-						type="submit"
-						class="btn btn-primary w-full sm:w-auto"
-						disabled={pending || !dirty || data.loadError}
-					>
-						{pending ? 'Saving…' : 'Save availability'}
-					</button>
-				</div>
-			</form>
+				We couldn't load your saved Sundays. Please refresh the page before
+				making changes.
+			</p>
 		{/if}
+
+		<form
+			method="POST"
+			use:enhance={submit}
+			aria-busy={pending}
+			class="flex flex-col gap-8"
+		>
+			{#each months as [month, sundays] (month)}
+				<fieldset>
+					<legend class="label mb-3">{month}</legend>
+					<div class="flex flex-wrap gap-2">
+						{#each sundays as sunday (sunday)}
+							<label
+								class="flex min-w-16 cursor-pointer items-center justify-center gap-2 rounded-xl border border-line px-3 py-2.5 text-sm tabular-nums transition hover:bg-surface-100 has-checked:border-error-500 has-checked:bg-error-50 has-checked:text-error-700 has-checked:line-through has-focus-visible:ring-2 has-focus-visible:ring-primary-500"
+							>
+								<input
+									type="checkbox"
+									name="sundays"
+									value={sunday}
+									bind:group={selected}
+									class="sr-only"
+								/>
+								<span class="sr-only">Sunday,</span>
+								{month.split(' ')[0].slice(0, 3)}
+								{dayOfMonth(sunday)}
+							</label>
+						{/each}
+					</div>
+				</fieldset>
+			{/each}
+
+			<div
+				class="card sticky bottom-4 flex flex-col items-center justify-between gap-3 p-4 shadow-lift sm:flex-row"
+			>
+				<p class="text-muted text-sm">
+					{selected.length === 0
+						? "You're available every Sunday."
+						: `Unavailable ${selected.length} Sunday${selected.length === 1 ? '' : 's'}.`}
+				</p>
+				<button
+					type="submit"
+					class="btn btn-primary w-full sm:w-auto"
+					disabled={pending || !dirty || data.loadError}
+				>
+					{pending ? 'Saving…' : 'Save availability'}
+				</button>
+			</div>
+		</form>
 	</section>
 </FccLayout>
