@@ -1,14 +1,14 @@
-import { getResend, getResendFromEmail } from '#lib/resend.server.js'
-import { renderEmail } from '#lib/emails/render.server.js'
 import WorshipAvailabilityEmail from '#lib/emails/WorshipAvailability.svelte'
 import {
 	formatSunday,
+	torontoTimestamp,
 	torontoToday,
 	upcomingSundays,
 } from '#lib/schemas/worship-availability.js'
 import { displayNameOf } from '#lib/schemas/account.js'
 import type { WorshipRequest } from '#lib/schemas/worship-team.js'
 import { signedInUser } from '#lib/server/access.js'
+import { trySend } from '#lib/server/notifier.js'
 import { fail, type RequestEvent } from '@sveltejs/kit'
 import type { User } from '@supabase/supabase-js'
 import type { Actions, PageServerLoad } from './$types'
@@ -69,48 +69,26 @@ export const load: PageServerLoad = async (event) => {
 // Best effort: the dates are saved and shown on the admin page either way,
 // so a failed notification is logged rather than shown to the member.
 // Goes to superusers and worship leaders.
-async function notifyAdmins(
+const notifyAdmins = (
 	event: RequestEvent,
 	member: Member,
 	added: string[],
 	removed: string[]
-) {
-	try {
-		const { data, error: rpcError } = await event.locals.supabase.rpc(
-			'worship_leader_emails'
-		)
-		if (rpcError) throw rpcError
-		const admins = data as string[] | null
-		if (!admins?.length) {
-			console.warn('[availability] no worship leaders to notify')
-			return
-		}
-
-		const { html, text } = await renderEmail(WorshipAvailabilityEmail, {
+) =>
+	trySend({
+		to: 'worshipLeaders',
+		replyTo: member.email,
+		subject: `Availability update: ${member.fullName}`,
+		template: WorshipAvailabilityEmail,
+		props: {
 			fullName: member.fullName,
 			email: member.email,
 			unavailable: added.map(formatSunday),
 			available: removed.map(formatSunday),
 			reviewUrl: `${event.url.origin}/admin/availability`,
-			updatedAt: new Date().toLocaleString('en-CA', {
-				timeZone: 'America/Toronto',
-				dateStyle: 'medium',
-				timeStyle: 'short',
-			}),
-		})
-		const { error } = await getResend().emails.send({
-			from: `Freedom in Christ Church <${getResendFromEmail()}>`,
-			to: admins,
-			replyTo: member.email,
-			subject: `Availability update: ${member.fullName}`,
-			html,
-			text,
-		})
-		if (error) console.error('[availability] resend error', error)
-	} catch (e) {
-		console.error('[availability] notify', e)
-	}
-}
+			updatedAt: torontoTimestamp(),
+		},
+	})
 
 export const actions = {
 	default: async (event) => {

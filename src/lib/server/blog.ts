@@ -1,4 +1,3 @@
-import { getResend, getResendFromEmail } from '#lib/resend.server.js'
 import type { BlogAuthorRequest, BlogPost } from '#lib/schemas/blog.js'
 import { BLOG_LIMITS } from '#lib/schemas/blog.js'
 import { requireAccess } from '#lib/server/access.js'
@@ -30,13 +29,6 @@ export const loadPublishedPosts = async (
 	return data
 }
 
-export const timestamp = () =>
-	new Date().toLocaleString('en-CA', {
-		timeZone: 'America/Toronto',
-		dateStyle: 'medium',
-		timeStyle: 'short',
-	})
-
 /** The signed-in user and their author request, if any. */
 export const loadAuthor = async ({ locals }: RequestEvent) => {
 	const { user } = await locals.viewer()
@@ -51,32 +43,6 @@ export const loadAuthor = async ({ locals }: RequestEvent) => {
 	if (error) console.error('[blog] load author request', error)
 
 	return { user, request }
-}
-
-// Best effort: whatever triggered the email is already saved and listed on
-// /admin/blog, so a failed notification is logged rather than shown.
-export async function emailAdmins(
-	{ locals }: RequestEvent,
-	email: { subject: string; html: string; text: string; replyTo: string }
-) {
-	try {
-		const { data, error: rpcError } = await locals.supabase.rpc('admin_emails')
-		if (rpcError) throw rpcError
-		const admins = data as string[] | null
-		if (!admins?.length) {
-			console.warn('[blog] no admins to notify')
-			return
-		}
-
-		const { error } = await getResend().emails.send({
-			from: `Freedom in Christ Church <${getResendFromEmail()}>`,
-			to: admins,
-			...email,
-		})
-		if (error) console.error('[blog] resend error', error)
-	} catch (e) {
-		console.error('[blog] notify', e)
-	}
 }
 
 /** Admin form action that approves or rejects an author request. */

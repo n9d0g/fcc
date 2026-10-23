@@ -1,8 +1,9 @@
-import { renderEmail } from '#lib/emails/render.server.js'
 import BlogAuthorRequestEmail from '#lib/emails/BlogAuthorRequest.svelte'
 import { blogAuthorRequestSchema, type BlogPost } from '#lib/schemas/blog.js'
 import { signedInUser } from '#lib/server/access.js'
-import { emailAdmins, loadAuthor, timestamp } from '#lib/server/blog.js'
+import { torontoTimestamp } from '#lib/schemas/worship-availability.js'
+import { loadAuthor } from '#lib/server/blog.js'
+import { trySend } from '#lib/server/notifier.js'
 import { fail } from '@sveltejs/kit'
 import { z } from 'zod'
 import type { Actions, PageServerLoad } from './$types'
@@ -99,18 +100,19 @@ export const actions = {
 			)
 		}
 
-		const { html, text } = await renderEmail(BlogAuthorRequestEmail, {
-			fullName: parsed.data.fullName,
-			email: user.email,
-			message: parsed.data.message,
-			reviewUrl: `${event.url.origin}/admin/blog`,
-			submittedAt: timestamp(),
-		})
-		await emailAdmins(event, {
-			subject: `Blog author request: ${parsed.data.fullName}`,
+		// Best effort: the request is saved and listed on /admin/blog either way
+		await trySend({
+			to: 'superusers',
 			replyTo: user.email,
-			html,
-			text,
+			subject: `Blog author request: ${parsed.data.fullName}`,
+			template: BlogAuthorRequestEmail,
+			props: {
+				fullName: parsed.data.fullName,
+				email: user.email,
+				message: parsed.data.message,
+				reviewUrl: `${event.url.origin}/admin/blog`,
+				submittedAt: torontoTimestamp(),
+			},
 		})
 
 		return { success: true as const }

@@ -7,6 +7,14 @@ const DAY_MS = 24 * 60 * 60 * 1000
 export const torontoToday = (now = new Date()) =>
 	now.toLocaleDateString('en-CA', { timeZone: 'America/Toronto' })
 
+/** "Oct 13, 2026, 10:00 a.m." in Toronto time, for timestamps in emails. */
+export const torontoTimestamp = (now = new Date()) =>
+	now.toLocaleString('en-CA', {
+		timeZone: 'America/Toronto',
+		dateStyle: 'medium',
+		timeStyle: 'short',
+	})
+
 /**
  * The next `count` Sundays as yyyy-MM-dd, starting with `today` if it is a
  * Sunday. Works in UTC on the date alone so DST changes can't skip a week.

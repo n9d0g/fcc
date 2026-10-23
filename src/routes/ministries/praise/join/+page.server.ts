@@ -1,16 +1,14 @@
-import { getResend, getResendFromEmail } from '#lib/resend.server.js'
-import { renderEmail } from '#lib/emails/render.server.js'
 import WorshipTeamRequestEmail from '#lib/emails/WorshipTeamRequest.svelte'
 import {
 	roleLabel,
 	worshipRequestSchema,
 	type WorshipRequest,
 } from '#lib/schemas/worship-team.js'
+import { torontoTimestamp } from '#lib/schemas/worship-availability.js'
+import { trySend } from '#lib/server/notifier.js'
 import { fail } from '@sveltejs/kit'
 import { z } from 'zod'
 import type { Actions, PageServerLoad } from './$types'
-
-const REQUEST_INBOX = 'nate@njil.dev'
 
 type Values = { fullName: string; roles: string[]; message: string }
 type FieldErrors = Partial<Record<keyof Values, string>>
@@ -44,37 +42,25 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 // Best effort: the request is already saved and listed on the admin page,
 // so a failed notification is logged rather than shown to the requester.
-async function notifyAdmins(
+const notifyAdmins = (
 	values: z.infer<typeof worshipRequestSchema>,
 	email: string,
 	reviewUrl: string
-) {
-	try {
-		const { html, text } = await renderEmail(WorshipTeamRequestEmail, {
+) =>
+	trySend({
+		to: { inbox: 'requests' },
+		replyTo: email,
+		subject: `Worship team request: ${values.fullName}`,
+		template: WorshipTeamRequestEmail,
+		props: {
 			fullName: values.fullName,
 			email,
 			roles: values.roles.map(roleLabel),
 			message: values.message,
 			reviewUrl,
-			submittedAt: new Date().toLocaleString('en-CA', {
-				timeZone: 'America/Toronto',
-				dateStyle: 'medium',
-				timeStyle: 'short',
-			}),
-		})
-		const { error } = await getResend().emails.send({
-			from: `Freedom in Christ Church <${getResendFromEmail()}>`,
-			to: REQUEST_INBOX,
-			replyTo: email,
-			subject: `Worship team request: ${values.fullName}`,
-			html,
-			text,
-		})
-		if (error) console.error('[worship-team] resend error', error)
-	} catch (e) {
-		console.error('[worship-team] notify', e)
-	}
-}
+			submittedAt: torontoTimestamp(),
+		},
+	})
 
 export const actions = {
 	default: async ({ request, locals, url }) => {

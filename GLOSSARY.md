@@ -32,3 +32,19 @@ A Viewer's application to join the worship team, which a Superuser approves or r
 **Blog author**:
 A Viewer whose request to write for the blog has been approved.
 _Avoid_: writer, contributor
+
+## Notifications
+
+**Requests inbox**:
+The church's address for internal notices: new accounts, Worship team requests and copies of contact messages.
+_Avoid_: admin email, my inbox
+
+**Prayer reminder**:
+An email to a prayer meeting's devotional leader two weeks, one week or on the day before they lead. Each one is sent at most once.
+
+**Event subscriber**:
+Someone who confirmed by email that they want to hear about new church events. Signing in is not required.
+_Avoid_: newsletter subscriber, mailing list member
+
+**Event announcement**:
+The one email every Event subscriber gets when a new upcoming event is published. Each event is announced at most once.
