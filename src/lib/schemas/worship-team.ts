@@ -11,8 +11,6 @@ export const WORSHIP_ROLES = [
 	{ value: 'other', label: 'Other', emoji: '🎶' },
 ] as const
 
-export type WorshipRole = (typeof WORSHIP_ROLES)[number]['value']
-
 export const roleLabel = (value: string) =>
 	WORSHIP_ROLES.find((r) => r.value === value)?.label ?? value
 
@@ -40,7 +38,7 @@ export const worshipRequestSchema = z.object({
 		}),
 })
 
-export type WorshipRequestStatus = 'pending' | 'approved' | 'rejected'
+type WorshipRequestStatus = 'pending' | 'approved' | 'rejected'
 
 // Row shape of public.worship_team_requests (supabase/migrations)
 export type WorshipRequest = {

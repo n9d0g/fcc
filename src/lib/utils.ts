@@ -102,7 +102,7 @@ export const jsonLd = (data: unknown) =>
 	`<script type="application/ld+json">${JSON.stringify(data).replaceAll('<', '\\u003c')}</script>`
 
 /** Canonical production URL for a page, without query string or hash. */
-export const canonicalUrl = (url: string) => {
+const canonicalUrl = (url: string) => {
 	const { pathname } = new URL(url)
 	return `${SITE_URL}${pathname === '/' ? '/' : pathname.replace(/\/$/, '')}`
 }

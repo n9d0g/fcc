@@ -30,5 +30,5 @@ export const contactSchema = z.object({
 		}),
 })
 
-export type ContactInput = z.infer<typeof contactSchema>
+type ContactInput = z.infer<typeof contactSchema>
 export type ContactField = keyof ContactInput

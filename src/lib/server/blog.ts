@@ -5,12 +5,12 @@ import { requireAdmin } from '#lib/server/worship-requests.js'
 import { fail, redirect, type RequestEvent } from '@sveltejs/kit'
 
 // What post lists need; the body is only used for excerpts and reading time
-export type PostSummary = Pick<
+type PostSummary = Pick<
 	BlogPost,
 	'id' | 'slug' | 'title' | 'excerpt' | 'body' | 'author_name' | 'published_at'
 >
 
-export const POST_SUMMARY_COLUMNS =
+const POST_SUMMARY_COLUMNS =
 	'id, slug, title, excerpt, body, author_name, published_at'
 
 /** Latest published posts, for the blog index and the home page. */

@@ -110,7 +110,7 @@ const randomSuffix = () =>
 		'abcdefghijklmnopqrstuvwxyz0123456789'.charAt(b % 36)
 	).join('')
 
-export type BodyBlock =
+type BodyBlock =
 	| { type: 'heading'; text: string }
 	| { type: 'paragraph'; lines: string[] }
 	| { type: 'list'; items: string[] }
