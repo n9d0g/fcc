@@ -5,7 +5,6 @@ import {
 	worshipServiceSchema,
 	type WorshipService,
 } from '#lib/schemas/worship-schedule.js'
-import { requireRole } from '#lib/server/roles.js'
 import { error, fail, redirect, type RequestEvent } from '@sveltejs/kit'
 import { z } from 'zod'
 import type { Actions, PageServerLoad } from './$types'
@@ -27,7 +26,6 @@ const loadService = async ({ locals, params }: RequestEvent) => {
 }
 
 export const load: PageServerLoad = async (event) => {
-	await requireRole(event, 'worship_leader')
 	const service = await loadService(event)
 
 	const [roster, songs, blocked] = await Promise.all([
@@ -40,12 +38,11 @@ export const load: PageServerLoad = async (event) => {
 			.from('songs')
 			.select('song_name, artist')
 			.returns<{ song_name: string; artist: string | null }[]>(),
-		// Team members who blocked out this date on /ministries/praise/availability
-		event.locals.supabase
-			.from('worship_unavailability')
-			.select('worship_team_requests!inner(full_name)')
-			.eq('sunday', service.service_date)
-			.returns<{ worship_team_requests: { full_name: string } }[]>(),
+		// Members who blocked out this date on /ministries/praise/availability
+		event.locals.supabase.rpc('worship_unavailability_members', {
+			from_date: service.service_date,
+			to_date: service.service_date,
+		}),
 	])
 	for (const r of [roster, songs, blocked]) {
 		if (r.error) console.error('[admin] load worship service extras', r.error)
@@ -55,15 +52,14 @@ export const load: PageServerLoad = async (event) => {
 		service,
 		roster: roster.data ?? [],
 		songLibrary: songs.data ?? [],
-		blockedOut: (blocked.data ?? [])
-			.map((b) => b.worship_team_requests.full_name)
+		blockedOut: ((blocked.data ?? []) as { full_name: string }[])
+			.map((b) => b.full_name)
 			.sort(),
 	}
 }
 
 export const actions = {
 	save: async (event) => {
-		await requireRole(event, 'worship_leader')
 		const formData = await event.request.formData()
 		const field = (name: string) => String(formData.get(name) ?? '')
 
@@ -121,7 +117,6 @@ export const actions = {
 	},
 
 	uploadChords: async (event) => {
-		await requireRole(event, 'worship_leader')
 		const service = await loadService(event)
 		const file = (await event.request.formData()).get('chords')
 		if (!(file instanceof File) || !file.size) {
@@ -163,7 +158,6 @@ export const actions = {
 	},
 
 	removeChords: async (event) => {
-		await requireRole(event, 'worship_leader')
 		const service = await loadService(event)
 		const { error: err } = await event.locals.supabase
 			.from('worship_services')
@@ -182,7 +176,6 @@ export const actions = {
 	},
 
 	delete: async (event) => {
-		await requireRole(event, 'worship_leader')
 		const service = await loadService(event)
 		const { error: err } = await event.locals.supabase
 			.from('worship_services')

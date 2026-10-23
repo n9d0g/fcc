@@ -1,5 +1,5 @@
 /** How far ahead team members can block out Sundays. */
-export const AVAILABILITY_WEEKS = 52
+const AVAILABILITY_WEEKS = 52
 
 const DAY_MS = 24 * 60 * 60 * 1000
 
@@ -28,10 +28,3 @@ export const formatSunday = (date: string) =>
 		day: 'numeric',
 		year: 'numeric',
 	})
-
-// Row shape of public.worship_unavailability (supabase/migrations)
-export type WorshipUnavailability = {
-	user_id: string
-	sunday: string
-	created_at: string
-}

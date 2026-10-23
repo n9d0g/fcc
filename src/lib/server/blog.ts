@@ -1,16 +1,16 @@
 import { getResend, getResendFromEmail } from '#lib/resend.server.js'
 import type { BlogAuthorRequest, BlogPost } from '#lib/schemas/blog.js'
 import { BLOG_LIMITS } from '#lib/schemas/blog.js'
-import { requireAdmin } from '#lib/server/worship-requests.js'
-import { fail, redirect, type RequestEvent } from '@sveltejs/kit'
+import { requireAccess } from '#lib/server/access.js'
+import { fail, type RequestEvent } from '@sveltejs/kit'
 
 // What post lists need; the body is only used for excerpts and reading time
-export type PostSummary = Pick<
+type PostSummary = Pick<
 	BlogPost,
 	'id' | 'slug' | 'title' | 'excerpt' | 'body' | 'author_name' | 'published_at'
 >
 
-export const POST_SUMMARY_COLUMNS =
+const POST_SUMMARY_COLUMNS =
 	'id, slug, title, excerpt, body, author_name, published_at'
 
 /** Latest published posts, for the blog index and the home page. */
@@ -39,7 +39,7 @@ export const timestamp = () =>
 
 /** The signed-in user and their author request, if any. */
 export const loadAuthor = async ({ locals }: RequestEvent) => {
-	const { user } = await locals.safeGetSession()
+	const { user } = await locals.viewer()
 	if (!user) return { user: null, request: null }
 
 	const { data: request, error } = await locals.supabase
@@ -50,17 +50,6 @@ export const loadAuthor = async ({ locals }: RequestEvent) => {
 
 	if (error) console.error('[blog] load author request', error)
 
-	return { user, request }
-}
-
-/** Sends signed-out visitors to log in and non-authors back to /blog/write. */
-export const requireAuthor = async (event: RequestEvent) => {
-	const { user, request } = await loadAuthor(event)
-	if (!user) {
-		const redirectTo = event.url.pathname + event.url.search
-		throw redirect(303, `/login?redirectTo=${encodeURIComponent(redirectTo)}`)
-	}
-	if (request?.status !== 'approved') throw redirect(303, '/blog/write')
 	return { user, request }
 }
 
@@ -93,7 +82,7 @@ export async function emailAdmins(
 /** Admin form action that approves or rejects an author request. */
 export const reviewAuthorAction =
 	(status: 'approved' | 'rejected') => async (event: RequestEvent) => {
-		const admin = await requireAdmin(event)
+		const { user } = await requireAccess(event, 'superuser')
 		const id = String((await event.request.formData()).get('id') ?? '')
 		if (!id) return fail(400, { message: 'Missing request id.' })
 
@@ -102,7 +91,7 @@ export const reviewAuthorAction =
 			.update({
 				status,
 				reviewed_at: new Date().toISOString(),
-				reviewed_by: admin.id,
+				reviewed_by: user.id,
 			})
 			.eq('id', id)
 			.select('id')
@@ -124,7 +113,7 @@ export const reviewAuthorAction =
 export const reviewPostAction =
 	(status: 'published' | 'rejected' | 'draft') =>
 	async (event: RequestEvent) => {
-		const admin = await requireAdmin(event)
+		const { user } = await requireAccess(event, 'superuser')
 		const formData = await event.request.formData()
 		const id = String(formData.get('id') ?? '')
 		const note = String(formData.get('note') ?? '')
@@ -138,7 +127,7 @@ export const reviewPostAction =
 				status,
 				review_note: status === 'rejected' ? note || null : null,
 				reviewed_at: new Date().toISOString(),
-				reviewed_by: admin.id,
+				reviewed_by: user.id,
 			})
 			.eq('id', id)
 			.select('id')

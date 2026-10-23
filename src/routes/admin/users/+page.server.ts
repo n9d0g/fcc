@@ -1,5 +1,5 @@
 import { isRole, type Role } from '#lib/schemas/roles.js'
-import { requireAdmin } from '#lib/server/worship-requests.js'
+import { signedInUser } from '#lib/server/access.js'
 import { error, fail } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 
@@ -7,8 +7,6 @@ type SiteUser = { id: string; email: string; display_name: string | null }
 
 // Superusers only: hand out and take back leader roles
 export const load: PageServerLoad = async (event) => {
-	await requireAdmin(event)
-
 	const [users, grants] = await Promise.all([
 		event.locals.supabase.rpc('admin_list_users'),
 		event.locals.supabase
@@ -38,7 +36,7 @@ export const load: PageServerLoad = async (event) => {
 export const actions = {
 	// Grants or revokes one role, depending on the posted `grant` flag
 	setRole: async (event) => {
-		const admin = await requireAdmin(event)
+		const admin = await signedInUser(event.locals)
 		const formData = await event.request.formData()
 		const userId = String(formData.get('userId') ?? '')
 		const role = String(formData.get('role') ?? '')

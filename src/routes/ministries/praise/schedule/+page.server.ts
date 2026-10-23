@@ -4,16 +4,12 @@ import {
 	type WorshipService,
 } from '#lib/schemas/worship-schedule.js'
 import { torontoToday } from '#lib/schemas/worship-availability.js'
-import { requireWorshipMember } from '#lib/server/roles.js'
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
-// Worship team only. Signed-out visitors are sent to log in and everyone else
-// gets a 404; RLS on worship_services and worship_roster does the same.
-export const load: PageServerLoad = async (event) => {
-	await requireWorshipMember(event)
-	const { locals } = event
-
+// Worship members only (gated in #lib/server/access.ts); RLS on
+// worship_services and worship_roster does the same.
+export const load: PageServerLoad = async ({ locals }) => {
 	const [services, roster] = await Promise.all([
 		locals.supabase
 			.from('worship_services')

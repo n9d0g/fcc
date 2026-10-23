@@ -7,6 +7,7 @@ import type {
 	SeoData,
 	Sermon,
 } from '#lib/types.js'
+import type { Viewer } from '#lib/server/access.js'
 import type { Session, SupabaseClient, User } from '@supabase/supabase-js'
 
 declare global {
@@ -17,6 +18,8 @@ declare global {
 				session: Session | null
 				user: User | null
 			}>
+			/** Resolved on first call, then reused for the rest of the request */
+			viewer: () => Promise<Viewer>
 		}
 
 		interface PageData {
@@ -27,6 +30,7 @@ declare global {
 			gallery?: PageGallery | null
 			session?: Session | null
 			user?: User | null
+			isSuperuser?: boolean
 			isBlogAuthor?: boolean
 			isWorshipMember?: boolean
 			roles?: string[]

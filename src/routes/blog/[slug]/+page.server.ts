@@ -1,19 +1,18 @@
-import { isAdmin } from '#lib/schemas/worship-team.js'
 import type { BlogPost } from '#lib/schemas/blog.js'
 import { reviewPostAction } from '#lib/server/blog.js'
 import { error } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 
 // RLS shows published posts to everyone, and unpublished ones only to their
-// author and admins, so this doubles as the preview page linked from emails
+// author and superusers, so this doubles as the preview page linked from emails
 export const load: PageServerLoad = async ({ locals, params }) => {
-	const [{ data: post, error: err }, { user }] = await Promise.all([
+	const [{ data: post, error: err }, viewer] = await Promise.all([
 		locals.supabase
 			.from('blog_posts')
 			.select('*')
 			.eq('slug', params.slug)
 			.maybeSingle<BlogPost>(),
-		locals.safeGetSession(),
+		locals.viewer(),
 	])
 
 	if (err) {
@@ -24,8 +23,8 @@ export const load: PageServerLoad = async ({ locals, params }) => {
 
 	return {
 		post,
-		isAuthor: post.author_id === user?.id,
-		canReview: isAdmin(user),
+		isAuthor: post.author_id === viewer.user?.id,
+		canReview: viewer.isSuperuser,
 	}
 }
 

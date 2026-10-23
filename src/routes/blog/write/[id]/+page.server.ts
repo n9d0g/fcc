@@ -6,7 +6,9 @@ import {
 	slugify,
 	type BlogPost,
 } from '#lib/schemas/blog.js'
-import { emailAdmins, requireAuthor, timestamp } from '#lib/server/blog.js'
+import { displayNameOf } from '#lib/schemas/account.js'
+import { signedInUser } from '#lib/server/access.js'
+import { emailAdmins, loadAuthor, timestamp } from '#lib/server/blog.js'
 import { error, fail, redirect, type RequestEvent } from '@sveltejs/kit'
 import { z } from 'zod'
 import type { Actions, PageServerLoad } from './$types'
@@ -43,13 +45,13 @@ const loadOwnPost = async (event: RequestEvent, userId: string) => {
 }
 
 export const load: PageServerLoad = async (event) => {
-	const { user } = await requireAuthor(event)
+	const user = await signedInUser(event.locals)
 	return { post: await loadOwnPost(event, user.id) }
 }
 
 export const actions = {
 	save: async (event) => {
-		const { user, request } = await requireAuthor(event)
+		const user = await signedInUser(event.locals)
 		const existing = await loadOwnPost(event, user.id)
 		if (existing?.status === 'published') {
 			return failure(
@@ -111,9 +113,11 @@ export const actions = {
 		}
 
 		if (submitting) {
+			const { request } = await loadAuthor(event)
+			const email = request?.email ?? user.email ?? ''
 			const { html, text } = await renderEmail(BlogPostSubmittedEmail, {
-				authorName: request.full_name,
-				email: request.email,
+				authorName: request?.full_name ?? displayNameOf(user),
+				email,
 				title: parsed.data.title,
 				excerpt: postExcerpt(parsed.data),
 				reviewUrl: `${event.url.origin}/blog/${saved.slug}`,
@@ -121,7 +125,7 @@ export const actions = {
 			})
 			await emailAdmins(event, {
 				subject: `Blog post for approval: ${parsed.data.title}`,
-				replyTo: request.email,
+				replyTo: email,
 				html,
 				text,
 			})
@@ -134,7 +138,7 @@ export const actions = {
 	},
 
 	delete: async (event) => {
-		const { user } = await requireAuthor(event)
+		const user = await signedInUser(event.locals)
 		const existing = await loadOwnPost(event, user.id)
 		if (!existing) throw redirect(303, '/blog/write')
 

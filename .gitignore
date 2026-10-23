@@ -43,3 +43,6 @@ yarn-error.log*
 
 vite.config.js.timestamp-*
 .vitest/
+
+# TypeScript incremental build cache
+*.tsbuildinfo

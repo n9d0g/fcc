@@ -6,7 +6,6 @@ import {
 } from '#lib/schemas/prayer.js'
 import { torontoToday } from '#lib/schemas/worship-availability.js'
 import { notifyPrayerAssignment } from '#lib/server/prayer-reminders.js'
-import { requireRole } from '#lib/server/roles.js'
 import { error, fail, type RequestEvent } from '@sveltejs/kit'
 import { z } from 'zod'
 import type { Actions, PageServerLoad } from './$types'
@@ -20,8 +19,6 @@ const listUsers = async ({ locals }: RequestEvent) => {
 }
 
 export const load: PageServerLoad = async (event) => {
-	await requireRole(event, 'prayer_leader')
-
 	// Upcoming meetings plus the last four weeks, for context
 	const since = new Date(
 		Date.parse(`${torontoToday()}T00:00:00Z`) - 28 * 86_400_000
@@ -52,7 +49,6 @@ export const load: PageServerLoad = async (event) => {
 
 export const actions = {
 	save: async (event) => {
-		await requireRole(event, 'prayer_leader')
 		const formData = await event.request.formData()
 		const id = String(formData.get('id') ?? '')
 		const parsed = prayerMeetingSchema.safeParse({
@@ -137,7 +133,6 @@ export const actions = {
 	},
 
 	delete: async (event) => {
-		await requireRole(event, 'prayer_leader')
 		const id = String((await event.request.formData()).get('id') ?? '')
 		const { error: err } = await event.locals.supabase
 			.from('prayer_meetings')
@@ -152,7 +147,6 @@ export const actions = {
 
 	// Adds the next 8 Wednesdays (leader TBA), skipping dates already scheduled
 	addWeeks: async (event) => {
-		await requireRole(event, 'prayer_leader')
 		const rows = upcomingWednesdays(torontoToday(), 8).map((meeting_date) => ({
 			meeting_date,
 		}))
@@ -170,7 +164,6 @@ export const actions = {
 	// One-time move off the Sanity "prayer" documents. Dates already in the
 	// table are left as they are.
 	importSanity: async (event) => {
-		await requireRole(event, 'prayer_leader')
 		const docs = await client.fetch<
 			{ name?: string; date?: string; scripture?: string }[]
 		>(`*[_type == "prayer" && defined(date)]{ name, date, scripture }`)

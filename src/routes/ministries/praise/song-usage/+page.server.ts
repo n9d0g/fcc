@@ -1,16 +1,12 @@
 import { songSchema } from '#lib/schemas/songs.js'
-import { requireRole } from '#lib/server/roles.js'
 import { sortByField } from '#lib/utils.js'
 import { error, fail } from '@sveltejs/kit'
 import { z } from 'zod'
 import type { Actions, PageServerLoad } from './$types'
 
-// Worship leaders and superusers only. Signed-out visitors are sent to log in
-// and everyone else gets a 404. RLS on public.songs enforces the same rule
-// for direct queries.
+// Worship leaders only (gated in #lib/server/access.ts). RLS on public.songs
+// enforces the same rule for direct queries.
 export const load: PageServerLoad = async (event) => {
-	await requireRole(event, 'worship_leader')
-
 	const { data: songs, error: err } = await event.locals.supabase
 		.from('songs')
 		.select()
@@ -25,7 +21,6 @@ export const load: PageServerLoad = async (event) => {
 
 export const actions = {
 	add: async (event) => {
-		await requireRole(event, 'worship_leader')
 		const formData = await event.request.formData()
 		const parsed = songSchema.safeParse({
 			songName: String(formData.get('songName') ?? ''),

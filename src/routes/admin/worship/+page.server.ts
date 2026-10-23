@@ -10,7 +10,6 @@ import {
 	torontoToday,
 	upcomingSundays,
 } from '#lib/schemas/worship-availability.js'
-import { requireRole } from '#lib/server/roles.js'
 import { error, fail, redirect, type RequestEvent } from '@sveltejs/kit'
 import { z } from 'zod'
 import type { Actions, PageServerLoad } from './$types'
@@ -35,8 +34,6 @@ const accountName = (user: SiteUser) =>
 	(user.display_name || user.email.split('@')[0]).slice(0, 100)
 
 export const load: PageServerLoad = async (event) => {
-	await requireRole(event, 'worship_leader')
-
 	// Upcoming services plus the last four weeks, for context
 	const since = new Date(
 		Date.parse(`${torontoToday()}T00:00:00Z`) - 28 * 86_400_000
@@ -92,7 +89,6 @@ export const load: PageServerLoad = async (event) => {
 export const actions = {
 	// Adds one service (any date, e.g. Good Friday) and opens it for editing
 	create: async (event) => {
-		await requireRole(event, 'worship_leader')
 		const parsed = z.iso
 			.date()
 			.safeParse(
@@ -119,7 +115,6 @@ export const actions = {
 
 	// Adds the next 8 Sundays, skipping dates already scheduled
 	addSundays: async (event) => {
-		await requireRole(event, 'worship_leader')
 		const rows = upcomingSundays(torontoToday(), 8).map((service_date) => ({
 			service_date,
 		}))
@@ -135,7 +130,6 @@ export const actions = {
 	},
 
 	addToRoster: async (event) => {
-		await requireRole(event, 'worship_leader')
 		const formData = await event.request.formData()
 		const position = String(formData.get('position') ?? '')
 		const userId = String(formData.get('userId') ?? '')
@@ -168,7 +162,6 @@ export const actions = {
 	// Links a roster entry to an account (taking its name), or unlinks it
 	// (keeping the name) when no account is posted
 	linkRoster: async (event) => {
-		await requireRole(event, 'worship_leader')
 		const formData = await event.request.formData()
 		const id = String(formData.get('id') ?? '')
 		const userId = String(formData.get('userId') ?? '')
@@ -201,7 +194,6 @@ export const actions = {
 	},
 
 	removeFromRoster: async (event) => {
-		await requireRole(event, 'worship_leader')
 		const id = String((await event.request.formData()).get('id') ?? '')
 		const { error: err } = await event.locals.supabase
 			.from('worship_roster')
@@ -218,7 +210,6 @@ export const actions = {
 	// documents. Dates and roster names already here are left as they are.
 	// Chords PDFs stay on Sanity's CDN.
 	importSanity: async (event) => {
-		await requireRole(event, 'worship_leader')
 		const [docs, assignments] = await Promise.all([
 			client.fetch<Record<string, unknown>[]>(`
 				*[_type == "praise" && defined(date) && !(_id in path("drafts.**"))] {

@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import type { User } from '@supabase/supabase-js'
 
 export const WORSHIP_ROLES = [
 	{ value: 'vocals', label: 'Vocals', emoji: '🎤' },
@@ -10,8 +9,6 @@ export const WORSHIP_ROLES = [
 	{ value: 'drums', label: 'Drums', emoji: '🥁' },
 	{ value: 'other', label: 'Other', emoji: '🎶' },
 ] as const
-
-export type WorshipRole = (typeof WORSHIP_ROLES)[number]['value']
 
 export const roleLabel = (value: string) =>
 	WORSHIP_ROLES.find((r) => r.value === value)?.label ?? value
@@ -40,7 +37,7 @@ export const worshipRequestSchema = z.object({
 		}),
 })
 
-export type WorshipRequestStatus = 'pending' | 'approved' | 'rejected'
+type WorshipRequestStatus = 'pending' | 'approved' | 'rejected'
 
 // Row shape of public.worship_team_requests (supabase/migrations)
 export type WorshipRequest = {
@@ -55,7 +52,3 @@ export type WorshipRequest = {
 	reviewed_at: string | null
 	reviewed_by: string | null
 }
-
-// Mirrors public.is_admin(); RLS enforces it again on every query
-export const isAdmin = (user: User | null | undefined) =>
-	user?.app_metadata?.role === 'admin'

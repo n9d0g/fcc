@@ -4,17 +4,10 @@ import {
 	emailSchema,
 	passwordSchema,
 } from '#lib/schemas/account.js'
-import { fail, redirect, type RequestEvent } from '@sveltejs/kit'
+import { signedInUser } from '#lib/server/access.js'
+import { fail } from '@sveltejs/kit'
 import { z } from 'zod'
 import type { Actions, PageServerLoad } from './$types'
-
-const requireUser = async ({ locals, url }: RequestEvent) => {
-	const { user } = await locals.safeGetSession()
-	if (!user) {
-		throw redirect(303, `/login?redirectTo=${encodeURIComponent(url.pathname)}`)
-	}
-	return user
-}
 
 // Each form posts to its own action and gets its own errors back, keyed by
 // `form` so the page knows which section to show them under
@@ -35,7 +28,7 @@ const fieldErrors = (error: z.ZodError) =>
 	)
 
 export const load: PageServerLoad = async (event) => {
-	const user = await requireUser(event)
+	const user = await signedInUser(event.locals)
 
 	return {
 		displayName: displayNameOf(user),
@@ -47,7 +40,6 @@ export const load: PageServerLoad = async (event) => {
 
 export const actions = {
 	name: async (event) => {
-		await requireUser(event)
 		const parsed = displayNameSchema.safeParse({
 			displayName: String(
 				(await event.request.formData()).get('displayName') ?? ''
@@ -72,7 +64,7 @@ export const actions = {
 	},
 
 	email: async (event) => {
-		const user = await requireUser(event)
+		const user = await signedInUser(event.locals)
 		const parsed = emailSchema.safeParse({
 			email: String((await event.request.formData()).get('email') ?? ''),
 		})
@@ -108,7 +100,7 @@ export const actions = {
 	},
 
 	password: async (event) => {
-		const user = await requireUser(event)
+		const user = await signedInUser(event.locals)
 		const formData = await event.request.formData()
 		const parsed = passwordSchema.safeParse({
 			currentPassword: String(formData.get('currentPassword') ?? ''),

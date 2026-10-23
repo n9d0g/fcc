@@ -79,10 +79,6 @@ export const breadcrumbs = {
 				title: 'My Availability',
 				href: '/ministries/praise/availability',
 			},
-			worshipDirectorNotes: {
-				title: 'Worship Director Notes',
-				href: 'https://n9d0g.notion.site/worship-director-notes-2cc49c91f89280d5b0a9f6ecd67ea167?source=copy_link',
-			},
 		},
 		sundayMinistries: {
 			title: 'Sunday Ministries',
@@ -136,9 +132,5 @@ export const breadcrumbs = {
 			title: 'Partners in Prayer',
 			href: '/small-groups/partners-in-prayer',
 		},
-	},
-	sundaySchool: {
-		title: 'Sunday School',
-		href: '/sunday-school',
 	},
 }

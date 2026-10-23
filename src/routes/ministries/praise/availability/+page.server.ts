@@ -6,25 +6,34 @@ import {
 	torontoToday,
 	upcomingSundays,
 } from '#lib/schemas/worship-availability.js'
+import { displayNameOf } from '#lib/schemas/account.js'
 import type { WorshipRequest } from '#lib/schemas/worship-team.js'
-import { requireWorshipMember } from '#lib/server/roles.js'
+import { signedInUser } from '#lib/server/access.js'
 import { fail, type RequestEvent } from '@sveltejs/kit'
+import type { User } from '@supabase/supabase-js'
 import type { Actions, PageServerLoad } from './$types'
 
-// Only approved team members can block out Sundays
-const loadMember = async ({ locals }: RequestEvent) => {
-	const { user } = await locals.safeGetSession()
-	if (!user) return { user: null, request: null }
+type Member = { fullName: string; email: string }
 
+// How the notification names the member: their team request, or for worship
+// leaders who never filed one, their account
+const memberContact = async (
+	{ locals }: RequestEvent,
+	user: User
+): Promise<Member> => {
 	const { data: request, error } = await locals.supabase
 		.from('worship_team_requests')
-		.select('*')
+		.select('full_name, email')
 		.eq('user_id', user.id)
-		.maybeSingle<WorshipRequest>()
+		.maybeSingle<Pick<WorshipRequest, 'full_name' | 'email'>>()
 
 	if (error) console.error('[availability] load request', error)
 
-	return { user, request }
+	const email = request?.email ?? user.email ?? ''
+	return {
+		fullName: request?.full_name || displayNameOf(user) || email.split('@')[0],
+		email,
+	}
 }
 
 const blockedSundays = async (
@@ -43,24 +52,17 @@ const blockedSundays = async (
 	return data.map((r) => r.sunday)
 }
 
-// Worship team only: signed-out visitors are sent to log in and everyone else
-// gets a 404. Leaders who aren't on the team themselves see "notMember".
+// Worship members only (gated in #lib/server/access.ts)
 export const load: PageServerLoad = async (event) => {
-	await requireWorshipMember(event)
-	const { user, request } = await loadMember(event)
+	const user = await signedInUser(event.locals)
 	const sundays = upcomingSundays(torontoToday())
-	const blocked: string[] = []
-
-	if (!user || request?.status !== 'approved') {
-		return { state: 'notMember' as const, sundays, blocked }
-	}
 
 	try {
 		const blocked = await blockedSundays(event, user.id, sundays[0])
-		return { state: 'member' as const, sundays, blocked }
+		return { sundays, blocked }
 	} catch (e) {
 		console.error('[availability] load dates', e)
-		return { state: 'member' as const, sundays, blocked, loadError: true }
+		return { sundays, blocked: [] as string[], loadError: true }
 	}
 }
 
@@ -69,7 +71,7 @@ export const load: PageServerLoad = async (event) => {
 // Goes to superusers and worship leaders.
 async function notifyAdmins(
 	event: RequestEvent,
-	request: WorshipRequest,
+	member: Member,
 	added: string[],
 	removed: string[]
 ) {
@@ -85,8 +87,8 @@ async function notifyAdmins(
 		}
 
 		const { html, text } = await renderEmail(WorshipAvailabilityEmail, {
-			fullName: request.full_name,
-			email: request.email,
+			fullName: member.fullName,
+			email: member.email,
 			unavailable: added.map(formatSunday),
 			available: removed.map(formatSunday),
 			reviewUrl: `${event.url.origin}/admin/availability`,
@@ -99,8 +101,8 @@ async function notifyAdmins(
 		const { error } = await getResend().emails.send({
 			from: `Freedom in Christ Church <${getResendFromEmail()}>`,
 			to: admins,
-			replyTo: request.email,
-			subject: `Availability update: ${request.full_name}`,
+			replyTo: member.email,
+			subject: `Availability update: ${member.fullName}`,
 			html,
 			text,
 		})
@@ -112,17 +114,7 @@ async function notifyAdmins(
 
 export const actions = {
 	default: async (event) => {
-		const { user, request } = await loadMember(event)
-		if (!user)
-			return fail(401, {
-				message: 'Please log in to update your availability.',
-			})
-		if (request?.status !== 'approved') {
-			return fail(403, {
-				message: 'Only worship team members can block out Sundays.',
-			})
-		}
-
+		const user = await signedInUser(event.locals)
 		const sundays = upcomingSundays(torontoToday())
 		const allowed = new Set(sundays)
 		const selected = new Set(
@@ -171,7 +163,7 @@ export const actions = {
 			})
 		}
 
-		await notifyAdmins(event, request, added, removed)
+		await notifyAdmins(event, await memberContact(event, user), added, removed)
 
 		return { added, removed }
 	},
