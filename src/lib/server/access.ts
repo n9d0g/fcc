@@ -77,7 +77,8 @@ const matches = (pathname: string, prefix: string) =>
 		? pathname.startsWith(prefix)
 		: pathname === prefix || pathname.startsWith(`${prefix}/`)
 
-const policyFor = (pathname: string): Policy | undefined => {
+/** The access table entry that applies to a path, if any. */
+export const policyFor = (pathname: string): Policy | undefined => {
 	let best: string | undefined
 	for (const prefix of Object.keys(ACCESS_TABLE)) {
 		if (matches(pathname, prefix) && prefix.length > (best?.length ?? -1)) {

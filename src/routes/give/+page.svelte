@@ -5,13 +5,10 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let links = $derived(data.links)
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Generosity is a form of Worship.">
 	<!-- Intro -->
 	<section class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
 		<div class="order-2 space-y-5 lg:order-1">

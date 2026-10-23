@@ -9,9 +9,6 @@
 
 	let { data }: { data: PageData } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let request = $derived(data.request)
 
 	let busy = $state(false)
@@ -49,7 +46,7 @@
 	}
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Review Request.">
 	<section class="mx-auto max-w-2xl space-y-6">
 		<div class="card space-y-6 p-6 sm:p-8">
 			<div class="flex flex-wrap items-start justify-between gap-4">

@@ -5,9 +5,6 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let gallery = $derived(data.gallery)
 
 	const expectations = [
@@ -51,9 +48,7 @@
 </script>
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="FCC Women's Ministry."
 	image={womenMinistry}
 	imageAlt="FCC women's ministry gathered around the church banner"
 	imagePosition="center 40%"

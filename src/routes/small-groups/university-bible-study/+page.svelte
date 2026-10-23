@@ -1,18 +1,10 @@
 <script lang="ts">
 	import tableBibleStudy from '#lib/assets/community/table-bible-study.jpg'
 	import FccLayout from '#lib/components/FccLayout.svelte'
-
-	// Svelte 5 props
-	let { data }: { data: any } = $props()
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 </script>
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="FCC University Bible Study."
 	image={tableBibleStudy}
 	imageAlt="Students and members of FCC in a Bible study around a table"
 	imagePosition="center 40%"

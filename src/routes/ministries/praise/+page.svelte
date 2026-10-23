@@ -3,19 +3,15 @@
 	import praiseTeam from '#lib/assets/ministries/praise/praise-team.jpg'
 	import LandingPageGrid from '#lib/components/LandingPageGrid.svelte'
 	import MinistryPageContent from '#lib/components/ministries/MinistryPageContent.svelte'
-	import type { PageLayoutData } from '#lib/types.js'
 
 	let {
 		data,
 	}: {
-		data: PageLayoutData & {
+		data: {
 			gallery: unknown
 			landingPageItems: Array<{ title: string; link: string; external?: boolean }>
 		}
 	} = $props()
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let gallery = $derived(data.gallery)
 
 	const instruments = [
@@ -27,9 +23,7 @@
 </script>
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="Praise & Worship Ministry."
 	image={praiseTeam}
 	imageAlt="Young members of FCC leading worship on stage"
 >

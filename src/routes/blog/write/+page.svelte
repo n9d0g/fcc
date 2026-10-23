@@ -11,9 +11,6 @@
 
 	let { data, form }: { data: PageData; form: ActionData } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let request = $derived(data.request)
 
 	let pending = $state(false)
@@ -64,7 +61,7 @@
 	}
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Write for the Blog.">
 	<section class="mx-auto max-w-3xl">
 		{#if request?.status === 'approved'}
 			<div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">

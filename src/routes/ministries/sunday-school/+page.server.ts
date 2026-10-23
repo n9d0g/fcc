@@ -1,9 +1,4 @@
-import {
-	client,
-	headData,
-	breadcrumbs,
-	fetchPageGallery,
-} from '#lib/config/index.js'
+import { client, fetchPageGallery } from '#lib/config/index.js'
 import { updatedDataFiltered } from '#lib/utils.js'
 
 export const load = async () => {
@@ -17,16 +12,7 @@ export const load = async () => {
 		openInNewTab
 	}`)
 	const gallery = await fetchPageGallery('/ministries/sunday-school')
-	const breadcrumb = [
-		breadcrumbs.home,
-		breadcrumbs.ministries,
-		breadcrumbs.ministries.sundaySchool,
-	]
-
 	return {
-		title: 'FCC Sunday School Ministry.',
-		breadcrumb: breadcrumb,
-		headData: headData.sundaySchool,
 		sundaySchoolLinks,
 		gallery,
 		tBody: updatedDataFiltered(data, 'date'),

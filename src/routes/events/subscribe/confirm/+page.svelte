@@ -6,9 +6,7 @@
 	let { data }: { data: PageData } = $props()
 </script>
 
-<svelte:head><meta name="robots" content="noindex" /></svelte:head>
-
-<FccLayout title={data.title} breadcrumb={data.breadcrumb} headData={data.headData}>
+<FccLayout heading={data.confirmed ? "You're subscribed." : 'Link expired.'}>
 	<div class="card mx-auto flex max-w-xl flex-col items-center gap-6 p-8 text-center sm:p-12">
 		<span class="icon-chip size-14">
 			<Icon icon={data.confirmed ? 'lucide:bell-ring' : 'lucide:link-2-off'} class="size-6" />

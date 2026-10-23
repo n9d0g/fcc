@@ -12,9 +12,6 @@
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 	let tHead = $derived(data.tHead)
 	let tBody = $derived(data.tBody)
 	let filterData = $derived(data.filterData)
@@ -48,7 +45,7 @@
 	}
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Praise Schedule.">
 	{#if upToDatePraiseData && upToDatePraiseData.length > 0}
 		<div class="relative my-8 flex w-full flex-col gap-4 sm:max-w-fit">
 			<!-- filter searching -->

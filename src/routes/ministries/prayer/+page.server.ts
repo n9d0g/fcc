@@ -1,4 +1,4 @@
-import { headData, breadcrumbs, fetchPageGallery } from '#lib/config/index.js'
+import { fetchPageGallery } from '#lib/config/index.js'
 import type { PrayerMeeting } from '#lib/schemas/prayer.js'
 import { torontoToday } from '#lib/schemas/worship-availability.js'
 import type { PageServerLoad } from './$types'
@@ -30,13 +30,6 @@ export const load: PageServerLoad = async ({ locals }) => {
 	}
 
 	return {
-		title: 'FCC Prayer Ministry.',
-		breadcrumb: [
-			breadcrumbs.home,
-			breadcrumbs.ministries,
-			breadcrumbs.ministries.prayer,
-		],
-		headData: headData.ministriesPrayer,
 		gallery: gallery ?? undefined,
 		prayerData: meetings ?? [],
 		mine,

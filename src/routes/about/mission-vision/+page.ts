@@ -1,16 +1,7 @@
-import { headData, breadcrumbs, missionVision } from '#lib/config/index.js'
+import { missionVision } from '#lib/config/index.js'
 
 export const load = async () => {
-	const breadcrumb = [
-		breadcrumbs.home,
-		breadcrumbs.about,
-		breadcrumbs.about.missionVision,
-	]
-
 	return {
-		title: 'Our Mission & Vision.',
-		breadcrumb: breadcrumb,
 		missionVision: missionVision,
-		headData: headData.missionVision,
 	}
 }

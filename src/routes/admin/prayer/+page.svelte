@@ -8,10 +8,6 @@
 
 	let { data }: { data: PageData } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
-
 	const upcoming = $derived(data.meetings.filter((m) => m.meeting_date >= data.today))
 	const recent = $derived(data.meetings.filter((m) => m.meeting_date < data.today).reverse())
 
@@ -102,7 +98,7 @@
 	</form>
 {/snippet}
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Prayer Schedule.">
 	<div class="space-y-12">
 		<section class="card space-y-4 p-5 sm:p-6">
 			<p class="text-muted text-sm">

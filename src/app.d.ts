@@ -1,12 +1,8 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 
-import type {
-	BreadcrumbItem,
-	PageGallery,
-	SeoData,
-	Sermon,
-} from '#lib/types.js'
+import type { PageMeta } from '#lib/config/pages.js'
+import type { PageGallery, Sermon } from '#lib/types.js'
 import type { Viewer } from '#lib/server/access.js'
 import type { Session, SupabaseClient, User } from '@supabase/supabase-js'
 
@@ -23,9 +19,7 @@ declare global {
 		}
 
 		interface PageData {
-			title?: string
-			breadcrumb?: BreadcrumbItem[]
-			headData?: SeoData
+			pageMeta?: PageMeta
 			sermons?: Sermon[]
 			gallery?: PageGallery | null
 			session?: Session | null

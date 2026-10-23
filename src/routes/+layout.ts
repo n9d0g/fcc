@@ -4,9 +4,16 @@ import {
 	isBrowser,
 } from '@supabase/ssr'
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$app/env/public'
+import { isPageId, pageFor } from '#lib/config/pages.js'
 import type { LayoutLoad } from './$types'
 
-export const load: LayoutLoad = async ({ data, depends, fetch, url }) => {
+export const load: LayoutLoad = async ({
+	data,
+	depends,
+	fetch,
+	route,
+	url,
+}) => {
 	depends('supabase:auth')
 
 	const supabase = isBrowser()
@@ -24,6 +31,8 @@ export const load: LayoutLoad = async ({ data, depends, fetch, url }) => {
 
 	return {
 		url: url.pathname,
+		// Pages with a dynamic title override this from their own load
+		pageMeta: isPageId(route.id) ? pageFor(route.id) : undefined,
 		banner: data.banner,
 		supabase,
 		user: data.user,

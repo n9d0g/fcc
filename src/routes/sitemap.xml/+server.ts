@@ -1,44 +1,13 @@
 import { SITE_URL } from '#lib/config/index.js'
+import { PAGES, type PageEntry, type PageId } from '#lib/config/pages.js'
 
-// Every route with a page component; redirect-only routes (/av, /wd, ...)
-// have just a +page.ts and are left out automatically
-const pages = Object.keys(import.meta.glob('/src/routes/**/+page.svelte'))
-	.map(
-		(file) =>
-			file.replace('/src/routes', '').replace(/\/\+page\.svelte$/, '') || '/'
-	)
-	// Private, signed-in or parameterised pages don't belong in search
-	.filter(
-		(path) =>
-			!path.includes('[') &&
-			!path.startsWith('/admin') &&
-			!path.startsWith('/blog/write') &&
-			!path.startsWith('/events/subscribe') &&
-			!path.startsWith('/events/unsubscribe') &&
-			![
-				'/login',
-				'/signup',
-				'/account',
-				'/ministries/praise/availability',
-				'/ministries/praise/schedule',
-				'/ministries/praise/song-usage',
-			].includes(path)
-	)
-	.sort()
-
-// Pages that matter most for "church in Mississauga" style searches
-const priority = (path: string) =>
-	path === '/'
-		? '1.0'
-		: [
-					'/about',
-					'/contact',
-					'/ministries',
-					'/small-groups',
-					'/sermons',
-			  ].includes(path)
-			? '0.8'
-			: '0.6'
+// Indexed static pages from the registry; blog posts are added below
+const pages = Object.entries(PAGES as Record<PageId, PageEntry>)
+	.filter(([id, entry]) => entry.indexed !== false && !id.includes('['))
+	.map(([id, entry]) => ({
+		path: id,
+		priority: (entry.priority ?? 0.6).toFixed(1),
+	}))
 
 export const GET = async ({ locals }) => {
 	// Published blog posts; the static pages still go out if this fails
@@ -51,8 +20,8 @@ export const GET = async ({ locals }) => {
 
 	const urls = [
 		...pages.map(
-			(path) =>
-				`<url><loc>${SITE_URL}${path}</loc><priority>${priority(path)}</priority></url>`
+			({ path, priority }) =>
+				`<url><loc>${SITE_URL}${path}</loc><priority>${priority}</priority></url>`
 		),
 		...(posts ?? []).map(
 			(post) =>

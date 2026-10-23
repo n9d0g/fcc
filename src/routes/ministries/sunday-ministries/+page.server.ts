@@ -1,4 +1,4 @@
-import { client, headData, breadcrumbs } from '#lib/config/index.js'
+import { client } from '#lib/config/index.js'
 import {
 	updatedDataFiltered,
 	setCacheHeaders,
@@ -10,16 +10,7 @@ export const load = async ({ setHeaders, url }) => {
 	setCacheHeaders(setHeaders, url, ...CACHE_PRESETS.short)
 
 	const data = await client.fetch(`*[_type == "sunday-ministries"]`)
-	const breadcrumb = [
-		breadcrumbs.home,
-		breadcrumbs.ministries,
-		breadcrumbs.ministries.sundayMinistries,
-	]
-
 	return {
-		title: 'Sunday Ministries.',
-		breadcrumb: breadcrumb,
-		headData: headData.sundayMinistries,
 		tBody: updatedDataFiltered(data, 'date'),
 		tHeaders: [
 			'Month',

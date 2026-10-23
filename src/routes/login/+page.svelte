@@ -2,13 +2,9 @@
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import { enhance } from '$app/forms'
 	import { page } from '$app/state'
-	import type { ActionData, PageData } from './$types'
+	import type { ActionData } from './$types'
 
-	let { data, form }: { data: PageData; form: ActionData } = $props()
-
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
+	let { form }: { form: ActionData } = $props()
 
 	type AuthMode = 'login' | 'confirm'
 	// Signing up lives on /signup. The confirm form has no tab; it's reached from
@@ -37,7 +33,7 @@
 	})
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Log In">
 	<section class="flex items-center justify-center">
 		<div class="card mx-auto w-full max-w-lg p-6 sm:p-10">
 			<nav class="mb-8 flex flex-wrap gap-2 rounded-full bg-surface-100 p-1">

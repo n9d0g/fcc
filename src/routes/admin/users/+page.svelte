@@ -8,10 +8,6 @@
 
 	let { data }: { data: PageData } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
-
 	let query = $state('')
 	let busy = $state<string | null>(null)
 
@@ -74,7 +70,7 @@
 	</li>
 {/snippet}
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Users & Roles.">
 	<div class="space-y-10">
 		<section class="card space-y-3 p-5 sm:p-6">
 			<p class="text-sm text-muted">

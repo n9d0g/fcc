@@ -1,22 +1,23 @@
 <script lang="ts">
 	import { page } from '$app/state'
+	import type { PageMeta } from '#lib/config/pages.js'
 	import { buildSeoHeadExtras } from '#lib/utils.js'
 	import type { Snippet } from 'svelte'
 
 	// Svelte 5 props
 	let {
-		title,
-		headData,
-		breadcrumb,
+		heading,
+		meta,
 		image,
 		imageAlt = '',
 		imagePosition = 'center',
 		intro,
 		children,
 	}: {
-		title: string
-		headData: { title: string; description: string }
-		breadcrumb: Array<{ title: string; href: string }>
+		/** The page's H1 */
+		heading: string
+		/** Title, description and crumbs; the current route's registry entry by default */
+		meta?: PageMeta
 		/** Optional photo shown behind the page title */
 		image?: string
 		imageAlt?: string
@@ -27,30 +28,36 @@
 		children: Snippet
 	} = $props()
 
+	// Every route with this layout has a registry entry (see pages.test.ts)
+	let resolved = $derived((meta ?? page.data.pageMeta) as PageMeta)
+	let trail = $derived(resolved.crumbs)
 	let url = $derived(page.url.href)
 	let seoHeadExtras = $derived(
-		buildSeoHeadExtras(url, headData.title, headData.description)
+		buildSeoHeadExtras(url, resolved.title, resolved.description)
 	)
 </script>
 
 <svelte:head>
-	<title>{headData.title}</title>
-	<meta name="description" content={headData.description} />
+	<title>{resolved.title}</title>
+	<meta name="description" content={resolved.description} />
+	{#if !resolved.indexed}
+		<meta name="robots" content="noindex" />
+	{/if}
 	{@html seoHeadExtras}
 </svelte:head>
 
 {#snippet crumbs()}
 	<ol class="breadcrumb">
-		{#each breadcrumb as link, index}
-			{#if index !== breadcrumb.length - 1}
+		{#each trail as crumb, index}
+			{#if index !== trail.length - 1}
 				<li class="crumb capitalize">
-					<a href={link.href}>{link.title}</a>
+					<a href={crumb.href}>{crumb.label}</a>
 				</li>
 				<li class="crumb-separator" aria-hidden="true">/</li>
 			{/if}
 		{/each}
 		<li class="font-medium capitalize" aria-current="page">
-			{breadcrumb.slice(-1)[0].title}
+			{trail.slice(-1)[0].label}
 		</li>
 	</ol>
 {/snippet}
@@ -73,7 +80,7 @@
 				{@render crumbs()}
 			</nav>
 			<h1 class="mt-4 max-w-3xl text-4xl font-semibold text-white md:text-6xl">
-				{title}
+				{heading}
 			</h1>
 			{#if intro}
 				<p class="mt-4 max-w-2xl text-lg text-white/85 md:text-xl">{intro}</p>
@@ -87,7 +94,7 @@
 			<nav aria-label="Breadcrumb" class="text-muted">
 				{@render crumbs()}
 			</nav>
-			<h1 class="mt-4 max-w-3xl text-4xl font-semibold md:text-5xl">{title}</h1>
+			<h1 class="mt-4 max-w-3xl text-4xl font-semibold md:text-5xl">{heading}</h1>
 			{#if intro}
 				<p class="lede mt-4 max-w-2xl">{intro}</p>
 			{/if}

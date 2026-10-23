@@ -4,11 +4,8 @@
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Programming Ministry.">
 	<LandingPageGrid items={data.landingPageItems} />
 </FccLayout>

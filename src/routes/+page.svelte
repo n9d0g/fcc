@@ -7,21 +7,20 @@
 	import HomeCommunity from '#lib/components/home/HomeCommunity.svelte'
 	import HomeBlog from '#lib/components/home/HomeBlog.svelte'
 	import HomeMembers from '#lib/components/home/HomeMembers.svelte'
-	import { headData } from '#lib/config/index.js'
+	import { PAGES } from '#lib/config/pages.js'
 
 	// Svelte 5 props
 	let { data }: { data: any } = $props()
 
 	// Derived values from page store
 	let url = $derived(page.url.href)
-	let seoHeadExtras = $derived(
-		buildSeoHeadExtras(url, headData.home.title, headData.home.description)
-	)
+	const { title, description } = PAGES['/']
+	let seoHeadExtras = $derived(buildSeoHeadExtras(url, title, description))
 </script>
 
 <svelte:head>
-	<title>{headData.home.title}</title>
-	<meta name="description" content={headData.home.description} />
+	<title>{title}</title>
+	<meta name="description" content={description} />
 	{@html seoHeadExtras}
 </svelte:head>
 

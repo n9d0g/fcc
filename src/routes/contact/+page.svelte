@@ -16,11 +16,7 @@
 		execute: (_siteKey: string, _opts: { action: string }) => Promise<string>
 	}
 
-	let { data, form }: { data: any; form: ActionData } = $props()
-
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
+	let { form }: { form: ActionData } = $props()
 
 	// Skeleton draws field edges with a ring, so tint the ring for invalid fields
 	const fieldClass =
@@ -158,7 +154,7 @@
 	></script>
 </svelte:head>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Contact FCC.">
 	<section class="grid gap-10 lg:grid-cols-12 lg:gap-14">
 		<aside class="space-y-6 lg:col-span-4">
 			<div>

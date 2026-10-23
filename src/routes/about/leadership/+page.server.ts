@@ -1,4 +1,4 @@
-import { client, headData, breadcrumbs } from '#lib/config/index.js'
+import { client } from '#lib/config/index.js'
 import { setCacheHeaders, CACHE_PRESETS } from '#lib/utils.js'
 
 export const load = async ({ setHeaders, url }) => {
@@ -12,18 +12,9 @@ export const load = async ({ setHeaders, url }) => {
     }
   `)
 
-	const breadcrumb = [
-		breadcrumbs.home,
-		breadcrumbs.about,
-		breadcrumbs.about.leadership,
-	]
-
 	if (data) {
 		return {
-			title: 'Leadership.',
-			breadcrumb: breadcrumb,
 			leaders: data.sort((a: any, b: any) => (a.sort > b.sort ? 1 : -1)),
-			headData: headData.leadership,
 		}
 	}
 }

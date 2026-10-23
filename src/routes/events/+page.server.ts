@@ -1,4 +1,4 @@
-import { headData, breadcrumbs, client } from '#lib/config/index.js'
+import { client } from '#lib/config/index.js'
 import { EVENT_FIELDS, type FccEvent } from '#lib/events.js'
 import { subscribe } from '#lib/server/event-subscribers.js'
 import { fail } from '@sveltejs/kit'
@@ -13,9 +13,6 @@ export const load = async () => {
 	)
 
 	return {
-		title: 'FCC Events.',
-		breadcrumb: [breadcrumbs.home, breadcrumbs.events],
-		headData: headData.events,
 		events: events ?? [],
 	}
 }

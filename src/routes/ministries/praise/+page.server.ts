@@ -1,21 +1,12 @@
-import { headData, breadcrumbs, fetchPageGallery } from '#lib/config/index.js'
+import { fetchPageGallery } from '#lib/config/index.js'
 
 export const load = async ({ parent }) => {
-	const breadcrumb = [
-		breadcrumbs.home,
-		breadcrumbs.ministries,
-		breadcrumbs.ministries.praise,
-	]
-
 	const [gallery, { roles, isWorshipMember }] = await Promise.all([
 		fetchPageGallery('/ministries/praise'),
 		parent(),
 	])
 
 	return {
-		title: 'Praise & Worship Ministry.',
-		breadcrumb: breadcrumb,
-		headData: headData.praise,
 		gallery,
 		// Everything but joining is for the worship team (see schedule/+page.server.ts)
 		landingPageItems: isWorshipMember

@@ -9,10 +9,6 @@
 
 	let { data, form }: { data: PageData; form: ActionData } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
-
 	type Section = 'name' | 'email' | 'password'
 	let busy = $state<Section | null>(null)
 
@@ -57,7 +53,7 @@
 	{/if}
 {/snippet}
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Edit Profile.">
 	<section class="mx-auto flex max-w-2xl flex-col gap-8">
 		{#if emailStatus === 'changed'}
 			<p

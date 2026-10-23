@@ -1,13 +1,9 @@
-import { headData, breadcrumbs } from '#lib/config/index.js'
 import bibleStudy from '#lib/assets/community/bible-study.jpg'
 import womenMinistry from '#lib/assets/community/women-ministry.jpg'
 import menGathering from '#lib/assets/ministries/men/men-img2.jpg'
 
 export const load = async () => {
 	return {
-		title: 'About FCC.',
-		headData: headData.about,
-		breadcrumb: [breadcrumbs.home, breadcrumbs.about],
 		landingPageItems: [
 			{
 				title: 'Beliefs',

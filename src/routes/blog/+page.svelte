@@ -6,10 +6,6 @@
 
 	let { data }: { data: PageData } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
-
 	const cta = $derived(
 		{
 			signedOut: {
@@ -26,9 +22,7 @@
 </script>
 
 <FccLayout
-	{title}
-	{breadcrumb}
-	{headData}
+	heading="Blog."
 	intro="Stories, devotionals and reflections written by the members of Freedom in Christ Church."
 >
 	<div class="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">

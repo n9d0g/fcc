@@ -9,10 +9,6 @@
 
 	let { data }: { data: PageData } = $props()
 
-	let title = $derived(data.title)
-	let breadcrumb = $derived(data.breadcrumb)
-	let headData = $derived(data.headData)
-
 	const upcoming = $derived(data.services.filter((s) => s.service_date >= data.today))
 	const recent = $derived(data.services.filter((s) => s.service_date < data.today).reverse())
 
@@ -51,7 +47,7 @@
 		}
 </script>
 
-<FccLayout {title} {breadcrumb} {headData}>
+<FccLayout heading="Worship Schedule.">
 	<div class="space-y-12">
 		<section class="card space-y-4 p-5 sm:p-6">
 			<p class="text-sm text-muted">
