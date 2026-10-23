@@ -131,15 +131,6 @@ export const formRows = <A extends string, B extends string>(
 }
 
 /**
- * Splits a Sanity "backup" string ("Ana, Ben & Cy") into names.
- */
-export const splitNames = (value: string) =>
-	value
-		.split(/\s*(?:,|;|\/|&|\band\b)\s*/i)
-		.map((name) => name.trim())
-		.filter(Boolean)
-
-/**
  * Schedule row in the shape the schedule page and praise modal were built
  * around when the data came from Sanity.
  */

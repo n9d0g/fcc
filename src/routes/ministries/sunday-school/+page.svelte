@@ -4,8 +4,9 @@
 	import sundaySchool from '#lib/assets/ministries/sunday-school/sunday-school-class.jpg'
 	import Icon from '@iconify/svelte'
 	import PhotoGallery from '#lib/components/PhotoGallery.svelte'
+	import type { PageData } from './$types'
 
-	let { data }: { data: { tHeaders: string[]; tBody: unknown[]; sundaySchoolLinks: Array<{ section: string }>; gallery: { photos: unknown[] } } } = $props()
+	let { data }: { data: PageData } = $props()
 
 	let tHeaders = $derived(data.tHeaders)
 	let tBody = $derived(data.tBody)

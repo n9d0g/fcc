@@ -1,20 +1,19 @@
-import { client, fetchPageGallery } from '#lib/config/index.js'
+import {
+	gallery,
+	sundayMinistries,
+	sundaySchoolLinks,
+} from '#lib/server/content.js'
 import { updatedDataFiltered } from '#lib/utils.js'
 
-export const load = async () => {
-	const data = await client.fetch(`*[_type == "sunday-ministries"]`)
-	const sundaySchoolLinks =
-		await client.fetch(`*[_type == "sunday-school-links"] | order(order asc) {
-		title,
-		url,
-		'pdfUrl': pdf.asset->url,
-		section,
-		openInNewTab
-	}`)
-	const gallery = await fetchPageGallery('/ministries/sunday-school')
+export const load = async ({ url }) => {
+	const [data, links, photos] = await Promise.all([
+		sundayMinistries(),
+		sundaySchoolLinks(),
+		gallery(url.pathname),
+	])
 	return {
-		sundaySchoolLinks,
-		gallery,
+		sundaySchoolLinks: links,
+		gallery: photos,
 		tBody: updatedDataFiltered(data, 'date'),
 		tHeaders: [
 			'Month',

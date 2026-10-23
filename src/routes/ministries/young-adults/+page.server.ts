@@ -1,7 +1,7 @@
-import { fetchPageGallery } from '#lib/config/index.js'
+import { gallery as pageGallery } from '#lib/server/content.js'
 
-export const load = async () => {
-	const gallery = await fetchPageGallery('/ministries/young-adults')
+export const load = async ({ url }) => {
+	const gallery = await pageGallery(url.pathname)
 
 	return {
 		gallery,

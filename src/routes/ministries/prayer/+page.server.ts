@@ -1,9 +1,9 @@
-import { fetchPageGallery } from '#lib/config/index.js'
+import { gallery as pageGallery } from '#lib/server/content.js'
 import type { PrayerMeeting } from '#lib/schemas/prayer.js'
 import { torontoToday } from '#lib/schemas/worship-availability.js'
 import type { PageServerLoad } from './$types'
 
-export const load: PageServerLoad = async ({ locals }) => {
+export const load: PageServerLoad = async ({ locals, url }) => {
 	const [{ data: meetings, error }, { user }, gallery] = await Promise.all([
 		locals.supabase
 			.from('prayer_meetings')
@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 			.order('meeting_date')
 			.returns<Omit<PrayerMeeting, 'leader_user_id'>[]>(),
 		locals.safeGetSession(),
-		fetchPageGallery('/ministries/prayer'),
+		pageGallery(url.pathname),
 	])
 	if (error) console.error('[prayer] load schedule', error)
 

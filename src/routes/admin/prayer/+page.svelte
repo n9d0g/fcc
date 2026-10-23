@@ -117,16 +117,6 @@
 						Add the next 8 Wednesdays
 					</button>
 				</form>
-				<form
-					method="POST"
-					action="?/importSanity"
-					use:enhance={submit('import', (d) => `Imported ${d.imported ?? 0} meetings from Sanity`)}
-				>
-					<button class="btn btn-sm btn-outline" disabled={busy === 'import'}>
-						<Icon icon="lucide:download" class="size-4" />
-						Import from Sanity
-					</button>
-				</form>
 			</div>
 		</section>
 

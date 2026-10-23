@@ -1,4 +1,3 @@
-import { client } from '#lib/config/index.js'
 import {
 	prayerMeetingSchema,
 	upcomingWednesdays,
@@ -159,29 +158,5 @@ export const actions = {
 			return fail(500, { message: 'Could not add meetings.' })
 		}
 		return { added: data?.length ?? 0 }
-	},
-
-	// One-time move off the Sanity "prayer" documents. Dates already in the
-	// table are left as they are.
-	importSanity: async (event) => {
-		const docs = await client.fetch<
-			{ name?: string; date?: string; scripture?: string }[]
-		>(`*[_type == "prayer" && defined(date)]{ name, date, scripture }`)
-		const rows = docs.map((d) => ({
-			meeting_date: d.date!,
-			leader_name: d.name?.trim().slice(0, 100) || null,
-			scripture: d.scripture?.trim().slice(0, 200) || null,
-		}))
-		if (!rows.length) return { imported: 0 }
-
-		const { data, error: err } = await event.locals.supabase
-			.from('prayer_meetings')
-			.upsert(rows, { onConflict: 'meeting_date', ignoreDuplicates: true })
-			.select('id')
-		if (err) {
-			console.error('[admin] import prayer from sanity', err)
-			return fail(500, { message: 'Could not import from Sanity.' })
-		}
-		return { imported: data?.length ?? 0 }
 	},
 } satisfies Actions

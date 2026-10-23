@@ -72,7 +72,7 @@
 	}
 
 	// Banner data (derived to stay reactive when data changes)
-	let banner = $derived(data.banner as App.Banner | undefined)
+	let banner = $derived(data.banner)
 	let user = $derived(data.user)
 
 	$effect(() => {

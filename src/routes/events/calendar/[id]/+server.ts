@@ -1,14 +1,11 @@
-import { client } from '#lib/config/index.js'
-import { EVENT_FIELDS, eventIcs, type FccEvent } from '#lib/events.js'
+import { eventIcs } from '#lib/events.js'
+import { event as findEvent } from '#lib/server/content.js'
 import { error } from '@sveltejs/kit'
 
 // .ics download for one event: the "Apple / other" button in emails and on
 // /events. Apple Calendar, Outlook desktop and most others open these.
 export const GET = async ({ params }) => {
-	const event = await client.fetch<FccEvent | null>(
-		`*[_type == "event" && _id == $id && !(_id in path("drafts.**"))][0]{ ${EVENT_FIELDS} }`,
-		{ id: params.id }
-	)
+	const event = await findEvent(params.id)
 	if (!event?.start) throw error(404, 'Event not found')
 
 	const filename = event.title

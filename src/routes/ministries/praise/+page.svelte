@@ -3,15 +3,9 @@
 	import praiseTeam from '#lib/assets/ministries/praise/praise-team.jpg'
 	import LandingPageGrid from '#lib/components/LandingPageGrid.svelte'
 	import MinistryPageContent from '#lib/components/ministries/MinistryPageContent.svelte'
+	import type { PageData } from './$types'
 
-	let {
-		data,
-	}: {
-		data: {
-			gallery: unknown
-			landingPageItems: Array<{ title: string; link: string; external?: boolean }>
-		}
-	} = $props()
+	let { data }: { data: PageData } = $props()
 	let gallery = $derived(data.gallery)
 
 	const instruments = [

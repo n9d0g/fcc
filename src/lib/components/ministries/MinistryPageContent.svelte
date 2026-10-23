@@ -35,7 +35,7 @@
 		howToJoinContent: Snippet
 
 		// Gallery from CMS
-		gallery?: { photos: GalleryPhoto[] }
+		gallery?: { photos: GalleryPhoto[] } | null
 		galleryTitle?: string
 
 		// Custom content slot (for additional media like videos)

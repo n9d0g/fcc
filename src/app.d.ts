@@ -31,27 +31,6 @@ declare global {
 			supabase?: SupabaseClient
 			cookies?: { name: string; value: string }[]
 		}
-
-		interface Banner {
-			_id: string
-			_updatedAt: string
-			body?: {
-				_key: string
-				children: {
-					_key: string
-					marks: string[]
-					text: string
-				}[]
-				markDefs?: {
-					_key: string
-					href: string
-				}[]
-				style: string
-			}[]
-			title?: string
-			/** Last day shown, yyyy-MM-dd */
-			date: string
-		}
 	}
 }
 
