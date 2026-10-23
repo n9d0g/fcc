@@ -3,7 +3,6 @@
 	import { buildSeoHeadExtras } from '#lib/utils.js'
 	import Hero from '#lib/components/home/Hero.svelte'
 	import HomeWelcome from '#lib/components/home/HomeWelcome.svelte'
-	import HomeNextEvent from '#lib/components/home/HomeNextEvent.svelte'
 	import HomeSermons from '#lib/components/home/HomeSermons.svelte'
 	import HomeCommunity from '#lib/components/home/HomeCommunity.svelte'
 	import HomeBlog from '#lib/components/home/HomeBlog.svelte'
@@ -39,9 +38,5 @@
 
 	{#if data.posts?.length}
 		<HomeBlog posts={data.posts} />
-	{/if}
-
-	{#if data.pages.length > 0}
-		<HomeNextEvent pageInfo={data.pages} />
 	{/if}
 </div>

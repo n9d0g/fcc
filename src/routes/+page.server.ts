@@ -7,12 +7,8 @@ export const load = async (event) => {
 	// Cache home page for 5 minutes, allow stale for 1 hour (bust=true to bypass)
 	setCacheHeaders(event.setHeaders, event.url, ...CACHE_PRESETS.home)
 
-	const [sermons, pages, posts] = await Promise.all([
+	const [sermons, posts] = await Promise.all([
 		client.fetch(`*[_type == "sermons"]`),
-		client.fetch(`*[_type == "pages"] {
-			page,
-			'invite': weeklyInvite.asset->url
-		}`),
 		// The blog section is optional, so a failure just hides it
 		loadPublishedPosts(event, 3).catch((err) => {
 			console.error('[home] load blog posts', err)
@@ -20,11 +16,10 @@ export const load = async (event) => {
 		}),
 	])
 
-	if (sermons && pages)
+	if (sermons)
 		return {
 			posts,
 			sermons: sortByField(sermons, 'date', 'desc'),
-			pages: pages[0],
 			links: { googleMaps: links.googleMaps, zoom: links.zoom.link },
 		}
 
