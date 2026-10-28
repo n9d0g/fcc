@@ -1,8 +1,8 @@
-import { gallery as pageGallery } from '#lib/server/content.js'
+import { gallery as pageGallery, optional } from '#lib/server/content.js'
 
 export const load = async ({ parent, url }) => {
 	const [gallery, { roles, isWorshipMember }] = await Promise.all([
-		pageGallery(url.pathname),
+		optional(pageGallery(url.pathname), 'gallery'),
 		parent(),
 	])
 

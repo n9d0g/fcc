@@ -1,6 +1,7 @@
 import { EVENT_FIELDS, type FccEvent } from '#lib/events.js'
 import type { Banner, PageGallery, Sermon } from '#lib/types.js'
 import { createClient } from '@sanity/client'
+import { captureException } from '@sentry/sveltekit'
 
 // Everything read from Sanity Studio (apps/cms). Server-only: SvelteKit won't
 // let browser code import from $lib/server, so the client never ships to it.
@@ -12,6 +13,23 @@ const sanity = createClient({
 	// Never drafts, whatever the query says
 	perspective: 'published',
 })
+
+/**
+ * Optional content (see GLOSSARY.md): a page that can be shown without this
+ * query wraps it, so a Sanity outage leaves it out instead of failing the
+ * page. Whether content is optional is the page's call, not the query's:
+ * sermons are optional on the home page but essential on /sermons.
+ */
+export const optional = <T>(
+	query: Promise<T>,
+	label: string,
+	report: (err: unknown, label: string) => void = (err, label) =>
+		captureException(err, { tags: { content: label } })
+): Promise<T | null> =>
+	query.catch((err) => {
+		report(err, label)
+		return null
+	})
 
 export type Leader = {
 	name: string

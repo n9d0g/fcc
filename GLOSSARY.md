@@ -48,3 +48,9 @@ _Avoid_: newsletter subscriber, mailing list member
 
 **Event announcement**:
 The one email every Event subscriber gets when a new upcoming event is published. Each event is announced at most once.
+
+## Content
+
+**Optional content**:
+Content from the CMS that a page can be shown without, such as the banner or a page's photo gallery. If the CMS can't be reached, optional content is left out and the page still loads; everything else on that page is essential, and the page fails instead.
+_Avoid_: fallback content, non-critical

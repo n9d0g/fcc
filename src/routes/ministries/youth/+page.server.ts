@@ -1,7 +1,7 @@
-import { gallery as pageGallery } from '#lib/server/content.js'
+import { gallery as pageGallery, optional } from '#lib/server/content.js'
 
 export const load = async ({ url }) => {
-	const gallery = await pageGallery(url.pathname)
+	const gallery = await optional(pageGallery(url.pathname), 'gallery')
 
 	return {
 		gallery,

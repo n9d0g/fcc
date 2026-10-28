@@ -1,5 +1,6 @@
 import {
 	gallery,
+	optional,
 	sundayMinistries,
 	sundaySchoolLinks,
 } from '#lib/server/content.js'
@@ -8,8 +9,8 @@ import { updatedDataFiltered } from '#lib/utils.js'
 export const load = async ({ url }) => {
 	const [data, links, photos] = await Promise.all([
 		sundayMinistries(),
-		sundaySchoolLinks(),
-		gallery(url.pathname),
+		optional(sundaySchoolLinks(), 'sundaySchoolLinks'),
+		optional(gallery(url.pathname), 'gallery'),
 	])
 	return {
 		sundaySchoolLinks: links,
