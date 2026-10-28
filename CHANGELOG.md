@@ -1,5 +1,13 @@
 # web
 
+## [3.32.9](https://github.com/n9d0g/fcc/compare/v3.32.8...v3.32.9) (2026-10-28)
+
+
+### Bug Fixes
+
+* **web:** :goal_net: optional content fails soft when Sanity is down ([115ccc5](https://github.com/n9d0g/fcc/commit/115ccc576cf05393ad0b24f69d0477595eef528b))
+* **web:** :goal_net: optional content fails soft when Sanity is down ([25af38f](https://github.com/n9d0g/fcc/commit/25af38f381e8778d69c2d50b7487653b460a4b62))
+
 ## [3.32.8](https://github.com/n9d0g/fcc/compare/v3.32.7...v3.32.8) (2026-10-23)
 
 
