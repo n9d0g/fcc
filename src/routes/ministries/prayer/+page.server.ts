@@ -1,4 +1,4 @@
-import { gallery as pageGallery } from '#lib/server/content.js'
+import { gallery as pageGallery, optional } from '#lib/server/content.js'
 import type { PrayerMeeting } from '#lib/schemas/prayer.js'
 import { torontoToday } from '#lib/schemas/worship-availability.js'
 import type { PageServerLoad } from './$types'
@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 			.order('meeting_date')
 			.returns<Omit<PrayerMeeting, 'leader_user_id'>[]>(),
 		locals.safeGetSession(),
-		pageGallery(url.pathname),
+		optional(pageGallery(url.pathname), 'gallery'),
 	])
 	if (error) console.error('[prayer] load schedule', error)
 

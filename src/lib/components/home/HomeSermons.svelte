@@ -17,6 +17,8 @@
 	} = $props()
 </script>
 
+<!-- Hidden when sermons couldn't be loaded -->
+{#if sermons.length}
 <section class="section border-y border-line bg-surface-100/70">
 	<div class="wrap">
 		<div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
@@ -46,3 +48,4 @@
 		</div>
 	</div>
 </section>
+{/if}
