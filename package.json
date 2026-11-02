@@ -39,7 +39,7 @@
 		"@better-svelte-email/components": "^2.3.0",
 		"@better-svelte-email/server": "^2.3.0",
 		"@iconify/svelte": "^5.2.3",
-		"@sanity/client": "^7.23.0",
+		"@sanity/client": "^8.14.1",
 		"@sentry/cloudflare": "^11.10.0",
 		"@sentry/sveltekit": "^11.10.0",
 		"@supabase/ssr": "^0.12.7",
