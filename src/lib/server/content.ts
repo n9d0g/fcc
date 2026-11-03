@@ -14,6 +14,37 @@ const sanity = createClient({
 	perspective: 'published',
 })
 
+const statusOf = (err: unknown) => {
+	if (typeof err !== 'object' || err === null) return undefined
+	const e = err as { statusCode?: unknown; response?: { statusCode?: unknown } }
+	const status = e.statusCode ?? e.response?.statusCode
+	return typeof status === 'number' ? status : undefined
+}
+
+const pause = (ms: number) => new Promise<void>((done) => setTimeout(done, ms))
+
+/**
+ * Runs `request` again once if it fails with a 5xx. The client only retries
+ * when no response arrives, so a brief CDN error (like Cloudflare's 520)
+ * would otherwise fail the query outright.
+ */
+export const retryOnServerError = async <T>(
+	request: () => Promise<T>,
+	wait: (ms: number) => Promise<void> = pause
+): Promise<T> => {
+	try {
+		return await request()
+	} catch (err) {
+		const status = statusOf(err)
+		if (status === undefined || status < 500) throw err
+		await wait(200)
+		return request()
+	}
+}
+
+const query = <T>(groq: string, params: Record<string, unknown> = {}) =>
+	retryOnServerError(() => sanity.fetch<T>(groq, params))
+
 /**
  * Optional content (see GLOSSARY.md): a page that can be shown without this
  * query wraps it, so a Sanity outage leaves it out instead of failing the
@@ -66,28 +97,28 @@ export type SundaySchoolLink = {
 
 /** The banner whose start and end dates include `today` (yyyy-MM-dd), if any. */
 export const banner = (today: string) =>
-	sanity.fetch<Banner | null>(
+	query<Banner | null>(
 		`*[_type == "banner" && defined(date)
 			&& (!defined(startDate) || startDate <= $today) && date >= $today]
 			| order(_updatedAt desc)[0] { _id, _updatedAt, title, body, date }`,
 		{ today }
 	)
 
-export const sermons = () => sanity.fetch<Sermon[]>(`*[_type == "sermons"]`)
+export const sermons = () => query<Sermon[]>(`*[_type == "sermons"]`)
 
 /** Leadership, in their Studio sort order. */
 export const leaders = () =>
-	sanity.fetch<Leader[]>(
+	query<Leader[]>(
 		`*[_type == "leadership"] | order(sort asc) {
 			name, title, subministries, sort, 'img': image.asset->url
 		}`
 	)
 
 export const sundayMinistries = () =>
-	sanity.fetch<SundayMinistryMonth[]>(`*[_type == "sunday-ministries"]`)
+	query<SundayMinistryMonth[]>(`*[_type == "sunday-ministries"]`)
 
 export const sundaySchoolLinks = () =>
-	sanity.fetch<SundaySchoolLink[]>(
+	query<SundaySchoolLink[]>(
 		`*[_type == "sunday-school-links"] | order(order asc) {
 			title, url, 'pdfUrl': pdf.asset->url, section, openInNewTab
 		}`
@@ -95,19 +126,19 @@ export const sundaySchoolLinks = () =>
 
 /** Every event with a start time, newest first. */
 export const events = () =>
-	sanity.fetch<FccEvent[]>(
+	query<FccEvent[]>(
 		`*[_type == "event" && defined(start)] | order(start desc) { ${EVENT_FIELDS} }`
 	)
 
 export const event = (id: string) =>
-	sanity.fetch<FccEvent | null>(
+	query<FccEvent | null>(
 		`*[_type == "event" && _id == $id][0] { ${EVENT_FIELDS} }`,
 		{ id }
 	)
 
 /** The photos set up in Studio for the page at `path`. */
 export const gallery = (path: string) =>
-	sanity.fetch<PageGallery | null>(
+	query<PageGallery | null>(
 		`*[_type == "page-gallery" && pageUrl == $path][0] {
 			title, photos[] { "url": asset->url, alt, caption }
 		}`,
