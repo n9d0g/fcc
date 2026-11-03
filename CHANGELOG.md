@@ -1,5 +1,13 @@
 # web
 
+## [3.32.10](https://github.com/n9d0g/fcc/compare/v3.32.9...v3.32.10) (2026-11-03)
+
+
+### Bug Fixes
+
+* **content:** :bug: retry Sanity queries once on 5xx ([217ac04](https://github.com/n9d0g/fcc/commit/217ac04b80610d61aff4b5d9a21897d425260159))
+* **content:** retry Sanity queries once on 5xx ([2f05ccb](https://github.com/n9d0g/fcc/commit/2f05ccbedbebeb826832f53cdd5118ae02d9e872))
+
 ## [3.32.9](https://github.com/n9d0g/fcc/compare/v3.32.8...v3.32.9) (2026-10-28)
 
 
