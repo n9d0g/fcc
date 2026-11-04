@@ -53,7 +53,8 @@
 			}}
 			onload={(e) => {
 				const img = e.currentTarget
-				if (img.naturalWidth <= 120) thumbImg = fallbackUrl
+				if (img instanceof HTMLImageElement && img.naturalWidth <= 120)
+					thumbImg = fallbackUrl
 			}}
 		/>
 		<span

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css'
 	import type { Snippet } from 'svelte'
+	import type { AuthChangeEvent } from '@supabase/supabase-js'
 
 	// regular imports
 	import Footer from '#lib/components/Footer.svelte'
@@ -85,7 +86,7 @@
 
 		const {
 			data: { subscription },
-		} = supabase.auth.onAuthStateChange((event) => {
+		} = supabase.auth.onAuthStateChange((event: AuthChangeEvent) => {
 			if (
 				event === 'SIGNED_IN' ||
 				event === 'SIGNED_OUT' ||
