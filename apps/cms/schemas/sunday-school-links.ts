@@ -1,4 +1,6 @@
-export default {
+import { defineType } from 'sanity'
+
+export default defineType({
 	name: 'sunday-school-links',
 	type: 'document',
 	title: 'Sunday School Links',
@@ -71,10 +73,10 @@ export default {
 			url,
 			pdf,
 		}: {
-			title: string
-			section: string
-			url: string
-			pdf: any
+			title?: string
+			section?: string
+			url?: string
+			pdf?: any
 		}) {
 			const sectionLabels: Record<string, string> = {
 				junior: 'Junior',
@@ -84,8 +86,8 @@ export default {
 			const linkType = pdf ? 'PDF' : url || 'No link'
 			return {
 				title,
-				subtitle: `${sectionLabels[section] || section} | ${linkType}`,
+				subtitle: `${(section && sectionLabels[section]) || section || 'No section'} | ${linkType}`,
 			}
 		},
 	},
-}
+})

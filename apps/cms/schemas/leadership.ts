@@ -1,4 +1,6 @@
-export default {
+import { defineType } from 'sanity'
+
+export default defineType({
 	name: 'leadership',
 	type: 'document',
 	title: 'Leadership',
@@ -13,9 +15,9 @@ export default {
 			title,
 			sort,
 		}: {
-			name: string
-			title: string
-			sort: number
+			name?: string
+			title?: string
+			sort?: number
 		}) {
 			return {
 				title: name || 'Unnamed',
@@ -76,4 +78,4 @@ export default {
 			],
 		},
 	],
-}
+})
