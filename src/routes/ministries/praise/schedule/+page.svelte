@@ -8,9 +8,11 @@
 	import { openPraiseModal } from '#lib/stores/modalStore.svelte.js'
 	import { links } from '#lib/config/index.js'
 	import { formatCmsDate } from '#lib/utils.js'
+	import type { ScheduleRow } from '#lib/schemas/worship-schedule.js'
+	import type { PageProps } from './$types'
 
 	// Svelte 5 props
-	let { data }: { data: any } = $props()
+	let { data }: PageProps = $props()
 
 	let tHead = $derived(data.tHead)
 	let tBody = $derived(data.tBody)
@@ -18,10 +20,10 @@
 	let praiseAssignments = $derived(data.praiseAssignments)
 
 	// State
-	let filterTerm = $state('lead')
+	let filterTerm = $state<keyof ScheduleRow>('lead')
 	let searchTerm = $state('')
 
-	let upToDatePraiseData = $derived(updatedDataFiltered(data.praise, 'date'))
+	let upToDatePraiseData = $derived(updatedDataFiltered<ScheduleRow>(data.praise, 'date'))
 
 	// Derived values
 	let filteredData = $derived(
@@ -29,18 +31,18 @@
 	)
 
 	// functions
-	const openDetails = (week: any) => {
+	const openDetails = (week: ScheduleRow) => {
 		openPraiseModal({
 			date: week.date,
-			series: week.series,
-			title: week.topic,
-			speaker: week.speaker,
-			scripture: week.scripture,
-			objective: week.objective,
-			summary: week.summary,
+			series: week.series ?? undefined,
+			title: week.topic ?? undefined,
+			speaker: week.speaker ?? undefined,
+			scripture: week.scripture ?? undefined,
+			objective: week.objective ?? undefined,
+			summary: week.summary ?? undefined,
 			songs: week.songs,
 			unavailableList: week.unavailableList,
-			pdf: week.pdfURL,
+			pdf: week.pdfURL ?? undefined,
 		})
 	}
 </script>
@@ -115,12 +117,14 @@
 								{#if week[col]}
 									{#if col === 'date'}
 										<td class="sticky-col whitespace-nowrap">
-											{formatCmsDate(week[col], 'MMM do')}
+											{formatCmsDate(week.date, 'MMM do')}
 										</td>
 									{:else if col === 'unavailableList'}
 										<td>
-											{#each week[col] as unavailable, i}
-												{unavailable.name}{i !== week[col].length - 1 ? '; ' : ''}
+											{#each week.unavailableList as unavailable, i}
+												{unavailable.name}{i !== week.unavailableList.length - 1
+													? '; '
+													: ''}
 											{/each}
 										</td>
 									{:else}
