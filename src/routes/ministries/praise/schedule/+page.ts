@@ -1,3 +1,5 @@
+import type { ScheduleRow } from '#lib/schemas/worship-schedule.js'
+
 // Schedule and roster come from Supabase (+page.server.ts). Not cached, so
 // worship leaders' edits show up straight away.
 export const load = async ({ data }) => {
@@ -26,7 +28,7 @@ export const load = async ({ data }) => {
 			'electric',
 			'backup',
 			'unavailableList',
-		],
+		] satisfies (keyof ScheduleRow)[],
 		tableMeta: [
 			'series',
 			'topic',

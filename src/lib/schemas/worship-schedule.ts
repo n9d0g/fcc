@@ -156,3 +156,5 @@ export const toScheduleRow = (s: WorshipService) => ({
 	unavailable: s.unavailable.map((u) => u.name).join('; '),
 	pdfURL: s.chords_url,
 })
+
+export type ScheduleRow = ReturnType<typeof toScheduleRow>
