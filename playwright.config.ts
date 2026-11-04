@@ -35,8 +35,8 @@ export default defineConfig({
 	retries: process.env.CI ? 2 : 0,
 	/* Opt out of parallel tests on CI. */
 	workers: process.env.CI ? 1 : undefined,
-	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
-	reporter: 'html',
+	/* On CI, annotate failures on the PR and keep the HTML report for upload */
+	reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : 'html',
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
 		/* Tests navigate by path against this branch's local build. */
