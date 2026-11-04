@@ -1,5 +1,14 @@
 # web
 
+## [3.32.11](https://github.com/n9d0g/fcc/compare/v3.32.10...v3.32.11) (2026-11-04)
+
+
+### Bug Fixes
+
+* **types:** :label: make svelte-check pass with zero errors ([0e47b4e](https://github.com/n9d0g/fcc/commit/0e47b4ea23cb954093fca7b961d6d0cb38a040be))
+* **types:** :label: make svelte-check pass with zero errors ([aec4602](https://github.com/n9d0g/fcc/commit/aec4602024420d4e4573e837db45898dd03ba5e0)), closes [#444](https://github.com/n9d0g/fcc/issues/444)
+* **types:** :label: zero type errors, local-build e2e in CI, Node 24 actions ([5f8304a](https://github.com/n9d0g/fcc/commit/5f8304a1d39e6c08748e1670c3a866b2328229d9))
+
 ## [3.32.10](https://github.com/n9d0g/fcc/compare/v3.32.9...v3.32.10) (2026-11-03)
 
 
