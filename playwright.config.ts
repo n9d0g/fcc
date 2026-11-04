@@ -1,4 +1,20 @@
+import { mkdirSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { defineConfig, devices } from '@playwright/test'
+
+/**
+ * Playwright's Firefox (builds before 158) reads the real Firefox app-data
+ * folder, which macOS 27 protects, so it exits with "Could not find profile
+ * folder". Pointing CFFIXED_USER_HOME at a folder of its own lets it start.
+ * Remove once on Playwright >= 1.65: https://github.com/microsoft/playwright/issues/42768
+ */
+const firefoxLaunchEnv = () => {
+	if (process.platform !== 'darwin') return undefined
+	const home = join(tmpdir(), 'fcc-playwright-firefox-home')
+	mkdirSync(home, { recursive: true })
+	return { ...process.env, CFFIXED_USER_HOME: home }
+}
 
 /**
  * Read environment variables from file.
@@ -39,7 +55,10 @@ export default defineConfig({
 
 		{
 			name: 'firefox',
-			use: { ...devices['Desktop Firefox'] },
+			use: {
+				...devices['Desktop Firefox'],
+				launchOptions: { env: firefoxLaunchEnv() },
+			},
 		},
 
 		{
