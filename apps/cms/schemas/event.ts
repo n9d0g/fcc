@@ -1,7 +1,9 @@
+import { defineType } from 'sanity'
+
 // Upcoming and past events on fcccanada.ca/events. Publishing a NEW event
 // emails everyone subscribed to event updates (see the "event" webhook set up
 // in sanity.io/manage), so double-check the details before publishing.
-export default {
+export default defineType({
 	name: 'event',
 	type: 'document',
 	title: 'Events',
@@ -19,8 +21,8 @@ export default {
 			start,
 			icon,
 		}: {
-			title: string
-			start: string
+			title?: string
+			start?: string
 			icon?: string
 		}) {
 			const date = start
@@ -97,4 +99,4 @@ export default {
 				'Optional page with more details or a recap, e.g. /events/2026/thanksgiving or a full https:// link.',
 		},
 	],
-}
+})

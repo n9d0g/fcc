@@ -1,4 +1,6 @@
-export default {
+import { defineType } from 'sanity'
+
+export default defineType({
 	name: 'page-gallery',
 	type: 'document',
 	title: 'Page Gallery',
@@ -59,9 +61,9 @@ export default {
 			pageUrl,
 			media,
 		}: {
-			title: string
-			pageUrl: string
-			media: any
+			title?: string
+			pageUrl?: string
+			media?: any
 		}) {
 			return {
 				title,
@@ -70,4 +72,4 @@ export default {
 			}
 		},
 	},
-}
+})

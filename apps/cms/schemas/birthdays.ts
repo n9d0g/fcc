@@ -1,4 +1,6 @@
-export default {
+import { defineType } from 'sanity'
+
+export default defineType({
 	name: 'birthdays',
 	type: 'document',
 	title: 'Birthdays',
@@ -15,10 +17,10 @@ export default {
 			pastor,
 			wa,
 		}: {
-			name: string
-			birthday: string
-			pastor: boolean
-			wa: boolean
+			name?: string
+			birthday?: string
+			pastor?: boolean
+			wa?: boolean
 		}) {
 			const formattedDate = birthday
 				? new Date(birthday).toLocaleDateString('en-US', {
@@ -58,4 +60,4 @@ export default {
 			type: 'boolean',
 		},
 	],
-}
+})

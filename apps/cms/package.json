@@ -12,6 +12,7 @@
 		"dev": "sanity dev",
 		"start": "sanity start",
 		"build": "sanity build",
+		"check": "tsc --noEmit",
 		"deploy": "sanity deploy",
 		"deploy-graphql": "sanity graphql deploy",
 		"fresh": "rm -rf node_modules dist && pnpm install && pnpm build",

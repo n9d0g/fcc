@@ -1,4 +1,6 @@
-export default {
+import { defineType } from 'sanity'
+
+export default defineType({
 	name: 'praise-assignments',
 	type: 'document',
 	title: 'Praise Assignments',
@@ -7,7 +9,7 @@ export default {
 			role: 'role',
 			names: 'names',
 		},
-		prepare({ role, names }: { role: string; names: string[] }) {
+		prepare({ role, names }: { role?: string; names?: string[] }) {
 			const count = names?.length || 0
 			return {
 				title: role || 'No role',
@@ -41,4 +43,4 @@ export default {
 			of: [{ type: 'string' }],
 		},
 	],
-}
+})
