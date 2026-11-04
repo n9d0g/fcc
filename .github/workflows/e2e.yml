@@ -1,0 +1,51 @@
+name: E2E Tests
+
+on:
+  pull_request:
+    branches: [dev, main]
+    paths-ignore:
+      - 'apps/cms/**'
+
+concurrency:
+  group: e2e-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  e2e:
+    # Fork PRs get no secrets, so the build can't reach Supabase
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    env:
+      # Only what the build needs. No Sentry DSN (test runs don't report to
+      # Sentry) and no private secrets (they default to '').
+      PUBLIC_SUPABASE_URL: ${{ secrets.PUBLIC_SUPABASE_URL }}
+      PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.PUBLIC_SUPABASE_ANON_KEY }}
+      PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY: ${{ secrets.PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY }}
+      WRANGLER_SEND_METRICS: 'false'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Vite+
+        uses: voidzero-dev/setup-vp@v1.21.2
+        with:
+          node-version-file: .node-version
+          cache: true
+
+      - name: Install Playwright browsers
+        run: vp exec playwright install --with-deps chromium firefox webkit
+
+      # Builds the site and serves it with wrangler dev (see playwright.config.ts)
+      - name: Run e2e tests
+        run: vp run test
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
