@@ -62,23 +62,22 @@ If the cert files are missing, Vite falls back to plain HTTP. Port 443 needs no 
 
 ## Environment variables
 
-**Public** (build time — use `.env` locally and GitHub Actions secrets for deploys):
+**Locally**, `.env` comes from the project's 1Password environment, which mounts it as a named pipe ([ADR 0002](docs/adr/0002-local-secrets-via-1password-environment.md)). `vp dev`, `vp build` and `pnpm preview` (`wrangler dev`) all read it. Don't create a `.dev.vars` file: `wrangler dev` would use it instead of `.env`. If you don't have 1Password access, copy [`.env.example`](.env.example) to `.env` and ask a maintainer for values.
 
-- `PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_ANON_KEY`
-- `PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY`
+[`.env.example`](.env.example) is the full list of keys. Add any new key there as well as in 1Password.
 
-See [`.env.example`](.env.example) for the full list.
+**Public** (build time): `PUBLIC_*` keys. Deploys get them from GitHub Actions secrets.
 
-**Private** (runtime — use [`.dev.vars`](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets) for `pnpm preview`, and Worker secrets in Cloudflare for production):
+**Private** (runtime): Worker secrets in Cloudflare for deployed environments:
 
 ```bash
 wrangler secret put RESEND_API_KEY
 wrangler secret put GOOGLE_RECAPTCHA_SECRET_KEY
-wrangler secret put GOOGLE_MAPS_API_KEY
+wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+wrangler secret put SANITY_WEBHOOK_SECRET
+wrangler secret put CRON_SECRET
 # repeat with --env qa or --env nate for preview environments
 ```
-
-Ask a maintainer for secret values.
 
 ## Deploying (Cloudflare Workers)
 
