@@ -28,12 +28,5 @@
 				"RESEND_FROM_EMAIL": "noreply@fcccanada.ca",
 			},
 		},
-		"nate": {
-			"name": "fcc-nate",
-			"routes": [],
-			"vars": {
-				"RESEND_FROM_EMAIL": "noreply@fcccanada.ca",
-			},
-		},
 	},
 }
