@@ -2,7 +2,7 @@ name: Deploy Web to Cloudflare
 
 on:
   push:
-    branches: [main, dev, nate]
+    branches: [main, dev]
     paths-ignore:
       - 'apps/cms/**'
 
@@ -38,11 +38,6 @@ jobs:
               WRANGLER_ENV="qa"
               SITE_NAME="dev.fcccanada.ca"
               DEPLOY_URL="https://dev.fcccanada.ca"
-              ;;
-            nate)
-              WRANGLER_ENV="nate"
-              SITE_NAME="nate.fcccanada.ca"
-              DEPLOY_URL="https://nate.fcccanada.ca"
               ;;
             *)
               WRANGLER_ENV="qa"

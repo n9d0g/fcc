@@ -13,10 +13,6 @@ declare namespace Cloudflare {
 		ASSETS: Fetcher
 		RESEND_FROM_EMAIL: 'noreply@fcccanada.ca'
 	}
-	interface NateEnv {
-		ASSETS: Fetcher
-		RESEND_FROM_EMAIL: 'noreply@fcccanada.ca'
-	}
 	interface Env extends __BaseEnv_Env {}
 }
 interface Env extends __BaseEnv_Env {}
