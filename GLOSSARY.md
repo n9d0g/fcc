@@ -4,6 +4,10 @@ The church's public website plus the signed-in tools its members and leaders use
 
 ## Access
 
+**Account**:
+A person's sign-in to the site, registered with a name, email address and password. It becomes a new account only once its email address is confirmed; before that it is an unconfirmed signup, which can be thrown away.
+_Avoid_: registration, user (for unconfirmed signups)
+
 **Viewer**:
 The person making a request, together with everything they may do on it: their Roles, whether they are a Worship member, and whether they are a Blog author. A signed-out visitor is a Viewer with no permissions.
 _Avoid_: user (when permissions are meant), session, current user
