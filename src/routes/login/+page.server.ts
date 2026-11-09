@@ -3,6 +3,7 @@ import { displayNameOf } from '#lib/schemas/account.js'
 import { torontoTimestamp } from '#lib/schemas/worship-availability.js'
 import {
 	authErrorMessage,
+	captchaTokenFrom,
 	logAuthError,
 	safeRedirect,
 } from '#lib/server/auth.js'
@@ -55,6 +56,7 @@ export const actions = {
 			const { error } = await locals.supabase.auth.signInWithPassword({
 				email,
 				password,
+				options: { captchaToken: captchaTokenFrom(formData) },
 			})
 
 			if (error) {
@@ -136,6 +138,7 @@ export const actions = {
 			const { error } = await locals.supabase.auth.resend({
 				type: 'signup',
 				email,
+				options: { captchaToken: captchaTokenFrom(formData) },
 			})
 
 			if (error) {
