@@ -1,6 +1,7 @@
 <script lang="ts">
 	import FccLayout from '#lib/components/FccLayout.svelte'
 	import { enhance } from '$app/forms'
+	import { ACCOUNT_LIMITS, DISPLAY_NAME_HINT } from '#lib/schemas/account.js'
 	import type { ActionData } from './$types'
 
 	let { form }: { form: ActionData } = $props()
@@ -49,11 +50,13 @@
 							type="text"
 							name="displayName"
 							autocomplete="name"
-							placeholder="First and last name"
-							maxlength="100"
+							placeholder="Your name"
+							maxlength={ACCOUNT_LIMITS.displayName}
+							aria-describedby="display-name-hint"
 							value={displayName}
 							required
 						/>
+						<span id="display-name-hint" class="text-sm text-muted">{DISPLAY_NAME_HINT}</span>
 					</label>
 
 					<label class="label flex flex-col gap-2">

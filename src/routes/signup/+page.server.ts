@@ -1,9 +1,7 @@
-import { ACCOUNT_LIMITS } from '#lib/schemas/account.js'
+import { displayNameSchema } from '#lib/schemas/account.js'
 import { authErrorMessage, logAuthError } from '#lib/server/auth.js'
 import { fail, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
-
-const DISPLAY_NAME_MAX = ACCOUNT_LIMITS.displayName
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const { session, user } = await locals.safeGetSession()
@@ -28,9 +26,11 @@ export const actions = {
 			})
 		}
 
-		if (displayName.length > DISPLAY_NAME_MAX) {
+		// Same rules as changing your name on /account
+		const parsedName = displayNameSchema.safeParse({ displayName })
+		if (!parsedName.success) {
 			return fail(400, {
-				error: `Name must be ${DISPLAY_NAME_MAX} characters or fewer.`,
+				error: parsedName.error.issues[0]?.message ?? 'Please check your name.',
 				displayName,
 				email,
 			})
@@ -53,7 +53,7 @@ export const actions = {
 				options: {
 					emailRedirectTo: `${url.origin}/login`,
 					// Shown as "Display name" in the Supabase dashboard
-					data: { display_name: displayName },
+					data: { display_name: parsedName.data.displayName },
 				},
 			})
 
