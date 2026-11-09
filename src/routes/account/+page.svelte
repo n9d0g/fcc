@@ -1,5 +1,6 @@
 <script lang="ts">
 	import FccLayout from '#lib/components/FccLayout.svelte'
+	import Turnstile from '#lib/components/Turnstile.svelte'
 	import Icon from '@iconify/svelte'
 	import { enhance, type SubmitFunction } from '$app/forms'
 	import { page } from '$app/state'
@@ -208,6 +209,7 @@
 				/>
 				{@render error(errorsFor('password').confirmPassword)}
 			</label>
+			<Turnstile />
 			{@render alert(messageFor('password'))}
 			<button class="btn btn-primary sm:self-end" disabled={busy === 'password'}>
 				{busy === 'password' ? 'Saving…' : 'Change password'}

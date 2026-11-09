@@ -1,5 +1,9 @@
 import { displayNameSchema } from '#lib/schemas/account.js'
-import { authErrorMessage, logAuthError } from '#lib/server/auth.js'
+import {
+	authErrorMessage,
+	captchaTokenFrom,
+	logAuthError,
+} from '#lib/server/auth.js'
 import { fail, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 
@@ -52,6 +56,7 @@ export const actions = {
 				password,
 				options: {
 					emailRedirectTo: `${url.origin}/login`,
+					captchaToken: captchaTokenFrom(formData),
 					// Shown as "Display name" in the Supabase dashboard
 					data: { display_name: parsedName.data.displayName },
 				},

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import FccLayout from '#lib/components/FccLayout.svelte'
+	import Turnstile from '#lib/components/Turnstile.svelte'
 	import { enhance } from '$app/forms'
 	import { ACCOUNT_LIMITS, DISPLAY_NAME_HINT } from '#lib/schemas/account.js'
 	import type { ActionData } from './$types'
@@ -84,6 +85,8 @@
 							required
 						/>
 					</label>
+
+					<Turnstile />
 
 					<button class="btn btn-primary btn-lg" type="submit">Create account</button>
 				</form>

@@ -106,7 +106,7 @@ Delete in Cloudflare DNS: apex `A` (`76.76.21.21`), both `www` `A` records, both
 ### GitHub secrets
 
 - `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
-- `PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_ANON_KEY`, `PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY`
+- `PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_ANON_KEY`, `PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY`, `PUBLIC_TURNSTILE_SITE_KEY`
 - `DISCORD_WEBHOOK_URL` (optional deploy notifications)
 - `SANITY_AUTH_TOKEN` (CMS Studio deploys on `main`)
 
@@ -115,7 +115,7 @@ Delete in Cloudflare DNS: apex `A` (`76.76.21.21`), both `www` `A` records, both
 1. Add `fcccanada.ca` (and subdomains) to Cloudflare DNS.
 2. Set Worker secrets per environment (see above).
 3. In GitHub → Settings → Actions → General, enable **Allow GitHub Actions to create and approve pull requests** for release-please.
-4. Add auth redirect URLs in Supabase and domains in reCAPTCHA for all hostnames.
+4. Add auth redirect URLs in Supabase, and every hostname (plus `localhost`) to reCAPTCHA and to the Turnstile widget. Supabase checks the Turnstile token on signup, login and resending the code, so a hostname missing from the widget can't sign in.
 5. After cutover, remove domains from Vercel and disconnect Vercel Git integration.
 
 ## Releases
