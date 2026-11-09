@@ -1,22 +1,9 @@
-import NewAccountEmail from '#lib/emails/NewAccount.svelte'
 import { ACCOUNT_LIMITS } from '#lib/schemas/account.js'
-import { torontoTimestamp } from '#lib/schemas/worship-availability.js'
 import { authErrorMessage, logAuthError } from '#lib/server/auth.js'
-import { trySend } from '#lib/server/notifier.js'
 import { fail, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 
 const DISPLAY_NAME_MAX = ACCOUNT_LIMITS.displayName
-
-// Best effort: a failed notification shouldn't block the person signing up
-const notifyNewAccount = (displayName: string, email: string) =>
-	trySend({
-		to: { inbox: 'requests' },
-		replyTo: email,
-		subject: `New account: ${displayName}`,
-		template: NewAccountEmail,
-		props: { displayName, email, registeredAt: torontoTimestamp() },
-	})
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const { session, user } = await locals.safeGetSession()
@@ -58,7 +45,9 @@ export const actions = {
 		}
 
 		try {
-			const { data, error } = await locals.supabase.auth.signUp({
+			// The Requests inbox hears about it once the email is confirmed
+			// (see verifyOtp on /login), so unconfirmed signups never reach it
+			const { error } = await locals.supabase.auth.signUp({
 				email,
 				password,
 				options: {
@@ -75,12 +64,6 @@ export const actions = {
 					displayName,
 					email,
 				})
-			}
-
-			// Supabase answers a signup for an existing email with a fake user
-			// that has no identities, so only notify for genuinely new accounts
-			if (data.user?.identities?.length) {
-				await notifyNewAccount(displayName, email)
 			}
 		} catch (error) {
 			logAuthError('signup', error)
