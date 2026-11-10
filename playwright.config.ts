@@ -4,10 +4,12 @@ import { join } from 'node:path'
 import { defineConfig, devices } from '@playwright/test'
 
 /**
- * Playwright's Firefox (builds before 158) reads the real Firefox app-data
- * folder, which macOS 27 protects, so it exits with "Could not find profile
- * folder". Pointing CFFIXED_USER_HOME at a folder of its own lets it start.
- * Remove once on Playwright >= 1.65: https://github.com/microsoft/playwright/issues/42768
+ * Playwright's Firefox reads the real Firefox app-data folder, which macOS 27
+ * protects, so it exits with "Could not find profile folder". Pointing
+ * CFFIXED_USER_HOME at a folder of its own lets it start. Upstream closed
+ * https://github.com/microsoft/playwright/issues/42768 for 1.65, but 1.65.0
+ * (Firefox 159) still fails on macOS 27.2 without this (#454). Try removing it
+ * on each Playwright upgrade.
  */
 const firefoxLaunchEnv = () => {
 	if (process.platform !== 'darwin') return undefined
