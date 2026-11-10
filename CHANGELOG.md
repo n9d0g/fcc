@@ -1,5 +1,14 @@
 # web
 
+## [3.34.0](https://github.com/n9d0g/fcc/compare/v3.33.0...v3.34.0) (2026-11-10)
+
+
+### Features
+
+* **contact:** :shield: check contact form submissions with Turnstile instead of reCAPTCHA ([97ccc2b](https://github.com/n9d0g/fcc/commit/97ccc2b572dc62ab98433688b9b96c80f68ec2c9))
+* **contact:** :shield: check contact form submissions with Turnstile instead of reCAPTCHA ([9138773](https://github.com/n9d0g/fcc/commit/9138773bf47eb47977cd4f7b9cd56b73e430f7dd)), closes [#468](https://github.com/n9d0g/fcc/issues/468)
+* **contact:** Turnstile on the contact form, plus Playwright 1.65 ([42bd928](https://github.com/n9d0g/fcc/commit/42bd9281258c0b5c8ed35278444f2e18b82b22c9))
+
 ## [3.33.0](https://github.com/n9d0g/fcc/compare/v3.32.11...v3.33.0) (2026-11-10)
 
 
