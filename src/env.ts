@@ -3,11 +3,8 @@ import { defineEnvVars } from '@sveltejs/kit/env'
 export const variables = defineEnvVars({
 	PUBLIC_SUPABASE_ANON_KEY: { public: true, static: true },
 	PUBLIC_SUPABASE_URL: { public: true, static: true },
-	GOOGLE_RECAPTCHA_SECRET_KEY: { schema: (input) => input ?? '' },
-	PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY: { public: true, static: true },
-	// Cloudflare Turnstile widget for the auth forms. Its secret lives in
-	// Supabase (Auth → Bot and Abuse Protection), not here. Optional so fork
-	// PR builds work; without it the widget doesn't render.
+	// Cloudflare Turnstile widget for the auth and contact forms. Optional so
+	// fork PR builds work; without it the widget doesn't render.
 	PUBLIC_TURNSTILE_SITE_KEY: {
 		public: true,
 		static: true,
@@ -24,6 +21,10 @@ export const variables = defineEnvVars({
 		static: true,
 		schema: (input) => input ?? 'development',
 	},
+	// The same widget's secret. Supabase holds its own copy for the auth forms
+	// (Auth → Bot and Abuse Protection); this one checks contact form tokens.
+	// Empty means every contact submission is rejected.
+	TURNSTILE_SECRET_KEY: { schema: (input) => input ?? '' },
 	RESEND_API_KEY: { schema: (input) => input ?? '' },
 	RESEND_FROM_EMAIL: { schema: (input) => input ?? '' },
 	// Server-only. Used for event subscribers, who don't have accounts
