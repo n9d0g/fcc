@@ -1,5 +1,24 @@
 # web
 
+## [3.33.0](https://github.com/n9d0g/fcc/compare/v3.32.11...v3.33.0) (2026-11-10)
+
+
+### Features
+
+* **auth:** :shield: block bot signups with Turnstile via Supabase's captcha ([215421c](https://github.com/n9d0g/fcc/commit/215421ce2ee962cb51ce8e9cac6fc2922d294693)), closes [#467](https://github.com/n9d0g/fcc/issues/467)
+* **auth:** block bot signups with Turnstile via Supabase's captcha ([76d3b28](https://github.com/n9d0g/fcc/commit/76d3b28c4304af8157a1dac4a1151516948768bf))
+
+
+### Bug Fixes
+
+* **auth:** :lock: limit display names to 20 characters of letters and simple punctuation ([0405306](https://github.com/n9d0g/fcc/commit/0405306be1532cb6490810e7ba91c6469eb3e511)), closes [#465](https://github.com/n9d0g/fcc/issues/465)
+* **auth:** :mailbox: send the New account email only after the email is confirmed ([ee098f1](https://github.com/n9d0g/fcc/commit/ee098f14533ee570099d5367d88d363255eeefb1)), closes [#466](https://github.com/n9d0g/fcc/issues/466)
+* **auth:** block spam signups, plus TS 7-ready tsconfigs and nate cleanup ([796f4a9](https://github.com/n9d0g/fcc/commit/796f4a9d4618b0ffaaa9b8e42fc1d35983badc79))
+* **auth:** limit display names to 20 characters of letters and simple punctuation ([579fbfd](https://github.com/n9d0g/fcc/commit/579fbfd3e2356c11bcd8c9ac61ee2ffe068e59f8))
+* **auth:** send the New account email only after the email is confirmed ([35456c0](https://github.com/n9d0g/fcc/commit/35456c0c727128d4c586251cccf26cdebf0bf811))
+* **types:** :label: make tsconfigs TS 7-ready and type-check the CMS ([83896d9](https://github.com/n9d0g/fcc/commit/83896d94ff981fcabff9f9b8bd1dec5eab1f5896))
+* **types:** :label: make tsconfigs TS 7-ready and type-check the CMS ([930184d](https://github.com/n9d0g/fcc/commit/930184d35ce3450f23a09d04b97bee53fc7e5a99)), closes [#460](https://github.com/n9d0g/fcc/issues/460)
+
 ## [3.32.11](https://github.com/n9d0g/fcc/compare/v3.32.10...v3.32.11) (2026-11-04)
 
 
