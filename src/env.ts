@@ -5,6 +5,14 @@ export const variables = defineEnvVars({
 	PUBLIC_SUPABASE_URL: { public: true, static: true },
 	GOOGLE_RECAPTCHA_SECRET_KEY: { schema: (input) => input ?? '' },
 	PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY: { public: true, static: true },
+	// Cloudflare Turnstile widget for the auth forms. Its secret lives in
+	// Supabase (Auth → Bot and Abuse Protection), not here. Optional so fork
+	// PR builds work; without it the widget doesn't render.
+	PUBLIC_TURNSTILE_SITE_KEY: {
+		public: true,
+		static: true,
+		schema: (input) => input ?? '',
+	},
 	// Sentry is disabled when the DSN is empty
 	PUBLIC_SENTRY_DSN: {
 		public: true,

@@ -1,4 +1,6 @@
-export default {
+import { defineType } from 'sanity'
+
+export default defineType({
 	name: 'sermons',
 	type: 'document',
 	title: 'Sermons',
@@ -13,9 +15,9 @@ export default {
 			title,
 			speaker,
 		}: {
-			date: string
-			title: string
-			speaker: string
+			date?: string
+			title?: string
+			speaker?: string
 		}) {
 			const formattedDate = date
 				? new Date(date).toLocaleDateString('en-US', {
@@ -59,4 +61,4 @@ export default {
 			title: 'YouTube Link',
 		},
 	],
-}
+})

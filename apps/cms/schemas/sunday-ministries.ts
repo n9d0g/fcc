@@ -1,4 +1,6 @@
-export default {
+import { defineType } from 'sanity'
+
+export default defineType({
 	name: 'sunday-ministries',
 	type: 'document',
 	title: 'Sunday Ministries',
@@ -7,7 +9,7 @@ export default {
 			date: 'date',
 			presider: 'presider',
 		},
-		prepare({ date, presider }: { date: string; presider: string }) {
+		prepare({ date, presider }: { date?: string; presider?: string }) {
 			const formattedDate = date
 				? new Date(date).toLocaleDateString('en-US', {
 						weekday: 'short',
@@ -107,4 +109,4 @@ export default {
 			title: 'Ushers / Greeters',
 		},
 	],
-}
+})

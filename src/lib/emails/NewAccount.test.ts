@@ -7,7 +7,7 @@ describe('NewAccount email', () => {
 		const { html, text } = await renderEmail(NewAccount, {
 			displayName: 'Jane <script>alert(1)</script>',
 			email: 'jane@example.com',
-			registeredAt: 'Oct 13, 2026, 10:00 a.m.',
+			confirmedAt: 'Oct 13, 2026, 10:00 a.m.',
 		})
 
 		expect(html).not.toContain('class="')
@@ -15,5 +15,6 @@ describe('NewAccount email', () => {
 		expect(html).toContain('&lt;script&gt;')
 		expect(html).toContain('href="mailto:jane@example.com"')
 		expect(text).toContain('jane@example.com')
+		expect(text).toContain("They've confirmed their email address")
 	})
 })

@@ -1,4 +1,6 @@
-export default {
+import { defineType } from 'sanity'
+
+export default defineType({
 	name: 'prayer',
 	type: 'document',
 	// Replaced by the prayer schedule on the site (/admin/prayer). Kept so the
@@ -9,7 +11,7 @@ export default {
 			name: 'name',
 			date: 'date',
 		},
-		prepare({ name, date }: { name: string; date: string }) {
+		prepare({ name, date }: { name?: string; date?: string }) {
 			const formattedDate = date
 				? new Date(date).toLocaleDateString('en-US', {
 						weekday: 'short',
@@ -45,4 +47,4 @@ export default {
 			type: 'string',
 		},
 	],
-}
+})

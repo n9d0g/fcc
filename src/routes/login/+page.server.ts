@@ -1,10 +1,31 @@
+import NewAccountEmail from '#lib/emails/NewAccount.svelte'
+import { displayNameOf } from '#lib/schemas/account.js'
+import { torontoTimestamp } from '#lib/schemas/worship-availability.js'
 import {
 	authErrorMessage,
+	captchaTokenFrom,
 	logAuthError,
 	safeRedirect,
 } from '#lib/server/auth.js'
+import { trySend } from '#lib/server/notifier.js'
 import { fail, redirect } from '@sveltejs/kit'
+import type { User } from '@supabase/supabase-js'
 import type { Actions, PageServerLoad } from './$types'
+
+// An account only counts as new once its email is confirmed (see GLOSSARY.md),
+// so the Requests inbox hears about it here rather than at signup. Best
+// effort: a failed notification shouldn't block the person signing in.
+const notifyNewAccount = (user: User) => {
+	const email = user.email ?? ''
+	const displayName = displayNameOf(user) || email
+	return trySend({
+		to: { inbox: 'requests' },
+		replyTo: email,
+		subject: `New account: ${displayName}`,
+		template: NewAccountEmail,
+		props: { displayName, email, confirmedAt: torontoTimestamp() },
+	})
+}
 
 export const load: PageServerLoad = async ({ locals, url }) => {
 	const { session, user } = await locals.safeGetSession()
@@ -35,6 +56,7 @@ export const actions = {
 			const { error } = await locals.supabase.auth.signInWithPassword({
 				email,
 				password,
+				options: { captchaToken: captchaTokenFrom(formData) },
 			})
 
 			if (error) {
@@ -71,7 +93,7 @@ export const actions = {
 		}
 
 		try {
-			const { error } = await locals.supabase.auth.verifyOtp({
+			const { data, error } = await locals.supabase.auth.verifyOtp({
 				email,
 				token,
 				type: 'email',
@@ -85,6 +107,8 @@ export const actions = {
 					email,
 				})
 			}
+
+			if (data.user) await notifyNewAccount(data.user)
 		} catch (error) {
 			logAuthError('verifyOtp', error)
 			return fail(500, {
@@ -114,6 +138,7 @@ export const actions = {
 			const { error } = await locals.supabase.auth.resend({
 				type: 'signup',
 				email,
+				options: { captchaToken: captchaTokenFrom(formData) },
 			})
 
 			if (error) {

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import FccLayout from '#lib/components/FccLayout.svelte'
+	import Turnstile from '#lib/components/Turnstile.svelte'
 	import { enhance } from '$app/forms'
 	import { page } from '$app/state'
 	import type { ActionData } from './$types'
@@ -82,6 +83,8 @@
 						/>
 					</label>
 
+					<Turnstile />
+
 					<button class="btn btn-primary btn-lg" type="submit">Log in</button>
 				</form>
 
@@ -133,6 +136,7 @@
 					class="mt-4 flex flex-col gap-2"
 				>
 					<input type="hidden" name="email" value={email} />
+					<Turnstile />
 					<button class="btn btn-sm btn-outline" type="submit">
 						Resend confirmation code
 					</button>

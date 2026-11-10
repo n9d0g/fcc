@@ -1,10 +1,11 @@
 <script lang="ts">
 	import FccLayout from '#lib/components/FccLayout.svelte'
+	import Turnstile from '#lib/components/Turnstile.svelte'
 	import Icon from '@iconify/svelte'
 	import { enhance, type SubmitFunction } from '$app/forms'
 	import { page } from '$app/state'
 	import { toaster } from '#lib/stores/toaster.js'
-	import { ACCOUNT_LIMITS } from '#lib/schemas/account.js'
+	import { ACCOUNT_LIMITS, DISPLAY_NAME_HINT } from '#lib/schemas/account.js'
 	import type { ActionData, PageData } from './$types'
 
 	let { data, form }: { data: PageData; form: ActionData } = $props()
@@ -101,12 +102,14 @@
 					class="input"
 					name="displayName"
 					autocomplete="name"
-					placeholder="First and last name"
+					placeholder="Your name"
 					maxlength={ACCOUNT_LIMITS.displayName}
+					aria-describedby="display-name-hint"
 					value={data.displayName}
 					aria-invalid={!!errorsFor('name').displayName}
 					required
 				/>
+				<span id="display-name-hint" class="text-sm text-muted">{DISPLAY_NAME_HINT}</span>
 				{@render error(errorsFor('name').displayName)}
 			</label>
 			{@render alert(messageFor('name'))}
@@ -206,6 +209,7 @@
 				/>
 				{@render error(errorsFor('password').confirmPassword)}
 			</label>
+			<Turnstile />
 			{@render alert(messageFor('password'))}
 			<button class="btn btn-primary sm:self-end" disabled={busy === 'password'}>
 				{busy === 'password' ? 'Saving…' : 'Change password'}

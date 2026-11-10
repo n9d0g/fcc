@@ -1,4 +1,6 @@
-export default {
+import { defineField, defineType } from 'sanity'
+
+export default defineType({
 	name: 'banner',
 	type: 'document',
 	title: 'Banner',
@@ -10,14 +12,14 @@ export default {
 		}),
 	},
 	fields: [
-		{
+		defineField({
 			name: 'title',
 			title: 'Banner Title',
 			description: 'Short headline, e.g. "Service moved to 11am this Sunday"',
 			type: 'string',
 			validation: (Rule) => Rule.required().max(80),
-		},
-		{
+		}),
+		defineField({
 			name: 'body',
 			title: 'Banner Body',
 			description: 'One or two sentences. Add a link for more details.',
@@ -42,14 +44,14 @@ export default {
 					},
 				},
 			],
-		},
-		{
+		}),
+		defineField({
 			name: 'startDate',
 			title: 'Banner Start Date',
 			description: 'First day to show the banner. Leave empty to show it now.',
 			type: 'date',
-		},
-		{
+		}),
+		defineField({
 			name: 'date',
 			title: 'Banner End Date',
 			description:
@@ -61,6 +63,6 @@ export default {
 						? 'End date must be on or after the start date'
 						: true
 				),
-		},
+		}),
 	],
-}
+})

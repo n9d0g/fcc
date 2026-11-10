@@ -4,7 +4,9 @@ import {
 	emailSchema,
 	passwordSchema,
 } from '#lib/schemas/account.js'
+import { CAPTCHA_ERROR } from '#lib/captcha.js'
 import { signedInUser } from '#lib/server/access.js'
+import { captchaTokenFrom, isCaptchaError } from '#lib/server/auth.js'
 import { fail } from '@sveltejs/kit'
 import { z } from 'zod'
 import type { Actions, PageServerLoad } from './$types'
@@ -118,7 +120,11 @@ export const actions = {
 		const { error: signInError } = await supabase.auth.signInWithPassword({
 			email: user.email ?? '',
 			password: parsed.data.currentPassword,
+			options: { captchaToken: captchaTokenFrom(formData) },
 		})
+		if (signInError && isCaptchaError(signInError)) {
+			return failure('password', 400, {}, CAPTCHA_ERROR)
+		}
 		if (signInError) {
 			return failure('password', 400, {
 				currentPassword: 'Your current password is incorrect.',

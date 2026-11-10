@@ -62,52 +62,44 @@ If the cert files are missing, Vite falls back to plain HTTP. Port 443 needs no 
 
 ## Environment variables
 
-**Public** (build time — use `.env` locally and GitHub Actions secrets for deploys):
+**Locally**, `.env` comes from the project's 1Password environment, which mounts it as a named pipe ([ADR 0002](docs/adr/0002-local-secrets-via-1password-environment.md)). `vp dev`, `vp build` and `pnpm preview` (`wrangler dev`) all read it. Don't create a `.dev.vars` file: `wrangler dev` would use it instead of `.env`. If you don't have 1Password access, copy [`.env.example`](.env.example) to `.env` and ask a maintainer for values.
 
-- `PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_ANON_KEY`
-- `PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY`
+[`.env.example`](.env.example) is the full list of keys. Add any new key there as well as in 1Password.
 
-See [`.env.example`](.env.example) for the full list.
+**Public** (build time): `PUBLIC_*` keys. Deploys get them from GitHub Actions secrets.
 
-**Private** (runtime — use [`.dev.vars`](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets) for `pnpm preview`, and Worker secrets in Cloudflare for production):
+**Private** (runtime): Worker secrets in Cloudflare for deployed environments:
 
 ```bash
 wrangler secret put RESEND_API_KEY
 wrangler secret put GOOGLE_RECAPTCHA_SECRET_KEY
-wrangler secret put GOOGLE_MAPS_API_KEY
-# repeat with --env qa or --env nate for preview environments
+wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+wrangler secret put SANITY_WEBHOOK_SECRET
+wrangler secret put CRON_SECRET
+# repeat with --env qa for the QA environment
 ```
-
-Ask a maintainer for secret values.
 
 ## Deploying (Cloudflare Workers)
 
 Branches map to Workers environments:
 
-| Branch | Worker     | Live URL                                                                         | Wrangler                     |
-| ------ | ---------- | -------------------------------------------------------------------------------- | ---------------------------- |
-| `main` | `fcc-prod` | [fcccanada.ca](https://fcccanada.ca) (`www` → apex via Cloudflare redirect rule) | `wrangler deploy`            |
-| `dev`  | `fcc-qa`   | [dev.fcccanada.ca](https://dev.fcccanada.ca) (+ `workers.dev` fallback)          | `wrangler deploy --env qa`   |
-| `nate` | `fcc-nate` | `workers.dev` until `nate.fcccanada.ca` cutover                                  | `wrangler deploy --env nate` |
+| Branch | Worker     | Live URL                                                                         | Wrangler                   |
+| ------ | ---------- | -------------------------------------------------------------------------------- | -------------------------- |
+| `main` | `fcc-prod` | [fcccanada.ca](https://fcccanada.ca) (`www` → apex via Cloudflare redirect rule) | `wrangler deploy`          |
+| `dev`  | `fcc-qa`   | [dev.fcccanada.ca](https://dev.fcccanada.ca) (+ `workers.dev` fallback)          | `wrangler deploy --env qa` |
 
 Before the first production deploy with custom domains, remove legacy Vercel DNS for the apex, `www`, and `*` wildcard (see cutover checklist below). Set Worker secrets on `fcc-prod` (`wrangler secret put …` without `--env`). Add a Cloudflare **Redirect Rule** so `www.fcccanada.ca` permanently redirects to `https://fcccanada.ca` with path and query preserved.
 
-Pushes to `main`, `dev`, and `nate` run [`.github/workflows/deploy-web.yml`](.github/workflows/deploy-web.yml). CMS-only changes under `apps/cms/` do not trigger a web deploy.
+Pushes to `main` and `dev` run [`.github/workflows/deploy-web.yml`](.github/workflows/deploy-web.yml). CMS-only changes under `apps/cms/` do not trigger a web deploy.
 
 ### Production DNS cutover (before merging to `main`)
 
 Delete in Cloudflare DNS: apex `A` (`76.76.21.21`), both `www` `A` records, both `*` wildcard `A` records, and `_domainconnect` → Vercel. Keep `crm`, `dev` (QA Worker), MX/TXT (mail and Resend), and CAA. Merge `dev` → `main` immediately after so Wrangler can attach `fcccanada.ca` and `www.fcccanada.ca`.
 
-### Nate cutover (later)
-
-1. Remove any `nate` DNS if added manually; add `routes` with `custom_domain: true` for `nate.fcccanada.ca` under `env.nate` (and keep `routes: []` override removed or replaced with the nate hostname only).
-2. Set secrets with `--env nate`, update Supabase and reCAPTCHA, then push to `nate`.
-3. Optionally set `workers_dev` to `false` when you no longer need `workers.dev` URLs.
-
 ### GitHub secrets
 
 - `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
-- `PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_ANON_KEY`, `PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY`
+- `PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_ANON_KEY`, `PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY`, `PUBLIC_TURNSTILE_SITE_KEY`
 - `DISCORD_WEBHOOK_URL` (optional deploy notifications)
 - `SANITY_AUTH_TOKEN` (CMS Studio deploys on `main`)
 
@@ -116,7 +108,7 @@ Delete in Cloudflare DNS: apex `A` (`76.76.21.21`), both `www` `A` records, both
 1. Add `fcccanada.ca` (and subdomains) to Cloudflare DNS.
 2. Set Worker secrets per environment (see above).
 3. In GitHub → Settings → Actions → General, enable **Allow GitHub Actions to create and approve pull requests** for release-please.
-4. Add auth redirect URLs in Supabase and domains in reCAPTCHA for all hostnames.
+4. Add auth redirect URLs in Supabase, and every hostname (plus `localhost`) to reCAPTCHA and to the Turnstile widget. Supabase checks the Turnstile token on signup, login and resending the code, so a hostname missing from the widget can't sign in.
 5. After cutover, remove domains from Vercel and disconnect Vercel Git integration.
 
 ## Releases
