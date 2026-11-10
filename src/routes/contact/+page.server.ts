@@ -4,14 +4,15 @@ import { contactSchema, type ContactField } from '#lib/schemas/contact.js'
 import { church } from '#lib/config/index.js'
 import { torontoTimestamp } from '#lib/schemas/worship-availability.js'
 import { send, trySend } from '#lib/server/notifier.js'
+import { verifyTurnstile } from '#lib/server/turnstile.js'
+import { CAPTCHA_FIELD } from '#lib/captcha.js'
 import { z } from 'zod'
-import { GOOGLE_RECAPTCHA_SECRET_KEY } from '$app/env/private'
+import { TURNSTILE_SECRET_KEY } from '$app/env/private'
 import { fail } from '@sveltejs/kit'
 import type { Actions } from './$types'
 
 // Submissions go to the contact inbox, with a silent copy to the requests
 // inbox. The auto-reply's Reply-To points at the church inbox.
-const RECAPTCHA_MIN_SCORE = 0.6
 
 type FieldErrors = Partial<Record<ContactField, string>>
 type ContactValues = Record<ContactField, string>
@@ -28,47 +29,6 @@ const failure = (
 	message?: string
 ) => fail(status, { values, errors, message })
 
-async function verifyRecaptcha(token: string) {
-	if (!token) {
-		console.warn('[contact] recaptcha: no token submitted')
-		return false
-	}
-	if (!GOOGLE_RECAPTCHA_SECRET_KEY) {
-		console.error('[contact] recaptcha: GOOGLE_RECAPTCHA_SECRET_KEY is not set')
-		return false
-	}
-
-	const res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-		method: 'POST',
-		body: new URLSearchParams({
-			secret: GOOGLE_RECAPTCHA_SECRET_KEY,
-			response: token,
-		}),
-	})
-	if (!res.ok) {
-		console.error('[contact] recaptcha: siteverify HTTP', res.status)
-		return false
-	}
-
-	const result: {
-		success: boolean
-		score?: number
-		action?: string
-		hostname?: string
-		'error-codes'?: string[]
-	} = await res.json()
-
-	const passed =
-		result.success &&
-		result.action === 'contact' &&
-		(result.score ?? 0) >= RECAPTCHA_MIN_SCORE
-
-	// Log Google's verdict (never the token) so failures are diagnosable
-	if (!passed) console.warn('[contact] recaptcha rejected', result)
-
-	return passed
-}
-
 // Best effort: the visitor's message already reached us, so a failed
 // confirmation is logged rather than shown as an error.
 const sendAutoReply = (name: string, email: string) =>
@@ -81,7 +41,7 @@ const sendAutoReply = (name: string, email: string) =>
 	})
 
 export const actions = {
-	default: async ({ request }) => {
+	default: async ({ request, getClientAddress }) => {
 		const formData = await request.formData()
 		const values: ContactValues = {
 			name: field(formData, 'name'),
@@ -100,7 +60,13 @@ export const actions = {
 		}
 
 		try {
-			if (!(await verifyRecaptcha(field(formData, 'grecaptcha')))) {
+			const human = await verifyTurnstile({
+				token: field(formData, CAPTCHA_FIELD),
+				secret: TURNSTILE_SECRET_KEY,
+				remoteip: getClientAddress(),
+				logPrefix: '[contact]',
+			})
+			if (!human) {
 				return failure(
 					400,
 					values,

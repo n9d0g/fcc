@@ -1,6 +1,6 @@
 # Local secrets come from a 1Password environment mounted as `.env`
 
-Local `.env` values are served by a 1Password environment, which mounts `.env` as a named pipe instead of a regular file. Vite+ loads env files that are named pipes, and `wrangler dev` falls back to `.env` when there is no `.dev.vars`, so nothing else needs to change and no secrets are stored on disk. `.env.example` stays as the committed list of keys for anyone without 1Password access and as a reference for CI. CI and deployed Workers still use GitHub Actions secrets and `wrangler secret put` (#463 tracks whether to move those too).
+Local `.env` values are served by a 1Password environment, which mounts `.env` as a named pipe instead of a regular file. Vite+ loads env files that are named pipes, and `wrangler dev` falls back to `.env` when there is no `.dev.vars`, so nothing else needs to change and no secrets are stored on disk. `.env.example` stays as the committed list of keys for anyone without 1Password access and as a reference for CI. CI and deployed Workers keep using GitHub Actions secrets and `wrangler secret put`; moving those to a 1Password service account was considered and declined (#463).
 
 ## Considered Options
 

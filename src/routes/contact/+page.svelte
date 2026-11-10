@@ -6,15 +6,10 @@
 		contactSchema,
 		type ContactField,
 	} from '#lib/schemas/contact.js'
-	import { PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY } from '$app/env/public'
+	import Turnstile from '#lib/components/Turnstile.svelte'
 	import { enhance, type SubmitFunction } from '$app/forms'
 	import { tick } from 'svelte'
 	import type { ActionData } from './$types.js'
-
-	type Grecaptcha = {
-		ready: (_callback: () => void) => void
-		execute: (_siteKey: string, _opts: { action: string }) => Promise<string>
-	}
 
 	let { form }: { form: ActionData } = $props()
 
@@ -82,33 +77,7 @@
 		if (first) formEl?.querySelector<HTMLElement>(`[name="${first}"]`)?.focus()
 	}
 
-	const getRecaptchaToken = () =>
-		new Promise<string>((resolve, reject) => {
-			const grecaptcha = (window as unknown as { grecaptcha?: Grecaptcha })
-				.grecaptcha
-			if (!grecaptcha) {
-				reject(new Error('reCAPTCHA not loaded'))
-				return
-			}
-			const timeout = setTimeout(
-				() => reject(new Error('reCAPTCHA timed out')),
-				10_000
-			)
-			grecaptcha.ready(() => {
-				// execute() returns a Closure thenable without .finally, so adopt it
-				// into a native promise (this also catches synchronous throws)
-				Promise.resolve()
-					.then(() =>
-						grecaptcha.execute(PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY, {
-							action: 'contact',
-						})
-					)
-					.then(resolve, reject)
-					.finally(() => clearTimeout(timeout))
-			})
-		})
-
-	const submit: SubmitFunction = async ({ formData, cancel }) => {
+	const submit: SubmitFunction = ({ cancel }) => {
 		submitted = true
 		formMessage = ''
 
@@ -119,16 +88,6 @@
 		}
 
 		pending = true
-		try {
-			formData.set('grecaptcha', await getRecaptchaToken())
-		} catch (e) {
-			console.error(e)
-			pending = false
-			formMessage =
-				"We couldn't load our spam protection. Please check your connection, disable any blockers for this site, and try again."
-			cancel()
-			return
-		}
 
 		return async ({ result, update }) => {
 			pending = false
@@ -145,14 +104,6 @@
 		[errors[f] ? `${f}-error` : '', extra].filter(Boolean).join(' ') ||
 		undefined
 </script>
-
-<svelte:head>
-	<script
-		src={`https://www.google.com/recaptcha/api.js?render=${PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY}`}
-		async
-		defer
-	></script>
-</svelte:head>
 
 <FccLayout heading="Contact FCC.">
 	<section class="grid gap-10 lg:grid-cols-12 lg:gap-14">
@@ -292,6 +243,8 @@
 					</div>
 				</label>
 
+				<Turnstile />
+
 				<div aria-live="polite">
 					{#if formMessage}
 						<p
@@ -303,19 +256,7 @@
 					{/if}
 				</div>
 
-				<div
-					class="flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between"
-				>
-					<p class="text-muted text-xs">
-						This site is protected by reCAPTCHA and the Google
-						<a href="https://policies.google.com/privacy" class="anchor"
-							>Privacy Policy</a
-						>
-						and
-						<a href="https://policies.google.com/terms" class="anchor"
-							>Terms of Service</a
-						> apply.
-					</p>
+				<div class="flex sm:justify-end">
 					<button
 						type="submit"
 						class="btn btn-primary btn-lg w-full shrink-0 sm:w-auto sm:min-w-40"
