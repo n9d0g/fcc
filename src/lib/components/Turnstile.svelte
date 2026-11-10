@@ -46,8 +46,8 @@
 	import { PUBLIC_TURNSTILE_SITE_KEY } from '$app/env/public'
 
 	// Place inside a <form>. Turnstile adds a hidden cf-turnstile-response input
-	// to that form, which the action passes to Supabase as captchaToken.
-	// Supabase checks the token itself, so nothing else is needed on the server.
+	// to that form. Auth actions pass it to Supabase as captchaToken, which
+	// checks it; other forms check it with verifyTurnstile (#lib/server).
 
 	let container = $state<HTMLDivElement>()
 	let failed = $state(false)
