@@ -13,3 +13,13 @@ The skills speak in terms of five canonical triage roles. This file maps those r
 When a skill mentions a role (e.g. "apply the AFK-ready triage label"), use the corresponding label string from this table.
 
 Edit the "Label in our tracker" column to match whatever vocabulary you actually use.
+
+## Priority
+
+Every open issue also gets one priority label, separate from its triage label. Choose it when triaging or creating an issue; when unsure, use `next` and say so.
+
+| Label   | Meaning                                       |
+| ------- | --------------------------------------------- |
+| `now`   | Do ASAP. Keep it to about 3 issues at a time. |
+| `next`  | Worth doing, after the `now` ones.            |
+| `later` | v2 or someday, not soon.                      |
